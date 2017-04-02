@@ -13,8 +13,8 @@ timezone:
 baidu_analytics: c7d4122fb0b7203d99e4a2833f879862
 
 avatar: /uploads/avatar.png
-duoshuo_shortname: askervilles
-duoshuo_hotartical: true
+#duoshuo_shortname: askervilles
+#duoshuo_hotartical: true
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: http://yoursite.com
@@ -88,3 +88,21 @@ deploy:
 #	       git@github_user2:lmshilm/lmshilm.git
  # branch: master
 
+# hexo sitemap网站地图
+sitemap:
+path: sitemap.xml
+
+# RSS订阅支持
+plugin:
+- hexo-generator-feed
+# Feed Atom
+feed:
+type: atom
+path: atom.xml
+limit: 20
+
+search:
+  path: search.xml
+  field: post
+  format: html
+  limit: 10000
