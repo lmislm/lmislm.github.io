@@ -72,6 +72,7 @@ function getCount(str) {
 }
 ```
 ## 总结
-### match（regexp）和exec（
+### match（regexp）和exec()
+- 关于这两个的讨论，感觉说破天也没有MDN上说得好啊。:>
 
 

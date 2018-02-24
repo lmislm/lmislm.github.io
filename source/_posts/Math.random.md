@@ -5,6 +5,7 @@ tags:
 - js
 categories: 
 - 工作
+- codewars
 
 grammar_cjkRuby: true
 ---
