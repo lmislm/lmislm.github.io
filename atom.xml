@@ -206,31 +206,6 @@
   </entry>
   
   <entry>
-    <title>markdown语法小记</title>
-    <link href="http://blog.booml.cn/2018/02/24/markdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0/"/>
-    <id>http://blog.booml.cn/2018/02/24/markdown语法小记/</id>
-    <published>2018-02-24T07:23:49.254Z</published>
-    <updated>2018-02-24T07:23:49.254Z</updated>
-    
-    <content type="html"><![CDATA[<ol><li>插入表格：<br>1.1. 表格的上下需要空行。空行的多少至关重要 <ul><li>表格中文字居中  在划线部分的划线两端加上”<strong>:</strong>“<ul><li>比如”<strong>:</strong>—–<strong>:</strong> | <strong>:</strong>—-<strong>:</strong><a id="more"></a></li></ul></li></ul></li><li><code>代码块</code>:<br>2.1. 合理利用代码块有意想不到的效果。</li><li></li></ol>]]></content>
-    
-    <summary type="html">
-    
-      &lt;ol&gt;
-&lt;li&gt;插入表格：&lt;br&gt;1.1. 表格的上下需要空行。空行的多少至关重要 &lt;ul&gt;
-&lt;li&gt;表格中文字居中  在划线部分的划线两端加上”&lt;strong&gt;:&lt;/strong&gt;“&lt;ul&gt;
-&lt;li&gt;比如”&lt;strong&gt;:&lt;/strong&gt;—–&lt;strong&gt;:&lt;/strong&gt; | &lt;strong&gt;:&lt;/strong&gt;—-&lt;strong&gt;:&lt;/strong&gt;
-    
-    </summary>
-    
-    
-      <category term="markdown" scheme="http://blog.booml.cn/tags/markdown/"/>
-    
-      <category term="日记" scheme="http://blog.booml.cn/tags/%E6%97%A5%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Steps</title>
     <link href="http://blog.booml.cn/2018/02/24/poj%20No.2590/"/>
     <id>http://blog.booml.cn/2018/02/24/poj No.2590/</id>
@@ -254,6 +229,31 @@
       <category term="编程" scheme="http://blog.booml.cn/tags/%E7%BC%96%E7%A8%8B/"/>
     
       <category term="acm" scheme="http://blog.booml.cn/tags/acm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>markdown语法小记</title>
+    <link href="http://blog.booml.cn/2018/02/24/markdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0/"/>
+    <id>http://blog.booml.cn/2018/02/24/markdown语法小记/</id>
+    <published>2018-02-24T07:23:49.254Z</published>
+    <updated>2018-02-24T07:23:49.254Z</updated>
+    
+    <content type="html"><![CDATA[<ol><li>插入表格：<br>1.1. 表格的上下需要空行。空行的多少至关重要 <ul><li>表格中文字居中  在划线部分的划线两端加上”<strong>:</strong>“<ul><li>比如”<strong>:</strong>—–<strong>:</strong> | <strong>:</strong>—-<strong>:</strong><a id="more"></a></li></ul></li></ul></li><li><code>代码块</code>:<br>2.1. 合理利用代码块有意想不到的效果。</li><li></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      &lt;ol&gt;
+&lt;li&gt;插入表格：&lt;br&gt;1.1. 表格的上下需要空行。空行的多少至关重要 &lt;ul&gt;
+&lt;li&gt;表格中文字居中  在划线部分的划线两端加上”&lt;strong&gt;:&lt;/strong&gt;“&lt;ul&gt;
+&lt;li&gt;比如”&lt;strong&gt;:&lt;/strong&gt;—–&lt;strong&gt;:&lt;/strong&gt; | &lt;strong&gt;:&lt;/strong&gt;—-&lt;strong&gt;:&lt;/strong&gt;
+    
+    </summary>
+    
+    
+      <category term="markdown" scheme="http://blog.booml.cn/tags/markdown/"/>
+    
+      <category term="日记" scheme="http://blog.booml.cn/tags/%E6%97%A5%E8%AE%B0/"/>
     
   </entry>
   
@@ -354,29 +354,6 @@
   </entry>
   
   <entry>
-    <title>codewars-count_digits</title>
-    <link href="http://blog.booml.cn/2018/02/24/codewars/"/>
-    <id>http://blog.booml.cn/2018/02/24/codewars/</id>
-    <published>2018-02-24T07:23:49.249Z</published>
-    <updated>2018-02-24T07:23:49.250Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><blockquote><p>Take an integer n (n &gt;= 0) and a digit d (0 &lt;= d &lt;= 9) as an integer. Square all numbers k (0 &lt;= k &lt;= n) between 0 and n.<br><a id="more"></a><br>Count the numbers of digits d used in the writing of all the k<em> </em>2. Call nb_dig (or nbDig or …) the function taking n and d as parameters and returning this count.</p></blockquote><h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><ul><li>n = 10, d = 1,<br>   the k * k are 0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100 We are using the digit 1 in 1, 16, 81, 100. </li><li>The total count is then 4.<br>   nb_dig(25, 1):<br> the numbers of interest are 1, 4, 9, 10, 11, 12, 13, 14, 19, 21<br> which squared are 1, 16, 81, 100, 121, 144, 169, 196, 361, 441 so there are 11 digits <code>1</code> for the squares of numbers between 0 and 25.</li></ul><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><ul><li>给出<code>n</code>和<code>d</code>，求0到n中间的平方，再求这些平方的平方，问所得的这些数中包含多少个数字<code>d</code>。<br>大概就是先算出这些数字的平方，然后挨个分解求出其中的值。<h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function nbDig(n,d) &#123;</span><br><span class="line">    var s = &apos;&apos;;</span><br><span class="line">    for(var i=0;i&lt;=n;i++)&#123;</span><br><span class="line">        s += Math.pow(i,2);</span><br><span class="line">    &#125;</span><br><span class="line">    return s.split(d).length-1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ul><h2 id="牢骚篇"><a href="#牢骚篇" class="headerlink" title="牢骚篇"></a>牢骚篇</h2><p>今天，进了个群，挺多厉害的人，还私聊了一个有很多offer的同学。顿时觉得，自己就是渣渣啊，一点信心都没有。还是得加油吧，要学的东西还很多啊。<br><img src="https://ooo.0o0.ooo/2017/03/20/58cfd648e6d0a.jpg" alt="累啊"></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;Take an integer n (n &amp;gt;= 0) and a digit d (0 &amp;lt;= d &amp;lt;= 9) as an integer. Square all numbers k (0 &amp;lt;= k &amp;lt;= n) between 0 and n.&lt;br&gt;
-    
-    </summary>
-    
-      <category term="工作" scheme="http://blog.booml.cn/categories/%E5%B7%A5%E4%BD%9C/"/>
-    
-    
-      <category term="编程" scheme="http://blog.booml.cn/tags/%E7%BC%96%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
     <title>codewars ooxx =&gt;true</title>
     <link href="http://blog.booml.cn/2018/02/24/codewars-ooxx/"/>
     <id>http://blog.booml.cn/2018/02/24/codewars-ooxx/</id>
@@ -400,6 +377,29 @@
       <category term="编程" scheme="http://blog.booml.cn/tags/%E7%BC%96%E7%A8%8B/"/>
     
       <category term="js" scheme="http://blog.booml.cn/tags/js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>codewars-count_digits</title>
+    <link href="http://blog.booml.cn/2018/02/24/codewars/"/>
+    <id>http://blog.booml.cn/2018/02/24/codewars/</id>
+    <published>2018-02-24T07:23:49.249Z</published>
+    <updated>2018-02-24T07:23:49.250Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><blockquote><p>Take an integer n (n &gt;= 0) and a digit d (0 &lt;= d &lt;= 9) as an integer. Square all numbers k (0 &lt;= k &lt;= n) between 0 and n.<br><a id="more"></a><br>Count the numbers of digits d used in the writing of all the k<em> </em>2. Call nb_dig (or nbDig or …) the function taking n and d as parameters and returning this count.</p></blockquote><h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><ul><li>n = 10, d = 1,<br>   the k * k are 0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100 We are using the digit 1 in 1, 16, 81, 100. </li><li>The total count is then 4.<br>   nb_dig(25, 1):<br> the numbers of interest are 1, 4, 9, 10, 11, 12, 13, 14, 19, 21<br> which squared are 1, 16, 81, 100, 121, 144, 169, 196, 361, 441 so there are 11 digits <code>1</code> for the squares of numbers between 0 and 25.</li></ul><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><ul><li>给出<code>n</code>和<code>d</code>，求0到n中间的平方，再求这些平方的平方，问所得的这些数中包含多少个数字<code>d</code>。<br>大概就是先算出这些数字的平方，然后挨个分解求出其中的值。<h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function nbDig(n,d) &#123;</span><br><span class="line">    var s = &apos;&apos;;</span><br><span class="line">    for(var i=0;i&lt;=n;i++)&#123;</span><br><span class="line">        s += Math.pow(i,2);</span><br><span class="line">    &#125;</span><br><span class="line">    return s.split(d).length-1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ul><h2 id="牢骚篇"><a href="#牢骚篇" class="headerlink" title="牢骚篇"></a>牢骚篇</h2><p>今天，进了个群，挺多厉害的人，还私聊了一个有很多offer的同学。顿时觉得，自己就是渣渣啊，一点信心都没有。还是得加油吧，要学的东西还很多啊。<br><img src="https://ooo.0o0.ooo/2017/03/20/58cfd648e6d0a.jpg" alt="累啊"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;Take an integer n (n &amp;gt;= 0) and a digit d (0 &amp;lt;= d &amp;lt;= 9) as an integer. Square all numbers k (0 &amp;lt;= k &amp;lt;= n) between 0 and n.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="工作" scheme="http://blog.booml.cn/categories/%E5%B7%A5%E4%BD%9C/"/>
+    
+    
+      <category term="编程" scheme="http://blog.booml.cn/tags/%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
