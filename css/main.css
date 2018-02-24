@@ -1118,7 +1118,7 @@ pre .javascript .function {
   transform: rotate(30deg);
 }
 .posts-expand {
-  padding-top: 40px;
+  padding-top: 0px;
 }
 @media (max-width: 767px) {
   .posts-expand {
@@ -1766,7 +1766,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff70a3;
+  background: #ffcc3d;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2626,7 +2626,7 @@ img:hover {
 .content-wrap {
   float: right;
   box-sizing: border-box;
-  padding: 40px;
+  padding: 1rem;
   width: 700px;
   background: #fff;
   min-height: 700px;
