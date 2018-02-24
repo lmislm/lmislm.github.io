@@ -148,6 +148,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[codewars-count_digits]]></title>
+    <url>%2F2018%2F02%2F24%2Fcodewars%2F</url>
+    <content type="text"><![CDATA[题目 Take an integer n (n &gt;= 0) and a digit d (0 &lt;= d &lt;= 9) as an integer. Square all numbers k (0 &lt;= k &lt;= n) between 0 and n.Count the numbers of digits d used in the writing of all the k 2. Call nb_dig (or nbDig or …) the function taking n and d as parameters and returning this count. 例子 n = 10, d = 1, the k * k are 0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100 We are using the digit 1 in 1, 16, 81, 100. The total count is then 4. nb_dig(25, 1): the numbers of interest are 1, 4, 9, 10, 11, 12, 13, 14, 19, 21 which squared are 1, 16, 81, 100, 121, 144, 169, 196, 361, 441 so there are 11 digits 1 for the squares of numbers between 0 and 25. 分析 给出n和d，求0到n中间的平方，再求这些平方的平方，问所得的这些数中包含多少个数字d。大概就是先算出这些数字的平方，然后挨个分解求出其中的值。解题1234567function nbDig(n,d) &#123; var s = &apos;&apos;; for(var i=0;i&lt;=n;i++)&#123; s += Math.pow(i,2); &#125; return s.split(d).length-1&#125; 牢骚篇今天，进了个群，挺多厉害的人，还私聊了一个有很多offer的同学。顿时觉得，自己就是渣渣啊，一点信心都没有。还是得加油吧，要学的东西还很多啊。]]></content>
+      <categories>
+        <category>工作</category>
+      </categories>
+      <tags>
+        <tag>编程</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[codewars ooxx =>true]]></title>
     <url>%2F2018%2F02%2F24%2Fcodewars-ooxx%2F</url>
     <content type="text"><![CDATA[前言第二关 Yeah！目标6kyu，坚持升级~ ：） 这一关，考察几个基本方法的使用，虽然单独拿出来可能难度不大，但是真正运用在工作中的时候，这些方法可能如大海捞针，不熟练是一时半会儿想不出来的。 话不多说，呀呀呀，提枪上阵， 题目描述Check to see if a string has the same amount of ‘x’s and ‘o’s. The method must return a boolean and be case insensitive. The string can contains any char.（0.0看不懂？往下戳） 例子12345XO(&quot;ooxx&quot;) =&gt; trueXO(&quot;xooxx&quot;) =&gt; falseXO(&quot;ooxXm&quot;) =&gt; trueXO(&quot;zpzpzpp&quot;) =&gt; true // when no &apos;x&apos; and &apos;o&apos; is present should return trueXO(&quot;zzoo&quot;) =&gt; false 分析题目大概意思就是： 在有限任意字符串中字符 x 和 o 存在且数量相等时 值为 true,否则当x和o不存在时，值为flase。匹配的话，首先想到正则表达式来处理。 方法一利用RegExp来匹配正则，然后再判断数量为空和数量是否相等。 12345678910111213141516function xo(str) &#123; var numX = new RegExp(/x/gi); //g 全局搜索，i 忽略大小写 var numO = new RegExp(/o/gi); if(numX.test(str)&amp;&amp;numO.test(str))&#123; if(str.match(/x/gi).length == str.match(/o/gi).length)&#123; return true; &#125;else&#123; return false; &#125; &#125;else&#123; return false; &#125;&#125;console.log(xo(&apos;xxoo&apos;))console.log(xo(&apos;glld&apos;)) 仔细一看，这种写法太麻烦。如何轻松取敌呢？ 方法二直接返回一个return，并在return中判断。123456function xo(str) &#123; var numX = str.match(/x/gi) || []; var numO = str.match(/x/gi) || []; return numO.length == numX.length;&#125; 解析方法一方法二 什么鬼！这不同的方法有什么区别呢？？我来试着剖析下这两种方法究竟是何利器。来看看MDN是怎么说的？贴心的MDN还在match这一篇中对两者进行了比较。 1. RegExp 构造函数创建了一个正则表达式对象，用于将文本与模式匹配。2.当一个字符串与一个正则表达式匹配时， match()方法检索匹配项。 比较 如果正则表达式没有 g 标志，则 str.match() 会返回和 RegExp.exec() 相同的结果。而且返回的 Array 拥有一个额外的 input 属性，该属性包含被解析的原始字符串。另外，还拥有一个 index 属性，该属性表示匹配结果在原字符串中的索引（以0开始）。 用法 如果你需要知道一个字符串是否匹配一个正则表达式 RegExp ，可使用 search() 。如果你只是需要第一个匹配结果，你可能想要使用 RegExp.exec() 。如果你想要获得捕获组，并且设置了全局标志，你需要用 RegExp.exec() 。 综上：大概就是这么吧~不用鸟我了，直接看文档吧~ 方法三方法三是在解答完之后查看他人的方法，大神们就是大神。对于各种用法如数家珍，信手拈来。 1234let x = str.match(/x/gi); let o = str.match(/o/gi);return (x &amp;&amp; x.length) === (o &amp;&amp; o.length);&#125; 实际运用 这个keyword变量该如何转义呢？ 123function addHightLight(txt,keyword) &#123; return txt.replace(/+keyword+/g,&quot;&lt;mark class=keyword&gt;&quot;+keyword+&quot;&lt;/mark&gt;&quot;);&#125; 答案是： 1234567function addHightLight(txt,keyword) &#123; txt = &quot;咖啡&quot; ;keyword = &quot;机器&quot;; var va = new RegExp(keyword,&quot;g&quot;); va = /\/咖啡\/g/&#123;lastIndex:0&#125; return txt.replace(va,&quot;&lt;mark class=keyword&gt;&quot;+keyword+&quot;&lt;/mark&gt;&quot;);&#125; 就到这里了~]]></content>
@@ -157,17 +168,6 @@
       <tags>
         <tag>编程</tag>
         <tag>js</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[codewars-count_digits]]></title>
-    <url>%2F2018%2F02%2F24%2Fcodewars%2F</url>
-    <content type="text"><![CDATA[题目 Take an integer n (n &gt;= 0) and a digit d (0 &lt;= d &lt;= 9) as an integer. Square all numbers k (0 &lt;= k &lt;= n) between 0 and n.Count the numbers of digits d used in the writing of all the k 2. Call nb_dig (or nbDig or …) the function taking n and d as parameters and returning this count. 例子 n = 10, d = 1, the k * k are 0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100 We are using the digit 1 in 1, 16, 81, 100. The total count is then 4. nb_dig(25, 1): the numbers of interest are 1, 4, 9, 10, 11, 12, 13, 14, 19, 21 which squared are 1, 16, 81, 100, 121, 144, 169, 196, 361, 441 so there are 11 digits 1 for the squares of numbers between 0 and 25. 分析 给出n和d，求0到n中间的平方，再求这些平方的平方，问所得的这些数中包含多少个数字d。大概就是先算出这些数字的平方，然后挨个分解求出其中的值。解题1234567function nbDig(n,d) &#123; var s = &apos;&apos;; for(var i=0;i&lt;=n;i++)&#123; s += Math.pow(i,2); &#125; return s.split(d).length-1&#125; 牢骚篇今天，进了个群，挺多厉害的人，还私聊了一个有很多offer的同学。顿时觉得，自己就是渣渣啊，一点信心都没有。还是得加油吧，要学的东西还很多啊。]]></content>
-      <categories>
-        <category>工作</category>
-      </categories>
-      <tags>
-        <tag>编程</tag>
       </tags>
   </entry>
   <entry>
@@ -195,19 +195,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Don't rely on luck.]]></title>
-    <url>%2F2018%2F02%2F24%2FMath.random%2F</url>
-    <content type="text"><![CDATA[题目在codewars上碰到一道奇怪的题目。猜随机数。难度6kyu，题干比以往简单。这就让人捉急了。什么都看不出来。接下来看题 The test fixture I use for this kata is pre-populated.It will compare your guess to a random number generated in Ruby by: (Kernel::rand() * 100 + 1).floorIn Javascript/CoffeeScript by: Math.floor(Math.random() * 100 + 1)In Python by:randint(1,100)You can pass by relying on luck or skill but try not to rely on luck. “The power to define the situation is the ultimate power.” - Jerry Rubin Good luck! 例子这里，题目给出的测试是： Example Test:var lucky_number = Math.floor(Math.random() * 100 + 1);Test.assertEquals(guess, lucky_number, &quot;Sorry. Unlucky this time.&quot;); 分析看到题目的时候，- - 就这么点? 然后 0.0 ，睁大眼睛看，然后 = =，这什么鬼，+.+，直接Math.random()?, @.@ 那怎么相等呢。？.?搜了下 9.9 ，发现只有Ruby的答案。 再查了下随机数。 随机数分为 伪随机数 和 真随机数 正常电脑各种语言中使用的都是 伪随机数 ，是由可确定的函数，通过种子（常用时钟），产生伪随机数，这种数字理论上存在可预测性。 函数 :计算机产生随机数的方法有：线性同余方法(大部分采用,，即 Rand_Number = (Rand_Seed * X + Y) mod Z 那个RandSeed就是「种子」一般取时钟周期，也就是GetTickCount()。），平方取中法，M-sequence，梅森旋转算法，还有MT随机数算法。 ps:这里不对 随机数的产生和随机数的计算理论做深究。具体可以看这里，各答案较完整讲了计算机产生的是伪随机数，还有产生 真随机数 的可行性。 那么JavaScript中的随机数是个什么样的存在？答案当然是伪随机数。= = JavaScript中并没有类似上面底层语言提供的函数,根据panxiwu博客中的说法，c和Ruby都有底层重置seed方法依据不同的方法来生成种子。而，JavaScript应该是依靠引擎使用随机函数方法，所以在安全方面，不用Math.random最好，替代的可以使用window.crypto.getRandomValues(array); MDN：Math.random() does not provide cryptographically secure random numbers. Do not use them for anything related to security. Use the Web Crypto API instead, and more precisely the window.crypto.getRandomValues() method. V8引擎中实现 随机数：通过Mathlmmul来创造，并没有所谓的seed参数，所以只能重写。 1234567891011// ECMA 262 - 15.8.2.14 var rngstate; // Initialized to a Uint32Array during genesis.function MathRandom() &#123; var r0 = (MathImul(18030, rngstate[0] &amp; 0xFFFF) + (rngstate[0] &gt;&gt;&gt; 16)) | 0; rngstate[0] = r0; var r1 = (MathImul(36969, rngstate[1] &amp; 0xFFFF) + (rngstate[1] &gt;&gt;&gt; 16)) | 0; rngstate[1] = r1; var x = ((r0 &lt;&lt; 16) + (r1 &amp; 0xFFFF)) | 0;// Division by 0x100000000 through multiplication by reciprocal. return (x &lt; 0 ? (x + 0x100000000) : x) * 2.3283064365386962890625e-10; &#125;// Non-standard extension.function MathImul(x, y) &#123; return %NumberImul(TO_NUMBER_INLINE(x), TO_NUMBER_INLINE(y)); &#125; from v8 解题 12var guess = 10Math.floor = function(num) &#123;return guess;&#125; Accept!然后看到一堆不可描述的东西。lol 这个…….. 12var guess = 10;lucky_number = 10; 还有这个 123Math.random=()=&gt;&quot;:D&quot;Math.floor=x=&gt;(x+&apos;&apos;).replace(/N/g,&apos;L&apos;).replace(/a/g,&quot;0&quot;)var guess = &quot;L0L&quot; 不少都是写死了random的值然后钻牛角尖的。。还有令人搞笑的，可以拿来当笑话集了，这题： 12345var guess = &quot;What a stupid kata.&quot;;Math.floor = function() &#123; return &quot;What a stupid kata.&quot;;&#125; 还有这个，，厉害了。。。 实际运用 比如我们在开发京东的H5活动页面的小游戏时，可能需要随机产生一些背景、随机掉落道具、小怪物；当用户中途退出(微信不小心右滑，一定有不少人被这个恶心到[当然现在已经优化])，当用户重新打开小游戏时，用户整体进度、积分我们可以很容易记录到本地或者存储到微信ID建立的存储机制中从而得以恢复，但是随机产生的场景、随机掉落道具、小怪物等并不是那么容易存储恢复，重新获取场景、小怪物那未免用户体验太差！！！把画布上的所有物件、怪物属性全部存储下来更是没有必要。此时我们就可以利用我们重写的Math.random()(此时可不重写内置方法，可另起别名)。只要我们保存下来一个随机数seed值，利用seed值来恢复所有的场景就好了。from 潘信伍 ,谢谢大神啊 参考悟道集JavaScript中Math.random的种子设定方法]]></content>
-      <categories>
-        <category>工作</category>
-        <category>codewars</category>
-      </categories>
-      <tags>
-        <tag>编程</tag>
-        <tag>js</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[acm基础--POJ No.1003 Hangover]]></title>
     <url>%2F2018%2F02%2F24%2Facm00%2F</url>
     <content type="text"><![CDATA[关于运算符号的思考（acm热身）POJ No.1003 Hangover input：1.003.71output：3 card(s)61 card(s) c12345678910111213#include&lt;stdio.h&gt;main()&#123; int n; float a,b; while(scanf("%f",&amp;b)==1) &#123; if(b==0.0)break; a=0.0; for(n=1;a&lt;b;++n) a+=1.0/(float)(n+1); printf("%d" card(s) \n",n-1); &#125;&#125; 逗号运算符号 while(scanf(“%f”,&amp;b)==1)compare towhile(scanf(“%f”,&amp;b),b)结束条件等价于b!=0即使b的值为0.000001f,0.00001f!=0为真，也不会结束循环。所以写法(*，b）非常重要 强制类型转换 直接用(float)转换为int类型，简单点就写成for(n=1;al；) 减少变量 省略int类型将n写入main（），但是有的编译器并不能通过。所以为了简单清晰，还是不要用的好。 尽量多用for循环直接缩成一行1234567其中包含n省略在mainmain(n)&#123;float b;for(;scanf(&quot;%f&quot;,&amp;b),b;printf(&quot;%d card(s)\n&quot;,n-1)) for(n=1;b&gt;0;)b-=1./++n;&#125;]]></content>
@@ -218,6 +205,19 @@
         <tag>编程</tag>
         <tag>日志</tag>
         <tag>acm poj</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Don't rely on luck.]]></title>
+    <url>%2F2018%2F02%2F24%2FMath.random%2F</url>
+    <content type="text"><![CDATA[题目在codewars上碰到一道奇怪的题目。猜随机数。难度6kyu，题干比以往简单。这就让人捉急了。什么都看不出来。接下来看题 The test fixture I use for this kata is pre-populated.It will compare your guess to a random number generated in Ruby by: (Kernel::rand() * 100 + 1).floorIn Javascript/CoffeeScript by: Math.floor(Math.random() * 100 + 1)In Python by:randint(1,100)You can pass by relying on luck or skill but try not to rely on luck. “The power to define the situation is the ultimate power.” - Jerry Rubin Good luck! 例子这里，题目给出的测试是： Example Test:var lucky_number = Math.floor(Math.random() * 100 + 1);Test.assertEquals(guess, lucky_number, &quot;Sorry. Unlucky this time.&quot;); 分析看到题目的时候，- - 就这么点? 然后 0.0 ，睁大眼睛看，然后 = =，这什么鬼，+.+，直接Math.random()?, @.@ 那怎么相等呢。？.?搜了下 9.9 ，发现只有Ruby的答案。 再查了下随机数。 随机数分为 伪随机数 和 真随机数 正常电脑各种语言中使用的都是 伪随机数 ，是由可确定的函数，通过种子（常用时钟），产生伪随机数，这种数字理论上存在可预测性。 函数 :计算机产生随机数的方法有：线性同余方法(大部分采用,，即 Rand_Number = (Rand_Seed * X + Y) mod Z 那个RandSeed就是「种子」一般取时钟周期，也就是GetTickCount()。），平方取中法，M-sequence，梅森旋转算法，还有MT随机数算法。 ps:这里不对 随机数的产生和随机数的计算理论做深究。具体可以看这里，各答案较完整讲了计算机产生的是伪随机数，还有产生 真随机数 的可行性。 那么JavaScript中的随机数是个什么样的存在？答案当然是伪随机数。= = JavaScript中并没有类似上面底层语言提供的函数,根据panxiwu博客中的说法，c和Ruby都有底层重置seed方法依据不同的方法来生成种子。而，JavaScript应该是依靠引擎使用随机函数方法，所以在安全方面，不用Math.random最好，替代的可以使用window.crypto.getRandomValues(array); MDN：Math.random() does not provide cryptographically secure random numbers. Do not use them for anything related to security. Use the Web Crypto API instead, and more precisely the window.crypto.getRandomValues() method. V8引擎中实现 随机数：通过Mathlmmul来创造，并没有所谓的seed参数，所以只能重写。 1234567891011// ECMA 262 - 15.8.2.14 var rngstate; // Initialized to a Uint32Array during genesis.function MathRandom() &#123; var r0 = (MathImul(18030, rngstate[0] &amp; 0xFFFF) + (rngstate[0] &gt;&gt;&gt; 16)) | 0; rngstate[0] = r0; var r1 = (MathImul(36969, rngstate[1] &amp; 0xFFFF) + (rngstate[1] &gt;&gt;&gt; 16)) | 0; rngstate[1] = r1; var x = ((r0 &lt;&lt; 16) + (r1 &amp; 0xFFFF)) | 0;// Division by 0x100000000 through multiplication by reciprocal. return (x &lt; 0 ? (x + 0x100000000) : x) * 2.3283064365386962890625e-10; &#125;// Non-standard extension.function MathImul(x, y) &#123; return %NumberImul(TO_NUMBER_INLINE(x), TO_NUMBER_INLINE(y)); &#125; from v8 解题 12var guess = 10Math.floor = function(num) &#123;return guess;&#125; Accept!然后看到一堆不可描述的东西。lol 这个…….. 12var guess = 10;lucky_number = 10; 还有这个 123Math.random=()=&gt;&quot;:D&quot;Math.floor=x=&gt;(x+&apos;&apos;).replace(/N/g,&apos;L&apos;).replace(/a/g,&quot;0&quot;)var guess = &quot;L0L&quot; 不少都是写死了random的值然后钻牛角尖的。。还有令人搞笑的，可以拿来当笑话集了，这题： 12345var guess = &quot;What a stupid kata.&quot;;Math.floor = function() &#123; return &quot;What a stupid kata.&quot;;&#125; 还有这个，，厉害了。。。 实际运用 比如我们在开发京东的H5活动页面的小游戏时，可能需要随机产生一些背景、随机掉落道具、小怪物；当用户中途退出(微信不小心右滑，一定有不少人被这个恶心到[当然现在已经优化])，当用户重新打开小游戏时，用户整体进度、积分我们可以很容易记录到本地或者存储到微信ID建立的存储机制中从而得以恢复，但是随机产生的场景、随机掉落道具、小怪物等并不是那么容易存储恢复，重新获取场景、小怪物那未免用户体验太差！！！把画布上的所有物件、怪物属性全部存储下来更是没有必要。此时我们就可以利用我们重写的Math.random()(此时可不重写内置方法，可另起别名)。只要我们保存下来一个随机数seed值，利用seed值来恢复所有的场景就好了。from 潘信伍 ,谢谢大神啊 参考悟道集JavaScript中Math.random的种子设定方法]]></content>
+      <categories>
+        <category>工作</category>
+        <category>codewars</category>
+      </categories>
+      <tags>
+        <tag>编程</tag>
+        <tag>js</tag>
       </tags>
   </entry>
   <entry>
