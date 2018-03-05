@@ -230,6 +230,31 @@
   </entry>
   
   <entry>
+    <title>markdown语法小记</title>
+    <link href="http://blog.booml.cn/2018/02/24/markdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0/"/>
+    <id>http://blog.booml.cn/2018/02/24/markdown语法小记/</id>
+    <published>2018-02-24T07:23:49.254Z</published>
+    <updated>2018-02-24T07:23:49.254Z</updated>
+    
+    <content type="html"><![CDATA[<ol><li>插入表格：<br>1.1. 表格的上下需要空行。空行的多少至关重要 <ul><li>表格中文字居中  在划线部分的划线两端加上”<strong>:</strong>“<ul><li>比如”<strong>:</strong>—–<strong>:</strong> | <strong>:</strong>—-<strong>:</strong><a id="more"></a></li></ul></li></ul></li><li><code>代码块</code>:<br>2.1. 合理利用代码块有意想不到的效果。</li><li></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      &lt;ol&gt;
+&lt;li&gt;插入表格：&lt;br&gt;1.1. 表格的上下需要空行。空行的多少至关重要 &lt;ul&gt;
+&lt;li&gt;表格中文字居中  在划线部分的划线两端加上”&lt;strong&gt;:&lt;/strong&gt;“&lt;ul&gt;
+&lt;li&gt;比如”&lt;strong&gt;:&lt;/strong&gt;—–&lt;strong&gt;:&lt;/strong&gt; | &lt;strong&gt;:&lt;/strong&gt;—-&lt;strong&gt;:&lt;/strong&gt;
+    
+    </summary>
+    
+    
+      <category term="markdown" scheme="http://blog.booml.cn/tags/markdown/"/>
+    
+      <category term="日记" scheme="http://blog.booml.cn/tags/%E6%97%A5%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Steps</title>
     <link href="http://blog.booml.cn/2018/02/24/poj%20No.2590/"/>
     <id>http://blog.booml.cn/2018/02/24/poj No.2590/</id>
@@ -253,31 +278,6 @@
       <category term="编程" scheme="http://blog.booml.cn/tags/%E7%BC%96%E7%A8%8B/"/>
     
       <category term="acm" scheme="http://blog.booml.cn/tags/acm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>markdown语法小记</title>
-    <link href="http://blog.booml.cn/2018/02/24/markdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0/"/>
-    <id>http://blog.booml.cn/2018/02/24/markdown语法小记/</id>
-    <published>2018-02-24T07:23:49.254Z</published>
-    <updated>2018-02-24T07:23:49.254Z</updated>
-    
-    <content type="html"><![CDATA[<ol><li>插入表格：<br>1.1. 表格的上下需要空行。空行的多少至关重要 <ul><li>表格中文字居中  在划线部分的划线两端加上”<strong>:</strong>“<ul><li>比如”<strong>:</strong>—–<strong>:</strong> | <strong>:</strong>—-<strong>:</strong><a id="more"></a></li></ul></li></ul></li><li><code>代码块</code>:<br>2.1. 合理利用代码块有意想不到的效果。</li><li></li></ol>]]></content>
-    
-    <summary type="html">
-    
-      &lt;ol&gt;
-&lt;li&gt;插入表格：&lt;br&gt;1.1. 表格的上下需要空行。空行的多少至关重要 &lt;ul&gt;
-&lt;li&gt;表格中文字居中  在划线部分的划线两端加上”&lt;strong&gt;:&lt;/strong&gt;“&lt;ul&gt;
-&lt;li&gt;比如”&lt;strong&gt;:&lt;/strong&gt;—–&lt;strong&gt;:&lt;/strong&gt; | &lt;strong&gt;:&lt;/strong&gt;—-&lt;strong&gt;:&lt;/strong&gt;
-    
-    </summary>
-    
-    
-      <category term="markdown" scheme="http://blog.booml.cn/tags/markdown/"/>
-    
-      <category term="日记" scheme="http://blog.booml.cn/tags/%E6%97%A5%E8%AE%B0/"/>
     
   </entry>
   

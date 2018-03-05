@@ -101,6 +101,15 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[markdown语法小记]]></title>
+    <url>%2F2018%2F02%2F24%2Fmarkdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[插入表格：1.1. 表格的上下需要空行。空行的多少至关重要 表格中文字居中 在划线部分的划线两端加上”:“ 比如”:—–: | :—-: 代码块:2.1. 合理利用代码块有意想不到的效果。]]></content>
+      <tags>
+        <tag>markdown</tag>
+        <tag>日记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Steps]]></title>
     <url>%2F2018%2F02%2F24%2Fpoj%20No.2590%2F</url>
     <content type="text"><![CDATA[POj No.2590 Steps题目在数轴上的两点之间，按照下面规则移动。 每一步的步幅都要是自然数，同时必须与前一步幅相同或者是差1。 每一步和最后一步的步幅必须是1。当给出两点位置的时候，请回答从第一个点移动到第二点需要的最小步数。 输入和输出测试数据个数n、开始地点x以及终点y（0&lt;=x&lt;=y&lt;2^31^),格式如下： nx~1~ y~1~x~2~ y~2~…x~n~ y~n~ 输入 345 4845 4945 50 输出 334 代码c12345678910111213141516171819#include&lt;stdio.h&gt;int main()&#123; int step, i,len; for(step=0;step&lt;20;++step)&#123; len=0; //求得一半为止的步数 // 步数是奇数就加1 int mid=step/2+step%2; //求出1+2+3+...到中间地点为止的合计 for(i=1;i&lt;=mid;++i) len+=i; //从中间地点开始计算...+3+2+1 for(i=step/2;i&gt;0;--i) len+=i; printf("%2d step(s)...%3d\n",step,len); &#125; &#125; 解决思路 画图找规律]]></content>
@@ -110,15 +119,6 @@
       <tags>
         <tag>编程</tag>
         <tag>acm</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[markdown语法小记]]></title>
-    <url>%2F2018%2F02%2F24%2Fmarkdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[插入表格：1.1. 表格的上下需要空行。空行的多少至关重要 表格中文字居中 在划线部分的划线两端加上”:“ 比如”:—–: | :—-: 代码块:2.1. 合理利用代码块有意想不到的效果。]]></content>
-      <tags>
-        <tag>markdown</tag>
-        <tag>日记</tag>
       </tags>
   </entry>
   <entry>
