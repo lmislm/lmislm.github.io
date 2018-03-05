@@ -6,7 +6,7 @@
 favicon: /favicon.ico
 
 # Set default keywords (Use a comma to separate)
-keywords: "Hexo, NexT"
+keywords: "Hexo, lmislm"
 
 # Set rss to false to disable feed link.
 # Leave rss as empty to use site's feed link.
@@ -460,7 +460,7 @@ exturl: false
 #! ---------------------------------------------------------------
 
 # Motion
-use_motion: true
+use_motion: flase
 
 # Fancybox
 fancybox: true
