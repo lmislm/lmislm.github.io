@@ -460,7 +460,7 @@ exturl: false
 #! ---------------------------------------------------------------
 
 # Motion
-use_motion: flase
+use_motion: false
 
 # Fancybox
 fancybox: true
