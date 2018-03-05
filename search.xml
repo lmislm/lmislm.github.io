@@ -101,15 +101,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[markdown语法小记]]></title>
-    <url>%2F2018%2F02%2F24%2Fmarkdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[插入表格：1.1. 表格的上下需要空行。空行的多少至关重要 表格中文字居中 在划线部分的划线两端加上”:“ 比如”:—–: | :—-: 代码块:2.1. 合理利用代码块有意想不到的效果。]]></content>
-      <tags>
-        <tag>markdown</tag>
-        <tag>日记</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[Steps]]></title>
     <url>%2F2018%2F02%2F24%2Fpoj%20No.2590%2F</url>
     <content type="text"><![CDATA[POj No.2590 Steps题目在数轴上的两点之间，按照下面规则移动。 每一步的步幅都要是自然数，同时必须与前一步幅相同或者是差1。 每一步和最后一步的步幅必须是1。当给出两点位置的时候，请回答从第一个点移动到第二点需要的最小步数。 输入和输出测试数据个数n、开始地点x以及终点y（0&lt;=x&lt;=y&lt;2^31^),格式如下： nx~1~ y~1~x~2~ y~2~…x~n~ y~n~ 输入 345 4845 4945 50 输出 334 代码c12345678910111213141516171819#include&lt;stdio.h&gt;int main()&#123; int step, i,len; for(step=0;step&lt;20;++step)&#123; len=0; //求得一半为止的步数 // 步数是奇数就加1 int mid=step/2+step%2; //求出1+2+3+...到中间地点为止的合计 for(i=1;i&lt;=mid;++i) len+=i; //从中间地点开始计算...+3+2+1 for(i=step/2;i&gt;0;--i) len+=i; printf("%2d step(s)...%3d\n",step,len); &#125; &#125; 解决思路 画图找规律]]></content>
@@ -119,6 +110,15 @@
       <tags>
         <tag>编程</tag>
         <tag>acm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[markdown语法小记]]></title>
+    <url>%2F2018%2F02%2F24%2Fmarkdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[插入表格：1.1. 表格的上下需要空行。空行的多少至关重要 表格中文字居中 在划线部分的划线两端加上”:“ 比如”:—–: | :—-: 代码块:2.1. 合理利用代码块有意想不到的效果。]]></content>
+      <tags>
+        <tag>markdown</tag>
+        <tag>日记</tag>
       </tags>
   </entry>
   <entry>
@@ -160,17 +160,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[codewars-count_digits]]></title>
-    <url>%2F2018%2F02%2F24%2Fcodewars%2F</url>
-    <content type="text"><![CDATA[题目 Take an integer n (n &gt;= 0) and a digit d (0 &lt;= d &lt;= 9) as an integer. Square all numbers k (0 &lt;= k &lt;= n) between 0 and n.Count the numbers of digits d used in the writing of all the k 2. Call nb_dig (or nbDig or …) the function taking n and d as parameters and returning this count. 例子 n = 10, d = 1, the k * k are 0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100 We are using the digit 1 in 1, 16, 81, 100. The total count is then 4. nb_dig(25, 1): the numbers of interest are 1, 4, 9, 10, 11, 12, 13, 14, 19, 21 which squared are 1, 16, 81, 100, 121, 144, 169, 196, 361, 441 so there are 11 digits 1 for the squares of numbers between 0 and 25. 分析 给出n和d，求0到n中间的平方，再求这些平方的平方，问所得的这些数中包含多少个数字d。大概就是先算出这些数字的平方，然后挨个分解求出其中的值。解题1234567function nbDig(n,d) &#123; var s = &apos;&apos;; for(var i=0;i&lt;=n;i++)&#123; s += Math.pow(i,2); &#125; return s.split(d).length-1&#125; 牢骚篇今天，进了个群，挺多厉害的人，还私聊了一个有很多offer的同学。顿时觉得，自己就是渣渣啊，一点信心都没有。还是得加油吧，要学的东西还很多啊。]]></content>
-      <categories>
-        <category>工作</category>
-      </categories>
-      <tags>
-        <tag>编程</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[codewars ooxx =>true]]></title>
     <url>%2F2018%2F02%2F24%2Fcodewars-ooxx%2F</url>
     <content type="text"><![CDATA[前言第二关 Yeah！目标6kyu，坚持升级~ ：） 这一关，考察几个基本方法的使用，虽然单独拿出来可能难度不大，但是真正运用在工作中的时候，这些方法可能如大海捞针，不熟练是一时半会儿想不出来的。 话不多说，呀呀呀，提枪上阵， 题目描述Check to see if a string has the same amount of ‘x’s and ‘o’s. The method must return a boolean and be case insensitive. The string can contains any char.（0.0看不懂？往下戳） 例子12345XO(&quot;ooxx&quot;) =&gt; trueXO(&quot;xooxx&quot;) =&gt; falseXO(&quot;ooxXm&quot;) =&gt; trueXO(&quot;zpzpzpp&quot;) =&gt; true // when no &apos;x&apos; and &apos;o&apos; is present should return trueXO(&quot;zzoo&quot;) =&gt; false 分析题目大概意思就是： 在有限任意字符串中字符 x 和 o 存在且数量相等时 值为 true,否则当x和o不存在时，值为flase。匹配的话，首先想到正则表达式来处理。 方法一利用RegExp来匹配正则，然后再判断数量为空和数量是否相等。 12345678910111213141516function xo(str) &#123; var numX = new RegExp(/x/gi); //g 全局搜索，i 忽略大小写 var numO = new RegExp(/o/gi); if(numX.test(str)&amp;&amp;numO.test(str))&#123; if(str.match(/x/gi).length == str.match(/o/gi).length)&#123; return true; &#125;else&#123; return false; &#125; &#125;else&#123; return false; &#125;&#125;console.log(xo(&apos;xxoo&apos;))console.log(xo(&apos;glld&apos;)) 仔细一看，这种写法太麻烦。如何轻松取敌呢？ 方法二直接返回一个return，并在return中判断。123456function xo(str) &#123; var numX = str.match(/x/gi) || []; var numO = str.match(/x/gi) || []; return numO.length == numX.length;&#125; 解析方法一方法二 什么鬼！这不同的方法有什么区别呢？？我来试着剖析下这两种方法究竟是何利器。来看看MDN是怎么说的？贴心的MDN还在match这一篇中对两者进行了比较。 1. RegExp 构造函数创建了一个正则表达式对象，用于将文本与模式匹配。2.当一个字符串与一个正则表达式匹配时， match()方法检索匹配项。 比较 如果正则表达式没有 g 标志，则 str.match() 会返回和 RegExp.exec() 相同的结果。而且返回的 Array 拥有一个额外的 input 属性，该属性包含被解析的原始字符串。另外，还拥有一个 index 属性，该属性表示匹配结果在原字符串中的索引（以0开始）。 用法 如果你需要知道一个字符串是否匹配一个正则表达式 RegExp ，可使用 search() 。如果你只是需要第一个匹配结果，你可能想要使用 RegExp.exec() 。如果你想要获得捕获组，并且设置了全局标志，你需要用 RegExp.exec() 。 综上：大概就是这么吧~不用鸟我了，直接看文档吧~ 方法三方法三是在解答完之后查看他人的方法，大神们就是大神。对于各种用法如数家珍，信手拈来。 1234let x = str.match(/x/gi); let o = str.match(/o/gi);return (x &amp;&amp; x.length) === (o &amp;&amp; o.length);&#125; 实际运用 这个keyword变量该如何转义呢？ 123function addHightLight(txt,keyword) &#123; return txt.replace(/+keyword+/g,&quot;&lt;mark class=keyword&gt;&quot;+keyword+&quot;&lt;/mark&gt;&quot;);&#125; 答案是： 1234567function addHightLight(txt,keyword) &#123; txt = &quot;咖啡&quot; ;keyword = &quot;机器&quot;; var va = new RegExp(keyword,&quot;g&quot;); va = /\/咖啡\/g/&#123;lastIndex:0&#125; return txt.replace(va,&quot;&lt;mark class=keyword&gt;&quot;+keyword+&quot;&lt;/mark&gt;&quot;);&#125; 就到这里了~]]></content>
@@ -180,6 +169,17 @@
       <tags>
         <tag>编程</tag>
         <tag>js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[codewars-count_digits]]></title>
+    <url>%2F2018%2F02%2F24%2Fcodewars%2F</url>
+    <content type="text"><![CDATA[题目 Take an integer n (n &gt;= 0) and a digit d (0 &lt;= d &lt;= 9) as an integer. Square all numbers k (0 &lt;= k &lt;= n) between 0 and n.Count the numbers of digits d used in the writing of all the k 2. Call nb_dig (or nbDig or …) the function taking n and d as parameters and returning this count. 例子 n = 10, d = 1, the k * k are 0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100 We are using the digit 1 in 1, 16, 81, 100. The total count is then 4. nb_dig(25, 1): the numbers of interest are 1, 4, 9, 10, 11, 12, 13, 14, 19, 21 which squared are 1, 16, 81, 100, 121, 144, 169, 196, 361, 441 so there are 11 digits 1 for the squares of numbers between 0 and 25. 分析 给出n和d，求0到n中间的平方，再求这些平方的平方，问所得的这些数中包含多少个数字d。大概就是先算出这些数字的平方，然后挨个分解求出其中的值。解题1234567function nbDig(n,d) &#123; var s = &apos;&apos;; for(var i=0;i&lt;=n;i++)&#123; s += Math.pow(i,2); &#125; return s.split(d).length-1&#125; 牢骚篇今天，进了个群，挺多厉害的人，还私聊了一个有很多offer的同学。顿时觉得，自己就是渣渣啊，一点信心都没有。还是得加油吧，要学的东西还很多啊。]]></content>
+      <categories>
+        <category>工作</category>
+      </categories>
+      <tags>
+        <tag>编程</tag>
       </tags>
   </entry>
   <entry>
