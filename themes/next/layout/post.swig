@@ -36,3 +36,6 @@
 {% block script_extra %}
   {% include '_scripts/pages/post-details.swig' %}
 {% endblock %}
+
+
+<script id='nodebb-comments-script' async="true", ourl="https://v2mm.tech" ocid="63" blogger='baskerb' src="https://v2mm.tech/plugins/nodebb-plugin-blog-comments2/lib/simple-hexo.js"></script>
