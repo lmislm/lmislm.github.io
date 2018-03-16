@@ -325,7 +325,7 @@ jiathis: flase
 
 # Google Webmaster tools verification setting
 # See: https://www.google.com/webmasters/
-#google_site_verification:
+google_site_verification: true
 
 # Google Analytics
 #google_analytics:
@@ -523,6 +523,18 @@ vendors:
 #wechatpay: https://ooo.0o0.ooo/2017/04/02/58e0aeb47656b.png
 #alipay: https://ooo.0o0.ooo/2017/04/02/58e0aeb44aadb.jpg
 
+# more info please open https://valine.js.org
+ valine:
+   enable: false
+   appid:  # your leancloud application appid
+   appkey:  # your leancloud application appkey
+   notify: false # mail notifier , https://github.com/xCss/Valine/wiki
+   verify: false # Verification code
+-  placeholder: Comment input placeholder
+   placeholder: Just go go # comment box placeholder
+   avatar: mm # gravatar style
+   guest_info: nick,mail,link # custom comment header
+   pageSize: 10 # pagination size
 
 # Assets
 css: css
