@@ -94,7 +94,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="编程," />
+  <meta name="keywords" content="编程,shell,基础,正则," />
 
 
 
@@ -112,20 +112,18 @@
 
 
 
-<meta name="description" content="题目 Take an integer n (n &amp;gt;= 0) and a digit d (0 &amp;lt;= d &amp;lt;= 9) as an integer. Square all numbers k (0 &amp;lt;= k &amp;lt;= n) between 0 and n.">
-<meta name="keywords" content="编程">
+<meta name="description" content="简介 正则表达式用于描述字符排列和匹配模式的一种语法规则。—-用来筛选数据 正则表达式与通配符的区别1.正则表达式–匹配“文件”符合条件的字符串–&amp;gt;&amp;gt;包含匹配2.通配符—–匹配符合条件的“文件”名——–&amp;gt;&amp;gt;完全匹配3.为什么存在，通配符、正则表达式？">
+<meta name="keywords" content="编程,shell,基础,正则">
 <meta property="og:type" content="article">
-<meta property="og:title" content="codewars-count_digits">
-<meta property="og:url" content="http://blog.booml.cn/2018/02/24/codewars/index.html">
+<meta property="og:title" content="shell的正则表达式">
+<meta property="og:url" content="http://blog.booml.cn/2017/05/27/shell正则表达式/index.html">
 <meta property="og:site_name" content="Baskerville*">
-<meta property="og:description" content="题目 Take an integer n (n &amp;gt;= 0) and a digit d (0 &amp;lt;= d &amp;lt;= 9) as an integer. Square all numbers k (0 &amp;lt;= k &amp;lt;= n) between 0 and n.">
+<meta property="og:description" content="简介 正则表达式用于描述字符排列和匹配模式的一种语法规则。—-用来筛选数据 正则表达式与通配符的区别1.正则表达式–匹配“文件”符合条件的字符串–&amp;gt;&amp;gt;包含匹配2.通配符—–匹配符合条件的“文件”名——–&amp;gt;&amp;gt;完全匹配3.为什么存在，通配符、正则表达式？">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://ooo.0o0.ooo/2017/03/20/58cfd648e6d0a.jpg">
-<meta property="og:updated_time" content="2018-02-24T07:23:49.250Z">
+<meta property="og:updated_time" content="2018-03-16T06:27:22.407Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="codewars-count_digits">
-<meta name="twitter:description" content="题目 Take an integer n (n &amp;gt;= 0) and a digit d (0 &amp;lt;= d &amp;lt;= 9) as an integer. Square all numbers k (0 &amp;lt;= k &amp;lt;= n) between 0 and n.">
-<meta name="twitter:image" content="https://ooo.0o0.ooo/2017/03/20/58cfd648e6d0a.jpg">
+<meta name="twitter:title" content="shell的正则表达式">
+<meta name="twitter:description" content="简介 正则表达式用于描述字符排列和匹配模式的一种语法规则。—-用来筛选数据 正则表达式与通配符的区别1.正则表达式–匹配“文件”符合条件的字符串–&amp;gt;&amp;gt;包含匹配2.通配符—–匹配符合条件的“文件”名——–&amp;gt;&amp;gt;完全匹配3.为什么存在，通配符、正则表达式？">
 
 
 
@@ -153,14 +151,14 @@
 
 
 
-  <link rel="canonical" href="http://blog.booml.cn/2018/02/24/codewars/"/>
+  <link rel="canonical" href="http://blog.booml.cn/2017/05/27/shell正则表达式/"/>
 
 
 
 
 
 
-  <title> codewars-count_digits | Baskerville* </title>
+  <title> shell的正则表达式 | Baskerville* </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -336,7 +334,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.booml.cn/2018/02/24/codewars/">
+    <link itemprop="mainEntityOfPage" href="http://blog.booml.cn/2017/05/27/shell正则表达式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Baskerville*">
@@ -357,7 +355,7 @@
             
             
               
-                codewars-count_digits
+                shell的正则表达式
               
             
           </h2>
@@ -372,8 +370,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-24T15:23:49+08:00">
-                2018-02-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-27T16:36:23+08:00">
+                2017-05-27
               </time>
             
 
@@ -395,8 +393,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/工作/" itemprop="url" rel="index">
-                    <span itemprop="name">工作</span>
+                  <a href="/categories/学习/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
                   </a>
                 </span>
 
@@ -414,8 +412,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/02/24/codewars/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count hc-comment-count" data-xid="2018/02/24/codewars/" itemprop="commentsCount"></span>
+                <a href="/2017/05/27/shell正则表达式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count hc-comment-count" data-xid="2017/05/27/shell正则表达式/" itemprop="commentsCount"></span>
                 </a>
               </span>
               <!--/noindex-->
@@ -442,7 +440,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  304
+                  1,224
                 </span>
               
 
@@ -458,7 +456,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  2
+                  5
                 </span>
               
             </div>
@@ -477,18 +475,193 @@
       
 
       
-        <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><blockquote>
-<p>Take an integer n (n &gt;= 0) and a digit d (0 &lt;= d &lt;= 9) as an integer. Square all numbers k (0 &lt;= k &lt;= n) between 0 and n.<br><a id="more"></a><br>Count the numbers of digits d used in the writing of all the k<em> </em>2. Call nb_dig (or nbDig or …) the function taking n and d as parameters and returning this count.</p>
-</blockquote>
-<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><ul>
-<li>n = 10, d = 1,<br>   the k * k are 0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100 We are using the digit 1 in 1, 16, 81, 100. </li>
-<li>The total count is then 4.<br>   nb_dig(25, 1):<br> the numbers of interest are 1, 4, 9, 10, 11, 12, 13, 14, 19, 21<br> which squared are 1, 16, 81, 100, 121, 144, 169, 196, 361, 441 so there are 11 digits <code>1</code> for the squares of numbers between 0 and 25.</li>
+        <hr>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a><strong>简介</strong></h2><ol>
+<li>正则表达式用于描述字符排列和匹配模式的一种语法规则。—-用来筛选数据</li>
+<li>正则表达式与通配符的区别<br>1.正则表达式–匹配“文件”符合条件的字符串–&gt;&gt;包含匹配<br>2.通配符—–匹配符合条件的“文件”名——–&gt;&gt;完全匹配<br>3.为什么存在，通配符、正则表达式？ <a id="more"></a>
+<ul>
+<li>ls、find、cp（操作文件的一些命令）不支持正则表达式，只能用通配符。</li>
+<li>grep、awk、sed（操作字符串的一些命令）支持正则表达式。</li>
+<li>为什么所有的不都支持正则表达式？</li>
 </ul>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><ul>
-<li>给出<code>n</code>和<code>d</code>，求0到n中间的平方，再求这些平方的平方，问所得的这些数中包含多少个数字<code>d</code>。<br>大概就是先算出这些数字的平方，然后挨个分解求出其中的值。<h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function nbDig(n,d) &#123;</span><br><span class="line">    var s = &apos;&apos;;</span><br><span class="line">    for(var i=0;i&lt;=n;i++)&#123;</span><br><span class="line">        s += Math.pow(i,2);</span><br><span class="line">    &#125;</span><br><span class="line">    return s.split(d).length-1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>正则表达式<ol>
+<li>基础正则 </li>
+</ol>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>元<strong>字</strong>符</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>*</td>
+<td>前一个字符匹配<strong>0次</strong>或任意多次</td>
+</tr>
+<tr>
+<td><strong>.</strong></td>
+<td>前一个字符匹配<strong>0次</strong>或任意多次</td>
+</tr>
+<tr>
+<td><strong>^</strong></td>
+<td>匹配行首，例：^he匹配以he开头的行</td>
+</tr>
+<tr>
+<td><strong>$</strong></td>
+<td>匹配行尾，例：he$匹配以he为结尾的字符串</td>
+</tr>
+<tr>
+<td><strong>[ ]</strong></td>
+<td>匹配括号中指定的任意一个字符，<strong>只匹配一个</strong> 例：[a-z]匹配a-z中的任意一个字符，[0-9][a-z]表示“连续匹配”</td>
+</tr>
+<tr>
+<td><strong>[^]</strong></td>
+<td>匹配除中括号字符外任意一个字符，例：^[0-9]匹配任意一位非数字的字符</td>
+</tr>
+<tr>
+<td>\</td>
+<td>转义符，取消特殊字符的含义</td>
+</tr>
+<tr>
+<td>\ { n\ }</td>
+<td>表示前面字符<strong>恰好</strong>出现n次</td>
+</tr>
+<tr>
+<td>\ { n,\ }</td>
+<td>表示前面字符出现<strong>不小于</strong>n次</td>
+</tr>
+<tr>
+<td>\ {n,m\ }</td>
+<td>表示其前面字符<strong>至少</strong>出现n次</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>扩展正则</li>
+</ol>
+<hr>
+<h2 id="Shell正则表达式（基础正则）"><a href="#Shell正则表达式（基础正则）" class="headerlink" title="Shell正则表达式（基础正则）"></a><strong>Shell正则表达式（基础正则）</strong></h2><h3 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h3><p><code>&quot; * &quot;</code>|<code>&quot;.&quot;</code>|<code>&quot;^&quot;</code>| <code>&quot;$&quot;</code>|<code>&quot;[]&quot;</code>|<code>&quot;[^]&quot;</code>|<code>{n\ }</code>|<code>{n,\ }</code>|<code>{n,m\ }</code></p>
+<h4 id="“-“"><a href="#“-“" class="headerlink" title="“ * “"></a>“ * “</h4><ol>
+<li>“<code>*</code>“星号——–不同于通配符中的匹配所有内容。<ul>
+<li>前一个字符匹配<strong>0次</strong>，或者任意多次。<ul>
+<li><code>a*</code> - - 匹配<strong>所有内容</strong>，包括<strong>空白行</strong>。</li>
+<li><code>aa*</code> - - 匹配至少包含有一个a的行。</li>
+<li><code>aaa*</code> - -匹配至少包含两个连续的a的字符串。 <h4 id="“-“-1"><a href="#“-“-1" class="headerlink" title="“ . “"></a>“ . “</h4></li>
+</ul>
 </li>
 </ul>
-<h2 id="牢骚篇"><a href="#牢骚篇" class="headerlink" title="牢骚篇"></a>牢骚篇</h2><p>今天，进了个群，挺多厉害的人，还私聊了一个有很多offer的同学。顿时觉得，自己就是渣渣啊，一点信心都没有。还是得加油吧，要学的东西还很多啊。<br><img src="https://ooo.0o0.ooo/2017/03/20/58cfd648e6d0a.jpg" alt="累啊"></p>
+</li>
+<li>“<code>.</code>“——–和通配符中”?”类似。<ul>
+<li>匹配<strong>除了换行符</strong>外任意字符<ul>
+<li><code>s..d</code> - - 匹配之间两个字符的单词。</li>
+<li><code>s.*d</code> - - 匹配之间的任意字符。</li>
+<li><code>.*</code> - - 匹配所有内容。<h4 id="“-“、”-“、”-“、”-“"><a href="#“-“、”-“、”-“、”-“" class="headerlink" title="“ ^ “、” $ “、” [] “、” [ ^ ] “"></a>“ ^ “、” $ “、” [] “、” [ ^ ] “</h4></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>“<code>^</code>“、”<code>$</code>“、”<code>[]</code>“、”<code>[^]</code>“<ul>
+<li><code>^</code> - - 匹配行首。</li>
+<li><code>$</code> - - 匹配行尾。</li>
+<li><code>[]</code> - - 匹配括号中指定字符串中的任意字符，<strong>只匹配一个</strong>。</li>
+<li><code>[^]</code> - - 匹配除中括号的字符以外的任意一个字符。<h4 id="n-、-n-、-n-m"><a href="#n-、-n-、-n-m" class="headerlink" title="{n\ }、{n,\ }、{n,m\ }"></a>{n\ }、{n,\ }、{n,m\ }</h4></li>
+</ul>
+</li>
+<li>“<code>\{n\}</code>”、”<code>\{n,\}</code>“、”<code>\{n,m\}</code>“<ul>
+<li><code>\{n\}</code> - - 例：<code>a\{3\}</code> 匹配a字母连续出现三次的字符串（连续四次以上也会被匹配到，所以在该匹配首尾加定界符能精确匹配到）</li>
+<li><code>\{n,\}</code> - - 例：<code>\{n,\}</code> 前面字符出现不少于n次</li>
+<li><code>\{n,m\}</code> - - 例：<code>sa\{1,3}i</code> 匹配在字母s和字母i之间最少一个a，最多三个a</li>
+</ul>
+</li>
+</ol>
+<h2 id="JS正则表达式"><a href="#JS正则表达式" class="headerlink" title="JS正则表达式"></a>JS正则表达式</h2><h3 id="简介-1"><a href="#简介-1" class="headerlink" title="简介"></a>简介</h3><blockquote>
+<p>正则表达式”描述在搜索文本正文时要匹配的一个或多个字符串。 该表达式可用作一个将字符模式与要搜索的字符串相匹配的模板。<br>正则表达式包括普通字符（例如，a 到 z 之间的字母）和特殊字符（称为“元字符”）</p>
+</blockquote>
+<h3 id="特殊字符"><a href="#特殊字符" class="headerlink" title="特殊字符"></a>特殊字符</h3><table>
+<thead>
+<tr>
+<th>元字符</th>
+<th>行为</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>*</td>
+<td>零次或多次匹配前面的字符或子表达式。等效于 {0,}。</td>
+<td>zo* 与“z”和“zoo”匹配。</td>
+</tr>
+<tr>
+<td>+</td>
+<td>一次或多次匹配前面的字符或子表达式。等效于 {1,}。</td>
+<td>zo+ 与“zo”和“zoo”匹配，但与“z”不匹配。</td>
+</tr>
+<tr>
+<td>?</td>
+<td>零次或一次匹配前面的字符或子表达式。等效于 {0,1}。当 ? 紧随任何其他限定符（*、+、?、{n}、{n,} 或 {n,m}）之后时，匹配模式是非贪婪的。 非贪婪模式匹配搜索到的、尽可能少的字符串， 而默认的贪婪模式匹配搜索到的、尽可能多的字符串。</td>
+<td>zo? 与“z”和“zo”匹配，但与“zoo”不匹配。o+? 只与“oooo”中的单个“o”匹配，而 o+ 与所有“o”匹配。do(es)? 与“do”或“does”中的“do”匹配。</td>
+</tr>
+<tr>
+<td>\</td>
+<td>将下一字符标记为特殊字符、文本、反向引用或八进制转义符。</td>
+<td>\n 与换行符匹配。 ( 与“(”匹配。 \ 与“\”匹配。</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="元字符"><a href="#元字符" class="headerlink" title="元字符"></a>元字符</h3><table>
+<thead>
+<tr>
+<th>元字符</th>
+<th>行为</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\w</td>
+<td>与以下任意字符匹配：A-Z、a-z、0-9 和下划线。等效于 [A-Za-z0-9_]。</td>
+<td>在搜索字符串“The quick brown fox…”中，\w+ 与“The”、“quick”、“brown”和“fox”匹配。</td>
+</tr>
+<tr>
+<td>\W</td>
+<td>与除 A-Z、a-z、0-9 和下划线以外的任意字符匹配。等效于 [^A-Za-z0-9_]。</td>
+<td>在搜索字符串“The quick brown fox…”中，\W+ 与“…”和所有空格匹配。</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>与一个字边界匹配；即字与空格间的位置。</td>
+<td>er\b 与“never”中的“er”匹配，但与“verb”中的“er”不匹配。</td>
+</tr>
+<tr>
+<td>\B</td>
+<td>非边界字匹配。</td>
+<td>er\B 与“verb”中的“er”匹配，但与“never”中的“er”不匹配。</td>
+</tr>
+<tr>
+<td>\d</td>
+<td>数字字符匹配。等效于 [0-9]。</td>
+<td>在搜索字符串“12 345”中，\d{2} 与“12”和“34”匹配。 \d 与“1”、“2”、“3”、“4”和“5”匹配。</td>
+</tr>
+<tr>
+<td>\D</td>
+<td>非数字字符匹配。等效于 [^0-9]。</td>
+<td>\D+ 与“abc123 def”中的“abc”和“def”匹配。</td>
+</tr>
+</tbody>
+</table>
 
       
     </div>
@@ -522,7 +695,7 @@
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="http://blog.booml.cn/2018/02/24/codewars/" title="codewars-count_digits">http://blog.booml.cn/2018/02/24/codewars/</a>
+      <a href="http://blog.booml.cn/2017/05/27/shell正则表达式/" title="shell的正则表达式">http://blog.booml.cn/2017/05/27/shell正则表达式/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -549,6 +722,12 @@
           
             <a href="/tags/编程/" rel="tag"><i class="fa fa-tag"></i> 编程</a>
           
+            <a href="/tags/shell/" rel="tag"><i class="fa fa-tag"></i> shell</a>
+          
+            <a href="/tags/基础/" rel="tag"><i class="fa fa-tag"></i> 基础</a>
+          
+            <a href="/tags/正则/" rel="tag"><i class="fa fa-tag"></i> 正则</a>
+          
         </div>
       
 
@@ -560,8 +739,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/24/codewars-ooxx/" rel="next" title="codewars ooxx =>true">
-                <i class="fa fa-chevron-left"></i> codewars ooxx =>true
+              <a href="/2016/10/31/try-build/" rel="next" title="try build">
+                <i class="fa fa-chevron-left"></i> try build
               </a>
             
           </div>
@@ -570,8 +749,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/02/24/codewars_Replace With Alphabet Position/" rel="prev" title="codewars_Replace With Alphabet Position">
-                codewars_Replace With Alphabet Position <i class="fa fa-chevron-right"></i>
+              <a href="/2018/02/24/DFS-部分和/" rel="prev" title="深度优先算法-部分和问题">
+                深度优先算法-部分和问题 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -753,7 +932,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例子"><span class="nav-number">2.</span> <span class="nav-text">例子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分析"><span class="nav-number">3.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解题"><span class="nav-number">4.</span> <span class="nav-text">解题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#牢骚篇"><span class="nav-number">5.</span> <span class="nav-text">牢骚篇</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Shell正则表达式（基础正则）"><span class="nav-number">2.</span> <span class="nav-text">Shell正则表达式（基础正则）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#内容"><span class="nav-number">2.1.</span> <span class="nav-text">内容</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#“-“"><span class="nav-number">2.1.1.</span> <span class="nav-text">“ * “</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#“-“-1"><span class="nav-number">2.1.2.</span> <span class="nav-text">“ . “</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#“-“、”-“、”-“、”-“"><span class="nav-number">2.1.3.</span> <span class="nav-text">“ ^ “、” $ “、” [] “、” [ ^ ] “</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#n-、-n-、-n-m"><span class="nav-number">2.1.4.</span> <span class="nav-text">{n\ }、{n,\ }、{n,m\ }</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS正则表达式"><span class="nav-number">3.</span> <span class="nav-text">JS正则表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简介-1"><span class="nav-number">3.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特殊字符"><span class="nav-number">3.2.</span> <span class="nav-text">特殊字符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元字符"><span class="nav-number">3.3.</span> <span class="nav-text">元字符</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -949,7 +1128,7 @@
 		_hcwp.push({widget:"Bloggerstream", widget_id: 89128, selector:".hc-comment-count", label: "{\%COUNT%\}" });
 
 		
-		_hcwp.push({widget:"Stream", widget_id: 89128, xid: "2018/02/24/codewars/"});
+		_hcwp.push({widget:"Stream", widget_id: 89128, xid: "2017/05/27/shell正则表达式/"});
 		
 
 		(function() {

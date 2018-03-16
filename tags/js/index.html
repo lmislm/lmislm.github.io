@@ -115,7 +115,7 @@
 <meta name="description" content="凝视深渊过久，深渊将回以凝视;与恶龙缠斗过久，自身亦成为恶龙">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Baskerville*">
-<meta property="og:url" content="http://blog.booml.cn/tags/JS/index.html">
+<meta property="og:url" content="http://blog.booml.cn/tags/js/index.html">
 <meta property="og:site_name" content="Baskerville*">
 <meta property="og:description" content="凝视深渊过久，深渊将回以凝视;与恶龙缠斗过久，自身亦成为恶龙">
 <meta property="og:locale" content="zh-Hans">
@@ -149,14 +149,14 @@
 
 
 
-  <link rel="canonical" href="http://blog.booml.cn/tags/JS/"/>
+  <link rel="canonical" href="http://blog.booml.cn/tags/js/"/>
 
 
 
 
 
 
-  <title> 标签: JS | Baskerville* </title>
+  <title> 标签: js | Baskerville* </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -325,7 +325,7 @@
   <div id="posts" class="posts-collapse">
     <div class="collection-title">
       <h2 >
-        JS
+        js
         <small>标签</small>
       </h2>
     </div>
@@ -338,9 +338,93 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2018/02/24/codewars-accm/" itemprop="url">
+            <a class="post-title-link" href="/2018/02/24/vowel count/" itemprop="url">
               
-                <span itemprop="name">codewars - - accm</span>
+                <span itemprop="name">Vowel Counts</span>
+              
+            </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2018-02-24T15:23:49+08:00"
+              content="2018-02-24" >
+          02-24
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
+        
+            <a class="post-title-link" href="/2018/02/24/codewars_Replace With Alphabet Position/" itemprop="url">
+              
+                <span itemprop="name">codewars_Replace With Alphabet Position</span>
+              
+            </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2018-02-24T15:23:49+08:00"
+              content="2018-02-24" >
+          02-24
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
+        
+            <a class="post-title-link" href="/2018/02/24/codewars-ooxx/" itemprop="url">
+              
+                <span itemprop="name">codewars ooxx =>true</span>
+              
+            </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2018-02-24T15:23:49+08:00"
+              content="2018-02-24" >
+          02-24
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
+        
+            <a class="post-title-link" href="/2018/02/24/Math.random/" itemprop="url">
+              
+                <span itemprop="name">Don't rely on luck.</span>
               
             </a>
         
@@ -426,7 +510,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -775,78 +859,6 @@
                     }
                     var match_content = content.substring(start, end);
                     // highlight all keywords
-                    keywords.forEach(function(keyword){
-                      var regS = new RegExp(keyword, "gi");
-                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
-                    });
-
-                    str += "<p class=\"search-result\">" + match_content +"...</p>"
-                  }
-                  str += "</li>";
-                }
-              })};
-            str += "</ul>";
-            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
-            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
-            $resultContent.innerHTML = str;
-          });
-          proceedsearch();
-        }
-      });}
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched == false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(function(e){
-      $('.popup').hide();
-      $(".local-search-pop-overlay").remove();
-      $('body').css('overflow', '');
-    });
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-  </script>
-
-
-  
-
-  
-
-  
-<script>
-(function(){
-    var bp = document.createElement('script');
-    var curProtocol = window.location.protocol.split(':')[0];
-    if (curProtocol === 'https') {
-        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
-    }
-    else {
-        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-    }
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-})();
-</script>
-
-
-  
-
-
-  
-<!-- 背景动画 -->
-<script type="text/javascript" src="/js/src/particle.js"></script>
-<!-- 页面点击小红心 -->
-<script type="text/javascript" src="/js/src/love.js"></script>
-</body>
-</html>
-       // highlight all keywords
                     keywords.forEach(function(keyword){
                       var regS = new RegExp(keyword, "gi");
                       match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");

@@ -144,35 +144,6 @@
   </entry>
   
   <entry>
-    <title>shell的正则表达式</title>
-    <link href="http://blog.booml.cn/2018/02/24/shell%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
-    <id>http://blog.booml.cn/2018/02/24/shell正则表达式/</id>
-    <published>2018-02-24T07:23:49.256Z</published>
-    <updated>2018-02-24T07:23:49.256Z</updated>
-    
-    <content type="html"><![CDATA[<hr><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a><strong>简介</strong></h2><ol><li>正则表达式用于描述字符排列和匹配模式的一种语法规则。—-用来筛选数据</li><li>正则表达式与通配符的区别<br>1.正则表达式–匹配“文件”符合条件的字符串–&gt;&gt;包含匹配<br>2.通配符—–匹配符合条件的“文件”名——–&gt;&gt;完全匹配<br>3.为什么存在，通配符、正则表达式？ <a id="more"></a><ul><li>ls、find、cp（操作文件的一些命令）不支持正则表达式，只能用通配符。</li><li>grep、awk、sed（操作字符串的一些命令）支持正则表达式。</li><li>为什么所有的不都支持正则表达式？</li></ul></li><li>正则表达式<ol><li>基础正则 </li></ol></li></ol><table><thead><tr><th>元<strong>字</strong>符</th><th>作用</th></tr></thead><tbody><tr><td>*</td><td>前一个字符匹配<strong>0次</strong>或任意多次</td></tr><tr><td><strong>.</strong></td><td>前一个字符匹配<strong>0次</strong>或任意多次</td></tr><tr><td><strong>^</strong></td><td>匹配行首，例：^he匹配以he开头的行</td></tr><tr><td><strong>$</strong></td><td>匹配行尾，例：he$匹配以he为结尾的字符串</td></tr><tr><td><strong>[ ]</strong></td><td>匹配括号中指定的任意一个字符，<strong>只匹配一个</strong> 例：[a-z]匹配a-z中的任意一个字符，[0-9][a-z]表示“连续匹配”</td></tr><tr><td><strong>[^]</strong></td><td>匹配除中括号字符外任意一个字符，例：^[0-9]匹配任意一位非数字的字符</td></tr><tr><td>\</td><td>转义符，取消特殊字符的含义</td></tr><tr><td>\ { n\ }</td><td>表示前面字符<strong>恰好</strong>出现n次</td></tr><tr><td>\ { n,\ }</td><td>表示前面字符出现<strong>不小于</strong>n次</td></tr><tr><td>\ {n,m\ }</td><td>表示其前面字符<strong>至少</strong>出现n次</td></tr></tbody></table><ol><li>扩展正则</li></ol><hr><h2 id="正则表达式（基础正则）"><a href="#正则表达式（基础正则）" class="headerlink" title="正则表达式（基础正则）"></a><strong>正则表达式（基础正则）</strong></h2><h3 id="“-“"><a href="#“-“" class="headerlink" title="“ * “"></a>“ * “</h3><ol><li>“<code>*</code>“星号——–不同于通配符中的匹配所有内容。<ul><li>前一个字符匹配<strong>0次</strong>，或者任意多次。<ul><li><code>a*</code> - - 匹配<strong>所有内容</strong>，包括<strong>空白行</strong>。</li><li><code>aa*</code> - - 匹配至少包含有一个a的行。</li><li><code>aaa*</code> - -匹配至少包含两个连续的a的字符串。 <h3 id="“-“-1"><a href="#“-“-1" class="headerlink" title="“ . “"></a>“ . “</h3></li></ul></li></ul></li><li>“<code>.</code>“——–和通配符中”?”类似。<ul><li>匹配<strong>除了换行符</strong>外任意字符<ul><li><code>s..d</code> - - 匹配之间两个字符的单词。</li><li><code>s.*d</code> - - 匹配之间的任意字符。</li><li><code>.*</code> - - 匹配所有内容。<h3 id="“-“、”-“、”-“、”-“"><a href="#“-“、”-“、”-“、”-“" class="headerlink" title="“ ^ “、” $ “、” [] “、” [ ^ ] “"></a>“ ^ “、” $ “、” [] “、” [ ^ ] “</h3></li></ul></li></ul></li><li>“<code>^</code>“、”<code>$</code>“、”<code>[]</code>“、”<code>[^]</code>“<ul><li><code>^</code> - - 匹配行首。</li><li><code>$</code> - - 匹配行尾。</li><li><code>[]</code> - - 匹配括号中指定字符串中的任意字符，<strong>只匹配一个</strong>。</li><li><code>[^]</code> - - 匹配除中括号的字符以外的任意一个字符。<h3 id="n-、-n-、-n-m"><a href="#n-、-n-、-n-m" class="headerlink" title="{n\ }、{n,\ }、{n,m\ }"></a>{n\ }、{n,\ }、{n,m\ }</h3></li></ul></li><li>“<code>\{n\}</code>”、”<code>\{n,\}</code>“、”<code>\{n,m\}</code>“<ul><li><code>\{n\}</code> - - 例：<code>a\{3\}</code> 匹配a字母连续出现三次的字符串（连续四次以上也会被匹配到，所以在该匹配首尾加定界符能精确匹配到）</li><li><code>\{n,\}</code> - - 例：<code>\{n,\}</code> 前面字符出现不少于n次</li><li><code>\{n,m\}</code> - - 例：<code>sa\{1,3}i</code> 匹配在字母s和字母i之间最少一个a，最多三个a</li></ul></li></ol>]]></content>
-    
-    <summary type="html">
-    
-      &lt;hr&gt;
-&lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;&lt;strong&gt;简介&lt;/strong&gt;&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;正则表达式用于描述字符排列和匹配模式的一种语法规则。—-用来筛选数据&lt;/li&gt;
-&lt;li&gt;正则表达式与通配符的区别&lt;br&gt;1.正则表达式–匹配“文件”符合条件的字符串–&amp;gt;&amp;gt;包含匹配&lt;br&gt;2.通配符—–匹配符合条件的“文件”名——–&amp;gt;&amp;gt;完全匹配&lt;br&gt;3.为什么存在，通配符、正则表达式？
-    
-    </summary>
-    
-      <category term="学习" scheme="http://blog.booml.cn/categories/%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-      <category term="编程" scheme="http://blog.booml.cn/tags/%E7%BC%96%E7%A8%8B/"/>
-    
-      <category term="shell" scheme="http://blog.booml.cn/tags/shell/"/>
-    
-      <category term="基础" scheme="http://blog.booml.cn/tags/%E5%9F%BA%E7%A1%80/"/>
-    
-  </entry>
-  
-  <entry>
     <title>sass，惊叹</title>
     <link href="http://blog.booml.cn/2018/02/24/sass%E4%B8%8Ecss%E6%AF%94%E8%BE%83/"/>
     <id>http://blog.booml.cn/2018/02/24/sass与css比较/</id>
@@ -230,6 +201,31 @@
   </entry>
   
   <entry>
+    <title>markdown语法小记</title>
+    <link href="http://blog.booml.cn/2018/02/24/markdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0/"/>
+    <id>http://blog.booml.cn/2018/02/24/markdown语法小记/</id>
+    <published>2018-02-24T07:23:49.254Z</published>
+    <updated>2018-02-24T07:23:49.254Z</updated>
+    
+    <content type="html"><![CDATA[<ol><li>插入表格：<br>1.1. 表格的上下需要空行。空行的多少至关重要 <ul><li>表格中文字居中  在划线部分的划线两端加上”<strong>:</strong>“<ul><li>比如”<strong>:</strong>—–<strong>:</strong> | <strong>:</strong>—-<strong>:</strong><a id="more"></a></li></ul></li></ul></li><li><code>代码块</code>:<br>2.1. 合理利用代码块有意想不到的效果。</li><li></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      &lt;ol&gt;
+&lt;li&gt;插入表格：&lt;br&gt;1.1. 表格的上下需要空行。空行的多少至关重要 &lt;ul&gt;
+&lt;li&gt;表格中文字居中  在划线部分的划线两端加上”&lt;strong&gt;:&lt;/strong&gt;“&lt;ul&gt;
+&lt;li&gt;比如”&lt;strong&gt;:&lt;/strong&gt;—–&lt;strong&gt;:&lt;/strong&gt; | &lt;strong&gt;:&lt;/strong&gt;—-&lt;strong&gt;:&lt;/strong&gt;
+    
+    </summary>
+    
+    
+      <category term="markdown" scheme="http://blog.booml.cn/tags/markdown/"/>
+    
+      <category term="日记" scheme="http://blog.booml.cn/tags/%E6%97%A5%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Steps</title>
     <link href="http://blog.booml.cn/2018/02/24/poj%20No.2590/"/>
     <id>http://blog.booml.cn/2018/02/24/poj No.2590/</id>
@@ -253,31 +249,6 @@
       <category term="编程" scheme="http://blog.booml.cn/tags/%E7%BC%96%E7%A8%8B/"/>
     
       <category term="acm" scheme="http://blog.booml.cn/tags/acm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>markdown语法小记</title>
-    <link href="http://blog.booml.cn/2018/02/24/markdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0/"/>
-    <id>http://blog.booml.cn/2018/02/24/markdown语法小记/</id>
-    <published>2018-02-24T07:23:49.254Z</published>
-    <updated>2018-02-24T07:23:49.254Z</updated>
-    
-    <content type="html"><![CDATA[<ol><li>插入表格：<br>1.1. 表格的上下需要空行。空行的多少至关重要 <ul><li>表格中文字居中  在划线部分的划线两端加上”<strong>:</strong>“<ul><li>比如”<strong>:</strong>—–<strong>:</strong> | <strong>:</strong>—-<strong>:</strong><a id="more"></a></li></ul></li></ul></li><li><code>代码块</code>:<br>2.1. 合理利用代码块有意想不到的效果。</li><li></li></ol>]]></content>
-    
-    <summary type="html">
-    
-      &lt;ol&gt;
-&lt;li&gt;插入表格：&lt;br&gt;1.1. 表格的上下需要空行。空行的多少至关重要 &lt;ul&gt;
-&lt;li&gt;表格中文字居中  在划线部分的划线两端加上”&lt;strong&gt;:&lt;/strong&gt;“&lt;ul&gt;
-&lt;li&gt;比如”&lt;strong&gt;:&lt;/strong&gt;—–&lt;strong&gt;:&lt;/strong&gt; | &lt;strong&gt;:&lt;/strong&gt;—-&lt;strong&gt;:&lt;/strong&gt;
-    
-    </summary>
-    
-    
-      <category term="markdown" scheme="http://blog.booml.cn/tags/markdown/"/>
-    
-      <category term="日记" scheme="http://blog.booml.cn/tags/%E6%97%A5%E8%AE%B0/"/>
     
   </entry>
   
@@ -378,6 +349,29 @@
   </entry>
   
   <entry>
+    <title>codewars-count_digits</title>
+    <link href="http://blog.booml.cn/2018/02/24/codewars/"/>
+    <id>http://blog.booml.cn/2018/02/24/codewars/</id>
+    <published>2018-02-24T07:23:49.249Z</published>
+    <updated>2018-02-24T07:23:49.250Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><blockquote><p>Take an integer n (n &gt;= 0) and a digit d (0 &lt;= d &lt;= 9) as an integer. Square all numbers k (0 &lt;= k &lt;= n) between 0 and n.<br><a id="more"></a><br>Count the numbers of digits d used in the writing of all the k<em> </em>2. Call nb_dig (or nbDig or …) the function taking n and d as parameters and returning this count.</p></blockquote><h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><ul><li>n = 10, d = 1,<br>   the k * k are 0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100 We are using the digit 1 in 1, 16, 81, 100. </li><li>The total count is then 4.<br>   nb_dig(25, 1):<br> the numbers of interest are 1, 4, 9, 10, 11, 12, 13, 14, 19, 21<br> which squared are 1, 16, 81, 100, 121, 144, 169, 196, 361, 441 so there are 11 digits <code>1</code> for the squares of numbers between 0 and 25.</li></ul><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><ul><li>给出<code>n</code>和<code>d</code>，求0到n中间的平方，再求这些平方的平方，问所得的这些数中包含多少个数字<code>d</code>。<br>大概就是先算出这些数字的平方，然后挨个分解求出其中的值。<h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function nbDig(n,d) &#123;</span><br><span class="line">    var s = &apos;&apos;;</span><br><span class="line">    for(var i=0;i&lt;=n;i++)&#123;</span><br><span class="line">        s += Math.pow(i,2);</span><br><span class="line">    &#125;</span><br><span class="line">    return s.split(d).length-1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ul><h2 id="牢骚篇"><a href="#牢骚篇" class="headerlink" title="牢骚篇"></a>牢骚篇</h2><p>今天，进了个群，挺多厉害的人，还私聊了一个有很多offer的同学。顿时觉得，自己就是渣渣啊，一点信心都没有。还是得加油吧，要学的东西还很多啊。<br><img src="https://ooo.0o0.ooo/2017/03/20/58cfd648e6d0a.jpg" alt="累啊"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;Take an integer n (n &amp;gt;= 0) and a digit d (0 &amp;lt;= d &amp;lt;= 9) as an integer. Square all numbers k (0 &amp;lt;= k &amp;lt;= n) between 0 and n.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="工作" scheme="http://blog.booml.cn/categories/%E5%B7%A5%E4%BD%9C/"/>
+    
+    
+      <category term="编程" scheme="http://blog.booml.cn/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
     <title>codewars ooxx =&gt;true</title>
     <link href="http://blog.booml.cn/2018/02/24/codewars-ooxx/"/>
     <id>http://blog.booml.cn/2018/02/24/codewars-ooxx/</id>
@@ -401,29 +395,6 @@
       <category term="编程" scheme="http://blog.booml.cn/tags/%E7%BC%96%E7%A8%8B/"/>
     
       <category term="js" scheme="http://blog.booml.cn/tags/js/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>codewars-count_digits</title>
-    <link href="http://blog.booml.cn/2018/02/24/codewars/"/>
-    <id>http://blog.booml.cn/2018/02/24/codewars/</id>
-    <published>2018-02-24T07:23:49.249Z</published>
-    <updated>2018-02-24T07:23:49.250Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><blockquote><p>Take an integer n (n &gt;= 0) and a digit d (0 &lt;= d &lt;= 9) as an integer. Square all numbers k (0 &lt;= k &lt;= n) between 0 and n.<br><a id="more"></a><br>Count the numbers of digits d used in the writing of all the k<em> </em>2. Call nb_dig (or nbDig or …) the function taking n and d as parameters and returning this count.</p></blockquote><h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><ul><li>n = 10, d = 1,<br>   the k * k are 0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100 We are using the digit 1 in 1, 16, 81, 100. </li><li>The total count is then 4.<br>   nb_dig(25, 1):<br> the numbers of interest are 1, 4, 9, 10, 11, 12, 13, 14, 19, 21<br> which squared are 1, 16, 81, 100, 121, 144, 169, 196, 361, 441 so there are 11 digits <code>1</code> for the squares of numbers between 0 and 25.</li></ul><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><ul><li>给出<code>n</code>和<code>d</code>，求0到n中间的平方，再求这些平方的平方，问所得的这些数中包含多少个数字<code>d</code>。<br>大概就是先算出这些数字的平方，然后挨个分解求出其中的值。<h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function nbDig(n,d) &#123;</span><br><span class="line">    var s = &apos;&apos;;</span><br><span class="line">    for(var i=0;i&lt;=n;i++)&#123;</span><br><span class="line">        s += Math.pow(i,2);</span><br><span class="line">    &#125;</span><br><span class="line">    return s.split(d).length-1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ul><h2 id="牢骚篇"><a href="#牢骚篇" class="headerlink" title="牢骚篇"></a>牢骚篇</h2><p>今天，进了个群，挺多厉害的人，还私聊了一个有很多offer的同学。顿时觉得，自己就是渣渣啊，一点信心都没有。还是得加油吧，要学的东西还很多啊。<br><img src="https://ooo.0o0.ooo/2017/03/20/58cfd648e6d0a.jpg" alt="累啊"></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;Take an integer n (n &amp;gt;= 0) and a digit d (0 &amp;lt;= d &amp;lt;= 9) as an integer. Square all numbers k (0 &amp;lt;= k &amp;lt;= n) between 0 and n.&lt;br&gt;
-    
-    </summary>
-    
-      <category term="工作" scheme="http://blog.booml.cn/categories/%E5%B7%A5%E4%BD%9C/"/>
-    
-    
-      <category term="编程" scheme="http://blog.booml.cn/tags/%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
@@ -527,6 +498,30 @@
       <category term="日志" scheme="http://blog.booml.cn/tags/%E6%97%A5%E5%BF%97/"/>
     
       <category term="acm poj" scheme="http://blog.booml.cn/tags/acm-poj/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>深度优先算法-部分和问题</title>
+    <link href="http://blog.booml.cn/2018/02/24/DFS-%E9%83%A8%E5%88%86%E5%92%8C/"/>
+    <id>http://blog.booml.cn/2018/02/24/DFS-部分和/</id>
+    <published>2018-02-24T07:23:49.139Z</published>
+    <updated>2018-02-24T07:23:49.140Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><h3 id="给定整数a-1-a-2-…-a-n-，判断是否可以从中选出若干数，使他们的和恰好为k。"><a href="#给定整数a-1-a-2-…-a-n-，判断是否可以从中选出若干数，使他们的和恰好为k。" class="headerlink" title="给定整数a~1~,a~2~ ,…,a~n~，判断是否可以从中选出若干数，使他们的和恰好为k。"></a>给定整数a~1~,a~2~ ,…,a~n~，判断是否可以从中选出若干数，使他们的和恰好为k。</h3><a id="more"></a><p>限制条件</p><ul><li>1≤ n ≤20</li><li>-10^8^ ≤ a~i~ ≤ 10^8^</li><li>-10^8^ ≤ k ≤ 10^8^<br>输入</li><li>n=4</li><li>a={1,2,4,7}</li><li>k=13<br>输出<br>yes （13 = 2 + 4 + 7）</li></ul><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><h3 id="利用最简单的递归，可以先画出深度优先的树"><a href="#利用最简单的递归，可以先画出深度优先的树" class="headerlink" title="利用最简单的递归，可以先画出深度优先的树"></a>利用最简单的递归，可以先画出深度优先的树</h3><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><figcaption><span>c++</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXNUM = <span class="number">20</span>;</span><br><span class="line"><span class="comment">// 输入 </span></span><br><span class="line"><span class="keyword">int</span> arr[MAXNUM];</span><br><span class="line"><span class="keyword">int</span> n, k;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">input_data</span><span class="params">(<span class="keyword">int</span> *n, <span class="keyword">int</span> *k, <span class="keyword">int</span> *arr)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"n = "</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; *n;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"a = &#123;"</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; *n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; arr[i];</span><br><span class="line">        <span class="built_in">cin</span>.get();</span><br><span class="line">        <span class="built_in">cin</span>.get();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"k = "</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; *k;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"> <span class="comment">//已经从前n项得到了和sum，然后对于i项之后的分支 </span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> sum)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="comment">//如果前n项都计算过了，则返回sum是否与k相等 </span></span><br><span class="line">    <span class="keyword">if</span> (i == n) <span class="keyword">return</span> sum == k;</span><br><span class="line"><span class="comment">//    不加上a[i]的情况 </span></span><br><span class="line">    <span class="keyword">if</span> (dfs(i+<span class="number">1</span>, sum)) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line"><span class="comment">//    加上a[i]的情况 </span></span><br><span class="line">    <span class="keyword">if</span> (dfs(i+<span class="number">1</span>, sum+arr[i])) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line"><span class="comment">// 无论是否加上a[i],都不能凑成k就返回false </span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (dfs(<span class="number">0</span>, <span class="number">0</span>))</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"Yes"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"No"</span> &lt;&lt; <span class="built_in">endl</span>;   </span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    input_data(&amp;n, &amp;k, arr);</span><br><span class="line"> </span><br><span class="line">    solve();</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h2&gt;&lt;h3 id=&quot;给定整数a-1-a-2-…-a-n-，判断是否可以从中选出若干数，使他们的和恰好为k。&quot;&gt;&lt;a href=&quot;#给定整数a-1-a-2-…-a-n-，判断是否可以从中选出若干数，使他们的和恰好为k。&quot; class=&quot;headerlink&quot; title=&quot;给定整数a~1~,a~2~ ,…,a~n~，判断是否可以从中选出若干数，使他们的和恰好为k。&quot;&gt;&lt;/a&gt;给定整数a~1~,a~2~ ,…,a~n~，判断是否可以从中选出若干数，使他们的和恰好为k。&lt;/h3&gt;
+    
+    </summary>
+    
+      <category term="学习" scheme="http://blog.booml.cn/categories/%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="编程" scheme="http://blog.booml.cn/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="oj" scheme="http://blog.booml.cn/tags/oj/"/>
     
   </entry>
   
