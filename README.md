@@ -2,9 +2,6 @@
 
 + master 为hexo 页面样式仓库,hexoKey 为hexo**备份**分支
 
-+ 注意本地做了些修改提交到hexoKey分支：
-`git push origin master:hexoKey`
-
 >   如果仓库没有 hexoKey则会创建
 + 切换分支
 `git checkout hexoKey`
@@ -38,9 +35,13 @@ password: password
 + 在主目录`lmislm.github.io`下，
 	+ $ `hexo g -d`     
 		+ 也可以在这之前`hexo clean`
-	+  git checkout hexoKey 
-		+  切换到hexoKey分支，配置备份分支
-	+  git pull
-		+  更新本地分支
-
+#### hexo 备份
++  在主目录`lmislm.github.io`下，
+	+  `git add .`
+	+  `git commit -m "提交备份"`
+	+  `git push -u origin master:hexoKey`
+		+  提交到分支hexoKey
+	+  额外：
+		+  `git checkout hexoKey` 切换分支
+		+  `git pull`  updata 分支数据
  
