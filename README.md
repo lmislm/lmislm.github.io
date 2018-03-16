@@ -6,12 +6,21 @@
 + 切换分支
 `git checkout hexoKey`
 
-+ 换机操作
-	+ 下载hexoKey分支
-	` npm install hexo-deployer-git hexo`
-	`npm install`
-	`hexo clean` 
-	 `hexo g -d `
+## 换机操作
+> git clone https://github.com/lmislm/lmislm.github.io.git
+
+> git pull origin hexoKey ----allow-unrelated-histories
+
+> npm install hexo-deployer-git hexo
+> npm install
+> hexo clean 
+> hexo g 
+
+#### merge 
+
+> git add .
+> git commit -m "finish"
+
 	 
  ### 文章写作
 
