@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+
+    
+    
+    
+    
+    
+    
+  <url>
+    <loc>http://blog.booml.cn/2018/03/16/webpack%E7%83%AD%E5%8A%A0%E8%BD%BD/</loc>
+    <lastmod>2018-03-16T15:24:41.757Z</lastmod>
+    <data>
+        <display>
+        <title>webpack热加载</title>
+        <pubTime>2018-03-16T15:24:41.756Z</pubTime>
+        
+        <tag>编程</tag>
+         
+        <tag>配置</tag>
+         
+        <tag>vue+webpack</tag>
+         
+         
+           
+             
+              <breadCrumb title="工作" url="http://blog.booml.cn/categories/%E5%B7%A5%E4%BD%9C/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://blog.booml.cn/2018/03/16/vue-router%E6%8C%82%E8%BD%BD/</loc>
+    <lastmod>2018-03-16T15:24:41.756Z</lastmod>
+    <data>
+        <display>
+        <title>Vue 2.0 之 Vue-Router 路由挂载实例</title>
+        <pubTime>2018-03-16T15:24:41.755Z</pubTime>
+        
+        <tag>编程</tag>
+         
+        <tag>vue</tag>
+         
+         
+           
+             
+              <breadCrumb title="工作" url="http://blog.booml.cn/categories/%E5%B7%A5%E4%BD%9C/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://blog.booml.cn/2018/03/16/vowel%20count/</loc>
+    <lastmod>2018-03-16T15:24:41.755Z</lastmod>
+    <data>
+        <display>
+        <title>Vowel Counts</title>
+        <pubTime>2018-03-16T15:24:41.754Z</pubTime>
+        
+        <tag>编程</tag>
+         
+        <tag>js</tag>
+         
+         
+           
+             
+              <breadCrumb title="工作" url="http://blog.booml.cn/categories/%E5%B7%A5%E4%BD%9C/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://blog.booml.cn/2018/03/16/undefined%20behavior%20in%20c/</loc>
+    <lastmod>2018-03-16T15:24:41.753Z</lastmod>
+    <data>
+        <display>
+        <title>undefined behavior in c</title>
+        <pubTime>2018-03-16T15:24:41.753Z</pubTime>
+        
+        <tag>编程</tag>
+         
+        <tag>c</tag>
+         
+         
+           
+             
+              <breadCrumb title="学习" url="http://blog.booml.cn/categories/%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://blog.booml.cn/2016/10/31/try-build/</loc>
+    <lastmod>2018-03-16T15:24:41.752Z</lastmod>
+    <data>
+        <display>
+        <title>try build</title>
+        <pubTime>2016-10-31T14:27:24.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="日记" url="http://blog.booml.cn/categories/%E6%97%A5%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://blog.booml.cn/2018/03/16/shell%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</loc>
+    <lastmod>2018-03-16T15:24:41.751Z</lastmod>
+    <data>
+        <display>
+        <title>shell的正则表达式</title>
+        <pubTime>2018-03-16T15:24:41.751Z</pubTime>
+        
+        <tag>编程</tag>
+         
+        <tag>shell</tag>
+         
+        <tag>基础</tag>
+         
+         
+           
+             
+              <breadCrumb title="学习" url="http://blog.booml.cn/categories/%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://blog.booml.cn/2018/03/16/sass%E4%B8%8Ecss%E6%AF%94%E8%BE%83/</loc>
+    <lastmod>2018-03-16T15:24:41.750Z</lastmod>
+    <data>
+        <display>
+        <title>sass，惊叹</title>
+        <pubTime>2018-03-16T15:24:41.750Z</pubTime>
+        
+        <tag>css</tag>
+         
+        <tag>前端</tag>
+         
+         
+           
+             
+              <breadCrumb title="工作" url="http://blog.booml.cn/categories/%E5%B7%A5%E4%BD%9C/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://blog.booml.cn/2018/03/16/poj%20No.3062/</loc>
+    <lastmod>2018-03-16T15:24:41.749Z</lastmod>
+    <data>
+        <display>
+        <title>poj No.3062 Celebrity jeopardy</title>
+        <pubTime>2018-03-16T15:24:41.749Z</pubTime>
+        
+        <tag>编程</tag>
+         
+        <tag>日志</tag>
+         
+        <tag>acm</tag>
+         
+        <tag>poj</tag>
+         
+         
+           
+             
+              <breadCrumb title="学习" url="http://blog.booml.cn/categories/%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://blog.booml.cn/2018/03/16/poj%20No.2590/</loc>
+    <lastmod>2018-03-16T15:24:41.748Z</lastmod>
+    <data>
+        <display>
+        <title>Steps</title>
+        <pubTime>2018-03-16T15:24:41.748Z</pubTime>
+        
+        <tag>编程</tag>
+         
+        <tag>acm</tag>
+         
+         
+           
+             
+              <breadCrumb title="工作" url="http://blog.booml.cn/categories/%E5%B7%A5%E4%BD%9C/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://blog.booml.cn/2018/03/16/markdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0/</loc>
+    <lastmod>2018-03-16T15:24:41.747Z</lastmod>
+    <data>
+        <display>
+        <title>markdown语法小记</title>
+        <pubTime>2018-03-16T15:24:41.747Z</pubTime>
+        
+        <tag>markdown</tag>
+         
+        <tag>日记</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://blog.booml.cn/2018/03/16/holygrail/</loc>
+    <lastmod>2018-03-16T15:24:41.746Z</lastmod>
+    <data>
+        <display>
+        <title>holygrail（圣杯布局）</title>
+        <pubTime>2018-03-16T15:24:41.746Z</pubTime>
+        
+        <tag>编程</tag>
+         
+        <tag>css</tag>
+         
+         
+           
+             
+              <breadCrumb title="工作" url="http://blog.booml.cn/categories/%E5%B7%A5%E4%BD%9C/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://blog.booml.cn/2018/03/16/hexo%E4%B8%AD%E7%9A%84tags/</loc>
+    <lastmod>2018-03-16T15:24:41.745Z</lastmod>
+    <data>
+        <display>
+        <title>配置hexo标签</title>
+        <pubTime>2018-03-16T15:24:41.745Z</pubTime>
+        
+        <tag>hexo</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://blog.booml.cn/2018/03/16/hello-world/</loc>
+    <lastmod>2018-03-16T15:24:41.744Z</lastmod>
+    <data>
+        <display>
+        <title>Hello World</title>
+        <pubTime>2018-03-16T15:24:41.744Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://blog.booml.cn/2018/03/16/git-progress/</loc>
+    <lastmod>2018-03-16T15:24:41.743Z</lastmod>
+    <data>
+        <display>
+        <title>Git 仓库合并（实例）</title>
+        <pubTime>2018-03-16T15:24:41.743Z</pubTime>
+        
+        <tag>编程</tag>
+         
+        <tag>git</tag>
+         
+         
+           
+             
+              <breadCrumb title="学习" url="http://blog.booml.cn/categories/%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://blog.booml.cn/2018/03/16/codewars_Replace%20With%20Alphabet%20Position/</loc>
+    <lastmod>2018-03-16T15:24:41.742Z</lastmod>
+    <data>
+        <display>
+        <title>codewars_Replace With Alphabet Position</title>
+        <pubTime>2018-03-16T15:24:41.742Z</pubTime>
+        
+        <tag>编程</tag>
+         
+        <tag>js</tag>
+         
+        <tag>codewars</tag>
+         
+         
+           
+             
+              <breadCrumb title="工作" url="http://blog.booml.cn/categories/%E5%B7%A5%E4%BD%9C/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://blog.booml.cn/2018/03/16/codewars/</loc>
+    <lastmod>2018-03-16T15:24:41.741Z</lastmod>
+    <data>
+        <display>
+        <title>codewars-count_digits</title>
+        <pubTime>2018-03-16T15:24:41.741Z</pubTime>
+        
+        <tag>编程</tag>
+         
+         
+           
+             
+              <breadCrumb title="工作" url="http://blog.booml.cn/categories/%E5%B7%A5%E4%BD%9C/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://blog.booml.cn/2018/03/16/codewars-ooxx/</loc>
+    <lastmod>2018-03-16T15:24:41.740Z</lastmod>
+    <data>
+        <display>
+        <title>codewars ooxx =>true</title>
+        <pubTime>2018-03-16T15:24:41.740Z</pubTime>
+        
+        <tag>编程</tag>
+         
+        <tag>js</tag>
+         
+         
+           
+             
+              <breadCrumb title="工作" url="http://blog.booml.cn/categories/%E5%B7%A5%E4%BD%9C/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://blog.booml.cn/2018/03/16/codewars-accm/</loc>
+    <lastmod>2018-03-16T15:24:41.739Z</lastmod>
+    <data>
+        <display>
+        <title>codewars - - accm</title>
+        <pubTime>2018-03-16T15:24:41.739Z</pubTime>
+        
+        <tag>编程</tag>
+         
+        <tag>JS</tag>
+         
+         
+           
+             
+              <breadCrumb title="工作" url="http://blog.booml.cn/categories/%E5%B7%A5%E4%BD%9C/"/>
+          
+             
+              <breadCrumb title="面试" url="http://blog.booml.cn/categories/%E5%B7%A5%E4%BD%9C/%E9%9D%A2%E8%AF%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://blog.booml.cn/2018/03/16/check-question/</loc>
+    <lastmod>2018-03-16T15:24:41.738Z</lastmod>
+    <data>
+        <display>
+        <title>question-check</title>
+        <pubTime>2018-03-16T15:24:41.738Z</pubTime>
+        
+        <tag>展示</tag>
+         
+         
+           
+             
+              <breadCrumb title="学习" url="http://blog.booml.cn/categories/%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://blog.booml.cn/2018/03/16/acm00/</loc>
+    <lastmod>2018-03-16T15:24:41.737Z</lastmod>
+    <data>
+        <display>
+        <title>acm基础--POJ No.1003 Hangover</title>
+        <pubTime>2018-03-16T15:24:41.737Z</pubTime>
+        
+        <tag>编程</tag>
+         
+        <tag>日志</tag>
+         
+        <tag>acm poj</tag>
+         
+         
+           
+             
+              <breadCrumb title="学习" url="http://blog.booml.cn/categories/%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://blog.booml.cn/2018/03/16/Math.random/</loc>
+    <lastmod>2018-03-16T15:24:41.736Z</lastmod>
+    <data>
+        <display>
+        <title>Don't rely on luck.</title>
+        <pubTime>2018-03-16T15:24:41.735Z</pubTime>
+        
+        <tag>编程</tag>
+         
+        <tag>js</tag>
+         
+         
+           
+             
+              <breadCrumb title="工作" url="http://blog.booml.cn/categories/%E5%B7%A5%E4%BD%9C/"/>
+          
+             
+              <breadCrumb title="codewars" url="http://blog.booml.cn/categories/%E5%B7%A5%E4%BD%9C/codewars/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://blog.booml.cn/2018/03/16/DFS-%E9%83%A8%E5%88%86%E5%92%8C/</loc>
+    <lastmod>2018-03-16T15:24:41.734Z</lastmod>
+    <data>
+        <display>
+        <title>深度优先算法-部分和问题</title>
+        <pubTime>2018-03-16T15:24:41.734Z</pubTime>
+        
+        <tag>编程</tag>
+         
+        <tag>oj</tag>
+         
+         
+           
+             
+              <breadCrumb title="学习" url="http://blog.booml.cn/categories/%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+</urlset>
