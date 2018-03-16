@@ -316,13 +316,13 @@ mathjax:
 ##  type: button
 
 valine:
-   enable: false
-   appid:  # your leancloud application appid
-   appkey:  # your leancloud application appkey
-   notify: false # mail notifier , https://github.com/xCss/Valine/wiki
-   verify: false # Verification code
-   placeholder: Comment input placeholder
-   avatar: mm # gravatar style
+   enable: true
+   appid:  sHoDrBAU85MOb6nhjvws5BSc-gzGzoHsz
+   appkey:  FClW2WY5KFeQovMnpbGjKi7t
+   notify: true 
+   verify: false 
+   placeholder: 评论区
+   avatar: retro # gravatar style
    guest_info: nick,mail,link # custom comment header
    pageSize: 10 # pagination size
 
