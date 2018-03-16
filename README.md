@@ -46,6 +46,9 @@ password: password
 		+  `git pull`  updata 分支数据
 
 #### next主题更新 
+
 ` cd ~/theme/next`
+
 ` git stash ` 
+
 ` git pull ` 
