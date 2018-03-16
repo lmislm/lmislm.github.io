@@ -322,7 +322,6 @@ valine:
    notify: false # mail notifier , https://github.com/xCss/Valine/wiki
    verify: false # Verification code
    placeholder: Comment input placeholder
-   placeholder: Just go go # comment box placeholder
    avatar: mm # gravatar style
    guest_info: nick,mail,link # custom comment header
    pageSize: 10 # pagination size
