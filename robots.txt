@@ -8,5 +8,5 @@ Disallow: /css/
 Disallow: /fonts/
 Disallow: /vendors/
 Disallow: /fancybox/
-Sitemap: https://blog.booml.cn/sitemap.xml
-Sitemap: https://blog.booml.cn/baidusitemap.xml
+Sitemap: https://lmislm.github.io/sitemap.xml
+Sitemap: https://lmislm.github.io/baidusitemap.xml
