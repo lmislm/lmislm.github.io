@@ -39,6 +39,7 @@ password: password
 +  在主目录`lmislm.github.io`下，
 	+  `git add .`
 	+  `git commit -m "提交备份"`
+		- 或者是` git commit -am "提交"`
 	+  `git push -u origin master:hexoKey`
 		+  提交到分支hexoKey
 	+  额外：
