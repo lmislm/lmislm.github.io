@@ -3,10 +3,9 @@ title: shell的正则表达式
 tags: 
 - 编程
 - shell
-- 基础
-top: true
 categories: 
 - 学习
+date: 2017-07-20
 grammar_cjkRuby: true
 ---
 

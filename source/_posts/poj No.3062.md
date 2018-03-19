@@ -2,11 +2,11 @@
 title: poj No.3062 Celebrity jeopardy
 tags: 
 - 编程
-- 日志
 - acm
 - poj
 categories: 
 - 学习
+date: 2017-05-20
 grammar_cjkRuby: true
 ---
 
@@ -25,8 +25,6 @@ int main()
     {
         c = getchar();
         putchar(c);
-    }    
+    }
 }
 ```
-
-

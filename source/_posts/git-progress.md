@@ -2,10 +2,10 @@
 title: Git 仓库合并（实例）
 tags: 
 - git
-- 编程
+- 工具
 categories: 
 - 学习
-top: 1
+date: 2018-03-05
 grammar_cjkRuby: true
 ---
 

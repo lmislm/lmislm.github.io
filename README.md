@@ -43,6 +43,23 @@
 description: 文章访问密码：password
 password: password
 
+#### 小书匠模板
+
+```html
+---
+title: reversint
+tags:
+- xx
+categories:
+- xx
+date:  <% print((new Date()).getFullYear().toString()+ '-'+ ((new Date()).getMonth() + 1).toString() + '-'+ (new Date()).getDate().toString()); %>
+grammar_cjkRuby: true
+---
+
+
+<!--more-->
+```
+
 #### hexo 写作提交
 
 * 将`.md` 文件存入`source/_posts/`
