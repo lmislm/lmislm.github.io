@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.booml.cn/"/>
-  <updated>2018-03-19T15:17:34.637Z</updated>
+  <updated>2018-03-19T15:18:45.198Z</updated>
   <id>http://blog.booml.cn/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://blog.booml.cn/2018/03/19/reversInt/"/>
     <id>http://blog.booml.cn/2018/03/19/reversInt/</id>
     <published>2018-03-18T16:00:00.000Z</published>
-    <updated>2018-03-19T15:17:34.637Z</updated>
+    <updated>2018-03-19T15:18:45.198Z</updated>
     
     <content type="html"><![CDATA[<h3 id="整数反转-reversint"><a href="#整数反转-reversint" class="headerlink" title="整数反转(reversint)"></a>整数反转(reversint)</h3><h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><blockquote><p>给你一个带符号的整数，返回这些数值的倒序</p></blockquote><blockquote><p>//例如</p></blockquote><blockquote><p>// reverseint(1243) === 3421</p></blockquote><a id="more"></a><blockquote><p>// reverseint(123) === 321</p></blockquote><blockquote><p>// reverseint(-12) === -21</p></blockquote><blockquote><p>// reverseint(-10) === -1</p></blockquote><h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverseint</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> reversed = n</span><br><span class="line">    .toString()</span><br><span class="line">    .split(<span class="string">''</span>)</span><br><span class="line">    .reverse()</span><br><span class="line">    .join(<span class="string">''</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">parseInt</span>(reversed) * <span class="built_in">Math</span>.sign(n);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverseint</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (n =</span><br><span class="line">    <span class="built_in">Math</span>.abs(n)</span><br><span class="line">      .toString()</span><br><span class="line">      .split(<span class="string">''</span>)</span><br><span class="line">      .reverse()</span><br><span class="line">      .join(<span class="string">''</span>) * <span class="built_in">Math</span>.sign(n));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
     
@@ -349,9 +349,9 @@
     </summary>
     
     
-      <category term="markdown" scheme="http://blog.booml.cn/tags/markdown/"/>
-    
       <category term="工具" scheme="http://blog.booml.cn/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+      <category term="markdown" scheme="http://blog.booml.cn/tags/markdown/"/>
     
   </entry>
   
