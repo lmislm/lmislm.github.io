@@ -116,21 +116,21 @@
 
 
 
-<meta name="description" content="最近想着整理一下github 上一些零散的代码到同一个库中，问题是如何合并两个仓库并且保留每个文件的提交记录？如果只是两个目录并为一个，不需保留每个库的提交的记录，你只要在本地A仓库中clone B再提交就行，而本文所做的就是实践这个过程，参考的博客在文末。">
+<meta name="description" content="最近想着整理一下 github 上一些零散的代码到同一个库中，问题是如何合并两个仓库并且保留每个文件的提交记录？如果只是两个目录并为一个，不需保留每个库的提交的记录，你只要在本地 A 仓库中 clone B 再提交就行，而本文所做的就是实践这个过程，参考的博客在文末。">
 <meta name="keywords" content="编程,git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git 仓库合并（实例）">
 <meta property="og:url" content="http://blog.booml.cn/2018/03/16/git-progress/index.html">
 <meta property="og:site_name" content="Baskerville*">
-<meta property="og:description" content="最近想着整理一下github 上一些零散的代码到同一个库中，问题是如何合并两个仓库并且保留每个文件的提交记录？如果只是两个目录并为一个，不需保留每个库的提交的记录，你只要在本地A仓库中clone B再提交就行，而本文所做的就是实践这个过程，参考的博客在文末。">
+<meta property="og:description" content="最近想着整理一下 github 上一些零散的代码到同一个库中，问题是如何合并两个仓库并且保留每个文件的提交记录？如果只是两个目录并为一个，不需保留每个库的提交的记录，你只要在本地 A 仓库中 clone B 再提交就行，而本文所做的就是实践这个过程，参考的博客在文末。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://i.imgur.com/NWbZygn.png">
 <meta property="og:image" content="https://i.imgur.com/FidxLZc.png">
 <meta property="og:image" content="https://i.imgur.com/QNW1boS.png">
-<meta property="og:updated_time" content="2018-03-16T15:24:41.743Z">
+<meta property="og:updated_time" content="2018-03-19T09:43:17.766Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git 仓库合并（实例）">
-<meta name="twitter:description" content="最近想着整理一下github 上一些零散的代码到同一个库中，问题是如何合并两个仓库并且保留每个文件的提交记录？如果只是两个目录并为一个，不需保留每个库的提交的记录，你只要在本地A仓库中clone B再提交就行，而本文所做的就是实践这个过程，参考的博客在文末。">
+<meta name="twitter:description" content="最近想着整理一下 github 上一些零散的代码到同一个库中，问题是如何合并两个仓库并且保留每个文件的提交记录？如果只是两个目录并为一个，不需保留每个库的提交的记录，你只要在本地 A 仓库中 clone B 再提交就行，而本文所做的就是实践这个过程，参考的博客在文末。">
 <meta name="twitter:image" content="https://i.imgur.com/NWbZygn.png">
 
 
@@ -382,7 +382,19 @@
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-03-19T17:43:17+08:00">
+                2018-03-19
+              </time>
             
           </span>
 
@@ -447,7 +459,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  650
+                  651
                 </span>
               
 
@@ -484,14 +496,14 @@
       
 
       
-        <p>最近想着整理一下github 上一些零散的代码到同一个库中，问题是如何合并两个仓库并且保留每个文件的提交记录？如果只是两个目录并为一个，不需保留每个库的提交的记录，你只要在本地A仓库中clone B再提交就行，而本文所做的就是实践这个过程，参考的博客在文末。</p>
+        <p>最近想着整理一下 github 上一些零散的代码到同一个库中，问题是如何合并两个仓库并且保留每个文件的提交记录？如果只是两个目录并为一个，不需保留每个库的提交的记录，你只要在本地 A 仓库中 clone B 再提交就行，而本文所做的就是实践这个过程，参考的博客在文末。</p>
 <a id="more"></a>
 <h4 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h4><ul>
 <li>合并两个库/提交记录</li>
 </ul>
 <h4 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h4><ul>
-<li>本地环境Windows os ,所有均在命令git bash中操作</li>
-<li>远程仓库 A,如图左，远程仓库B,如图右。</li>
+<li>本地环境 Windows os ,所有均在命令 git bash 中操作</li>
+<li>远程仓库 A,如图左，远程仓库 B,如图右。</li>
 </ul>
 <table>
 <thead>
@@ -520,43 +532,13 @@
 </li>
 </ul>
 <ul>
-<li><p><code>git merge --strategy ours --no-commit CSS_Ex/master</code></p>
+<li><p><code>git merge --strategy ours --no-commit CSS_Ex/master</code> + 可能报错<code>fatal: refusing to merge unrelated histories</code>忽略就行。 + <a href="https://git-scm.com/docs/merge-strategies#merge-strategies-ours" target="_blank" rel="noopener"><strong>ours</strong></a> 选项强制冲突由‘our’版本自动解决，即：来自其他分支树不会影响到我们这边映射到合并的结果。 + &gt; 即忽略冲突只保留<strong>Code_Repository</strong>文件树并且把 <strong>CSS_Ex</strong>的历史记录合并进来。</p>
+</li>
+<li><p><code>git remote -v</code> + 此命令将全部列出远程仓库。检查一下是否存在</p>
+</li>
+<li><p><code>git read-tree --prefix=css/ -u CSS_Ex/master</code> + <code>--prefix=css/</code>：这里 Code_Repository/目录下有 css/子目录 + &gt; –prefix 用于指定文件树读取后保存的路径，相对于当前路径并且一定要追加 /<br>–no-commit 的原因，<a href="https://segmentfault.com/a/1190000000678808" target="_blank" rel="noopener">该选项会在合并解析完成后中断，停留在最后的提交步骤之前。</a></p>
 <ul>
-<li>可能报错<code>fatal: refusing to merge unrelated histories</code>忽略就行。</li>
-<li><a href="https://git-scm.com/docs/merge-strategies#merge-strategies-ours" target="_blank" rel="noopener"><strong>ours</strong></a> 选项强制冲突由‘our’版本自动解决，即：来自其他分支树不会影响到我们这边映射到合并的结果。</li>
-<li><blockquote>
-<p>即忽略冲突只保留<strong>Code_Repository</strong>文件树并且把 <strong>CSS_Ex</strong>的历史记录合并进来。</p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li><p><code>git remote -v</code></p>
-<ul>
-<li>此命令将全部列出远程仓库。检查一下是否存在</li>
-</ul>
-</li>
-<li><p><code>git read-tree --prefix=css/ -u CSS_Ex/master</code></p>
-<ul>
-<li><code>--prefix=css/</code>：这里Code_Repository/目录下有css/子目录</li>
-<li><blockquote>
-<p>–prefix 用于指定文件树读取后保存的路径，相对于当前路径并且一定要追加 /<br>–no-commit 的原因，<a href="https://segmentfault.com/a/1190000000678808" target="_blank" rel="noopener">该选项会在合并解析完成后中断，停留在最后的提交步骤之前。</a></p>
-</blockquote>
-</li>
-</ul>
-<ul>
-<li><p><code>git read-tree --prefix=css/ -u  CSS_Ex/master</code></p>
-<ul>
-<li><blockquote>
-<p>-u 是说在读取后更新 index，使得 working tree 与 index 保持同步</p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li><p><code>git commit -m &quot;finish,迁移CSS_Ex到了Code_Repository/css/下&quot;</code></p>
-</li>
-<li><code>git add .</code></li>
-<li><code>git commit -m &quot;迁移完成&quot;</code></li>
-<li><code>git push -u origin master</code></li>
+<li><code>git read-tree --prefix=css/ -u CSS_Ex/master</code> + &gt; -u 是说在读取后更新 index，使得 working tree 与 index 保持同步 + <code>git commit -m &quot;finish,迁移CSS_Ex到了Code_Repository/css/下&quot;</code> + <code>git add .</code> + <code>git commit -m &quot;迁移完成&quot;</code> + <code>git push -u origin master</code></li>
 </ul>
 </li>
 </ul>
@@ -577,7 +559,7 @@
 <h4 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h4><ul>
 <li>在操作完成之后确实实现了合并到同一个仓库，但是<strong>并没有预期的结果</strong>，没有完美的合并提交记录。多次操作之后，将一些零散的东西合并到了同一个仓库。但是原来的仓库还是存在的。如果将原来零散的仓库删除。可以看到结果中，<code>a year ago</code>，历史提交记录确实存在，但是其他<code>flex_Ex</code>显示的却是在进行这个合并操作时提交的时间。</li>
 </ul>
-<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p> <a href="https://segmentfault.com/a/1190000000678808" target="_blank" rel="noopener">如何用 Git 合并两个库（合并历史记录，解决冲突／改写路径）</a><br> <a href="https://mlichtenberg.wordpress.com/2015/08/28/merging-git-repositories-and-preserving-history/" target="_blank" rel="noopener">Merging Git Repositories and Preserving History</a><br> <a href="https://git-scm.com/book/zh/v1/Git-%E5%9F%BA%E7%A1%80-%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8" target="_blank" rel="noopener"> Git 基础 - 远程仓库的使用</a><br> <a href="https://git-scm.com/docs/merge-strategies#merge-strategies-ours" target="_blank" rel="noopener">MERGE STRATEGIES​ - ours</a><br> <a href="https://git-scm.com/docs/git-read-tree" target="_blank" rel="noopener">git read-tree</a></p>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="https://segmentfault.com/a/1190000000678808" target="_blank" rel="noopener">如何用 Git 合并两个库（合并历史记录，解决冲突／改写路径）</a><br><a href="https://mlichtenberg.wordpress.com/2015/08/28/merging-git-repositories-and-preserving-history/" target="_blank" rel="noopener">Merging Git Repositories and Preserving History</a><br><a href="https://git-scm.com/book/zh/v1/Git-%E5%9F%BA%E7%A1%80-%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8" target="_blank" rel="noopener"> Git 基础 - 远程仓库的使用</a><br><a href="https://git-scm.com/docs/merge-strategies#merge-strategies-ours" target="_blank" rel="noopener">MERGE STRATEGIES​ - ours</a><br><a href="https://git-scm.com/docs/git-read-tree" target="_blank" rel="noopener">git read-tree</a></p>
 
       
     </div>
