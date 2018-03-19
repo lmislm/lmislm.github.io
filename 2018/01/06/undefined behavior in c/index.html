@@ -98,7 +98,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="编程,shell," />
+  <meta name="keywords" content="编程,c," />
 
 
 
@@ -116,18 +116,18 @@
 
 
 
-<meta name="description" content="简介 正则表达式用于描述字符排列和匹配模式的一种语法规则。—-用来筛选数据 正则表达式与通配符的区别 1.正则表达式–匹配“文件”符合条件的字符串–&amp;gt;&amp;gt;包含匹配 2.通配符—–匹配符合条件的“文件”名——–&amp;gt;&amp;gt;完全匹配 3.为什么存在，通配符、正则表达式？">
-<meta name="keywords" content="编程,shell">
+<meta name="description" content="undefined behavior（未定义行为） 思考一下下面这段代码的输出会是什么（答案在后面）？ 这段代码运行过程是怎样？">
+<meta name="keywords" content="编程,c">
 <meta property="og:type" content="article">
-<meta property="og:title" content="shell的正则表达式">
-<meta property="og:url" content="http://blog.booml.cn/2017/07/20/shell正则表达式/index.html">
+<meta property="og:title" content="undefined behavior in c">
+<meta property="og:url" content="http://blog.booml.cn/2018/01/06/undefined behavior in c/index.html">
 <meta property="og:site_name" content="Baskerville*">
-<meta property="og:description" content="简介 正则表达式用于描述字符排列和匹配模式的一种语法规则。—-用来筛选数据 正则表达式与通配符的区别 1.正则表达式–匹配“文件”符合条件的字符串–&amp;gt;&amp;gt;包含匹配 2.通配符—–匹配符合条件的“文件”名——–&amp;gt;&amp;gt;完全匹配 3.为什么存在，通配符、正则表达式？">
+<meta property="og:description" content="undefined behavior（未定义行为） 思考一下下面这段代码的输出会是什么（答案在后面）？ 这段代码运行过程是怎样？">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-19T15:16:23.589Z">
+<meta property="og:updated_time" content="2018-03-19T15:44:03.166Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="shell的正则表达式">
-<meta name="twitter:description" content="简介 正则表达式用于描述字符排列和匹配模式的一种语法规则。—-用来筛选数据 正则表达式与通配符的区别 1.正则表达式–匹配“文件”符合条件的字符串–&amp;gt;&amp;gt;包含匹配 2.通配符—–匹配符合条件的“文件”名——–&amp;gt;&amp;gt;完全匹配 3.为什么存在，通配符、正则表达式？">
+<meta name="twitter:title" content="undefined behavior in c">
+<meta name="twitter:description" content="undefined behavior（未定义行为） 思考一下下面这段代码的输出会是什么（答案在后面）？ 这段代码运行过程是怎样？">
 
 
 
@@ -155,14 +155,14 @@
 
 
 
-  <link rel="canonical" href="http://blog.booml.cn/2017/07/20/shell正则表达式/"/>
+  <link rel="canonical" href="http://blog.booml.cn/2018/01/06/undefined behavior in c/"/>
 
 
 
 
 
 
-  <title> shell的正则表达式 | Baskerville* </title>
+  <title> undefined behavior in c | Baskerville* </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -343,7 +343,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.booml.cn/2017/07/20/shell正则表达式/">
+    <link itemprop="mainEntityOfPage" href="http://blog.booml.cn/2018/01/06/undefined behavior in c/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Baskerville*">
@@ -360,7 +360,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">shell的正则表达式</h2>
+          <h2 class="post-title" itemprop="name headline">undefined behavior in c</h2>
         
 
         <div class="post-meta">
@@ -372,8 +372,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-20T00:00:00+08:00">
-                2017-07-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-06T21:41:18+08:00">
+                2018-01-06
               </time>
             
 
@@ -388,7 +388,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-03-19T23:16:23+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-03-19T23:44:03+08:00">
                 2018-03-19
               </time>
             
@@ -425,8 +425,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/07/20/shell正则表达式/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/07/20/shell正则表达式/" itemprop="commentCount"></span>
+                <a href="/2018/01/06/undefined behavior in c/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/01/06/undefined behavior in c/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -455,7 +455,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  652
+                  716
                 </span>
               
 
@@ -471,7 +471,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  3
                 </span>
               
             </div>
@@ -492,114 +492,37 @@
       
 
       
-        <hr>
-<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a><strong>简介</strong></h2><ol>
-<li>正则表达式用于描述字符排列和匹配模式的一种语法规则。—-用来筛选数据</li>
-<li>正则表达式与通配符的区别 1.正则表达式–匹配“文件”符合条件的字符串–&gt;&gt;包含匹配 2.通配符—–匹配符合条件的“文件”名——–&gt;&gt;完全匹配 3.为什么存在，通配符、正则表达式？<a id="more"></a>
-<ul>
-<li>ls、find、cp（操作文件的一些命令）不支持正则表达式，只能用通配符。</li>
-<li>grep、awk、sed（操作字符串的一些命令）支持正则表达式。</li>
-<li>为什么所有的不都支持正则表达式？</li>
+        <h2 id="undefined-behavior（未定义行为）"><a href="#undefined-behavior（未定义行为）" class="headerlink" title="undefined behavior（未定义行为）"></a>undefined behavior（未定义行为）</h2><ul>
+<li>思考一下下面这段代码的输出会是什么（答案在后面）？</li>
+<li>这段代码运行过程是怎样？</li>
 </ul>
+<a id="more"></a>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SQ(y) (y*y)  		<span class="comment">//define 1</span></span></span><br><span class="line"><span class="comment">//#define SQ(y) ((y)*(y))   //define 2</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">   <span class="keyword">int</span> i = <span class="number">1</span>;</span><br><span class="line">   <span class="keyword">while</span>(i &lt;= <span class="number">5</span>)&#123;</span><br><span class="line">   	<span class="built_in">printf</span>(<span class="string">"%-2d"</span>,SQ(i++));</span><br><span class="line">   &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">----------</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/*-只试了两种编译器</span></span><br><span class="line"><span class="comment"> *所用编译器：gcc</span></span><br><span class="line"><span class="comment"> *       用define  1 : 结果1  9  15</span></span><br><span class="line"><span class="comment"> *       用define 2 ：结果1  9  15</span></span><br><span class="line"><span class="comment"> *其他编辑器：</span></span><br><span class="line"><span class="comment"> *      用define  1 : 结果2  12  30</span></span><br><span class="line"><span class="comment"> *      用define  2: 结果1  9  15</span></span><br><span class="line"><span class="comment"> *      。。。。。</span></span><br></pre></td></tr></table></figure>
+<h3 id="问题：为什么得到的结果不一样？"><a href="#问题：为什么得到的结果不一样？" class="headerlink" title="问题：为什么得到的结果不一样？"></a>问题：为什么得到的结果不一样？</h3><ul>
+<li>看上面的对比，是因为编辑器的原因导致的??</li>
+<li>一开始某本书上的答案是 2 12 30 ，我很纳闷，开头第一个数居然是 2，于是一番折腾查阅了一下别人的看法。</li>
+</ul>
+<h3 id="我认为的原因是：undefined-behavior"><a href="#我认为的原因是：undefined-behavior" class="headerlink" title="我认为的原因是：undefined behavior"></a>我认为的原因是：undefined behavior</h3><ul>
+<li>什么是：undefined behavior（未定义行为）呢？如下。<blockquote>
+<p>在计算机程序设计中，未定义行为（英语：undefined behavior) 是指行为不可预测的计算机代码。这是一些编程语言的一个特点，最有名的是在 C 语言中。在这些语言中，为了简化标准，并给予实现一定的灵活性，标准特别地规定某些操作的结果是未定义的，这意味着程序员不能预测会发生什么事。……. 因此，这种未定义行为一般应被视为 bug。<br>—来源：<a href="https://zh.wikipedia.org/wiki/%E6%9C%AA%E5%AE%9A%E4%B9%89%E8%A1%8C%E4%B8%BA" target="_blank" rel="noopener">中文维基百科</a></p>
+</blockquote>
 </li>
-<li>正则表达式<ol>
-<li>基础正则</li>
-</ol>
-</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>元<strong>字</strong>符</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>*</td>
-<td>前一个字符匹配<strong>0 次</strong>或任意多次</td>
-</tr>
-<tr>
-<td><strong>.</strong></td>
-<td>前一个字符匹配<strong>0 次</strong>或任意多次</td>
-</tr>
-<tr>
-<td><strong>^</strong></td>
-<td>匹配行首，例：^he 匹配以 he 开头的行</td>
-</tr>
-<tr>
-<td><strong>$</strong></td>
-<td>匹配行尾，例：he$匹配以 he 为结尾的字符串</td>
-</tr>
-<tr>
-<td><strong>[ ]</strong></td>
-<td>匹配括号中指定的任意一个字符，<strong>只匹配一个</strong> 例：[a-z]匹配 a-z 中的任意一个字符，[0-9][a-z]表示“连续匹配”</td>
-</tr>
-<tr>
-<td><strong>[^]</strong></td>
-<td>匹配除中括号字符外任意一个字符，例：^[0-9]匹配任意一位非数字的字符</td>
-</tr>
-<tr>
-<td>\</td>
-<td>转义符，取消特殊字符的含义</td>
-</tr>
-<tr>
-<td>\ { n\ }</td>
-<td>表示前面字符<strong>恰好</strong>出现 n 次</td>
-</tr>
-<tr>
-<td>\ { n,\ }</td>
-<td>表示前面字符出现<strong>不小于</strong>n 次</td>
-</tr>
-<tr>
-<td>\ {n,m\ }</td>
-<td>表示其前面字符<strong>至少</strong>出现 n 次</td>
-</tr>
-</tbody>
-</table>
-<ol>
-<li>扩展正则</li>
-</ol>
+</ul>
+<h3 id="还有哪些-undefined-behavior（未定义行为）"><a href="#还有哪些-undefined-behavior（未定义行为）" class="headerlink" title="还有哪些 undefined behavior（未定义行为）"></a>还有哪些 undefined behavior（未定义行为）</h3><blockquote>
+<p>偷懒：)。此处省略一些例子，因为 wiki 上都有一些典型例子。中文访问不了的话，英文在这，<a href="https://en.wikipedia.org/wiki/Undefined_behavior" target="_blank" rel="noopener">点我</a>。</p>
+</blockquote>
+<h2 id="如何解释这段代码"><a href="#如何解释这段代码" class="headerlink" title="如何解释这段代码"></a>如何解释这段代码</h2><ul>
+<li>输出 1 9 15<br>++ 其计算过程可能为：<br><strong>第一次循环时</strong>，i=1，i++=2，1 _ 2 = 2， 再 i++=3<br><strong>第二次循环时</strong>，i=3，i++=4，3 _ 4 = 12，再 i++=5<br><strong>第三次循环时</strong>，i=5，i++=5, 5 * 6 = 30，再 i++=6<br>//进入 i&lt;=5 判断,值为假，退出循环</li>
+</ul>
 <hr>
-<h2 id="正则表达式（基础正则）"><a href="#正则表达式（基础正则）" class="headerlink" title="正则表达式（基础正则）"></a><strong>正则表达式（基础正则）</strong></h2><h3 id="“-“"><a href="#“-“" class="headerlink" title="“ * “"></a>“ * “</h3><ol>
-<li>“<code>*</code>“星号——–不同于通配符中的匹配所有内容。<ul>
-<li>前一个字符匹配<strong>0 次</strong>，或者任意多次。<ul>
-<li><code>a*</code> - - 匹配<strong>所有内容</strong>，包括<strong>空白行</strong>。</li>
-<li><code>aa*</code> - - 匹配至少包含有一个 a 的行。</li>
-<li><code>aaa*</code> - -匹配至少包含两个连续的 a 的字符串。</li>
-</ul>
+<ul>
+<li>输出 2 12 30<br>++ 其计算过程可能为：<br><strong>第一次循环时</strong>，首先 i=1, 1 _ 1 = 1，i++=2，再 i++=3<br><strong>第二次循环时</strong>，首先 i=3, 3 _ 3 = 9，i++=4，再 i++=5<br><strong>第三次循环时</strong>，首先 i=5, 5 * 5 = 25, i++=6，再 i++=7<br>// i=7，所以退出循环。<blockquote>
+<p>首先 i++是先运算，后加。对于 SQ(i++)来说，其实质是((i++)*(i++))。在后加运算符是在整个运算完成之后，才进行加 1 操作的。</p>
+</blockquote>
 </li>
 </ul>
-</li>
-</ol>
-<h3 id="“-“-1"><a href="#“-“-1" class="headerlink" title="“ . “"></a>“ . “</h3><ol>
-<li>“<code>.</code>“——–和通配符中”?”类似。<ul>
-<li>匹配<strong>除了换行符</strong>外任意字符<ul>
-<li><code>s..d</code> - - 匹配之间两个字符的单词。</li>
-<li><code>s.*d</code> - - 匹配之间的任意字符。</li>
-<li><code>.*</code> - - 匹配所有内容。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<h3 id="“-“、”-“、”-“、”-“"><a href="#“-“、”-“、”-“、”-“" class="headerlink" title="“ ^ “、” $ “、” [] “、” [ ^ ] “"></a>“ ^ “、” $ “、” [] “、” [ ^ ] “</h3><ol>
-<li>“<code>^</code>“、”<code>$</code>“、”<code>[]</code>“、”<code>[^]</code>“<ul>
-<li><code>^</code> - - 匹配行首。</li>
-<li><code>$</code> - - 匹配行尾。</li>
-<li><code>[]</code> - - 匹配括号中指定字符串中的任意字符，<strong>只匹配一个</strong>。</li>
-<li><code>[^]</code> - - 匹配除中括号的字符以外的任意一个字符。</li>
-</ul>
-</li>
-</ol>
-<h3 id="n-、-n-、-n-m"><a href="#n-、-n-、-n-m" class="headerlink" title="{n\ }、{n,\ }、{n,m\ }"></a>{n\ }、{n,\ }、{n,m\ }</h3><ol>
-<li>“<code>\{n\}</code>”、”<code>\{n,\}</code>“、”<code>\{n,m\}</code>“<ul>
-<li><code>\{n\}</code> - - 例：<code>a\{3\}</code> 匹配 a 字母连续出现三次的字符串（连续四次以上也会被匹配到，所以在该匹配首尾加定界符能精确匹配到）</li>
-<li><code>\{n,\}</code> - - 例：<code>\{n,\}</code> 前面字符出现不少于 n 次</li>
-<li><code>\{n,m\}</code> - - 例：<code>sa\{1,3}i</code> 匹配在字母 s 和字母 i 之间最少一个 a，最多三个 a</li>
-</ul>
-</li>
-</ol>
+<p><em>多问和讨论总是有好处的，继续保持：）</em><br>参考：<br>[1]<a href="https://zhidao.baidu.com/question/561702258825816084.html" target="_blank" rel="noopener">c语言的代参宏定义，#define sq(y) ((y)*(y))….输出应该是2 12 30才对啊？？</a>[2]<a href="https://www.zhihu.com/question/36940781/answer/69683475" target="_blank" rel="noopener">int i=5 ；printf(“%d”,i++,++i)；为什么输出 6?</a></p>
+<p>[3]<a href="http://www.cnblogs.com/yezhenhan/archive/2011/11/05/2236973.html" target="_blank" rel="noopener">c语言中define的用法</a><br>进阶（可不看）：<br><a href="https://wenku.baidu.com/view/2bd97e6bdd36a32d737581b4.html" target="_blank" rel="noopener">关于宏定义的 ppt</a></p>
 
       
     </div>
@@ -621,7 +544,7 @@
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="http://blog.booml.cn/2017/07/20/shell正则表达式/" title="shell的正则表达式">http://blog.booml.cn/2017/07/20/shell正则表达式/</a>
+      <a href="http://blog.booml.cn/2018/01/06/undefined behavior in c/" title="undefined behavior in c">http://blog.booml.cn/2018/01/06/undefined behavior in c/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -639,7 +562,7 @@
           
             <a href="/tags/编程/" rel="tag"># 编程</a>
           
-            <a href="/tags/shell/" rel="tag"># shell</a>
+            <a href="/tags/c/" rel="tag"># c</a>
           
         </div>
       
@@ -652,8 +575,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/27/check-question/" rel="next" title="question-check">
-                <i class="fa fa-chevron-left"></i> question-check
+              <a href="/2017/07/20/shell正则表达式/" rel="next" title="shell的正则表达式">
+                <i class="fa fa-chevron-left"></i> shell的正则表达式
               </a>
             
           </div>
@@ -662,8 +585,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/01/06/undefined behavior in c/" rel="prev" title="undefined behavior in c">
-                undefined behavior in c <i class="fa fa-chevron-right"></i>
+              <a href="/2018/03/05/git-progress/" rel="prev" title="Git 仓库合并（实例）">
+                Git 仓库合并（实例） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -850,7 +773,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正则表达式（基础正则）"><span class="nav-number">2.</span> <span class="nav-text">正则表达式（基础正则）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#“-“"><span class="nav-number">2.1.</span> <span class="nav-text">“ * “</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#“-“-1"><span class="nav-number">2.2.</span> <span class="nav-text">“ . “</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#“-“、”-“、”-“、”-“"><span class="nav-number">2.3.</span> <span class="nav-text">“ ^ “、” $ “、” [] “、” [ ^ ] “</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#n-、-n-、-n-m"><span class="nav-number">2.4.</span> <span class="nav-text">{n\ }、{n,\ }、{n,m\ }</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined-behavior（未定义行为）"><span class="nav-number">1.</span> <span class="nav-text">undefined behavior（未定义行为）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题：为什么得到的结果不一样？"><span class="nav-number">1.1.</span> <span class="nav-text">问题：为什么得到的结果不一样？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#我认为的原因是：undefined-behavior"><span class="nav-number">1.2.</span> <span class="nav-text">我认为的原因是：undefined behavior</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#还有哪些-undefined-behavior（未定义行为）"><span class="nav-number">1.3.</span> <span class="nav-text">还有哪些 undefined behavior（未定义行为）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何解释这段代码"><span class="nav-number">2.</span> <span class="nav-text">如何解释这段代码</span></a></li></ol></div>
             
 
           </div>
