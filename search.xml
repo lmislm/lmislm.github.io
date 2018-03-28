@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[matrix]]></title>
+    <url>%2F2018%2F03%2F28%2Fmatrix%2F</url>
+    <content type="text"><![CDATA[矩阵 写一个函数，输入数字 N,返会一个 N*N 的矩阵(环序)。 例如1234567// matrix(2)// [[1, 2],// [3, 4]]// matrix(3)// [[1, 2, 3],// [8, 9, 4],// [7, 6, 5]] 代码1234567891011121314151617181920212223242526272829303132333435363738394041424344function matrix(n) &#123; const results = []; for (let i = 0; i &lt; n; i++) &#123; results.push([]); &#125; let counter = 1; let startColumn = 0; let endColumn = n - 1; let startRow = 0; let endRow = n - 1; while (startColumn &lt;= endColumn &amp;&amp; startRow &lt;= endRow) &#123; //顶列开头到结尾 for (let i = startColumn; i &lt;= endColumn; i++) &#123; results[startRow][i] = counter; counter++; &#125; startRow++; //最右列 for (let i = startRow; i &lt;= endRow; i++) &#123; results[i][endColumn] = counter; counter++; &#125; endColumn--; // 底部行 for (let i = endColumn; i &gt;= startColumn; i--) &#123; results[endRow][i] = counter; counter++; &#125; endRow--; // start 列 for (let i = endRow; i &gt;= startRow; i--) &#123; results[i][startColumn] = counter; counter++; &#125; startColumn++; &#125; return results;&#125; 测试1234567891011121314151617181920212223242526272829const matrix = require('./index');test('matrix 函数已定义', () =&gt; &#123; expect(typeof matrix).toEqual('function');&#125;);test('matrix produces a 2x2 array', () =&gt; &#123; const m = matrix(2); expect(m.length).toEqual(2); expect(m[0]).toEqual([1, 2]); expect(m[1]).toEqual([4, 3]);&#125;);test('matrix produces a 3x3 array', () =&gt; &#123; const m = matrix(3); expect(m.length).toEqual(3); expect(m[0]).toEqual([1, 2, 3]); expect(m[1]).toEqual([8, 9, 4]); expect(m[2]).toEqual([7, 6, 5]);&#125;);test('matrix produces a 4x4 array', () =&gt; &#123; const m = matrix(4); expect(m.length).toEqual(4); expect(m[0]).toEqual([1, 2, 3, 4]); expect(m[1]).toEqual([12, 13, 14, 5]); expect(m[2]).toEqual([11, 16, 15, 6]); expect(m[3]).toEqual([10, 9, 8, 7]);&#125;);]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>编程</tag>
+        <tag>JS</tag>
+        <tag>Interview</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[reversint]]></title>
     <url>%2F2018%2F03%2F19%2FreversInt%2F</url>
     <content type="text"><![CDATA[整数反转(reversint)问题 给你一个带符号的整数，返回这些数值的倒序 //例如 // reverseint(1243) === 3421 // reverseint(123) === 321 // reverseint(-12) === -21 // reverseint(-10) === -1 方法二12345678function reverseint(n) &#123; const reversed = n .toString() .split('') .reverse() .join(''); return parseInt(reversed) * Math.sign(n);&#125; 方法一12345678function reverseint(n) &#123; return (n = Math.abs(n) .toString() .split('') .reverse() .join('') * Math.sign(n));&#125;]]></content>
@@ -161,15 +174,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[markdown语法小记]]></title>
-    <url>%2F2017%2F03%2F20%2Fmarkdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[插入表格：1.1. 表格的上下需要空行。空行的多少至关重要 表格中文字居中 在划线部分的划线两端加上”:“ 比如”:—–: | :—-: 代码块:2.1. 合理利用代码块有意想不到的效果。3.]]></content>
-      <tags>
-        <tag>工具</tag>
-        <tag>markdown</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[codewars-count_digits]]></title>
     <url>%2F2017%2F03%2F20%2Fcodewars%2F</url>
     <content type="text"><![CDATA[题目 Take an integer n (n &gt;= 0) and a digit d (0 &lt;= d &lt;= 9) as an integer. Square all numbers k (0 &lt;= k &lt;= n) between 0 and n. Count the numbers of digits d used in the writing of all the k* *2. Call nb_dig (or nbDig or …) the function taking n and d as parameters and returning this count. 例子 n = 10, d = 1,the k * k are 0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100 We are using the digit 1 in 1, 16, 81, 100. The total count is then 4.nb_dig(25, 1):the numbers of interest are 1, 4, 9, 10, 11, 12, 13, 14, 19, 21which squared are 1, 16, 81, 100, 121, 144, 169, 196, 361, 441 so there are 11 digits 1 for the squares of numbers between 0 and 25. 分析 给出n和d，求 0 到 n 中间的平方，再求这些平方的平方，问所得的这些数中包含多少个数字d。大概就是先算出这些数字的平方，然后挨个分解求出其中的值。 解题1234567function nbDig(n,d) &#123; var s = &apos;&apos;; for(var i=0;i&lt;=n;i++)&#123; s += Math.pow(i,2); &#125; return s.split(d).length-1&#125; 牢骚篇今天，进了个群，挺多厉害的人，还私聊了一个有很多 offer 的同学。顿时觉得，自己就是渣渣啊，一点信心都没有。还是得加油吧，要学的东西还很多啊。]]></content>
@@ -180,6 +184,15 @@
         <tag>编程</tag>
         <tag>js</tag>
         <tag>codewars</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[markdown语法小记]]></title>
+    <url>%2F2017%2F03%2F20%2Fmarkdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[插入表格：1.1. 表格的上下需要空行。空行的多少至关重要 表格中文字居中 在划线部分的划线两端加上”:“ 比如”:—–: | :—-: 代码块:2.1. 合理利用代码块有意想不到的效果。3.]]></content>
+      <tags>
+        <tag>工具</tag>
+        <tag>markdown</tag>
       </tags>
   </entry>
   <entry>

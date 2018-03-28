@@ -343,6 +343,34 @@
 
       <h2 class="post-title">
         
+            <a class="post-title-link" href="/2018/03/28/matrix/" itemprop="url">
+              
+                <span itemprop="name">matrix</span>
+              
+            </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2018-03-28T00:00:00+08:00"
+              content="2018-03-28" >
+          03-28
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
+        
             <a class="post-title-link" href="/2018/03/19/reversInt/" itemprop="url">
               
                 <span itemprop="name">reversint</span>
@@ -409,7 +437,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -870,22 +898,7 @@
 <script type="text/javascript" src="/js/src/love.js"></script>
 </body>
 </html>
-eywords.forEach(function(keyword, i) {
-                    index_title = data_title.indexOf(keyword);
-                    index_content = data_content.indexOf(keyword);
-                    if( index_title >= 0 || index_content >= 0 ){
-                      isMatch = true;
-                      if (i == 0) {
-                        first_occur = index_content;
-                      }
-                    }
-
-                  });
-                }
-                // show search results
-                if (isMatch) {
-                  matchcounts += 1;
-                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+sult-title'>"+ data_title +"</a>";
                   var content = data.content.trim().replace(/<[^>]+>/g,"");
                   if (first_occur >= 0) {
                     // cut out 100 characters
