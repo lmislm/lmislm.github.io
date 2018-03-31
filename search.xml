@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[markdown-trick]]></title>
+    <url>%2F2018%2F03%2F31%2Fmarkdown-trick%2F</url>
+    <content type="text"><![CDATA[vscode snippetsEx: markdown snippets 以设置 markdown 代码片段为例 开启设置 文件 &gt; 首选项 &gt; 设置 123"[markdown]": &#123; "editor.quickSuggestions": true &#125; 设置模板 文件 &gt; 首选项 &gt; 用户代码片段 &gt; markdown.json 12345678910111213141516171819&#123; "markdown write template": &#123; "prefix": "mdrt", "body": [ "--- $1", "title: $TM_FILENAME_BASE", "tags:", "* xx", "categories:", "* xx", "date: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE-$CURRENT_HOUR", "--- ", " \n ", "&lt;!--more--&gt; $2" ], "description": "Create template for markdown write" &#125;&#125; 输出12345678910---title: md-killtags:* xxcategories:* xxdate: 2018-03-31-20---&lt;!--more--&gt; 参考Markdown Snippet Prefix Does Not Trigger Snippet #28048Creating your own snippets]]></content>
+      <categories>
+        <category>日常操作</category>
+      </categories>
+      <tags>
+        <tag>小技巧</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[matrix]]></title>
     <url>%2F2018%2F03%2F28%2Fmatrix%2F</url>
     <content type="text"><![CDATA[矩阵 写一个函数，输入数字 N,返会一个 N*N 的矩阵(环序)。 例如1234567// matrix(2)// [[1, 2],// [3, 4]]// matrix(3)// [[1, 2, 3],// [8, 9, 4],// [7, 6, 5]] 代码1234567891011121314151617181920212223242526272829303132333435363738394041424344function matrix(n) &#123; const results = []; for (let i = 0; i &lt; n; i++) &#123; results.push([]); &#125; let counter = 1; let startColumn = 0; let endColumn = n - 1; let startRow = 0; let endRow = n - 1; while (startColumn &lt;= endColumn &amp;&amp; startRow &lt;= endRow) &#123; //顶列开头到结尾 for (let i = startColumn; i &lt;= endColumn; i++) &#123; results[startRow][i] = counter; counter++; &#125; startRow++; //最右列 for (let i = startRow; i &lt;= endRow; i++) &#123; results[i][endColumn] = counter; counter++; &#125; endColumn--; // 底部行 for (let i = endColumn; i &gt;= startColumn; i--) &#123; results[endRow][i] = counter; counter++; &#125; endRow--; // start 列 for (let i = endRow; i &gt;= startRow; i--) &#123; results[i][startColumn] = counter; counter++; &#125; startColumn++; &#125; return results;&#125; 测试1234567891011121314151617181920212223242526272829const matrix = require('./index');test('matrix 函数已定义', () =&gt; &#123; expect(typeof matrix).toEqual('function');&#125;);test('matrix produces a 2x2 array', () =&gt; &#123; const m = matrix(2); expect(m.length).toEqual(2); expect(m[0]).toEqual([1, 2]); expect(m[1]).toEqual([4, 3]);&#125;);test('matrix produces a 3x3 array', () =&gt; &#123; const m = matrix(3); expect(m.length).toEqual(3); expect(m[0]).toEqual([1, 2, 3]); expect(m[1]).toEqual([8, 9, 4]); expect(m[2]).toEqual([7, 6, 5]);&#125;);test('matrix produces a 4x4 array', () =&gt; &#123; const m = matrix(4); expect(m.length).toEqual(4); expect(m[0]).toEqual([1, 2, 3, 4]); expect(m[1]).toEqual([12, 13, 14, 5]); expect(m[2]).toEqual([11, 16, 15, 6]); expect(m[3]).toEqual([10, 9, 8, 7]);&#125;);]]></content>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.booml.cn/"/>
-  <updated>2018-03-28T11:12:50.341Z</updated>
+  <updated>2018-03-31T12:28:34.077Z</updated>
   <id>http://blog.booml.cn/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>markdown-trick</title>
+    <link href="http://blog.booml.cn/2018/03/31/markdown-trick/"/>
+    <id>http://blog.booml.cn/2018/03/31/markdown-trick/</id>
+    <published>2018-03-31T11:22:20.787Z</published>
+    <updated>2018-03-31T12:28:34.077Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="vscode-snippets"><a href="#vscode-snippets" class="headerlink" title="vscode snippets"></a>vscode snippets</h2><h3 id="Ex-markdown-snippets"><a href="#Ex-markdown-snippets" class="headerlink" title="Ex: markdown snippets"></a>Ex: markdown snippets</h3><blockquote><p>以设置 markdown 代码片段为例</p></blockquote><a id="more"></a><h4 id="开启设置"><a href="#开启设置" class="headerlink" title="开启设置"></a><a href="https://github.com/Microsoft/vscode/issues/28048" target="_blank" rel="noopener">开启设置</a></h4><blockquote><p>文件 &gt; 首选项 &gt; 设置</p></blockquote><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">"[markdown]":  &#123;</span><br><span class="line">    "editor.quickSuggestions": true</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure><h4 id="设置模板"><a href="#设置模板" class="headerlink" title="设置模板"></a><a href="https://code.visualstudio.com/docs/editor/userdefinedsnippets" target="_blank" rel="noopener">设置模板</a></h4><blockquote><p>文件 &gt; 首选项 &gt; 用户代码片段 &gt; markdown.json</p></blockquote><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"markdown write template"</span>: &#123;</span><br><span class="line">    <span class="attr">"prefix"</span>: <span class="string">"mdrt"</span>,</span><br><span class="line">    <span class="attr">"body"</span>: [</span><br><span class="line">      <span class="string">"--- $1"</span>,</span><br><span class="line">      <span class="string">"title: $TM_FILENAME_BASE"</span>,</span><br><span class="line">      <span class="string">"tags:"</span>,</span><br><span class="line">      <span class="string">"* xx"</span>,</span><br><span class="line">      <span class="string">"categories:"</span>,</span><br><span class="line">      <span class="string">"* xx"</span>,</span><br><span class="line">      <span class="string">"date: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE-$CURRENT_HOUR"</span>,</span><br><span class="line">      <span class="string">"--- "</span>,</span><br><span class="line">      <span class="string">" \n "</span>,</span><br><span class="line"></span><br><span class="line">      <span class="string">"&lt;!--more--&gt; $2"</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">"description"</span>: <span class="string">"Create template for markdown write"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h4 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: md-kill</span><br><span class="line">tags:</span><br><span class="line">* xx</span><br><span class="line">categories:</span><br><span class="line">* xx</span><br><span class="line">date: 2018-03-31-20</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">&lt;!--more--&gt;</span><br></pre></td></tr></table></figure><h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="https://github.com/Microsoft/vscode/issues/28048" target="_blank" rel="noopener">Markdown Snippet Prefix Does Not Trigger Snippet #28048</a><br><a href="https://code.visualstudio.com/docs/editor/userdefinedsnippets" target="_blank" rel="noopener">Creating your own snippets</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;vscode-snippets&quot;&gt;&lt;a href=&quot;#vscode-snippets&quot; class=&quot;headerlink&quot; title=&quot;vscode snippets&quot;&gt;&lt;/a&gt;vscode snippets&lt;/h2&gt;&lt;h3 id=&quot;Ex-markdown-snippets&quot;&gt;&lt;a href=&quot;#Ex-markdown-snippets&quot; class=&quot;headerlink&quot; title=&quot;Ex: markdown snippets&quot;&gt;&lt;/a&gt;Ex: markdown snippets&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;以设置 markdown 代码片段为例&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="日常操作" scheme="http://blog.booml.cn/categories/%E6%97%A5%E5%B8%B8%E6%93%8D%E4%BD%9C/"/>
+    
+    
+      <category term="小技巧" scheme="http://blog.booml.cn/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/"/>
+    
+  </entry>
   
   <entry>
     <title>matrix</title>
@@ -518,31 +542,6 @@
       <category term="编程" scheme="http://blog.booml.cn/tags/%E7%BC%96%E7%A8%8B/"/>
     
       <category term="vue" scheme="http://blog.booml.cn/tags/vue/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>配置hexo标签</title>
-    <link href="http://blog.booml.cn/2016/03/20/hexo%E4%B8%AD%E7%9A%84tags/"/>
-    <id>http://blog.booml.cn/2016/03/20/hexo中的tags/</id>
-    <published>2016-03-20T13:41:18.000Z</published>
-    <updated>2018-03-19T15:04:37.091Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="体会"><a href="#体会" class="headerlink" title="体会"></a>体会</h2><ol><li>hexo 写作要求的格式非常的严格，连空格都不能省略。</li><li>英语不好是硬伤，tags 标签在我配置的时候写成了 tages！害 得我找了很久。总算是搭建完了很多的功能。</li></ol>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;体会&quot;&gt;&lt;a href=&quot;#体会&quot; class=&quot;headerlink&quot; title=&quot;体会&quot;&gt;&lt;/a&gt;体会&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;hexo 写作要求的格式非常的严格，连空格都不能省略。&lt;/li&gt;
-&lt;li&gt;英语不好是硬伤，tags 标签在我配置的时候写成了 t
-      
-    
-    </summary>
-    
-    
-      <category term="hexo" scheme="http://blog.booml.cn/tags/hexo/"/>
     
   </entry>
   
