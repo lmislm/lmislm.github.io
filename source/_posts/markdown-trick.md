@@ -1,5 +1,5 @@
 ---
-title: md-kill
+title: markdown-trick
 tags:
 * xx
 categories:
