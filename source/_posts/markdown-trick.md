@@ -1,9 +1,9 @@
 ---
 title: markdown-trick
 tags:
-* xx
+* 小技巧
 categories:
-* xx
+* 日常操作
 date: 2018-03-31-20
 ---
 
