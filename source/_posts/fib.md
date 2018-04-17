@@ -1,17 +1,12 @@
 ---
 
 title: fib
-
 tags:
-
-* 编程
-* JS
-* Interview
-
+- 编程
+- JS
+- Interview
 categories:
-
-* 学习
-
+- 学习
 date: 2018-04-17-22
 ---
 
