@@ -3,10 +3,10 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Baskerville*
-subtitle: Hello World!
+title: LMISLMのBlog
+subtitle: “   故不积跬步，无以至千里；不积小流，无以成江海。  -  荀子《劝学篇》”
 description: 凝视深渊过久，深渊将回以凝视;与恶龙缠斗过久，自身亦成为恶龙
-author: Baskerville*
+author: lmislm
 language: zh-Hans
 timezone: 
 #add-my
@@ -44,7 +44,7 @@ relative_link: false
 future: true
 highlight:
   enable: true
-  line_number: true
+  line_number: false
   auto_detect: false
   tab_replace:
 
@@ -68,7 +68,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: next
+theme: melody
 #theme: yelee
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
@@ -105,5 +105,8 @@ plugin:
 search:
   path: search.xml
   field: post
+  labels:
+    input_placeholder: 搜索文章
+    hits_empty: "找不到: ${query}" # if there are no result
   format: html
   limit: 10000
