@@ -9,8 +9,6 @@ date: 2018-03-31-20
 
 ## vscode snippets
 
-### Ex: markdown snippets
-
 > 以设置 markdown 代码片段为例
 
 <!--more-->
