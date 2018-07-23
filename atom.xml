@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>LMISLMのblog</title>
   
-  <subtitle>“故不积跬步，无以至千里；不积小流，无以成江海。” -- 荀子《劝学篇》</subtitle>
+  <subtitle>故不积跬步，无以至千里；不积小流，无以成江海。 -- 荀子《劝学篇》</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.booml.cn/"/>
