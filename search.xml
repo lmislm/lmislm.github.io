@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[markdown-trick]]></title>
     <url>%2F2018%2F07%2F22%2Fmarkdown-trick%2F</url>
-    <content type="text"><![CDATA[vscode snippetsEx: markdown snippets 以设置 markdown 代码片段为例 开启设置 文件 &gt; 首选项 &gt; 设置 123"[markdown]": &#123; "editor.quickSuggestions": true &#125; 设置模板 文件 &gt; 首选项 &gt; 用户代码片段 &gt; markdown.json 12345678910111213141516171819&#123; "markdown write template": &#123; "prefix": "mdrt", "body": [ "--- $1", "title: $TM_FILENAME_BASE", "tags:", "* xx", "categories:", "* xx", "date: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE-$CURRENT_HOUR", "--- ", " \n ", "&lt;!--more--&gt; $2" ], "description": "Create template for markdown write" &#125;&#125; 输出12345678910---title: md-killtags:* xxcategories:* xxdate: 2018-03-31-20---&lt;!--more--&gt; 参考Markdown Snippet Prefix Does Not Trigger Snippet #28048Creating your own snippets]]></content>
+    <content type="text"><![CDATA[vscode snippets 以设置 markdown 代码片段为例 开启设置 文件 &gt; 首选项 &gt; 设置 123"[markdown]": &#123; "editor.quickSuggestions": true &#125; 设置模板 文件 &gt; 首选项 &gt; 用户代码片段 &gt; markdown.json 12345678910111213141516171819&#123; "markdown write template": &#123; "prefix": "mdrt", "body": [ "--- $1", "title: $TM_FILENAME_BASE", "tags:", "* xx", "categories:", "* xx", "date: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE-$CURRENT_HOUR", "--- ", " \n ", "&lt;!--more--&gt; $2" ], "description": "Create template for markdown write" &#125;&#125; 输出12345678910---title: md-killtags:* xxcategories:* xxdate: 2018-03-31-20---&lt;!--more--&gt; 参考Markdown Snippet Prefix Does Not Trigger Snippet #28048Creating your own snippets]]></content>
       <categories>
         <category>日常操作</category>
       </categories>
@@ -22,17 +22,6 @@
         <tag>编程</tag>
         <tag>JS</tag>
         <tag>Interview</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[A 星-wiki 部分翻译]]></title>
-    <url>%2F2018%2F07%2F22%2FA%E6%98%9F-wiki%E9%83%A8%E5%88%86%E7%BF%BB%E8%AF%91%2F</url>
-    <content type="text"><![CDATA[Contents 第三部分 Properties 开始 Properties 原文 译文 Like breadth-first search, A* is complete and will always find a solution if one exists provided for fixed .]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>A\*</tag>
       </tags>
   </entry>
   <entry>

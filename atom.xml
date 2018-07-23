@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Baskerville*</title>
+  <title>LMISLMのblog</title>
   
-  
+  <subtitle>“故不积跬步，无以至千里；不积小流，无以成江海。” -- 荀子《劝学篇》</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.booml.cn/"/>
-  <updated>2018-07-22T06:56:59.865Z</updated>
+  <updated>2018-07-23T13:42:00.460Z</updated>
   <id>http://blog.booml.cn/</id>
   
   <author>
@@ -21,13 +21,13 @@
     <link href="http://blog.booml.cn/2018/07/22/markdown-trick/"/>
     <id>http://blog.booml.cn/2018/07/22/markdown-trick/</id>
     <published>2018-07-22T06:56:59.865Z</published>
-    <updated>2018-07-22T06:56:59.865Z</updated>
+    <updated>2018-07-23T13:42:00.460Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="vscode-snippets"><a href="#vscode-snippets" class="headerlink" title="vscode snippets"></a>vscode snippets</h2><h3 id="Ex-markdown-snippets"><a href="#Ex-markdown-snippets" class="headerlink" title="Ex: markdown snippets"></a>Ex: markdown snippets</h3><blockquote><p>以设置 markdown 代码片段为例</p></blockquote><a id="more"></a><h4 id="开启设置"><a href="#开启设置" class="headerlink" title="开启设置"></a><a href="https://github.com/Microsoft/vscode/issues/28048" target="_blank" rel="noopener">开启设置</a></h4><blockquote><p>文件 &gt; 首选项 &gt; 设置</p></blockquote><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">"[markdown]":  &#123;</span><br><span class="line">    "editor.quickSuggestions": true</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure><h4 id="设置模板"><a href="#设置模板" class="headerlink" title="设置模板"></a><a href="https://code.visualstudio.com/docs/editor/userdefinedsnippets" target="_blank" rel="noopener">设置模板</a></h4><blockquote><p>文件 &gt; 首选项 &gt; 用户代码片段 &gt; markdown.json</p></blockquote><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"markdown write template"</span>: &#123;</span><br><span class="line">    <span class="attr">"prefix"</span>: <span class="string">"mdrt"</span>,</span><br><span class="line">    <span class="attr">"body"</span>: [</span><br><span class="line">      <span class="string">"--- $1"</span>,</span><br><span class="line">      <span class="string">"title: $TM_FILENAME_BASE"</span>,</span><br><span class="line">      <span class="string">"tags:"</span>,</span><br><span class="line">      <span class="string">"* xx"</span>,</span><br><span class="line">      <span class="string">"categories:"</span>,</span><br><span class="line">      <span class="string">"* xx"</span>,</span><br><span class="line">      <span class="string">"date: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE-$CURRENT_HOUR"</span>,</span><br><span class="line">      <span class="string">"--- "</span>,</span><br><span class="line">      <span class="string">" \n "</span>,</span><br><span class="line"></span><br><span class="line">      <span class="string">"&lt;!--more--&gt; $2"</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">"description"</span>: <span class="string">"Create template for markdown write"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h4 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: md-kill</span><br><span class="line">tags:</span><br><span class="line">* xx</span><br><span class="line">categories:</span><br><span class="line">* xx</span><br><span class="line">date: 2018-03-31-20</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">&lt;!--more--&gt;</span><br></pre></td></tr></table></figure><h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="https://github.com/Microsoft/vscode/issues/28048" target="_blank" rel="noopener">Markdown Snippet Prefix Does Not Trigger Snippet #28048</a><br><a href="https://code.visualstudio.com/docs/editor/userdefinedsnippets" target="_blank" rel="noopener">Creating your own snippets</a></p>]]></content>
+    <content type="html"><![CDATA[<h2 id="vscode-snippets"><a href="#vscode-snippets" class="headerlink" title="vscode snippets"></a>vscode snippets</h2><blockquote><p>以设置 markdown 代码片段为例</p></blockquote><a id="more"></a><h4 id="开启设置"><a href="#开启设置" class="headerlink" title="开启设置"></a><a href="https://github.com/Microsoft/vscode/issues/28048" target="_blank" rel="noopener">开启设置</a></h4><blockquote><p>文件 &gt; 首选项 &gt; 设置</p></blockquote><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">"[markdown]":  &#123;</span><br><span class="line">    "editor.quickSuggestions": true</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure><h4 id="设置模板"><a href="#设置模板" class="headerlink" title="设置模板"></a><a href="https://code.visualstudio.com/docs/editor/userdefinedsnippets" target="_blank" rel="noopener">设置模板</a></h4><blockquote><p>文件 &gt; 首选项 &gt; 用户代码片段 &gt; markdown.json</p></blockquote><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"markdown write template"</span>: &#123;</span><br><span class="line">    <span class="attr">"prefix"</span>: <span class="string">"mdrt"</span>,</span><br><span class="line">    <span class="attr">"body"</span>: [</span><br><span class="line">      <span class="string">"--- $1"</span>,</span><br><span class="line">      <span class="string">"title: $TM_FILENAME_BASE"</span>,</span><br><span class="line">      <span class="string">"tags:"</span>,</span><br><span class="line">      <span class="string">"* xx"</span>,</span><br><span class="line">      <span class="string">"categories:"</span>,</span><br><span class="line">      <span class="string">"* xx"</span>,</span><br><span class="line">      <span class="string">"date: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE-$CURRENT_HOUR"</span>,</span><br><span class="line">      <span class="string">"--- "</span>,</span><br><span class="line">      <span class="string">" \n "</span>,</span><br><span class="line"></span><br><span class="line">      <span class="string">"&lt;!--more--&gt; $2"</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">"description"</span>: <span class="string">"Create template for markdown write"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h4 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: md-kill</span><br><span class="line">tags:</span><br><span class="line">* xx</span><br><span class="line">categories:</span><br><span class="line">* xx</span><br><span class="line">date: 2018-03-31-20</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">&lt;!--more--&gt;</span><br></pre></td></tr></table></figure><h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="https://github.com/Microsoft/vscode/issues/28048" target="_blank" rel="noopener">Markdown Snippet Prefix Does Not Trigger Snippet #28048</a><br><a href="https://code.visualstudio.com/docs/editor/userdefinedsnippets" target="_blank" rel="noopener">Creating your own snippets</a></p>]]></content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;vscode-snippets&quot;&gt;&lt;a href=&quot;#vscode-snippets&quot; class=&quot;headerlink&quot; title=&quot;vscode snippets&quot;&gt;&lt;/a&gt;vscode snippets&lt;/h2&gt;&lt;h3 id=&quot;Ex-markdown-snippets&quot;&gt;&lt;a href=&quot;#Ex-markdown-snippets&quot; class=&quot;headerlink&quot; title=&quot;Ex: markdown snippets&quot;&gt;&lt;/a&gt;Ex: markdown snippets&lt;/h3&gt;&lt;blockquote&gt;
+      &lt;h2 id=&quot;vscode-snippets&quot;&gt;&lt;a href=&quot;#vscode-snippets&quot; class=&quot;headerlink&quot; title=&quot;vscode snippets&quot;&gt;&lt;/a&gt;vscode snippets&lt;/h2&gt;&lt;blockquote&gt;
 &lt;p&gt;以设置 markdown 代码片段为例&lt;/p&gt;
 &lt;/blockquote&gt;
     
@@ -65,47 +65,6 @@
       <category term="JS" scheme="http://blog.booml.cn/tags/JS/"/>
     
       <category term="Interview" scheme="http://blog.booml.cn/tags/Interview/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>A 星-wiki 部分翻译</title>
-    <link href="http://blog.booml.cn/2018/07/22/A%E6%98%9F-wiki%E9%83%A8%E5%88%86%E7%BF%BB%E8%AF%91/"/>
-    <id>http://blog.booml.cn/2018/07/22/A星-wiki部分翻译/</id>
-    <published>2018-07-22T06:56:59.828Z</published>
-    <updated>2018-07-22T06:56:59.828Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="Contents"><a href="#Contents" class="headerlink" title="Contents"></a>Contents</h3><blockquote><p>第三部分 Properties 开始</p></blockquote><h4 id="Properties"><a href="#Properties" class="headerlink" title="Properties"></a>Properties</h4><table><thead><tr><th>原文</th><th>译文</th></tr></thead><tbody><tr><td>Like breadth-first search, A* is complete and will always find a solution if one exists provided  for fixed  .</td><td></td></tr><tr><td></td></tr></tbody></table><a id="more"></a>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;Contents&quot;&gt;&lt;a href=&quot;#Contents&quot; class=&quot;headerlink&quot; title=&quot;Contents&quot;&gt;&lt;/a&gt;Contents&lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;第三部分 Properties 开始&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h4 id=&quot;Properties&quot;&gt;&lt;a href=&quot;#Properties&quot; class=&quot;headerlink&quot; title=&quot;Properties&quot;&gt;&lt;/a&gt;Properties&lt;/h4&gt;&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;原文&lt;/th&gt;
-&lt;th&gt;译文&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;Like breadth-first search, A* is complete and will always find a solution if one exists provided  for fixed  .&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-    
-    </summary>
-    
-      <category term="算法" scheme="http://blog.booml.cn/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-      <category term="A\*" scheme="http://blog.booml.cn/tags/A/"/>
     
   </entry>
   
@@ -550,6 +509,35 @@
     </summary>
     
       <category term="工作" scheme="http://blog.booml.cn/categories/%E5%B7%A5%E4%BD%9C/"/>
+    
+    
+      <category term="编程" scheme="http://blog.booml.cn/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="js" scheme="http://blog.booml.cn/tags/js/"/>
+    
+      <category term="codewars" scheme="http://blog.booml.cn/tags/codewars/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>codewars - - accm</title>
+    <link href="http://blog.booml.cn/2017/03/16/codewars-accm/"/>
+    <id>http://blog.booml.cn/2017/03/16/codewars-accm/</id>
+    <published>2017-03-16T13:41:18.000Z</published>
+    <updated>2018-07-22T06:56:59.843Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><ul><li>最近在找实习啊，希望暑假有份合适的工作来填充暑假。就刷 codewars。我比较懒所以更新的可能比较慢。。<a id="more"></a></li></ul><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><pre><code>This time no story, no theory. The examples below show you how to write function accum:</code></pre><h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">accum(&quot;abcd&quot;); // &quot;A-Bb-Ccc-Dddd&quot;</span><br><span class="line">accum(&quot;RqaEzty&quot;); // &quot;R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy&quot;</span><br><span class="line">accum(&quot;cwAt&quot;); // &quot;C-Ww-Aaa-Tttt&quot;</span><br></pre></td></tr></table></figure><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><ul><li>大概意思就是递增的方式来重复每个字符再用依次拼接在一块儿，确定用<code>join()</code>来拼接，用 map 方法来迭代，再把首字母转为大写，其余为小写具体方法如下</li></ul><h3 id="解一"><a href="#解一" class="headerlink" title="解一"></a>解一</h3><ul><li>参考方法而之后发现这个并没有完全利用 js 中语法的特性，感觉在 js 学习中不可取</li></ul><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">accm</span>(<span class="params">s</span>) </span>&#123;</span><br><span class="line">  s = s.toUpperCase().split(<span class="string">''</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, l = s.length; i &lt; l; i++) &#123;</span><br><span class="line">    <span class="keyword">var</span> tmp = s[i].toLowerCase();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; i; j++) &#123;</span><br><span class="line">      s[i] += tmp;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> s.join(<span class="string">'-'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="解决二"><a href="#解决二" class="headerlink" title="解决二"></a>解决二</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function accm(s)&#123;</span><br><span class="line">//分割。再map方法查询，再转换大小写</span><br><span class="line">return s.split(&apos;&apos;).map( (x,index) =&gt; x.toUpperCase() + Array(index+1).join(x.toLowerCase())).join(&apos;-&apos;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="解决三"><a href="#解决三" class="headerlink" title="解决三"></a>解决三</h3><ul><li>在方法一上，进行简化，但是没有方法二更简单</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function accum(s)&#123;</span><br><span class="line">    var letter = s.split(&apos;&apos;);</span><br><span class="line">    var result = [];</span><br><span class="line">    for(var i=0;i&lt;letter.length;i++)&#123;</span><br><span class="line">        result.push(letter[i].toUpperCase()+Array(i+1).join(letter[i].toLowerCase()));</span><br><span class="line">    &#125;</span><br><span class="line">    return result.join(&apos;_&apos;);</span><br><span class="line">&#125;</span><br><span class="line">//输出</span><br><span class="line">accum(&apos;fds&apos;)</span><br><span class="line">F_Dd_Sss</span><br></pre></td></tr></table></figure><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>在平时的学习中能多用到所学知识是最好的，如果混合方法写，不利于学习。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;最近在找实习啊，希望暑假有份合适的工作来填充暑假。就刷 codewars。我比较懒所以更新的可能比较慢。。
+    
+    </summary>
+    
+      <category term="工作" scheme="http://blog.booml.cn/categories/%E5%B7%A5%E4%BD%9C/"/>
+    
+      <category term="面试" scheme="http://blog.booml.cn/categories/%E5%B7%A5%E4%BD%9C/%E9%9D%A2%E8%AF%95/"/>
     
     
       <category term="编程" scheme="http://blog.booml.cn/tags/%E7%BC%96%E7%A8%8B/"/>
