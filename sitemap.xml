@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.booml.cn/tags/index.html</loc>
+    
+    <lastmod>2018-12-30T11:20:04.598Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.booml.cn/google7a4da20de8460552.html</loc>
     
     <lastmod>2018-12-30T11:20:04.582Z</lastmod>
@@ -16,9 +23,23 @@
   </url>
   
   <url>
+    <loc>http://blog.booml.cn/categories/index.html</loc>
+    
+    <lastmod>2018-12-30T11:20:04.565Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.booml.cn/baidu_verify_tIlt1AjFQG.html</loc>
     
     <lastmod>2018-12-30T11:20:04.554Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.booml.cn/about/index.html</loc>
+    
+    <lastmod>2018-12-30T11:20:04.551Z</lastmod>
     
   </url>
   
@@ -187,27 +208,6 @@
     <loc>http://blog.booml.cn/2018/12/30/2019-%E5%90%AF%E7%A8%8B/</loc>
     
     <lastmod>2018-12-30T11:20:04.438Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.booml.cn/tags/index.html</loc>
-    
-    <lastmod>2018-03-16T15:24:41.766Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.booml.cn/categories/index.html</loc>
-    
-    <lastmod>2018-03-16T15:24:41.761Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.booml.cn/about/index.html</loc>
-    
-    <lastmod>2018-03-16T15:24:41.758Z</lastmod>
     
   </url>
   
