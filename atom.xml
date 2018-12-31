@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.booml.cn/"/>
-  <updated>2018-12-30T11:20:04.493Z</updated>
+  <updated>2018-12-31T01:47:06.004Z</updated>
   <id>http://blog.booml.cn/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2018年最后一天</title>
+    <link href="http://blog.booml.cn/2018/12/31/2018-%E6%9C%80%E5%90%8E%E4%B8%80%E5%A4%A9/"/>
+    <id>http://blog.booml.cn/2018/12/31/2018-最后一天/</id>
+    <published>2018-12-30T16:00:00.000Z</published>
+    <updated>2018-12-31T01:47:06.004Z</updated>
+    
+    <content type="html"><![CDATA[<p>2018年就要拜拜了。<br>早上9点起来的也不算太晚。折腾了一会儿博客样式之（发现是又拍云开启浏览器缓存的锅）。<br>今天打算看一些书度过。额，还是先玩会儿游戏放空下？不然感觉不太想看书。<br><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fypoomy5vaj20qq0cr0ub.jpg" alt=""><br>放张图片吧，可能就是需要这样来自嘲。<br>– end<br><a id="more"></a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;2018年就要拜拜了。&lt;br&gt;早上9点起来的也不算太晚。折腾了一会儿博客样式之（发现是又拍云开启浏览器缓存的锅）。&lt;br&gt;今天打算看一些书度过。额，还是先玩会儿游戏放空下？不然感觉不太想看书。&lt;br&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fypoomy5vaj20qq0cr0ub.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;放张图片吧，可能就是需要这样来自嘲。&lt;br&gt;– end&lt;br&gt;
+    
+    </summary>
+    
+      <category term="生活" scheme="http://blog.booml.cn/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="感悟" scheme="http://blog.booml.cn/tags/%E6%84%9F%E6%82%9F/"/>
+    
+  </entry>
   
   <entry>
     <title>markdown-trick</title>
@@ -498,35 +520,6 @@
       &lt;h2 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h2&gt;&lt;blockquote&gt;
 &lt;p&gt;Take an integer n (n &amp;gt;= 0) and a digit d (0 &amp;lt;= d &amp;lt;= 9) as an integer. Square all numbers k (0 &amp;lt;= k &amp;lt;= n) between 0 and n.&lt;/p&gt;
 &lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="工作" scheme="http://blog.booml.cn/categories/%E5%B7%A5%E4%BD%9C/"/>
-    
-    
-      <category term="编程" scheme="http://blog.booml.cn/tags/%E7%BC%96%E7%A8%8B/"/>
-    
-      <category term="js" scheme="http://blog.booml.cn/tags/js/"/>
-    
-      <category term="codewars" scheme="http://blog.booml.cn/tags/codewars/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>codewars ooxx =&gt;true</title>
-    <link href="http://blog.booml.cn/2017/03/17/codewars-ooxx/"/>
-    <id>http://blog.booml.cn/2017/03/17/codewars-ooxx/</id>
-    <published>2017-03-17T14:01:18.000Z</published>
-    <updated>2018-12-30T11:20:04.462Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>第二关 Yeah！目标 6kyu，坚持升级~ ：）</p><ul><li>这一关，考察几个基本方法的使用，虽然单独拿出来可能难度不大，但是真正运用在工作中的时候，这些方法可能如大海捞针，不熟练是一时半会儿想不出来的。</li><li>话不多说，呀呀呀，提枪上阵，<a id="more"></a></li></ul><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>Check to see if a string has the same amount of ‘x’s and ‘o’s. The method must return a boolean and be case insensitive. The string can contains any char.（0.0 看不懂？往下戳）</p><h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">XO(&quot;ooxx&quot;) =&gt; true</span><br><span class="line">XO(&quot;xooxx&quot;) =&gt; false</span><br><span class="line">XO(&quot;ooxXm&quot;) =&gt; true</span><br><span class="line">XO(&quot;zpzpzpp&quot;) =&gt; true // when no &apos;x&apos; and &apos;o&apos; is present should return true</span><br><span class="line">XO(&quot;zzoo&quot;) =&gt; false</span><br></pre></td></tr></table></figure><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>题目大概意思就是： 在有限任意字符串中字符 <code>x</code> 和 <code>o</code> 存在且<strong>数量相等</strong>时 值为 <code>true</code>,否则当<code>x</code>和<code>o</code>不存在时，值为<code>flase</code>。匹配的话，首先想到正则表达式来处理。</p><h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><p>利用 RegExp 来匹配正则，然后再判断数量为空和数量是否相等。</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function xo(str) &#123;</span><br><span class="line">    var numX = new RegExp(/x/gi);</span><br><span class="line">    //g 全局搜索，i 忽略大小写</span><br><span class="line">    var numO = new RegExp(/o/gi);</span><br><span class="line">    if(numX.test(str)&amp;&amp;numO.test(str))&#123;</span><br><span class="line">        if(str.match(/x/gi).length == str.match(/o/gi).length)&#123;</span><br><span class="line">            return true;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">console.log(xo(&apos;xxoo&apos;))</span><br><span class="line">console.log(xo(&apos;glld&apos;))</span><br></pre></td></tr></table></figure><ul><li>仔细一看，这种写法太麻烦。如何轻松取敌呢？</li></ul><h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><p>直接返回一个 return，并在 return 中判断。</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function xo(str) &#123;</span><br><span class="line">    var numX = str.match(/x/gi) || [];</span><br><span class="line">    var numO = str.match(/x/gi) || [];</span><br><span class="line"></span><br><span class="line">    return numO.length == numX.length;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h4 id="解析方法一方法二"><a href="#解析方法一方法二" class="headerlink" title="解析方法一方法二"></a>解析方法一方法二</h4><ul><li>什么鬼！这不同的方法有什么区别呢？？我来试着剖析下这两种方法究竟是何利器。来看看<a href="https://developer.mozilla.org" target="_blank" rel="noopener">MDN</a>是怎么说的？贴心的<a href="https://developer.mozilla.org" target="_blank" rel="noopener">MDN</a>还在<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/match" target="_blank" rel="noopener">match</a>这一篇中对两者进行了比较。</li></ul><blockquote><p>1.<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/RegExp#Description" target="_blank" rel="noopener"> RegExp</a> 构造函数创建了一个正则表达式对象，用于将文本与模式匹配。 2.当一个字符串与一个正则表达式匹配时， <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/match" target="_blank" rel="noopener">match()</a>方法检索匹配项。</p></blockquote><h5 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h5><blockquote><p>如果正则表达式没有 g 标志，则 str.match() 会返回和 RegExp.exec() 相同的结果。而且返回的 Array 拥有一个额外的 input 属性，该属性包含被解析的原始字符串。另外，还拥有一个 index 属性，该属性表示匹配结果在原字符串中的索引（以 0 开始）。</p></blockquote><h5 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h5><blockquote><p>如果你需要知道一个字符串是否匹配一个正则表达式 RegExp ，可使用 search() 。如果你只是需要第一个匹配结果，你可能想要使用 RegExp.exec() 。如果你想要获得捕获组，并且设置了全局标志，你需要用 RegExp.exec() 。</p></blockquote><p>综上：大概就是这么吧~不用鸟我了，直接看文档吧~</p><h3 id="方法三"><a href="#方法三" class="headerlink" title="方法三"></a>方法三</h3><p>方法三是在解答完之后查看他人的方法，大神们就是大神。对于各种用法如数家珍，信手拈来。</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">let x = str.match(/x/gi);</span><br><span class="line">let o = str.match(/o/gi);</span><br><span class="line">return (x &amp;&amp; x.length) === (o &amp;&amp; o.length);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="实际运用"><a href="#实际运用" class="headerlink" title="实际运用"></a>实际运用</h3><ul><li>这个<code>keyword</code>变量该如何转义呢？</li></ul><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function addHightLight(txt,keyword) &#123;</span><br><span class="line">    return txt.replace(/+keyword+/g,&quot;&lt;mark class=keyword&gt;&quot;+keyword+&quot;&lt;/mark&gt;&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>答案是：</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function addHightLight(txt,keyword) &#123;</span><br><span class="line">    txt = &quot;咖啡&quot; ;keyword = &quot;机器&quot;;</span><br><span class="line">    var va = new RegExp(keyword,&quot;g&quot;);</span><br><span class="line">    va = /\/咖啡\/g/&#123;lastIndex:0&#125;</span><br><span class="line">    return txt.replace(va,&quot;&lt;mark class=keyword&gt;&quot;+keyword+&quot;&lt;/mark&gt;&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>就到这里了~<img src="http://oapjp6spr.bkt.clouddn.com/196232.jpg" alt="image"></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;第二关 Yeah！目标 6kyu，坚持升级~ ：）&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;这一关，考察几个基本方法的使用，虽然单独拿出来可能难度不大，但是真正运用在工作中的时候，这些方法可能如大海捞针，不熟练是一时半会儿想不出来的。&lt;/li&gt;
-&lt;li&gt;话不多说，呀呀呀，提枪上阵，
     
     </summary>
     

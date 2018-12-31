@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[2018年最后一天]]></title>
+    <url>%2F2018%2F12%2F31%2F2018-%E6%9C%80%E5%90%8E%E4%B8%80%E5%A4%A9%2F</url>
+    <content type="text"><![CDATA[2018年就要拜拜了。早上9点起来的也不算太晚。折腾了一会儿博客样式之（发现是又拍云开启浏览器缓存的锅）。今天打算看一些书度过。额，还是先玩会儿游戏放空下？不然感觉不太想看书。放张图片吧，可能就是需要这样来自嘲。– end]]></content>
+      <categories>
+        <category>生活</category>
+      </categories>
+      <tags>
+        <tag>感悟</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[markdown-trick]]></title>
     <url>%2F2018%2F12%2F30%2Fmarkdown-trick%2F</url>
     <content type="text"><![CDATA[vscode snippets 以设置 markdown 代码片段为例 开启设置 文件 &gt; 首选项 &gt; 设置 "[markdown]": &#123; "editor.quickSuggestions": true &#125; 设置模板 文件 &gt; 首选项 &gt; 用户代码片段 &gt; markdown.json &#123; "markdown write template": &#123; "prefix": "mdrt", "body": [ "--- $1", "title: $TM_FILENAME_BASE", "tags:", "* xx", "categories:", "* xx", "date: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE-$CURRENT_HOUR", "--- ", " \n ", "&lt;!--more--&gt; $2" ], "description": "Create template for markdown write" &#125;&#125; 输出---title: md-killtags:* xxcategories:* xxdate: 2018-03-31-20---&lt;!--more--&gt; 参考Markdown Snippet Prefix Does Not Trigger Snippet #28048Creating your own snippets]]></content>
