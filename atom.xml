@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.booml.cn/"/>
-  <updated>2018-12-31T01:47:06.004Z</updated>
+  <updated>2019-01-01T12:26:42.792Z</updated>
   <id>http://blog.booml.cn/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>新年第一天-2019-01-01</title>
+    <link href="http://blog.booml.cn/2019/01/01/2019-01-01/"/>
+    <id>http://blog.booml.cn/2019/01/01/2019-01-01/</id>
+    <published>2018-12-31T16:00:00.000Z</published>
+    <updated>2019-01-01T12:26:42.792Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="友情提示"><a href="#友情提示" class="headerlink" title="友情提示"></a>友情提示</h3><p>以下内容都是一些碎碎念，生活、读后感、今天生活内容。<br>ps: 附上我的“专业插画师”提供的图片。<br><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fyrcswupyxj20jg0jggmk.jpg" alt=""><br><a id="more"></a></p><h4 id="生活"><a href="#生活" class="headerlink" title="生活"></a>生活</h4><p>新年第一天，昨晚在群里抢红包，一直热闹到很晚才睡。今早10点才慵懒的起来，起的有点晚。中午炸鸡腿，惨不忍睹。后来玩游戏，庸庸碌碌的一天就过去了。这是假期最后一天。希望晚上的时候能收收心看点书。顺带一提昨天晚上看了组件详解。</p><h4 id="读Vue-组件基础之组件通信-《Vue-js实战》"><a href="#读Vue-组件基础之组件通信-《Vue-js实战》" class="headerlink" title="读Vue 组件基础之组件通信 -《Vue js实战》"></a>读Vue 组件基础之组件通信 -《Vue js实战》</h4><h5 id="组件基础"><a href="#组件基础" class="headerlink" title="组件基础"></a>组件基础</h5><p>组件的复用，复用离不开值得传递。父子组件，兄弟组件相互之间的传值。基本的有<code>props</code>，父组件传递给子组件，子组件通过<code>$emit()</code>、<code>v-on:</code> 来将值通知父组件。不太常用的有<code>$parent</code>(书中提到可以通过此通信访问父实例或组件），在组件中引用父组件，<code>$child</code>,父组件引用子组件。《Vue js实战》书中提到了，通过利用实例化一个空的<code>BUS</code>组件起到<code>总线</code>的作用，这种方法还挺新鲜。另外，组件通信时还有slot的内容分发，slot默认名称是可以和具名slot一起用的。相互之间并不影响。好吧，之前用的时候，总是会不自觉给slot取名字。理解的不够深刻。</p><h5 id="高级组件"><a href="#高级组件" class="headerlink" title="高级组件"></a>高级组件</h5><ol><li>组件可以递归自己。</li><li>异步组件。<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4>总感觉这种组件通信方式还有待于改善，应该多读一下开源的一些组件是怎么写出来的。因为上次研究element-UI的时候并没有看它运用这些（指的是通信手段，也可能是我忽略？）但是表现出了很强的可扩展性。很值得学习。包括其中CSS中的书写。<h5 id="插播"><a href="#插播" class="headerlink" title="插播"></a>插播</h5>元旦放假头一天，买了100的零食，一个大箱子，有优惠。现在好像吃的牙有点疼。作啊。明明要减肥的人。<h5 id="发现好的视频"><a href="#发现好的视频" class="headerlink" title="发现好的视频"></a>发现好的视频</h5>今天看B站排行榜的时候发现一个点评动漫的UP主，LexBurner?“艺名”：蕾丝。他的视频看动漫的角度还真是蛮特别，应该是有大量的漫画番剧的基础，能有空看这么多视频和漫画，这人真是不简单。</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;友情提示&quot;&gt;&lt;a href=&quot;#友情提示&quot; class=&quot;headerlink&quot; title=&quot;友情提示&quot;&gt;&lt;/a&gt;友情提示&lt;/h3&gt;&lt;p&gt;以下内容都是一些碎碎念，生活、读后感、今天生活内容。&lt;br&gt;ps: 附上我的“专业插画师”提供的图片。&lt;br&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fyrcswupyxj20jg0jggmk.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="生活" scheme="http://blog.booml.cn/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="感悟" scheme="http://blog.booml.cn/tags/%E6%84%9F%E6%82%9F/"/>
+    
+  </entry>
   
   <entry>
     <title>2018年最后一天</title>
@@ -478,31 +500,6 @@
       <category term="编程" scheme="http://blog.booml.cn/tags/%E7%BC%96%E7%A8%8B/"/>
     
       <category term="css" scheme="http://blog.booml.cn/tags/css/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>markdown语法小记</title>
-    <link href="http://blog.booml.cn/2017/03/20/markdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0/"/>
-    <id>http://blog.booml.cn/2017/03/20/markdown语法小记/</id>
-    <published>2017-03-20T13:41:18.000Z</published>
-    <updated>2018-12-30T11:20:04.499Z</updated>
-    
-    <content type="html"><![CDATA[<ol><li>插入表格：<br>1.1. 表格的上下需要空行。空行的多少至关重要<ul><li>表格中文字居中 在划线部分的划线两端加上”<strong>:</strong>“<ul><li>比如”<strong>:</strong>—–<strong>:</strong> | <strong>:</strong>—-<strong>:</strong><a id="more"></a></li></ul></li></ul></li><li><code>代码块</code>:<br>2.1. 合理利用代码块有意想不到的效果。<br>3.</li></ol>]]></content>
-    
-    <summary type="html">
-    
-      &lt;ol&gt;
-&lt;li&gt;插入表格：&lt;br&gt;1.1. 表格的上下需要空行。空行的多少至关重要&lt;ul&gt;
-&lt;li&gt;表格中文字居中 在划线部分的划线两端加上”&lt;strong&gt;:&lt;/strong&gt;“&lt;ul&gt;
-&lt;li&gt;比如”&lt;strong&gt;:&lt;/strong&gt;—–&lt;strong&gt;:&lt;/strong&gt; | &lt;strong&gt;:&lt;/strong&gt;—-&lt;strong&gt;:&lt;/strong&gt;
-    
-    </summary>
-    
-    
-      <category term="工具" scheme="http://blog.booml.cn/tags/%E5%B7%A5%E5%85%B7/"/>
-    
-      <category term="markdown" scheme="http://blog.booml.cn/tags/markdown/"/>
     
   </entry>
   
