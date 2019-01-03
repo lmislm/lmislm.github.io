@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.booml.cn/"/>
-  <updated>2019-01-02T14:44:31.730Z</updated>
+  <updated>2019-01-03T14:51:10.336Z</updated>
   <id>http://blog.booml.cn/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>第三天2019-01-03</title>
+    <link href="http://blog.booml.cn/2019/01/03/2019-01-03/"/>
+    <id>http://blog.booml.cn/2019/01/03/2019-01-03/</id>
+    <published>2019-01-02T16:00:00.000Z</published>
+    <updated>2019-01-03T14:51:10.336Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="忙碌的一天"><a href="#忙碌的一天" class="headerlink" title="忙碌的一天"></a>忙碌的一天</h4><p>啊！国际化终于要上线了。总是改文案改样式，我都快改死了。这个译文的调整真不是改的。细化到空格，逗号，括号。<br>今天眼睛又是眯着回来的。不知道怎么了，是眼睛困了，会进行自我保护?所以眼睛会眯着？<br><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fyts90gsxyj20k10k3gm4.jpg" alt=""><br>今天又看了原型和原型链的一片文章，发现真是永远也讲不完，<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">```prototype```, 这种&quot;面向关联&quot;的模式真的是比较奇怪但是有中用。</span><br><span class="line">**列一下几个重要的等式吧。**</span><br><span class="line">&lt;!--more--&gt;</span><br><span class="line">```javascript</span><br><span class="line">// 函数的构造器是Function</span><br><span class="line">Object.__proto__  === Function.prototype // true</span><br><span class="line"></span><br><span class="line">// 函数字面量的__proto__ 指向Function</span><br><span class="line">(function () &#123;&#125;).__proto__ === Function.prototype // true</span><br><span class="line"></span><br><span class="line">// 对象字面量</span><br><span class="line">(&#123;&#125;).__proto__  === Object.prototype // true</span><br><span class="line"></span><br><span class="line">// Object函数原型的__proto__指向 null</span><br><span class="line">Object.prototype.__proto__ === null</span><br><span class="line"></span><br><span class="line">// Function 函数的__proto__ 指向自身prototype</span><br><span class="line">Function.__proto__ === Function.prototype // true</span><br><span class="line"></span><br><span class="line">// Function的prototype是一个对象，所以Function.prototype.__proto__指向Object.prototype</span><br><span class="line">Function.prototype.__proto__ === Object.prototype // true</span><br></pre></td></tr></table></figure></p><h3 id="放图！"><a href="#放图！" class="headerlink" title="放图！"></a>放图！</h3><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fytrfhpdmwj20eg0gamxv.jpg" alt=""></p><h5 id="图说明"><a href="#图说明" class="headerlink" title="图说明"></a>图说明</h5><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fytrxmsbzsj20eg0gbq6u.jpg" alt=""></p><h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><ol><li><p>对象有属性<code>__proto__</code>(又可以称为隐式原型),指向该对象的构造函数的原型对象</p></li><li><p>方法(Function)除了有属性<code>__proto__</code>,还有属性<code>prototype</code>指向该方法的原型对象（包含所有实例共享的属性和方法叫做原型对象），原型对象也有属性<code>constructor</code>指回原构造函数。</p></li><li><p>先有Object.prototype（原型链顶端），Function.prototype继承Object.prototype而产生，最后，Function和Object和其它构造函数继承Function.prototype而产生</p></li></ol><h4 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h4><p>今天就到这吧，这是个很好的开端！！</p><h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><code>[1]</code> <a href="https://www.zhihu.com/question/34183746" target="_blank" rel="noopener">js中<strong>proto</strong>和prototype的区别和关系？</a><br><code>[2]</code> <a href="https://juejin.im/post/5c2c211e6fb9a049a62caf30" target="_blank" rel="noopener">JavaScript原型与继承的秘密</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;忙碌的一天&quot;&gt;&lt;a href=&quot;#忙碌的一天&quot; class=&quot;headerlink&quot; title=&quot;忙碌的一天&quot;&gt;&lt;/a&gt;忙碌的一天&lt;/h4&gt;&lt;p&gt;啊！国际化终于要上线了。总是改文案改样式，我都快改死了。这个译文的调整真不是改的。细化到空格，逗号，括号。&lt;br&gt;今
+      
+    
+    </summary>
+    
+      <category term="生活" scheme="http://blog.booml.cn/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="感悟" scheme="http://blog.booml.cn/tags/%E6%84%9F%E6%82%9F/"/>
+    
+  </entry>
   
   <entry>
     <title>第二天2019-01-02</title>
@@ -496,32 +521,6 @@
       <category term="编程" scheme="http://blog.booml.cn/tags/%E7%BC%96%E7%A8%8B/"/>
     
       <category term="js" scheme="http://blog.booml.cn/tags/js/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>holygrail（圣杯布局）</title>
-    <link href="http://blog.booml.cn/2017/03/25/holygrail/"/>
-    <id>http://blog.booml.cn/2017/03/25/holygrail/</id>
-    <published>2017-03-25T11:21:28.000Z</published>
-    <updated>2018-12-30T11:20:04.486Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="圣杯布局-holygrail"><a href="#圣杯布局-holygrail" class="headerlink" title="圣杯布局(holygrail)"></a>圣杯布局(<a href="https://alistapart.com/article/holygrail" target="_blank" rel="noopener">holygrail</a>)</h2><h3 id="起源"><a href="#起源" class="headerlink" title="起源"></a>起源</h3><blockquote><p>三列。两列固定在两边，中间是一个<strong> 流体 </strong><br>圣杯布局的原理是? 简述实现圣杯布局的步骤。双飞翼布局和圣杯布局有什么异同负 margin 的用法</p></blockquote><a id="more"></a><h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><ul><li>一个简单的仿照例子实现圣杯布局</li></ul><ul><li>步骤</li></ul><h4 id="1-建立框架"><a href="#1-建立框架" class="headerlink" title="1. 建立框架"></a>1. 建立框架</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">&lt;!--第一步 建立框架--&gt;</span><br><span class="line">&lt;div id=&quot;header&quot;&gt;&lt;h1&gt;#header&lt;/h1&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;div id=&quot;container&quot;&gt;</span><br><span class="line">    &lt;h1&gt;#container&lt;/h1&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;div id=&quot;footer&quot;&gt;&lt;h1&gt;#footer&lt;/h1&gt;&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure><h4 id="2-加-column"><a href="#2-加-column" class="headerlink" title="2. 加 column"></a>2. 加 column</h4><ul><li>float 让其在 line。再清除 footer 让它在最下面。添加背景颜色和边界便于观察。中间栏要放在前面以优先渲染。</li></ul><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> &lt;style&gt;</span><br><span class="line">#container &#123;</span><br><span class="line">         padding-left: 200px;</span><br><span class="line">         padding-right:150px;</span><br><span class="line">     &#125;</span><br><span class="line">     #container .column &#123;</span><br><span class="line">         float: left;</span><br><span class="line">     &#125;</span><br><span class="line">     #center &#123;</span><br><span class="line">         width:100%;</span><br><span class="line">     &#125;</span><br><span class="line">     #left &#123;</span><br><span class="line">         width:200px;</span><br><span class="line">     &#125;</span><br><span class="line">     #right &#123;</span><br><span class="line">         width: 150px;</span><br><span class="line">     &#125;</span><br><span class="line">     #footer &#123;</span><br><span class="line">         clear: both;</span><br><span class="line">     &#125;</span><br><span class="line"> &lt;/style&gt;</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;div id=&quot;container&quot;&gt;</span><br><span class="line">    &lt;h1&gt;#container&lt;/h1&gt;</span><br><span class="line">    &lt;div id=&quot;center&quot; class=&quot;column&quot;&gt;&lt;h1&gt;this is center&lt;/h1&gt;&lt;/div&gt;</span><br><span class="line">    &lt;div id=&quot;left&quot; class=&quot;column&quot;&gt;&lt;h1&gt;this is left&lt;/h1&gt;&lt;/div&gt;</span><br><span class="line">    &lt;div id=&quot;right&quot; class=&quot;column&quot;&gt;&lt;h1&gt;this is right&lt;/h1&gt;&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure><ul><li>效果图 2.1<br><img src="https://ooo.0o0.ooo/2017/03/25/58d5d72feabca.png" alt="step2"></li></ul><h4 id="3-将左栏拉到相应位置"><a href="#3-将左栏拉到相应位置" class="headerlink" title="3. 将左栏拉到相应位置"></a>3. 将左栏拉到相应位置</h4><ul><li>要让左栏和中间在一条直线上，先对左栏进行操作,分两步。margin-left:-100%跑到左上角（覆盖主栏目），再设置 position:relative,right:200px 或者 left:-200px（不覆盖主栏目）<ul><li>第一步</li></ul></li></ul><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#left &#123;</span><br><span class="line">width:200px;</span><br><span class="line">margin-left: -100%;</span><br><span class="line">background-color: #555555;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ul><li>效果图 3.1<br><img src="https://ooo.0o0.ooo/2017/03/25/58d5d8169eeaa.png" alt="step3"> * 第二步用相对定位将左栏推开，加上相对定位标志之后，记得给左栏一个<code>right:200px</code>将左栏相对右边 200px,往左推 200px。</li></ul><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#left &#123;</span><br><span class="line">width:200px;</span><br><span class="line">margin-left: -100%;</span><br><span class="line">right:200px;</span><br><span class="line">background-color: #555555;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ul><li>效果图 3.2<br><img src="https://ooo.0o0.ooo/2017/03/25/58d5dae8bdfa3.png" alt="step3_2"><br>.</li></ul><h4 id="4-将右栏加入-line"><a href="#4-将右栏加入-line" class="headerlink" title="4.将右栏加入 line"></a>4.将右栏加入 line</h4><p>注意： 原作者这里用的是<code>margin-right:-150px</code>，在演示时并不能起效果。</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#right &#123;</span><br><span class="line">width: 150px</span><br><span class="line">margin-right: -100%;</span><br><span class="line">background-color: #8cacea;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ul><li>效果图 4.1<br><img src="https://ooo.0o0.ooo/2017/03/25/58d5de6bddba3.png" alt="step4_1"><br>再处理一些小细节,固定的右边栏多出的字，撑开了</li><li>效果图 4.2<br><img src="https://ooo.0o0.ooo/2017/03/25/58d5e21d68c4d.png" alt="step4_2"></li></ul><h4 id="5-结果"><a href="#5-结果" class="headerlink" title="5.结果"></a>5.结果</h4><p><img src="https://ooo.0o0.ooo/2017/03/25/58d5e4038a31c.gif" alt="result"></p><h3 id="总结实现步骤"><a href="#总结实现步骤" class="headerlink" title="总结实现步骤"></a>总结实现步骤</h3><h4 id="1-div-框架搭建出来，"><a href="#1-div-框架搭建出来，" class="headerlink" title="1. div 框架搭建出来，"></a>1. div 框架搭建出来，</h4><ul><li>div- &gt;container，header，footer</li></ul><h4 id="2-加-column，"><a href="#2-加-column，" class="headerlink" title="2. 加 column，"></a>2. 加 column，</h4><ul><li>设置<code>float:left</code>，</li><li>设置<code>center宽度100%</code></li><li><code>清除footer浮动</code></li></ul><h4 id="3-将左栏添到-center-左边，"><a href="#3-将左栏添到-center-左边，" class="headerlink" title="3. 将左栏添到 center 左边，"></a>3. 将左栏添到 center 左边，</h4><ul><li><code>margin-left:-100%</code>到左上（覆盖主栏目），</li><li>再设置<code>position:relative</code>,<code>right:200px</code>或者<code>left:-200px</code>（不覆盖主栏目）</li></ul><h4 id="4-将右栏添右"><a href="#4-将右栏添右" class="headerlink" title="4. 将右栏添右"></a>4. 将右栏添右</h4><ul><li><code>margin-right: -100%;</code></li></ul><h3 id="圣杯布局和双飞翼布局异同"><a href="#圣杯布局和双飞翼布局异同" class="headerlink" title="圣杯布局和双飞翼布局异同"></a>圣杯布局和双飞翼布局异同</h3><ol><li>两种布局方式都是把主列放在文档流最前面，使主列优先加载</li><li>两者在实现上的相同点在于都让三列浮动，然后通过负外边距形成三列布局；</li><li>两种布局方式的不同在于如何处理中间主列的位置：圣杯布局是利用父容器的左右内边距定位；双飞翼布局是把主列嵌套在 div 后利用主列的左右外边距定位。</li></ol><h3 id="浮动元素上的负-margin"><a href="#浮动元素上的负-margin" class="headerlink" title="浮动元素上的负 margin"></a>浮动元素上的负 margin</h3><blockquote><p>给一个浮动元素加上相反方向的负 margin，则会使行间距为 0 且内容重叠。</p></blockquote><ul><li>bug 修复 * 当浮动元素使用负 margin 时，在一些旧的浏览器中可能会出现问题。用<code>position:float</code>,能解决很多问题。</li><li>具体可以参考 <a href="http://www.w3cplus.com/css/the-definitive-guide-to-using-negative-margins.html" target="_blank" rel="noopener">负 margin 用法权威指南</a></li></ul><h3 id="flex-实现的“标准”圣杯布局"><a href="#flex-实现的“标准”圣杯布局" class="headerlink" title="flex 实现的“标准”圣杯布局"></a>flex 实现的“标准”圣杯布局</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes" target="_blank" rel="noopener">MDN</a></p><ul><li>效果图<br><img src="https://ooo.0o0.ooo/2017/03/25/58d5fa60c22ea.png" alt="step"></li></ul><h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ul><li>圣杯布局基本就是（适：自适应，左：左栏，右：右栏）<br>_ 左适右<br>_ 左右适<br>_ 左适、右适<br>_ 等等</li><li><p>圣杯布局还有很多的实现方法<br>_ 纯浮动实现<br>_ flex 实现可以参考，<a href="http://web.jobbole.com/84993/" target="_blank" rel="noopener">圣杯布局小结</a>，觉得这位作者对圣杯布局总结的挺好，各种小例子。其他的也可以搜一下。我这里主要是介绍下圣杯布局。</p></li><li><p>圣杯布局类似 * <a href="http://www.imooc.com/wenda/detail/254035" target="_blank" rel="noopener"> 双飞翼布局</a> 1. left 和 right 覆盖了 center 的左右两边的内容。 2. center 的外部再加一个 div 标签来包裹中间区块， 3. 宽度为 100%。然后再设置 main 的左右外边距，使它回到对应的位置。</p></li></ul><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://alistapart.com/article/holygrail" target="_blank" rel="noopener">In Search of the Holy Grail</a> by Matthew Levine<br><a href="https://segmentfault.com/a/1190000004524159" target="_blank" rel="noopener">关于「圣杯布局」</a> by DotHide<br><a href="http://web.jobbole.com/84993/" target="_blank" rel="noopener">圣杯布局小结</a> by 流云诸葛<br><a href="http://www.jianshu.com/p/1a981df93770" target="_blank" rel="noopener">圣杯布局和双飞翼布局</a> by betterwlf<br><a href="http://blog.leanote.com/post/727600729@qq.com/CSS%E4%B9%8B%E5%9C%A3%E6%9D%AF%E5%B8%83%E5%B1%80%E5%92%8C%E5%8F%8C%E9%A3%9E%E7%BF%BC%E5%B8%83%E5%B1%80" target="_blank" rel="noopener">CSS 之圣杯布局和双飞翼布局</a> by 宋菲<br><a href="http://www.w3cplus.com/css/the-definitive-guide-to-using-negative-margins.html" target="_blank" rel="noopener">负 margin 用法权威指南</a> by Airen 的博客</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;圣杯布局-holygrail&quot;&gt;&lt;a href=&quot;#圣杯布局-holygrail&quot; class=&quot;headerlink&quot; title=&quot;圣杯布局(holygrail)&quot;&gt;&lt;/a&gt;圣杯布局(&lt;a href=&quot;https://alistapart.com/article/holygrail&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;holygrail&lt;/a&gt;)&lt;/h2&gt;&lt;h3 id=&quot;起源&quot;&gt;&lt;a href=&quot;#起源&quot; class=&quot;headerlink&quot; title=&quot;起源&quot;&gt;&lt;/a&gt;起源&lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;三列。两列固定在两边，中间是一个&lt;strong&gt; 流体 &lt;/strong&gt;&lt;br&gt;圣杯布局的原理是? 简述实现圣杯布局的步骤。双飞翼布局和圣杯布局有什么异同负 margin 的用法&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="工作" scheme="http://blog.booml.cn/categories/%E5%B7%A5%E4%BD%9C/"/>
-    
-    
-      <category term="编程" scheme="http://blog.booml.cn/tags/%E7%BC%96%E7%A8%8B/"/>
-    
-      <category term="css" scheme="http://blog.booml.cn/tags/css/"/>
     
   </entry>
   
