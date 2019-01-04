@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[第四天 2019-01-04]]></title>
+    <url>%2F2019%2F01%2F04%2F2019-01-04%2F</url>
+    <content type="text"><![CDATA[一天以为项目会今天上线，结果，一天提了50-60个样式问题。虽然问题都很简单，但是真的是找的要命啊！下面讲讲今天这些问题的来源，讲八卦。 放图看到这奖状没？够专业了吧？ 你以为就只有奖状？！错，还有实在的礼品！第三名和第二名！如图： 真是非常辛苦产品小姐姐了！然而，我下班还当着产品的面，抱怨加需求。也是非常可以的了。第一名有两位！奖励手机壳！本来想聊一聊今天看的一篇，如何优化代码的文章！明天还要早起，算了吧。聊点八卦。–end]]></content>
+      <categories>
+        <category>生活</category>
+      </categories>
+      <tags>
+        <tag>感悟</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[第三天2019-01-03]]></title>
     <url>%2F2019%2F01%2F03%2F2019-01-03%2F</url>
     <content type="text"><![CDATA[忙碌的一天啊！国际化终于要上线了。总是改文案改样式，我都快改死了。这个译文的调整真不是改的。细化到空格，逗号，括号。今天眼睛又是眯着回来的。不知道怎么了，是眼睛困了，会进行自我保护?所以眼睛会眯着？今天又看了原型和原型链的一片文章，发现真是永远也讲不完，```prototype```, 这种&quot;面向关联&quot;的模式真的是比较奇怪但是有中用。**列一下几个重要的等式吧。**&lt;!--more--&gt;```javascript// 函数的构造器是FunctionObject.__proto__ === Function.prototype // true// 函数字面量的__proto__ 指向Function(function () &#123;&#125;).__proto__ === Function.prototype // true// 对象字面量(&#123;&#125;).__proto__ === Object.prototype // true// Object函数原型的__proto__指向 nullObject.prototype.__proto__ === null// Function 函数的__proto__ 指向自身prototypeFunction.__proto__ === Function.prototype // true// Function的prototype是一个对象，所以Function.prototype.__proto__指向Object.prototypeFunction.prototype.__proto__ === Object.prototype // true 放图！ 图说明 小结 对象有属性__proto__(又可以称为隐式原型),指向该对象的构造函数的原型对象 方法(Function)除了有属性__proto__,还有属性prototype指向该方法的原型对象（包含所有实例共享的属性和方法叫做原型对象），原型对象也有属性constructor指回原构造函数。 先有Object.prototype（原型链顶端），Function.prototype继承Object.prototype而产生，最后，Function和Object和其它构造函数继承Function.prototype而产生 结束今天就到这吧，这是个很好的开端！！ 参考[1] js中proto和prototype的区别和关系？[2] JavaScript原型与继承的秘密]]></content>
