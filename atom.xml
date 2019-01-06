@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.booml.cn/"/>
-  <updated>2019-01-05T12:55:47.171Z</updated>
+  <updated>2019-01-06T14:07:02.900Z</updated>
   <id>http://blog.booml.cn/</id>
   
   <author>
@@ -17,11 +17,34 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>第六天2019-01-06</title>
+    <link href="http://blog.booml.cn/2019/01/06/2019-01-06/"/>
+    <id>http://blog.booml.cn/2019/01/06/2019-01-06/</id>
+    <published>2019-01-05T16:00:00.000Z</published>
+    <updated>2019-01-06T14:07:02.900Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="讲讲生活哈"><a href="#讲讲生活哈" class="headerlink" title="讲讲生活哈"></a>讲讲生活哈</h4><p>今天一天，早上起来之后就买了，汤骨和一些作料来做饭吃，真是很便宜，比在外面吃不知道要好多少啊。下面谈谈观影感受。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fyx7u0mosmj20qo0qot9y.jpg" alt=""></p><a id="more"></a><p>然后就开始在B站看电影，毕竟也是买了年度大会员的哈，总要找点专门属于会员的来看哈，因为最近上映的大黄蜂电影，于是就挑这个前传看，就在刚才结束的变形金刚前三部的观看，据说第四部和第五部分与原创相差太大。嗯，于是就不继续看下去吧。但是变形金刚的前三部是真的很帅！看完第一步，你完全想象不到这居然是零几年拍摄的电影CG效果简直不能再好。连看了三部之后真是觉得很热血啊。里面的人物价值观也设置的很合理，<strong>为了不同的追求，永远没有对和错，只有对事情角度的不同，影响。</strong></p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fyx7t096iwj20go096jtu.jpg" alt=""><br>这个周日也就一下子过去了。当然，上午还看了一大半的绣春刀，这部电影镜头什么的真的没话说，就是看到卢大哥被赏百户的时候，看不下去了，觉得，这是沈大人做的孽啊，为什么要为了一己私欲放走了魏忠贤，你觉得他会放过一个知道秘密的人？有时候真的是所有的错误，全在一瞬间决定。当我们遇到这种情况的时候，切记，一定要保持理智啊！因为<strong>摧毁你的不太可能是一个很明显的错误，是你最脆弱的时候犯的错误。</strong><br>今天谈感受就谈到这里吧！<br>–end<br><!--more--></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;讲讲生活哈&quot;&gt;&lt;a href=&quot;#讲讲生活哈&quot; class=&quot;headerlink&quot; title=&quot;讲讲生活哈&quot;&gt;&lt;/a&gt;讲讲生活哈&lt;/h4&gt;&lt;p&gt;今天一天，早上起来之后就买了，汤骨和一些作料来做饭吃，真是很便宜，比在外面吃不知道要好多少啊。下面谈谈观影感受。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fyx7u0mosmj20qo0qot9y.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="生活" scheme="http://blog.booml.cn/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="感悟" scheme="http://blog.booml.cn/tags/%E6%84%9F%E6%82%9F/"/>
+    
+  </entry>
+  
+  <entry>
     <title>五2019-01-05</title>
     <link href="http://blog.booml.cn/2019/01/05/2019-01-05/"/>
     <id>http://blog.booml.cn/2019/01/05/2019-01-05/</id>
     <published>2019-01-04T16:00:00.000Z</published>
-    <updated>2019-01-05T12:55:47.171Z</updated>
+    <updated>2019-01-06T14:05:14.605Z</updated>
     
     <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>今天加班啊！真是一件不太舒服的事情，加班都是为了一件事，让我一个人上线负责主要的内容。<br><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fyw05v0dcuj20go0h1dgb.jpg" alt=""><br>有点累。早上起得有点晚，出门下着小雨，在公交上都没法看点知识类的东西。晃晃悠悠到公司。结果发现我和产品来的最早啊。坑爹啊。不过，加班中午大家一起出去饭馆吃，老板请客这点倒是蛮不错，今天的才也都蛮合胃口！就是鼻子有鼻炎，总感觉人多的时候不太好，鼻子有失体面，下次一定把鼻子这事搞定吧。坚持用就行。<br>下午顺利上线，真是ok。<br>—end</p>]]></content>
     
@@ -491,32 +514,6 @@
       <category term="acm" scheme="http://blog.booml.cn/tags/acm/"/>
     
       <category term="poj" scheme="http://blog.booml.cn/tags/poj/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>codewars_Replace With Alphabet Position</title>
-    <link href="http://blog.booml.cn/2017/05/07/codewars_Replace%20With%20Alphabet%20Position/"/>
-    <id>http://blog.booml.cn/2017/05/07/codewars_Replace With Alphabet Position/</id>
-    <published>2017-05-07T13:41:18.000Z</published>
-    <updated>2018-12-30T11:20:04.470Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>这是一道字符串操作的题。题目如下：</p><a id="more"></a><blockquote><p>Welcome.<br>In this kata you are required to, given a string, replace every letter with its position in the alphabet. If anything in the text isn’t a letter, ignore it and don’t return it. a being 1, b being 2, etc.<br>As an example:</p></blockquote><h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">alphabet_position(&quot;The sunset sets at twelve o&apos; clock.&quot;)</span><br><span class="line"></span><br><span class="line">Should return &quot;20 8 5 19 21 14 19 5 20 19 5 20 19 1 20 20 23 5 12 22 5 15 3 12 15 3 11&quot; (As a string.)</span><br></pre></td></tr></table></figure><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>首先肯定利用方法<code>charCodeAt</code>来处理字符，其次得转化下大小写，因为每个字符都是空格隔开，那么肯定用到<code>split</code>等来“切割”。思路大概就是我代码里头描述的，但是看最佳答案的时候，有相对另外的思路，大概意思差不多但是把处理的顺序调一下，会有意想不到的作用，也是佩服那些大牛们啊，具体怎么调整才可以 →_→ 最优，聪明的你，可以想一想啊 :) 留个悬念。</p><h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function alphabetPosition(text) &#123;</span><br><span class="line">    return text.replace(/[^a-zA-Z]+/g,&apos;&apos;).toUpperCase().split(&apos;&apos;).map(</span><br><span class="line">        function (eachStr) &#123;</span><br><span class="line">            return eachStr.charCodeAt()-64;</span><br><span class="line">        &#125;).join(&apos; &apos;);</span><br><span class="line">&#125;</span><br><span class="line">console.log(alphabetPosition(&apos;The testT&apos;))</span><br></pre></td></tr></table></figure><ul><li>那么我看到目前为止最机智中票数最高的代码下面这个，可惜这些对我来说还是很晦涩啊。但是我想大概思路是差不多的。另外看到很多用 for 循环的，感觉太麻烦，虽然代码容易读，但是我想对于一个想学习 JS 的人来说，尽量用方法应该是好的。</li></ul><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">let alphabetPosition = (text) =&gt; text</span><br><span class="line"> .toUpperCase()</span><br><span class="line"> .replace(/[^A-Z]/g, &apos;&apos;)</span><br><span class="line"> .split(&apos;&apos;)</span><br><span class="line"> .map(ch =&gt; ch.charCodeAt(0) - 64).join(&apos; &apos;);</span><br></pre></td></tr></table></figure><h2 id="实际运用"><a href="#实际运用" class="headerlink" title="实际运用"></a>实际运用</h2><p>看到 js 字符串转换为数字基本就用转换函数的比较多，</p><blockquote><p>js 字符串转换成数字<br>常用的几种方法转换函数、强制类型转换、利用 js 变量弱类型转换。</p></blockquote><ul><li>转换函数<br><code>parseInt(&quot;1234blue&quot;); // returns 1234</code></li><li>强制类型转换<br><code>Boolean(&quot;hi&quot;); //true – non-empty string</code></li><li>js 变量弱类型转换<br><code>var str = &#39;012.345 &#39;;var x = str - 0;x = x * 1;</code></li></ul><p>查资料发现，关于类型转换的还是比较多，但是我并没有感觉其中的区别和用的地方，可能是实际运用接触不多。但是关于字符和数字之间的转换在 Nodejs 中也是有体现。因此，觉得 codewars 的题目质量还真的挺不错，至少对于我这种初学者来说。每一道题目后面可能都是作者精心挑选出来的。所以，加油吧。</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul><li>JavaScript 权威指南(第 6 版)(中文版)</li><li>JavaScript 语言精粹(修订版) 中文版</li><li>MDN(Mozilla Developer Network)</li><li><a href="http://www.bkjia.com/article/24233.html#top" target="_blank" rel="noopener">js 字符串转换成数字</a></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h2&gt;&lt;p&gt;这是一道字符串操作的题。题目如下：&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="工作" scheme="http://blog.booml.cn/categories/%E5%B7%A5%E4%BD%9C/"/>
-    
-    
-      <category term="编程" scheme="http://blog.booml.cn/tags/%E7%BC%96%E7%A8%8B/"/>
-    
-      <category term="js" scheme="http://blog.booml.cn/tags/js/"/>
-    
-      <category term="codewars" scheme="http://blog.booml.cn/tags/codewars/"/>
     
   </entry>
   
