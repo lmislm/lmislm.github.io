@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://blog.booml.cn/2019/01/07/2019-01-08/</loc>
+    <lastmod>2019-01-07T16:01:08.680Z</lastmod>
+    <data>
+        <display>
+        <title>第七天2019-01-07</title>
+        <pubTime>2019-01-06T16:00:00.000Z</pubTime>
+        
+        <tag>JS</tag>
+         
+         
+           
+             
+              <breadCrumb title="学习" url="http://blog.booml.cn/categories/%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://blog.booml.cn/2019/01/06/2019-01-06/</loc>
     <lastmod>2019-01-06T14:07:02.900Z</lastmod>
     <data>
@@ -269,9 +289,9 @@
         <title>reversint</title>
         <pubTime>2018-03-18T16:00:00.000Z</pubTime>
         
-        <tag>编程</tag>
-         
         <tag>JS</tag>
+         
+        <tag>编程</tag>
          
         <tag>Interview</tag>
          
@@ -339,9 +359,9 @@
         <title>matrix</title>
         <pubTime>2018-03-27T16:00:00.000Z</pubTime>
         
-        <tag>编程</tag>
-         
         <tag>JS</tag>
+         
+        <tag>编程</tag>
          
         <tag>Interview</tag>
          
@@ -463,9 +483,9 @@
         <title>fib</title>
         <pubTime>2018-12-30T11:20:04.473Z</pubTime>
         
-        <tag>编程</tag>
-         
         <tag>JS</tag>
+         
+        <tag>编程</tag>
          
         <tag>Interview</tag>
          

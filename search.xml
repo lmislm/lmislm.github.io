@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[第七天2019-01-07]]></title>
+    <url>%2F2019%2F01%2F07%2F2019-01-08%2F</url>
+    <content type="text"><![CDATA[碎碎念最近发现写代码的速度有提升，这说明写业务代码基础都差不多了，接下来就应该深究其内容了，该向代码底层的一些原理进行深入探究了，当然还是得夯实基础。之前看过一点![](https://ws1.sinaimg.cn/large/b15ca614gy1fyygpxh56kj20hr0hr3yx.jpg)&lt;!--more--&gt;### 笔记-上+ 描述&gt; 如果目标对象中的属性具有相同的键，则属性将被源中的属性覆盖。后来的源的属性将类似地覆盖早先的属性。这里应该讲的是```Object.assign()```拷贝的是属性值，但是实际上并不是改变引用就改变值一类。可以仔细的看一下例子，发现```Object.assign()``` 的**陷阱**。#### 拷贝问题```javascript?linenums// 1. 浅拷贝let obj1 = &#123; a: 0 , b: &#123; c: 0&#125;&#125;; // 源对象let obj2 = Object.assign(&#123;&#125;, obj1); // 目标对象console.log(JSON.stringify(obj2)); // &#123; a: 0, b: &#123; c: 0&#125;&#125;// 2. 改变源对象的属性值，拷贝的值并不会改变obj1.a = 1;console.log(JSON.stringify(obj1)); // &#123; a: 1, b: &#123; c: 0&#125;&#125; ，console.log(JSON.stringify(obj2)); // &#123; a: 0, b: &#123; c: 0&#125;&#125;// 3. 修改目标对象的属性obj2.a = 2;console.log(JSON.stringify(obj1)); // &#123; a: 1, b: &#123; c: 0&#125;&#125;console.log(JSON.stringify(obj2)); // &#123; a: 2, b: &#123; c: 0&#125;&#125;// 4. 改变了目标对象的值，因为复制了对源对象的引用，对目标对象属性的修改也能改源对象，如何解决这种问题？obj2.b.c = 3;console.log(JSON.stringify(obj1)); // &#123; a: 1, b: &#123; c: 3&#125;&#125;console.log(JSON.stringify(obj2)); // &#123; a: 2, b: &#123; c: 3&#125;&#125;// 5. 常用的深拷贝JSON.parse(JSON.stringify()),这个方法也有缺点obj1 = &#123; a: 0 , b: &#123; c: 0&#125;&#125;;let obj3 = JSON.parse(JSON.stringify(obj1));obj1.a = 4;obj1.b.c = 4;console.log(JSON.stringify(obj3)); // &#123; a: 0, b: &#123; c: 0&#125;&#125; 合并对象（常用） 以下代码引自MDNvar o1 = &#123; a: 1 &#125;;var o2 = &#123; b: 2 &#125;;var o3 = &#123; c: 3 &#125;;var obj = Object.assign(o1, o2, o3);console.log(obj); // &#123; a: 1, b: 2, c: 3 &#125;console.log(o1); // &#123; a: 1, b: 2, c: 3 &#125; 注意目标对象自身也会改变。 合并具有相同属性的对象 以下代码引自MDNvar o1 = &#123; a: 1, b: 1, c: 1 &#125;;var o2 = &#123; b: 2, c: 2 &#125;;var o3 = &#123; c: 3 &#125;;var obj = Object.assign(&#123;&#125;, o1, o2, o3);console.log(obj); // &#123; a: 1, b: 2, c: 3 &#125; 注意后续参数覆盖问题 拷贝 symbol 类型的属性 描述 Object.assign 方法只会拷贝源对象自身的并且可枚举的属性到目标对象。该方法使用源对象的[[Get]]和目标对象的[[Set]]，所以它会调用相关 getter 和 setter。因此，它分配属性，而不仅仅是复制或定义新的属性。如果合并源包含getter，这可能使其不适合将新属性合并到原型中。为了将属性定义（包括其可枚举性）复制到原型，应使用Object.getOwnPropertyDescriptor()和Object.defineProperty() 。String类型和 Symbol 类型的属性都会被拷贝。 以下代码引自MDN var o1 = &#123; a: 1 &#125;;var o2 = &#123; [Symbol(&apos;foo&apos;)]: 2 &#125;;var obj = Object.assign(&#123;&#125;, o1, o2);console.log(obj); // &#123; a : 1, [Symbol(&quot;foo&quot;)]: 2 &#125; (cf. bug 1207182 on Firefox)Object.getOwnPropertySymbols(obj); // [Symbol(foo)] 先探究到这里吧针对深拷贝，需要使用其他方法，因为 Object.assign()拷贝的是属性值。假如源对象的属性值是一个指向对象的引用，它也只拷贝那个引用值。常用的可能是JSON.parse(JSON.stringify()),这个方法也有缺点。 知识扩展-简单对比 Object.assign() JSON.parse(JSON.stringify()) 2，不适合复制循环引用对象,不适合复制对象方法 参考[1]. Object.assign()–MDN[2]. JavaScript 中的对象拷贝–end]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>JS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[第六天2019-01-06]]></title>
     <url>%2F2019%2F01%2F06%2F2019-01-06%2F</url>
     <content type="text"><![CDATA[讲讲生活哈今天一天，早上起来之后就买了，汤骨和一些作料来做饭吃，真是很便宜，比在外面吃不知道要好多少啊。下面谈谈观影感受。 然后就开始在B站看电影，毕竟也是买了年度大会员的哈，总要找点专门属于会员的来看哈，因为最近上映的大黄蜂电影，于是就挑这个前传看，就在刚才结束的变形金刚前三部的观看，据说第四部和第五部分与原创相差太大。嗯，于是就不继续看下去吧。但是变形金刚的前三部是真的很帅！看完第一步，你完全想象不到这居然是零几年拍摄的电影CG效果简直不能再好。连看了三部之后真是觉得很热血啊。里面的人物价值观也设置的很合理，为了不同的追求，永远没有对和错，只有对事情角度的不同，影响。 这个周日也就一下子过去了。当然，上午还看了一大半的绣春刀，这部电影镜头什么的真的没话说，就是看到卢大哥被赏百户的时候，看不下去了，觉得，这是沈大人做的孽啊，为什么要为了一己私欲放走了魏忠贤，你觉得他会放过一个知道秘密的人？有时候真的是所有的错误，全在一瞬间决定。当我们遇到这种情况的时候，切记，一定要保持理智啊！因为摧毁你的不太可能是一个很明显的错误，是你最脆弱的时候犯的错误。今天谈感受就谈到这里吧！–end]]></content>
@@ -96,8 +107,8 @@
         <category>学习</category>
       </categories>
       <tags>
-        <tag>编程</tag>
         <tag>JS</tag>
+        <tag>编程</tag>
         <tag>Interview</tag>
       </tags>
   </entry>
@@ -120,8 +131,8 @@
         <category>学习</category>
       </categories>
       <tags>
-        <tag>编程</tag>
         <tag>JS</tag>
+        <tag>编程</tag>
         <tag>Interview</tag>
       </tags>
   </entry>
@@ -133,8 +144,8 @@
         <category>学习</category>
       </categories>
       <tags>
-        <tag>编程</tag>
         <tag>JS</tag>
+        <tag>编程</tag>
         <tag>Interview</tag>
       </tags>
   </entry>
@@ -286,6 +297,15 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[markdown语法小记]]></title>
+    <url>%2F2017%2F03%2F20%2Fmarkdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[插入表格：1.1. 表格的上下需要空行。空行的多少至关重要 表格中文字居中 在划线部分的划线两端加上”:“ 比如”:—–: | :—-: 代码块:2.1. 合理利用代码块有意想不到的效果。3.]]></content>
+      <tags>
+        <tag>工具</tag>
+        <tag>markdown</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[codewars-count_digits]]></title>
     <url>%2F2017%2F03%2F20%2Fcodewars%2F</url>
     <content type="text"><![CDATA[题目 Take an integer n (n &gt;= 0) and a digit d (0 &lt;= d &lt;= 9) as an integer. Square all numbers k (0 &lt;= k &lt;= n) between 0 and n. Count the numbers of digits d used in the writing of all the k* *2. Call nb_dig (or nbDig or …) the function taking n and d as parameters and returning this count. 例子 n = 10, d = 1,the k * k are 0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100 We are using the digit 1 in 1, 16, 81, 100. The total count is then 4.nb_dig(25, 1):the numbers of interest are 1, 4, 9, 10, 11, 12, 13, 14, 19, 21which squared are 1, 16, 81, 100, 121, 144, 169, 196, 361, 441 so there are 11 digits 1 for the squares of numbers between 0 and 25. 分析 给出n和d，求 0 到 n 中间的平方，再求这些平方的平方，问所得的这些数中包含多少个数字d。大概就是先算出这些数字的平方，然后挨个分解求出其中的值。 解题function nbDig(n,d) &#123; var s = &apos;&apos;; for(var i=0;i&lt;=n;i++)&#123; s += Math.pow(i,2); &#125; return s.split(d).length-1&#125; 牢骚篇今天，进了个群，挺多厉害的人，还私聊了一个有很多 offer 的同学。顿时觉得，自己就是渣渣啊，一点信心都没有。还是得加油吧，要学的东西还很多啊。]]></content>
@@ -296,15 +316,6 @@
         <tag>编程</tag>
         <tag>js</tag>
         <tag>codewars</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[markdown语法小记]]></title>
-    <url>%2F2017%2F03%2F20%2Fmarkdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[插入表格：1.1. 表格的上下需要空行。空行的多少至关重要 表格中文字居中 在划线部分的划线两端加上”:“ 比如”:—–: | :—-: 代码块:2.1. 合理利用代码块有意想不到的效果。3.]]></content>
-      <tags>
-        <tag>工具</tag>
-        <tag>markdown</tag>
       </tags>
   </entry>
   <entry>
