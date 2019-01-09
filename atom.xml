@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.booml.cn/"/>
-  <updated>2019-01-08T15:13:38.690Z</updated>
+  <updated>2019-01-09T14:15:37.061Z</updated>
   <id>http://blog.booml.cn/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>第九天2019-01-09</title>
+    <link href="http://blog.booml.cn/2019/01/09/2019-01-09/"/>
+    <id>http://blog.booml.cn/2019/01/09/2019-01-09/</id>
+    <published>2019-01-08T16:00:00.000Z</published>
+    <updated>2019-01-09T14:15:37.061Z</updated>
+    
+    <content type="html"><![CDATA[<p>这几天很忙啊！！早上都去的很晚！早点睡觉早点睡觉！</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fz0osud97tj20go0godg5.jpg" alt=""><br>–end<br><a id="more"></a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这几天很忙啊！！早上都去的很晚！早点睡觉早点睡觉！&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fz0osud97tj20go0godg5.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;–end&lt;br&gt;
+    
+    </summary>
+    
+      <category term="生活" scheme="http://blog.booml.cn/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="感悟" scheme="http://blog.booml.cn/tags/%E6%84%9F%E6%82%9F/"/>
+    
+  </entry>
   
   <entry>
     <title>第八天2019-01-08</title>
@@ -474,30 +497,6 @@
       &lt;h2 id=&quot;关于运算符号的思考（acm-热身）&quot;&gt;&lt;a href=&quot;#关于运算符号的思考（acm-热身）&quot; class=&quot;headerlink&quot; title=&quot;关于运算符号的思考（acm 热身）&quot;&gt;&lt;/a&gt;关于运算符号的思考（acm 热身）&lt;/h2&gt;&lt;h3 id=&quot;POJ-No-1003-Hangover&quot;&gt;&lt;a href=&quot;#POJ-No-1003-Hangover&quot; class=&quot;headerlink&quot; title=&quot;POJ No.1003 Hangover&quot;&gt;&lt;/a&gt;POJ No.1003 Hangover&lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;input：&lt;br&gt;1.00&lt;br&gt;3.71&lt;br&gt;output：&lt;br&gt;3 card(s)&lt;br&gt;61 card(s)&lt;/p&gt;
 &lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="学习" scheme="http://blog.booml.cn/categories/%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-      <category term="编程" scheme="http://blog.booml.cn/tags/%E7%BC%96%E7%A8%8B/"/>
-    
-      <category term="acm" scheme="http://blog.booml.cn/tags/acm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>深度优先算法-部分和问题</title>
-    <link href="http://blog.booml.cn/2017/05/24/DFS-%E9%83%A8%E5%88%86%E5%92%8C/"/>
-    <id>http://blog.booml.cn/2017/05/24/DFS-部分和/</id>
-    <published>2017-05-23T16:00:00.000Z</published>
-    <updated>2018-12-30T11:20:04.442Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><h3 id="给定整数-a-1-a-2-…-a-n-，判断是否可以从中选出若干数，使他们的和恰好为-k。"><a href="#给定整数-a-1-a-2-…-a-n-，判断是否可以从中选出若干数，使他们的和恰好为-k。" class="headerlink" title="给定整数 a~1~,a~2~ ,…,a~n~，判断是否可以从中选出若干数，使他们的和恰好为 k。"></a>给定整数 a~1~,a~2~ ,…,a~n~，判断是否可以从中选出若干数，使他们的和恰好为 k。</h3><a id="more"></a><p>限制条件</p><ul><li>1≤ n ≤20</li><li>-10^8^ ≤ a~i~ ≤ 10^8^</li><li>-10^8^ ≤ k ≤ 10^8^<br>输入</li><li>n=4</li><li>a={1,2,4,7}</li><li>k=13<br>输出<br>yes （13 = 2 + 4 + 7）</li></ul><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><h3 id="利用最简单的递归，可以先画出深度优先的树"><a href="#利用最简单的递归，可以先画出深度优先的树" class="headerlink" title="利用最简单的递归，可以先画出深度优先的树"></a>利用最简单的递归，可以先画出深度优先的树</h3><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><figcaption><span>c++</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXNUM = <span class="number">20</span>;</span><br><span class="line"><span class="comment">// 输入</span></span><br><span class="line"><span class="keyword">int</span> arr[MAXNUM];</span><br><span class="line"><span class="keyword">int</span> n, k;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">input_data</span><span class="params">(<span class="keyword">int</span> *n, <span class="keyword">int</span> *k, <span class="keyword">int</span> *arr)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"n = "</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; *n;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"a = &#123;"</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; *n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; arr[i];</span><br><span class="line">        <span class="built_in">cin</span>.get();</span><br><span class="line">        <span class="built_in">cin</span>.get();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"k = "</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; *k;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> <span class="comment">//已经从前n项得到了和sum，然后对于i项之后的分支</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> sum)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="comment">//如果前n项都计算过了，则返回sum是否与k相等</span></span><br><span class="line">    <span class="keyword">if</span> (i == n) <span class="keyword">return</span> sum == k;</span><br><span class="line"><span class="comment">//    不加上a[i]的情况</span></span><br><span class="line">    <span class="keyword">if</span> (dfs(i+<span class="number">1</span>, sum)) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line"><span class="comment">//    加上a[i]的情况</span></span><br><span class="line">    <span class="keyword">if</span> (dfs(i+<span class="number">1</span>, sum+arr[i])) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line"><span class="comment">// 无论是否加上a[i],都不能凑成k就返回false</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (dfs(<span class="number">0</span>, <span class="number">0</span>))</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"Yes"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"No"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    input_data(&amp;n, &amp;k, arr);</span><br><span class="line"></span><br><span class="line">    solve();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h2&gt;&lt;h3 id=&quot;给定整数-a-1-a-2-…-a-n-，判断是否可以从中选出若干数，使他们的和恰好为-k。&quot;&gt;&lt;a href=&quot;#给定整数-a-1-a-2-…-a-n-，判断是否可以从中选出若干数，使他们的和恰好为-k。&quot; class=&quot;headerlink&quot; title=&quot;给定整数 a~1~,a~2~ ,…,a~n~，判断是否可以从中选出若干数，使他们的和恰好为 k。&quot;&gt;&lt;/a&gt;给定整数 a~1~,a~2~ ,…,a~n~，判断是否可以从中选出若干数，使他们的和恰好为 k。&lt;/h3&gt;
     
     </summary>
     
