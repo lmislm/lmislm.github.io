@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[第十天2019-01-10]]></title>
+    <url>%2F2019%2F01%2F10%2F2019-01-10%2F</url>
+    <content type="text"><![CDATA[碎碎念最近都没有不同的图片可以贴了，还需要找点图片啊。今天早上看了下怎么实现new操作符，感觉又回到了，原型和原型链的理解，“new”一个函数的时候，到底发生了什么？兜兜转转看来还是这个理解的不到位。说起理解不到位，让我想起了，今天写业务代码的时候，写到Vue渲染先后顺序这个地方，愣是卡了很久。看来这是对于整个的Vue运行机制还掌握的不够。 笔记-new操作符-上“new” 发生了什么先来看看MDN上是怎么解释的？2 语法new constructor[([arguments])] // constructor：指定对象实例的类型的类或函数 描述 当代码 new Foo(…) 执行时，会发生以下事情： 一个继承自 Foo.prototype 的新对象被创建。 使用指定的参数调用构造函数 Foo ，并将 this 绑定到新创建的对象。new Foo 等同于 new Foo()，也就是没有指定参数列表，Foo 不带任何参数调用的情况。 由构造函数返回的对象就是 new 表达式的结果。如果构造函数没有显式返回一个对象，则使用步骤1创建的对象。（一般情况下，构造函数不返回值，但是用户可以选择主动返回对象，来覆盖正常的对象创建步骤） 网友总结的[1] 创建了一个全新的对象。 这个对象会被执行[[Prototype]]（也就是proto）链接。 生成的新对象会绑定到函数调用的this。 通过new创建的每个对象将最终被[[Prototype]]链接到这个函数的prototype对象上。 如果函数没有返回对象类型Object(包含Functoin, Array, Date, RegExg, Error)，那么new表达式中的函数调用会自动返回这个新的对象。 这个是总结出来的，总觉得有点不科学啊。但目前好像是最好的办法，通过new的功能反推new的实现。 补充使用 Function.prototype 属性将共享属性添加到以前定义的对象类型function Car() &#123;&#125;car1 = new Car()Car.prototype.color = nullconsole.log(car1.color) // null 怎么实现new/** * 模拟实现 new 操作符 * @param &#123;Function&#125; ctor [构造函数] * @return &#123;Object|Function|Regex|Date|Error&#125; [返回结果] */function newOperator(ctor)&#123; if(typeof ctor !== &apos;function&apos;)&#123; throw &apos;newOperator function the first param must be a function&apos;; &#125; // ES6 new.target 是指向构造函数 // new.target 后面会补充下 newOperator.target = ctor; // 1.创建一个全新的对象， // 2.并且执行[[Prototype]]链接 // 4.通过`new`创建的每个对象将最终被`[[Prototype]]`链接到这个函数的`prototype`对象上。 var newObj = Object.create(ctor.prototype); // ES5 arguments转成数组 当然也可以用ES6 [...arguments], Aarry.from(arguments); // 除去ctor构造函数的其余参数 var argsArr = [].slice.call(arguments, 1); // 3.生成的新对象会绑定到函数调用的`this`。 // 获取到ctor函数返回结果 var ctorReturnResult = ctor.apply(newObj, argsArr); // 小结4 中这些类型中合并起来只有Object和Function两种类型 typeof null 也是&apos;object&apos;所以要不等于null，排除null var isObject = typeof ctorReturnResult === &apos;object&apos; &amp;&amp; ctorReturnResult !== null; var isFunction = typeof ctorReturnResult === &apos;function&apos;; if(isObject || isFunction)&#123; return ctorReturnResult; &#125; // 5.如果函数没有返回对象类型`Object`(包含`Functoin`, `Array`, `Date`, `RegExg`, `Error`)，那么`new`表达式中的函数调用会自动返回这个新的对象。 return newObj;&#125; 这个实现，除去一些排除异常的条件，我理解的就几步，把对象复制过去，然后参数绑定过去，排除边界条件，整个咋一看并不是很难，但是很考验对整个操作符的掌握和熟悉程度。 new.target在构造方法调用中，new.target指向被new调用的构造函数，所以”new.”成为了一个虚拟上下文[2] 普通函数中 new.target的值是undefined,可以检测一个函数是否是作为构造函数通过new被调用的。function Foo() &#123; if (!new.target) throw &quot;Foo() must be called with new&quot;; console.log(&quot;Foo instantiated with new&quot;);&#125;Foo(); // throws &quot;Foo() must be called with new&quot;new Foo(); // logs &quot;Foo instantiated with new&quot;， 检测到由new调用 构造函数中稍微复杂点，这里暂时不讨论可以到MDN去看。今天暂时讨论到这啊！明天还得上线呢！有点晚，早点睡觉吧。--end 参考：[1]. 面试官问：能否模拟实现JS的new操作符[2]. new运算符]]></content>
+      <categories>
+        <category>生活</category>
+      </categories>
+      <tags>
+        <tag>感悟</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[第九天2019-01-09]]></title>
     <url>%2F2019%2F01%2F09%2F2019-01-09%2F</url>
     <content type="text"><![CDATA[这几天很忙啊！！早上都去的很晚！早点睡觉早点睡觉！ –end]]></content>
@@ -319,15 +330,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[markdown语法小记]]></title>
-    <url>%2F2017%2F03%2F20%2Fmarkdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[插入表格：1.1. 表格的上下需要空行。空行的多少至关重要 表格中文字居中 在划线部分的划线两端加上”:“ 比如”:—–: | :—-: 代码块:2.1. 合理利用代码块有意想不到的效果。3.]]></content>
-      <tags>
-        <tag>工具</tag>
-        <tag>markdown</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[codewars-count_digits]]></title>
     <url>%2F2017%2F03%2F20%2Fcodewars%2F</url>
     <content type="text"><![CDATA[题目 Take an integer n (n &gt;= 0) and a digit d (0 &lt;= d &lt;= 9) as an integer. Square all numbers k (0 &lt;= k &lt;= n) between 0 and n. Count the numbers of digits d used in the writing of all the k* *2. Call nb_dig (or nbDig or …) the function taking n and d as parameters and returning this count. 例子 n = 10, d = 1,the k * k are 0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100 We are using the digit 1 in 1, 16, 81, 100. The total count is then 4.nb_dig(25, 1):the numbers of interest are 1, 4, 9, 10, 11, 12, 13, 14, 19, 21which squared are 1, 16, 81, 100, 121, 144, 169, 196, 361, 441 so there are 11 digits 1 for the squares of numbers between 0 and 25. 分析 给出n和d，求 0 到 n 中间的平方，再求这些平方的平方，问所得的这些数中包含多少个数字d。大概就是先算出这些数字的平方，然后挨个分解求出其中的值。 解题function nbDig(n,d) &#123; var s = &apos;&apos;; for(var i=0;i&lt;=n;i++)&#123; s += Math.pow(i,2); &#125; return s.split(d).length-1&#125; 牢骚篇今天，进了个群，挺多厉害的人，还私聊了一个有很多 offer 的同学。顿时觉得，自己就是渣渣啊，一点信心都没有。还是得加油吧，要学的东西还很多啊。]]></content>
@@ -338,6 +340,15 @@
         <tag>编程</tag>
         <tag>js</tag>
         <tag>codewars</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[markdown语法小记]]></title>
+    <url>%2F2017%2F03%2F20%2Fmarkdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[插入表格：1.1. 表格的上下需要空行。空行的多少至关重要 表格中文字居中 在划线部分的划线两端加上”:“ 比如”:—–: | :—-: 代码块:2.1. 合理利用代码块有意想不到的效果。3.]]></content>
+      <tags>
+        <tag>工具</tag>
+        <tag>markdown</tag>
       </tags>
   </entry>
   <entry>

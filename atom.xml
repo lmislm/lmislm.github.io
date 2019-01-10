@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.booml.cn/"/>
-  <updated>2019-01-09T14:15:37.061Z</updated>
+  <updated>2019-01-10T15:14:57.260Z</updated>
   <id>http://blog.booml.cn/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>第十天2019-01-10</title>
+    <link href="http://blog.booml.cn/2019/01/10/2019-01-10/"/>
+    <id>http://blog.booml.cn/2019/01/10/2019-01-10/</id>
+    <published>2019-01-09T16:00:00.000Z</published>
+    <updated>2019-01-10T15:14:57.260Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h2><p>最近都没有不同的图片可以贴了，还需要找点图片啊。今天早上看了下怎么实现<code>new</code>操作符，感觉又回到了，原型和原型链的理解，<strong>“new”一个函数的时候，到底发生了什么</strong>？兜兜转转看来还是这个理解的不到位。说起理解不到位，让我想起了，今天写业务代码的时候，写到Vue渲染先后顺序这个地方，愣是卡了很久。看来这是对于整个的Vue运行机制还掌握的不够。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fyygpxh56kj20hr0hr3yx.jpg" alt=""><br><a id="more"></a></p><h2 id="笔记-new操作符-上"><a href="#笔记-new操作符-上" class="headerlink" title="笔记-new操作符-上"></a>笔记-new操作符-上</h2><h3 id="“new”-发生了什么"><a href="#“new”-发生了什么" class="headerlink" title="“new” 发生了什么"></a>“new” 发生了什么</h3><h4 id="先来看看MDN上是怎么解释的？2"><a href="#先来看看MDN上是怎么解释的？2" class="headerlink" title="先来看看MDN上是怎么解释的？2"></a>先来看看MDN上是怎么解释的？<sup><a href="https://juejin.im/post/5bde7c926fb9a049f66b8b52" target="_blank" rel="noopener">2</a></sup></h4><ul><li>语法<br><code>new constructor[([arguments])]</code> // constructor：指定对象实例的类型的类或函数</li><li>描述<blockquote><p>当代码 new Foo(…) 执行时，会发生以下事情：</p></blockquote></li></ul><ol><li>一个继承自 Foo.prototype 的新对象被创建。</li><li>使用指定的参数调用构造函数 Foo ，并将 this 绑定到新创建的对象。new Foo 等同于 new Foo()，也就是没有指定参数列表，Foo 不带任何参数调用的情况。</li><li>由构造函数返回的对象就是 new 表达式的结果。如果构造函数没有显式返回一个对象，则使用步骤1创建的对象。（一般情况下，构造函数不返回值，但是用户可以选择主动返回对象，来覆盖正常的对象创建步骤）</li></ol><h4 id="网友总结的-1"><a href="#网友总结的-1" class="headerlink" title="网友总结的[1]"></a>网友总结的<sup>[1]</sup></h4><ol><li>创建了一个全新的对象。</li><li>这个对象会被执行[[Prototype]]（也就是<strong>proto</strong>）链接。</li><li>生成的新对象会绑定到函数调用的this。</li><li>通过new创建的每个对象将最终被[[Prototype]]链接到这个函数的prototype对象上。</li><li>如果函数没有返回对象类型Object(包含Functoin, Array, Date, RegExg, Error)，那么new表达式中的函数调用会自动返回这个新的对象。</li></ol><p>这个是总结出来的，总觉得有点不科学啊。但目前好像是最好的办法，通过new的功能反推new的实现。</p><h4 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h4><p>使用 Function.prototype 属性将共享属性添加到以前定义的对象类型<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function Car() &#123;&#125;</span><br><span class="line">car1 = new Car()</span><br><span class="line"></span><br><span class="line">Car.prototype.color = null</span><br><span class="line">console.log(car1.color) // null</span><br></pre></td></tr></table></figure></p><h2 id="怎么实现new"><a href="#怎么实现new" class="headerlink" title="怎么实现new"></a>怎么实现new</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 模拟实现 new 操作符</span><br><span class="line"> * @param  &#123;Function&#125; ctor [构造函数]</span><br><span class="line"> * @return &#123;Object|Function|Regex|Date|Error&#125;      [返回结果]</span><br><span class="line"> */</span><br><span class="line">function newOperator(ctor)&#123;</span><br><span class="line">    if(typeof ctor !== &apos;function&apos;)&#123;</span><br><span class="line">      throw &apos;newOperator function the first param must be a function&apos;;</span><br><span class="line">    &#125;</span><br><span class="line">    // ES6 new.target 是指向构造函数</span><br><span class="line">// new.target 后面会补充下</span><br><span class="line">    newOperator.target = ctor;</span><br><span class="line">    // 1.创建一个全新的对象，</span><br><span class="line">    // 2.并且执行[[Prototype]]链接</span><br><span class="line">    // 4.通过`new`创建的每个对象将最终被`[[Prototype]]`链接到这个函数的`prototype`对象上。</span><br><span class="line">    var newObj = Object.create(ctor.prototype);</span><br><span class="line">    // ES5 arguments转成数组 当然也可以用ES6 [...arguments], Aarry.from(arguments);</span><br><span class="line">    // 除去ctor构造函数的其余参数</span><br><span class="line">    var argsArr = [].slice.call(arguments, 1);</span><br><span class="line">    // 3.生成的新对象会绑定到函数调用的`this`。</span><br><span class="line">    // 获取到ctor函数返回结果</span><br><span class="line">    var ctorReturnResult = ctor.apply(newObj, argsArr);</span><br><span class="line">    // 小结4 中这些类型中合并起来只有Object和Function两种类型 typeof null 也是&apos;object&apos;所以要不等于null，排除null</span><br><span class="line">    var isObject = typeof ctorReturnResult === &apos;object&apos; &amp;&amp; ctorReturnResult !== null;</span><br><span class="line">    var isFunction = typeof ctorReturnResult === &apos;function&apos;;</span><br><span class="line">    if(isObject || isFunction)&#123;</span><br><span class="line">        return ctorReturnResult;</span><br><span class="line">    &#125;</span><br><span class="line">    // 5.如果函数没有返回对象类型`Object`(包含`Functoin`, `Array`, `Date`, `RegExg`, `Error`)，那么`new`表达式中的函数调用会自动返回这个新的对象。</span><br><span class="line">    return newObj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>这个实现，除去一些排除异常的条件，我理解的就几步，把对象复制过去，然后参数绑定过去，排除边界条件，整个咋一看并不是很难，但是很考验对整个操作符的掌握和熟悉程度。</p><h3 id="new-target"><a href="#new-target" class="headerlink" title="new.target"></a>new.target</h3><p>在构造方法调用中，<code>new.target</code>指向被<code>new</code>调用的构造函数，所以”new.”成为了一个虚拟上下文<sup>[2]</sup></p><ul><li>普通函数中<br>  <code>new.target</code>的值是undefined,可以检测一个函数是否是作为构造函数通过<code>new</code>被调用的。<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function Foo() &#123;</span><br><span class="line">  if (!new.target) throw &quot;Foo() must be called with new&quot;;</span><br><span class="line">  console.log(&quot;Foo instantiated with new&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Foo(); // throws &quot;Foo() must be called with new&quot;</span><br><span class="line">new Foo(); // logs &quot;Foo instantiated with new&quot;， 检测到由new调用</span><br></pre></td></tr></table></figure></li></ul><ol><li>构造函数中<br>稍微复杂点，这里暂时不讨论可以到<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/new.target" target="_blank" rel="noopener">MDN</a>去看。<br>今天暂时讨论到这啊！明天还得上线呢！有点晚，早点睡觉吧。<pre><code>--end </code></pre>参考：<br>[1]. <a href="https://juejin.im/post/5bde7c926fb9a049f66b8b52" target="_blank" rel="noopener">面试官问：能否模拟实现JS的new操作符</a><br>[2]. <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/new" target="_blank" rel="noopener">new运算符</a></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h2&gt;&lt;p&gt;最近都没有不同的图片可以贴了，还需要找点图片啊。今天早上看了下怎么实现&lt;code&gt;new&lt;/code&gt;操作符，感觉又回到了，原型和原型链的理解，&lt;strong&gt;“new”一个函数的时候，到底发生了什么&lt;/strong&gt;？兜兜转转看来还是这个理解的不到位。说起理解不到位，让我想起了，今天写业务代码的时候，写到Vue渲染先后顺序这个地方，愣是卡了很久。看来这是对于整个的Vue运行机制还掌握的不够。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fyygpxh56kj20hr0hr3yx.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="生活" scheme="http://blog.booml.cn/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="感悟" scheme="http://blog.booml.cn/tags/%E6%84%9F%E6%82%9F/"/>
+    
+  </entry>
   
   <entry>
     <title>第九天2019-01-09</title>
@@ -480,32 +503,6 @@
     
     
       <category term="展示" scheme="http://blog.booml.cn/tags/%E5%B1%95%E7%A4%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>acm基础--POJ No.1003 Hangover</title>
-    <link href="http://blog.booml.cn/2017/05/25/acm00/"/>
-    <id>http://blog.booml.cn/2017/05/25/acm00/</id>
-    <published>2017-05-24T16:00:00.000Z</published>
-    <updated>2018-12-30T11:20:04.451Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="关于运算符号的思考（acm-热身）"><a href="#关于运算符号的思考（acm-热身）" class="headerlink" title="关于运算符号的思考（acm 热身）"></a>关于运算符号的思考（acm 热身）</h2><h3 id="POJ-No-1003-Hangover"><a href="#POJ-No-1003-Hangover" class="headerlink" title="POJ No.1003 Hangover"></a>POJ No.1003 Hangover</h3><blockquote><p>input：<br>1.00<br>3.71<br>output：<br>3 card(s)<br>61 card(s)</p></blockquote><a id="more"></a><figure class="highlight cpp"><figcaption><span>c</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line">main()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="keyword">float</span> a,b;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%f"</span>,&amp;b)==<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">    <span class="keyword">if</span>(b==<span class="number">0.0</span>)<span class="keyword">break</span>;</span><br><span class="line">    a=<span class="number">0.0</span>;</span><br><span class="line">    <span class="keyword">for</span>(n=<span class="number">1</span>;a&lt;b;++n) a+=<span class="number">1.0</span>/(<span class="keyword">float</span>)(n+<span class="number">1</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span> card(s) \n<span class="string">",n-1);</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure><h4 id="逗号运算符号"><a href="#逗号运算符号" class="headerlink" title="逗号运算符号"></a>逗号运算符号</h4><blockquote><p><strong><em>while(scanf(“%f”,&amp;b)==1)</em></strong><br>compare to<br><strong><em>while(scanf(“%f”,&amp;b),b)</em></strong><br>结束条件等价于<strong><em>b!=0</em></strong>即使 b 的值为 0.000001f,0.00001<br>f!=0 为真，也不会结束循环。所以写法(*，b）非常重要</p></blockquote><h4 id="强制类型转换"><a href="#强制类型转换" class="headerlink" title="强制类型转换"></a>强制类型转换</h4><blockquote><p>直接用(float)转换为 int 类型，简单点就写成<br><strong><em>for(n=1;al；)</em></strong></p></blockquote><h4 id="减少变量"><a href="#减少变量" class="headerlink" title="减少变量"></a>减少变量</h4><blockquote><p>省略 int 类型将 n 写入 main（），但是有的编译器并不能通过。所以为了简单清晰，还是不要用的好。</p></blockquote><h4 id="尽量多用-for-循环"><a href="#尽量多用-for-循环" class="headerlink" title="尽量多用 for 循环"></a>尽量多用 for 循环</h4><p><strong>直接缩成一行</strong></p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">其中包含n省略在main</span><br><span class="line">main(n)</span><br><span class="line">&#123;</span><br><span class="line">float b;</span><br><span class="line">for(;scanf(&quot;%f&quot;,&amp;b),b;printf(&quot;%d card(s)\n&quot;,n-1))</span><br><span class="line">for(n=1;b&gt;0;)b-=1./++n;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;关于运算符号的思考（acm-热身）&quot;&gt;&lt;a href=&quot;#关于运算符号的思考（acm-热身）&quot; class=&quot;headerlink&quot; title=&quot;关于运算符号的思考（acm 热身）&quot;&gt;&lt;/a&gt;关于运算符号的思考（acm 热身）&lt;/h2&gt;&lt;h3 id=&quot;POJ-No-1003-Hangover&quot;&gt;&lt;a href=&quot;#POJ-No-1003-Hangover&quot; class=&quot;headerlink&quot; title=&quot;POJ No.1003 Hangover&quot;&gt;&lt;/a&gt;POJ No.1003 Hangover&lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;input：&lt;br&gt;1.00&lt;br&gt;3.71&lt;br&gt;output：&lt;br&gt;3 card(s)&lt;br&gt;61 card(s)&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="学习" scheme="http://blog.booml.cn/categories/%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-      <category term="编程" scheme="http://blog.booml.cn/tags/%E7%BC%96%E7%A8%8B/"/>
-    
-      <category term="acm" scheme="http://blog.booml.cn/tags/acm/"/>
     
   </entry>
   
