@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.booml.cn/"/>
-  <updated>2019-01-11T15:21:53.366Z</updated>
+  <updated>2019-01-12T10:45:23.668Z</updated>
   <id>http://blog.booml.cn/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>第十二2019-01-12</title>
+    <link href="http://blog.booml.cn/2019/01/12/2019-01-12/"/>
+    <id>http://blog.booml.cn/2019/01/12/2019-01-12/</id>
+    <published>2019-01-11T16:00:00.000Z</published>
+    <updated>2019-01-12T10:45:23.668Z</updated>
+    
+    <content type="html"><![CDATA[<p>今天一天还算是过的比较快，看了两三部电影，感觉还好，虽然都是些老电影。早上起来也做饭了，时间刚到中午就做好了，时间点掐的很完美嘛。就是今天没有看书这点，不是很好。睡觉之前还是看看书吧。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fz3zq6tzrlj20m80gotbq.jpg" alt=""><br><a id="more"></a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天一天还算是过的比较快，看了两三部电影，感觉还好，虽然都是些老电影。早上起来也做饭了，时间刚到中午就做好了，时间点掐的很完美嘛。就是今天没有看书这点，不是很好。睡觉之前还是看看书吧。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fz3zq6tzrlj20m80gotbq.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="生活" scheme="http://blog.booml.cn/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="感悟" scheme="http://blog.booml.cn/tags/%E6%84%9F%E6%82%9F/"/>
+    
+  </entry>
   
   <entry>
     <title>第十一天2019-01-11</title>
@@ -477,33 +500,6 @@
       <category term="编程" scheme="http://blog.booml.cn/tags/%E7%BC%96%E7%A8%8B/"/>
     
       <category term="c" scheme="http://blog.booml.cn/tags/c/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>shell的正则表达式</title>
-    <link href="http://blog.booml.cn/2017/07/20/shell%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
-    <id>http://blog.booml.cn/2017/07/20/shell正则表达式/</id>
-    <published>2017-07-19T16:00:00.000Z</published>
-    <updated>2018-12-30T11:20:04.535Z</updated>
-    
-    <content type="html"><![CDATA[<hr><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a><strong>简介</strong></h2><ol><li>正则表达式用于描述字符排列和匹配模式的一种语法规则。—-用来筛选数据</li><li>正则表达式与通配符的区别 1.正则表达式–匹配“文件”符合条件的字符串–&gt;&gt;包含匹配 2.通配符—–匹配符合条件的“文件”名——–&gt;&gt;完全匹配 3.为什么存在，通配符、正则表达式？<a id="more"></a><ul><li>ls、find、cp（操作文件的一些命令）不支持正则表达式，只能用通配符。</li><li>grep、awk、sed（操作字符串的一些命令）支持正则表达式。</li><li>为什么所有的不都支持正则表达式？</li></ul></li><li>正则表达式<ol><li>基础正则</li></ol></li></ol><table><thead><tr><th>元<strong>字</strong>符</th><th>作用</th></tr></thead><tbody><tr><td>*</td><td>前一个字符匹配<strong>0 次</strong>或任意多次</td></tr><tr><td><strong>.</strong></td><td>前一个字符匹配<strong>0 次</strong>或任意多次</td></tr><tr><td><strong>^</strong></td><td>匹配行首，例：^he 匹配以 he 开头的行</td></tr><tr><td><strong>$</strong></td><td>匹配行尾，例：he$匹配以 he 为结尾的字符串</td></tr><tr><td><strong>[ ]</strong></td><td>匹配括号中指定的任意一个字符，<strong>只匹配一个</strong> 例：[a-z]匹配 a-z 中的任意一个字符，[0-9][a-z]表示“连续匹配”</td></tr><tr><td><strong>[^]</strong></td><td>匹配除中括号字符外任意一个字符，例：^[0-9]匹配任意一位非数字的字符</td></tr><tr><td>\</td><td>转义符，取消特殊字符的含义</td></tr><tr><td>\ { n\ }</td><td>表示前面字符<strong>恰好</strong>出现 n 次</td></tr><tr><td>\ { n,\ }</td><td>表示前面字符出现<strong>不小于</strong>n 次</td></tr><tr><td>\ {n,m\ }</td><td>表示其前面字符<strong>至少</strong>出现 n 次</td></tr></tbody></table><ol><li>扩展正则</li></ol><hr><h2 id="正则表达式（基础正则）"><a href="#正则表达式（基础正则）" class="headerlink" title="正则表达式（基础正则）"></a><strong>正则表达式（基础正则）</strong></h2><h3 id="“-“"><a href="#“-“" class="headerlink" title="“ * “"></a>“ * “</h3><ol><li>“<code>*</code>“星号——–不同于通配符中的匹配所有内容。<ul><li>前一个字符匹配<strong>0 次</strong>，或者任意多次。<ul><li><code>a*</code> - - 匹配<strong>所有内容</strong>，包括<strong>空白行</strong>。</li><li><code>aa*</code> - - 匹配至少包含有一个 a 的行。</li><li><code>aaa*</code> - -匹配至少包含两个连续的 a 的字符串。</li></ul></li></ul></li></ol><h3 id="“-“-1"><a href="#“-“-1" class="headerlink" title="“ . “"></a>“ . “</h3><ol><li>“<code>.</code>“——–和通配符中”?”类似。<ul><li>匹配<strong>除了换行符</strong>外任意字符<ul><li><code>s..d</code> - - 匹配之间两个字符的单词。</li><li><code>s.*d</code> - - 匹配之间的任意字符。</li><li><code>.*</code> - - 匹配所有内容。</li></ul></li></ul></li></ol><h3 id="“-“、”-“、”-“、”-“"><a href="#“-“、”-“、”-“、”-“" class="headerlink" title="“ ^ “、” $ “、” [] “、” [ ^ ] “"></a>“ ^ “、” $ “、” [] “、” [ ^ ] “</h3><ol><li>“<code>^</code>“、”<code>$</code>“、”<code>[]</code>“、”<code>[^]</code>“<ul><li><code>^</code> - - 匹配行首。</li><li><code>$</code> - - 匹配行尾。</li><li><code>[]</code> - - 匹配括号中指定字符串中的任意字符，<strong>只匹配一个</strong>。</li><li><code>[^]</code> - - 匹配除中括号的字符以外的任意一个字符。</li></ul></li></ol><h3 id="n-、-n-、-n-m"><a href="#n-、-n-、-n-m" class="headerlink" title="{n\ }、{n,\ }、{n,m\ }"></a>{n\ }、{n,\ }、{n,m\ }</h3><ol><li>“<code>\{n\}</code>”、”<code>\{n,\}</code>“、”<code>\{n,m\}</code>“<ul><li><code>\{n\}</code> - - 例：<code>a\{3\}</code> 匹配 a 字母连续出现三次的字符串（连续四次以上也会被匹配到，所以在该匹配首尾加定界符能精确匹配到）</li><li><code>\{n,\}</code> - - 例：<code>\{n,\}</code> 前面字符出现不少于 n 次</li><li><code>\{n,m\}</code> - - 例：<code>sa\{1,3}i</code> 匹配在字母 s 和字母 i 之间最少一个 a，最多三个 a</li></ul></li></ol>]]></content>
-    
-    <summary type="html">
-    
-      &lt;hr&gt;
-&lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;&lt;strong&gt;简介&lt;/strong&gt;&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;正则表达式用于描述字符排列和匹配模式的一种语法规则。—-用来筛选数据&lt;/li&gt;
-&lt;li&gt;正则表达式与通配符的区别 1.正则表达式–匹配“文件”符合条件的字符串–&amp;gt;&amp;gt;包含匹配 2.通配符—–匹配符合条件的“文件”名——–&amp;gt;&amp;gt;完全匹配 3.为什么存在，通配符、正则表达式？
-    
-    </summary>
-    
-      <category term="学习" scheme="http://blog.booml.cn/categories/%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-      <category term="编程" scheme="http://blog.booml.cn/tags/%E7%BC%96%E7%A8%8B/"/>
-    
-      <category term="shell" scheme="http://blog.booml.cn/tags/shell/"/>
     
   </entry>
   
