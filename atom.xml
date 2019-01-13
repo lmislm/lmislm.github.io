@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.booml.cn/"/>
-  <updated>2019-01-12T10:45:23.668Z</updated>
+  <updated>2019-01-13T10:48:53.808Z</updated>
   <id>http://blog.booml.cn/</id>
   
   <author>
@@ -17,11 +17,34 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>第十二2019-01-12</title>
+    <title>第十三天2019-01-13</title>
+    <link href="http://blog.booml.cn/2019/01/13/2019-01-13/"/>
+    <id>http://blog.booml.cn/2019/01/13/2019-01-13/</id>
+    <published>2019-01-12T16:00:00.000Z</published>
+    <updated>2019-01-13T10:48:53.808Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>今天一天上午做饭，下午看电影，一天吧~做了个肉炒腐竹，看电影《雨果》、《美丽心灵》。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fz55fdzo0ej213u0mcnpe.jpg" alt=""><br><a id="more"></a></p><ol><li>不得不说，电影《雨果》中的场景构建的是非常的漂亮，不知道是色彩的原因还是其他，其中包含了很多的机械，一些机械钟类转轴，非常的精美，整个故事的价值观，取向，也非常的完美！不可多得的好电影啊。看完这部电影，才知道什么叫做法国式的浪漫，看来法国式的浪漫不只是与常见的爱情，还在于法国的电影中所体现出的人物的绅士。</li></ol><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fz55ey1b66j213v0mhu0y.jpg" alt=""></p><ol><li>接下来的一部电影就是《美丽心灵》，这部电影183分钟，真的是看的人惊心动魄，不是各种悬疑故事，也不是各种打斗场面，而是来自内心的那种波澜起伏，主人公战胜精神病的坚强的意志，更赞的是电影标题所突出的人的心灵美。也是被片中的主人公的爱情喂饱了狗粮，甚至完全可以当做爱情片来看，“You are reason, you are all my reason”。但我更认为这部电影带给人的力量不仅限于此。不多说了，这电影一定推荐大家看。</li></ol><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fz55fey6dtj217x0oqu0y.jpg" alt=""><br>–end</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;今天一天上午做饭，下午看电影，一天吧~做了个肉炒腐竹，看电影《雨果》、《美丽心灵》。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fz55fdzo0ej213u0mcnpe.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="生活" scheme="http://blog.booml.cn/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="感悟" scheme="http://blog.booml.cn/tags/%E6%84%9F%E6%82%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>第十二天2019-01-12</title>
     <link href="http://blog.booml.cn/2019/01/12/2019-01-12/"/>
     <id>http://blog.booml.cn/2019/01/12/2019-01-12/</id>
     <published>2019-01-11T16:00:00.000Z</published>
-    <updated>2019-01-12T10:45:23.668Z</updated>
+    <updated>2019-01-13T10:39:27.178Z</updated>
     
     <content type="html"><![CDATA[<p>今天一天还算是过的比较快，看了两三部电影，感觉还好，虽然都是些老电影。早上起来也做饭了，时间刚到中午就做好了，时间点掐的很完美嘛。就是今天没有看书这点，不是很好。睡觉之前还是看看书吧。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fz3zq6tzrlj20m80gotbq.jpg" alt=""><br><a id="more"></a></p>]]></content>
     
@@ -473,33 +496,6 @@
       <category term="git" scheme="http://blog.booml.cn/tags/git/"/>
     
       <category term="工具" scheme="http://blog.booml.cn/tags/%E5%B7%A5%E5%85%B7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>undefined behavior in c</title>
-    <link href="http://blog.booml.cn/2018/01/06/undefined%20behavior%20in%20c/"/>
-    <id>http://blog.booml.cn/2018/01/06/undefined behavior in c/</id>
-    <published>2018-01-06T13:41:18.000Z</published>
-    <updated>2018-12-30T11:20:04.539Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="undefined-behavior（未定义行为）"><a href="#undefined-behavior（未定义行为）" class="headerlink" title="undefined behavior（未定义行为）"></a>undefined behavior（未定义行为）</h2><ul><li>思考一下下面这段代码的输出会是什么（答案在后面）？</li><li>这段代码运行过程是怎样？</li></ul><a id="more"></a><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SQ(y) (y*y)  <span class="comment">//define 1</span></span></span><br><span class="line"><span class="comment">//#define SQ(y) ((y)*(y))   //define 2</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">   <span class="keyword">int</span> i = <span class="number">1</span>;</span><br><span class="line">   <span class="keyword">while</span>(i &lt;= <span class="number">5</span>)&#123;</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">"%-2d"</span>,SQ(i++));</span><br><span class="line">   &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">----------</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/*-只试了两种编译器</span></span><br><span class="line"><span class="comment"> *所用编译器：gcc</span></span><br><span class="line"><span class="comment"> *       用define  1 : 结果1  9  15</span></span><br><span class="line"><span class="comment"> *       用define 2 ：结果1  9  15</span></span><br><span class="line"><span class="comment"> *其他编辑器：</span></span><br><span class="line"><span class="comment"> *      用define  1 : 结果2  12  30</span></span><br><span class="line"><span class="comment"> *      用define  2: 结果1  9  15</span></span><br><span class="line"><span class="comment"> *      。。。。。</span></span><br></pre></td></tr></table></figure><h3 id="问题：为什么得到的结果不一样？"><a href="#问题：为什么得到的结果不一样？" class="headerlink" title="问题：为什么得到的结果不一样？"></a>问题：为什么得到的结果不一样？</h3><ul><li>看上面的对比，是因为编辑器的原因导致的??</li><li>一开始某本书上的答案是 2 12 30 ，我很纳闷，开头第一个数居然是 2，于是一番折腾查阅了一下别人的看法。</li></ul><h3 id="我认为的原因是：undefined-behavior"><a href="#我认为的原因是：undefined-behavior" class="headerlink" title="我认为的原因是：undefined behavior"></a>我认为的原因是：undefined behavior</h3><ul><li>什么是：undefined behavior（未定义行为）呢？如下。<blockquote><p>在计算机程序设计中，未定义行为（英语：undefined behavior) 是指行为不可预测的计算机代码。这是一些编程语言的一个特点，最有名的是在 C 语言中。在这些语言中，为了简化标准，并给予实现一定的灵活性，标准特别地规定某些操作的结果是未定义的，这意味着程序员不能预测会发生什么事。……. 因此，这种未定义行为一般应被视为 bug。<br>—来源：<a href="https://zh.wikipedia.org/wiki/%E6%9C%AA%E5%AE%9A%E4%B9%89%E8%A1%8C%E4%B8%BA" target="_blank" rel="noopener">中文维基百科</a></p></blockquote></li></ul><h3 id="还有哪些-undefined-behavior（未定义行为）"><a href="#还有哪些-undefined-behavior（未定义行为）" class="headerlink" title="还有哪些 undefined behavior（未定义行为）"></a>还有哪些 undefined behavior（未定义行为）</h3><blockquote><p>偷懒：)。此处省略一些例子，因为 wiki 上都有一些典型例子。中文访问不了的话，英文在这，<a href="https://en.wikipedia.org/wiki/Undefined_behavior" target="_blank" rel="noopener">点我</a>。</p></blockquote><h2 id="如何解释这段代码"><a href="#如何解释这段代码" class="headerlink" title="如何解释这段代码"></a>如何解释这段代码</h2><ul><li>输出 1 9 15<br>++ 其计算过程可能为：<br><strong>第一次循环时</strong>，i=1，i++=2，1 _ 2 = 2， 再 i++=3<br><strong>第二次循环时</strong>，i=3，i++=4，3 _ 4 = 12，再 i++=5<br><strong>第三次循环时</strong>，i=5，i++=5, 5 * 6 = 30，再 i++=6<br>//进入 i&lt;=5 判断,值为假，退出循环</li></ul><hr><ul><li>输出 2 12 30<br>++ 其计算过程可能为：<br><strong>第一次循环时</strong>，首先 i=1, 1 _ 1 = 1，i++=2，再 i++=3<br><strong>第二次循环时</strong>，首先 i=3, 3 _ 3 = 9，i++=4，再 i++=5<br><strong>第三次循环时</strong>，首先 i=5, 5 * 5 = 25, i++=6，再 i++=7<br>// i=7，所以退出循环。<blockquote><p>首先 i++是先运算，后加。对于 SQ(i++)来说，其实质是((i++)*(i++))。在后加运算符是在整个运算完成之后，才进行加 1 操作的。</p></blockquote></li></ul><p><em>多问和讨论总是有好处的，继续保持：）</em><br>参考：<br>[1]<a href="https://zhidao.baidu.com/question/561702258825816084.html" target="_blank" rel="noopener">c语言的代参宏定义，#define sq(y) ((y)*(y))….输出应该是2 12 30才对啊？？</a>[2]<a href="https://www.zhihu.com/question/36940781/answer/69683475" target="_blank" rel="noopener">int i=5 ；printf(“%d”,i++,++i)；为什么输出 6?</a></p><p>[3]<a href="http://www.cnblogs.com/yezhenhan/archive/2011/11/05/2236973.html" target="_blank" rel="noopener">c语言中define的用法</a><br>进阶（可不看）：<br><a href="https://wenku.baidu.com/view/2bd97e6bdd36a32d737581b4.html" target="_blank" rel="noopener">关于宏定义的 ppt</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;undefined-behavior（未定义行为）&quot;&gt;&lt;a href=&quot;#undefined-behavior（未定义行为）&quot; class=&quot;headerlink&quot; title=&quot;undefined behavior（未定义行为）&quot;&gt;&lt;/a&gt;undefined behavior（未定义行为）&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;思考一下下面这段代码的输出会是什么（答案在后面）？&lt;/li&gt;
-&lt;li&gt;这段代码运行过程是怎样？&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="学习" scheme="http://blog.booml.cn/categories/%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-      <category term="编程" scheme="http://blog.booml.cn/tags/%E7%BC%96%E7%A8%8B/"/>
-    
-      <category term="c" scheme="http://blog.booml.cn/tags/c/"/>
     
   </entry>
   
