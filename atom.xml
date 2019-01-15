@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.booml.cn/"/>
-  <updated>2019-01-14T15:23:44.014Z</updated>
+  <updated>2019-01-15T14:51:03.685Z</updated>
   <id>http://blog.booml.cn/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>第十五天2019-01-15</title>
+    <link href="http://blog.booml.cn/2019/01/15/2019-01-15/"/>
+    <id>http://blog.booml.cn/2019/01/15/2019-01-15/</id>
+    <published>2019-01-14T16:00:00.000Z</published>
+    <updated>2019-01-15T14:51:03.685Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><ul><li>国际化<br>今天对国际化进行了总结，作为第二个发表的人，我发现讲话水平有提高哦，讲的也有层次感了，思路也还算清晰。话说到国际化，确实啊，这个国际化怎么去做，怎么提取需要翻译的全部文本转为变量呢，这个前期工作很繁琐，实际翻译效率并不高。</li><li>手机端适配<br>最近在做手机端适配，要写两套样式。发现还是蛮繁琐的，不过还好，如果原来的页面是自适应的话，那么样式就会简单很多。</li><li>关于最近一些技术上新的路子<br>今早发现其实看Node.js一些源码解析片段可能会很快的就深入到js当中，比如Promise涉及到的SetTimeout()引出来的Even Loop等一些概念。其实可能没有想象中那么深奥，可能是不小心复杂化了。<br>–end<a id="more"></a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;国际化&lt;br&gt;今天对国际化进行了总结，作为第二个发表的人，我发现讲话水平有提高哦，讲的也有层次感了，思路也还算清晰。话说到国际化，确实啊，这个国际化怎么去做，怎么提取需要翻译的全部文本转为变量呢，这个前期工作很繁琐，实际翻译效率并不高。&lt;/li&gt;
+&lt;li&gt;手机端适配&lt;br&gt;最近在做手机端适配，要写两套样式。发现还是蛮繁琐的，不过还好，如果原来的页面是自适应的话，那么样式就会简单很多。&lt;/li&gt;
+&lt;li&gt;关于最近一些技术上新的路子&lt;br&gt;今早发现其实看Node.js一些源码解析片段可能会很快的就深入到js当中，比如Promise涉及到的SetTimeout()引出来的Even Loop等一些概念。其实可能没有想象中那么深奥，可能是不小心复杂化了。&lt;br&gt;–end
+    
+    </summary>
+    
+      <category term="生活" scheme="http://blog.booml.cn/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="感悟" scheme="http://blog.booml.cn/tags/%E6%84%9F%E6%82%9F/"/>
+    
+  </entry>
   
   <entry>
     <title>第十四天2019-01-14</title>
@@ -449,40 +474,6 @@
     
       &lt;h3 id=&quot;矩阵&quot;&gt;&lt;a href=&quot;#矩阵&quot; class=&quot;headerlink&quot; title=&quot;矩阵&quot;&gt;&lt;/a&gt;矩阵&lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;写一个函数，输入数字 N,返会一个 N*N 的矩阵(环序)。&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="学习" scheme="http://blog.booml.cn/categories/%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-      <category term="JS" scheme="http://blog.booml.cn/tags/JS/"/>
-    
-      <category term="编程" scheme="http://blog.booml.cn/tags/%E7%BC%96%E7%A8%8B/"/>
-    
-      <category term="Interview" scheme="http://blog.booml.cn/tags/Interview/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>reversint</title>
-    <link href="http://blog.booml.cn/2018/03/19/reversInt/"/>
-    <id>http://blog.booml.cn/2018/03/19/reversInt/</id>
-    <published>2018-03-18T16:00:00.000Z</published>
-    <updated>2018-12-30T11:20:04.521Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="整数反转-reversint"><a href="#整数反转-reversint" class="headerlink" title="整数反转(reversint)"></a>整数反转(reversint)</h3><h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><blockquote><p>给你一个带符号的整数，返回这些数值的倒序</p></blockquote><blockquote><p>//例如</p></blockquote><blockquote><p>// reverseint(1243) === 3421</p></blockquote><a id="more"></a><blockquote><p>// reverseint(123) === 321</p></blockquote><blockquote><p>// reverseint(-12) === -21</p></blockquote><blockquote><p>// reverseint(-10) === -1</p></blockquote><h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverseint</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> reversed = n</span><br><span class="line">    .toString()</span><br><span class="line">    .split(<span class="string">''</span>)</span><br><span class="line">    .reverse()</span><br><span class="line">    .join(<span class="string">''</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">parseInt</span>(reversed) * <span class="built_in">Math</span>.sign(n);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverseint</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (n =</span><br><span class="line">    <span class="built_in">Math</span>.abs(n)</span><br><span class="line">      .toString()</span><br><span class="line">      .split(<span class="string">''</span>)</span><br><span class="line">      .reverse()</span><br><span class="line">      .join(<span class="string">''</span>) * <span class="built_in">Math</span>.sign(n));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;整数反转-reversint&quot;&gt;&lt;a href=&quot;#整数反转-reversint&quot; class=&quot;headerlink&quot; title=&quot;整数反转(reversint)&quot;&gt;&lt;/a&gt;整数反转(reversint)&lt;/h3&gt;&lt;h3 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;给你一个带符号的整数，返回这些数值的倒序&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;//例如&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;// reverseint(1243) === 3421&lt;/p&gt;
 &lt;/blockquote&gt;
     
     </summary>

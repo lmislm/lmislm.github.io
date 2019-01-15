@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[第十五天2019-01-15]]></title>
+    <url>%2F2019%2F01%2F15%2F2019-01-15%2F</url>
+    <content type="text"><![CDATA[碎碎念 国际化今天对国际化进行了总结，作为第二个发表的人，我发现讲话水平有提高哦，讲的也有层次感了，思路也还算清晰。话说到国际化，确实啊，这个国际化怎么去做，怎么提取需要翻译的全部文本转为变量呢，这个前期工作很繁琐，实际翻译效率并不高。 手机端适配最近在做手机端适配，要写两套样式。发现还是蛮繁琐的，不过还好，如果原来的页面是自适应的话，那么样式就会简单很多。 关于最近一些技术上新的路子今早发现其实看Node.js一些源码解析片段可能会很快的就深入到js当中，比如Promise涉及到的SetTimeout()引出来的Even Loop等一些概念。其实可能没有想象中那么深奥，可能是不小心复杂化了。–end]]></content>
+      <categories>
+        <category>生活</category>
+      </categories>
+      <tags>
+        <tag>感悟</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[第十四天2019-01-14]]></title>
     <url>%2F2019%2F01%2F14%2F2019-01-14%2F</url>
     <content type="text"><![CDATA[碎碎念今天写了一天的适配移动端样式，发现还好，并不是原来想象中的那么难。早上公交上，也看了Vue的源码分析，渐入佳境吧，慢慢的也看的越来越没有障碍了。 Vue源码-笔记Vue 构造函数function Vue (options) &#123; if (process.env.NODE_ENV !== &apos;production&apos; &amp;&amp; !(this instanceof Vue)) &#123; warn(&apos;Vue is a constructor and should be called with the `new` keyword&apos;) &#125; this._init(options)&#125; _init 方法 Vue.prototype._init = function (options?: Object) &#123; const vm: Component = this // a uid vm._uid = uid++ // a flag to avoid this being observed vm._isVue = true // merge options if (options &amp;&amp; options._isComponent) &#123; // optimize internal component instantiation // since dynamic options merging is pretty slow, and none of the // internal component options needs special treatment. initInternalComponent(vm, options) &#125; else &#123;// 走这一步分析 vm.$options = mergeOptions( resolveConstructorOptions(vm.constructor), options || &#123;&#125;, vm ) &#125; /* istanbul ignore else */ if (process.env.NODE_ENV !== &apos;production&apos;) &#123; initProxy(vm) &#125; else &#123; vm._renderProxy = vm &#125; // expose real self vm._self = vm initLifecycle(vm) initEvents(vm) callHook(vm, &apos;beforeCreate&apos;) initState(vm) callHook(vm, &apos;created&apos;) initRender(vm) &#125; Vue第一步 使用策略对象合并参数选项export function resolveConstructorOptions (Ctor: Class&lt;Component&gt;) &#123; let options = Ctor.options if (Ctor.super) &#123; const superOptions = Ctor.super.options const cachedSuperOptions = Ctor.superOptions const extendOptions = Ctor.extendOptions if (superOptions !== cachedSuperOptions) &#123; // super option changed Ctor.superOptions = superOptions extendOptions.render = options.render extendOptions.staticRenderFns = options.staticRenderFns extendOptions._scopeId = options._scopeId options = Ctor.options = mergeOptions(superOptions, extendOptions) if (options.name) &#123; options.components[options.name] = Ctor &#125; &#125; &#125; return options&#125; Vue.super 用来处理继承 mergeOptions// 1、引用依赖import Vue from &apos;../instance/index&apos;其他引用...// 2、合并父子选项值为最终值的策略对象，此时 strats 是一个空对象，因为 config.optionMergeStrategies = Object.create(null)const strats = config.optionMergeStrategies// 3、在 strats 对象上定义与参数选项名称相同的方法strats.el = strats.propsData = function (parent, child, vm, key)&#123;&#125;strats.data = function (parentVal, childVal, vm)config._lifecycleHooks.forEach(hook =&gt; &#123; strats[hook] = mergeHook&#125;)config._assetTypes.forEach(function (type) &#123; strats[type + &apos;s&apos;] = mergeAssets&#125;)strats.watch = function (parentVal, childVal)strats.props =strats.methods =strats.computed = function (parentVal: ?Object, childVal: ?Object)// 默认的合并策略，如果有 `childVal` 则返回 `childVal` 没有则返回 `parentVal`const defaultStrat = function (parentVal: any, childVal: any): any &#123; return childVal === undefined ? parentVal : childVal&#125;// 4、mergeOptions 中根据参数选项调用同名的策略方法进行合并处理export function mergeOptions ( parent: Object, child: Object, vm?: Component): Object &#123; // 其他代码 ... const options = &#123;&#125; let key for (key in parent) &#123; mergeField(key) &#125; for (key in child) &#123; if (!hasOwn(parent, key)) &#123; mergeField(key) &#125; &#125; function mergeField (key) &#123; const strat = strats[key] || defaultStrat options[key] = strat(parent[key], child[key], vm, key) &#125; return options&#125; 内容比较丰富，信息量有点大，慢慢来吧，暂时先到这，下次得加快进度看。–end]]></content>
@@ -374,15 +385,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[markdown语法小记]]></title>
-    <url>%2F2017%2F03%2F20%2Fmarkdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[插入表格：1.1. 表格的上下需要空行。空行的多少至关重要 表格中文字居中 在划线部分的划线两端加上”:“ 比如”:—–: | :—-: 代码块:2.1. 合理利用代码块有意想不到的效果。3.]]></content>
-      <tags>
-        <tag>工具</tag>
-        <tag>markdown</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[codewars-count_digits]]></title>
     <url>%2F2017%2F03%2F20%2Fcodewars%2F</url>
     <content type="text"><![CDATA[题目 Take an integer n (n &gt;= 0) and a digit d (0 &lt;= d &lt;= 9) as an integer. Square all numbers k (0 &lt;= k &lt;= n) between 0 and n. Count the numbers of digits d used in the writing of all the k* *2. Call nb_dig (or nbDig or …) the function taking n and d as parameters and returning this count. 例子 n = 10, d = 1,the k * k are 0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100 We are using the digit 1 in 1, 16, 81, 100. The total count is then 4.nb_dig(25, 1):the numbers of interest are 1, 4, 9, 10, 11, 12, 13, 14, 19, 21which squared are 1, 16, 81, 100, 121, 144, 169, 196, 361, 441 so there are 11 digits 1 for the squares of numbers between 0 and 25. 分析 给出n和d，求 0 到 n 中间的平方，再求这些平方的平方，问所得的这些数中包含多少个数字d。大概就是先算出这些数字的平方，然后挨个分解求出其中的值。 解题function nbDig(n,d) &#123; var s = &apos;&apos;; for(var i=0;i&lt;=n;i++)&#123; s += Math.pow(i,2); &#125; return s.split(d).length-1&#125; 牢骚篇今天，进了个群，挺多厉害的人，还私聊了一个有很多 offer 的同学。顿时觉得，自己就是渣渣啊，一点信心都没有。还是得加油吧，要学的东西还很多啊。]]></content>
@@ -393,6 +395,15 @@
         <tag>编程</tag>
         <tag>js</tag>
         <tag>codewars</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[markdown语法小记]]></title>
+    <url>%2F2017%2F03%2F20%2Fmarkdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[插入表格：1.1. 表格的上下需要空行。空行的多少至关重要 表格中文字居中 在划线部分的划线两端加上”:“ 比如”:—–: | :—-: 代码块:2.1. 合理利用代码块有意想不到的效果。3.]]></content>
+      <tags>
+        <tag>工具</tag>
+        <tag>markdown</tag>
       </tags>
   </entry>
   <entry>
