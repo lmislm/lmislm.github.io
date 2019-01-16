@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.booml.cn/"/>
-  <updated>2019-01-15T14:51:03.685Z</updated>
+  <updated>2019-01-16T14:27:03.985Z</updated>
   <id>http://blog.booml.cn/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>第十六天2019-01-16</title>
+    <link href="http://blog.booml.cn/2019/01/16/2019-01-16/"/>
+    <id>http://blog.booml.cn/2019/01/16/2019-01-16/</id>
+    <published>2019-01-15T16:00:00.000Z</published>
+    <updated>2019-01-16T14:27:03.985Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>恍恍惚惚，已经坚持写博客16天了，这是个“不小的成就”啊。回想过的这些天的博客，发现深度不够，停留在表面。博客写到表层的东西，肤浅的东西就浅尝辄止。这是个很大的问题。也是这些天博客记录下来之后发现的问题点。接下来就是对过去的整个东西进行一些梳理。自从博客开始记录生活以来。总共写了下面这几个事情：</p><ol><li>Object.assign（）// 上下已经完</li><li>new 操作符          //  简单地对原型和继承关系进行了复习</li><li>Vue源码解析        // 对于整个Vue源码的入口有了清晰的认识，意思就是，读源码开始上路</li></ol><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fz8slqduvej20u00k041p.jpg" alt=""></p><h3 id="接下去"><a href="#接下去" class="headerlink" title="接下去"></a>接下去</h3><a id="more"></a><p>接下去可能还想开坑<strong>Vuex</strong>，这个坑，可能是因为在一些写法上，总觉得不够优雅，可能需要读一些开源的项目是怎么做的。可以的话，从很早就有的饿了么APP这个开始读一下，看他是怎么设计软件的。<br>也可能继续开坑<strong>Loadshjs</strong>，研究如何实现<strong>deep clone</strong><br>或者是研究Promise,以及<strong>Even Loop</strong><br>其次，一直以来很重要的事，就是网络基础知识，比如HTTP里面的RTT这种知识，都必须熟练掌握。<br>另外就是一直放了很久的<strong>Nodejs项目</strong>，改学会怎么写出好接口了。所以，这个地方也得去读<strong>Nodejs</strong>怎么学。<br>再深入一点，可能需要读一些开源的项目了。这些在github上面关注的时候，有star，所以，这个不用太心急。偶尔逛逛github就出来了。<br>这些都是很久的坑，暂时还不打算开。但是对于<strong>阅读源码</strong>是很有帮助的。毕竟是基础嘛。但是先开哪个坑，这个是有必要先想想，因为当务之急手下也还有一些bug没有解决。长久看，这种基础东西都是必须要懂的，不懂不行啊。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;恍恍惚惚，已经坚持写博客16天了，这是个“不小的成就”啊。回想过的这些天的博客，发现深度不够，停留在表面。博客写到表层的东西，肤浅的东西就浅尝辄止。这是个很大的问题。也是这些天博客记录下来之后发现的问题点。接下来就是对过去的整个东西进行一些梳理。自从博客开始记录生活以来。总共写了下面这几个事情：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Object.assign（）// 上下已经完&lt;/li&gt;
+&lt;li&gt;new 操作符          //  简单地对原型和继承关系进行了复习&lt;/li&gt;
+&lt;li&gt;Vue源码解析        // 对于整个Vue源码的入口有了清晰的认识，意思就是，读源码开始上路&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fz8slqduvej20u00k041p.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;接下去&quot;&gt;&lt;a href=&quot;#接下去&quot; class=&quot;headerlink&quot; title=&quot;接下去&quot;&gt;&lt;/a&gt;接下去&lt;/h3&gt;
+    
+    </summary>
+    
+      <category term="生活" scheme="http://blog.booml.cn/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="感悟" scheme="http://blog.booml.cn/tags/%E6%84%9F%E6%82%9F/"/>
+    
+  </entry>
   
   <entry>
     <title>第十五天2019-01-15</title>
@@ -458,34 +487,6 @@
     
     
       <category term="感悟" scheme="http://blog.booml.cn/tags/%E6%84%9F%E6%82%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>matrix</title>
-    <link href="http://blog.booml.cn/2018/03/28/matrix/"/>
-    <id>http://blog.booml.cn/2018/03/28/matrix/</id>
-    <published>2018-03-27T16:00:00.000Z</published>
-    <updated>2018-12-30T11:20:04.503Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="矩阵"><a href="#矩阵" class="headerlink" title="矩阵"></a>矩阵</h3><blockquote><p>写一个函数，输入数字 N,返会一个 N*N 的矩阵(环序)。</p></blockquote><a id="more"></a><h4 id="例如"><a href="#例如" class="headerlink" title="例如"></a>例如</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// matrix(2)</span></span><br><span class="line"><span class="comment">//      [[1, 2],</span></span><br><span class="line"><span class="comment">//       [3, 4]]</span></span><br><span class="line"><span class="comment">// matrix(3)</span></span><br><span class="line"><span class="comment">//      [[1, 2, 3],</span></span><br><span class="line"><span class="comment">//       [8, 9, 4],</span></span><br><span class="line"><span class="comment">//       [7, 6, 5]]</span></span><br></pre></td></tr></table></figure><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">matrix</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> results = [];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">    results.push([]);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> counter = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">let</span> startColumn = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">let</span> endColumn = n - <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">let</span> startRow = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">let</span> endRow = n - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> (startColumn &lt;= endColumn &amp;&amp; startRow &lt;= endRow) &#123;</span><br><span class="line">    <span class="comment">//顶列开头到结尾</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = startColumn; i &lt;= endColumn; i++) &#123;</span><br><span class="line">      results[startRow][i] = counter;</span><br><span class="line">      counter++;</span><br><span class="line">    &#125;</span><br><span class="line">    startRow++;</span><br><span class="line">    <span class="comment">//最右列</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = startRow; i &lt;= endRow; i++) &#123;</span><br><span class="line">      results[i][endColumn] = counter;</span><br><span class="line">      counter++;</span><br><span class="line">    &#125;</span><br><span class="line">    endColumn--;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 底部行</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = endColumn; i &gt;= startColumn; i--) &#123;</span><br><span class="line">      results[endRow][i] = counter;</span><br><span class="line">      counter++;</span><br><span class="line">    &#125;</span><br><span class="line">    endRow--;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// start 列</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = endRow; i &gt;= startRow; i--) &#123;</span><br><span class="line">      results[i][startColumn] = counter;</span><br><span class="line">      counter++;</span><br><span class="line">    &#125;</span><br><span class="line">    startColumn++;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> results;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h4 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> matrix = <span class="built_in">require</span>(<span class="string">'./index'</span>);</span><br><span class="line"></span><br><span class="line">test(<span class="string">'matrix 函数已定义'</span>, () =&gt; &#123;</span><br><span class="line">  expect(<span class="keyword">typeof</span> matrix).toEqual(<span class="string">'function'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">test(<span class="string">'matrix produces a 2x2 array'</span>, () =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> m = matrix(<span class="number">2</span>);</span><br><span class="line">  expect(m.length).toEqual(<span class="number">2</span>);</span><br><span class="line">  expect(m[<span class="number">0</span>]).toEqual([<span class="number">1</span>, <span class="number">2</span>]);</span><br><span class="line">  expect(m[<span class="number">1</span>]).toEqual([<span class="number">4</span>, <span class="number">3</span>]);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">test(<span class="string">'matrix produces a 3x3 array'</span>, () =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> m = matrix(<span class="number">3</span>);</span><br><span class="line">  expect(m.length).toEqual(<span class="number">3</span>);</span><br><span class="line">  expect(m[<span class="number">0</span>]).toEqual([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]);</span><br><span class="line">  expect(m[<span class="number">1</span>]).toEqual([<span class="number">8</span>, <span class="number">9</span>, <span class="number">4</span>]);</span><br><span class="line">  expect(m[<span class="number">2</span>]).toEqual([<span class="number">7</span>, <span class="number">6</span>, <span class="number">5</span>]);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">test(<span class="string">'matrix produces a 4x4 array'</span>, () =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> m = matrix(<span class="number">4</span>);</span><br><span class="line">  expect(m.length).toEqual(<span class="number">4</span>);</span><br><span class="line">  expect(m[<span class="number">0</span>]).toEqual([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]);</span><br><span class="line">  expect(m[<span class="number">1</span>]).toEqual([<span class="number">12</span>, <span class="number">13</span>, <span class="number">14</span>, <span class="number">5</span>]);</span><br><span class="line">  expect(m[<span class="number">2</span>]).toEqual([<span class="number">11</span>, <span class="number">16</span>, <span class="number">15</span>, <span class="number">6</span>]);</span><br><span class="line">  expect(m[<span class="number">3</span>]).toEqual([<span class="number">10</span>, <span class="number">9</span>, <span class="number">8</span>, <span class="number">7</span>]);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;矩阵&quot;&gt;&lt;a href=&quot;#矩阵&quot; class=&quot;headerlink&quot; title=&quot;矩阵&quot;&gt;&lt;/a&gt;矩阵&lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;写一个函数，输入数字 N,返会一个 N*N 的矩阵(环序)。&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="学习" scheme="http://blog.booml.cn/categories/%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-      <category term="JS" scheme="http://blog.booml.cn/tags/JS/"/>
-    
-      <category term="编程" scheme="http://blog.booml.cn/tags/%E7%BC%96%E7%A8%8B/"/>
-    
-      <category term="Interview" scheme="http://blog.booml.cn/tags/Interview/"/>
     
   </entry>
   
