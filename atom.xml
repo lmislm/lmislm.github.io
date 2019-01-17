@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.booml.cn/"/>
-  <updated>2019-01-16T14:27:03.985Z</updated>
+  <updated>2019-01-17T14:09:02.590Z</updated>
   <id>http://blog.booml.cn/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>第十七天2019-01-17</title>
+    <link href="http://blog.booml.cn/2019/01/17/2019-01-17/"/>
+    <id>http://blog.booml.cn/2019/01/17/2019-01-17/</id>
+    <published>2019-01-16T16:00:00.000Z</published>
+    <updated>2019-01-17T14:09:02.590Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>今天眼睛好困啊好困啊！最近可能脑子里事情太多了！还是早点睡的好！乱七八糟的事情先放一边。<br>今天看了Readability，准备用这个来做一些翻译相关的东西。感觉很厉害啊，这个东西。总之先粗略的console.log(),至于以后的什么并发什么的，这个等流量上去了之后再说，先把东西一个个做出来吧。总觉得Nodejs做的应该不会太差。明天记得预约体检！！</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fz9xokfsjbj20fj0avdkw.jpg" alt=""><br>就这样，又水了一天。早点睡吧。晚安。<br>–end</p><a id="more"></a>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;今天眼睛好困啊好困啊！最近可能脑子里事情太多了！还是早点睡的好！乱七八糟的事情先放一边。&lt;br&gt;今天看了Readability，准备用这个来做一些翻译相关的东西。感觉很厉害啊，这个东西。总之先粗略的console.log(),至于以后的什么并发什么的，这个等流量上去了之后再说，先把东西一个个做出来吧。总觉得Nodejs做的应该不会太差。明天记得预约体检！！&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fz9xokfsjbj20fj0avdkw.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;就这样，又水了一天。早点睡吧。晚安。&lt;br&gt;–end&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="生活" scheme="http://blog.booml.cn/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="感悟" scheme="http://blog.booml.cn/tags/%E6%84%9F%E6%82%9F/"/>
+    
+  </entry>
   
   <entry>
     <title>第十六天2019-01-16</title>
@@ -465,28 +488,6 @@
       <category term="编程" scheme="http://blog.booml.cn/tags/%E7%BC%96%E7%A8%8B/"/>
     
       <category term="Interview" scheme="http://blog.booml.cn/tags/Interview/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>2019--启程</title>
-    <link href="http://blog.booml.cn/2018/12/30/2019-%E5%90%AF%E7%A8%8B/"/>
-    <id>http://blog.booml.cn/2018/12/30/2019-启程/</id>
-    <published>2018-12-30T11:20:04.437Z</published>
-    <updated>2018-12-30T11:20:04.438Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fyonjtz2hlj20c80qdwen.jpg" alt=""><br>即将告别2018年，这个对于我来说，<strong>多灾多难</strong>的一年。<br>这一年发生了太多的事，每一年也都会发生很多事，但从来没有哪一年能够像2018年这样让人印象深刻。<br><strong>考研结束。</strong><br><strong>毕业。</strong><br><strong>工作。</strong><br><strong>最悲痛的莫过于最亲的人去世。</strong><br>事业也刚刚起步，爱情失去了方向。<br>真是让人印象深刻的一年。<br><a id="more"></a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fyonjtz2hlj20c80qdwen.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;即将告别2018年，这个对于我来说，&lt;strong&gt;多灾多难&lt;/strong&gt;的一年。&lt;br&gt;这一年发生了太多的事，每一年也都会发生很多事，但从来没有哪一年能够像2018年这样让人印象深刻。&lt;br&gt;&lt;strong&gt;考研结束。&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;毕业。&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;工作。&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;最悲痛的莫过于最亲的人去世。&lt;/strong&gt;&lt;br&gt;事业也刚刚起步，爱情失去了方向。&lt;br&gt;真是让人印象深刻的一年。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="生活" scheme="http://blog.booml.cn/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="感悟" scheme="http://blog.booml.cn/tags/%E6%84%9F%E6%82%9F/"/>
     
   </entry>
   
