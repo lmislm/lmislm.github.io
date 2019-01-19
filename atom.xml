@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.lmislm.com/"/>
-  <updated>2019-01-18T14:02:00.546Z</updated>
+  <updated>2019-01-19T12:45:41.909Z</updated>
   <id>http://blog.lmislm.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>第十九天2019-01-19</title>
+    <link href="http://blog.lmislm.com/2019/01/19/2019-01-19/"/>
+    <id>http://blog.lmislm.com/2019/01/19/2019-01-19/</id>
+    <published>2019-01-18T16:00:00.000Z</published>
+    <updated>2019-01-19T12:45:41.909Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>今天碰到一个需求，就是在element-ui表格中，列表操作这一列有下载和删除按钮，需要点击某一行的下载按钮，该行下载按钮显示正在下载的loading状态。这个看了下，应该只能是通过在<code>scope.row</code>对象中加属性，比如：<code>isDownloading</code>。这个就要求新属性<code>isDownloading</code>，能够具有响应式特性。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fzc6japr32j20u00u00wg.jpg" alt=""><br><a id="more"></a></p><h3 id="深入响应式原理"><a href="#深入响应式原理" class="headerlink" title="深入响应式原理"></a>深入响应式原理</h3><ul><li>追踪变化<br>下面这张图，是基于Object.defineProperty 实现响应式的关键。<br><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fzc67hrsguj20xc0kuq38.jpg" alt=""></li></ul><p>不巧的是，<strong>受现代 JavaScript 的限制 (而且 Object.observe 也已经被废弃)，Vue 不能检测到对象属性的添加或删除。</strong><sup>[1]</sup></p><blockquote><p>Vue 不允许在已经创建的实例上动态添加新的根级响应式属性 (root-level reactive property)。然而它可以使用 Vue.set(object, key, value) 方法将响应属性添加到嵌套的对象上：<sup>[1]</sup></p><ul><li>添加响应式属性<br>使用 Vue.set(object, key, value) 方法将响应属性添加到嵌套的对象</li><li>一个已有对象添加多个属性<br>// 代替 <code>Object.assign(this.someObject, { a: 1, b: 2 })</code><br>this.someObject = Object.assign({}, this.someObject, { a: 1, b: 2 })</li></ul></blockquote><h3 id="vuejs-提供的Api"><a href="#vuejs-提供的Api" class="headerlink" title="vuejs 提供的Api"></a>vuejs 提供的Api</h3><blockquote><p>Vue.set( target, key, value )<br><strong>参数：</strong></p><p>{Object | Array} target<br>{string | number} key<br>{any} value<br><strong>返回值：</strong> 设置的值。<br><strong>用法：</strong> 向响应式对象中添加一个属性，并确保这个新属性同样是响应式的，且触发视图更新。它必须用于向响应式对象上添加新属性，因为 Vue 无法探测普通的新增属性 (比如 this.myObject.newProperty = ‘hi’)<br>注意对象不能是 Vue 实例，或者 Vue 实例的根数据对象。</p></blockquote><p>注意对象不能是 Vue 实例，或者 Vue 实例的根数据对象。</p><h3 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h3><p>实践了一下，响应式的对象。在拉取list的forEach里新增一个响应式属性，<code>this.$set(this.list, &#39;isDownloading&#39;, false)</code>。然后就可以在操作前置true,操作后false。在列表的地方就可以用响应式的<code>isDownloading</code>属性了！</p><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>[1]. <a href="https://cn.vuejs.org/v2/guide/reactivity.html#%E5%A6%82%E4%BD%95%E8%BF%BD%E8%B8%AA%E5%8F%98%E5%8C%96" target="_blank" rel="noopener">https://cn.vuejs.org/v2/guide/reactivity.html#%E5%A6%82%E4%BD%95%E8%BF%BD%E8%B8%AA%E5%8F%98%E5%8C%96</a><br>[2]. <a href="https://cn.vuejs.org/v2/api/#Vue-set" target="_blank" rel="noopener">https://cn.vuejs.org/v2/api/#Vue-set</a><br>——————————————————-end———————————————————–</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;今天碰到一个需求，就是在element-ui表格中，列表操作这一列有下载和删除按钮，需要点击某一行的下载按钮，该行下载按钮显示正在下载的loading状态。这个看了下，应该只能是通过在&lt;code&gt;scope.row&lt;/code&gt;对象中加属性，比如：&lt;code&gt;isDownloading&lt;/code&gt;。这个就要求新属性&lt;code&gt;isDownloading&lt;/code&gt;，能够具有响应式特性。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fzc6japr32j20u00u00wg.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="生活" scheme="http://blog.lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="感悟" scheme="http://blog.lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
+    
+  </entry>
   
   <entry>
     <title>第十八天2019-01-18</title>
@@ -459,30 +482,6 @@
     
     
       <category term="感悟" scheme="http://blog.lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>markdown-trick</title>
-    <link href="http://blog.lmislm.com/2018/12/30/markdown-trick/"/>
-    <id>http://blog.lmislm.com/2018/12/30/markdown-trick/</id>
-    <published>2018-12-30T11:20:04.493Z</published>
-    <updated>2018-12-30T11:20:04.493Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="vscode-snippets"><a href="#vscode-snippets" class="headerlink" title="vscode snippets"></a>vscode snippets</h2><blockquote><p>以设置 markdown 代码片段为例</p></blockquote><a id="more"></a><h4 id="开启设置"><a href="#开启设置" class="headerlink" title="开启设置"></a><a href="https://github.com/Microsoft/vscode/issues/28048" target="_blank" rel="noopener">开启设置</a></h4><blockquote><p>文件 &gt; 首选项 &gt; 设置</p></blockquote><figure class="highlight"><table><tr><td class="code"><pre><span class="line">"[markdown]":  &#123;</span><br><span class="line">    "editor.quickSuggestions": true</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure><h4 id="设置模板"><a href="#设置模板" class="headerlink" title="设置模板"></a><a href="https://code.visualstudio.com/docs/editor/userdefinedsnippets" target="_blank" rel="noopener">设置模板</a></h4><blockquote><p>文件 &gt; 首选项 &gt; 用户代码片段 &gt; markdown.json</p></blockquote><figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"markdown write template"</span>: &#123;</span><br><span class="line">    <span class="attr">"prefix"</span>: <span class="string">"mdrt"</span>,</span><br><span class="line">    <span class="attr">"body"</span>: [</span><br><span class="line">      <span class="string">"--- $1"</span>,</span><br><span class="line">      <span class="string">"title: $TM_FILENAME_BASE"</span>,</span><br><span class="line">      <span class="string">"tags:"</span>,</span><br><span class="line">      <span class="string">"* xx"</span>,</span><br><span class="line">      <span class="string">"categories:"</span>,</span><br><span class="line">      <span class="string">"* xx"</span>,</span><br><span class="line">      <span class="string">"date: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE-$CURRENT_HOUR"</span>,</span><br><span class="line">      <span class="string">"--- "</span>,</span><br><span class="line">      <span class="string">" \n "</span>,</span><br><span class="line"></span><br><span class="line">      <span class="string">"&lt;!--more--&gt; $2"</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">"description"</span>: <span class="string">"Create template for markdown write"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h4 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h4><figure class="highlight"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: md-kill</span><br><span class="line">tags:</span><br><span class="line">* xx</span><br><span class="line">categories:</span><br><span class="line">* xx</span><br><span class="line">date: 2018-03-31-20</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">&lt;!--more--&gt;</span><br></pre></td></tr></table></figure><h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="https://github.com/Microsoft/vscode/issues/28048" target="_blank" rel="noopener">Markdown Snippet Prefix Does Not Trigger Snippet #28048</a><br><a href="https://code.visualstudio.com/docs/editor/userdefinedsnippets" target="_blank" rel="noopener">Creating your own snippets</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;vscode-snippets&quot;&gt;&lt;a href=&quot;#vscode-snippets&quot; class=&quot;headerlink&quot; title=&quot;vscode snippets&quot;&gt;&lt;/a&gt;vscode snippets&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;以设置 markdown 代码片段为例&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="日常操作" scheme="http://blog.lmislm.com/categories/%E6%97%A5%E5%B8%B8%E6%93%8D%E4%BD%9C/"/>
-    
-    
-      <category term="小技巧" scheme="http://blog.lmislm.com/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/"/>
     
   </entry>
   

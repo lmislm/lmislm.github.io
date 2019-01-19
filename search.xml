@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[第十九天2019-01-19]]></title>
+    <url>%2F2019%2F01%2F19%2F2019-01-19%2F</url>
+    <content type="text"><![CDATA[碎碎念今天碰到一个需求，就是在element-ui表格中，列表操作这一列有下载和删除按钮，需要点击某一行的下载按钮，该行下载按钮显示正在下载的loading状态。这个看了下，应该只能是通过在scope.row对象中加属性，比如：isDownloading。这个就要求新属性isDownloading，能够具有响应式特性。 深入响应式原理 追踪变化下面这张图，是基于Object.defineProperty 实现响应式的关键。 不巧的是，受现代 JavaScript 的限制 (而且 Object.observe 也已经被废弃)，Vue 不能检测到对象属性的添加或删除。[1] Vue 不允许在已经创建的实例上动态添加新的根级响应式属性 (root-level reactive property)。然而它可以使用 Vue.set(object, key, value) 方法将响应属性添加到嵌套的对象上：[1] 添加响应式属性使用 Vue.set(object, key, value) 方法将响应属性添加到嵌套的对象 一个已有对象添加多个属性// 代替 Object.assign(this.someObject, { a: 1, b: 2 })this.someObject = Object.assign({}, this.someObject, { a: 1, b: 2 }) vuejs 提供的Api Vue.set( target, key, value )参数： {Object | Array} target{string | number} key{any} value返回值： 设置的值。用法： 向响应式对象中添加一个属性，并确保这个新属性同样是响应式的，且触发视图更新。它必须用于向响应式对象上添加新属性，因为 Vue 无法探测普通的新增属性 (比如 this.myObject.newProperty = ‘hi’)注意对象不能是 Vue 实例，或者 Vue 实例的根数据对象。 注意对象不能是 Vue 实例，或者 Vue 实例的根数据对象。 实践实践了一下，响应式的对象。在拉取list的forEach里新增一个响应式属性，this.$set(this.list, &#39;isDownloading&#39;, false)。然后就可以在操作前置true,操作后false。在列表的地方就可以用响应式的isDownloading属性了！ 参考[1]. https://cn.vuejs.org/v2/guide/reactivity.html#%E5%A6%82%E4%BD%95%E8%BF%BD%E8%B8%AA%E5%8F%98%E5%8C%96[2]. https://cn.vuejs.org/v2/api/#Vue-set——————————————————-end———————————————————–]]></content>
+      <categories>
+        <category>生活</category>
+      </categories>
+      <tags>
+        <tag>感悟</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[第十八天2019-01-18]]></title>
     <url>%2F2019%2F01%2F18%2F2019-01-18%2F</url>
     <content type="text"><![CDATA[碎碎念今天写了一上午的技术，写后台管理，感觉时间过得好快啊。因为最近可能有需要部署一些应用在服务器上，所以最近又开始捡起Docker这个东西。今晚上复习了一下。具体的一些基本操作如下。 docker-ubuntu 准备Docker 要求 Ubuntu 系统的内核版本高于 3.10 uname -r 查看内核版本 安装 wget -qO- https://get.docker.com/ | sh 测试安装 docker run hello-world‘hello-world’ 是一个镜像，没有的话会默认pull 容器操作 docker ps -a // 列出所有创建的container docker ps -aq // 列出所有创建的container 的ID docker ps // 列出正在运行的容器container docker system df // 查看镜像、容器、数据卷所占用的空间 docker top // 查看容器的进程 docker stop // 停止容器（名字要全） docker rm // 删除指定名容器 镜像操作 docker image ls // 列出已经下载下来的镜像 docker images // 列出所有所有镜像 docker rmi &lt; image ID&gt; // (注：ID列出前几位就行了) 拉取ubuntu docker pull ubuntu:16.04 镜像操作 docker run -t -i ubuntu:16.04 /bin/bash // 运行容器 docker tag :&lt;新标签&gt; // ID只需要前几位就行 docker port // 查看端口的绑定 构建镜像 cat Dockerfile 参考[1]. http://www.runoob.com/docker/docker-container-usage.html[2]. https://yeasy.gitbooks.io/docker_practice/container/stop.html————————————————————————end———————————————————————-]]></content>
