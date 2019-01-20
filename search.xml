@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[第二十天2019-01-20]]></title>
+    <url>%2F2019%2F01%2F20%2F2019-01-20%2F</url>
+    <content type="text"><![CDATA[碎碎念今天下午就光玩游戏了~感觉需要放空自己啊，这是个玩游戏的好借口。但确实，今天下午看了一会儿电影，上午下午中间节点看完了《楚门的世界》（《The Truman Show》)。 这个电影，在高中的时候就很受它影响，我指的影响，大概是你看完一部电影之后，很长时间都会去回味这部电影的味道，这部电影的含义。九九八十一难，最后的一个“释然”的态度？ 再然后看了《天气预报员》？这是部慢热的剧情，感觉还是没有看下去的劲头，挖个坑吧，改天再看。然后尝试看了部石原里美日剧，嗯，看了一部分就看不下去了。然后接着就游戏了。本来想LOL的，结果愣是没有劲头，开了一局游戏都退了，看来游戏真的是没什么好玩的。然后，玩CSGO，感觉还是比较考验临场发挥的，碰到敌我实力不相上下的时候，整个人的荷尔蒙就都上来了，感觉还是对于放空自己比较有效果的。一直玩到了，晚上8点啊。你可是也有一堆事情要做的啊，怎么玩起游戏来了。说不玩游戏的，真香。 –end–]]></content>
+      <categories>
+        <category>生活</category>
+      </categories>
+      <tags>
+        <tag>感悟</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[第十九天2019-01-19]]></title>
     <url>%2F2019%2F01%2F19%2F2019-01-19%2F</url>
     <content type="text"><![CDATA[碎碎念今天碰到一个需求，就是在element-ui表格中，列表操作这一列有下载和删除按钮，需要点击某一行的下载按钮，该行下载按钮显示正在下载的loading状态。这个看了下，应该只能是通过在scope.row对象中加属性，比如：isDownloading。这个就要求新属性isDownloading，能够具有响应式特性。 深入响应式原理 追踪变化下面这张图，是基于Object.defineProperty 实现响应式的关键。 不巧的是，受现代 JavaScript 的限制 (而且 Object.observe 也已经被废弃)，Vue 不能检测到对象属性的添加或删除。[1] Vue 不允许在已经创建的实例上动态添加新的根级响应式属性 (root-level reactive property)。然而它可以使用 Vue.set(object, key, value) 方法将响应属性添加到嵌套的对象上：[1] 添加响应式属性使用 Vue.set(object, key, value) 方法将响应属性添加到嵌套的对象 一个已有对象添加多个属性// 代替 Object.assign(this.someObject, { a: 1, b: 2 })this.someObject = Object.assign({}, this.someObject, { a: 1, b: 2 }) vuejs 提供的Api Vue.set( target, key, value )参数： {Object | Array} target{string | number} key{any} value返回值： 设置的值。用法： 向响应式对象中添加一个属性，并确保这个新属性同样是响应式的，且触发视图更新。它必须用于向响应式对象上添加新属性，因为 Vue 无法探测普通的新增属性 (比如 this.myObject.newProperty = ‘hi’)注意对象不能是 Vue 实例，或者 Vue 实例的根数据对象。 注意对象不能是 Vue 实例，或者 Vue 实例的根数据对象。 实践实践了一下，响应式的对象。在拉取list的forEach里新增一个响应式属性，this.$set(this.list, &#39;isDownloading&#39;, false)。然后就可以在操作前置true,操作后false。在列表的地方就可以用响应式的isDownloading属性了！ 参考[1]. https://cn.vuejs.org/v2/guide/reactivity.html#%E5%A6%82%E4%BD%95%E8%BF%BD%E8%B8%AA%E5%8F%98%E5%8C%96[2]. https://cn.vuejs.org/v2/api/#Vue-set——————————————————-end———————————————————–]]></content>
