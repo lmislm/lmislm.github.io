@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[第二十一天2019-01-21]]></title>
+    <url>%2F2019%2F01%2F21%2F2019-01-21%2F</url>
+    <content type="text"><![CDATA[碎碎念今天又重温了一小下（事件循环）Event Loop，如何去区分MicroTask（微任务）,MacroTask（宏任务），说实话我还没有非常精确的去理解到位，做顺序题目，也会做错，理解的不充分不到位。去看了下MDN1,发现并没有解释的很详细，除了解释Nodejs中和浏览器中的EventLoop有点不同，其他简短的语言倒像是解释setTimeout()是“非等待一定时间之后执行”这一概念。 Event Loop - 上下面来稍微再温习下这个东西。承上启下，为Promise()的深入理解做更好的准备。 背景JavaScript这种并发模型基于“事件循环” ，是单线程的，不像是C语言任何位置被终止，它是异步而不阻塞主进程执行。Event Loop起到很重要的作用， JavaScript处理 I/O 通常通过事件和回调来执行。本文简单的入门一下Event Loop这个东西，大概有个映像就行。 任务js引擎的两种任务 MacroTask: setTimeout, setInterval, setImmediate,I/O, UI rendering MicroTask: Promise, process.nextTick, Object.observe, MutationObserver, MutaionObserver调度机制不同的任务行为并不一样，执行的先后顺序不一样。具体怎么个不一样，这里拿个例子2。setTimeout(function() &#123; console.log(4);&#125;, 0);var promise = new Promise(function executor(resolve) &#123; console.log(1); for (var i = 0; i &lt; 10000; i++) &#123; i == 9999 &amp;&amp; resolve(); &#125; console.log(2);&#125;).then(function() &#123; console.log(5);&#125;);console.log(3); Nodejs输出： 1 2 3 5 4浏览器输出：1 2 3 5 undefined 4注：这里不讨论Nodejs和浏览器的异同 MicroTask 和 Macro Task的执行顺序 - 描述 Event Loop 开始 MicroTasks 队列开始执行至结束 检查MacroTask 队列是否有待执行，有则跳到4，无则跳到6 MacroTask队列“抽取”一个任务，执行至结束 检查MicroTasks 是否执行完毕，若有则跳到2，无则跳到3 结束Event Loop 以上整个过程就是Event Loop（事件循环）。 这里有个疑问，就是5为什么还要检查是否执行完毕，因为2已经检查过了，是什么事件遗留到了5？ MicroTask 和 Macro Task的执行顺序 - 图文一张图来解释下3（这张图是引用的，可能需要重画下，可能加上Event table会更好点）。 图怎么理解呢?宏任务作为入口的话，setTimeout不是第一个执行？是这么个解释的，拿调度机制中的代码说事。先把两种任务再放一遍。 MacroTask: setTimeout, setInterval, setImmediate,I/O, UI renderingMicroTask: Promise, process.nextTick, Object.observe, MutationObserver, MutaionObserver 整段代码作为宏任务进入主线程。 遇到setTimeout(), 回调函数注册后分发到宏任务Event Queue。// 回调函数注册？ 接下来遇到了Promise，new Promise立即执行，then函数分发到微任务Event Queue。// 立即执行？ 遇到console.log()，立即执行。 整段代码作为一次宏任务执行结束，进入微任务判断。Event Queue里有then函数，执行。 第二轮循环，开始新的宏任务。从宏任务Event Queue中去检查。发现setTimeout回调函数，立即执行。 到这里如果还不懂的话，可以到参考资料的3去看看，写的比较详细，我这里只是笔记形式简单总结下。 Promise 和 process.nextTick() 的先后顺序？- 后续这里就放到下一篇Event Loop再说吧。– end – 参考[1]. 并发模型与事件循环[2]. 理解event loop（浏览器环境与nodejs环境）[3]. 这一次，彻底弄懂 JavaScript 执行机制]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[第二十天2019-01-20]]></title>
     <url>%2F2019%2F01%2F20%2F2019-01-20%2F</url>
     <content type="text"><![CDATA[碎碎念今天下午就光玩游戏了~感觉需要放空自己啊，这是个玩游戏的好借口。但确实，今天下午看了一会儿电影，上午下午中间节点看完了《楚门的世界》（《The Truman Show》)。 这个电影，在高中的时候就很受它影响，我指的影响，大概是你看完一部电影之后，很长时间都会去回味这部电影的味道，这部电影的含义。九九八十一难，最后的一个“释然”的态度？ 再然后看了《天气预报员》？这是部慢热的剧情，感觉还是没有看下去的劲头，挖个坑吧，改天再看。然后尝试看了部石原里美日剧，嗯，看了一部分就看不下去了。然后接着就游戏了。本来想LOL的，结果愣是没有劲头，开了一局游戏都退了，看来游戏真的是没什么好玩的。然后，玩CSGO，感觉还是比较考验临场发挥的，碰到敌我实力不相上下的时候，整个人的荷尔蒙就都上来了，感觉还是对于放空自己比较有效果的。一直玩到了，晚上8点啊。你可是也有一堆事情要做的啊，怎么玩起游戏来了。说不玩游戏的，真香。 –end–]]></content>
@@ -516,8 +527,8 @@
         <category>工作</category>
       </categories>
       <tags>
-        <tag>css</tag>
         <tag>前端</tag>
+        <tag>css</tag>
       </tags>
   </entry>
 </search>

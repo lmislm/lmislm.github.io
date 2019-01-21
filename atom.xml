@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.lmislm.com/"/>
-  <updated>2019-01-20T12:53:33.582Z</updated>
+  <updated>2019-01-21T15:14:24.538Z</updated>
   <id>http://blog.lmislm.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>第二十一天2019-01-21</title>
+    <link href="http://blog.lmislm.com/2019/01/21/2019-01-21/"/>
+    <id>http://blog.lmislm.com/2019/01/21/2019-01-21/</id>
+    <published>2019-01-20T16:00:00.000Z</published>
+    <updated>2019-01-21T15:14:24.538Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>今天又重温了一小下（事件循环）Event Loop，如何去区分MicroTask（微任务）,MacroTask（宏任务），说实话我还没有非常精确的去理解到位，做顺序题目，也会做错，理解的不充分不到位。去看了下MDN<sup><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/EventLoop" target="_blank" rel="noopener">1</a></sup>,发现并没有解释的很详细，除了解释Nodejs中和浏览器中的EventLoop有点不同，其他简短的语言倒像是解释<code>setTimeout()</code>是“非等待一定时间之后执行”这一概念。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fzelyzwwi1j20hk0b2n27.jpg" alt=""><br><a id="more"></a></p><h3 id="Event-Loop-上"><a href="#Event-Loop-上" class="headerlink" title="Event Loop - 上"></a>Event Loop - 上</h3><p>下面来稍微再温习下这个东西。承上启下，为<code>Promise()</code>的深入理解做更好的准备。</p><h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><p>JavaScript这种并发模型基于“事件循环” ，是单线程的，不像是C语言任何位置被终止，它是异步而不阻塞主进程执行。Event Loop起到很重要的作用， JavaScript处理 I/O 通常通过事件和回调来执行。<br>本文简单的入门一下Event Loop这个东西，大概有个映像就行。</p><h4 id="任务"><a href="#任务" class="headerlink" title="任务"></a>任务</h4><p>js引擎的两种任务</p><ul><li>MacroTask: <strong>setTimeout</strong>, <strong>setInterval</strong>, <strong>setImmediate</strong>,<strong>I/O</strong>, <strong>UI rendering</strong></li><li>MicroTask: <strong>Promise</strong>, <strong>process.nextTick</strong>, <strong>Object.observe</strong>, <strong>MutationObserver</strong>, <strong>MutaionObserver</strong><h4 id="调度机制"><a href="#调度机制" class="headerlink" title="调度机制"></a>调度机制</h4>不同的任务行为并不一样，执行的先后顺序不一样。具体怎么个不一样，这里拿个例子<sup><a href="https://imweb.io/topic/5b148768d4c96b9b1b4c4ea1" target="_blank" rel="noopener">2</a></sup>。<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">setTimeout(function() &#123;</span><br><span class="line">  console.log(4);</span><br><span class="line">&#125;, 0);</span><br><span class="line"></span><br><span class="line">var promise = new Promise(function executor(resolve) &#123;</span><br><span class="line">  console.log(1);</span><br><span class="line">  for (var i = 0; i &lt; 10000; i++) &#123;</span><br><span class="line">    i == 9999 &amp;&amp; resolve();</span><br><span class="line">  &#125;</span><br><span class="line">  console.log(2);</span><br><span class="line">&#125;).then(function() &#123;</span><br><span class="line">  console.log(5);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">console.log(3);</span><br></pre></td></tr></table></figure></li></ul><p>Nodejs输出： 1 2 3 5 4<br>浏览器输出：1 2 3 5 undefined 4<br>注：这里不讨论Nodejs和浏览器的异同</p><h4 id="MicroTask-和-Macro-Task的执行顺序-描述"><a href="#MicroTask-和-Macro-Task的执行顺序-描述" class="headerlink" title="MicroTask 和 Macro Task的执行顺序 - 描述"></a>MicroTask 和 Macro Task的执行顺序 - 描述</h4><ol><li>Event Loop 开始</li><li>MicroTasks 队列开始执行至结束</li><li>检查MacroTask 队列是否有待执行，有则跳到4，无则跳到6</li><li>MacroTask队列“抽取”一个任务，执行至结束</li><li>检查MicroTasks 是否执行完毕，若有则跳到2，无则跳到3</li><li>结束Event Loop</li></ol><p><strong>以上整个过程就是Event Loop（事件循环）。</strong></p><p>这里有个疑问，就是5为什么还要检查是否执行完毕，因为2已经检查过了，是什么事件遗留到了5？</p><h4 id="MicroTask-和-Macro-Task的执行顺序-图文"><a href="#MicroTask-和-Macro-Task的执行顺序-图文" class="headerlink" title="MicroTask 和 Macro Task的执行顺序 - 图文"></a>MicroTask 和 Macro Task的执行顺序 - 图文</h4><p>一张图来解释下<sup><a href="https://juejin.im/post/59e85eebf265da430d571f89" target="_blank" rel="noopener">3</a></sup>（这张图是引用的，可能需要重画下，可能加上Event table会更好点）。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fzellunmyaj20ux0q8472.jpg" alt=""></p><h4 id="图怎么理解呢"><a href="#图怎么理解呢" class="headerlink" title="图怎么理解呢?"></a>图怎么理解呢?</h4><p>宏任务作为入口的话，setTimeout不是第一个执行？是这么个解释的，拿调度机制中的代码说事。<br>先把两种任务再放一遍。</p><blockquote><p>MacroTask: <strong>setTimeout</strong>, <strong>setInterval</strong>, <strong>setImmediate</strong>,<strong>I/O</strong>, <strong>UI rendering</strong><br>MicroTask: <strong>Promise</strong>, <strong>process.nextTick</strong>, <strong>Object.observe</strong>, <strong>MutationObserver</strong>, <strong>MutaionObserver</strong></p><ol><li><strong>整段代码作为宏任务</strong>进入主线程。</li><li>遇到setTimeout(), 回调函数注册后分发到宏任务Event Queue。// 回调函数注册？</li><li>接下来遇到了Promise，new Promise立即执行，then函数分发到微任务Event Queue。// 立即执行？</li><li>遇到console.log()，立即执行。</li><li>整段代码作为一次宏任务执行结束，进入微任务判断。Event Queue里有then函数，执行。</li><li>第二轮循环，开始新的宏任务。从宏任务Event Queue中去检查。发现setTimeout回调函数，立即执行。</li></ol></blockquote><p>到这里如果还不懂的话，可以到参考资料的<a href="https://juejin.im/post/59e85eebf265da430d571f89" target="_blank" rel="noopener">3</a>去看看，写的比较详细，我这里只是笔记形式简单总结下。</p><h4 id="Promise-和-process-nextTick-的先后顺序？-后续"><a href="#Promise-和-process-nextTick-的先后顺序？-后续" class="headerlink" title="Promise 和 process.nextTick() 的先后顺序？- 后续"></a>Promise 和 process.nextTick() 的先后顺序？- 后续</h4><p>这里就放到下一篇Event Loop再说吧。<br>– end –</p><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>[1]. <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/EventLoop" target="_blank" rel="noopener">并发模型与事件循环</a><br>[2]. <a href="https://imweb.io/topic/5b148768d4c96b9b1b4c4ea1" target="_blank" rel="noopener">理解event loop（浏览器环境与nodejs环境）</a><br>[3]. <a href="https://juejin.im/post/59e85eebf265da430d571f89" target="_blank" rel="noopener">这一次，彻底弄懂 JavaScript 执行机制</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;今天又重温了一小下（事件循环）Event Loop，如何去区分MicroTask（微任务）,MacroTask（宏任务），说实话我还没有非常精确的去理解到位，做顺序题目，也会做错，理解的不充分不到位。去看了下MDN&lt;sup&gt;&lt;a href=&quot;https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/EventLoop&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;,发现并没有解释的很详细，除了解释Nodejs中和浏览器中的EventLoop有点不同，其他简短的语言倒像是解释&lt;code&gt;setTimeout()&lt;/code&gt;是“非等待一定时间之后执行”这一概念。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fzelyzwwi1j20hk0b2n27.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://blog.lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://blog.lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>第二十天2019-01-20</title>
@@ -454,28 +477,6 @@
     <summary type="html">
     
       &lt;h4 id=&quot;谈一天感受&quot;&gt;&lt;a href=&quot;#谈一天感受&quot; class=&quot;headerlink&quot; title=&quot;谈一天感受&quot;&gt;&lt;/a&gt;谈一天感受&lt;/h4&gt;&lt;p&gt;今天早上起来，发现这几天真的好冷啊。真是降温到极点了。扫兴的是，居然还牙疼，都怪假期三天吃的太多了，这智齿问题又出来了，哪天找个机会真的把它给拔了！&lt;br&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fysmf2k2xqj20k30k574t.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="生活" scheme="http://blog.lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="感悟" scheme="http://blog.lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>新年第一天-2019-01-01</title>
-    <link href="http://blog.lmislm.com/2019/01/01/2019-01-01/"/>
-    <id>http://blog.lmislm.com/2019/01/01/2019-01-01/</id>
-    <published>2018-12-31T16:00:00.000Z</published>
-    <updated>2019-01-01T12:35:04.544Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="友情提示"><a href="#友情提示" class="headerlink" title="友情提示"></a>友情提示</h3><p>以下内容都是一些碎碎念，生活、读后感、今天生活内容。<br>ps: 附上我的“专业插画师”提供的图片。<br><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fyrcswupyxj20jg0jggmk.jpg" alt=""><br><a id="more"></a></p><h4 id="生活"><a href="#生活" class="headerlink" title="生活"></a>生活</h4><p>新年第一天，昨晚在群里抢红包，一直热闹到很晚才睡。今早10点才慵懒的起来，起的有点晚。中午炸鸡腿，惨不忍睹。后来玩游戏，庸庸碌碌的一天就过去了。这是假期最后一天。希望晚上的时候能收收心看点书。顺带一提昨天晚上看了组件详解。</p><h4 id="读Vue-组件基础之组件通信-《Vue-js实战》"><a href="#读Vue-组件基础之组件通信-《Vue-js实战》" class="headerlink" title="读Vue 组件基础之组件通信 -《Vue js实战》"></a>读Vue 组件基础之组件通信 -《Vue js实战》</h4><h5 id="组件基础"><a href="#组件基础" class="headerlink" title="组件基础"></a>组件基础</h5><p>组件的复用，复用离不开值得传递。父子组件，兄弟组件相互之间的传值。基本的有<code>props</code>，父组件传递给子组件，子组件通过<code>$emit()</code>、<code>v-on:</code> 来将值通知父组件。不太常用的有<code>$parent</code>(书中提到可以通过此通信访问父实例或组件），在组件中引用父组件，<code>$child</code>,父组件引用子组件。《Vue js实战》书中提到了，通过利用实例化一个空的<code>BUS</code>组件起到<code>总线</code>的作用，这种方法还挺新鲜。另外，组件通信时还有slot的内容分发，slot默认名称是可以和具名slot一起用的。相互之间并不影响。好吧，之前用的时候，总是会不自觉给slot取名字。理解的不够深刻。</p><h5 id="高级组件"><a href="#高级组件" class="headerlink" title="高级组件"></a>高级组件</h5><ol><li>组件可以递归自己。</li><li>异步组件。</li></ol><h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><p>总感觉这种组件通信方式还有待于改善，应该多读一下开源的一些组件是怎么写出来的。因为上次研究element-UI的时候并没有看它运用这些（指的是通信手段，也可能是我忽略？）但是表现出了很强的可扩展性。很值得学习。包括其中CSS中的书写。</p><h5 id="插播"><a href="#插播" class="headerlink" title="插播"></a>插播</h5><p>元旦放假头一天，买了100的零食，一个大箱子，有优惠。现在好像吃的牙有点疼。作啊。明明要减肥的人。</p><h5 id="发现好的视频"><a href="#发现好的视频" class="headerlink" title="发现好的视频"></a>发现好的视频</h5><p>今天看B站排行榜的时候发现一个点评动漫的UP主，LexBurner?“艺名”：蕾丝。他的视频看动漫的角度还真是蛮特别，应该是有大量的漫画番剧的基础，能有空看这么多视频和漫画，这人真是不简单。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;友情提示&quot;&gt;&lt;a href=&quot;#友情提示&quot; class=&quot;headerlink&quot; title=&quot;友情提示&quot;&gt;&lt;/a&gt;友情提示&lt;/h3&gt;&lt;p&gt;以下内容都是一些碎碎念，生活、读后感、今天生活内容。&lt;br&gt;ps: 附上我的“专业插画师”提供的图片。&lt;br&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fyrcswupyxj20jg0jggmk.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
     
     </summary>
     
