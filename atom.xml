@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.lmislm.com/"/>
-  <updated>2019-01-21T15:14:24.538Z</updated>
+  <updated>2019-01-22T14:52:02.170Z</updated>
   <id>http://blog.lmislm.com/</id>
   
   <author>
@@ -17,11 +17,34 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>第二十二天2019-01-22</title>
+    <link href="http://blog.lmislm.com/2019/01/22/2019-01-22/"/>
+    <id>http://blog.lmislm.com/2019/01/22/2019-01-22/</id>
+    <published>2019-01-21T16:00:00.000Z</published>
+    <updated>2019-01-22T14:52:02.170Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="组件通信-祖孙"><a href="#组件通信-祖孙" class="headerlink" title="组件通信-祖孙"></a>组件通信-祖孙</h3><p>本文将结合例子，简单讲解下vuejs文档中的实例属性：<strong>vm.$attrs</strong>和<strong>vm.$listeners</strong>。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fzfr1n65maj20b40b4dfn.jpg" alt=""><a id="more"></a></p><h4 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h4><p>因为项目中大多用Vuex来通信，但是用多了之后感觉简单的组件之间的通信再用构造vuex的mutation，写起来比较费，当然父子之间的通信肯定是用emit更实在。</p><h3 id="写个“栗子”"><a href="#写个“栗子”" class="headerlink" title="写个“栗子”"></a>写个“栗子”</h3><ul><li>三个组件：grandfather &gt; father &gt; son<h4 id="祖宗组件"><a href="#祖宗组件" class="headerlink" title="祖宗组件"></a>祖宗组件</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Vue.component(&apos;grandfather&apos;, &#123;</span><br><span class="line">props: [],</span><br><span class="line">template:</span><br><span class="line">`&lt;div&gt;</span><br><span class="line">  &lt;father</span><br><span class="line">:getGrandsonData=&quot;grandfatherData&quot; // 传值</span><br><span class="line">@getGrandsonEvent=&quot;grandfatherEvent&quot; // 事件</span><br><span class="line">&gt;&lt;/father&gt; </span><br><span class="line">&lt;/div&gt; `</span><br><span class="line">data: function () &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      grandfatherData: &quot;hello, i&apos;m your grandfather&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">methods: &#123;</span><br><span class="line">grandfatherEvent (val) &#123;</span><br><span class="line">// 这里接到了“hello, i&apos;m your grandson”</span><br><span class="line">console.log(val) // hello, i&apos;m your grandson</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li></ul><h4 id="父亲组件"><a href="#父亲组件" class="headerlink" title="父亲组件"></a>父亲组件</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Vue.component(&apos;father&apos;, &#123;</span><br><span class="line">props: [], // 注意这里props不需要再父组件声明</span><br><span class="line">template:\`</span><br><span class="line">&lt;div&gt;</span><br><span class="line">  &lt;grandson</span><br><span class="line">v-bind=&quot;$attrs&quot;</span><br><span class="line">v-on=&quot;$listeners&quot;</span><br><span class="line">&gt;&lt;/grandson&gt;  \`</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><h4 id="孙子组件"><a href="#孙子组件" class="headerlink" title="孙子组件"></a>孙子组件</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Vue.component(&apos;grandson&apos;, &#123;</span><br><span class="line">props: [],</span><br><span class="line">template:`</span><br><span class="line">  &lt;input</span><br><span class="line">  type=&quot;text&quot;</span><br><span class="line">  v-model=&quot;grandsonMsgToGrandfather&quot;</span><br><span class="line">@input=&quot;sendToGrandfatherEvent&quot;</span><br><span class="line">&gt;&#123;&#123;$attrs.grandfatherData&#125;&#125;&lt;/div&gt; `</span><br><span class="line">data: function () &#123;</span><br><span class="line">return &#123;</span><br><span class="line">  grandsonMsgToGrandfather: &quot;hello, i&apos;m your grandson&quot;</span><br><span class="line">&#125;</span><br><span class="line">&#125;,</span><br><span class="line">method: &#123;</span><br><span class="line">sendToGrandfatherEvent () &#123;</span><br><span class="line">this.$emit(&apos;getGrandsonEvent&apos;, sonMsgToGrandfather )</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><p>注意：这里的代码并没有验证过,只是大概写个简单的demo</p><h3 id="上文档"><a href="#上文档" class="headerlink" title="上文档"></a>上文档</h3><h4 id="vm-attrs"><a href="#vm-attrs" class="headerlink" title="vm.$attrs"></a>vm.$attrs</h4><blockquote><p><strong>vm.$attrs</strong><br><strong>类型：</strong><code>{ [key: string]: string }</code><br><strong>只读</strong><br><strong>详细：</strong><br>包含了父作用域中不作为 prop 被识别 (且获取) 的特性绑定 (class 和 style 除外)。当一个组件没有声明任何 prop 时，这里会包含所有父作用域的绑定 (class 和 style 除外)，并且可以通过 v-bind=”$attrs” 传入内部组件——在创建高级别的组件时非常有用。</p></blockquote><h4 id="vm-listeners"><a href="#vm-listeners" class="headerlink" title="vm.$listeners"></a>vm.$listeners</h4><blockquote><p><strong>vm.$listeners</strong><br><strong>类型：</strong><code>{ [key: string]: Function | Array&lt;Function&gt; }</code><br><strong>只读</strong><br><strong>详细：</strong><br>包含了父作用域中的 (不含 .native 修饰器的) v-on 事件监听器。它可以通过 v-on=”$listeners” 传入内部组件——在创建更高层次的组件时非常有用。</p></blockquote><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>[1]. <a href="https://cn.vuejs.org/v2/api/#vm-attrs" target="_blank" rel="noopener">https://cn.vuejs.org/v2/api/#vm-attrs</a> 、<a href="https://cn.vuejs.org/v2/api/#vm-listeners" target="_blank" rel="noopener">https://cn.vuejs.org/v2/api/#vm-listeners</a><br>[2]. <a href="https://blog.csdn.net/qq_39009348/article/details/81977468" target="_blank" rel="noopener">vue的通信方式（二）—祖父孙三个级别的之间的隔代通信</a></p><p>  —end—</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;组件通信-祖孙&quot;&gt;&lt;a href=&quot;#组件通信-祖孙&quot; class=&quot;headerlink&quot; title=&quot;组件通信-祖孙&quot;&gt;&lt;/a&gt;组件通信-祖孙&lt;/h3&gt;&lt;p&gt;本文将结合例子，简单讲解下vuejs文档中的实例属性：&lt;strong&gt;vm.$attrs&lt;/strong&gt;和&lt;strong&gt;vm.$listeners&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fzfr1n65maj20b40b4dfn.jpg&quot; alt=&quot;&quot;&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://blog.lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://blog.lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
+  
+  <entry>
     <title>第二十一天2019-01-21</title>
     <link href="http://blog.lmislm.com/2019/01/21/2019-01-21/"/>
     <id>http://blog.lmislm.com/2019/01/21/2019-01-21/</id>
     <published>2019-01-20T16:00:00.000Z</published>
-    <updated>2019-01-21T15:14:24.538Z</updated>
+    <updated>2019-01-21T15:15:24.159Z</updated>
     
     <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>今天又重温了一小下（事件循环）Event Loop，如何去区分MicroTask（微任务）,MacroTask（宏任务），说实话我还没有非常精确的去理解到位，做顺序题目，也会做错，理解的不充分不到位。去看了下MDN<sup><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/EventLoop" target="_blank" rel="noopener">1</a></sup>,发现并没有解释的很详细，除了解释Nodejs中和浏览器中的EventLoop有点不同，其他简短的语言倒像是解释<code>setTimeout()</code>是“非等待一定时间之后执行”这一概念。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fzelyzwwi1j20hk0b2n27.jpg" alt=""><br><a id="more"></a></p><h3 id="Event-Loop-上"><a href="#Event-Loop-上" class="headerlink" title="Event Loop - 上"></a>Event Loop - 上</h3><p>下面来稍微再温习下这个东西。承上启下，为<code>Promise()</code>的深入理解做更好的准备。</p><h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><p>JavaScript这种并发模型基于“事件循环” ，是单线程的，不像是C语言任何位置被终止，它是异步而不阻塞主进程执行。Event Loop起到很重要的作用， JavaScript处理 I/O 通常通过事件和回调来执行。<br>本文简单的入门一下Event Loop这个东西，大概有个映像就行。</p><h4 id="任务"><a href="#任务" class="headerlink" title="任务"></a>任务</h4><p>js引擎的两种任务</p><ul><li>MacroTask: <strong>setTimeout</strong>, <strong>setInterval</strong>, <strong>setImmediate</strong>,<strong>I/O</strong>, <strong>UI rendering</strong></li><li>MicroTask: <strong>Promise</strong>, <strong>process.nextTick</strong>, <strong>Object.observe</strong>, <strong>MutationObserver</strong>, <strong>MutaionObserver</strong><h4 id="调度机制"><a href="#调度机制" class="headerlink" title="调度机制"></a>调度机制</h4>不同的任务行为并不一样，执行的先后顺序不一样。具体怎么个不一样，这里拿个例子<sup><a href="https://imweb.io/topic/5b148768d4c96b9b1b4c4ea1" target="_blank" rel="noopener">2</a></sup>。<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">setTimeout(function() &#123;</span><br><span class="line">  console.log(4);</span><br><span class="line">&#125;, 0);</span><br><span class="line"></span><br><span class="line">var promise = new Promise(function executor(resolve) &#123;</span><br><span class="line">  console.log(1);</span><br><span class="line">  for (var i = 0; i &lt; 10000; i++) &#123;</span><br><span class="line">    i == 9999 &amp;&amp; resolve();</span><br><span class="line">  &#125;</span><br><span class="line">  console.log(2);</span><br><span class="line">&#125;).then(function() &#123;</span><br><span class="line">  console.log(5);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">console.log(3);</span><br></pre></td></tr></table></figure></li></ul><p>Nodejs输出： 1 2 3 5 4<br>浏览器输出：1 2 3 5 undefined 4<br>注：这里不讨论Nodejs和浏览器的异同</p><h4 id="MicroTask-和-Macro-Task的执行顺序-描述"><a href="#MicroTask-和-Macro-Task的执行顺序-描述" class="headerlink" title="MicroTask 和 Macro Task的执行顺序 - 描述"></a>MicroTask 和 Macro Task的执行顺序 - 描述</h4><ol><li>Event Loop 开始</li><li>MicroTasks 队列开始执行至结束</li><li>检查MacroTask 队列是否有待执行，有则跳到4，无则跳到6</li><li>MacroTask队列“抽取”一个任务，执行至结束</li><li>检查MicroTasks 是否执行完毕，若有则跳到2，无则跳到3</li><li>结束Event Loop</li></ol><p><strong>以上整个过程就是Event Loop（事件循环）。</strong></p><p>这里有个疑问，就是5为什么还要检查是否执行完毕，因为2已经检查过了，是什么事件遗留到了5？</p><h4 id="MicroTask-和-Macro-Task的执行顺序-图文"><a href="#MicroTask-和-Macro-Task的执行顺序-图文" class="headerlink" title="MicroTask 和 Macro Task的执行顺序 - 图文"></a>MicroTask 和 Macro Task的执行顺序 - 图文</h4><p>一张图来解释下<sup><a href="https://juejin.im/post/59e85eebf265da430d571f89" target="_blank" rel="noopener">3</a></sup>（这张图是引用的，可能需要重画下，可能加上Event table会更好点）。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fzellunmyaj20ux0q8472.jpg" alt=""></p><h4 id="图怎么理解呢"><a href="#图怎么理解呢" class="headerlink" title="图怎么理解呢?"></a>图怎么理解呢?</h4><p>宏任务作为入口的话，setTimeout不是第一个执行？是这么个解释的，拿调度机制中的代码说事。<br>先把两种任务再放一遍。</p><blockquote><p>MacroTask: <strong>setTimeout</strong>, <strong>setInterval</strong>, <strong>setImmediate</strong>,<strong>I/O</strong>, <strong>UI rendering</strong><br>MicroTask: <strong>Promise</strong>, <strong>process.nextTick</strong>, <strong>Object.observe</strong>, <strong>MutationObserver</strong>, <strong>MutaionObserver</strong></p><ol><li><strong>整段代码作为宏任务</strong>进入主线程。</li><li>遇到setTimeout(), 回调函数注册后分发到宏任务Event Queue。// 回调函数注册？</li><li>接下来遇到了Promise，new Promise立即执行，then函数分发到微任务Event Queue。// 立即执行？</li><li>遇到console.log()，立即执行。</li><li>整段代码作为一次宏任务执行结束，进入微任务判断。Event Queue里有then函数，执行。</li><li>第二轮循环，开始新的宏任务。从宏任务Event Queue中去检查。发现setTimeout回调函数，立即执行。</li></ol></blockquote><p>到这里如果还不懂的话，可以到参考资料的<a href="https://juejin.im/post/59e85eebf265da430d571f89" target="_blank" rel="noopener">3</a>去看看，写的比较详细，我这里只是笔记形式简单总结下。</p><h4 id="Promise-和-process-nextTick-的先后顺序？-后续"><a href="#Promise-和-process-nextTick-的先后顺序？-后续" class="headerlink" title="Promise 和 process.nextTick() 的先后顺序？- 后续"></a>Promise 和 process.nextTick() 的先后顺序？- 后续</h4><p>这里就放到下一篇Event Loop再说吧。<br>– end –</p><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>[1]. <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/EventLoop" target="_blank" rel="noopener">并发模型与事件循环</a><br>[2]. <a href="https://imweb.io/topic/5b148768d4c96b9b1b4c4ea1" target="_blank" rel="noopener">理解event loop（浏览器环境与nodejs环境）</a><br>[3]. <a href="https://juejin.im/post/59e85eebf265da430d571f89" target="_blank" rel="noopener">这一次，彻底弄懂 JavaScript 执行机制</a></p>]]></content>
     
@@ -455,28 +478,6 @@
       
         &lt;h4 id=&quot;忙碌的一天&quot;&gt;&lt;a href=&quot;#忙碌的一天&quot; class=&quot;headerlink&quot; title=&quot;忙碌的一天&quot;&gt;&lt;/a&gt;忙碌的一天&lt;/h4&gt;&lt;p&gt;啊！国际化终于要上线了。总是改文案改样式，我都快改死了。这个译文的调整真不是改的。细化到空格，逗号，括号。&lt;br&gt;今
       
-    
-    </summary>
-    
-      <category term="生活" scheme="http://blog.lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="感悟" scheme="http://blog.lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>第二天2019-01-02</title>
-    <link href="http://blog.lmislm.com/2019/01/02/2019-01-02/"/>
-    <id>http://blog.lmislm.com/2019/01/02/2019-01-02/</id>
-    <published>2019-01-01T16:00:00.000Z</published>
-    <updated>2019-01-02T14:44:31.730Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="谈一天感受"><a href="#谈一天感受" class="headerlink" title="谈一天感受"></a>谈一天感受</h4><p>今天早上起来，发现这几天真的好冷啊。真是降温到极点了。扫兴的是，居然还牙疼，都怪假期三天吃的太多了，这智齿问题又出来了，哪天找个机会真的把它给拔了！<br><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fysmf2k2xqj20k30k574t.jpg" alt=""><br><a id="more"></a><br>今天转了一篇微信文章，要集赞然后获取《经济学人》98年到18年的文章。真是幸运，前几天还念叨着，要想办法拿下经济学人的文章合集就好。真是运气啊，今天就有机会获得了。新年开始，运气都这么好的吗？<br>今天把推荐码和红包都写好了，不容易啊，断断续续一个星期，中间还惨杂这user-server的URL修改，实际工作时间真的就是三四天。剩下的还有后台管理的一小部分。其中掺杂着一些YiCAT的国际化，国际化你可快点上线吧，天天各种细节，译文修改，真是琐碎的很。还特别占时间。完全是体力活，原谅我再一次吐槽这个译文的修改。从第一次拿到译文，到现在为止，我已经数不清，改了多少次译文了。真想写个接口。让他们自己去修改。省得自己天天改译文文案。吐槽就到这里吧。<br>这些天不知道眼睛怎么了，总是表现出很困的感觉，一直不自觉眯着眼睛。可能是没有早睡的原因。真是佩服公司同事，每天熬夜到一两点，精神气还十足。<br>– end</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;谈一天感受&quot;&gt;&lt;a href=&quot;#谈一天感受&quot; class=&quot;headerlink&quot; title=&quot;谈一天感受&quot;&gt;&lt;/a&gt;谈一天感受&lt;/h4&gt;&lt;p&gt;今天早上起来，发现这几天真的好冷啊。真是降温到极点了。扫兴的是，居然还牙疼，都怪假期三天吃的太多了，这智齿问题又出来了，哪天找个机会真的把它给拔了！&lt;br&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fysmf2k2xqj20k30k574t.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
     
     </summary>
     
