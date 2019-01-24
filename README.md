@@ -77,7 +77,7 @@ grammar_cjkRuby: true
 
 <!-- 然后按照这里 -->
 
-https://blog.booml.cn/2018/03/05/git-progress/#more
+https://blog.lmislm.com/2018/03/05/git-progress/#more
 
 > `cd ~/theme/next`
  > `git stash`
