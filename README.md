@@ -14,13 +14,17 @@
 > git pull origin hexoKey ----allow-unrelated-histories
 
 > npm install hexo-deployer-git hexo
+
 > npm install
+
 > hexo clean
+
 > hexo g
 
 #### merge
 
 > git add .
+
 > git commit -m "finish"
 
 ### 文章写作
