@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[第二十六天2019-01-26]]></title>
+    <url>%2F2019%2F01%2F26%2F2019-01-26%2F</url>
+    <content type="text"><![CDATA[碎碎念今天公司年会，这是个不写log的好理由，对吧？我也是这么觉得。回到家已经很晚了，晚上11点才到家，就真的不想再写日志了。就这样结束今天的日志环节吧。 –end–]]></content>
+      <categories>
+        <category>生活</category>
+      </categories>
+      <tags>
+        <tag>感悟</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[第二十五天2019-01-25]]></title>
     <url>%2F2019%2F01%2F25%2F2019-01-25%2F</url>
     <content type="text"><![CDATA[js 常用数组方法小结 （2）碎碎念有些数组方法会经常用，这里今天就介绍一下reduce()方法和find()方法。 Array.protytype.reduce()背景看完一些方法，目前来说，reduce()方法，能实现的比较多，且我之前看到的文章中对其的推崇是比较多的。据说它能做很多事情。昨天看了下MDN上的介绍和几个例子，确实感觉其功能的强大。本文基于MDN上的代码以笔记的形式注释，先对功能做栗子，然后对方法进行一些描述。 举个栗子一些简单的例子 累加数组中的值？ let sum = [3, 9, 12, 34].reduce((accumulator, currentValue, currentIndex, array) =&gt; &#123; return accumulator + currentValue&#125;)console.log(sum) // 58 累加对象数组中的值？ let sum = [&#123;x: 1&#125;, &#123;x:2&#125;, &#123;x:3&#125;].reduce((accumulator, currentValue) =&gt; &#123; // 将键名为x的逐个累加到累加器中 return accumulator + currentValue.x&#125;, 0)console.log(sum) // 6 initialValue 为初始值，且初始值是必须提供的 二维数组转为一维数组？let flattened = [[0, 1], [2, 3], [4, 5]].reduce((acc, cval, cidx, arr) =&gt; &#123; // 初始值为空数组，取出当前下标数组中的值，放入累加器中的空数组，逐个累加 return acc.concat(cval)&#125;, [])console.log(flattened) 一些稍微复杂点的 计算数组中每个元素出现的次数？ let arr = [1, 3, 54, 21, 1]let count = arr.reduce((acc, cval) =&gt; &#123;// 这里要注意是在累加器中去寻找是否存在值 if (cval in acc) &#123; // 以对象形式赋值，真个reduce过程一次次去遍历 acc[cval]++ &#125; else &#123; acc[cval] = 1 &#125; return acc&#125;, &#123;&#125;)console.log(count) // &#123; '1': 2, '3': 1, '21': 1, '54': 1 &#125; 属性对object分类？ let people = [ &#123; name: 'Alice', age: 21 &#125;, &#123; name: 'Max', age: 20 &#125;, &#123; name: 'Jane', age: 20 &#125;]function groupBy (objArr, property) &#123; return objArr.reduce((acc, obj) =&gt; &#123; // 键名 let key = obj[property] // 判断累加器中是否有重复的元素 if(!acc[key]) &#123; acc[key] = [] &#125; acc[key].push(obj) return acc &#125;, &#123;&#125;)&#125;let groupedByPeople = groupBy(people, 'age')console.log(groupedByPeople) 使用扩展运算符和initialValue绑定包含在对象数组中的数组简单点说就是取出数组集合中对象中的数组 let friends = [&#123; name: 'Anna', books: ['Bible', 'Harry Potter'], age: 21&#125;, &#123; name: 'Bob', books: ['War and peace', 'Romeo and Juliet'], age: 26&#125;, &#123; name: 'Alice', books: ['The Lord of the Rings', 'The Shining'], age: 18&#125;]// 列出所有包含的书籍// 题目不容易理解，好好一想，就容易的多，还得对扩展符了解的比较多点就更容易上手let containerBook = friends.reduce((prev, curr) =&gt; &#123; return [...prev, ...curr.books]&#125;, [])console.log(containerBook) 然后，鸽了鸽了。先写到这里吧。时间又不够了。 参考[1]. Array.prototype.reduce()–end–]]></content>
