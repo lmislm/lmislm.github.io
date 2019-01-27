@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.lmislm.com/"/>
-  <updated>2019-01-26T15:25:45.191Z</updated>
+  <updated>2019-01-27T10:52:42.467Z</updated>
   <id>http://blog.lmislm.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>第二十七天2019-01-27</title>
+    <link href="http://blog.lmislm.com/2019/01/27/2019-01-27/"/>
+    <id>http://blog.lmislm.com/2019/01/27/2019-01-27/</id>
+    <published>2019-01-26T16:00:00.000Z</published>
+    <updated>2019-01-27T10:52:42.467Z</updated>
+    
+    <content type="html"><![CDATA[<p>今天上午看了一部动漫，B站Lex推荐的。看完之后感叹这两天动漫质量的提高，动漫三观简直不能再正，慢慢的正能量。这种动漫真是难怪不火。动漫名字叫《超能力少女》但是整个片并不是一部打斗片，而是一部以一位来自异世界超能力少女生活为主线另一位异世界超能力少女为辅，讲述了来到这个世界之后，两个少女面对不同的家庭之间各自的努力和奋斗故事，在女二号身上，看到了满满的正能量，与女一号富有的生活对比，个人感觉女二号的勤奋和人品更像是这部故事讲述的主题。同时，这个故事也对于日本的黑帮进行了一些美化。虽然故事剧情并没有像标题和开头一幕一样热血，但是剧情本身还是非常精彩！这里好像说了绕口令。但就是夸这部动漫吧。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fzlc8bxnrgj20yi22ojyq.jpg" alt=""></p><a id="more"></a>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天上午看了一部动漫，B站Lex推荐的。看完之后感叹这两天动漫质量的提高，动漫三观简直不能再正，慢慢的正能量。这种动漫真是难怪不火。动漫名字叫《超能力少女》但是整个片并不是一部打斗片，而是一部以一位来自异世界超能力少女生活为主线另一位异世界超能力少女为辅，讲述了来到这个世界之后，两个少女面对不同的家庭之间各自的努力和奋斗故事，在女二号身上，看到了满满的正能量，与女一号富有的生活对比，个人感觉女二号的勤奋和人品更像是这部故事讲述的主题。同时，这个故事也对于日本的黑帮进行了一些美化。虽然故事剧情并没有像标题和开头一幕一样热血，但是剧情本身还是非常精彩！这里好像说了绕口令。但就是夸这部动漫吧。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fzlc8bxnrgj20yi22ojyq.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="生活" scheme="http://blog.lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="感悟" scheme="http://blog.lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
+    
+  </entry>
   
   <entry>
     <title>第二十六天2019-01-26</title>
@@ -459,29 +482,6 @@
     
     
       <category term="感悟" scheme="http://blog.lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>第七天2019-01-07</title>
-    <link href="http://blog.lmislm.com/2019/01/07/2019-01-07/"/>
-    <id>http://blog.lmislm.com/2019/01/07/2019-01-07/</id>
-    <published>2019-01-06T16:00:00.000Z</published>
-    <updated>2019-01-08T15:12:46.322Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h4><p>最近发现写代码的速度有提升，这说明写业务代码基础都差不多了，接下来就应该深究其内容了，该向代码底层的一些原理进行深入探究了，当然还是得夯实基础。之前看过一点<code>Lodashjs</code>的基础，但是有些关联性太强，没办法一下子联系起来，得慢慢的来看内容。今早上看了js中一个<code>Object.assign()</code>中的一些原理，发现其实并没有想象的那么难，但是手写起来可是非常考验功底，需要真正理解才能去写出浅拷贝的<code>Objecr.assign()</code>。下面来浅谈下。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fyygpxh56kj20hr0hr3yx.jpg" alt=""></p><a id="more"></a><h3 id="笔记-Object-assign-–上"><a href="#笔记-Object-assign-–上" class="headerlink" title="笔记-Object.assign()–上"></a>笔记-Object.assign()–上</h3><ul><li>描述<blockquote><p>如果目标对象中的属性具有相同的键，则属性将被源中的属性覆盖。后来的源的属性将类似地覆盖早先的属性。<br>这里应该讲的是<figure class="highlight plain"><figcaption><span>的**陷阱**。</span></figcaption><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">#### 拷贝问题</span><br><span class="line"></span><br><span class="line">```javascript?linenums</span><br><span class="line">// 1. 浅拷贝</span><br><span class="line">let obj1 = &#123; a: 0 , b: &#123; c: 0&#125;&#125;;  // 源对象</span><br><span class="line"></span><br><span class="line">let obj2 = Object.assign(&#123;&#125;, obj1); // 目标对象</span><br><span class="line">console.log(JSON.stringify(obj2)); // &#123; a: 0, b: &#123; c: 0&#125;&#125;</span><br><span class="line">// 2. 改变源对象的属性值，拷贝的值并不会改变</span><br><span class="line">obj1.a = 1;</span><br><span class="line">console.log(JSON.stringify(obj1)); // &#123; a: 1, b: &#123; c: 0&#125;&#125; ，</span><br><span class="line">console.log(JSON.stringify(obj2)); // &#123; a: 0, b: &#123; c: 0&#125;&#125;</span><br><span class="line">// 3. 修改目标对象的属性</span><br><span class="line">obj2.a = 2;</span><br><span class="line">console.log(JSON.stringify(obj1)); // &#123; a: 1, b: &#123; c: 0&#125;&#125;</span><br><span class="line">console.log(JSON.stringify(obj2)); // &#123; a: 2, b: &#123; c: 0&#125;&#125;</span><br><span class="line">// 4. 改变了目标对象的值，因为复制了对源对象的引用，对目标对象属性的修改也能改源对象，如何解决这种问题？</span><br><span class="line">obj2.b.c = 3;</span><br><span class="line">console.log(JSON.stringify(obj1)); // &#123; a: 1, b: &#123; c: 3&#125;&#125;</span><br><span class="line">console.log(JSON.stringify(obj2)); // &#123; a: 2, b: &#123; c: 3&#125;&#125;</span><br><span class="line">// 5. 常用的深拷贝JSON.parse(JSON.stringify()),这个方法也有缺点</span><br><span class="line">obj1 = &#123; a: 0 , b: &#123; c: 0&#125;&#125;;</span><br><span class="line">let obj3 = JSON.parse(JSON.stringify(obj1));</span><br><span class="line">obj1.a = 4;</span><br><span class="line">obj1.b.c = 4;</span><br><span class="line">console.log(JSON.stringify(obj3)); // &#123; a: 0, b: &#123; c: 0&#125;&#125;</span><br></pre></td></tr></table></figure></p></blockquote></li></ul><h4 id="合并对象（常用）"><a href="#合并对象（常用）" class="headerlink" title="合并对象（常用）"></a>合并对象（常用）</h4><blockquote><p>以下代码引自MDN</p></blockquote><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var o1 = &#123; a: 1 &#125;;</span><br><span class="line">var o2 = &#123; b: 2 &#125;;</span><br><span class="line">var o3 = &#123; c: 3 &#125;;</span><br><span class="line"></span><br><span class="line">var obj = Object.assign(o1, o2, o3);</span><br><span class="line">console.log(obj); // &#123; a: 1, b: 2, c: 3 &#125;</span><br><span class="line">console.log(o1);  // &#123; a: 1, b: 2, c: 3 &#125;</span><br></pre></td></tr></table></figure><ul><li>注意目标对象自身也会改变。</li></ul><h4 id="合并具有相同属性的对象"><a href="#合并具有相同属性的对象" class="headerlink" title="合并具有相同属性的对象"></a>合并具有相同属性的对象</h4><blockquote><p>以下代码引自MDN</p></blockquote><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var o1 = &#123; a: 1, b: 1, c: 1 &#125;;</span><br><span class="line">var o2 = &#123; b: 2, c: 2 &#125;;</span><br><span class="line">var o3 = &#123; c: 3 &#125;;</span><br><span class="line"></span><br><span class="line">var obj = Object.assign(&#123;&#125;, o1, o2, o3);</span><br><span class="line">console.log(obj); // &#123; a: 1, b: 2, c: 3 &#125;</span><br></pre></td></tr></table></figure><ul><li>注意后续参数覆盖问题</li></ul><h4 id="拷贝-symbol-类型的属性"><a href="#拷贝-symbol-类型的属性" class="headerlink" title="拷贝 symbol 类型的属性"></a>拷贝 symbol 类型的属性</h4><ul><li>描述<blockquote><p>Object.assign 方法只会拷贝源对象自身的并且可枚举的属性到目标对象。该方法使用源对象的[[Get]]和目标对象的[[Set]]，所以它会调用相关 getter 和 setter。因此，它分配属性，而不仅仅是复制或定义新的属性。如果合并源包含getter，这可能使其不适合将新属性合并到原型中。为了将属性定义（包括其可枚举性）复制到原型，应使用Object.getOwnPropertyDescriptor()和Object.defineProperty() 。String类型和 Symbol 类型的属性都会被拷贝。</p></blockquote></li></ul><blockquote><p>以下代码引自MDN</p></blockquote><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var o1 = &#123; a: 1 &#125;;</span><br><span class="line">var o2 = &#123; [Symbol(&apos;foo&apos;)]: 2 &#125;;</span><br><span class="line"></span><br><span class="line">var obj = Object.assign(&#123;&#125;, o1, o2);</span><br><span class="line">console.log(obj); // &#123; a : 1, [Symbol(&quot;foo&quot;)]: 2 &#125;    (cf. bug 1207182 on Firefox)</span><br><span class="line">Object.getOwnPropertySymbols(obj); // [Symbol(foo)]</span><br></pre></td></tr></table></figure><h3 id="先探究到这里吧"><a href="#先探究到这里吧" class="headerlink" title="先探究到这里吧"></a>先探究到这里吧</h3><p>针对深拷贝，需要使用其他方法，因为 Object.assign()拷贝的是属性值。假如源对象的属性值是一个指向对象的引用，它也只拷贝那个引用值。常用的可能是<code>JSON.parse(JSON.stringify())</code>,这个方法也有缺点。</p><h4 id="知识扩展-简单对比"><a href="#知识扩展-简单对比" class="headerlink" title="知识扩展-简单对比"></a>知识扩展-简单对比</h4><ol><li>Object.assign()</li><li>JSON.parse(JSON.stringify())</li></ol><ul><li><code>2</code>，不适合<strong>复制循环引用对象</strong>,不适合<strong>复制对象方法</strong> </li></ul><h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p>[1].  <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/assign" target="_blank" rel="noopener">Object.assign()–MDN</a><br>[2]. <a href="https://www.css88.com/archives/8319" target="_blank" rel="noopener">JavaScript 中的对象拷贝</a><br>–end</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h4&gt;&lt;p&gt;最近发现写代码的速度有提升，这说明写业务代码基础都差不多了，接下来就应该深究其内容了，该向代码底层的一些原理进行深入探究了，当然还是得夯实基础。之前看过一点&lt;code&gt;Lodashjs&lt;/code&gt;的基础，但是有些关联性太强，没办法一下子联系起来，得慢慢的来看内容。今早上看了js中一个&lt;code&gt;Object.assign()&lt;/code&gt;中的一些原理，发现其实并没有想象的那么难，但是手写起来可是非常考验功底，需要真正理解才能去写出浅拷贝的&lt;code&gt;Objecr.assign()&lt;/code&gt;。下面来浅谈下。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fyygpxh56kj20hr0hr3yx.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="学习" scheme="http://blog.lmislm.com/categories/%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-      <category term="JS" scheme="http://blog.lmislm.com/tags/JS/"/>
     
   </entry>
   
