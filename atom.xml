@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.lmislm.com/"/>
-  <updated>2019-01-28T15:24:30.399Z</updated>
+  <updated>2019-01-29T14:12:17.222Z</updated>
   <id>http://blog.lmislm.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>第二十九天2019-01-29</title>
+    <link href="http://blog.lmislm.com/2019/01/29/2019-01-29/"/>
+    <id>http://blog.lmislm.com/2019/01/29/2019-01-29/</id>
+    <published>2019-01-28T16:00:00.000Z</published>
+    <updated>2019-01-29T14:12:17.222Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>刚看了下，搁置了四天没写技术文章了，好几篇只有上文，没有下文。这个毛病从写日志体现出来了，说明得改，这还说明了，写日志的好处啊，能够从记录中发现问题。可能这就是今天鸽的理由吧。这几天快接近年末了，又期待，又不期待，真是很纠结。我发现，什么时候都有很多事，看你怎么去对待，永远不会说等到没事的时候。要调整好情绪再说。此处，鸽。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fznt8ja8lbj20u01407wh.jpg" alt=""></p><a id="more"></a>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;刚看了下，搁置了四天没写技术文章了，好几篇只有上文，没有下文。这个毛病从写日志体现出来了，说明得改，这还说明了，写日志的好处啊，能够从记录中发现问题。可能这就是今天鸽的理由吧。这几天快接近年末了，又期待，又不期待，真是很纠结。我发现，什么时候都有很多事，看你怎么去对待，永远不会说等到没事的时候。要调整好情绪再说。此处，鸽。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fznt8ja8lbj20u01407wh.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="生活" scheme="http://blog.lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="感悟" scheme="http://blog.lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
+    
+  </entry>
   
   <entry>
     <title>第二十八天2019-01-28</title>
@@ -452,29 +475,6 @@
     
       &lt;h2 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h2&gt;&lt;p&gt;最近都没有不同的图片可以贴了，还需要找点图片啊。今天早上看了下怎么实现&lt;code&gt;new&lt;/code&gt;操作符，感觉又回到了，原型和原型链的理解，&lt;strong&gt;“new”一个函数的时候，到底发生了什么&lt;/strong&gt;？兜兜转转看来还是这个理解的不到位。说起理解不到位，让我想起了，今天写业务代码的时候，写到Vue渲染先后顺序这个地方，愣是卡了很久。看来这是对于整个的Vue运行机制还掌握的不够。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fyygpxh56kj20hr0hr3yx.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="生活" scheme="http://blog.lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="感悟" scheme="http://blog.lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>第九天2019-01-09</title>
-    <link href="http://blog.lmislm.com/2019/01/09/2019-01-09/"/>
-    <id>http://blog.lmislm.com/2019/01/09/2019-01-09/</id>
-    <published>2019-01-08T16:00:00.000Z</published>
-    <updated>2019-01-09T14:15:37.061Z</updated>
-    
-    <content type="html"><![CDATA[<p>这几天很忙啊！！早上都去的很晚！早点睡觉早点睡觉！</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fz0osud97tj20go0godg5.jpg" alt=""><br>–end<br><a id="more"></a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;这几天很忙啊！！早上都去的很晚！早点睡觉早点睡觉！&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fz0osud97tj20go0godg5.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;–end&lt;br&gt;
     
     </summary>
     
