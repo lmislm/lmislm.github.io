@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.lmislm.com/"/>
-  <updated>2019-01-29T14:12:17.222Z</updated>
+  <updated>2019-01-30T15:02:51.890Z</updated>
   <id>http://blog.lmislm.com/</id>
   
   <author>
@@ -17,18 +17,41 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>第三十天2019-01-30</title>
+    <link href="http://blog.lmislm.com/2019/01/30/2019-01-30/"/>
+    <id>http://blog.lmislm.com/2019/01/30/2019-01-30/</id>
+    <published>2019-01-29T16:00:00.000Z</published>
+    <updated>2019-01-30T15:02:51.890Z</updated>
+    
+    <content type="html"><![CDATA[<p>上线很晚啊，今天，有点困。还是早点睡吧，这些天。今天碰到个问题。vm.$attrs传入的不识别横线方式，爷组件传入的不会自动将驼峰转为横线模式。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fzp0b945ntj20zk0k0gnj.jpg" alt=""><br>–end–<br><a id="more"></a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;上线很晚啊，今天，有点困。还是早点睡吧，这些天。今天碰到个问题。vm.$attrs传入的不识别横线方式，爷组件传入的不会自动将驼峰转为横线模式。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fzp0b945ntj20zk0k0gnj.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;–end–&lt;br&gt;
+    
+    </summary>
+    
+      <category term="生活" scheme="http://blog.lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="感悟" scheme="http://blog.lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
+    
+  </entry>
+  
+  <entry>
     <title>第二十九天2019-01-29</title>
     <link href="http://blog.lmislm.com/2019/01/29/2019-01-29/"/>
     <id>http://blog.lmislm.com/2019/01/29/2019-01-29/</id>
     <published>2019-01-28T16:00:00.000Z</published>
-    <updated>2019-01-29T14:12:17.222Z</updated>
+    <updated>2019-01-29T14:27:58.533Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>刚看了下，搁置了四天没写技术文章了，好几篇只有上文，没有下文。这个毛病从写日志体现出来了，说明得改，这还说明了，写日志的好处啊，能够从记录中发现问题。可能这就是今天鸽的理由吧。这几天快接近年末了，又期待，又不期待，真是很纠结。我发现，什么时候都有很多事，看你怎么去对待，永远不会说等到没事的时候。要调整好情绪再说。此处，鸽。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fznt8ja8lbj20u01407wh.jpg" alt=""></p><a id="more"></a>]]></content>
+    <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>刚看了下，搁置了四天没写技术文章了，好几篇只有上文，没有下文。这个毛病从写日志体现出来了，说明得改，这还说明了，写日志的好处啊，能够从记录中发现问题。可能这就是今天鸽的理由吧。这几天快接近年末了，又期待，又不期待，真是很纠结。我发现，什么时候都有很多事，看你怎么去对待，永远不会说等到没事的时候。要调整好情绪再说。此处，鸽。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fznt8ja8lbj20u01407wh.jpg" alt=""><br>–end–</p><a id="more"></a>]]></content>
     
     <summary type="html">
     
       &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;刚看了下，搁置了四天没写技术文章了，好几篇只有上文，没有下文。这个毛病从写日志体现出来了，说明得改，这还说明了，写日志的好处啊，能够从记录中发现问题。可能这就是今天鸽的理由吧。这几天快接近年末了，又期待，又不期待，真是很纠结。我发现，什么时候都有很多事，看你怎么去对待，永远不会说等到没事的时候。要调整好情绪再说。此处，鸽。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fznt8ja8lbj20u01407wh.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fznt8ja8lbj20u01407wh.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;–end–&lt;/p&gt;
     
     </summary>
     
@@ -44,14 +67,14 @@
     <link href="http://blog.lmislm.com/2019/01/28/2019-01-28/"/>
     <id>http://blog.lmislm.com/2019/01/28/2019-01-28/</id>
     <published>2019-01-27T16:00:00.000Z</published>
-    <updated>2019-01-28T15:24:30.399Z</updated>
+    <updated>2019-01-29T14:28:05.747Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>今天回来的比较晚，可能事情比较多吧。又想起了以前的事。唉，洗洗早点睡吧。几天就这几句唠唠叨叨的话了。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fzmpp0a9fgj20b40b4wi4.jpg" alt=""></p><a id="more"></a>]]></content>
+    <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>今天回来的比较晚，可能事情比较多吧。又想起了以前的事。唉，洗洗早点睡吧。几天就这几句唠唠叨叨的话了。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fzmpp0a9fgj20b40b4wi4.jpg" alt=""><br>–end–</p><a id="more"></a>]]></content>
     
     <summary type="html">
     
       &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;今天回来的比较晚，可能事情比较多吧。又想起了以前的事。唉，洗洗早点睡吧。几天就这几句唠唠叨叨的话了。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fzmpp0a9fgj20b40b4wi4.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fzmpp0a9fgj20b40b4wi4.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;–end–&lt;/p&gt;
     
     </summary>
     
@@ -67,14 +90,14 @@
     <link href="http://blog.lmislm.com/2019/01/27/2019-01-27/"/>
     <id>http://blog.lmislm.com/2019/01/27/2019-01-27/</id>
     <published>2019-01-26T16:00:00.000Z</published>
-    <updated>2019-01-28T15:18:35.323Z</updated>
+    <updated>2019-01-29T14:28:10.443Z</updated>
     
-    <content type="html"><![CDATA[<p>今天上午看了一部动漫，B站Lex推荐的。看完之后感叹这两天动漫质量的提高，动漫三观简直不能再正，满满的正能量。这种动漫真是难怪不火。动漫名字叫《超能力少女》但是整个片并不是一部打斗片，而是一部以一位来自异世界超能力少女生活为主线另一位异世界超能力少女为辅，讲述了来到这个世界之后，两个少女面对不同的家庭之间各自的努力和奋斗故事，在女二号身上，看到了满满的正能量，与女一号富有的生活对比，个人感觉女二号的勤奋和人品更像是这部故事讲述的主题。同时，这个故事也对于日本的黑帮进行了一些美化。虽然故事剧情并没有像标题和开头一幕一样热血，但是剧情本身还是非常精彩！这里好像说了绕口令。但就是夸这部动漫吧。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fzlc8bxnrgj20yi22ojyq.jpg" alt=""></p><a id="more"></a>]]></content>
+    <content type="html"><![CDATA[<p>今天上午看了一部动漫，B站Lex推荐的。看完之后感叹这两天动漫质量的提高，动漫三观简直不能再正，满满的正能量。这种动漫真是难怪不火。动漫名字叫《超能力少女》但是整个片并不是一部打斗片，而是一部以一位来自异世界超能力少女生活为主线另一位异世界超能力少女为辅，讲述了来到这个世界之后，两个少女面对不同的家庭之间各自的努力和奋斗故事，在女二号身上，看到了满满的正能量，与女一号富有的生活对比，个人感觉女二号的勤奋和人品更像是这部故事讲述的主题。同时，这个故事也对于日本的黑帮进行了一些美化。虽然故事剧情并没有像标题和开头一幕一样热血，但是剧情本身还是非常精彩！这里好像说了绕口令。但就是夸这部动漫吧。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fzlc8bxnrgj20yi22ojyq.jpg" alt=""><br>–end–</p><a id="more"></a>]]></content>
     
     <summary type="html">
     
       &lt;p&gt;今天上午看了一部动漫，B站Lex推荐的。看完之后感叹这两天动漫质量的提高，动漫三观简直不能再正，满满的正能量。这种动漫真是难怪不火。动漫名字叫《超能力少女》但是整个片并不是一部打斗片，而是一部以一位来自异世界超能力少女生活为主线另一位异世界超能力少女为辅，讲述了来到这个世界之后，两个少女面对不同的家庭之间各自的努力和奋斗故事，在女二号身上，看到了满满的正能量，与女一号富有的生活对比，个人感觉女二号的勤奋和人品更像是这部故事讲述的主题。同时，这个故事也对于日本的黑帮进行了一些美化。虽然故事剧情并没有像标题和开头一幕一样热血，但是剧情本身还是非常精彩！这里好像说了绕口令。但就是夸这部动漫吧。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fzlc8bxnrgj20yi22ojyq.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fzlc8bxnrgj20yi22ojyq.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;–end–&lt;/p&gt;
     
     </summary>
     
@@ -452,29 +475,6 @@
     
       &lt;p&gt;呦呦呦，上线了一个功能！所以今天回来的可能有点晚啊！今天临上线前又更新了一点需求，这个更新需求这个事情，对于有些场景来说，真的是不可避免啊，但是这个问题本身可能是在敲定最终需求的时候，需求不明确所导致的，但是整个过程怎么去优化，还是个很大的问题。所以，我觉得最后优化的空间还会很大的。好吧，好像说了很多的空话，但实际上是有点想吐槽下自己代码效率的，对于更新速度快的需求不能够很好的对代码进行解耦和快速的组装，这个说明在设计代码的时候还是很有必要加强训练！&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fyx7u0mosmj20qo0qot9y.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;– end&lt;br&gt;
-    
-    </summary>
-    
-      <category term="生活" scheme="http://blog.lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="感悟" scheme="http://blog.lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>第十天2019-01-10</title>
-    <link href="http://blog.lmislm.com/2019/01/10/2019-01-10/"/>
-    <id>http://blog.lmislm.com/2019/01/10/2019-01-10/</id>
-    <published>2019-01-09T16:00:00.000Z</published>
-    <updated>2019-01-10T15:14:57.260Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h2><p>最近都没有不同的图片可以贴了，还需要找点图片啊。今天早上看了下怎么实现<code>new</code>操作符，感觉又回到了，原型和原型链的理解，<strong>“new”一个函数的时候，到底发生了什么</strong>？兜兜转转看来还是这个理解的不到位。说起理解不到位，让我想起了，今天写业务代码的时候，写到Vue渲染先后顺序这个地方，愣是卡了很久。看来这是对于整个的Vue运行机制还掌握的不够。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fyygpxh56kj20hr0hr3yx.jpg" alt=""><br><a id="more"></a></p><h2 id="笔记-new操作符-上"><a href="#笔记-new操作符-上" class="headerlink" title="笔记-new操作符-上"></a>笔记-new操作符-上</h2><h3 id="“new”-发生了什么"><a href="#“new”-发生了什么" class="headerlink" title="“new” 发生了什么"></a>“new” 发生了什么</h3><h4 id="先来看看MDN上是怎么解释的？2"><a href="#先来看看MDN上是怎么解释的？2" class="headerlink" title="先来看看MDN上是怎么解释的？2"></a>先来看看MDN上是怎么解释的？<sup><a href="https://juejin.im/post/5bde7c926fb9a049f66b8b52" target="_blank" rel="noopener">2</a></sup></h4><ul><li>语法<br><code>new constructor[([arguments])]</code> // constructor：指定对象实例的类型的类或函数</li><li>描述<blockquote><p>当代码 new Foo(…) 执行时，会发生以下事情：</p></blockquote></li></ul><ol><li>一个继承自 Foo.prototype 的新对象被创建。</li><li>使用指定的参数调用构造函数 Foo ，并将 this 绑定到新创建的对象。new Foo 等同于 new Foo()，也就是没有指定参数列表，Foo 不带任何参数调用的情况。</li><li>由构造函数返回的对象就是 new 表达式的结果。如果构造函数没有显式返回一个对象，则使用步骤1创建的对象。（一般情况下，构造函数不返回值，但是用户可以选择主动返回对象，来覆盖正常的对象创建步骤）</li></ol><h4 id="网友总结的-1"><a href="#网友总结的-1" class="headerlink" title="网友总结的[1]"></a>网友总结的<sup>[1]</sup></h4><ol><li>创建了一个全新的对象。</li><li>这个对象会被执行[[Prototype]]（也就是<strong>proto</strong>）链接。</li><li>生成的新对象会绑定到函数调用的this。</li><li>通过new创建的每个对象将最终被[[Prototype]]链接到这个函数的prototype对象上。</li><li>如果函数没有返回对象类型Object(包含Functoin, Array, Date, RegExg, Error)，那么new表达式中的函数调用会自动返回这个新的对象。</li></ol><p>这个是总结出来的，总觉得有点不科学啊。但目前好像是最好的办法，通过new的功能反推new的实现。</p><h4 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h4><p>使用 Function.prototype 属性将共享属性添加到以前定义的对象类型<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function Car() &#123;&#125;</span><br><span class="line">car1 = new Car()</span><br><span class="line"></span><br><span class="line">Car.prototype.color = null</span><br><span class="line">console.log(car1.color) // null</span><br></pre></td></tr></table></figure></p><h2 id="怎么实现new"><a href="#怎么实现new" class="headerlink" title="怎么实现new"></a>怎么实现new</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 模拟实现 new 操作符</span><br><span class="line"> * @param  &#123;Function&#125; ctor [构造函数]</span><br><span class="line"> * @return &#123;Object|Function|Regex|Date|Error&#125;      [返回结果]</span><br><span class="line"> */</span><br><span class="line">function newOperator(ctor)&#123;</span><br><span class="line">    if(typeof ctor !== &apos;function&apos;)&#123;</span><br><span class="line">      throw &apos;newOperator function the first param must be a function&apos;;</span><br><span class="line">    &#125;</span><br><span class="line">    // ES6 new.target 是指向构造函数</span><br><span class="line">// new.target 后面会补充下</span><br><span class="line">    newOperator.target = ctor;</span><br><span class="line">    // 1.创建一个全新的对象，</span><br><span class="line">    // 2.并且执行[[Prototype]]链接</span><br><span class="line">    // 4.通过`new`创建的每个对象将最终被`[[Prototype]]`链接到这个函数的`prototype`对象上。</span><br><span class="line">    var newObj = Object.create(ctor.prototype);</span><br><span class="line">    // ES5 arguments转成数组 当然也可以用ES6 [...arguments], Aarry.from(arguments);</span><br><span class="line">    // 除去ctor构造函数的其余参数</span><br><span class="line">    var argsArr = [].slice.call(arguments, 1);</span><br><span class="line">    // 3.生成的新对象会绑定到函数调用的`this`。</span><br><span class="line">    // 获取到ctor函数返回结果</span><br><span class="line">    var ctorReturnResult = ctor.apply(newObj, argsArr);</span><br><span class="line">    // 小结4 中这些类型中合并起来只有Object和Function两种类型 typeof null 也是&apos;object&apos;所以要不等于null，排除null</span><br><span class="line">    var isObject = typeof ctorReturnResult === &apos;object&apos; &amp;&amp; ctorReturnResult !== null;</span><br><span class="line">    var isFunction = typeof ctorReturnResult === &apos;function&apos;;</span><br><span class="line">    if(isObject || isFunction)&#123;</span><br><span class="line">        return ctorReturnResult;</span><br><span class="line">    &#125;</span><br><span class="line">    // 5.如果函数没有返回对象类型`Object`(包含`Functoin`, `Array`, `Date`, `RegExg`, `Error`)，那么`new`表达式中的函数调用会自动返回这个新的对象。</span><br><span class="line">    return newObj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>这个实现，除去一些排除异常的条件，我理解的就几步，把对象复制过去，然后参数绑定过去，排除边界条件，整个咋一看并不是很难，但是很考验对整个操作符的掌握和熟悉程度。</p><h3 id="new-target"><a href="#new-target" class="headerlink" title="new.target"></a>new.target</h3><p>在构造方法调用中，<code>new.target</code>指向被<code>new</code>调用的构造函数，所以”new.”成为了一个虚拟上下文<sup>[2]</sup></p><ul><li>普通函数中<br>  <code>new.target</code>的值是undefined,可以检测一个函数是否是作为构造函数通过<code>new</code>被调用的。<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function Foo() &#123;</span><br><span class="line">  if (!new.target) throw &quot;Foo() must be called with new&quot;;</span><br><span class="line">  console.log(&quot;Foo instantiated with new&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Foo(); // throws &quot;Foo() must be called with new&quot;</span><br><span class="line">new Foo(); // logs &quot;Foo instantiated with new&quot;， 检测到由new调用</span><br></pre></td></tr></table></figure></li></ul><ol><li>构造函数中<br>稍微复杂点，这里暂时不讨论可以到<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/new.target" target="_blank" rel="noopener">MDN</a>去看。<br>今天暂时讨论到这啊！明天还得上线呢！有点晚，早点睡觉吧。<pre><code>--end </code></pre>参考：<br>[1]. <a href="https://juejin.im/post/5bde7c926fb9a049f66b8b52" target="_blank" rel="noopener">面试官问：能否模拟实现JS的new操作符</a><br>[2]. <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/new" target="_blank" rel="noopener">new运算符</a></li></ol>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h2&gt;&lt;p&gt;最近都没有不同的图片可以贴了，还需要找点图片啊。今天早上看了下怎么实现&lt;code&gt;new&lt;/code&gt;操作符，感觉又回到了，原型和原型链的理解，&lt;strong&gt;“new”一个函数的时候，到底发生了什么&lt;/strong&gt;？兜兜转转看来还是这个理解的不到位。说起理解不到位，让我想起了，今天写业务代码的时候，写到Vue渲染先后顺序这个地方，愣是卡了很久。看来这是对于整个的Vue运行机制还掌握的不够。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fyygpxh56kj20hr0hr3yx.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
     
     </summary>
     
