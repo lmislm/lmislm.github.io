@@ -5,9 +5,9 @@
   <subtitle>“   故不积跬步，无以至千里；不积小流，无以成江海。  -  荀子《劝学篇》”</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://blog.lmislm.com/"/>
-  <updated>2019-01-30T15:02:51.890Z</updated>
-  <id>http://blog.lmislm.com/</id>
+  <link href="http://lmislm.com/"/>
+  <updated>2019-01-31T14:09:36.241Z</updated>
+  <id>http://lmislm.com/</id>
   
   <author>
     <name>lmislm</name>
@@ -17,11 +17,34 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>第三十一天2019-01-31</title>
+    <link href="http://lmislm.com/2019/01/31/2019-01-31/"/>
+    <id>http://lmislm.com/2019/01/31/2019-01-31/</id>
+    <published>2019-01-30T16:00:00.000Z</published>
+    <updated>2019-01-31T14:09:36.241Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="leetCode"><a href="#leetCode" class="headerlink" title="leetCode"></a>leetCode</h3><p>今天想到了Leetcode的题目，又捡起来做了一道题目。可能比较简单，就当是回忆的题目吧，以后捡起来题目都比较方便。慢慢来吧。坚持下去也好。也不是宁缺毋滥这种借口，是不存在的，还是得每天坚持写点日记，这样以后就能够进行阶段性总结，也可以看以前的东西，希望养成习惯。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fzp0b98bxyj20jg0jggml.jpg" alt=""><br><a id="more"></a></p><h3 id="Add-Two-Numbers"><a href="#Add-Two-Numbers" class="headerlink" title="Add Two Numbers"></a>Add Two Numbers</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">*</span><br><span class="line">* [<span class="number">2</span>] Add Two Numbers</span><br><span class="line">*</span><br><span class="line">* https:<span class="comment">//leetcode.com/problems/add-two-numbers/description/</span></span><br><span class="line">*</span><br><span class="line">* algorithms</span><br><span class="line">* Medium (<span class="number">30.32</span>%)</span><br><span class="line">* Total Accepted:    <span class="number">733.3</span>K</span><br><span class="line">* Total Submissions: <span class="number">2.4</span>M</span><br><span class="line">* Testcase Example:  <span class="string">'[2,4,3]\n[5,6,4]'</span></span><br><span class="line">*</span><br><span class="line">* You are given two non-empty linked lists representing two non-negative</span><br><span class="line">* integers. The digits are stored <span class="keyword">in</span> reverse order and each <span class="keyword">of</span> their nodes</span><br><span class="line">* contain a single digit. Add the two numbers and <span class="keyword">return</span> it <span class="keyword">as</span> a linked list.</span><br><span class="line">* </span><br><span class="line">* You may assume the two numbers <span class="keyword">do</span> not contain any leading zero, except the</span><br><span class="line">* number <span class="number">0</span> itself.</span><br><span class="line">* </span><br><span class="line">* Example:</span><br><span class="line">* </span><br><span class="line">* </span><br><span class="line">* Input: (<span class="number">2</span> -&gt; <span class="number">4</span> -&gt; <span class="number">3</span>) + (<span class="number">5</span> -&gt; <span class="number">6</span> -&gt; <span class="number">4</span>)</span><br><span class="line">* Output: <span class="number">7</span> -&gt; <span class="number">0</span> -&gt; <span class="number">8</span></span><br><span class="line">* Explanation: <span class="number">342</span> + <span class="number">465</span> = <span class="number">807.</span></span><br><span class="line">* </span><br><span class="line">* </span><br><span class="line">*<span class="regexp">/</span></span><br></pre></td></tr></table></figure><h3 id="题目框架"><a href="#题目框架" class="headerlink" title="题目框架"></a>题目框架</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">**</span><br><span class="line"> * Definition <span class="keyword">for</span> singly-linked list.</span><br><span class="line"> * <span class="function"><span class="keyword">function</span> <span class="title">ListNode</span>(<span class="params">val</span>) </span>&#123;</span><br><span class="line"> *     <span class="keyword">this</span>.val = val;</span><br><span class="line"> *     <span class="keyword">this</span>.next = <span class="literal">null</span>;</span><br><span class="line"> * &#125;</span><br><span class="line"> *<span class="regexp">/</span></span><br><span class="line"><span class="regexp">/</span>**</span><br><span class="line"> * @param &#123;ListNode&#125; l1</span><br><span class="line"> * @param &#123;ListNode&#125; l2</span><br><span class="line"> * @<span class="keyword">return</span> &#123;ListNode&#125;</span><br><span class="line"> *<span class="regexp">/</span></span><br><span class="line"><span class="regexp">var addTwoNumbers = function(l1, l2) &#123;</span></span><br></pre></td></tr></table></figure><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> addTwoNumbers = <span class="function"><span class="keyword">function</span>(<span class="params">l1, l2</span>) </span>&#123;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 方法一</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="keyword">let</span> List = <span class="keyword">new</span> ListNode(<span class="number">0</span>)</span><br><span class="line">  <span class="keyword">let</span> head = List</span><br><span class="line">  <span class="keyword">let</span> sum = <span class="number">0</span></span><br><span class="line">  <span class="keyword">let</span> carray = <span class="number">0</span></span><br><span class="line">  <span class="keyword">while</span> (l1 !== <span class="literal">null</span> || l2 !== <span class="literal">null</span> || sum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (l1 !== <span class="literal">null</span>) &#123;</span><br><span class="line">      sum = sum + l1.val</span><br><span class="line">      l1 = l1.next</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (l2 !== <span class="literal">null</span>) &#123;</span><br><span class="line">      sum = sum + l2.val</span><br><span class="line">      l2 = l2.next</span><br><span class="line">     &#125;</span><br><span class="line">    <span class="keyword">if</span> (sum &gt;= <span class="number">10</span>) &#123;</span><br><span class="line">      carray = <span class="number">1</span></span><br><span class="line">      sum = sum - <span class="number">10</span></span><br><span class="line">    &#125;</span><br><span class="line">    head.next = <span class="keyword">new</span> ListNode(sum)</span><br><span class="line">    head = head.next</span><br><span class="line">    sum = carray</span><br><span class="line">    carray = <span class="number">0</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> List.next</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 方法二</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="comment">// let node = null</span></span><br><span class="line">  <span class="comment">// const carray = arguments[2]</span></span><br><span class="line">  <span class="comment">// if (l1 || l2) &#123;</span></span><br><span class="line">  <span class="comment">//   // 加上进位</span></span><br><span class="line">  <span class="comment">//   const val1 = l1 ? l1.val1 : 0</span></span><br><span class="line">  <span class="comment">//   const val2 = l2 ? l2.val2 : 0</span></span><br><span class="line">  <span class="comment">//   const next1 = l1 ? l1.next : null</span></span><br><span class="line">  <span class="comment">//   const next2 = l2 ? l2.next : null</span></span><br><span class="line">  <span class="comment">//   const val = carry ? val1 + val2 + 1 : val1 + val2</span></span><br><span class="line">  <span class="comment">//   node = new ListNode(val % 10)</span></span><br><span class="line">  <span class="comment">//   node.next = addTwoNumbers(next1, next2, val &gt;= 10)</span></span><br><span class="line">  <span class="comment">// &#125; else if (carray) &#123;</span></span><br><span class="line">  <span class="comment">//   node = new ListNode(1)</span></span><br><span class="line">  <span class="comment">//   node.next = null</span></span><br><span class="line">  <span class="comment">// &#125;</span></span><br><span class="line">  <span class="comment">// return node</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>–end–</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;leetCode&quot;&gt;&lt;a href=&quot;#leetCode&quot; class=&quot;headerlink&quot; title=&quot;leetCode&quot;&gt;&lt;/a&gt;leetCode&lt;/h3&gt;&lt;p&gt;今天想到了Leetcode的题目，又捡起来做了一道题目。可能比较简单，就当是回忆的题目吧，以后捡起来题目都比较方便。慢慢来吧。坚持下去也好。也不是宁缺毋滥这种借口，是不存在的，还是得每天坚持写点日记，这样以后就能够进行阶段性总结，也可以看以前的东西，希望养成习惯。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fzp0b98bxyj20jg0jggml.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="练习" scheme="http://lmislm.com/tags/%E7%BB%83%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>第三十天2019-01-30</title>
-    <link href="http://blog.lmislm.com/2019/01/30/2019-01-30/"/>
-    <id>http://blog.lmislm.com/2019/01/30/2019-01-30/</id>
+    <link href="http://lmislm.com/2019/01/30/2019-01-30/"/>
+    <id>http://lmislm.com/2019/01/30/2019-01-30/</id>
     <published>2019-01-29T16:00:00.000Z</published>
-    <updated>2019-01-30T15:02:51.890Z</updated>
+    <updated>2019-01-31T14:09:36.237Z</updated>
     
     <content type="html"><![CDATA[<p>上线很晚啊，今天，有点困。还是早点睡吧，这些天。今天碰到个问题。vm.$attrs传入的不识别横线方式，爷组件传入的不会自动将驼峰转为横线模式。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fzp0b945ntj20zk0k0gnj.jpg" alt=""><br>–end–<br><a id="more"></a></p>]]></content>
     
@@ -32,19 +55,19 @@
     
     </summary>
     
-      <category term="生活" scheme="http://blog.lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
+      <category term="生活" scheme="http://lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
     
     
-      <category term="感悟" scheme="http://blog.lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
+      <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
     
   </entry>
   
   <entry>
     <title>第二十九天2019-01-29</title>
-    <link href="http://blog.lmislm.com/2019/01/29/2019-01-29/"/>
-    <id>http://blog.lmislm.com/2019/01/29/2019-01-29/</id>
+    <link href="http://lmislm.com/2019/01/29/2019-01-29/"/>
+    <id>http://lmislm.com/2019/01/29/2019-01-29/</id>
     <published>2019-01-28T16:00:00.000Z</published>
-    <updated>2019-01-29T14:27:58.533Z</updated>
+    <updated>2019-01-31T14:09:36.233Z</updated>
     
     <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>刚看了下，搁置了四天没写技术文章了，好几篇只有上文，没有下文。这个毛病从写日志体现出来了，说明得改，这还说明了，写日志的好处啊，能够从记录中发现问题。可能这就是今天鸽的理由吧。这几天快接近年末了，又期待，又不期待，真是很纠结。我发现，什么时候都有很多事，看你怎么去对待，永远不会说等到没事的时候。要调整好情绪再说。此处，鸽。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fznt8ja8lbj20u01407wh.jpg" alt=""><br>–end–</p><a id="more"></a>]]></content>
     
@@ -55,19 +78,19 @@
     
     </summary>
     
-      <category term="生活" scheme="http://blog.lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
+      <category term="生活" scheme="http://lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
     
     
-      <category term="感悟" scheme="http://blog.lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
+      <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
     
   </entry>
   
   <entry>
     <title>第二十八天2019-01-28</title>
-    <link href="http://blog.lmislm.com/2019/01/28/2019-01-28/"/>
-    <id>http://blog.lmislm.com/2019/01/28/2019-01-28/</id>
+    <link href="http://lmislm.com/2019/01/28/2019-01-28/"/>
+    <id>http://lmislm.com/2019/01/28/2019-01-28/</id>
     <published>2019-01-27T16:00:00.000Z</published>
-    <updated>2019-01-29T14:28:05.747Z</updated>
+    <updated>2019-01-31T14:09:36.230Z</updated>
     
     <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>今天回来的比较晚，可能事情比较多吧。又想起了以前的事。唉，洗洗早点睡吧。几天就这几句唠唠叨叨的话了。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fzmpp0a9fgj20b40b4wi4.jpg" alt=""><br>–end–</p><a id="more"></a>]]></content>
     
@@ -78,19 +101,19 @@
     
     </summary>
     
-      <category term="生活" scheme="http://blog.lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
+      <category term="生活" scheme="http://lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
     
     
-      <category term="感悟" scheme="http://blog.lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
+      <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
     
   </entry>
   
   <entry>
     <title>第二十七天2019-01-27</title>
-    <link href="http://blog.lmislm.com/2019/01/27/2019-01-27/"/>
-    <id>http://blog.lmislm.com/2019/01/27/2019-01-27/</id>
+    <link href="http://lmislm.com/2019/01/27/2019-01-27/"/>
+    <id>http://lmislm.com/2019/01/27/2019-01-27/</id>
     <published>2019-01-26T16:00:00.000Z</published>
-    <updated>2019-01-29T14:28:10.443Z</updated>
+    <updated>2019-01-31T14:09:36.227Z</updated>
     
     <content type="html"><![CDATA[<p>今天上午看了一部动漫，B站Lex推荐的。看完之后感叹这两天动漫质量的提高，动漫三观简直不能再正，满满的正能量。这种动漫真是难怪不火。动漫名字叫《超能力少女》但是整个片并不是一部打斗片，而是一部以一位来自异世界超能力少女生活为主线另一位异世界超能力少女为辅，讲述了来到这个世界之后，两个少女面对不同的家庭之间各自的努力和奋斗故事，在女二号身上，看到了满满的正能量，与女一号富有的生活对比，个人感觉女二号的勤奋和人品更像是这部故事讲述的主题。同时，这个故事也对于日本的黑帮进行了一些美化。虽然故事剧情并没有像标题和开头一幕一样热血，但是剧情本身还是非常精彩！这里好像说了绕口令。但就是夸这部动漫吧。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fzlc8bxnrgj20yi22ojyq.jpg" alt=""><br>–end–</p><a id="more"></a>]]></content>
     
@@ -101,19 +124,19 @@
     
     </summary>
     
-      <category term="生活" scheme="http://blog.lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
+      <category term="生活" scheme="http://lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
     
     
-      <category term="感悟" scheme="http://blog.lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
+      <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
     
   </entry>
   
   <entry>
     <title>第二十六天2019-01-26</title>
-    <link href="http://blog.lmislm.com/2019/01/26/2019-01-26/"/>
-    <id>http://blog.lmislm.com/2019/01/26/2019-01-26/</id>
+    <link href="http://lmislm.com/2019/01/26/2019-01-26/"/>
+    <id>http://lmislm.com/2019/01/26/2019-01-26/</id>
     <published>2019-01-25T16:00:00.000Z</published>
-    <updated>2019-01-26T15:25:45.191Z</updated>
+    <updated>2019-01-31T14:09:36.223Z</updated>
     
     <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>今天公司年会，这是个不写log的好理由，对吧？我也是这么觉得。回到家已经很晚了，晚上11点才到家，就真的不想再写日志了。就这样结束今天的日志环节吧。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fzkehskm6qj205k05kdfw.jpg" alt=""><br>–end–</p><a id="more"></a>]]></content>
     
@@ -124,19 +147,19 @@
     
     </summary>
     
-      <category term="生活" scheme="http://blog.lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
+      <category term="生活" scheme="http://lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
     
     
-      <category term="感悟" scheme="http://blog.lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
+      <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
     
   </entry>
   
   <entry>
     <title>第二十五天2019-01-25</title>
-    <link href="http://blog.lmislm.com/2019/01/25/2019-01-25/"/>
-    <id>http://blog.lmislm.com/2019/01/25/2019-01-25/</id>
+    <link href="http://lmislm.com/2019/01/25/2019-01-25/"/>
+    <id>http://lmislm.com/2019/01/25/2019-01-25/</id>
     <published>2019-01-24T16:00:00.000Z</published>
-    <updated>2019-01-25T15:51:56.961Z</updated>
+    <updated>2019-01-31T14:09:36.219Z</updated>
     
     <content type="html"><![CDATA[<h3 id="js-常用数组方法小结-（2）"><a href="#js-常用数组方法小结-（2）" class="headerlink" title="js 常用数组方法小结 （2）"></a>js 常用数组方法小结 （2）</h3><h4 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h4><p>有些数组方法会经常用，这里今天就介绍一下reduce()方法和find()方法。</p><h3 id="Array-protytype-reduce"><a href="#Array-protytype-reduce" class="headerlink" title="Array.protytype.reduce()"></a>Array.protytype.reduce()</h3><h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><p>看完一些方法，目前来说，reduce()方法，能实现的比较多，且我之前看到的文章中对其的推崇是比较多的。据说它能做很多事情。昨天看了下MDN上的介绍和几个例子，确实感觉其功能的强大。本文基于MDN上的代码以笔记的形式注释，先对功能做栗子，然后对方法进行一些描述。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fzj9hyus3ij20sg0sgh3k.jpg" alt=""></p><a id="more"></a><h3 id="举个栗子"><a href="#举个栗子" class="headerlink" title="举个栗子"></a>举个栗子</h3><h4 id="一些简单的例子"><a href="#一些简单的例子" class="headerlink" title="一些简单的例子"></a>一些简单的例子</h4><ol><li><p>累加数组中的值？</p><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> sum = [<span class="number">3</span>, <span class="number">9</span>, <span class="number">12</span>, <span class="number">34</span>].reduce(<span class="function">(<span class="params">accumulator, currentValue, currentIndex, array</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> accumulator + currentValue</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(sum) <span class="comment">// 58</span></span><br></pre></td></tr></table></figure></li><li><p>累加对象数组中的值？</p><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> sum = [&#123;<span class="attr">x</span>: <span class="number">1</span>&#125;, &#123;<span class="attr">x</span>:<span class="number">2</span>&#125;, &#123;<span class="attr">x</span>:<span class="number">3</span>&#125;].reduce(<span class="function">(<span class="params">accumulator, currentValue</span>) =&gt;</span> &#123;</span><br><span class="line"><span class="comment">// 将键名为x的逐个累加到累加器中</span></span><br><span class="line">    <span class="keyword">return</span> accumulator + currentValue.x</span><br><span class="line">&#125;, <span class="number">0</span>)</span><br><span class="line"><span class="built_in">console</span>.log(sum) <span class="comment">// 6</span></span><br></pre></td></tr></table></figure></li></ol><p>initialValue 为初始值，且初始值是必须提供的</p><ol><li>二维数组转为一维数组？<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> flattened =  [[<span class="number">0</span>, <span class="number">1</span>], [<span class="number">2</span>, <span class="number">3</span>], [<span class="number">4</span>, <span class="number">5</span>]].reduce(<span class="function">(<span class="params">acc, cval, cidx, arr</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 初始值为空数组，取出当前下标数组中的值，放入累加器中的空数组，逐个累加</span></span><br><span class="line">  <span class="keyword">return</span> acc.concat(cval)</span><br><span class="line">&#125;, [])</span><br><span class="line"><span class="built_in">console</span>.log(flattened)</span><br></pre></td></tr></table></figure></li></ol><h4 id="一些稍微复杂点的"><a href="#一些稍微复杂点的" class="headerlink" title="一些稍微复杂点的"></a>一些稍微复杂点的</h4><ol><li><p>计算数组中每个元素出现的次数？</p><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">3</span>, <span class="number">54</span>, <span class="number">21</span>, <span class="number">1</span>]</span><br><span class="line"><span class="keyword">let</span> count = arr.reduce(<span class="function">(<span class="params">acc, cval</span>) =&gt;</span> &#123;</span><br><span class="line"><span class="comment">// 这里要注意是在累加器中去寻找是否存在值</span></span><br><span class="line">  <span class="keyword">if</span> (cval <span class="keyword">in</span> acc) &#123;</span><br><span class="line">   <span class="comment">// 以对象形式赋值，真个reduce过程一次次去遍历</span></span><br><span class="line">    acc[cval]++</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    acc[cval] = <span class="number">1</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> acc</span><br><span class="line">&#125;, &#123;&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(count) <span class="comment">// &#123; '1': 2, '3': 1, '21': 1, '54': 1 &#125;</span></span><br></pre></td></tr></table></figure></li><li><p>属性对object分类？</p><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> people = [</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">'Alice'</span>, <span class="attr">age</span>: <span class="number">21</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">'Max'</span>, <span class="attr">age</span>: <span class="number">20</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">'Jane'</span>, <span class="attr">age</span>: <span class="number">20</span> &#125;</span><br><span class="line">]</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">groupBy</span> (<span class="params">objArr, property</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> objArr.reduce(<span class="function">(<span class="params">acc, obj</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 键名</span></span><br><span class="line">    <span class="keyword">let</span> key = obj[property]</span><br><span class="line">    <span class="comment">// 判断累加器中是否有重复的元素</span></span><br><span class="line">    <span class="keyword">if</span>(!acc[key]) &#123;</span><br><span class="line">      acc[key] = []</span><br><span class="line">    &#125;</span><br><span class="line">    acc[key].push(obj)</span><br><span class="line">    <span class="keyword">return</span> acc</span><br><span class="line">  &#125;, &#123;&#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> groupedByPeople = groupBy(people, <span class="string">'age'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(groupedByPeople)</span><br></pre></td></tr></table></figure></li><li><p>使用扩展运算符和initialValue绑定包含在对象数组中的数组<br>简单点说就是取出数组集合中对象中的数组</p><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> friends = [&#123;</span><br><span class="line">  name: <span class="string">'Anna'</span>,</span><br><span class="line">  books: [<span class="string">'Bible'</span>, <span class="string">'Harry Potter'</span>],</span><br><span class="line">  age: <span class="number">21</span></span><br><span class="line">&#125;, &#123;</span><br><span class="line">  name: <span class="string">'Bob'</span>,</span><br><span class="line">  books: [<span class="string">'War and peace'</span>, <span class="string">'Romeo and Juliet'</span>],</span><br><span class="line">  age: <span class="number">26</span></span><br><span class="line">&#125;, &#123;</span><br><span class="line">  name: <span class="string">'Alice'</span>,</span><br><span class="line">  books: [<span class="string">'The Lord of the Rings'</span>, <span class="string">'The Shining'</span>],</span><br><span class="line">  age: <span class="number">18</span></span><br><span class="line">&#125;]</span><br><span class="line"><span class="comment">// 列出所有包含的书籍</span></span><br><span class="line"><span class="comment">// 题目不容易理解，好好一想，就容易的多，还得对扩展符了解的比较多点就更容易上手</span></span><br><span class="line"><span class="keyword">let</span> containerBook = friends.reduce(<span class="function">(<span class="params">prev, curr</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> [...prev, ...curr.books]</span><br><span class="line">&#125;, [])</span><br><span class="line"><span class="built_in">console</span>.log(containerBook)</span><br></pre></td></tr></table></figure></li></ol><p>然后，鸽了鸽了。先写到这里吧。时间又不够了。</p><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>[1]. <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce" target="_blank" rel="noopener">Array.prototype.reduce()</a><br>–end–</p>]]></content>
     
@@ -148,19 +171,19 @@
     
     </summary>
     
-      <category term="技术" scheme="http://blog.lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="前端" scheme="http://blog.lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   
   <entry>
     <title>第二十四天2019-01-24</title>
-    <link href="http://blog.lmislm.com/2019/01/24/2019-01-24/"/>
-    <id>http://blog.lmislm.com/2019/01/24/2019-01-24/</id>
+    <link href="http://lmislm.com/2019/01/24/2019-01-24/"/>
+    <id>http://lmislm.com/2019/01/24/2019-01-24/</id>
     <published>2019-01-23T16:00:00.000Z</published>
-    <updated>2019-01-24T14:32:22.011Z</updated>
+    <updated>2019-01-31T14:07:54.505Z</updated>
     
     <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>今天一天写代码有点不在状态，可能是最近有点不太对，不是疲累也可能是心事又多了起来。原本计划今天继续上文或者上上文的。现在看来真的只能是搁了。<br>最近图片可能会风格比较和以前不一样。这是问人要的哈。嘿嘿。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fzi1pivvmhj20i40i53zr.jpg" alt=""><br>–end–<br><a id="more"></a></p>]]></content>
     
@@ -171,19 +194,19 @@
     
     </summary>
     
-      <category term="生活" scheme="http://blog.lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
+      <category term="生活" scheme="http://lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
     
     
-      <category term="感悟" scheme="http://blog.lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
+      <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
     
   </entry>
   
   <entry>
     <title>第二十三天2019-01-23</title>
-    <link href="http://blog.lmislm.com/2019/01/23/2019-01-23/"/>
-    <id>http://blog.lmislm.com/2019/01/23/2019-01-23/</id>
+    <link href="http://lmislm.com/2019/01/23/2019-01-23/"/>
+    <id>http://lmislm.com/2019/01/23/2019-01-23/</id>
     <published>2019-01-22T16:00:00.000Z</published>
-    <updated>2019-01-23T15:17:31.478Z</updated>
+    <updated>2019-01-31T14:07:54.501Z</updated>
     
     <content type="html"><![CDATA[<h3 id="js-常用数组方法小结"><a href="#js-常用数组方法小结" class="headerlink" title="js 常用数组方法小结"></a>js 常用数组方法小结</h3><h4 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h4><p>今天这个数组对象操作写的有点多啊，特此来小结一下，一些常用的方法的基本操作。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fzgxeniqluj20k00arjrt.jpg" alt=""><br><a id="more"></a></p><h3 id="Array-prototype-filter"><a href="#Array-prototype-filter" class="headerlink" title="Array.prototype.filter()"></a>Array.prototype.filter()</h3><h4 id="表格过滤用的比较多"><a href="#表格过滤用的比较多" class="headerlink" title="表格过滤用的比较多"></a>表格过滤用的比较多</h4><p>大概用法就是过滤数组或者数组集合中一些不符合条件的数组元素和集合。也可以用来过滤数组中一些undefined和null。<br>例子：<sup>[1]</sup><br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const fruits = [&apos;apple&apos;, &apos;banana&apos;, &apos;grapes&apos;, &apos;mango&apos;, &apos;orange&apos;];</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Array filters items based on search criteria (query)</span><br><span class="line"> */</span><br><span class="line">const filterItems = (query) =&gt; &#123;</span><br><span class="line">  return fruits.filter((el) =&gt;</span><br><span class="line">  // 过滤的条件</span><br><span class="line">    el.toLowerCase().indexOf(query.toLowerCase()) &gt; -1</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line">// 根据条件过滤之后的数组</span><br><span class="line">console.log(filterItems(&apos;ap&apos;)); // [&apos;apple&apos;, &apos;grapes&apos;]</span><br><span class="line">console.log(filterItems(&apos;an&apos;)); // [&apos;banana&apos;, &apos;mango&apos;, &apos;orange&apos;]</span><br></pre></td></tr></table></figure></p><h4 id="过滤数组中空值"><a href="#过滤数组中空值" class="headerlink" title="过滤数组中空值"></a>过滤数组中空值</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">let newArray = oldArray.filter(s =&gt; s.value != null)</span><br></pre></td></tr></table></figure><h4 id="filter-的实现"><a href="#filter-的实现" class="headerlink" title="filter() 的实现"></a>filter() 的实现</h4><ul><li>利用for循环以及push构造数组<sup>[1]</sup><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// Polyfill Array.prototype.filter()</span><br><span class="line">function newFilter() &#123;</span><br><span class="line">  if (!Array.prototype.newFilter) &#123;</span><br><span class="line">    // 可以带thisArg</span><br><span class="line">    Array.prototype.newFilter = (fun /* , thisArg*/) =&gt; &#123;</span><br><span class="line">      // void(0)（等同于void 0） 差不多等于 undefined</span><br><span class="line">      if (this === void 0 || this === null) &#123;</span><br><span class="line">        throw new TypeError()</span><br><span class="line">      &#125;</span><br><span class="line">      // Object构造函数为给定值创建一个对象包装器</span><br><span class="line">      let t = Object(this)</span><br><span class="line">      // 所有非数值转换成0, 所有大于等于 0 等数取整数部分</span><br><span class="line">      // Shifts a in binary representation b (&lt; 32) bits to the right, discarding bits shifted off, and shifting in 0s from the left.</span><br><span class="line">      let len = t.length &gt;&gt;&gt; 0</span><br><span class="line">      if (typeof fun !== &apos;function&apos;) &#123;</span><br><span class="line">        throw new TypeError()</span><br><span class="line">      &#125;</span><br><span class="line">      let res = []</span><br><span class="line">      // arguments对象不是一个 Array 。它类似于Array，但除了length属性和索引元素之外没有任何Array属性</span><br><span class="line">      // 没有 pop 方法。但是它可以被转换为一个真正的Array：args = Array.from(arguments)</span><br><span class="line">      // 所以这个地方用arguments可能有错？</span><br><span class="line">      let thisArg = arguments.length &gt;= 2 ? arguments[1] : void 0</span><br><span class="line">      // t = Object(this)</span><br><span class="line">      for (let i = 0; i&lt; len; i++) &#123;</span><br><span class="line">        // prop in object, 检查object（或其原型链）是否包含具有指定名称的属性的对象</span><br><span class="line">        if (i in t) &#123;</span><br><span class="line">          let val = t[i]</span><br><span class="line">          // NOTE: Technically this should Object.defineProperty at</span><br><span class="line">          //       the next index, as push can be affected by</span><br><span class="line">          //       properties on Object.prototype and Array.prototype.</span><br><span class="line">          //       But that method&apos;s new, and collisions should be</span><br><span class="line">          //       rare, so use the more-compatible alternative.</span><br><span class="line">          // 满足filter中的条件的话就push进数组res,filter回调函数的三个参数：元素值，元素索引，原数组</span><br><span class="line">          // thisArg: 当前在数组中处理的元素</span><br><span class="line">          // val: 正在处理元素在数组中的索引</span><br><span class="line">          if (fun.call(thisArg, val, i, t))</span><br><span class="line">            res.push(val)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ul><h3 id="Array-prototype-reduce"><a href="#Array-prototype-reduce" class="headerlink" title="Array.prototype.reduce()"></a>Array.prototype.reduce()</h3><p>鸽到下期再讲吧，好像我已经鸽了很多东西了。额。<br>–end–</p>]]></content>
     
@@ -194,19 +217,19 @@
     
     </summary>
     
-      <category term="技术" scheme="http://blog.lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="前端" scheme="http://blog.lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   
   <entry>
     <title>第二十二天2019-01-22</title>
-    <link href="http://blog.lmislm.com/2019/01/22/2019-01-22/"/>
-    <id>http://blog.lmislm.com/2019/01/22/2019-01-22/</id>
+    <link href="http://lmislm.com/2019/01/22/2019-01-22/"/>
+    <id>http://lmislm.com/2019/01/22/2019-01-22/</id>
     <published>2019-01-21T16:00:00.000Z</published>
-    <updated>2019-01-22T14:52:02.170Z</updated>
+    <updated>2019-01-31T14:07:54.498Z</updated>
     
     <content type="html"><![CDATA[<h3 id="组件通信-祖孙"><a href="#组件通信-祖孙" class="headerlink" title="组件通信-祖孙"></a>组件通信-祖孙</h3><p>本文将结合例子，简单讲解下vuejs文档中的实例属性：<strong>vm.$attrs</strong>和<strong>vm.$listeners</strong>。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fzfr1n65maj20b40b4dfn.jpg" alt=""><a id="more"></a></p><h4 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h4><p>因为项目中大多用Vuex来通信，但是用多了之后感觉简单的组件之间的通信再用构造vuex的mutation，写起来比较费，当然父子之间的通信肯定是用emit更实在。</p><h3 id="写个“栗子”"><a href="#写个“栗子”" class="headerlink" title="写个“栗子”"></a>写个“栗子”</h3><ul><li>三个组件：grandfather &gt; father &gt; son<h4 id="祖宗组件"><a href="#祖宗组件" class="headerlink" title="祖宗组件"></a>祖宗组件</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Vue.component(&apos;grandfather&apos;, &#123;</span><br><span class="line">props: [],</span><br><span class="line">template:</span><br><span class="line">`&lt;div&gt;</span><br><span class="line">  &lt;father</span><br><span class="line">:getGrandsonData=&quot;grandfatherData&quot; // 传值</span><br><span class="line">@getGrandsonEvent=&quot;grandfatherEvent&quot; // 事件</span><br><span class="line">&gt;&lt;/father&gt; </span><br><span class="line">&lt;/div&gt; `</span><br><span class="line">data: function () &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      grandfatherData: &quot;hello, i&apos;m your grandfather&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">methods: &#123;</span><br><span class="line">grandfatherEvent (val) &#123;</span><br><span class="line">// 这里接到了“hello, i&apos;m your grandson”</span><br><span class="line">console.log(val) // hello, i&apos;m your grandson</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li></ul><h4 id="父亲组件"><a href="#父亲组件" class="headerlink" title="父亲组件"></a>父亲组件</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Vue.component(&apos;father&apos;, &#123;</span><br><span class="line">props: [], // 注意这里props不需要再父组件声明</span><br><span class="line">template:\`</span><br><span class="line">&lt;div&gt;</span><br><span class="line">  &lt;grandson</span><br><span class="line">v-bind=&quot;$attrs&quot;</span><br><span class="line">v-on=&quot;$listeners&quot;</span><br><span class="line">&gt;&lt;/grandson&gt;  \`</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><h4 id="孙子组件"><a href="#孙子组件" class="headerlink" title="孙子组件"></a>孙子组件</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Vue.component(&apos;grandson&apos;, &#123;</span><br><span class="line">props: [],</span><br><span class="line">template:`</span><br><span class="line">  &lt;input</span><br><span class="line">  type=&quot;text&quot;</span><br><span class="line">  v-model=&quot;grandsonMsgToGrandfather&quot;</span><br><span class="line">@input=&quot;sendToGrandfatherEvent&quot;</span><br><span class="line">&gt;&#123;&#123;$attrs.grandfatherData&#125;&#125;&lt;/div&gt; `</span><br><span class="line">data: function () &#123;</span><br><span class="line">return &#123;</span><br><span class="line">  grandsonMsgToGrandfather: &quot;hello, i&apos;m your grandson&quot;</span><br><span class="line">&#125;</span><br><span class="line">&#125;,</span><br><span class="line">method: &#123;</span><br><span class="line">sendToGrandfatherEvent () &#123;</span><br><span class="line">this.$emit(&apos;getGrandsonEvent&apos;, sonMsgToGrandfather )</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><p>注意：这里的代码并没有验证过,只是大概写个简单的demo</p><h3 id="上文档"><a href="#上文档" class="headerlink" title="上文档"></a>上文档</h3><h4 id="vm-attrs"><a href="#vm-attrs" class="headerlink" title="vm.$attrs"></a>vm.$attrs</h4><blockquote><p><strong>vm.$attrs</strong><br><strong>类型：</strong><code>{ [key: string]: string }</code><br><strong>只读</strong><br><strong>详细：</strong><br>包含了父作用域中不作为 prop 被识别 (且获取) 的特性绑定 (class 和 style 除外)。当一个组件没有声明任何 prop 时，这里会包含所有父作用域的绑定 (class 和 style 除外)，并且可以通过 v-bind=”$attrs” 传入内部组件——在创建高级别的组件时非常有用。</p></blockquote><h4 id="vm-listeners"><a href="#vm-listeners" class="headerlink" title="vm.$listeners"></a>vm.$listeners</h4><blockquote><p><strong>vm.$listeners</strong><br><strong>类型：</strong><code>{ [key: string]: Function | Array&lt;Function&gt; }</code><br><strong>只读</strong><br><strong>详细：</strong><br>包含了父作用域中的 (不含 .native 修饰器的) v-on 事件监听器。它可以通过 v-on=”$listeners” 传入内部组件——在创建更高层次的组件时非常有用。</p></blockquote><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>[1]. <a href="https://cn.vuejs.org/v2/api/#vm-attrs" target="_blank" rel="noopener">https://cn.vuejs.org/v2/api/#vm-attrs</a> 、<a href="https://cn.vuejs.org/v2/api/#vm-listeners" target="_blank" rel="noopener">https://cn.vuejs.org/v2/api/#vm-listeners</a><br>[2]. <a href="https://blog.csdn.net/qq_39009348/article/details/81977468" target="_blank" rel="noopener">vue的通信方式（二）—祖父孙三个级别的之间的隔代通信</a></p><p>  —end—</p>]]></content>
     
@@ -217,19 +240,19 @@
     
     </summary>
     
-      <category term="技术" scheme="http://blog.lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="前端" scheme="http://blog.lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   
   <entry>
     <title>第二十一天2019-01-21</title>
-    <link href="http://blog.lmislm.com/2019/01/21/2019-01-21/"/>
-    <id>http://blog.lmislm.com/2019/01/21/2019-01-21/</id>
+    <link href="http://lmislm.com/2019/01/21/2019-01-21/"/>
+    <id>http://lmislm.com/2019/01/21/2019-01-21/</id>
     <published>2019-01-20T16:00:00.000Z</published>
-    <updated>2019-01-21T15:15:24.159Z</updated>
+    <updated>2019-01-31T14:07:54.494Z</updated>
     
     <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>今天又重温了一小下（事件循环）Event Loop，如何去区分MicroTask（微任务）,MacroTask（宏任务），说实话我还没有非常精确的去理解到位，做顺序题目，也会做错，理解的不充分不到位。去看了下MDN<sup><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/EventLoop" target="_blank" rel="noopener">1</a></sup>,发现并没有解释的很详细，除了解释Nodejs中和浏览器中的EventLoop有点不同，其他简短的语言倒像是解释<code>setTimeout()</code>是“非等待一定时间之后执行”这一概念。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fzelyzwwi1j20hk0b2n27.jpg" alt=""><br><a id="more"></a></p><h3 id="Event-Loop-上"><a href="#Event-Loop-上" class="headerlink" title="Event Loop - 上"></a>Event Loop - 上</h3><p>下面来稍微再温习下这个东西。承上启下，为<code>Promise()</code>的深入理解做更好的准备。</p><h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><p>JavaScript这种并发模型基于“事件循环” ，是单线程的，不像是C语言任何位置被终止，它是异步而不阻塞主进程执行。Event Loop起到很重要的作用， JavaScript处理 I/O 通常通过事件和回调来执行。<br>本文简单的入门一下Event Loop这个东西，大概有个映像就行。</p><h4 id="任务"><a href="#任务" class="headerlink" title="任务"></a>任务</h4><p>js引擎的两种任务</p><ul><li>MacroTask: <strong>setTimeout</strong>, <strong>setInterval</strong>, <strong>setImmediate</strong>,<strong>I/O</strong>, <strong>UI rendering</strong></li><li>MicroTask: <strong>Promise</strong>, <strong>process.nextTick</strong>, <strong>Object.observe</strong>, <strong>MutationObserver</strong>, <strong>MutaionObserver</strong><h4 id="调度机制"><a href="#调度机制" class="headerlink" title="调度机制"></a>调度机制</h4>不同的任务行为并不一样，执行的先后顺序不一样。具体怎么个不一样，这里拿个例子<sup><a href="https://imweb.io/topic/5b148768d4c96b9b1b4c4ea1" target="_blank" rel="noopener">2</a></sup>。<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">setTimeout(function() &#123;</span><br><span class="line">  console.log(4);</span><br><span class="line">&#125;, 0);</span><br><span class="line"></span><br><span class="line">var promise = new Promise(function executor(resolve) &#123;</span><br><span class="line">  console.log(1);</span><br><span class="line">  for (var i = 0; i &lt; 10000; i++) &#123;</span><br><span class="line">    i == 9999 &amp;&amp; resolve();</span><br><span class="line">  &#125;</span><br><span class="line">  console.log(2);</span><br><span class="line">&#125;).then(function() &#123;</span><br><span class="line">  console.log(5);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">console.log(3);</span><br></pre></td></tr></table></figure></li></ul><p>Nodejs输出： 1 2 3 5 4<br>浏览器输出：1 2 3 5 undefined 4<br>注：这里不讨论Nodejs和浏览器的异同</p><h4 id="MicroTask-和-Macro-Task的执行顺序-描述"><a href="#MicroTask-和-Macro-Task的执行顺序-描述" class="headerlink" title="MicroTask 和 Macro Task的执行顺序 - 描述"></a>MicroTask 和 Macro Task的执行顺序 - 描述</h4><ol><li>Event Loop 开始</li><li>MicroTasks 队列开始执行至结束</li><li>检查MacroTask 队列是否有待执行，有则跳到4，无则跳到6</li><li>MacroTask队列“抽取”一个任务，执行至结束</li><li>检查MicroTasks 是否执行完毕，若有则跳到2，无则跳到3</li><li>结束Event Loop</li></ol><p><strong>以上整个过程就是Event Loop（事件循环）。</strong></p><p>这里有个疑问，就是5为什么还要检查是否执行完毕，因为2已经检查过了，是什么事件遗留到了5？</p><h4 id="MicroTask-和-Macro-Task的执行顺序-图文"><a href="#MicroTask-和-Macro-Task的执行顺序-图文" class="headerlink" title="MicroTask 和 Macro Task的执行顺序 - 图文"></a>MicroTask 和 Macro Task的执行顺序 - 图文</h4><p>一张图来解释下<sup><a href="https://juejin.im/post/59e85eebf265da430d571f89" target="_blank" rel="noopener">3</a></sup>（这张图是引用的，可能需要重画下，可能加上Event table会更好点）。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fzellunmyaj20ux0q8472.jpg" alt=""></p><h4 id="图怎么理解呢"><a href="#图怎么理解呢" class="headerlink" title="图怎么理解呢?"></a>图怎么理解呢?</h4><p>宏任务作为入口的话，setTimeout不是第一个执行？是这么个解释的，拿调度机制中的代码说事。<br>先把两种任务再放一遍。</p><blockquote><p>MacroTask: <strong>setTimeout</strong>, <strong>setInterval</strong>, <strong>setImmediate</strong>,<strong>I/O</strong>, <strong>UI rendering</strong><br>MicroTask: <strong>Promise</strong>, <strong>process.nextTick</strong>, <strong>Object.observe</strong>, <strong>MutationObserver</strong>, <strong>MutaionObserver</strong></p><ol><li><strong>整段代码作为宏任务</strong>进入主线程。</li><li>遇到setTimeout(), 回调函数注册后分发到宏任务Event Queue。// 回调函数注册？</li><li>接下来遇到了Promise，new Promise立即执行，then函数分发到微任务Event Queue。// 立即执行？</li><li>遇到console.log()，立即执行。</li><li>整段代码作为一次宏任务执行结束，进入微任务判断。Event Queue里有then函数，执行。</li><li>第二轮循环，开始新的宏任务。从宏任务Event Queue中去检查。发现setTimeout回调函数，立即执行。</li></ol></blockquote><p>到这里如果还不懂的话，可以到参考资料的<a href="https://juejin.im/post/59e85eebf265da430d571f89" target="_blank" rel="noopener">3</a>去看看，写的比较详细，我这里只是笔记形式简单总结下。</p><h4 id="Promise-和-process-nextTick-的先后顺序？-后续"><a href="#Promise-和-process-nextTick-的先后顺序？-后续" class="headerlink" title="Promise 和 process.nextTick() 的先后顺序？- 后续"></a>Promise 和 process.nextTick() 的先后顺序？- 后续</h4><p>这里就放到下一篇Event Loop再说吧。<br>– end –</p><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>[1]. <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/EventLoop" target="_blank" rel="noopener">并发模型与事件循环</a><br>[2]. <a href="https://imweb.io/topic/5b148768d4c96b9b1b4c4ea1" target="_blank" rel="noopener">理解event loop（浏览器环境与nodejs环境）</a><br>[3]. <a href="https://juejin.im/post/59e85eebf265da430d571f89" target="_blank" rel="noopener">这一次，彻底弄懂 JavaScript 执行机制</a></p>]]></content>
     
@@ -240,19 +263,19 @@
     
     </summary>
     
-      <category term="技术" scheme="http://blog.lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="前端" scheme="http://blog.lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   
   <entry>
     <title>第二十天2019-01-20</title>
-    <link href="http://blog.lmislm.com/2019/01/20/2019-01-20/"/>
-    <id>http://blog.lmislm.com/2019/01/20/2019-01-20/</id>
+    <link href="http://lmislm.com/2019/01/20/2019-01-20/"/>
+    <id>http://lmislm.com/2019/01/20/2019-01-20/</id>
     <published>2019-01-19T16:00:00.000Z</published>
-    <updated>2019-01-20T12:53:33.582Z</updated>
+    <updated>2019-01-31T14:07:54.491Z</updated>
     
     <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>今天下午就光玩游戏了~感觉需要放空自己啊，这是个玩游戏的好借口。但确实，今天下午看了一会儿电影，上午下午中间节点看完了《楚门的世界》（《The Truman Show》)。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fzdce2a0h5j20ko0e9q61.jpg" alt=""><br><a id="more"></a><br>这个电影，在高中的时候就很受它影响，我指的影响，大概是你看完一部电影之后，很长时间都会去回味这部电影的味道，这部电影的含义。九九八十一难，最后的一个“释然”的态度？</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fzdc9wydm5j20t00jknfv.jpg" alt=""><br>再然后看了《天气预报员》？这是部慢热的剧情，感觉还是没有看下去的劲头，挖个坑吧，改天再看。然后尝试看了部石原里美日剧，嗯，看了一部分就看不下去了。然后接着就游戏了。本来想LOL的，结果愣是没有劲头，开了一局游戏都退了，看来游戏真的是没什么好玩的。然后，玩CSGO，感觉还是比较考验临场发挥的，碰到敌我实力不相上下的时候，整个人的荷尔蒙就都上来了，感觉还是对于放空自己比较有效果的。一直玩到了，晚上8点啊。你可是也有一堆事情要做的啊，怎么玩起游戏来了。说不玩游戏的，真香。</p><p>–end–</p>]]></content>
     
@@ -263,19 +286,19 @@
     
     </summary>
     
-      <category term="生活" scheme="http://blog.lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
+      <category term="生活" scheme="http://lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
     
     
-      <category term="感悟" scheme="http://blog.lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
+      <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
     
   </entry>
   
   <entry>
     <title>第十九天2019-01-19</title>
-    <link href="http://blog.lmislm.com/2019/01/19/2019-01-19/"/>
-    <id>http://blog.lmislm.com/2019/01/19/2019-01-19/</id>
+    <link href="http://lmislm.com/2019/01/19/2019-01-19/"/>
+    <id>http://lmislm.com/2019/01/19/2019-01-19/</id>
     <published>2019-01-18T16:00:00.000Z</published>
-    <updated>2019-01-19T12:45:41.909Z</updated>
+    <updated>2019-01-31T14:07:54.488Z</updated>
     
     <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>今天碰到一个需求，就是在element-ui表格中，列表操作这一列有下载和删除按钮，需要点击某一行的下载按钮，该行下载按钮显示正在下载的loading状态。这个看了下，应该只能是通过在<code>scope.row</code>对象中加属性，比如：<code>isDownloading</code>。这个就要求新属性<code>isDownloading</code>，能够具有响应式特性。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fzc6japr32j20u00u00wg.jpg" alt=""><br><a id="more"></a></p><h3 id="深入响应式原理"><a href="#深入响应式原理" class="headerlink" title="深入响应式原理"></a>深入响应式原理</h3><ul><li>追踪变化<br>下面这张图，是基于Object.defineProperty 实现响应式的关键。<br><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fzc67hrsguj20xc0kuq38.jpg" alt=""></li></ul><p>不巧的是，<strong>受现代 JavaScript 的限制 (而且 Object.observe 也已经被废弃)，Vue 不能检测到对象属性的添加或删除。</strong><sup>[1]</sup></p><blockquote><p>Vue 不允许在已经创建的实例上动态添加新的根级响应式属性 (root-level reactive property)。然而它可以使用 Vue.set(object, key, value) 方法将响应属性添加到嵌套的对象上：<sup>[1]</sup></p><ul><li>添加响应式属性<br>使用 Vue.set(object, key, value) 方法将响应属性添加到嵌套的对象</li><li>一个已有对象添加多个属性<br>// 代替 <code>Object.assign(this.someObject, { a: 1, b: 2 })</code><br>this.someObject = Object.assign({}, this.someObject, { a: 1, b: 2 })</li></ul></blockquote><h3 id="vuejs-提供的Api"><a href="#vuejs-提供的Api" class="headerlink" title="vuejs 提供的Api"></a>vuejs 提供的Api</h3><blockquote><p>Vue.set( target, key, value )<br><strong>参数：</strong></p><p>{Object | Array} target<br>{string | number} key<br>{any} value<br><strong>返回值：</strong> 设置的值。<br><strong>用法：</strong> 向响应式对象中添加一个属性，并确保这个新属性同样是响应式的，且触发视图更新。它必须用于向响应式对象上添加新属性，因为 Vue 无法探测普通的新增属性 (比如 this.myObject.newProperty = ‘hi’)<br>注意对象不能是 Vue 实例，或者 Vue 实例的根数据对象。</p></blockquote><p>注意对象不能是 Vue 实例，或者 Vue 实例的根数据对象。</p><h3 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h3><p>实践了一下，响应式的对象。在拉取list的forEach里新增一个响应式属性，<code>this.$set(this.list, &#39;isDownloading&#39;, false)</code>。然后就可以在操作前置true,操作后false。在列表的地方就可以用响应式的<code>isDownloading</code>属性了！</p><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>[1]. <a href="https://cn.vuejs.org/v2/guide/reactivity.html#%E5%A6%82%E4%BD%95%E8%BF%BD%E8%B8%AA%E5%8F%98%E5%8C%96" target="_blank" rel="noopener">https://cn.vuejs.org/v2/guide/reactivity.html#%E5%A6%82%E4%BD%95%E8%BF%BD%E8%B8%AA%E5%8F%98%E5%8C%96</a><br>[2]. <a href="https://cn.vuejs.org/v2/api/#Vue-set" target="_blank" rel="noopener">https://cn.vuejs.org/v2/api/#Vue-set</a><br>——————————————————-end———————————————————–</p>]]></content>
     
@@ -286,19 +309,19 @@
     
     </summary>
     
-      <category term="生活" scheme="http://blog.lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
+      <category term="生活" scheme="http://lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
     
     
-      <category term="感悟" scheme="http://blog.lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
+      <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
     
   </entry>
   
   <entry>
     <title>第十八天2019-01-18</title>
-    <link href="http://blog.lmislm.com/2019/01/18/2019-01-18/"/>
-    <id>http://blog.lmislm.com/2019/01/18/2019-01-18/</id>
+    <link href="http://lmislm.com/2019/01/18/2019-01-18/"/>
+    <id>http://lmislm.com/2019/01/18/2019-01-18/</id>
     <published>2019-01-17T16:00:00.000Z</published>
-    <updated>2019-01-18T14:02:00.546Z</updated>
+    <updated>2019-01-31T14:07:54.484Z</updated>
     
     <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>今天写了一上午的技术，写后台管理，感觉时间过得好快啊。<br>因为最近可能有需要部署一些应用在服务器上，所以最近又开始捡起Docker这个东西。今晚上复习了一下。具体的一些基本操作如下。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fzb346tj5aj20u00u041d.jpg" alt=""><br><a id="more"></a></p><h3 id="docker-ubuntu"><a href="#docker-ubuntu" class="headerlink" title="docker-ubuntu"></a>docker-ubuntu</h3><ol><li><p>准备<br>Docker 要求 Ubuntu 系统的内核版本高于 3.10</p><blockquote><p>uname -r 查看内核版本</p></blockquote></li><li><p>安装</p><blockquote><p>wget -qO- <a href="https://get.docker.com/" target="_blank" rel="noopener">https://get.docker.com/</a> | sh</p></blockquote></li><li><p>测试安装</p><blockquote><p>docker run hello-world<br>‘hello-world’ 是一个镜像，没有的话会默认pull</p></blockquote></li></ol><ul><li>容器操作<blockquote><p>docker ps -a  // 列出所有创建的container</p></blockquote></li></ul><blockquote><p>docker ps -aq     // 列出所有创建的container 的ID</p></blockquote><blockquote><p>docker ps     // 列出正在运行的容器container</p></blockquote><blockquote><p>docker system df // 查看镜像、容器、数据卷所占用的空间</p></blockquote><blockquote><p>docker top <container names=""> // 查看容器的进程</container></p></blockquote><blockquote><p>docker stop <container names=""> // 停止容器（名字要全）</container></p></blockquote><blockquote><p>docker rm <container names=""> // 删除指定名容器</container></p></blockquote><ul><li>镜像操作<blockquote><p>docker image ls // 列出已经下载下来的镜像</p></blockquote></li></ul><blockquote><p>docker images // 列出所有所有镜像</p></blockquote><blockquote><p>docker rmi &lt; image ID&gt; // (注：ID列出前几位就行了)</p></blockquote><ol><li>拉取ubuntu<blockquote><p>docker pull ubuntu:16.04</p></blockquote></li></ol><ul><li>镜像操作<blockquote><p>docker run -t -i ubuntu:16.04 /bin/bash   // 运行容器 </p></blockquote></li></ul><blockquote><p>docker tag <image id=""> <repository>:&lt;新标签&gt; // ID只需要前几位就行</repository></image></p></blockquote><blockquote><p>docker port // 查看端口的绑定</p></blockquote><ol><li>构建镜像</li></ol><blockquote><p>cat Dockerfile </p></blockquote><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>[1].  <a href="http://www.runoob.com/docker/docker-container-usage.html" target="_blank" rel="noopener">http://www.runoob.com/docker/docker-container-usage.html</a><br>[2].  <a href="https://yeasy.gitbooks.io/docker_practice/container/stop.html" target="_blank" rel="noopener">https://yeasy.gitbooks.io/docker_practice/container/stop.html</a><br>————————————————————————end———————————————————————-</p>]]></content>
     
@@ -309,19 +332,19 @@
     
     </summary>
     
-      <category term="学习" scheme="http://blog.lmislm.com/categories/%E5%AD%A6%E4%B9%A0/"/>
+      <category term="学习" scheme="http://lmislm.com/categories/%E5%AD%A6%E4%B9%A0/"/>
     
     
-      <category term="运维" scheme="http://blog.lmislm.com/tags/%E8%BF%90%E7%BB%B4/"/>
+      <category term="运维" scheme="http://lmislm.com/tags/%E8%BF%90%E7%BB%B4/"/>
     
   </entry>
   
   <entry>
     <title>第十七天2019-01-17</title>
-    <link href="http://blog.lmislm.com/2019/01/17/2019-01-17/"/>
-    <id>http://blog.lmislm.com/2019/01/17/2019-01-17/</id>
+    <link href="http://lmislm.com/2019/01/17/2019-01-17/"/>
+    <id>http://lmislm.com/2019/01/17/2019-01-17/</id>
     <published>2019-01-16T16:00:00.000Z</published>
-    <updated>2019-01-17T14:09:02.590Z</updated>
+    <updated>2019-01-31T14:07:54.481Z</updated>
     
     <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>今天眼睛好困啊好困啊！最近可能脑子里事情太多了！还是早点睡的好！乱七八糟的事情先放一边。<br>今天看了Readability，准备用这个来做一些翻译相关的东西。感觉很厉害啊，这个东西。总之先粗略的console.log(),至于以后的什么并发什么的，这个等流量上去了之后再说，先把东西一个个做出来吧。总觉得Nodejs做的应该不会太差。明天记得预约体检！！</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fz9xokfsjbj20fj0avdkw.jpg" alt=""><br>就这样，又水了一天。早点睡吧。晚安。<br>–end</p><a id="more"></a>]]></content>
     
@@ -332,19 +355,19 @@
     
     </summary>
     
-      <category term="生活" scheme="http://blog.lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
+      <category term="生活" scheme="http://lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
     
     
-      <category term="感悟" scheme="http://blog.lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
+      <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
     
   </entry>
   
   <entry>
     <title>第十六天2019-01-16</title>
-    <link href="http://blog.lmislm.com/2019/01/16/2019-01-16/"/>
-    <id>http://blog.lmislm.com/2019/01/16/2019-01-16/</id>
+    <link href="http://lmislm.com/2019/01/16/2019-01-16/"/>
+    <id>http://lmislm.com/2019/01/16/2019-01-16/</id>
     <published>2019-01-15T16:00:00.000Z</published>
-    <updated>2019-01-16T14:27:03.985Z</updated>
+    <updated>2019-01-31T14:07:54.477Z</updated>
     
     <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>恍恍惚惚，已经坚持写博客16天了，这是个“不小的成就”啊。回想过的这些天的博客，发现深度不够，停留在表面。博客写到表层的东西，肤浅的东西就浅尝辄止。这是个很大的问题。也是这些天博客记录下来之后发现的问题点。接下来就是对过去的整个东西进行一些梳理。自从博客开始记录生活以来。总共写了下面这几个事情：</p><ol><li>Object.assign（）// 上下已经完</li><li>new 操作符          //  简单地对原型和继承关系进行了复习</li><li>Vue源码解析        // 对于整个Vue源码的入口有了清晰的认识，意思就是，读源码开始上路</li></ol><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fz8slqduvej20u00k041p.jpg" alt=""></p><h3 id="接下去"><a href="#接下去" class="headerlink" title="接下去"></a>接下去</h3><a id="more"></a><p>接下去可能还想开坑<strong>Vuex</strong>，这个坑，可能是因为在一些写法上，总觉得不够优雅，可能需要读一些开源的项目是怎么做的。可以的话，从很早就有的饿了么APP这个开始读一下，看他是怎么设计软件的。<br>也可能继续开坑<strong>Loadshjs</strong>，研究如何实现<strong>deep clone</strong><br>或者是研究Promise,以及<strong>Even Loop</strong><br>其次，一直以来很重要的事，就是网络基础知识，比如HTTP里面的RTT这种知识，都必须熟练掌握。<br>另外就是一直放了很久的<strong>Nodejs项目</strong>，改学会怎么写出好接口了。所以，这个地方也得去读<strong>Nodejs</strong>怎么学。<br>再深入一点，可能需要读一些开源的项目了。这些在github上面关注的时候，有star，所以，这个不用太心急。偶尔逛逛github就出来了。<br>这些都是很久的坑，暂时还不打算开。但是对于<strong>阅读源码</strong>是很有帮助的。毕竟是基础嘛。但是先开哪个坑，这个是有必要先想想，因为当务之急手下也还有一些bug没有解决。长久看，这种基础东西都是必须要懂的，不懂不行啊。</p>]]></content>
     
@@ -361,19 +384,19 @@
     
     </summary>
     
-      <category term="生活" scheme="http://blog.lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
+      <category term="生活" scheme="http://lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
     
     
-      <category term="感悟" scheme="http://blog.lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
+      <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
     
   </entry>
   
   <entry>
     <title>第十五天2019-01-15</title>
-    <link href="http://blog.lmislm.com/2019/01/15/2019-01-15/"/>
-    <id>http://blog.lmislm.com/2019/01/15/2019-01-15/</id>
+    <link href="http://lmislm.com/2019/01/15/2019-01-15/"/>
+    <id>http://lmislm.com/2019/01/15/2019-01-15/</id>
     <published>2019-01-14T16:00:00.000Z</published>
-    <updated>2019-01-15T14:51:03.685Z</updated>
+    <updated>2019-01-31T14:07:54.474Z</updated>
     
     <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><ul><li>国际化<br>今天对国际化进行了总结，作为第二个发表的人，我发现讲话水平有提高哦，讲的也有层次感了，思路也还算清晰。话说到国际化，确实啊，这个国际化怎么去做，怎么提取需要翻译的全部文本转为变量呢，这个前期工作很繁琐，实际翻译效率并不高。</li><li>手机端适配<br>最近在做手机端适配，要写两套样式。发现还是蛮繁琐的，不过还好，如果原来的页面是自适应的话，那么样式就会简单很多。</li><li>关于最近一些技术上新的路子<br>今早发现其实看Node.js一些源码解析片段可能会很快的就深入到js当中，比如Promise涉及到的SetTimeout()引出来的Even Loop等一些概念。其实可能没有想象中那么深奥，可能是不小心复杂化了。<br>–end<a id="more"></a></li></ul>]]></content>
     
@@ -386,19 +409,19 @@
     
     </summary>
     
-      <category term="生活" scheme="http://blog.lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
+      <category term="生活" scheme="http://lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
     
     
-      <category term="感悟" scheme="http://blog.lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
+      <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
     
   </entry>
   
   <entry>
     <title>第十四天2019-01-14</title>
-    <link href="http://blog.lmislm.com/2019/01/14/2019-01-14/"/>
-    <id>http://blog.lmislm.com/2019/01/14/2019-01-14/</id>
+    <link href="http://lmislm.com/2019/01/14/2019-01-14/"/>
+    <id>http://lmislm.com/2019/01/14/2019-01-14/</id>
     <published>2019-01-13T16:00:00.000Z</published>
-    <updated>2019-01-14T15:23:44.014Z</updated>
+    <updated>2019-01-31T14:07:54.470Z</updated>
     
     <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>今天写了一天的适配移动端样式，发现还好，并不是原来想象中的那么难。早上公交上，也看了Vue的源码分析，渐入佳境吧，慢慢的也看的越来越没有障碍了。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fz6i3s76j6j20kc0dtgrh.jpg" alt=""><br><a id="more"></a></p><h3 id="Vue源码-笔记"><a href="#Vue源码-笔记" class="headerlink" title="Vue源码-笔记"></a>Vue源码-笔记</h3><h4 id="Vue-构造函数"><a href="#Vue-构造函数" class="headerlink" title="Vue 构造函数"></a>Vue 构造函数</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function Vue (options) &#123;</span><br><span class="line">  if (process.env.NODE_ENV !== &apos;production&apos; &amp;&amp;</span><br><span class="line">    !(this instanceof Vue)) &#123;</span><br><span class="line">    warn(&apos;Vue is a constructor and should be called with the `new` keyword&apos;)</span><br><span class="line">  &#125;</span><br><span class="line">  this._init(options)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h4 id="init-方法"><a href="#init-方法" class="headerlink" title="_init 方法"></a>_init 方法</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> Vue.prototype._init = function (options?: Object) &#123;</span><br><span class="line">   const vm: Component = this</span><br><span class="line">   // a uid</span><br><span class="line">   vm._uid = uid++</span><br><span class="line">   // a flag to avoid this being observed</span><br><span class="line">   vm._isVue = true</span><br><span class="line">   // merge options</span><br><span class="line">   if (options &amp;&amp; options._isComponent) &#123;</span><br><span class="line">     // optimize internal component instantiation</span><br><span class="line">     // since dynamic options merging is pretty slow, and none of the</span><br><span class="line">     // internal component options needs special treatment.</span><br><span class="line">     initInternalComponent(vm, options)</span><br><span class="line">   &#125; else &#123;</span><br><span class="line">// 走这一步分析</span><br><span class="line">     vm.$options = mergeOptions(</span><br><span class="line">       resolveConstructorOptions(vm.constructor),</span><br><span class="line">       options || &#123;&#125;,</span><br><span class="line">       vm</span><br><span class="line">     )</span><br><span class="line">   &#125;</span><br><span class="line">   /* istanbul ignore else */</span><br><span class="line">   if (process.env.NODE_ENV !== &apos;production&apos;) &#123;</span><br><span class="line">     initProxy(vm)</span><br><span class="line">   &#125; else &#123;</span><br><span class="line">     vm._renderProxy = vm</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   // expose real self</span><br><span class="line">   vm._self = vm</span><br><span class="line">   initLifecycle(vm)</span><br><span class="line">   initEvents(vm)</span><br><span class="line">   callHook(vm, &apos;beforeCreate&apos;)</span><br><span class="line">   initState(vm)</span><br><span class="line">   callHook(vm, &apos;created&apos;)</span><br><span class="line">   initRender(vm)</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure><h4 id="Vue第一步"><a href="#Vue第一步" class="headerlink" title="Vue第一步"></a>Vue第一步</h4><ul><li>使用策略对象合并参数选项<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export function resolveConstructorOptions (Ctor: Class&lt;Component&gt;) &#123;</span><br><span class="line">  let options = Ctor.options</span><br><span class="line">  if (Ctor.super) &#123;</span><br><span class="line">    const superOptions = Ctor.super.options</span><br><span class="line">    const cachedSuperOptions = Ctor.superOptions</span><br><span class="line">    const extendOptions = Ctor.extendOptions</span><br><span class="line">    if (superOptions !== cachedSuperOptions) &#123;</span><br><span class="line">      // super option changed</span><br><span class="line">      Ctor.superOptions = superOptions</span><br><span class="line">      extendOptions.render = options.render</span><br><span class="line">      extendOptions.staticRenderFns = options.staticRenderFns</span><br><span class="line">      extendOptions._scopeId = options._scopeId</span><br><span class="line">      options = Ctor.options = mergeOptions(superOptions, extendOptions)</span><br><span class="line">      if (options.name) &#123;</span><br><span class="line">        options.components[options.name] = Ctor</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return options</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ul><blockquote><p> Vue.super 用来处理继承</p></blockquote><h4 id="mergeOptions"><a href="#mergeOptions" class="headerlink" title="mergeOptions"></a>mergeOptions</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// 1、引用依赖</span><br><span class="line">import Vue from &apos;../instance/index&apos;</span><br><span class="line">其他引用...</span><br><span class="line"></span><br><span class="line">// 2、合并父子选项值为最终值的策略对象，此时 strats 是一个空对象，因为 config.optionMergeStrategies = Object.create(null)</span><br><span class="line">const strats = config.optionMergeStrategies</span><br><span class="line">// 3、在 strats 对象上定义与参数选项名称相同的方法</span><br><span class="line">strats.el = </span><br><span class="line">strats.propsData = function (parent, child, vm, key)&#123;&#125;</span><br><span class="line">strats.data = function (parentVal, childVal, vm)</span><br><span class="line"></span><br><span class="line">config._lifecycleHooks.forEach(hook =&gt; &#123;</span><br><span class="line">  strats[hook] = mergeHook</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">config._assetTypes.forEach(function (type) &#123;</span><br><span class="line">  strats[type + &apos;s&apos;] = mergeAssets</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">strats.watch = function (parentVal, childVal)</span><br><span class="line"></span><br><span class="line">strats.props =</span><br><span class="line">strats.methods =</span><br><span class="line">strats.computed = function (parentVal: ?Object, childVal: ?Object)</span><br><span class="line">// 默认的合并策略，如果有 `childVal` 则返回 `childVal` 没有则返回 `parentVal`</span><br><span class="line">const defaultStrat = function (parentVal: any, childVal: any): any &#123;</span><br><span class="line">  return childVal === undefined</span><br><span class="line">    ? parentVal</span><br><span class="line">    : childVal</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 4、mergeOptions 中根据参数选项调用同名的策略方法进行合并处理</span><br><span class="line">export function mergeOptions (</span><br><span class="line">  parent: Object,</span><br><span class="line">  child: Object,</span><br><span class="line">  vm?: Component</span><br><span class="line">): Object &#123;</span><br><span class="line"></span><br><span class="line">  // 其他代码</span><br><span class="line">  ...</span><br><span class="line"></span><br><span class="line">  const options = &#123;&#125;</span><br><span class="line">  let key</span><br><span class="line">  for (key in parent) &#123;</span><br><span class="line">    mergeField(key)</span><br><span class="line">  &#125;</span><br><span class="line">  for (key in child) &#123;</span><br><span class="line">    if (!hasOwn(parent, key)) &#123;</span><br><span class="line">      mergeField(key)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  function mergeField (key) &#123;</span><br><span class="line">    const strat = strats[key] || defaultStrat</span><br><span class="line">    options[key] = strat(parent[key], child[key], vm, key)</span><br><span class="line">  &#125;</span><br><span class="line">  return options</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>内容比较丰富，信息量有点大，慢慢来吧，暂时先到这，下次得加快进度看。<br>–end</p>]]></content>
     
@@ -409,19 +432,19 @@
     
     </summary>
     
-      <category term="生活" scheme="http://blog.lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
+      <category term="生活" scheme="http://lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
     
     
-      <category term="感悟" scheme="http://blog.lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
+      <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
     
   </entry>
   
   <entry>
     <title>第十三天2019-01-13</title>
-    <link href="http://blog.lmislm.com/2019/01/13/2019-01-13/"/>
-    <id>http://blog.lmislm.com/2019/01/13/2019-01-13/</id>
+    <link href="http://lmislm.com/2019/01/13/2019-01-13/"/>
+    <id>http://lmislm.com/2019/01/13/2019-01-13/</id>
     <published>2019-01-12T16:00:00.000Z</published>
-    <updated>2019-01-13T10:48:53.808Z</updated>
+    <updated>2019-01-31T14:07:54.467Z</updated>
     
     <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>今天一天上午做饭，下午看电影，一天吧~做了个肉炒腐竹，看电影《雨果》、《美丽心灵》。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fz55fdzo0ej213u0mcnpe.jpg" alt=""><br><a id="more"></a></p><ol><li>不得不说，电影《雨果》中的场景构建的是非常的漂亮，不知道是色彩的原因还是其他，其中包含了很多的机械，一些机械钟类转轴，非常的精美，整个故事的价值观，取向，也非常的完美！不可多得的好电影啊。看完这部电影，才知道什么叫做法国式的浪漫，看来法国式的浪漫不只是与常见的爱情，还在于法国的电影中所体现出的人物的绅士。</li></ol><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fz55ey1b66j213v0mhu0y.jpg" alt=""></p><ol><li>接下来的一部电影就是《美丽心灵》，这部电影183分钟，真的是看的人惊心动魄，不是各种悬疑故事，也不是各种打斗场面，而是来自内心的那种波澜起伏，主人公战胜精神病的坚强的意志，更赞的是电影标题所突出的人的心灵美。也是被片中的主人公的爱情喂饱了狗粮，甚至完全可以当做爱情片来看，“You are reason, you are all my reason”。但我更认为这部电影带给人的力量不仅限于此。不多说了，这电影一定推荐大家看。</li></ol><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fz55fey6dtj217x0oqu0y.jpg" alt=""><br>–end</p>]]></content>
     
@@ -432,19 +455,19 @@
     
     </summary>
     
-      <category term="生活" scheme="http://blog.lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
+      <category term="生活" scheme="http://lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
     
     
-      <category term="感悟" scheme="http://blog.lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
+      <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
     
   </entry>
   
   <entry>
     <title>第十二天2019-01-12</title>
-    <link href="http://blog.lmislm.com/2019/01/12/2019-01-12/"/>
-    <id>http://blog.lmislm.com/2019/01/12/2019-01-12/</id>
+    <link href="http://lmislm.com/2019/01/12/2019-01-12/"/>
+    <id>http://lmislm.com/2019/01/12/2019-01-12/</id>
     <published>2019-01-11T16:00:00.000Z</published>
-    <updated>2019-01-13T10:39:27.178Z</updated>
+    <updated>2019-01-31T14:07:54.464Z</updated>
     
     <content type="html"><![CDATA[<p>今天一天还算是过的比较快，看了两三部电影，感觉还好，虽然都是些老电影。早上起来也做饭了，时间刚到中午就做好了，时间点掐的很完美嘛。就是今天没有看书这点，不是很好。睡觉之前还是看看书吧。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fz3zq6tzrlj20m80gotbq.jpg" alt=""><br><a id="more"></a></p>]]></content>
     
@@ -455,33 +478,10 @@
     
     </summary>
     
-      <category term="生活" scheme="http://blog.lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
+      <category term="生活" scheme="http://lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
     
     
-      <category term="感悟" scheme="http://blog.lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>第十一天2019-01-11</title>
-    <link href="http://blog.lmislm.com/2019/01/11/2019-01-11/"/>
-    <id>http://blog.lmislm.com/2019/01/11/2019-01-11/</id>
-    <published>2019-01-10T16:00:00.000Z</published>
-    <updated>2019-01-11T15:21:53.366Z</updated>
-    
-    <content type="html"><![CDATA[<p>呦呦呦，上线了一个功能！所以今天回来的可能有点晚啊！今天临上线前又更新了一点需求，这个更新需求这个事情，对于有些场景来说，真的是不可避免啊，但是这个问题本身可能是在敲定最终需求的时候，需求不明确所导致的，但是整个过程怎么去优化，还是个很大的问题。所以，我觉得最后优化的空间还会很大的。好吧，好像说了很多的空话，但实际上是有点想吐槽下自己代码效率的，对于更新速度快的需求不能够很好的对代码进行解耦和快速的组装，这个说明在设计代码的时候还是很有必要加强训练！</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fyx7u0mosmj20qo0qot9y.jpg" alt=""><br>– end<br><a id="more"></a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;呦呦呦，上线了一个功能！所以今天回来的可能有点晚啊！今天临上线前又更新了一点需求，这个更新需求这个事情，对于有些场景来说，真的是不可避免啊，但是这个问题本身可能是在敲定最终需求的时候，需求不明确所导致的，但是整个过程怎么去优化，还是个很大的问题。所以，我觉得最后优化的空间还会很大的。好吧，好像说了很多的空话，但实际上是有点想吐槽下自己代码效率的，对于更新速度快的需求不能够很好的对代码进行解耦和快速的组装，这个说明在设计代码的时候还是很有必要加强训练！&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fyx7u0mosmj20qo0qot9y.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;– end&lt;br&gt;
-    
-    </summary>
-    
-      <category term="生活" scheme="http://blog.lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="感悟" scheme="http://blog.lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
+      <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
     
   </entry>
   

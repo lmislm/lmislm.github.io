@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[第三十一天2019-01-31]]></title>
+    <url>%2F2019%2F01%2F31%2F2019-01-31%2F</url>
+    <content type="text"><![CDATA[leetCode今天想到了Leetcode的题目，又捡起来做了一道题目。可能比较简单，就当是回忆的题目吧，以后捡起来题目都比较方便。慢慢来吧。坚持下去也好。也不是宁缺毋滥这种借口，是不存在的，还是得每天坚持写点日记，这样以后就能够进行阶段性总结，也可以看以前的东西，希望养成习惯。 Add Two Numbers** [2] Add Two Numbers** https://leetcode.com/problems/add-two-numbers/description/** algorithms* Medium (30.32%)* Total Accepted: 733.3K* Total Submissions: 2.4M* Testcase Example: '[2,4,3]\n[5,6,4]'** You are given two non-empty linked lists representing two non-negative* integers. The digits are stored in reverse order and each of their nodes* contain a single digit. Add the two numbers and return it as a linked list.* * You may assume the two numbers do not contain any leading zero, except the* number 0 itself.* * Example:* * * Input: (2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)* Output: 7 -&gt; 0 -&gt; 8* Explanation: 342 + 465 = 807.* * */ 题目框架** * Definition for singly-linked list. * function ListNode(val) &#123; * this.val = val; * this.next = null; * &#125; *//** * @param &#123;ListNode&#125; l1 * @param &#123;ListNode&#125; l2 * @return &#123;ListNode&#125; */var addTwoNumbers = function(l1, l2) &#123; 题解var addTwoNumbers = function(l1, l2) &#123; /** * 方法一 */ let List = new ListNode(0) let head = List let sum = 0 let carray = 0 while (l1 !== null || l2 !== null || sum &gt; 0) &#123; if (l1 !== null) &#123; sum = sum + l1.val l1 = l1.next &#125; if (l2 !== null) &#123; sum = sum + l2.val l2 = l2.next &#125; if (sum &gt;= 10) &#123; carray = 1 sum = sum - 10 &#125; head.next = new ListNode(sum) head = head.next sum = carray carray = 0 &#125; return List.next /** * 方法二 */ // let node = null // const carray = arguments[2] // if (l1 || l2) &#123; // // 加上进位 // const val1 = l1 ? l1.val1 : 0 // const val2 = l2 ? l2.val2 : 0 // const next1 = l1 ? l1.next : null // const next2 = l2 ? l2.next : null // const val = carry ? val1 + val2 + 1 : val1 + val2 // node = new ListNode(val % 10) // node.next = addTwoNumbers(next1, next2, val &gt;= 10) // &#125; else if (carray) &#123; // node = new ListNode(1) // node.next = null // &#125; // return node&#125;; –end–]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>练习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[第三十天2019-01-30]]></title>
     <url>%2F2019%2F01%2F30%2F2019-01-30%2F</url>
     <content type="text"><![CDATA[上线很晚啊，今天，有点困。还是早点睡吧，这些天。今天碰到个问题。vm.$attrs传入的不识别横线方式，爷组件传入的不会自动将驼峰转为横线模式。 –end–]]></content>
