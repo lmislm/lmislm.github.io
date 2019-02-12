@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-02-01T11:21:25.251Z</updated>
+  <updated>2019-02-12T13:12:42.791Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day33-css居中</title>
+    <link href="http://lmislm.com/2019/02/12/2019-02-12/"/>
+    <id>http://lmislm.com/2019/02/12/2019-02-12/</id>
+    <published>2019-02-11T16:00:00.000Z</published>
+    <updated>2019-02-12T13:12:42.791Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="居中总结"><a href="#居中总结" class="headerlink" title="居中总结"></a>居中总结</h2><h3 id="水平居中"><a href="#水平居中" class="headerlink" title="水平居中"></a>水平居中</h3><ol><li>行内或类行内元素(inline/inline-block/inline-table/flex)：text-align: center;</li><li>块级元素： margin: 0 auto;</li><li><p>多个块级元素：display: inline-block;</p><h3 id="垂直居中"><a href="#垂直居中" class="headerlink" title="垂直居中"></a>垂直居中</h3></li><li><p>行内或类行内元素:</p><ul><li>单行：padding-top与padding-bottom 等值、或line-height与height 等值</li><li>多行：单行padding等值，或display: table-cell 用vertical-align：middle;</li></ul><ol><li>块级元素：<br>– 待续<br><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g03y5yrw5ej20u01hcwi5.jpg" alt=""></li></ol></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;居中总结&quot;&gt;&lt;a href=&quot;#居中总结&quot; class=&quot;headerlink&quot; title=&quot;居中总结&quot;&gt;&lt;/a&gt;居中总结&lt;/h2&gt;&lt;h3 id=&quot;水平居中&quot;&gt;&lt;a href=&quot;#水平居中&quot; class=&quot;headerlink&quot; title=&quot;水平居中&quot;&gt;&lt;/a
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>第三十二天2019-02-01</title>
@@ -452,29 +477,6 @@
     
       &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;今天写了一天的适配移动端样式，发现还好，并不是原来想象中的那么难。早上公交上，也看了Vue的源码分析，渐入佳境吧，慢慢的也看的越来越没有障碍了。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fz6i3s76j6j20kc0dtgrh.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="生活" scheme="http://lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>第十三天2019-01-13</title>
-    <link href="http://lmislm.com/2019/01/13/2019-01-13/"/>
-    <id>http://lmislm.com/2019/01/13/2019-01-13/</id>
-    <published>2019-01-12T16:00:00.000Z</published>
-    <updated>2019-01-31T14:07:54.467Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>今天一天上午做饭，下午看电影，一天吧~做了个肉炒腐竹，看电影《雨果》、《美丽心灵》。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fz55fdzo0ej213u0mcnpe.jpg" alt=""><br><a id="more"></a></p><ol><li>不得不说，电影《雨果》中的场景构建的是非常的漂亮，不知道是色彩的原因还是其他，其中包含了很多的机械，一些机械钟类转轴，非常的精美，整个故事的价值观，取向，也非常的完美！不可多得的好电影啊。看完这部电影，才知道什么叫做法国式的浪漫，看来法国式的浪漫不只是与常见的爱情，还在于法国的电影中所体现出的人物的绅士。</li></ol><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fz55ey1b66j213v0mhu0y.jpg" alt=""></p><ol><li>接下来的一部电影就是《美丽心灵》，这部电影183分钟，真的是看的人惊心动魄，不是各种悬疑故事，也不是各种打斗场面，而是来自内心的那种波澜起伏，主人公战胜精神病的坚强的意志，更赞的是电影标题所突出的人的心灵美。也是被片中的主人公的爱情喂饱了狗粮，甚至完全可以当做爱情片来看，“You are reason, you are all my reason”。但我更认为这部电影带给人的力量不仅限于此。不多说了，这电影一定推荐大家看。</li></ol><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fz55fey6dtj217x0oqu0y.jpg" alt=""><br>–end</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;今天一天上午做饭，下午看电影，一天吧~做了个肉炒腐竹，看电影《雨果》、《美丽心灵》。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fz55fdzo0ej213u0mcnpe.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
     
     </summary>
     
