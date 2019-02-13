@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[day34-deepClone]]></title>
+    <url>%2F2019%2F02%2F13%2F2019-02-13%2F</url>
+    <content type="text"><![CDATA[拷贝探究一下深拷贝，本文主要是浅拷贝、深拷贝的简单实现，并对循环引用就行一些了解。 准备let data = &#123; id: '1', segment: &#123; hitinfos: &#123; // 浅拷贝时rule为rule: [Object] rule: &#123; a: 'no-placeholder', b: 'no-tag' &#125;, level: 4 &#125;, atoms: [ &#123; tgt: 'you dont know', src: '你不知道' &#125;, &#123; id: 1, tgt: 'what', src: '什么' &#125; ] &#125;, arr: [&#123; id: 1, arr: 'arr1' &#125;], value_1: undefined, value_2: null, value_3: true&#125; 浅拷贝 简单的对象浅拷贝（只遍历一层）-拷贝引用 function cloneShadow(src) &#123; let tgt = &#123;&#125; // 为什么不直接用“=”赋值 for (let prop in src) &#123; // 或者用if (Object.hasOwnProperty(prop)) &#123; if (Object.prototype.hasOwnProperty.call(src, prop)) &#123; tgt[prop] = src[prop] &#125; &#125; return tgt&#125;let test = cloneShadow(data)data.id = 2console.log(test)console.log(data)console.log(test) 深拷贝 递归对象深拷贝（遍历多层）function deepClone(src) &#123; // 非对象 if (src &amp;&amp; typeof src !== 'object') &#123; return src // throw new TypeError('Except Object, got' + (typeof src)) &#125; // 初始化 let tgt = Array.isArray(src) ? [] : &#123;&#125; for (let prop in src) &#123; if (Object.prototype.hasOwnProperty.call(src, prop)) &#123; // value为null或者undefined则返回原值(typeof null === 'object') if (typeof src[prop] === 'object') &#123; tgt[prop] = deepClone(src[prop]) &#125; else &#123; tgt[prop] = src[prop] &#125; &#125; &#125; return tgt&#125;let test_1 = deepClone(data)console.log(test_1)console.log(data)console.log(test_1) 拷贝循环引用 拷贝循环引用（JSON方法抛异常）function deepCloneCircle(src) &#123; if (src &amp;&amp; src !== 'object') return src let tgt = Array.isArray(src) ? [] : &#123;&#125; for (let prop in src) &#123; if (Object.prototype.hasOwnProperty.call(src, tgt)) &#123; if (src[prop] &amp;&amp; src[prop] === 'object') &#123; tgt[prop] = deepCloneCircle(src[prop]) &#125; else &#123; tgt[prop] = src[prop] &#125; &#125; &#125; return tgt&#125;let test = deepCloneCircle(data)console.log(test) 参考：[1]. JavaScript中的浅拷贝和深拷贝[2]. 【进阶4-3期】面试题之如何实现一个深拷贝]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[day33-css居中]]></title>
     <url>%2F2019%2F02%2F12%2F2019-02-12%2F</url>
-    <content type="text"><![CDATA[居中总结水平居中 行内或类行内元素(inline/inline-block/inline-table/flex)：text-align: center; 块级元素： margin: 0 auto; 多个块级元素：display: inline-block; 垂直居中 行内或类行内元素: 单行：padding-top与padding-bottom 等值、或line-height与height 等值 多行：单行padding等值，或display: table-cell 用vertical-align：middle; 块级元素：– 待续]]></content>
+    <content type="text"><![CDATA[居中总结经常会碰到一些居中的问题，这里尝试进行一些总结。分为垂直居中和水平居中。 水平居中 行内或类行内元素(inline/inline-block/inline-table/flex)：text-align: center; 块级元素： margin: 0 auto; 多个块级元素：display: inline-block; 垂直居中 行内或类行内元素: 单行：padding-top与padding-bottom 等值、或line-height与height 等值 多行：单行padding等值，或display: table-cell 用vertical-align：middle; 块级元素： – 待续]]></content>
       <categories>
         <category>技术</category>
       </categories>
