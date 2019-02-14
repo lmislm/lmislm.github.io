@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-02-13T14:07:09.846Z</updated>
+  <updated>2019-02-14T13:50:40.355Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day35-杂谈</title>
+    <link href="http://lmislm.com/2019/02/14/2019-02-14/"/>
+    <id>http://lmislm.com/2019/02/14/2019-02-14/</id>
+    <published>2019-02-13T16:00:00.000Z</published>
+    <updated>2019-02-14T13:50:40.355Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>发现要是女生和代码一样容易理解就好了，出错的几率也太大了。因为你费劲输入一大堆代码，最后错都不会报，根本不知道会不会运行。<br>衰(′д｀ )…彡…彡<br>有时候有些人你付出，更本就不会有任何反应。世事难料啊。情人节快乐！<br>祝你们原地爆炸！</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g06aij5xjkj20u01hc0yq.jpg" alt=""><br>-end<br><a id="more"></a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;发现要是女生和代码一样容易理解就好了，出错的几率也太大了。因为你费劲输入一大堆代码，最后错都不会报，根本不知道会不会运行。&lt;br&gt;衰(′д｀ )…彡…彡&lt;br&gt;有时候有些人你付出，更本就不会有任何反应。世事难料啊。情人节快乐！&lt;br&gt;祝你们原地爆炸！&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g06aij5xjkj20u01hc0yq.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;-end&lt;br&gt;
+    
+    </summary>
+    
+      <category term="生活" scheme="http://lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
+    
+  </entry>
   
   <entry>
     <title>day34-deepClone</title>
@@ -450,31 +473,6 @@
 &lt;/ol&gt;
 &lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fz8slqduvej20u00k041p.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;h3 id=&quot;接下去&quot;&gt;&lt;a href=&quot;#接下去&quot; class=&quot;headerlink&quot; title=&quot;接下去&quot;&gt;&lt;/a&gt;接下去&lt;/h3&gt;
-    
-    </summary>
-    
-      <category term="生活" scheme="http://lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>第十五天2019-01-15</title>
-    <link href="http://lmislm.com/2019/01/15/2019-01-15/"/>
-    <id>http://lmislm.com/2019/01/15/2019-01-15/</id>
-    <published>2019-01-14T16:00:00.000Z</published>
-    <updated>2019-01-31T14:07:54.474Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><ul><li>国际化<br>今天对国际化进行了总结，作为第二个发表的人，我发现讲话水平有提高哦，讲的也有层次感了，思路也还算清晰。话说到国际化，确实啊，这个国际化怎么去做，怎么提取需要翻译的全部文本转为变量呢，这个前期工作很繁琐，实际翻译效率并不高。</li><li>手机端适配<br>最近在做手机端适配，要写两套样式。发现还是蛮繁琐的，不过还好，如果原来的页面是自适应的话，那么样式就会简单很多。</li><li>关于最近一些技术上新的路子<br>今早发现其实看Node.js一些源码解析片段可能会很快的就深入到js当中，比如Promise涉及到的SetTimeout()引出来的Even Loop等一些概念。其实可能没有想象中那么深奥，可能是不小心复杂化了。<br>–end<a id="more"></a></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;国际化&lt;br&gt;今天对国际化进行了总结，作为第二个发表的人，我发现讲话水平有提高哦，讲的也有层次感了，思路也还算清晰。话说到国际化，确实啊，这个国际化怎么去做，怎么提取需要翻译的全部文本转为变量呢，这个前期工作很繁琐，实际翻译效率并不高。&lt;/li&gt;
-&lt;li&gt;手机端适配&lt;br&gt;最近在做手机端适配，要写两套样式。发现还是蛮繁琐的，不过还好，如果原来的页面是自适应的话，那么样式就会简单很多。&lt;/li&gt;
-&lt;li&gt;关于最近一些技术上新的路子&lt;br&gt;今早发现其实看Node.js一些源码解析片段可能会很快的就深入到js当中，比如Promise涉及到的SetTimeout()引出来的Even Loop等一些概念。其实可能没有想象中那么深奥，可能是不小心复杂化了。&lt;br&gt;–end
     
     </summary>
     
