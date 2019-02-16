@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-02-15T13:14:35.726Z</updated>
+  <updated>2019-02-16T13:20:22.932Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -17,11 +17,34 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>day37-杂谈</title>
+    <link href="http://lmislm.com/2019/02/16/2019-02-16/"/>
+    <id>http://lmislm.com/2019/02/16/2019-02-16/</id>
+    <published>2019-02-15T16:00:00.000Z</published>
+    <updated>2019-02-16T13:20:22.932Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>三天打鱼两天晒网，可能说的就是我写博客的状态没错了。今天是周末，待着一天，上午看电影，下午玩游戏，一点书都没看的人就是我了。明天看书！看书！</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g08kvqiip3j20u01hcjw6.jpg" alt=""></p><a id="more"></a>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;三天打鱼两天晒网，可能说的就是我写博客的状态没错了。今天是周末，待着一天，上午看电影，下午玩游戏，一点书都没看的人就是我了。明天看书！看书！&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g08kvqiip3j20u01hcjw6.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="生活" scheme="http://lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
+    
+  </entry>
+  
+  <entry>
     <title>day36-杂谈</title>
     <link href="http://lmislm.com/2019/02/15/2019-02-15/"/>
     <id>http://lmislm.com/2019/02/15/2019-02-15/</id>
     <published>2019-02-14T16:00:00.000Z</published>
-    <updated>2019-02-15T13:14:35.726Z</updated>
+    <updated>2019-02-16T13:21:05.532Z</updated>
     
     <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>今天是考研成绩出来的一天。恍恍惚惚，一年前的这个时候我还在过年，恍惚间一年已经过了。早上七点就醒了，不知道这有没有什么关系，但重要的是一年前的这个时候，我一晚上没睡着，结果第二天这个时候，消息并没有那么好。这都是一年前的事情了。谈一谈吧。这两天在做移动端的支付宝支付。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g06aijcid1j20u01hcwhm.jpg" alt=""><br><a id="more"></a></p>]]></content>
     
@@ -451,29 +474,6 @@
     
     
       <category term="运维" scheme="http://lmislm.com/tags/%E8%BF%90%E7%BB%B4/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>第十七天2019-01-17</title>
-    <link href="http://lmislm.com/2019/01/17/2019-01-17/"/>
-    <id>http://lmislm.com/2019/01/17/2019-01-17/</id>
-    <published>2019-01-16T16:00:00.000Z</published>
-    <updated>2019-01-31T14:07:54.481Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>今天眼睛好困啊好困啊！最近可能脑子里事情太多了！还是早点睡的好！乱七八糟的事情先放一边。<br>今天看了Readability，准备用这个来做一些翻译相关的东西。感觉很厉害啊，这个东西。总之先粗略的console.log(),至于以后的什么并发什么的，这个等流量上去了之后再说，先把东西一个个做出来吧。总觉得Nodejs做的应该不会太差。明天记得预约体检！！</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fz9xokfsjbj20fj0avdkw.jpg" alt=""><br>就这样，又水了一天。早点睡吧。晚安。<br>–end</p><a id="more"></a>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;今天眼睛好困啊好困啊！最近可能脑子里事情太多了！还是早点睡的好！乱七八糟的事情先放一边。&lt;br&gt;今天看了Readability，准备用这个来做一些翻译相关的东西。感觉很厉害啊，这个东西。总之先粗略的console.log(),至于以后的什么并发什么的，这个等流量上去了之后再说，先把东西一个个做出来吧。总觉得Nodejs做的应该不会太差。明天记得预约体检！！&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fz9xokfsjbj20fj0avdkw.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;就这样，又水了一天。早点睡吧。晚安。&lt;br&gt;–end&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="生活" scheme="http://lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
     
   </entry>
   
