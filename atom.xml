@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>LMISLMのBlog</title>
   
-  <subtitle>“   故不积跬步，无以至千里；不积小流，无以成江海。  -  荀子《劝学篇》”</subtitle>
+  <subtitle>“不积小流，无以成江海。” - 荀子《劝学篇》</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-02-17T13:44:44.927Z</updated>
+  <updated>2019-02-18T13:39:43.167Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day39-做题</title>
+    <link href="http://lmislm.com/2019/02/18/2019-02-18/"/>
+    <id>http://lmislm.com/2019/02/18/2019-02-18/</id>
+    <published>2019-02-17T16:00:00.000Z</published>
+    <updated>2019-02-18T13:39:43.167Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log([<span class="string">'1'</span>, <span class="string">'2'</span>, <span class="string">'3'</span>].map(<span class="built_in">parseInt</span>))</span><br><span class="line"><span class="comment">// 输出什么？</span></span><br></pre></td></tr></table></figure><a id="more"></a><h3 id="答案"><a href="#答案" class="headerlink" title="答案"></a>答案</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">[ <span class="number">1</span>, <span class="literal">NaN</span>, <span class="literal">NaN</span> ]</span><br></pre></td></tr></table></figure><h3 id="详解"><a href="#详解" class="headerlink" title="详解"></a>详解</h3><ul><li>这个应该是考<code>map语法</code>、<code>进制转换</code>和<code>parseInt语法</code></li></ul><h4 id="易错点"><a href="#易错点" class="headerlink" title="易错点"></a>易错点</h4><ul><li>parseInt(string, radix) - radix - 根 - （基数）范围：[2, 36]</li><li>string 要被解析的值，无法被转化成数值类型，则返回NaN</li></ul><h4 id="代码扩展"><a href="#代码扩展" class="headerlink" title="代码扩展"></a>代码扩展</h4><p>实际执行的代码是：<br> <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">[<span class="string">'1'</span>, <span class="string">'2'</span>, <span class="string">'3'</span>].map(<span class="function">(<span class="params">item, index</span>) =&gt;</span> &#123;</span><br><span class="line"> <span class="keyword">return</span> <span class="built_in">parseInt</span>(item, index)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p><h4 id="parseInt（string-radix"><a href="#parseInt（string-radix" class="headerlink" title="parseInt（string, radix)"></a>parseInt（string, radix)</h4><ul><li>radix<br>关于parseInt基数的处理(MDN)<br>基数radix为 undefined，或者基数为 0 或者没有指定的情况下，JavaScript 作如下处理：<br>如果 parseInt 遇到了不属于radix参数所指定的基数中的字符那么该字符和其后的字符都将被忽略。接着返回已经解析的整数部分。parseInt 将截取整数部分。开头和结尾的空白符允许存在，会被忽略</li><li>string<ol><li>如果字符串 string 以”0x”或者”0X”开头, 则基数是16 (16进制).</li><li>如果字符串 string 以”0”开头, 基数是8（八进制）或者10（十进制），那么具体是哪个基数由实现环境决定。ECMAScript 5 规定使用10，但是并不是所有的浏览器都遵循这个规定。因此，永远都要明确给出radix参数的值。</li><li>如果字符串 string 以其它任何值开头，则基数是10 (十进制)。<h3 id="解决（延伸）"><a href="#解决（延伸）" class="headerlink" title="解决（延伸）"></a>解决（延伸）</h3>目前掌握的可能有两种方法：</li></ol></li><li>方法一：利用<code>函数柯里化</code>来取map的数组index为0时的值，因为默认为10进制。</li><li>方法二：利用<code>Number</code>。<h4 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> unary = <span class="function"><span class="params">fn</span> =&gt;</span> val =&gt; fn(val)</span><br><span class="line"><span class="keyword">let</span> parse = unary(<span class="built_in">parseInt</span>)</span><br><span class="line"><span class="keyword">let</span> res_0 = [<span class="string">'1'</span>, <span class="string">'2'</span>, <span class="string">'3'</span>].map(parse)</span><br><span class="line"><span class="built_in">console</span>.log(res_0)</span><br></pre></td></tr></table></figure></li></ul><p>来自 <a href="https://30secondsofcode.org/adapter" target="_blank" rel="noopener">30secondsofcode</a>的<code>unary</code>方法。</p><ul><li>let unary = fn =&gt; val =&gt; fn(val) 等价于下面<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">unary_1</span>(<span class="params">fn</span>) </span>&#123;</span><br><span class="line">   <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">val</span>) </span>&#123;</span><br><span class="line">     <span class="keyword">return</span> fn(val)</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></li></ul><h4 id="方法二："><a href="#方法二：" class="headerlink" title="方法二："></a>方法二：</h4><p>let res_1 = [‘10’,’10’,’10’,’8’,’10’].map(Number)<br>console.log(res_1)<br>来自<a href="https://github.com/sisterAn/blog/issues/19" target="_blank" rel="noopener">[‘1’, ‘2’, ‘3’].map(parseInt) what &amp; why ? </a></p><h3 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h3><ul><li>console.log(parseInt(1, 2))</li><li>console.log(parseInt(5, 4))</li></ul><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>[1]. <a href="https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/4" target="_blank" rel="noopener">第二题：[‘1’, ‘2’, ‘3’].map(parseInt) 解析</a><br>[2]. <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/map" target="_blank" rel="noopener">Array.prototype.map()</a><br>[3]. <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/parseInt" target="_blank" rel="noopener">parseInt</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h3&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log([&lt;span class=&quot;string&quot;&gt;&#39;1&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;2&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;3&#39;&lt;/span&gt;].map(&lt;span class=&quot;built_in&quot;&gt;parseInt&lt;/span&gt;))&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 输出什么？&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>day38-“摸鱼”</title>
@@ -444,29 +466,6 @@
     
       &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;今天下午就光玩游戏了~感觉需要放空自己啊，这是个玩游戏的好借口。但确实，今天下午看了一会儿电影，上午下午中间节点看完了《楚门的世界》（《The Truman Show》)。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fzdce2a0h5j20ko0e9q61.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="生活" scheme="http://lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>第十九天2019-01-19</title>
-    <link href="http://lmislm.com/2019/01/19/2019-01-19/"/>
-    <id>http://lmislm.com/2019/01/19/2019-01-19/</id>
-    <published>2019-01-18T16:00:00.000Z</published>
-    <updated>2019-01-31T14:07:54.488Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>今天碰到一个需求，就是在element-ui表格中，列表操作这一列有下载和删除按钮，需要点击某一行的下载按钮，该行下载按钮显示正在下载的loading状态。这个看了下，应该只能是通过在<code>scope.row</code>对象中加属性，比如：<code>isDownloading</code>。这个就要求新属性<code>isDownloading</code>，能够具有响应式特性。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fzc6japr32j20u00u00wg.jpg" alt=""><br><a id="more"></a></p><h3 id="深入响应式原理"><a href="#深入响应式原理" class="headerlink" title="深入响应式原理"></a>深入响应式原理</h3><ul><li>追踪变化<br>下面这张图，是基于Object.defineProperty 实现响应式的关键。<br><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fzc67hrsguj20xc0kuq38.jpg" alt=""></li></ul><p>不巧的是，<strong>受现代 JavaScript 的限制 (而且 Object.observe 也已经被废弃)，Vue 不能检测到对象属性的添加或删除。</strong><sup>[1]</sup></p><blockquote><p>Vue 不允许在已经创建的实例上动态添加新的根级响应式属性 (root-level reactive property)。然而它可以使用 Vue.set(object, key, value) 方法将响应属性添加到嵌套的对象上：<sup>[1]</sup></p><ul><li>添加响应式属性<br>使用 Vue.set(object, key, value) 方法将响应属性添加到嵌套的对象</li><li>一个已有对象添加多个属性<br>// 代替 <code>Object.assign(this.someObject, { a: 1, b: 2 })</code><br>this.someObject = Object.assign({}, this.someObject, { a: 1, b: 2 })</li></ul></blockquote><h3 id="vuejs-提供的Api"><a href="#vuejs-提供的Api" class="headerlink" title="vuejs 提供的Api"></a>vuejs 提供的Api</h3><blockquote><p>Vue.set( target, key, value )<br><strong>参数：</strong></p><p>{Object | Array} target<br>{string | number} key<br>{any} value<br><strong>返回值：</strong> 设置的值。<br><strong>用法：</strong> 向响应式对象中添加一个属性，并确保这个新属性同样是响应式的，且触发视图更新。它必须用于向响应式对象上添加新属性，因为 Vue 无法探测普通的新增属性 (比如 this.myObject.newProperty = ‘hi’)<br>注意对象不能是 Vue 实例，或者 Vue 实例的根数据对象。</p></blockquote><p>注意对象不能是 Vue 实例，或者 Vue 实例的根数据对象。</p><h3 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h3><p>实践了一下，响应式的对象。在拉取list的forEach里新增一个响应式属性，<code>this.$set(this.list, &#39;isDownloading&#39;, false)</code>。然后就可以在操作前置true,操作后false。在列表的地方就可以用响应式的<code>isDownloading</code>属性了！</p><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>[1]. <a href="https://cn.vuejs.org/v2/guide/reactivity.html#%E5%A6%82%E4%BD%95%E8%BF%BD%E8%B8%AA%E5%8F%98%E5%8C%96" target="_blank" rel="noopener">https://cn.vuejs.org/v2/guide/reactivity.html#%E5%A6%82%E4%BD%95%E8%BF%BD%E8%B8%AA%E5%8F%98%E5%8C%96</a><br>[2]. <a href="https://cn.vuejs.org/v2/api/#Vue-set" target="_blank" rel="noopener">https://cn.vuejs.org/v2/api/#Vue-set</a><br>——————————————————-end———————————————————–</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;今天碰到一个需求，就是在element-ui表格中，列表操作这一列有下载和删除按钮，需要点击某一行的下载按钮，该行下载按钮显示正在下载的loading状态。这个看了下，应该只能是通过在&lt;code&gt;scope.row&lt;/code&gt;对象中加属性，比如：&lt;code&gt;isDownloading&lt;/code&gt;。这个就要求新属性&lt;code&gt;isDownloading&lt;/code&gt;，能够具有响应式特性。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fzc6japr32j20u00u00wg.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
     
     </summary>
     
