@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[day40-“繁忙”]]></title>
+    <url>%2F2019%2F02%2F19%2F2019-02-19%2F</url>
+    <content type="text"><![CDATA[今天元宵节，“猿宵节”啊！节日快乐！其实今天是项目这边有点忙，没有写完编程日志，恰巧元宵节，所以这就是我不好好写日志的理由，哈哈。]]></content>
+      <categories>
+        <category>生活</category>
+      </categories>
+      <tags>
+        <tag>感悟</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[day39-做题]]></title>
     <url>%2F2019%2F02%2F18%2F2019-02-18%2F</url>
-    <content type="text"><![CDATA[题目console.log(['1', '2', '3'].map(parseInt))// 输出什么？ 答案[ 1, NaN, NaN ] 详解 这个应该是考map语法、进制转换和parseInt语法 易错点 parseInt(string, radix) - radix - 根 - （基数）范围：[2, 36] string 要被解析的值，无法被转化成数值类型，则返回NaN 代码扩展实际执行的代码是： ['1', '2', '3'].map((item, index) =&gt; &#123; return parseInt(item, index)&#125;) parseInt（string, radix) radix关于parseInt基数的处理(MDN)基数radix为 undefined，或者基数为 0 或者没有指定的情况下，JavaScript 作如下处理：如果 parseInt 遇到了不属于radix参数所指定的基数中的字符那么该字符和其后的字符都将被忽略。接着返回已经解析的整数部分。parseInt 将截取整数部分。开头和结尾的空白符允许存在，会被忽略 string 如果字符串 string 以”0x”或者”0X”开头, 则基数是16 (16进制). 如果字符串 string 以”0”开头, 基数是8（八进制）或者10（十进制），那么具体是哪个基数由实现环境决定。ECMAScript 5 规定使用10，但是并不是所有的浏览器都遵循这个规定。因此，永远都要明确给出radix参数的值。 如果字符串 string 以其它任何值开头，则基数是10 (十进制)。解决（延伸）目前掌握的可能有两种方法： 方法一：利用函数柯里化来取map的数组index为0时的值，因为默认为10进制。 方法二：利用Number。方法一：let unary = fn =&gt; val =&gt; fn(val)let parse = unary(parseInt)let res_0 = ['1', '2', '3'].map(parse)console.log(res_0) 来自 30secondsofcode的unary方法。 let unary = fn =&gt; val =&gt; fn(val) 等价于下面function unary_1(fn) &#123; return function (val) &#123; return fn(val) &#125; &#125; 方法二：let res_1 = [‘10’,’10’,’10’,’8’,’10’].map(Number)console.log(res_1)来自[‘1’, ‘2’, ‘3’].map(parseInt) what &amp; why ? 练习 console.log(parseInt(1, 2)) console.log(parseInt(5, 4)) 参考[1]. 第二题：[‘1’, ‘2’, ‘3’].map(parseInt) 解析[2]. Array.prototype.map()[3]. parseInt]]></content>
+    <content type="text"><![CDATA[题目console.log(['1', '2', '3'].map(parseInt))// 输出什么？ 答案[ 1, NaN, NaN ] 详解 这个应该是考map语法、进制转换和parseInt语法 易错点 parseInt(string, radix) - radix - 根 - （基数）范围：[2, 36] string 要被解析的值，无法被转化成数值类型，则返回NaN 代码扩展实际执行的代码是： ['1', '2', '3'].map((item, index) =&gt; &#123; return parseInt(item, index)&#125;) parseInt（string, radix) radix关于parseInt基数的处理(MDN)基数radix为 undefined，或者基数为 0 或者没有指定的情况下，JavaScript 作如下处理：如果 parseInt 遇到了不属于radix参数所指定的基数中的字符那么该字符和其后的字符都将被忽略。接着返回已经解析的整数部分。parseInt 将截取整数部分。开头和结尾的空白符允许存在，会被忽略 string 如果字符串 string 以”0x”或者”0X”开头, 则基数是16 (16进制). 如果字符串 string 以”0”开头, 基数是8（八进制）或者10（十进制），那么具体是哪个基数由实现环境决定。ECMAScript 5 规定使用10，但是并不是所有的浏览器都遵循这个规定。因此，永远都要明确给出radix参数的值。 如果字符串 string 以其它任何值开头，则基数是10 (十进制)。 解决（延伸）目前掌握的可能有两种方法： 方法一：利用函数柯里化来取map的数组index为0时的值，因为默认为10进制。 方法二：利用Number。方法一：let unary = fn =&gt; val =&gt; fn(val)let parse = unary(parseInt)let res_0 = ['1', '2', '3'].map(parse)console.log(res_0) 来自 30secondsofcode的unary方法。 let unary = fn =&gt; val =&gt; fn(val) 等价于下面function unary_1(fn) &#123; return function (val) &#123; return fn(val) &#125; &#125; 方法二：let res_1 = [‘10’,’10’,’10’,’8’,’10’].map(Number)console.log(res_1)来自[‘1’, ‘2’, ‘3’].map(parseInt) what &amp; why ? 练习 console.log(parseInt(1, 2)) console.log(parseInt(5, 4)) 参考[1]. 第二题：[‘1’, ‘2’, ‘3’].map(parseInt) 解析[2]. Array.prototype.map()[3]. parseInt]]></content>
       <categories>
         <category>技术</category>
       </categories>
