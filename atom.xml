@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-02-20T14:25:54.402Z</updated>
+  <updated>2019-02-21T14:14:58.042Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day42-理由-评审</title>
+    <link href="http://lmislm.com/2019/02/21/2019-02-21/"/>
+    <id>http://lmislm.com/2019/02/21/2019-02-21/</id>
+    <published>2019-02-20T16:00:00.000Z</published>
+    <updated>2019-02-21T14:14:58.042Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>居然说，3月份要没有周末，吓死我了！因为项目说是很急，我看项目量也不小啊！吓人吓人。今天评审时间就用了很久，5点到晚上7点半，之后8点到9点，吓人啊。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g03y5yrw5ej20u01hcwi5.jpg" alt=""><br><a id="more"></a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;居然说，3月份要没有周末，吓死我了！因为项目说是很急，我看项目量也不小啊！吓人吓人。今天评审时间就用了很久，5点到晚上7点半，之后8点到9点，吓人啊。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g03y5yrw5ej20u01hcwi5.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>day41-“练字”-&quot;debouncejs&quot;</title>
@@ -444,29 +467,6 @@
     
       &lt;h3 id=&quot;js-常用数组方法小结&quot;&gt;&lt;a href=&quot;#js-常用数组方法小结&quot; class=&quot;headerlink&quot; title=&quot;js 常用数组方法小结&quot;&gt;&lt;/a&gt;js 常用数组方法小结&lt;/h3&gt;&lt;h4 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h4&gt;&lt;p&gt;今天这个数组对象操作写的有点多啊，特此来小结一下，一些常用的方法的基本操作。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fzgxeniqluj20k00arjrt.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>第二十二天2019-01-22</title>
-    <link href="http://lmislm.com/2019/01/22/2019-01-22/"/>
-    <id>http://lmislm.com/2019/01/22/2019-01-22/</id>
-    <published>2019-01-21T16:00:00.000Z</published>
-    <updated>2019-01-31T14:07:54.498Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="组件通信-祖孙"><a href="#组件通信-祖孙" class="headerlink" title="组件通信-祖孙"></a>组件通信-祖孙</h3><p>本文将结合例子，简单讲解下vuejs文档中的实例属性：<strong>vm.$attrs</strong>和<strong>vm.$listeners</strong>。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fzfr1n65maj20b40b4dfn.jpg" alt=""><a id="more"></a></p><h4 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h4><p>因为项目中大多用Vuex来通信，但是用多了之后感觉简单的组件之间的通信再用构造vuex的mutation，写起来比较费，当然父子之间的通信肯定是用emit更实在。</p><h3 id="写个“栗子”"><a href="#写个“栗子”" class="headerlink" title="写个“栗子”"></a>写个“栗子”</h3><ul><li>三个组件：grandfather &gt; father &gt; son<h4 id="祖宗组件"><a href="#祖宗组件" class="headerlink" title="祖宗组件"></a>祖宗组件</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Vue.component(&apos;grandfather&apos;, &#123;</span><br><span class="line">props: [],</span><br><span class="line">template:</span><br><span class="line">`&lt;div&gt;</span><br><span class="line">  &lt;father</span><br><span class="line">:getGrandsonData=&quot;grandfatherData&quot; // 传值</span><br><span class="line">@getGrandsonEvent=&quot;grandfatherEvent&quot; // 事件</span><br><span class="line">&gt;&lt;/father&gt; </span><br><span class="line">&lt;/div&gt; `</span><br><span class="line">data: function () &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      grandfatherData: &quot;hello, i&apos;m your grandfather&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">methods: &#123;</span><br><span class="line">grandfatherEvent (val) &#123;</span><br><span class="line">// 这里接到了“hello, i&apos;m your grandson”</span><br><span class="line">console.log(val) // hello, i&apos;m your grandson</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li></ul><h4 id="父亲组件"><a href="#父亲组件" class="headerlink" title="父亲组件"></a>父亲组件</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Vue.component(&apos;father&apos;, &#123;</span><br><span class="line">props: [], // 注意这里props不需要再父组件声明</span><br><span class="line">template:\`</span><br><span class="line">&lt;div&gt;</span><br><span class="line">  &lt;grandson</span><br><span class="line">v-bind=&quot;$attrs&quot;</span><br><span class="line">v-on=&quot;$listeners&quot;</span><br><span class="line">&gt;&lt;/grandson&gt;  \`</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><h4 id="孙子组件"><a href="#孙子组件" class="headerlink" title="孙子组件"></a>孙子组件</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Vue.component(&apos;grandson&apos;, &#123;</span><br><span class="line">props: [],</span><br><span class="line">template:`</span><br><span class="line">  &lt;input</span><br><span class="line">  type=&quot;text&quot;</span><br><span class="line">  v-model=&quot;grandsonMsgToGrandfather&quot;</span><br><span class="line">@input=&quot;sendToGrandfatherEvent&quot;</span><br><span class="line">&gt;&#123;&#123;$attrs.grandfatherData&#125;&#125;&lt;/div&gt; `</span><br><span class="line">data: function () &#123;</span><br><span class="line">return &#123;</span><br><span class="line">  grandsonMsgToGrandfather: &quot;hello, i&apos;m your grandson&quot;</span><br><span class="line">&#125;</span><br><span class="line">&#125;,</span><br><span class="line">method: &#123;</span><br><span class="line">sendToGrandfatherEvent () &#123;</span><br><span class="line">this.$emit(&apos;getGrandsonEvent&apos;, sonMsgToGrandfather )</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><p>注意：这里的代码并没有验证过,只是大概写个简单的demo</p><h3 id="上文档"><a href="#上文档" class="headerlink" title="上文档"></a>上文档</h3><h4 id="vm-attrs"><a href="#vm-attrs" class="headerlink" title="vm.$attrs"></a>vm.$attrs</h4><blockquote><p><strong>vm.$attrs</strong><br><strong>类型：</strong><code>{ [key: string]: string }</code><br><strong>只读</strong><br><strong>详细：</strong><br>包含了父作用域中不作为 prop 被识别 (且获取) 的特性绑定 (class 和 style 除外)。当一个组件没有声明任何 prop 时，这里会包含所有父作用域的绑定 (class 和 style 除外)，并且可以通过 v-bind=”$attrs” 传入内部组件——在创建高级别的组件时非常有用。</p></blockquote><h4 id="vm-listeners"><a href="#vm-listeners" class="headerlink" title="vm.$listeners"></a>vm.$listeners</h4><blockquote><p><strong>vm.$listeners</strong><br><strong>类型：</strong><code>{ [key: string]: Function | Array&lt;Function&gt; }</code><br><strong>只读</strong><br><strong>详细：</strong><br>包含了父作用域中的 (不含 .native 修饰器的) v-on 事件监听器。它可以通过 v-on=”$listeners” 传入内部组件——在创建更高层次的组件时非常有用。</p></blockquote><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>[1]. <a href="https://cn.vuejs.org/v2/api/#vm-attrs" target="_blank" rel="noopener">https://cn.vuejs.org/v2/api/#vm-attrs</a> 、<a href="https://cn.vuejs.org/v2/api/#vm-listeners" target="_blank" rel="noopener">https://cn.vuejs.org/v2/api/#vm-listeners</a><br>[2]. <a href="https://blog.csdn.net/qq_39009348/article/details/81977468" target="_blank" rel="noopener">vue的通信方式（二）—祖父孙三个级别的之间的隔代通信</a></p><p>  —end—</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;组件通信-祖孙&quot;&gt;&lt;a href=&quot;#组件通信-祖孙&quot; class=&quot;headerlink&quot; title=&quot;组件通信-祖孙&quot;&gt;&lt;/a&gt;组件通信-祖孙&lt;/h3&gt;&lt;p&gt;本文将结合例子，简单讲解下vuejs文档中的实例属性：&lt;strong&gt;vm.$attrs&lt;/strong&gt;和&lt;strong&gt;vm.$listeners&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fzfr1n65maj20b40b4dfn.jpg&quot; alt=&quot;&quot;&gt;
     
     </summary>
     

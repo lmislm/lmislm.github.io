@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[day42-理由-评审]]></title>
+    <url>%2F2019%2F02%2F21%2F2019-02-21%2F</url>
+    <content type="text"><![CDATA[碎碎念居然说，3月份要没有周末，吓死我了！因为项目说是很急，我看项目量也不小啊！吓人吓人。今天评审时间就用了很久，5点到晚上7点半，之后8点到9点，吓人啊。]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[day41-“练字”-"debouncejs"]]></title>
     <url>%2F2019%2F02%2F20%2F2019-02-20%2F</url>
     <content type="text"><![CDATA[debounce本文主要是临摹Lodashjs中debouncejs源代码。对一部分细节进行了解，代码中会附上链接并写中文注释。分为两部分：loadsh-debounce是来自官方v4.17.5文档的解释。源代码是来自官方github上的代码，日期为2019-2-20之前。 lodash-debounce 背景_.debounce(func, [wait=0], [options={}]) 描述Creates a debounced function that delays invoking func until after wait milliseconds have elapsed since the last time the debounced function was invoked. The debounced function comes with a cancel method to cancel delayed func invocations and a flush method to immediately invoke them. Provide options to indicate whether func should be invoked on the leading and/or trailing edge of the wait timeout. The func is invoked with the last arguments provided to the debounced function. Subsequent calls to the debounced function return the result of the last func invocation. Note:If leading and trailing options are true, func is invoked on the trailing edge of the timeout only if the debounced function is invoked more than once during the wait timeout.If wait is 0 and leading is false, func invocation is deferred until to the next tick, similar to setTimeout with a timeout of 0. Argumentsfunc (Function): The function to debounce.[wait=0] (number): The number of milliseconds to delay.[options={}] (Object): The options object.[options.leading=false] (boolean): Specify invoking on the leading edge of the timeout.[options.maxWait] (number): The maximum time func is allowed to be delayed before it’s invoked.[options.trailing=true] (boolean): Specify invoking on the trailing edge of the timeout. Returns(Function): Returns the new debounced function. 源代码-加一些解析/** * lodash 中的debounce实现 *//** 常量 *//** lodash https://github.com/lodash/lodash/blob/master/.internal/freeGlobal.js *//** Detect free variable `global` from Node.js. */const freeGlobal = typeof global == 'object' &amp;&amp; global !== null &amp;&amp; global.Object === Object &amp;&amp; global/** lodash https://github.com/lodash/lodash/blob/master/.internal/root.js *//** Detect free variable `self`. */const freeSelf = typeof self == 'object' &amp;&amp; self !== null &amp;&amp; self.Object === Object &amp;&amp; self/** Used as a reference to the global object. */const root = freeGlobal || freeSelf || Function('return this')()/** 判断对象 */function isObject(value) &#123; const type = typeof value return value != null &amp;&amp; (type == 'object' || type == 'function')&#125;/** debounce */function debounce(func, wait, options) &#123; let lastArgs, lastThis, maxWait, result, timerId, lastCallTime let lastInvokeTime = 0 let leading = false let maxing = false let trailing = true // Bypass `requestAnimationFrame` by explicitly setting `wait=0`. // 注意(!wait &amp;&amp; wait)写法,通过``明确设置wait=0 // requestAnimationFrame接受一个动画执行函数作为参数，这个函数的作用是仅执行一帧动画的渲染。回调函数会在浏览器下一次重绘之前执行 // requestAnimationFrame 会把每一帧中的所有DOM操作集中起来，在一次重绘或回流中就完成，并且重绘或回流的时间间隔紧紧跟随浏览器的刷新频率，一般来说，这个频率为每秒60帧 // 在隐藏或不可见的元素中，requestAnimationFrame将不会进行重绘或回流，这当然就意味着更少的的cpu，gpu和内存使用量。 // 调用requestAnimationFrame后，它会要求浏览器根据自己的频率进行一次重绘，它接收一个回调函数作为参数，在即将开始的浏览器重绘时，会调用这个函数，并会给这个函数传入调用回调函数时的时间作为参数。由于requestAnimationFrame的功效只是一次性的，所以若想达到动画效果，则必须连续不断的调用requestAnimationFrame // cancelAnimationFrame 取消requestAnimationFrame的回调 // https://developer.mozilla.org/zh-CN/docs/Web/API/Window/requestAnimationFrame const useRAF = (!wait &amp;&amp; wait !== 0 &amp;&amp; typeof root.requestAnimationFrame === 'Function') if (typeof func !== 'function') &#123; throw new TypeError('Exception a function') &#125; // 一元正号将字符串转换成整数和浮点数形式，转换非字符串值 true，false 和 null,小数和十六进制格式字符串。 // 负数形式字符串也可以转换成数值（对于十六进制不适用）。如果它不能解析一个值，则计算结果为 NaN。 wait = +wait || 0 if (isObject(options)) &#123; leading = !!options.leading maxing = 'maxWait' in options maxWait = maxing ? Math.max(+options.maxWait || 0, wait) : maxWait trailing = 'trailing' in options ? !!options.trailing : trailing &#125; function invokeFunc(time) &#123; const args = lastArgs const thisArg = lastThis lastArgs = lastThis = undefined lastInvokeTime = time result = func.apply(thisArg, args) return result &#125; // 定时器 function startTimer(pendingFunc, wait) &#123; if (useRAF) &#123; root.cancelAnimationFrame(pendingFunc) return root.requestAnimationFrame(pendingFunc) &#125; return setTimeout(pendingFunc, wait) &#125; // 取消定时器 function cancelTimer (id) &#123; if (useRAF) &#123; return root.cancelAnimationFrame(id) &#125; clearTimeout(id) &#125; // 函数在每个等待时延的开始被调用 function leadingEdge (time) &#123; // Reset any `maxWait` timer // 重置最长等待定时器 lastInvokeTime = time // Start the timer for the trailing edge. // 开启？？定时器 timerId = startTimer(timerExpired, wait) // Invoke the leading edge // 执行 return leading ? invokeFunc(time) : result &#125; function remainingWait(time) &#123; const timeSinceLastCall = time - lastCallTime const timeSinceLastInvoke = time - lastInvokeTime const timeWaiting = wait - timeSinceLastCall return maxing ? Math.min(timeWaiting, maxWait - timeSinceLastInvoke) : timeWaiting &#125; function shouldInvoke(time) &#123; const timeSinceLastCall = time - lastCallTime const timeSinceLastInvoke = time - lastInvokeTime // Either this is the first call, activity has stopped and we're at the // trailing edge, the system time has gone backwards and we're treating // it as the trailing edge, or we've hit the `maxWait` limit. return (lastCallTime === undefined || (timeSinceLastCall &gt;= wait) || (timeSinceLastCall &lt; 0) || (maxing &amp;&amp; timeSinceLastInvoke &gt;= maxWait)) &#125; function timerExpired() &#123; const time = Date.now() if (shouldInvoke(time)) &#123; return trailingEdge(time) &#125; // Restart the timer. timerId = startTimer(timerExpired, remainingWait(time)) &#125; function trailingEdge(time) &#123; timerId = undefined // only invoke if we have `lastArgs` which means `func has been debounced at least once if (trailing &amp;&amp; lastArgs) &#123; return invokeFunc(time) &#125; lastArgs = lastThis = undefined return result &#125; function cancel () &#123; if (timerId !== undefined) &#123; cancelTimer(timerId) &#125; lastInvokeTime = 0 lastArgs = lastCallTime = lastThis = timerId = undefined &#125; // 立即执行 function flush () &#123; return timerId === undefined ? result : trailingEdge(Data.now()) &#125; function pending () &#123; return timerId !== undefined &#125; function debounce(...args) &#123; const time = Date.now() const isInvoking = shouldInvoke(time) lastArgs = args lastThis = this lastCallTime = time if (isInvoking) &#123; if (timerId === undefined) &#123; return leadingEdge(lastCallTime) &#125; if (maxing) &#123; // Handle invocations in a tight loop. // 多循环中处理调用 timerId = startTimer(timerExpired, wait) return invokeFunc(lastCallTime) &#125; &#125; if (timerId === undefined) &#123; timerId = startTimer(timerExpired, wait) &#125; return result &#125; debounced.cancel = cancel debounced.flush = flush debounced.pending = pending return debounced&#125; 资料附上Lodashjs文档中一篇资料来解释防抖和节流。debouncing-throttling-explained-examples https://css-tricks.com/debouncing-throttling-explained-examples/ 参考github源代码-lodash/debounce.js文档-_.debounce(func, [wait=0], [options={}])]]></content>
@@ -671,15 +682,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[markdown语法小记]]></title>
-    <url>%2F2017%2F03%2F20%2Fmarkdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[插入表格：1.1. 表格的上下需要空行。空行的多少至关重要 表格中文字居中 在划线部分的划线两端加上”:“ 比如”:—–: | :—-: 代码块:2.1. 合理利用代码块有意想不到的效果。3.]]></content>
-      <tags>
-        <tag>工具</tag>
-        <tag>markdown</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[codewars-count_digits]]></title>
     <url>%2F2017%2F03%2F20%2Fcodewars%2F</url>
     <content type="text"><![CDATA[题目 Take an integer n (n &gt;= 0) and a digit d (0 &lt;= d &lt;= 9) as an integer. Square all numbers k (0 &lt;= k &lt;= n) between 0 and n. Count the numbers of digits d used in the writing of all the k* *2. Call nb_dig (or nbDig or …) the function taking n and d as parameters and returning this count. 例子 n = 10, d = 1,the k * k are 0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100 We are using the digit 1 in 1, 16, 81, 100. The total count is then 4.nb_dig(25, 1):the numbers of interest are 1, 4, 9, 10, 11, 12, 13, 14, 19, 21which squared are 1, 16, 81, 100, 121, 144, 169, 196, 361, 441 so there are 11 digits 1 for the squares of numbers between 0 and 25. 分析 给出n和d，求 0 到 n 中间的平方，再求这些平方的平方，问所得的这些数中包含多少个数字d。大概就是先算出这些数字的平方，然后挨个分解求出其中的值。 解题function nbDig(n,d) &#123; var s = &apos;&apos;; for(var i=0;i&lt;=n;i++)&#123; s += Math.pow(i,2); &#125; return s.split(d).length-1&#125; 牢骚篇今天，进了个群，挺多厉害的人，还私聊了一个有很多 offer 的同学。顿时觉得，自己就是渣渣啊，一点信心都没有。还是得加油吧，要学的东西还很多啊。]]></content>
@@ -690,6 +692,15 @@
         <tag>编程</tag>
         <tag>js</tag>
         <tag>codewars</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[markdown语法小记]]></title>
+    <url>%2F2017%2F03%2F20%2Fmarkdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[插入表格：1.1. 表格的上下需要空行。空行的多少至关重要 表格中文字居中 在划线部分的划线两端加上”:“ 比如”:—–: | :—-: 代码块:2.1. 合理利用代码块有意想不到的效果。3.]]></content>
+      <tags>
+        <tag>工具</tag>
+        <tag>markdown</tag>
       </tags>
   </entry>
   <entry>
