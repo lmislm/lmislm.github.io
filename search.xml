@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[day44-bind]]></title>
+    <url>%2F2019%2F02%2F23%2F2019-02-23%2F</url>
+    <content type="text"><![CDATA[bind的简单实现最基本的Function.prototype.bind = function (context) &#123; let self = this return function () &#123; return self.apply(context, arguments) &#125;&#125;let obj = &#123; id: '1'&#125;let func = (function () &#123; console.log(this.id)&#125;).bind(obj)func()// 1 基本的PLUSFunction.prototype.bind = function () &#123; let self = this // 原函数 let context = [].shift.call(arguments) // this 上下文 let args = [].slice.call(arguments) // 剩余参数转化成数组 return function () &#123; return self.apply(context, [].concat.call(args, [].slice.call(arguments))) // 组合分别传入的参数 &#125;&#125;let obj = &#123; id: '1'&#125;let func = function (a, b, c, d) &#123; console.log(this.id) console.log([a, b, c, d])&#125;.bind(obj, 1, 2)func(3, 4)// 1// [ 1, 2, 3, 4 ]]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[day43-理由-陪聊]]></title>
     <url>%2F2019%2F02%2F22%2F2019-02-22%2F</url>
     <content type="text"><![CDATA[碎碎念一个妹子突然找我，聊家事。聊了快一晚上了。感叹，不容易啊！家庭不容易啊！不容易啊！]]></content>
