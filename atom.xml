@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>LMISLMのBlog</title>
   
-  <subtitle>“不积小流，无以成江海。” - 荀子《劝学篇》</subtitle>
+  <subtitle>不积小流，无以成江海。</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
