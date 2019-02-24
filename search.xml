@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[day45-闭包的小例子]]></title>
+    <url>%2F2019%2F02%2F24%2F2019-02-24%2F</url>
+    <content type="text"><![CDATA[封装变量在平时运用中，闭包用的比较多的还是对于函数或者变量的封装。本文借鉴一个小例子，示范闭包的应用。 原函数let mult = function () &#123; let a = 1 for (let i = 0; i &lt; arguments.length; i++) &#123; a = a * arguments[i] &#125; return a&#125;console.log(mult(1, 2, 3)) // 6 封装变量let cache = &#123;&#125; // 注意是全局变量let mult = function () &#123; let args = Array.prototype.join.call(arguments, ',') if (cache[args]) &#123; return cache[args] &#125; console.log('==') let a = 1 for (let i = 0; i &lt; arguments.length; i++) &#123; a = a * arguments[i] &#125; return cache[args] = a&#125;console.log(mult(1,2,3))console.log(mult(1,2,3))// ==// 6// 6 优化全局变量 很错误的方法啊！ let mult = function () &#123; let cache = &#123;&#125; let args = Array.prototype.join.call(arguments, ',') if (cache[args]) &#123; return cache[args] &#125; console.log('==') let a = 1 for (let i = 0; i &lt; arguments.length; i++) &#123; a = a * arguments[i] &#125; return cache[args] = a&#125;console.log(mult(1, 2, 3))console.log(mult(1, 2, 3))// ==// 6// 6 正确方法之一 let mult = (function () &#123; let cache = &#123;&#125; return function () &#123; let args = Array.prototype.join.call(arguments, ',') if (cache[args]) &#123; return &#125; let a = 1 for (let i = 0; i &lt; arguments.length; i++) &#123; a = a * arguments[i] &#125; return cache[args] = a &#125;&#125;)()console.log(mult(1, 2 ,3))console.log(mult(1, 2 ,3))// ==// 6// 6 提炼函数let mult = (function () &#123; let cache = &#123;&#125; let calculate = function () &#123; let a = 1 for (let i = 0; i &lt; arguments.length; i++) &#123; a = a * arguments[i] &#125; return a &#125; return function () &#123; let args = Array.prototype.join.call(arguments, ',') if (args in cache) &#123; return cache[args] &#125; console.log('++') return cache[args] = calculate.apply(null, arguments) &#125;&#125;)()console.log(mult(1, 2, 3))// 6 以上就是我要说的话了，show code.–end]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[day44-bind]]></title>
     <url>%2F2019%2F02%2F23%2F2019-02-23%2F</url>
-    <content type="text"><![CDATA[bind的简单实现最基本的Function.prototype.bind = function (context) &#123; let self = this return function () &#123; return self.apply(context, arguments) &#125;&#125;let obj = &#123; id: '1'&#125;let func = (function () &#123; console.log(this.id)&#125;).bind(obj)func()// 1 基本的PLUSFunction.prototype.bind = function () &#123; let self = this // 原函数 let context = [].shift.call(arguments) // this 上下文 let args = [].slice.call(arguments) // 剩余参数转化成数组 return function () &#123; return self.apply(context, [].concat.call(args, [].slice.call(arguments))) // 组合分别传入的参数 &#125;&#125;let obj = &#123; id: '1'&#125;let func = function (a, b, c, d) &#123; console.log(this.id) console.log([a, b, c, d])&#125;.bind(obj, 1, 2)func(3, 4)// 1// [ 1, 2, 3, 4 ]]]></content>
+    <content type="text"><![CDATA[bind的简单实现 最基本的Function.prototype.bind = function (context) &#123; let self = this return function () &#123; return self.apply(context, arguments) &#125;&#125;let obj = &#123; id: '1'&#125;let func = (function () &#123; console.log(this.id)&#125;).bind(obj)func()// 1 基本的PLUSFunction.prototype.bind = function () &#123; let self = this // 原函数 let context = [].shift.call(arguments) // this 上下文 let args = [].slice.call(arguments) // 剩余参数转化成数组 return function () &#123; return self.apply(context, [].concat.call(args, [].slice.call(arguments))) // 组合分别传入的参数 &#125;&#125;let obj = &#123; id: '1'&#125;let func = function (a, b, c, d) &#123; console.log(this.id) console.log([a, b, c, d])&#125;.bind(obj, 1, 2)func(3, 4)// 1// [ 1, 2, 3, 4 ] –end]]></content>
       <categories>
         <category>技术</category>
       </categories>
