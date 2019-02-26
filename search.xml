@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[day47-多选过滤]]></title>
+    <url>%2F2019%2F02%2F26%2F2019-02-26%2F</url>
+    <content type="text"><![CDATA[背景今天有个需求，select下拉框中可以选中多个标签，并将这些标签作为过滤条件。以往都是单条件下拉框过滤，现在需要选择框中有多个选择条件，而且这个条件是动态变化。 代码额，写的代码在公司居然没有push?!此处留空明天填坑]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[day46-理由-心累]]></title>
     <url>%2F2019%2F02%2F25%2F2019-02-25%2F</url>
     <content type="text"><![CDATA[碎碎念哇，最近移动端项目遇到了瓶颈，感觉有点心累啊！脑海里其他技术之外的事情又不停的在绕圈圈。哇咔咔~专心点吧！]]></content>
