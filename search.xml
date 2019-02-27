@@ -14,7 +14,7 @@
   <entry>
     <title><![CDATA[day47-多选过滤]]></title>
     <url>%2F2019%2F02%2F26%2F2019-02-26%2F</url>
-    <content type="text"><![CDATA[背景今天有个需求，select下拉框中可以选中多个标签，并将这些标签作为过滤条件。以往都是单条件下拉框过滤，现在需要选择框中有多个选择条件，而且这个条件是动态变化。 代码额，写的代码在公司居然没有push?!此处留空明天填坑]]></content>
+    <content type="text"><![CDATA[背景今天有个需求，select下拉框中可以选中多个标签，并将这些标签作为过滤条件。以往都是单条件下拉框过滤，现在需要选择框中有多个选择条件，而且这个条件是动态变化。 代码let arr = ["1", "3"]// 数据源let data = [&#123; state: 1 &#125;, &#123; state: 2 &#125;, &#123; state: 3 &#125;]let d = data.filter(v =&gt; &#123; return arr.every(k =&gt; &#123; k = v.state return arr.indexOf(k.toString()) !== -1 &#125;)&#125;)// console.log(arr.every(v =&gt; v === 1))console.log(d) 额，写的代码在公司居然没有push?!此处留空明天填坑 参考[1]. Array.prototype.filter()[2]. JS 对象数组根据多个条件过滤[3]. JS中的数组过滤，从简单筛选到多条件筛选]]></content>
       <categories>
         <category>技术</category>
       </categories>
@@ -608,8 +608,8 @@
         <category>学习</category>
       </categories>
       <tags>
-        <tag>工具</tag>
         <tag>git</tag>
+        <tag>工具</tag>
       </tags>
   </entry>
   <entry>
@@ -752,8 +752,8 @@
     <url>%2F2017%2F03%2F20%2Fmarkdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0%2F</url>
     <content type="text"><![CDATA[插入表格：1.1. 表格的上下需要空行。空行的多少至关重要 表格中文字居中 在划线部分的划线两端加上”:“ 比如”:—–: | :—-: 代码块:2.1. 合理利用代码块有意想不到的效果。3.]]></content>
       <tags>
-        <tag>markdown</tag>
         <tag>工具</tag>
+        <tag>markdown</tag>
       </tags>
   </entry>
   <entry>
