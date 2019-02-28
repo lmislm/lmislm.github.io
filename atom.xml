@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-02-28T15:20:51.410Z</updated>
+  <updated>2019-02-28T15:24:48.245Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -21,30 +21,14 @@
     <link href="http://lmislm.com/2019/02/28/2019-02-28/"/>
     <id>http://lmislm.com/2019/02/28/2019-02-28/</id>
     <published>2019-02-27T16:00:00.000Z</published>
-    <updated>2019-02-28T15:20:51.410Z</updated>
+    <updated>2019-02-28T15:24:48.245Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>windows的电脑端ss开的局部代理，hosts经常有时会被莫名其妙的修改。这次就比较奇怪了，git连不上github.com显示connect error。以为密钥什么的错误，之后才意识到可能是hosts的问题。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g0mjt48d6dj20dw07taa4.jpg" alt=""></p><h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><blockquote><p>SSL_connect: SSL_ERROR_SYSCALL in connection to github.com:443 </p></blockquote><h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><ul><li>进到.ssh目录</li></ul><blockquote><p>cd ~/.ssh/<br>touch config</p></blockquote><ul><li>将下面内容添加到config(非注释部分)</li></ul><blockquote><p>Host github.com<br>User git<br>Hostname ssh.github.com<br>PreferredAuthentications publickey<br>IdentityFile ~/.ssh/id_rsa<br>Port 443</p></blockquote><p>就ok了！<br><a id="more"></a></p>]]></content>
+    <content type="html"><![CDATA[<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>windows的电脑端ss开的局部代理，hosts经常有时会被莫名其妙的修改。这次就比较奇怪了，git连不上github.com显示connect error。以为密钥什么的错误，之后才意识到可能是hosts的问题。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g0mjt48d6dj20dw07taa4.jpg" alt=""></p><a id="more"></a><h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><blockquote><p>SSL_connect: SSL_ERROR_SYSCALL in connection to github.com:443 </p></blockquote><h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><ul><li>进到.ssh目录</li></ul><blockquote><p>cd ~/.ssh/<br>touch config</p></blockquote><ul><li>将下面内容添加到config(非注释部分)</li></ul><blockquote><p>Host github.com<br>User git<br>Hostname ssh.github.com<br>PreferredAuthentications publickey<br>IdentityFile ~/.ssh/id_rsa<br>Port 443</p></blockquote><p>就ok了！</p>]]></content>
     
     <summary type="html">
     
       &lt;h3 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h3&gt;&lt;p&gt;windows的电脑端ss开的局部代理，hosts经常有时会被莫名其妙的修改。这次就比较奇怪了，git连不上github.com显示connect error。以为密钥什么的错误，之后才意识到可能是hosts的问题。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g0mjt48d6dj20dw07taa4.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;SSL_connect: SSL_ERROR_SYSCALL in connection to github.com:443 &lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;解决&quot;&gt;&lt;a href=&quot;#解决&quot; class=&quot;headerlink&quot; title=&quot;解决&quot;&gt;&lt;/a&gt;解决&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;进到.ssh目录&lt;/li&gt;
-&lt;/ul&gt;
-&lt;blockquote&gt;
-&lt;p&gt;cd ~/.ssh/&lt;br&gt;touch config&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;将下面内容添加到config(非注释部分)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Host github.com&lt;br&gt;User git&lt;br&gt;Hostname ssh.github.com&lt;br&gt;PreferredAuthentications publickey&lt;br&gt;IdentityFile ~/.ssh/id_rsa&lt;br&gt;Port 443&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;就ok了！&lt;br&gt;
     
     </summary>
     
@@ -60,16 +44,14 @@
     <link href="http://lmislm.com/2019/02/27/2019-02-27/"/>
     <id>http://lmislm.com/2019/02/27/2019-02-27/</id>
     <published>2019-02-26T16:00:00.000Z</published>
-    <updated>2019-02-27T14:56:42.501Z</updated>
+    <updated>2019-02-28T15:24:59.654Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>今天又是一个死循环的一天。总结下今天，碰到一个问题，不去深究其中内因。不断地去尝试，试错。嗯，典型的不过脑子了。典型的不能很好地冷静下来。下次碰到问题一定把不能莽撞，一定要冷静下来，要冷静地好好想想，冷静地理一下，才不会浪费时间毫无头绪。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g0lcl2azcgj20dw099aab.jpg" alt=""></p>]]></content>
+    <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>今天又是一个死循环的一天。总结下今天，碰到一个问题，不去深究其中内因。不断地去尝试，试错。嗯，典型的不过脑子了。典型的不能很好地冷静下来。下次碰到问题一定把不能莽撞，一定要冷静下来，要冷静地好好想想，冷静地理一下，才不会浪费时间毫无头绪。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g0lcl2azcgj20dw099aab.jpg" alt=""></p><a id="more"></a>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;今天又是一个死循环的一天。总结下今天，碰到一个问题，不去深究其中内因。不断地去尝试，试错。嗯，典型的不过脑子了。典型的不能很好地冷静
-      
+      &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;今天又是一个死循环的一天。总结下今天，碰到一个问题，不去深究其中内因。不断地去尝试，试错。嗯，典型的不过脑子了。典型的不能很好地冷静下来。下次碰到问题一定把不能莽撞，一定要冷静下来，要冷静地好好想想，冷静地理一下，才不会浪费时间毫无头绪。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g0lcl2azcgj20dw099aab.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
     
     </summary>
     
@@ -85,14 +67,14 @@
     <link href="http://lmislm.com/2019/02/26/2019-02-26/"/>
     <id>http://lmislm.com/2019/02/26/2019-02-26/</id>
     <published>2019-02-25T16:00:00.000Z</published>
-    <updated>2019-02-27T15:16:54.340Z</updated>
+    <updated>2019-02-28T15:24:55.073Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>今天有个需求，select下拉框中可以选中多个标签，并将这些标签作为过滤条件。以往都是单条件下拉框过滤，现在需要选择框中有多个选择条件，而且这个条件是动态变化。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g0k7nwlo2cj20dw0993zs.jpg" alt=""><br><a id="more"></a></p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="string">"1"</span>, <span class="string">"3"</span>]</span><br><span class="line"><span class="comment">// 数据源</span></span><br><span class="line"><span class="keyword">let</span> data = [&#123; <span class="attr">state</span>: <span class="number">1</span> &#125;, &#123; <span class="attr">state</span>: <span class="number">2</span> &#125;, &#123; <span class="attr">state</span>: <span class="number">3</span> &#125;]</span><br><span class="line"><span class="keyword">let</span> d = data.filter(<span class="function"><span class="params">v</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> arr.every(<span class="function"><span class="params">k</span> =&gt;</span> &#123;</span><br><span class="line">    k = v.state</span><br><span class="line">    <span class="keyword">return</span> arr.indexOf(k.toString()) !== <span class="number">-1</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// console.log(arr.every(v =&gt; v === 1))</span></span><br><span class="line"><span class="built_in">console</span>.log(d)</span><br></pre></td></tr></table></figure><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>[1]. <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter" target="_blank" rel="noopener">Array.prototype.filter()</a><br>[2]. <a href="https://segmentfault.com/q/1010000012735768" target="_blank" rel="noopener">JS 对象数组根据多个条件过滤</a><br>[3]. <a href="https://juejin.im/post/5bc44a71e51d450e935caa11" target="_blank" rel="noopener">JS中的数组过滤，从简单筛选到多条件筛选</a></p>]]></content>
+    <content type="html"><![CDATA[<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>今天有个需求，select下拉框中可以选中多个标签，并将这些标签作为过滤条件。以往都是单条件下拉框过滤，现在需要选择框中有多个选择条件，而且这个条件是动态变化。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g0k7nwlo2cj20dw0993zs.jpg" alt=""></p><a id="more"></a><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="string">"1"</span>, <span class="string">"3"</span>]</span><br><span class="line"><span class="comment">// 数据源</span></span><br><span class="line"><span class="keyword">let</span> data = [&#123; <span class="attr">state</span>: <span class="number">1</span> &#125;, &#123; <span class="attr">state</span>: <span class="number">2</span> &#125;, &#123; <span class="attr">state</span>: <span class="number">3</span> &#125;]</span><br><span class="line"><span class="keyword">let</span> d = data.filter(<span class="function"><span class="params">v</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> arr.every(<span class="function"><span class="params">k</span> =&gt;</span> &#123;</span><br><span class="line">    k = v.state</span><br><span class="line">    <span class="keyword">return</span> arr.indexOf(k.toString()) !== <span class="number">-1</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// console.log(arr.every(v =&gt; v === 1))</span></span><br><span class="line"><span class="built_in">console</span>.log(d)</span><br></pre></td></tr></table></figure><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>[1]. <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter" target="_blank" rel="noopener">Array.prototype.filter()</a><br>[2]. <a href="https://segmentfault.com/q/1010000012735768" target="_blank" rel="noopener">JS 对象数组根据多个条件过滤</a><br>[3]. <a href="https://juejin.im/post/5bc44a71e51d450e935caa11" target="_blank" rel="noopener">JS中的数组过滤，从简单筛选到多条件筛选</a></p>]]></content>
     
     <summary type="html">
     
       &lt;h3 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h3&gt;&lt;p&gt;今天有个需求，select下拉框中可以选中多个标签，并将这些标签作为过滤条件。以往都是单条件下拉框过滤，现在需要选择框中有多个选择条件，而且这个条件是动态变化。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g0k7nwlo2cj20dw0993zs.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g0k7nwlo2cj20dw0993zs.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
     
     </summary>
     
