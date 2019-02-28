@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[day48-GitError]]></title>
+    <url>%2F2019%2F02%2F28%2F2019-02-28%2F</url>
+    <content type="text"><![CDATA[背景windows的电脑端ss开的局部代理，hosts经常有时会被莫名其妙的修改。这次就比较奇怪了，git连不上github.com显示connect error。以为密钥什么的错误，之后才意识到可能是hosts的问题。 问题 SSL_connect: SSL_ERROR_SYSCALL in connection to github.com:443 解决 进到.ssh目录 cd ~/.ssh/touch config 将下面内容添加到config(非注释部分) Host github.comUser gitHostname ssh.github.comPreferredAuthentications publickeyIdentityFile ~/.ssh/id_rsaPort 443 就ok了！]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>运维</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[day48-理由4-忙碌]]></title>
     <url>%2F2019%2F02%2F27%2F2019-02-27%2F</url>
     <content type="text"><![CDATA[碎碎念今天又是一个死循环的一天。总结下今天，碰到一个问题，不去深究其中内因。不断地去尝试，试错。嗯，典型的不过脑子了。典型的不能很好地冷静下来。下次碰到问题一定把不能莽撞，一定要冷静下来，要冷静地好好想想，冷静地理一下，才不会浪费时间毫无头绪。]]></content>
@@ -14,7 +25,7 @@
   <entry>
     <title><![CDATA[day47-多选过滤]]></title>
     <url>%2F2019%2F02%2F26%2F2019-02-26%2F</url>
-    <content type="text"><![CDATA[背景今天有个需求，select下拉框中可以选中多个标签，并将这些标签作为过滤条件。以往都是单条件下拉框过滤，现在需要选择框中有多个选择条件，而且这个条件是动态变化。 代码let arr = ["1", "3"]// 数据源let data = [&#123; state: 1 &#125;, &#123; state: 2 &#125;, &#123; state: 3 &#125;]let d = data.filter(v =&gt; &#123; return arr.every(k =&gt; &#123; k = v.state return arr.indexOf(k.toString()) !== -1 &#125;)&#125;)// console.log(arr.every(v =&gt; v === 1))console.log(d) 额，写的代码在公司居然没有push?!此处留空明天填坑 参考[1]. Array.prototype.filter()[2]. JS 对象数组根据多个条件过滤[3]. JS中的数组过滤，从简单筛选到多条件筛选]]></content>
+    <content type="text"><![CDATA[背景今天有个需求，select下拉框中可以选中多个标签，并将这些标签作为过滤条件。以往都是单条件下拉框过滤，现在需要选择框中有多个选择条件，而且这个条件是动态变化。 代码let arr = ["1", "3"]// 数据源let data = [&#123; state: 1 &#125;, &#123; state: 2 &#125;, &#123; state: 3 &#125;]let d = data.filter(v =&gt; &#123; return arr.every(k =&gt; &#123; k = v.state return arr.indexOf(k.toString()) !== -1 &#125;)&#125;)// console.log(arr.every(v =&gt; v === 1))console.log(d) 参考[1]. Array.prototype.filter()[2]. JS 对象数组根据多个条件过滤[3]. JS中的数组过滤，从简单筛选到多条件筛选]]></content>
       <categories>
         <category>技术</category>
       </categories>
@@ -748,15 +759,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[markdown语法小记]]></title>
-    <url>%2F2017%2F03%2F20%2Fmarkdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[插入表格：1.1. 表格的上下需要空行。空行的多少至关重要 表格中文字居中 在划线部分的划线两端加上”:“ 比如”:—–: | :—-: 代码块:2.1. 合理利用代码块有意想不到的效果。3.]]></content>
-      <tags>
-        <tag>工具</tag>
-        <tag>markdown</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[codewars-count_digits]]></title>
     <url>%2F2017%2F03%2F20%2Fcodewars%2F</url>
     <content type="text"><![CDATA[题目 Take an integer n (n &gt;= 0) and a digit d (0 &lt;= d &lt;= 9) as an integer. Square all numbers k (0 &lt;= k &lt;= n) between 0 and n. Count the numbers of digits d used in the writing of all the k* *2. Call nb_dig (or nbDig or …) the function taking n and d as parameters and returning this count. 例子 n = 10, d = 1,the k * k are 0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100 We are using the digit 1 in 1, 16, 81, 100. The total count is then 4.nb_dig(25, 1):the numbers of interest are 1, 4, 9, 10, 11, 12, 13, 14, 19, 21which squared are 1, 16, 81, 100, 121, 144, 169, 196, 361, 441 so there are 11 digits 1 for the squares of numbers between 0 and 25. 分析 给出n和d，求 0 到 n 中间的平方，再求这些平方的平方，问所得的这些数中包含多少个数字d。大概就是先算出这些数字的平方，然后挨个分解求出其中的值。 解题function nbDig(n,d) &#123; var s = &apos;&apos;; for(var i=0;i&lt;=n;i++)&#123; s += Math.pow(i,2); &#125; return s.split(d).length-1&#125; 牢骚篇今天，进了个群，挺多厉害的人，还私聊了一个有很多 offer 的同学。顿时觉得，自己就是渣渣啊，一点信心都没有。还是得加油吧，要学的东西还很多啊。]]></content>
@@ -767,6 +769,15 @@
         <tag>编程</tag>
         <tag>js</tag>
         <tag>codewars</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[markdown语法小记]]></title>
+    <url>%2F2017%2F03%2F20%2Fmarkdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[插入表格：1.1. 表格的上下需要空行。空行的多少至关重要 表格中文字居中 在划线部分的划线两端加上”:“ 比如”:—–: | :—-: 代码块:2.1. 合理利用代码块有意想不到的效果。3.]]></content>
+      <tags>
+        <tag>工具</tag>
+        <tag>markdown</tag>
       </tags>
   </entry>
   <entry>
