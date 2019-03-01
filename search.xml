@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[day49-理由-没周末]]></title>
+    <url>%2F2019%2F03%2F01%2F2019-03-01%2F</url>
+    <content type="text"><![CDATA[碎碎念今天真的是不知道为啥，提不起一点劲。可能是最近事情比较多吧。这个月开始，一个月都没周末，唉！回到家就只想看点视频什么。看到了B站的《西游记之大圣归来》。真的是蛮精彩！强烈推荐。]]></content>
+      <categories>
+        <category>生活</category>
+      </categories>
+      <tags>
+        <tag>感悟</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[day48-GitError]]></title>
     <url>%2F2019%2F02%2F28%2F2019-02-28%2F</url>
     <content type="text"><![CDATA[背景windows的电脑端ss开的局部代理，hosts经常有时会被莫名其妙的修改。这次就比较奇怪了，git连不上github.com显示connect error。以为密钥什么的错误，之后才意识到可能是hosts的问题。 问题 SSL_connect: SSL_ERROR_SYSCALL in connection to github.com:443 解决 进到.ssh目录 cd ~/.ssh/touch config 将下面内容添加到config(非注释部分) Host github.comUser gitHostname ssh.github.comPreferredAuthentications publickeyIdentityFile ~/.ssh/id_rsaPort 443 就ok了！]]></content>
