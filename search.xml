@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[day50-清除浮动]]></title>
+    <url>%2F2019%2F03%2F02%2F2019-03-02%2F</url>
+    <content type="text"><![CDATA[背景慢慢的开始把一些最基础的知识点记下来。清除浮动的两种方法。overflow和伪类after。 css-float-hack 结构&lt;div class="float-container clearfix"&gt; &lt;div style="float:right;"&gt;&lt;/div&gt;&lt;/div&gt; 方法目前有两种方法清除浮动 方法一 overflow.clearfix &#123; overflow: auto;&#125; 控制不好margins 和padding 就会出现scrollbars 方法二 ::after.clearfix::after &#123; content: ""; clear: both; display: table;&#125; 这个方法比较常用。]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[day49-理由-没周末]]></title>
     <url>%2F2019%2F03%2F01%2F2019-03-01%2F</url>
     <content type="text"><![CDATA[碎碎念今天真的是不知道为啥，提不起一点劲。可能是最近事情比较多吧。这个月开始，一个月都没周末，唉！回到家就只想看点视频什么。看到了B站的《西游记之大圣归来》。真的是蛮精彩！强烈推荐。]]></content>
