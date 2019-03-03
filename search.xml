@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[day51-理由-懒惰]]></title>
+    <url>%2F2019%2F03%2F03%2F2019-03-03%2F</url>
+    <content type="text"><![CDATA[碎碎念今天忘了提交代码了，所以这里没有小总结！而且今天加班一天！写了一天的代码！至此，头一次，达成连续两天周末加班成就！]]></content>
+      <categories>
+        <category>生活</category>
+      </categories>
+      <tags>
+        <tag>感悟</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[day50-清除浮动]]></title>
     <url>%2F2019%2F03%2F02%2F2019-03-02%2F</url>
     <content type="text"><![CDATA[背景慢慢的开始把一些最基础的知识点记下来。清除浮动的两种方法。overflow和伪类after。 css-float-hack 结构&lt;div class="float-container clearfix"&gt; &lt;div style="float:right;"&gt;&lt;/div&gt;&lt;/div&gt; 方法目前有两种方法清除浮动 方法一 overflow.clearfix &#123; overflow: auto;&#125; 控制不好margins 和padding 就会出现scrollbars 方法二 ::after.clearfix::after &#123; content: ""; clear: both; display: table;&#125; 这个方法比较常用。]]></content>
