@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[day53-两数组-集合运算]]></title>
+    <url>%2F2019%2F03%2F05%2F2019-03-05%2F</url>
+    <content type="text"><![CDATA[背景选择语言对的时候，源语言和目标语言选项要互斥。由此联想到交集、差集、补集、并集的JS如何实现。本文小结ES5和ES6的一些实现方法。 [Photo by Ant Rozetsky on Unsplash] ES5实现 数据let arrA = [‘a’, 3, 5, ‘d’, ‘o’]let arrB = [‘b’, 5, ‘o’, ‘x’, ‘g’, ‘b’]filter+indexOf+concat 交集 let intersection = arrA.filter(v =&gt; &#123; return arrB.indexOf(v) &gt; -1&#125;)console.log(intersection)// [ 5, 'o' ] 差集 arrA与arrB的差集 let r = arrA.filter(v =&gt; &#123; return arrB.indexOf(v) &gt; -1&#125;)console.log(r)// [ 'a', 3, 'd' ] 补集 let complementarySet = arrA.filter(v =&gt; !(arrB.indexOf(v) &gt; -1)).concat(arrB.filter(v =&gt; !(arrA.indexOf(v) &gt; -1)))console.log(complementarySet) // [ 'a', 3, 'd', 'b', 'x', 'g', 'b' ] 并集 let unionSet = arrA.concat(arrB.filter(v =&gt; !(arrA.indexOf(v) &gt; -1)))console.log(unionSet)// [ 'a', 3, 5, 'd', 'o', 'b', 'x', 'g', 'b' ] ES6实现 数据let arrA = [‘a’, 3, 5, ‘d’, ‘o’]let arrB = [‘b’, 5, ‘o’, ‘x’, ‘g’, ‘b’]filter+Set+has 交集 let intersection = arrA.filter(x =&gt; new Set(arrB).has(x))console.log(intersection)// [ 5, 'o' ] 差集 arrA与arrB的差集 let diffSet = arrA.filter(x =&gt; !new Set(arrB).has(x))console.log(diffSet)// [ 'a', 3, 'd' ] 补集 let complementarySet = [...arrA.filter(x =&gt; !new Set(arrB).has(x)), ...arrB.filter(x =&gt; !new Set(arrA).has(x))]console.log(complementarySet)// [ 'a', 3, 'd', 'b', 'x', 'g', 'b' ] 并集 let unionSet = Array.from(new Set([...arrA, ...arrB]))console.log(unionSet)// [ 'a', 3, 5, 'd', 'o', 'b', 'x', 'g' ]]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[day52-理由-太忙]]></title>
     <url>%2F2019%2F03%2F04%2F2019-03-04%2F</url>
     <content type="text"><![CDATA[碎碎念今天有事，写了一整天的代码！这个就不能怪我忘了选博客内容了！理由是本来想提交代码的，结果忘了push代码，所以今天没有一个正经的博客内容。这是第六个理由！]]></content>
