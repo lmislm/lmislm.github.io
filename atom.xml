@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-03-05T15:25:49.981Z</updated>
+  <updated>2019-03-06T15:41:56.513Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day54-理由-ss挂了</title>
+    <link href="http://lmislm.com/2019/03/06/2019-03-06/"/>
+    <id>http://lmislm.com/2019/03/06/2019-03-06/</id>
+    <published>2019-03-05T16:00:00.000Z</published>
+    <updated>2019-03-06T15:41:56.513Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>下午突然不能google了，Ping一下我服务器地址，是可以的，端口被封了！于是开始折腾了。可能是最近两会吧。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g0ti4vp7frj20dw099gly.jpg" alt=""></p><a id="more"></a>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;下午突然不能google了，Ping一下我服务器地址，是可以的，端口被封了！于是开始折腾了。可能是最近两会吧。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g0ti4vp7frj20dw099gly.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="生活" scheme="http://lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
+    
+  </entry>
   
   <entry>
     <title>day53-两数组-集合运算</title>
@@ -445,29 +468,6 @@
     
       &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;今天是考研成绩出来的一天。恍恍惚惚，一年前的这个时候我还在过年，恍惚间一年已经过了。早上七点就醒了，不知道这有没有什么关系，但重要的是一年前的这个时候，我一晚上没睡着，结果第二天这个时候，消息并没有那么好。这都是一年前的事情了。谈一谈吧。这两天在做移动端的支付宝支付。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g06aijcid1j20u01hcwhm.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="生活" scheme="http://lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day35-杂谈</title>
-    <link href="http://lmislm.com/2019/02/14/2019-02-14/"/>
-    <id>http://lmislm.com/2019/02/14/2019-02-14/</id>
-    <published>2019-02-13T16:00:00.000Z</published>
-    <updated>2019-02-14T13:50:40.355Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>发现要是女生和代码一样容易理解就好了，出错的几率也太大了。因为你费劲输入一大堆代码，最后错都不会报，根本不知道会不会运行。<br>衰(′д｀ )…彡…彡<br>有时候有些人你付出，更本就不会有任何反应。世事难料啊。情人节快乐！<br>祝你们原地爆炸！</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g06aij5xjkj20u01hc0yq.jpg" alt=""><br>-end<br><a id="more"></a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;发现要是女生和代码一样容易理解就好了，出错的几率也太大了。因为你费劲输入一大堆代码，最后错都不会报，根本不知道会不会运行。&lt;br&gt;衰(′д｀ )…彡…彡&lt;br&gt;有时候有些人你付出，更本就不会有任何反应。世事难料啊。情人节快乐！&lt;br&gt;祝你们原地爆炸！&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g06aij5xjkj20u01hc0yq.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;-end&lt;br&gt;
     
     </summary>
     
