@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[day55-uncurrying]]></title>
+    <url>%2F2019%2F03%2F07%2F2019-03-07%2F</url>
+    <content type="text"><![CDATA[背景让对象借用原本不属于他的方法，我们可以用call,apply把任意对象当做this传入某个方法。有没有能够把this提取出来，并得到更广的适用性？ uncurrying 实现 实现方式之一 Function.prototype.uncurrying = function () &#123; let self = this return function () &#123; let obj = Array.prototype.shift.call(arguments) return self.apply(obj, arguments) &#125;&#125; 实现方法二 Function.prototype.uncurrying = function () &#123; let self = this return function () &#123; return Function.prototype.call.apply(self, arguments) &#125;&#125; uncurrying应用通过uncurrying方式，push 函数的作用和Array.prototype.push.call()一样 方法一的应用 let push = Array.prototype.push.uncurrying()let obj = &#123; 'length': 1, '0': 1&#125;push(obj, 2)console.log(obj) 发生了什么？ Function.prototype.uncurrying = function () &#123; let self = this // self 此时是Array.prototype.push() return function () &#123; let obj = Array.prototype.shift.call(arguments) /** * obj是&#123; * 'length': 1, * '0': 1 * &#125; * argument 对象的第一个元素被截去，剩下[2] */ return self.apply(obj, arguments) &#125;&#125; 参考[1].《JavaScript设计模式与开发实践》- 曾探]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[day54-理由-ss挂了]]></title>
     <url>%2F2019%2F03%2F06%2F2019-03-06%2F</url>
     <content type="text"><![CDATA[碎碎念下午突然不能google了，Ping一下我服务器地址，是可以的，端口被封了！于是开始折腾了。可能是最近两会吧。]]></content>

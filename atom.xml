@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-03-06T15:41:56.513Z</updated>
+  <updated>2019-03-07T15:03:28.143Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day55-uncurrying</title>
+    <link href="http://lmislm.com/2019/03/07/2019-03-07/"/>
+    <id>http://lmislm.com/2019/03/07/2019-03-07/</id>
+    <published>2019-03-06T16:00:00.000Z</published>
+    <updated>2019-03-07T15:03:28.143Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>让对象借用原本不属于他的方法，我们可以用call,apply把任意对象当做this传入某个方法。有没有能够把this提取出来，并得到更广的适用性？</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g0umna40mhj20dw099wf6.jpg" alt=""><br><a id="more"></a></p><h3 id="uncurrying-实现"><a href="#uncurrying-实现" class="headerlink" title="uncurrying 实现"></a>uncurrying 实现</h3><ul><li><p>实现方式之一</p><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.uncurrying = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> self = <span class="keyword">this</span></span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> obj = <span class="built_in">Array</span>.prototype.shift.call(<span class="built_in">arguments</span>)</span><br><span class="line">    <span class="keyword">return</span> self.apply(obj, <span class="built_in">arguments</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li><li><p>实现方法二</p><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.uncurrying = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> self = <span class="keyword">this</span></span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Function</span>.prototype.call.apply(self, <span class="built_in">arguments</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ul><h3 id="uncurrying应用"><a href="#uncurrying应用" class="headerlink" title="uncurrying应用"></a>uncurrying应用</h3><p>通过uncurrying方式，push 函数的作用和Array.prototype.push.call()一样</p><ul><li><p>方法一的应用</p><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> push = <span class="built_in">Array</span>.prototype.push.uncurrying()</span><br><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">  <span class="string">'length'</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="string">'0'</span>: <span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line">push(obj, <span class="number">2</span>)</span><br><span class="line"><span class="built_in">console</span>.log(obj)</span><br></pre></td></tr></table></figure></li><li><p>发生了什么？</p><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.uncurrying = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> self = <span class="keyword">this</span> <span class="comment">// self 此时是Array.prototype.push()</span></span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> obj = <span class="built_in">Array</span>.prototype.shift.call(<span class="built_in">arguments</span>)</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * obj是&#123;</span></span><br><span class="line"><span class="comment">     *    'length': 1,</span></span><br><span class="line"><span class="comment">     *    '0': 1</span></span><br><span class="line"><span class="comment">     * &#125;</span></span><br><span class="line"><span class="comment">     * argument 对象的第一个元素被截去，剩下[2]</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">return</span> self.apply(obj, <span class="built_in">arguments</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ul><h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p>[1].《JavaScript设计模式与开发实践》- 曾探</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h3&gt;&lt;p&gt;让对象借用原本不属于他的方法，我们可以用call,apply把任意对象当做this传入某个方法。有没有能够把this提取出来，并得到更广的适用性？&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g0umna40mhj20dw099wf6.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>day54-理由-ss挂了</title>
@@ -445,29 +468,6 @@
     
       &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;三天打鱼两天晒网，可能说的就是我写博客的状态没错了。今天是周末，待着一天，上午看电影，下午玩游戏，一点书都没看的人就是我了。明天看书！看书！&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g08kvqiip3j20u01hcjw6.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="生活" scheme="http://lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day36-杂谈</title>
-    <link href="http://lmislm.com/2019/02/15/2019-02-15/"/>
-    <id>http://lmislm.com/2019/02/15/2019-02-15/</id>
-    <published>2019-02-14T16:00:00.000Z</published>
-    <updated>2019-02-16T13:21:05.532Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>今天是考研成绩出来的一天。恍恍惚惚，一年前的这个时候我还在过年，恍惚间一年已经过了。早上七点就醒了，不知道这有没有什么关系，但重要的是一年前的这个时候，我一晚上没睡着，结果第二天这个时候，消息并没有那么好。这都是一年前的事情了。谈一谈吧。这两天在做移动端的支付宝支付。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g06aijcid1j20u01hcwhm.jpg" alt=""><br><a id="more"></a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;今天是考研成绩出来的一天。恍恍惚惚，一年前的这个时候我还在过年，恍惚间一年已经过了。早上七点就醒了，不知道这有没有什么关系，但重要的是一年前的这个时候，我一晚上没睡着，结果第二天这个时候，消息并没有那么好。这都是一年前的事情了。谈一谈吧。这两天在做移动端的支付宝支付。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g06aijcid1j20u01hcwhm.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
     
     </summary>
     
