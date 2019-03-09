@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[day57-理由-懒惰]]></title>
+    <url>%2F2019%2F03%2F09%2F2019-03-09%2F</url>
+    <content type="text"><![CDATA[碎碎念最近感觉有点累！还是早点睡觉吧！]]></content>
+      <categories>
+        <category>生活</category>
+      </categories>
+      <tags>
+        <tag>感悟</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[day56-理由-拖延]]></title>
     <url>%2F2019%2F03%2F08%2F2019-03-08%2F</url>
     <content type="text"><![CDATA[碎碎念今天身边头号新闻，公司获得了1800万投资啊！嗯，有点兴奋！]]></content>
@@ -707,8 +718,8 @@
         <category>学习</category>
       </categories>
       <tags>
-        <tag>git</tag>
         <tag>工具</tag>
+        <tag>git</tag>
       </tags>
   </entry>
   <entry>
@@ -864,8 +875,8 @@
     <url>%2F2017%2F03%2F20%2Fmarkdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0%2F</url>
     <content type="text"><![CDATA[插入表格：1.1. 表格的上下需要空行。空行的多少至关重要 表格中文字居中 在划线部分的划线两端加上”:“ 比如”:—–: | :—-: 代码块:2.1. 合理利用代码块有意想不到的效果。3.]]></content>
       <tags>
-        <tag>工具</tag>
         <tag>markdown</tag>
+        <tag>工具</tag>
       </tags>
   </entry>
   <entry>
