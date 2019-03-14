@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-03-13T14:45:30.090Z</updated>
+  <updated>2019-03-14T14:18:40.344Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day62-理由-感悟</title>
+    <link href="http://lmislm.com/2019/03/14/2019-03-14/"/>
+    <id>http://lmislm.com/2019/03/14/2019-03-14/</id>
+    <published>2019-03-13T16:00:00.000Z</published>
+    <updated>2019-03-14T14:18:40.344Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>今天本来想优化代码的，看了很久的代码，最后还是没有优化，代码还是和原来一样。崩溃啊。实在是不愿意写下一些重复的代码，尤其是面条代码。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g12oocb8g8j20e609gt9l.jpg" alt=""><br><a id="more"></a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;今天本来想优化代码的，看了很久的代码，最后还是没有优化，代码还是和原来一样。崩溃啊。实在是不愿意写下一些重复的代码，尤其是面条代码。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g12oocb8g8j20e609gt9l.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="生活" scheme="http://lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
+    
+  </entry>
   
   <entry>
     <title>day61-理由-忙碌</title>
@@ -452,29 +475,6 @@
     
     
       <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day43-理由-陪聊</title>
-    <link href="http://lmislm.com/2019/02/22/2019-02-22/"/>
-    <id>http://lmislm.com/2019/02/22/2019-02-22/</id>
-    <published>2019-02-21T16:00:00.000Z</published>
-    <updated>2019-02-22T15:15:24.240Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>一个妹子突然找我，聊家事。聊了快一晚上了。感叹，不容易啊！家庭不容易啊！不容易啊！</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g0flxn3gppj20u01hcdji.jpg" alt=""><br><a id="more"></a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;一个妹子突然找我，聊家事。聊了快一晚上了。感叹，不容易啊！家庭不容易啊！不容易啊！&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g0flxn3gppj20u01hcdji.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="生活" scheme="http://lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
     
   </entry>
   
