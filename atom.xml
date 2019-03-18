@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-03-17T14:17:06.071Z</updated>
+  <updated>2019-03-18T14:22:36.744Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day666-理由-挺忙</title>
+    <link href="http://lmislm.com/2019/03/18/2019-03-18/"/>
+    <id>http://lmislm.com/2019/03/18/2019-03-18/</id>
+    <published>2019-03-17T16:00:00.000Z</published>
+    <updated>2019-03-18T14:22:36.744Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>最近有短短续续的看设计模式，但是进展还是非常的缓慢的。这几天习惯了早点下车，离家有一段距离的时候再下车。感觉这几天心情平静的很啊。end~</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g17ba35idwj20dw099q3q.jpg" alt=""><br><a id="more"></a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;最近有短短续续的看设计模式，但是进展还是非常的缓慢的。这几天习惯了早点下车，离家有一段距离的时候再下车。感觉这几天心情平静的很啊。end~&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g17ba35idwj20dw099q3q.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="生活" scheme="http://lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
+    
+  </entry>
   
   <entry>
     <title>day65-问题小结</title>
@@ -451,29 +474,6 @@
     
     
       <category term="运维" scheme="http://lmislm.com/tags/%E8%BF%90%E7%BB%B4/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day48-理由4-忙碌</title>
-    <link href="http://lmislm.com/2019/02/27/2019-02-27/"/>
-    <id>http://lmislm.com/2019/02/27/2019-02-27/</id>
-    <published>2019-02-26T16:00:00.000Z</published>
-    <updated>2019-02-28T15:24:59.654Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>今天又是一个死循环的一天。总结下今天，碰到一个问题，不去深究其中内因。不断地去尝试，试错。嗯，典型的不过脑子了。典型的不能很好地冷静下来。下次碰到问题一定把不能莽撞，一定要冷静下来，要冷静地好好想想，冷静地理一下，才不会浪费时间毫无头绪。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g0lcl2azcgj20dw099aab.jpg" alt=""></p><a id="more"></a>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;今天又是一个死循环的一天。总结下今天，碰到一个问题，不去深究其中内因。不断地去尝试，试错。嗯，典型的不过脑子了。典型的不能很好地冷静下来。下次碰到问题一定把不能莽撞，一定要冷静下来，要冷静地好好想想，冷静地理一下，才不会浪费时间毫无头绪。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g0lcl2azcgj20dw099aab.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="生活" scheme="http://lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
     
   </entry>
   
