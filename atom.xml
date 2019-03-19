@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-03-18T14:22:36.744Z</updated>
+  <updated>2019-03-19T15:05:51.969Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -17,11 +17,34 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>day666-理由-挺忙</title>
+    <title>day67-数组对象去重</title>
+    <link href="http://lmislm.com/2019/03/19/2019-03-19/"/>
+    <id>http://lmislm.com/2019/03/19/2019-03-19/</id>
+    <published>2019-03-18T16:00:00.000Z</published>
+    <updated>2019-03-19T15:05:51.969Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>之前都是总结的数组去重，这次记录一个简单的例子，数组对象怎么利用reduce方法去重。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g18i5k7ycfj20ea09ggmo.jpg" alt=""><br><a id="more"></a></p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>本节包含去重前的数组和去重数组方法和去重之后的结果。<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [&#123;<span class="attr">label</span>: <span class="string">'all'</span>, <span class="attr">value</span>: <span class="number">0</span>&#125;, &#123;<span class="attr">label</span>: <span class="string">'all'</span>, <span class="attr">value</span>: <span class="number">0</span>&#125;, &#123;<span class="attr">label</span>: <span class="string">'trans'</span>, <span class="attr">value</span>: <span class="number">2</span>&#125;, &#123;<span class="attr">label</span>: <span class="string">'edit'</span>, <span class="attr">value</span>: <span class="number">3</span>&#125;]</span><br><span class="line"><span class="keyword">let</span> obj = &#123;&#125;</span><br><span class="line"><span class="keyword">let</span> res = a.reduce(<span class="function">(<span class="params">item, next</span>) =&gt;</span> &#123;</span><br><span class="line">  obj[next.value] ? <span class="string">''</span> : obj[next.value] = <span class="literal">true</span> &amp;&amp; item.push(next)</span><br><span class="line">  <span class="keyword">return</span> item</span><br><span class="line">&#125;, [])</span><br></pre></td></tr></table></figure></p><p>输出：</p><blockquote><p>[ { label: ‘all’, value: 0 },<br>  { label: ‘trans’, value: 2 },<br>  { label: ‘edit’, value: 3 } ]</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;之前都是总结的数组去重，这次记录一个简单的例子，数组对象怎么利用reduce方法去重。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g18i5k7ycfj20ea09ggmo.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>day66-理由-挺忙</title>
     <link href="http://lmislm.com/2019/03/18/2019-03-18/"/>
     <id>http://lmislm.com/2019/03/18/2019-03-18/</id>
     <published>2019-03-17T16:00:00.000Z</published>
-    <updated>2019-03-18T14:22:36.744Z</updated>
+    <updated>2019-03-18T14:25:40.011Z</updated>
     
     <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>最近有短短续续的看设计模式，但是进展还是非常的缓慢的。这几天习惯了早点下车，离家有一段距离的时候再下车。感觉这几天心情平静的很啊。end~</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g17ba35idwj20dw099q3q.jpg" alt=""><br><a id="more"></a></p>]]></content>
     
@@ -451,29 +474,6 @@
     
     
       <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day48-GitError</title>
-    <link href="http://lmislm.com/2019/02/28/2019-02-28/"/>
-    <id>http://lmislm.com/2019/02/28/2019-02-28/</id>
-    <published>2019-02-27T16:00:00.000Z</published>
-    <updated>2019-02-28T15:24:48.245Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>windows的电脑端ss开的局部代理，hosts经常有时会被莫名其妙的修改。这次就比较奇怪了，git连不上github.com显示connect error。以为密钥什么的错误，之后才意识到可能是hosts的问题。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g0mjt48d6dj20dw07taa4.jpg" alt=""></p><a id="more"></a><h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><blockquote><p>SSL_connect: SSL_ERROR_SYSCALL in connection to github.com:443 </p></blockquote><h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><ul><li>进到.ssh目录</li></ul><blockquote><p>cd ~/.ssh/<br>touch config</p></blockquote><ul><li>将下面内容添加到config(非注释部分)</li></ul><blockquote><p>Host github.com<br>User git<br>Hostname ssh.github.com<br>PreferredAuthentications publickey<br>IdentityFile ~/.ssh/id_rsa<br>Port 443</p></blockquote><p>就ok了！</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h3&gt;&lt;p&gt;windows的电脑端ss开的局部代理，hosts经常有时会被莫名其妙的修改。这次就比较奇怪了，git连不上github.com显示connect error。以为密钥什么的错误，之后才意识到可能是hosts的问题。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g0mjt48d6dj20dw07taa4.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="运维" scheme="http://lmislm.com/tags/%E8%BF%90%E7%BB%B4/"/>
     
   </entry>
   
