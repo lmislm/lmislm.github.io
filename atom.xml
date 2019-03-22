@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-03-21T15:10:27.214Z</updated>
+  <updated>2019-03-22T15:29:05.578Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day70-理由-冲刺</title>
+    <link href="http://lmislm.com/2019/03/22/2019-03-22/"/>
+    <id>http://lmislm.com/2019/03/22/2019-03-22/</id>
+    <published>2019-03-21T16:00:00.000Z</published>
+    <updated>2019-03-22T15:29:05.578Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>这几天最忙的就是项目了。这几天项目冲刺。可能要在4月份之前就要上线了。所以这个文章什么的，这个月看起来水的很。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g1bzo4tcr3j20dw09a3yl.jpg" alt=""><br><a id="more"></a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;这几天最忙的就是项目了。这几天项目冲刺。可能要在4月份之前就要上线了。所以这个文章什么的，这个月看起来水的很。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g1bzo4tcr3j20dw09a3yl.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="xx" scheme="http://lmislm.com/categories/xx/"/>
+    
+    
+      <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
+    
+  </entry>
   
   <entry>
     <title>day69-理由-项目</title>
@@ -444,29 +467,6 @@
     
       &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;今天有事，写了一整天的代码！这个就不能怪我忘了选博客内容了！理由是本来想提交代码的，结果忘了push代码，所以今天没有一个正经的博客内容。这是第六个理由！&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g0r4x4nmnpj20e909gdg0.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="生活" scheme="http://lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day51-理由-懒惰</title>
-    <link href="http://lmislm.com/2019/03/03/2019-03-03/"/>
-    <id>http://lmislm.com/2019/03/03/2019-03-03/</id>
-    <published>2019-03-02T16:00:00.000Z</published>
-    <updated>2019-03-03T14:04:37.407Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>今天忘了提交代码了，所以这里没有小总结！而且今天加班一天！写了一天的代码！至此，头一次，达成连续两天周末加班成就！</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g0pyfy9h2sj20dw0990t7.jpg" alt=""></p><a id="more"></a>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;今天忘了提交代码了，所以这里没有小总结！而且今天加班一天！写了一天的代码！至此，头一次，达成连续两天周末加班成就！&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g0pyfy9h2sj20dw0990t7.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
     
     </summary>
     

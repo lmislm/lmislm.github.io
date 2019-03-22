@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://lmislm.com/2019/03/22/2019-03-22/</loc>
+    <lastmod>2019-03-22T15:29:05.578Z</lastmod>
+    <data>
+        <display>
+        <title>day70-理由-冲刺</title>
+        <pubTime>2019-03-21T16:00:00.000Z</pubTime>
+        
+        <tag>感悟</tag>
+         
+         
+           
+             
+              <breadCrumb title="xx" url="http://lmislm.com/categories/xx/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://lmislm.com/2019/03/21/2019-03-21/</loc>
     <lastmod>2019-03-21T15:10:27.214Z</lastmod>
     <data>
@@ -1663,9 +1683,9 @@
         <title>markdown语法小记</title>
         <pubTime>2017-03-20T13:41:18.000Z</pubTime>
         
-        <tag>工具</tag>
-         
         <tag>markdown</tag>
+         
+        <tag>工具</tag>
          
          
            
@@ -1741,9 +1761,9 @@
         <title>Git 仓库合并（实例）</title>
         <pubTime>2018-03-04T16:00:00.000Z</pubTime>
         
-        <tag>git</tag>
-         
         <tag>工具</tag>
+         
+        <tag>git</tag>
          
          
            
