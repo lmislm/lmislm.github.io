@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-03-23T13:41:27.878Z</updated>
+  <updated>2019-03-24T14:29:16.780Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day72-理由-懈怠</title>
+    <link href="http://lmislm.com/2019/03/24/2019-03-24/"/>
+    <id>http://lmislm.com/2019/03/24/2019-03-24/</id>
+    <published>2019-03-23T16:00:00.000Z</published>
+    <updated>2019-03-24T14:29:16.780Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>今天一口气喝了一罐红牛，突然感觉有点晕晕的啊。很久没有锻炼？看来是时候好好锻炼下！他们今天三个人，下楼打球，才打了半个小时就气喘嘘嘘上来了，我肯定也不例外啊，身体素质肯定又下去了！一定要锻炼啊！</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g1e96r5t2jj20qo0hsdhm.jpg" alt=""></p><a id="more"></a>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;今天一口气喝了一罐红牛，突然感觉有点晕晕的啊。很久没有锻炼？看来是时候好好锻炼下！他们今天三个人，下楼打球，才打了半个小时就气喘嘘嘘上来了，我肯定也不例外啊，身体素质肯定又下去了！一定要锻炼啊！&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g1e96r5t2jj20qo0hsdhm.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="生活" scheme="http://lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
+    
+  </entry>
   
   <entry>
     <title>day71-理由-紧张</title>
@@ -451,29 +474,6 @@
     
     
       <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day53-两数组-集合运算</title>
-    <link href="http://lmislm.com/2019/03/05/2019-03-05/"/>
-    <id>http://lmislm.com/2019/03/05/2019-03-05/</id>
-    <published>2019-03-04T16:00:00.000Z</published>
-    <updated>2019-03-05T15:25:49.981Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>选择语言对的时候，源语言和目标语言选项要互斥。由此联想到交集、差集、补集、并集的JS如何实现。本文小结ES5和ES6的一些实现方法。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g0sbwcn19kj20dw07tab1.jpg" alt="Photo by Ant Rozetsky on Unsplash"><br>[Photo by Ant Rozetsky on Unsplash]<br><a id="more"></a></p><h3 id="ES5实现"><a href="#ES5实现" class="headerlink" title="ES5实现"></a>ES5实现</h3><ul><li>数据<br>let arrA = [‘a’, 3, 5, ‘d’, ‘o’]<br>let arrB = [‘b’, 5, ‘o’, ‘x’, ‘g’, ‘b’]<h4 id="filter-indexOf-concat"><a href="#filter-indexOf-concat" class="headerlink" title="filter+indexOf+concat"></a>filter+indexOf+concat</h4></li><li><p>交集</p><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> intersection = arrA.filter(<span class="function"><span class="params">v</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> arrB.indexOf(v) &gt; <span class="number">-1</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(intersection)</span><br><span class="line"><span class="comment">// [ 5, 'o' ]</span></span><br></pre></td></tr></table></figure></li><li><p>差集</p><blockquote><p>arrA与arrB的差集</p><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> r = arrA.filter(<span class="function"><span class="params">v</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> arrB.indexOf(v) &gt; <span class="number">-1</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(r)</span><br><span class="line"><span class="comment">// [ 'a', 3, 'd' ]</span></span><br></pre></td></tr></table></figure></blockquote></li><li><p>补集</p><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> complementarySet = arrA</span><br><span class="line">.filter(<span class="function"><span class="params">v</span> =&gt;</span> !(arrB.indexOf(v) &gt; <span class="number">-1</span>))</span><br><span class="line">.concat(arrB.filter(<span class="function"><span class="params">v</span> =&gt;</span> !(arrA.indexOf(v) &gt; <span class="number">-1</span>)))</span><br><span class="line"><span class="built_in">console</span>.log(complementarySet) </span><br><span class="line"><span class="comment">// [ 'a', 3, 'd', 'b', 'x', 'g', 'b' ]</span></span><br></pre></td></tr></table></figure></li><li><p>并集</p><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> unionSet = arrA.concat(arrB.filter(<span class="function"><span class="params">v</span> =&gt;</span> !(arrA.indexOf(v) &gt; <span class="number">-1</span>)))</span><br><span class="line"><span class="built_in">console</span>.log(unionSet)</span><br><span class="line"><span class="comment">// [ 'a', 3, 5, 'd', 'o', 'b', 'x', 'g', 'b' ]</span></span><br></pre></td></tr></table></figure></li></ul><h3 id="ES6实现"><a href="#ES6实现" class="headerlink" title="ES6实现"></a>ES6实现</h3><ul><li>数据<br>let arrA = [‘a’, 3, 5, ‘d’, ‘o’]<br>let arrB = [‘b’, 5, ‘o’, ‘x’, ‘g’, ‘b’]<h4 id="filter-Set-has"><a href="#filter-Set-has" class="headerlink" title="filter+Set+has"></a>filter+Set+has</h4></li><li><p>交集</p><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> intersection = arrA.filter(<span class="function"><span class="params">x</span> =&gt;</span> <span class="keyword">new</span> <span class="built_in">Set</span>(arrB).has(x))</span><br><span class="line"><span class="built_in">console</span>.log(intersection)</span><br><span class="line"><span class="comment">// [ 5, 'o' ]</span></span><br></pre></td></tr></table></figure></li><li><p>差集</p><blockquote><p>arrA与arrB的差集</p><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> diffSet = arrA.filter(<span class="function"><span class="params">x</span> =&gt;</span> !<span class="keyword">new</span> <span class="built_in">Set</span>(arrB).has(x))</span><br><span class="line"><span class="built_in">console</span>.log(diffSet)</span><br><span class="line"><span class="comment">// [ 'a', 3, 'd' ]</span></span><br></pre></td></tr></table></figure></blockquote></li><li><p>补集</p><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> complementarySet = [...arrA.filter(<span class="function"><span class="params">x</span> =&gt;</span> !<span class="keyword">new</span> <span class="built_in">Set</span>(arrB).has(x)), ...arrB.filter(<span class="function"><span class="params">x</span> =&gt;</span> !<span class="keyword">new</span> <span class="built_in">Set</span>(arrA).has(x))]</span><br><span class="line"><span class="built_in">console</span>.log(complementarySet)</span><br><span class="line"><span class="comment">// [ 'a', 3, 'd', 'b', 'x', 'g', 'b' ]</span></span><br></pre></td></tr></table></figure></li><li><p>并集</p><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> unionSet = <span class="built_in">Array</span>.from(<span class="keyword">new</span> <span class="built_in">Set</span>([...arrA, ...arrB]))</span><br><span class="line"><span class="built_in">console</span>.log(unionSet)</span><br><span class="line"><span class="comment">// [ 'a', 3, 5, 'd', 'o', 'b', 'x', 'g' ]</span></span><br></pre></td></tr></table></figure></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h3&gt;&lt;p&gt;选择语言对的时候，源语言和目标语言选项要互斥。由此联想到交集、差集、补集、并集的JS如何实现。本文小结ES5和ES6的一些实现方法。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g0sbwcn19kj20dw07tab1.jpg&quot; alt=&quot;Photo by Ant Rozetsky on Unsplash&quot;&gt;&lt;br&gt;[Photo by Ant Rozetsky on Unsplash]&lt;br&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   
