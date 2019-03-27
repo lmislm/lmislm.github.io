@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-03-26T15:24:42.044Z</updated>
+  <updated>2019-03-27T14:07:49.404Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day75-理由-犯困</title>
+    <link href="http://lmislm.com/2019/03/27/2019-03-27/"/>
+    <id>http://lmislm.com/2019/03/27/2019-03-27/</id>
+    <published>2019-03-26T16:00:00.000Z</published>
+    <updated>2019-03-27T14:07:49.404Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>这段时间果然记录下来是有点用处的！发现自己偷懒的轨迹了。自己一无所成啊。这些天都是以繁忙为借口，一直在逃避写一篇好的日志。这样是不行的啊。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614ly1g1hpfmetvrj20dw09a74q.jpg" alt=""></p><a id="more"></a>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;这段时间果然记录下来是有点用处的！发现自己偷懒的轨迹了。自己一无所成啊。这些天都是以繁忙为借口，一直在逃避写一篇好的日志。这样是不行的啊。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614ly1g1hpfmetvrj20dw09a74q.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="生活" scheme="http://lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
+    
+  </entry>
   
   <entry>
     <title>day74-理由-提测</title>
@@ -249,10 +272,10 @@
   
   <entry>
     <title>day64-模板语法</title>
-    <link href="http://lmislm.com/2019/03/16/2019-03-1111/"/>
-    <id>http://lmislm.com/2019/03/16/2019-03-1111/</id>
+    <link href="http://lmislm.com/2019/03/16/2019-03-16/"/>
+    <id>http://lmislm.com/2019/03/16/2019-03-16/</id>
     <published>2019-03-15T16:00:00.000Z</published>
-    <updated>2019-03-17T13:39:50.433Z</updated>
+    <updated>2019-03-17T13:40:24.804Z</updated>
     
     <content type="html"><![CDATA[<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>vuejs项目中有个需求，在notification消息提示中某个部分需要有点击事件。UI用的element。想到用模板的方法来构造。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g150hkjjz3j20dw08qaao.jpg" alt=""><br><a id="more"></a></p><h3 id="element-ui-Notification-onClick-触发方式"><a href="#element-ui-Notification-onClick-触发方式" class="headerlink" title="element-ui Notification onClick 触发方式"></a>element-ui Notification onClick 触发方式</h3><p>组件中有两种触发的方式，但是都没有很好的满足需求。</p><h4 id="点击时触发"><a href="#点击时触发" class="headerlink" title="点击时触发"></a>点击时触发</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>.$notify.warning(&#123;</span><br><span class="line">  dangerouslyUseHTMLString: <span class="literal">true</span>,</span><br><span class="line">  duration: <span class="number">0</span>,</span><br><span class="line">  message: <span class="string">`<span class="subst">$&#123;<span class="keyword">this</span>.createdFailedMember&#125;</span>个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`</span>,</span><br><span class="line">  onClick: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">1</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><h4 id="创建时触发"><a href="#创建时触发" class="headerlink" title="创建时触发"></a>创建时触发</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>.$notify.warning(&#123;</span><br><span class="line">  dangerouslyUseHTMLString: <span class="literal">true</span>,</span><br><span class="line">  duration: <span class="number">0</span>,</span><br><span class="line">  message: <span class="string">`<span class="subst">$&#123;<span class="keyword">this</span>.createdFailedMember&#125;</span>个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`</span>,</span><br><span class="line">  onClick: (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">1</span>)</span><br><span class="line">  &#125;)()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><h3 id="渲染函数"><a href="#渲染函数" class="headerlink" title="渲染函数"></a>渲染函数</h3><p>比较灵活的render 函数。非常好用，但是没有模板语法那么简洁。<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>.$notify.warning(&#123;</span><br><span class="line">message: h(</span><br><span class="line">  <span class="string">'div'</span>,</span><br><span class="line">  &#123;</span><br><span class="line">    style: &#123;<span class="attr">display</span>: <span class="string">'inline-block'</span>&#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  [ </span><br><span class="line">    h(<span class="string">'span'</span>, <span class="string">`<span class="subst">$&#123;<span class="keyword">this</span>.createdFailedMember&#125;</span>个成员创建失败！`</span>),</span><br><span class="line">    h(<span class="string">'a'</span>, &#123;</span><br><span class="line">      style: &#123;<span class="attr">color</span>: <span class="string">'#409EFF'</span>, <span class="attr">cursor</span>: <span class="string">'pointer'</span>, <span class="string">'text-decoration'</span>: <span class="string">'underline'</span>&#125;,</span><br><span class="line">      on: &#123;</span><br><span class="line">        click: <span class="keyword">this</span>.clickNotificationMsg</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;, <span class="string">'前往查看'</span>)</span><br><span class="line">  ]</span><br><span class="line">)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>]]></content>
     
@@ -272,10 +295,10 @@
   
   <entry>
     <title>day64-模板语法</title>
-    <link href="http://lmislm.com/2019/03/16/2019-03-16/"/>
-    <id>http://lmislm.com/2019/03/16/2019-03-16/</id>
+    <link href="http://lmislm.com/2019/03/16/2019-03-1111/"/>
+    <id>http://lmislm.com/2019/03/16/2019-03-1111/</id>
     <published>2019-03-15T16:00:00.000Z</published>
-    <updated>2019-03-17T13:40:24.804Z</updated>
+    <updated>2019-03-17T13:39:50.433Z</updated>
     
     <content type="html"><![CDATA[<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>vuejs项目中有个需求，在notification消息提示中某个部分需要有点击事件。UI用的element。想到用模板的方法来构造。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g150hkjjz3j20dw08qaao.jpg" alt=""><br><a id="more"></a></p><h3 id="element-ui-Notification-onClick-触发方式"><a href="#element-ui-Notification-onClick-触发方式" class="headerlink" title="element-ui Notification onClick 触发方式"></a>element-ui Notification onClick 触发方式</h3><p>组件中有两种触发的方式，但是都没有很好的满足需求。</p><h4 id="点击时触发"><a href="#点击时触发" class="headerlink" title="点击时触发"></a>点击时触发</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>.$notify.warning(&#123;</span><br><span class="line">  dangerouslyUseHTMLString: <span class="literal">true</span>,</span><br><span class="line">  duration: <span class="number">0</span>,</span><br><span class="line">  message: <span class="string">`<span class="subst">$&#123;<span class="keyword">this</span>.createdFailedMember&#125;</span>个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`</span>,</span><br><span class="line">  onClick: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">1</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><h4 id="创建时触发"><a href="#创建时触发" class="headerlink" title="创建时触发"></a>创建时触发</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>.$notify.warning(&#123;</span><br><span class="line">  dangerouslyUseHTMLString: <span class="literal">true</span>,</span><br><span class="line">  duration: <span class="number">0</span>,</span><br><span class="line">  message: <span class="string">`<span class="subst">$&#123;<span class="keyword">this</span>.createdFailedMember&#125;</span>个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`</span>,</span><br><span class="line">  onClick: (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">1</span>)</span><br><span class="line">  &#125;)()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><h3 id="渲染函数"><a href="#渲染函数" class="headerlink" title="渲染函数"></a>渲染函数</h3><p>比较灵活的render 函数。非常好用，但是没有模板语法那么简洁。<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>.$notify.warning(&#123;</span><br><span class="line">message: h(</span><br><span class="line">  <span class="string">'div'</span>,</span><br><span class="line">  &#123;</span><br><span class="line">    style: &#123;<span class="attr">display</span>: <span class="string">'inline-block'</span>&#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  [ </span><br><span class="line">    h(<span class="string">'span'</span>, <span class="string">`<span class="subst">$&#123;<span class="keyword">this</span>.createdFailedMember&#125;</span>个成员创建失败！`</span>),</span><br><span class="line">    h(<span class="string">'a'</span>, &#123;</span><br><span class="line">      style: &#123;<span class="attr">color</span>: <span class="string">'#409EFF'</span>, <span class="attr">cursor</span>: <span class="string">'pointer'</span>, <span class="string">'text-decoration'</span>: <span class="string">'underline'</span>&#125;,</span><br><span class="line">      on: &#123;</span><br><span class="line">        click: <span class="keyword">this</span>.clickNotificationMsg</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;, <span class="string">'前往查看'</span>)</span><br><span class="line">  ]</span><br><span class="line">)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>]]></content>
     
@@ -444,29 +467,6 @@
     
       &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;最近感觉有点累！还是早点睡觉吧！&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g0wuoheyspj20dw099t98.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="生活" scheme="http://lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day56-理由-拖延</title>
-    <link href="http://lmislm.com/2019/03/08/2019-03-08/"/>
-    <id>http://lmislm.com/2019/03/08/2019-03-08/</id>
-    <published>2019-03-07T16:00:00.000Z</published>
-    <updated>2019-03-08T15:14:51.451Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>今天身边头号新闻，公司获得了1800万投资啊！嗯，有点兴奋！</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g0vskcwqtkj20dw09a758.jpg" alt=""><br><a id="more"></a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;今天身边头号新闻，公司获得了1800万投资啊！嗯，有点兴奋！&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g0vskcwqtkj20dw09a758.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
     
     </summary>
     
