@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-03-30T13:44:40.473Z</updated>
+  <updated>2019-03-31T15:24:22.004Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day79-理由-休息</title>
+    <link href="http://lmislm.com/2019/03/31/2019-03-31/"/>
+    <id>http://lmislm.com/2019/03/31/2019-03-31/</id>
+    <published>2019-03-30T16:00:00.000Z</published>
+    <updated>2019-03-31T15:24:22.004Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>相信我，今天虽然是玩了一会儿游戏，但是我还是看书了的。红宝书还是看了一些的。所以今天主要还是玩了一天。我怎么这么能玩，立下的一些flag都要倒下了？</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g1me4hj1plj20dw0990tk.jpg" alt=""></p><a id="more"></a>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;相信我，今天虽然是玩了一会儿游戏，但是我还是看书了的。红宝书还是看了一些的。所以今天主要还是玩了一天。我怎么这么能玩，立下的一些flag都要倒下了？&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g1me4hj1plj20dw0990tk.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="生活" scheme="http://lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
+    
+  </entry>
   
   <entry>
     <title>day78-订阅发布者模式</title>
@@ -446,29 +469,6 @@
     
       &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;今天把昨天的问题解决了，业务上还有很多细节没有去处理。今天早点睡吧。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g11jub5lzzj20ea09ggmo.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="生活" scheme="http://lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day60-理由-头疼</title>
-    <link href="http://lmislm.com/2019/03/12/2019-03-12/"/>
-    <id>http://lmislm.com/2019/03/12/2019-03-12/</id>
-    <published>2019-03-11T16:00:00.000Z</published>
-    <updated>2019-03-12T14:25:58.883Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>今天下午居然碰到一个问题卡了一整个下午！关键是我现在都还没有解决。是有关vuejs中computed的getter、settter问题。头疼头疼。明天早上再去解决吧。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g10dnl5cn5j20dw099dfw.jpg" alt=""></p><a id="more"></a>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;今天下午居然碰到一个问题卡了一整个下午！关键是我现在都还没有解决。是有关vuejs中computed的getter、settter问题。头疼头疼。明天早上再去解决吧。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g10dnl5cn5j20dw099dfw.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
     
     </summary>
     
