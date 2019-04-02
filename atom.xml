@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-04-01T15:03:50.723Z</updated>
+  <updated>2019-04-02T15:13:25.703Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day81-了解无头浏览器Puppeteer</title>
+    <link href="http://lmislm.com/2019/04/02/2019-04-02/"/>
+    <id>http://lmislm.com/2019/04/02/2019-04-02/</id>
+    <published>2019-04-01T16:00:00.000Z</published>
+    <updated>2019-04-02T15:13:25.703Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>无头浏览器主要是用代码来模拟浏览器操作，如摘取页面元素，进行用户名和密码输入等无界面操作。下面的例子主要是站在JS的角度用Puppeteer来进行简单的了解。因为最近有个小东西可能需要用到。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g1op1lasjmj20dw09974r.jpg" alt=""><br><a id="more"></a></p><h3 id="一小段例子"><a href="#一小段例子" class="headerlink" title="一小段例子"></a>一小段例子</h3><blockquote><p>npm i puppeteer -S<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> puppeteer = <span class="built_in">require</span>(<span class="string">'puppeteer'</span>);</span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">getPic</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> browser = <span class="keyword">await</span> puppeteer.launch(&#123;<span class="attr">headless</span>: <span class="literal">false</span>&#125;)</span><br><span class="line">  <span class="keyword">const</span> page = <span class="keyword">await</span> browser.newPage()</span><br><span class="line">  <span class="comment">// 指定跳向某个页面</span></span><br><span class="line">  <span class="keyword">await</span> page.goto(<span class="string">'https://zhidao.baidu.com/question/446485875.html'</span>)</span><br><span class="line">  <span class="comment">// 截图操作</span></span><br><span class="line">  <span class="keyword">await</span> page.screenshot(&#123;<span class="attr">path</span>: <span class="string">'hello-world.png'</span>&#125;)</span><br><span class="line">  <span class="comment">// await page.waitForNavigation('load') </span></span><br><span class="line">  <span class="comment">// await page.click('#evaluate-3025447784') </span></span><br><span class="line">  <span class="comment">// await page.evaluate(() =&gt; &#123;</span></span><br><span class="line">    <span class="comment">// document.querySelector('#evaluate-3025447784').click()</span></span><br><span class="line">  <span class="comment">//  console.log(window.document.querySelector('#evaluate-3025447784'))</span></span><br><span class="line">  <span class="comment">// &#125;)</span></span><br><span class="line">  <span class="comment">// 清空浏览器的cookies</span></span><br><span class="line">  <span class="comment">// await page._client.send('Network.clearBrowserCookies')</span></span><br><span class="line">  <span class="keyword">await</span> browser.close()</span><br><span class="line">&#125;</span><br><span class="line">getPic()</span><br></pre></td></tr></table></figure></p></blockquote><p>打开浏览器，跳转到指定页面，然后截图之后关闭浏览器。整个过程为异步进行。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;无头浏览器主要是用代码来模拟浏览器操作，如摘取页面元素，进行用户名和密码输入等无界面操作。下面的例子主要是站在JS的角度用Puppeteer来进行简单的了解。因为最近有个小东西可能需要用到。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g1op1lasjmj20dw09974r.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>day80-vuejs源码解析</title>
@@ -389,10 +412,10 @@
   
   <entry>
     <title>day64-模板语法</title>
-    <link href="http://lmislm.com/2019/03/16/2019-03-16/"/>
-    <id>http://lmislm.com/2019/03/16/2019-03-16/</id>
+    <link href="http://lmislm.com/2019/03/16/2019-03-1111/"/>
+    <id>http://lmislm.com/2019/03/16/2019-03-1111/</id>
     <published>2019-03-15T16:00:00.000Z</published>
-    <updated>2019-03-17T13:40:24.804Z</updated>
+    <updated>2019-03-17T13:39:50.433Z</updated>
     
     <content type="html"><![CDATA[<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>vuejs项目中有个需求，在notification消息提示中某个部分需要有点击事件。UI用的element。想到用模板的方法来构造。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g150hkjjz3j20dw08qaao.jpg" alt=""><br><a id="more"></a></p><h3 id="element-ui-Notification-onClick-触发方式"><a href="#element-ui-Notification-onClick-触发方式" class="headerlink" title="element-ui Notification onClick 触发方式"></a>element-ui Notification onClick 触发方式</h3><p>组件中有两种触发的方式，但是都没有很好的满足需求。</p><h4 id="点击时触发"><a href="#点击时触发" class="headerlink" title="点击时触发"></a>点击时触发</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>.$notify.warning(&#123;</span><br><span class="line">  dangerouslyUseHTMLString: <span class="literal">true</span>,</span><br><span class="line">  duration: <span class="number">0</span>,</span><br><span class="line">  message: <span class="string">`<span class="subst">$&#123;<span class="keyword">this</span>.createdFailedMember&#125;</span>个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`</span>,</span><br><span class="line">  onClick: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">1</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><h4 id="创建时触发"><a href="#创建时触发" class="headerlink" title="创建时触发"></a>创建时触发</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>.$notify.warning(&#123;</span><br><span class="line">  dangerouslyUseHTMLString: <span class="literal">true</span>,</span><br><span class="line">  duration: <span class="number">0</span>,</span><br><span class="line">  message: <span class="string">`<span class="subst">$&#123;<span class="keyword">this</span>.createdFailedMember&#125;</span>个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`</span>,</span><br><span class="line">  onClick: (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">1</span>)</span><br><span class="line">  &#125;)()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><h3 id="渲染函数"><a href="#渲染函数" class="headerlink" title="渲染函数"></a>渲染函数</h3><p>比较灵活的render 函数。非常好用，但是没有模板语法那么简洁。<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>.$notify.warning(&#123;</span><br><span class="line">message: h(</span><br><span class="line">  <span class="string">'div'</span>,</span><br><span class="line">  &#123;</span><br><span class="line">    style: &#123;<span class="attr">display</span>: <span class="string">'inline-block'</span>&#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  [ </span><br><span class="line">    h(<span class="string">'span'</span>, <span class="string">`<span class="subst">$&#123;<span class="keyword">this</span>.createdFailedMember&#125;</span>个成员创建失败！`</span>),</span><br><span class="line">    h(<span class="string">'a'</span>, &#123;</span><br><span class="line">      style: &#123;<span class="attr">color</span>: <span class="string">'#409EFF'</span>, <span class="attr">cursor</span>: <span class="string">'pointer'</span>, <span class="string">'text-decoration'</span>: <span class="string">'underline'</span>&#125;,</span><br><span class="line">      on: &#123;</span><br><span class="line">        click: <span class="keyword">this</span>.clickNotificationMsg</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;, <span class="string">'前往查看'</span>)</span><br><span class="line">  ]</span><br><span class="line">)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>]]></content>
     
@@ -412,10 +435,10 @@
   
   <entry>
     <title>day64-模板语法</title>
-    <link href="http://lmislm.com/2019/03/16/2019-03-1111/"/>
-    <id>http://lmislm.com/2019/03/16/2019-03-1111/</id>
+    <link href="http://lmislm.com/2019/03/16/2019-03-16/"/>
+    <id>http://lmislm.com/2019/03/16/2019-03-16/</id>
     <published>2019-03-15T16:00:00.000Z</published>
-    <updated>2019-03-17T13:39:50.433Z</updated>
+    <updated>2019-03-17T13:40:24.804Z</updated>
     
     <content type="html"><![CDATA[<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>vuejs项目中有个需求，在notification消息提示中某个部分需要有点击事件。UI用的element。想到用模板的方法来构造。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g150hkjjz3j20dw08qaao.jpg" alt=""><br><a id="more"></a></p><h3 id="element-ui-Notification-onClick-触发方式"><a href="#element-ui-Notification-onClick-触发方式" class="headerlink" title="element-ui Notification onClick 触发方式"></a>element-ui Notification onClick 触发方式</h3><p>组件中有两种触发的方式，但是都没有很好的满足需求。</p><h4 id="点击时触发"><a href="#点击时触发" class="headerlink" title="点击时触发"></a>点击时触发</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>.$notify.warning(&#123;</span><br><span class="line">  dangerouslyUseHTMLString: <span class="literal">true</span>,</span><br><span class="line">  duration: <span class="number">0</span>,</span><br><span class="line">  message: <span class="string">`<span class="subst">$&#123;<span class="keyword">this</span>.createdFailedMember&#125;</span>个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`</span>,</span><br><span class="line">  onClick: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">1</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><h4 id="创建时触发"><a href="#创建时触发" class="headerlink" title="创建时触发"></a>创建时触发</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>.$notify.warning(&#123;</span><br><span class="line">  dangerouslyUseHTMLString: <span class="literal">true</span>,</span><br><span class="line">  duration: <span class="number">0</span>,</span><br><span class="line">  message: <span class="string">`<span class="subst">$&#123;<span class="keyword">this</span>.createdFailedMember&#125;</span>个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`</span>,</span><br><span class="line">  onClick: (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">1</span>)</span><br><span class="line">  &#125;)()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><h3 id="渲染函数"><a href="#渲染函数" class="headerlink" title="渲染函数"></a>渲染函数</h3><p>比较灵活的render 函数。非常好用，但是没有模板语法那么简洁。<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>.$notify.warning(&#123;</span><br><span class="line">message: h(</span><br><span class="line">  <span class="string">'div'</span>,</span><br><span class="line">  &#123;</span><br><span class="line">    style: &#123;<span class="attr">display</span>: <span class="string">'inline-block'</span>&#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  [ </span><br><span class="line">    h(<span class="string">'span'</span>, <span class="string">`<span class="subst">$&#123;<span class="keyword">this</span>.createdFailedMember&#125;</span>个成员创建失败！`</span>),</span><br><span class="line">    h(<span class="string">'a'</span>, &#123;</span><br><span class="line">      style: &#123;<span class="attr">color</span>: <span class="string">'#409EFF'</span>, <span class="attr">cursor</span>: <span class="string">'pointer'</span>, <span class="string">'text-decoration'</span>: <span class="string">'underline'</span>&#125;,</span><br><span class="line">      on: &#123;</span><br><span class="line">        click: <span class="keyword">this</span>.clickNotificationMsg</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;, <span class="string">'前往查看'</span>)</span><br><span class="line">  ]</span><br><span class="line">)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>]]></content>
     
@@ -446,29 +469,6 @@
     
       &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;今天又写了一天的代码，还是抠细节，抠细节真的很没效率啊。本来写了一些小例子。忘了提交代码了啊。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g13um2h3m6j20gs09gaaj.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="生活" scheme="http://lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day62-理由-感悟</title>
-    <link href="http://lmislm.com/2019/03/14/2019-03-14/"/>
-    <id>http://lmislm.com/2019/03/14/2019-03-14/</id>
-    <published>2019-03-13T16:00:00.000Z</published>
-    <updated>2019-03-14T14:18:40.344Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>今天本来想优化代码的，看了很久的代码，最后还是没有优化，代码还是和原来一样。崩溃啊。实在是不愿意写下一些重复的代码，尤其是面条代码。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g12oocb8g8j20e609gt9l.jpg" alt=""><br><a id="more"></a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;今天本来想优化代码的，看了很久的代码，最后还是没有优化，代码还是和原来一样。崩溃啊。实在是不愿意写下一些重复的代码，尤其是面条代码。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g12oocb8g8j20e609gt9l.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
     
     </summary>
     
