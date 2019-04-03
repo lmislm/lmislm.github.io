@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[day82-中文排序]]></title>
+    <url>%2F2019%2F04%2F03%2F2019-04-03%2F</url>
+    <content type="text"><![CDATA[碎碎念最近有中文排序的需求，这种排序要根据中文推出中文拼音然后再排序。所以免不了查字典。这类的还是比较成熟的，有成熟的方案。比如pinyin.js。 pinyin.js安装 npm i pinyin 下面以对象的排序为例，其实这个例子官方文档是有的。需要看仔细的可以去官方文档看，还是较为详细的。这里只是简单地引导一下。 const pinyin = require('pinyin')let data = [&#123;a: '牛', b: '11'&#125;, &#123;a: '啊', b: '22'&#125;, &#123;a: '到', b: '33'&#125;, &#123;a: 'ab', b: '53'&#125;]// console.log(data.sort(pinyin.compare(a)))// const data = '我要排序'.split('');// 建议将汉字的拼音持久化存储起来。// const pinyinData = data.map(han =&gt; (&#123;// zi: han.a,// py: pinyin(han.a)[0][0], // 可以自行选择不同的生成拼音方案和风格。// &#125;))const pinyinData = data.map(han =&gt; (&#123; ...han, py: pinyin(han.a)[0][0], // 可以自行选择不同的生成拼音方案和风格。&#125;))const sortedData = pinyinData.sort((a, b) =&gt; &#123; return a.py.localeCompare(b.py);&#125;).map(d =&gt; &#123; return d.zi&#125;);console.log(pinyinData)console.log(sortedData)]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[day81-了解无头浏览器Puppeteer]]></title>
     <url>%2F2019%2F04%2F02%2F2019-04-02%2F</url>
-    <content type="text"><![CDATA[前言无头浏览器主要是用代码来模拟浏览器操作，如摘取页面元素，进行用户名和密码输入等无界面操作。下面的例子主要是站在JS的角度用Puppeteer来进行简单的了解。因为最近有个小东西可能需要用到。 一小段例子 npm i puppeteer -Sconst puppeteer = require('puppeteer');async function getPic() &#123; const browser = await puppeteer.launch(&#123;headless: false&#125;) const page = await browser.newPage() // 指定跳向某个页面 await page.goto('https://zhidao.baidu.com/question/446485875.html') // 截图操作 await page.screenshot(&#123;path: 'hello-world.png'&#125;) // await page.waitForNavigation('load') // await page.click('#evaluate-3025447784') // await page.evaluate(() =&gt; &#123; // document.querySelector('#evaluate-3025447784').click() // console.log(window.document.querySelector('#evaluate-3025447784')) // &#125;) // 清空浏览器的cookies // await page._client.send('Network.clearBrowserCookies') await browser.close()&#125;getPic() 打开浏览器，跳转到指定页面，然后截图之后关闭浏览器。整个过程为异步进行。]]></content>
+    <content type="text"><![CDATA[前言无头浏览器主要是用代码来模拟浏览器操作，如摘取页面元素，进行用户名和密码输入等无界面操作。下面的例子主要是站在JS的角度用Puppeteer来进行简单的了解。因为最近有个小东西可能需要用到。 一小段例子先安装 npm i puppeteer const puppeteer = require('puppeteer');async function getPic() &#123; const browser = await puppeteer.launch(&#123;headless: false&#125;) const page = await browser.newPage() // 指定跳向某个页面 await page.goto('https://zhidao.baidu.com/question/446485875.html') // 截图操作 await page.screenshot(&#123;path: 'hello-world.png'&#125;) // await page.waitForNavigation('load') // await page.click('#evaluate-3025447784') // await page.evaluate(() =&gt; &#123; // document.querySelector('#evaluate-3025447784').click() // console.log(window.document.querySelector('#evaluate-3025447784')) // &#125;) // 清空浏览器的cookies // await page._client.send('Network.clearBrowserCookies') await browser.close()&#125;getPic() 打开浏览器，跳转到指定页面，然后截图之后关闭浏览器。整个过程为异步进行。]]></content>
       <categories>
         <category>技术</category>
       </categories>
