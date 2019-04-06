@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-04-05T11:18:46.168Z</updated>
+  <updated>2019-04-06T14:41:13.286Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day85-事件循环最基本的伪代码</title>
+    <link href="http://lmislm.com/2019/04/06/2019-04-06/"/>
+    <id>http://lmislm.com/2019/04/06/2019-04-06/</id>
+    <published>2019-04-05T16:00:00.000Z</published>
+    <updated>2019-04-06T14:41:13.286Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="事件循环"><a href="#事件循环" class="headerlink" title="事件循环"></a>事件循环</h3><p>通过一小段伪代码来了解一下这个“事件循环”概念。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g1talkpisqj20dw09amxo.jpg" alt=""><br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 事件循环伪代码</span></span><br><span class="line"><span class="comment">// event loop是一个用作队列的数组</span></span><br><span class="line"><span class="keyword">let</span> eventLoop = []</span><br><span class="line"><span class="keyword">let</span> event</span><br><span class="line"><span class="comment">// 永远执行</span></span><br><span class="line"><span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">  <span class="comment">// 一次tick</span></span><br><span class="line">  <span class="keyword">if</span> (eventLoop.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="comment">// 拿到队列的下一个事件</span></span><br><span class="line">    event = eventLoop.shift()</span><br><span class="line">    <span class="comment">// 现在，执行下一个事件</span></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      event()</span><br><span class="line">    &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">      reportError(err)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 注意setTimeOut()并没有把你的回调函数挂在事件循环队列中，只是设定一个定时器。</span></span><br><span class="line"><span class="comment">// 当定时器到时后，环境会把你的回调函数放在事件循环中，这样，在未来某个时刻的tick就会摘下</span></span><br><span class="line"><span class="comment">// 并执行这个回调。</span></span><br></pre></td></tr></table></figure></p><a id="more"></a>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;事件循环&quot;&gt;&lt;a href=&quot;#事件循环&quot; class=&quot;headerlink&quot; title=&quot;事件循环&quot;&gt;&lt;/a&gt;事件循环&lt;/h3&gt;&lt;p&gt;通过一小段伪代码来了解一下这个“事件循环”概念。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g1talkpisqj20dw09amxo.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 事件循环伪代码&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// event loop是一个用作队列的数组&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; eventLoop = []&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; event&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 永远执行&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;while&lt;/span&gt; (&lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;comment&quot;&gt;// 一次tick&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (eventLoop.length &amp;gt; &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 拿到队列的下一个事件&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    event = eventLoop.shift()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 现在，执行下一个事件&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;try&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      event()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125; &lt;span class=&quot;keyword&quot;&gt;catch&lt;/span&gt; (error) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      reportError(err)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 注意setTimeOut()并没有把你的回调函数挂在事件循环队列中，只是设定一个定时器。&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 当定时器到时后，环境会把你的回调函数放在事件循环中，这样，在未来某个时刻的tick就会摘下&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 并执行这个回调。&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>day84-实现原型链(基本模式)</title>
@@ -454,30 +477,6 @@
     
     
       <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day65-问题小结</title>
-    <link href="http://lmislm.com/2019/03/17/2019-003-17/"/>
-    <id>http://lmislm.com/2019/03/17/2019-003-17/</id>
-    <published>2019-03-16T16:00:00.000Z</published>
-    <updated>2019-03-17T14:17:06.071Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>最近一段时间在微信群里收藏了一些常见的问题。今天来列一下这些问题。<br>以下问题有可能有点乱，随机收集的。</p><h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>网络基础知识 - 腾讯<br>懒函数 - 封装, 解决办法重写函数<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> foo = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="keyword">let</span> t = <span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line">foo = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="keyword">return</span> t</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> foo()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p><a href="http://hcysun.me/vue-design/art/" target="_blank" rel="noopener">Vue技术内幕</a><br><a href="https://ustbhuangyi.github.io/vue-analysis/" target="_blank" rel="noopener">Vue.js 技术揭秘</a><br><a href="http://latentflip.com/loupe/?code=JC5vbignYnV0dG9uJywgJ2NsaWNrJywgZnVuY3Rpb24gb25DbGljaygpIHsKICAgIHNldFRpbWVvdXQoZnVuY3Rpb24gdGltZXIoKSB7CiAgICAgICAgY29uc29sZS5sb2coJ1lvdSBjbGlja2VkIHRoZSBidXR0b24hJyk7ICAgIAogICAgfSwgMjAwMCk7Cn0pOwoKY29uc29sZS5sb2coIkhpISIpOwoKc2V0VGltZW91dChmdW5jdGlvbiB0aW1lb3V0KCkgewogICAgY29uc29sZS5sb2coIkNsaWNrIHRoZSBidXR0b24hIik7Cn0sIDUwMDApOwoKY29uc29sZS5sb2coIldlbGNvbWUgdG8gbG91cGUuIik7!!!PGJ1dHRvbj5DbGljayBtZSE8L2J1dHRvbj4=" target="_blank" rel="noopener">可视化理解JS事件循环机制</a><br>观察者模式和发布订阅模式的区别<br>怎么理解模块化 - 头条<br>vdom diff<br>排序、AST?<br>二叉树非递归遍历，我写了一个前序遍历 - ？<br>有没有手动搭建webpack工程<br>mvvm的原理、mvc的缺点、vuex用来做什么有什么替代方案、小程序的坑、移动端适配、模块化组件化各自的优缺点、如何封装网络请求，要注意什么？<br>递归实现数组内元素反转<br>手写懒加载实现<br>说到变量提升，class 声明一个类时，存在变量提升么？（不存在。因为要方便类的继承，先声明子类再声明父类；）<br>问  事件循环为什么设计成微任务宏任务<br>http2的多路复用，怎么实现的、Keep alive、缓存机制、cache control的一些值的区别<br>setState发生了什么、react setState直接要diff整个component？<br>手写json.stringify<br>DP算法题<br>嵌套数组环形遍历<br>数组里1-10 10个元素顺序排序，然后让随机打乱用几次for 怎么实现<br>介绍原生datepicker技术细节<br>element ui 中，在下拉菜单组件中，为什么下拉框里的内容要放在body标签里，而不是直接放在这个组件上？<br>websocket面试加分项<br>vuex和redux有什么区别<br>Webpack的tree shaking<br>String类型如何在不使用Number、parseInt、+、-、*、\/的情况下转换成Number？<br>vue和react区别-&gt;vue2.0 3.0响应区别-&gt;set<br>问题， 寄生组合继承中  将父类的原型赋值给了过渡函数的原型然后用过渡函数的实例再赋值给子类(中间修改了过渡函数的constructor指向到子类)  为什么不直接将父类的原型直接赋值给子类的原型呢？<br>部署cdn - ？<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event/stopImmediatePropagation" target="_blank" rel="noopener">阻止冒泡</a><br><a href="https://github.com/HXWfromDJTU/blog/blob/master/algorithm/event.js" target="_blank" rel="noopener">使用 ECMAScript（JS）代码实现一个事件类Event，包含下面功能：绑定事件、解绑事件和派发事件。</a><br>书《JavaScript设计模式》-张容铭，《设计模式之禅》-机械工业出版社 - 大宏<br>如何调试node的  有没有远程调试过线上服务？<br><a id="more"></a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;最近一段时间在微信群里收藏了一些常见的问题。今天来列一下这些问题。&lt;br&gt;以下问题有可能有点乱，随机收集的。&lt;/p&gt;
-&lt;h3 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h3&gt;&lt;p&gt;网络基础知识 - 腾讯&lt;br&gt;懒函数 - 封装, 解决办法重写函数&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; foo = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; (&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; t = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;Date&lt;/span&gt;()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	foo = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; (&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; t&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; foo()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://hcysun.me/vue-design/art/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Vue技术内幕&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://ustbhuangyi.github.io/vue-analysis/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Vue.js 技术揭秘&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://latentflip.com/loupe/?code=JC5vbignYnV0dG9uJywgJ2NsaWNrJywgZnVuY3Rpb24gb25DbGljaygpIHsKICAgIHNldFRpbWVvdXQoZnVuY3Rpb24gdGltZXIoKSB7CiAgICAgICAgY29uc29sZS5sb2coJ1lvdSBjbGlja2VkIHRoZSBidXR0b24hJyk7ICAgIAogICAgfSwgMjAwMCk7Cn0pOwoKY29uc29sZS5sb2coIkhpISIpOwoKc2V0VGltZW91dChmdW5jdGlvbiB0aW1lb3V0KCkgewogICAgY29uc29sZS5sb2coIkNsaWNrIHRoZSBidXR0b24hIik7Cn0sIDUwMDApOwoKY29uc29sZS5sb2coIldlbGNvbWUgdG8gbG91cGUuIik7!!!PGJ1dHRvbj5DbGljayBtZSE8L2J1dHRvbj4=&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;可视化理解JS事件循环机制&lt;/a&gt;&lt;br&gt;观察者模式和发布订阅模式的区别&lt;br&gt;怎么理解模块化 - 头条&lt;br&gt;vdom diff&lt;br&gt;排序、AST?&lt;br&gt;二叉树非递归遍历，我写了一个前序遍历 - ？&lt;br&gt;有没有手动搭建webpack工程&lt;br&gt;mvvm的原理、mvc的缺点、vuex用来做什么有什么替代方案、小程序的坑、移动端适配、模块化组件化各自的优缺点、如何封装网络请求，要注意什么？&lt;br&gt;递归实现数组内元素反转&lt;br&gt;手写懒加载实现&lt;br&gt;说到变量提升，class 声明一个类时，存在变量提升么？（不存在。因为要方便类的继承，先声明子类再声明父类；）&lt;br&gt;问  事件循环为什么设计成微任务宏任务&lt;br&gt;http2的多路复用，怎么实现的、Keep alive、缓存机制、cache control的一些值的区别&lt;br&gt;setState发生了什么、react setState直接要diff整个component？&lt;br&gt;手写json.stringify&lt;br&gt;DP算法题&lt;br&gt;嵌套数组环形遍历&lt;br&gt;数组里1-10 10个元素顺序排序，然后让随机打乱用几次for 怎么实现&lt;br&gt;介绍原生datepicker技术细节&lt;br&gt;element ui 中，在下拉菜单组件中，为什么下拉框里的内容要放在body标签里，而不是直接放在这个组件上？&lt;br&gt;websocket面试加分项&lt;br&gt;vuex和redux有什么区别&lt;br&gt;Webpack的tree shaking&lt;br&gt;String类型如何在不使用Number、parseInt、+、-、*、\/的情况下转换成Number？&lt;br&gt;vue和react区别-&amp;gt;vue2.0 3.0响应区别-&amp;gt;set&lt;br&gt;问题， 寄生组合继承中  将父类的原型赋值给了过渡函数的原型然后用过渡函数的实例再赋值给子类(中间修改了过渡函数的constructor指向到子类)  为什么不直接将父类的原型直接赋值给子类的原型呢？&lt;br&gt;部署cdn - ？&lt;br&gt;&lt;a href=&quot;https://developer.mozilla.org/zh-CN/docs/Web/API/Event/stopImmediatePropagation&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;阻止冒泡&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/HXWfromDJTU/blog/blob/master/algorithm/event.js&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;使用 ECMAScript（JS）代码实现一个事件类Event，包含下面功能：绑定事件、解绑事件和派发事件。&lt;/a&gt;&lt;br&gt;书《JavaScript设计模式》-张容铭，《设计模式之禅》-机械工业出版社 - 大宏&lt;br&gt;如何调试node的  有没有远程调试过线上服务？&lt;br&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   
