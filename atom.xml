@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-04-06T14:41:13.286Z</updated>
+  <updated>2019-04-07T14:20:38.101Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day86-生产者与迭代器</title>
+    <link href="http://lmislm.com/2019/04/07/2019-04-07/"/>
+    <id>http://lmislm.com/2019/04/07/2019-04-07/</id>
+    <published>2019-04-06T16:00:00.000Z</published>
+    <updated>2019-04-07T14:20:38.101Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>假定你要产生一<strong>系列值</strong>，其中每个值都与前面一个有特定的关系。要实现这一点，需要一个有状态的生产者能够记住其生成的最后一个值。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g1ufm6fjw4j20dw099t8x.jpg" alt=""><br><a id="more"></a></p><h4 id="生产者与迭代器（实现一个直接使用函数闭包的版本）"><a href="#生产者与迭代器（实现一个直接使用函数闭包的版本）" class="headerlink" title="生产者与迭代器（实现一个直接使用函数闭包的版本）"></a>生产者与迭代器（实现一个直接使用函数闭包的版本）</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 数字序列生成器</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">let</span> gimmeSomething = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> nextVal</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (nextVal === <span class="literal">undefined</span>) &#123;</span><br><span class="line">      nextVal = <span class="number">1</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      nextVal = (<span class="number">3</span> * nextVal) + <span class="number">6</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> nextVal</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)()</span><br><span class="line">注意这里<span class="built_in">console</span>一个和多个是不一样的</span><br><span class="line"><span class="built_in">console</span>.log(gimmeSomething()) <span class="comment">// 1</span></span><br><span class="line"><span class="built_in">console</span>.log(gimmeSomething()) <span class="comment">// 9</span></span><br><span class="line"><span class="built_in">console</span>.log(gimmeSomething()) <span class="comment">// 33</span></span><br></pre></td></tr></table></figure><h4 id="为数字迭代生成器生成标准的迭代器接口"><a href="#为数字迭代生成器生成标准的迭代器接口" class="headerlink" title="为数字迭代生成器生成标准的迭代器接口"></a>为数字迭代生成器生成标准的迭代器接口</h4><p>迭代器是一个定义好的借口，用于从一个生产者一步步得到一系列值。<br>JavaScript 迭代器的接口，与多数语言类似，就是每次想要从生产者得到下一个值的时候调用next()<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> something = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> nextVal</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    <span class="comment">// for...of循环需要</span></span><br><span class="line">    [<span class="built_in">Symbol</span>.iterator]: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="keyword">this</span> &#125;,</span><br><span class="line">    <span class="comment">// 标准迭代器接口方法</span></span><br><span class="line">    next: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (nextVal === <span class="literal">undefined</span>) &#123;</span><br><span class="line">        nextVal = <span class="number">1</span></span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        nextVal = (<span class="number">3</span> * nextVal) + <span class="number">6</span></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> &#123; <span class="attr">done</span>: <span class="literal">false</span>, <span class="attr">value</span>: nextVal &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)()</span><br><span class="line"><span class="built_in">console</span>.log(something.next().value) <span class="comment">// 1</span></span><br><span class="line"><span class="built_in">console</span>.log(something.next().value) <span class="comment">// 9</span></span><br></pre></td></tr></table></figure></p><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>引自：《你不知道的JavaScript - 中》</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;假定你要产生一&lt;strong&gt;系列值&lt;/strong&gt;，其中每个值都与前面一个有特定的关系。要实现这一点，需要一个有状态的生产者能够记住其生成的最后一个值。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g1ufm6fjw4j20dw099t8x.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>day85-事件循环最基本的伪代码</title>
@@ -454,29 +477,6 @@
     
     
       <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day66-理由-挺忙</title>
-    <link href="http://lmislm.com/2019/03/18/2019-03-18/"/>
-    <id>http://lmislm.com/2019/03/18/2019-03-18/</id>
-    <published>2019-03-17T16:00:00.000Z</published>
-    <updated>2019-03-18T14:25:40.011Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>最近有短短续续的看设计模式，但是进展还是非常的缓慢的。这几天习惯了早点下车，离家有一段距离的时候再下车。感觉这几天心情平静的很啊。end~</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g17ba35idwj20dw099q3q.jpg" alt=""><br><a id="more"></a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;最近有短短续续的看设计模式，但是进展还是非常的缓慢的。这几天习惯了早点下车，离家有一段距离的时候再下车。感觉这几天心情平静的很啊。end~&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g17ba35idwj20dw099q3q.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="生活" scheme="http://lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
     
   </entry>
   

@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[day86-生产者与迭代器]]></title>
+    <url>%2F2019%2F04%2F07%2F2019-04-07%2F</url>
+    <content type="text"><![CDATA[前言假定你要产生一系列值，其中每个值都与前面一个有特定的关系。要实现这一点，需要一个有状态的生产者能够记住其生成的最后一个值。 生产者与迭代器（实现一个直接使用函数闭包的版本）/** * 数字序列生成器 */let gimmeSomething = (function () &#123; let nextVal return function () &#123; if (nextVal === undefined) &#123; nextVal = 1 &#125; else &#123; nextVal = (3 * nextVal) + 6 &#125; return nextVal &#125;&#125;)()注意这里console一个和多个是不一样的console.log(gimmeSomething()) // 1console.log(gimmeSomething()) // 9console.log(gimmeSomething()) // 33 为数字迭代生成器生成标准的迭代器接口迭代器是一个定义好的借口，用于从一个生产者一步步得到一系列值。JavaScript 迭代器的接口，与多数语言类似，就是每次想要从生产者得到下一个值的时候调用next()let something = (function () &#123; let nextVal return &#123; // for...of循环需要 [Symbol.iterator]: function () &#123; return this &#125;, // 标准迭代器接口方法 next: function () &#123; if (nextVal === undefined) &#123; nextVal = 1 &#125; else &#123; nextVal = (3 * nextVal) + 6 &#125; return &#123; done: false, value: nextVal &#125; &#125; &#125;&#125;)()console.log(something.next().value) // 1console.log(something.next().value) // 9 参考引自：《你不知道的JavaScript - 中》]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[day85-事件循环最基本的伪代码]]></title>
     <url>%2F2019%2F04%2F06%2F2019-04-06%2F</url>
     <content type="text"><![CDATA[事件循环通过一小段伪代码来了解一下这个“事件循环”概念。 // 事件循环伪代码// event loop是一个用作队列的数组let eventLoop = []let event// 永远执行while (true) &#123; // 一次tick if (eventLoop.length &gt; 0) &#123; // 拿到队列的下一个事件 event = eventLoop.shift() // 现在，执行下一个事件 try &#123; event() &#125; catch (error) &#123; reportError(err) &#125; &#125;&#125;// 注意setTimeOut()并没有把你的回调函数挂在事件循环队列中，只是设定一个定时器。// 当定时器到时后，环境会把你的回调函数放在事件循环中，这样，在未来某个时刻的tick就会摘下// 并执行这个回调。]]></content>
@@ -233,7 +244,7 @@
   </entry>
   <entry>
     <title><![CDATA[day64-模板语法]]></title>
-    <url>%2F2019%2F03%2F16%2F2019-03-16%2F</url>
+    <url>%2F2019%2F03%2F16%2F2019-03-1111%2F</url>
     <content type="text"><![CDATA[背景vuejs项目中有个需求，在notification消息提示中某个部分需要有点击事件。UI用的element。想到用模板的方法来构造。 element-ui Notification onClick 触发方式组件中有两种触发的方式，但是都没有很好的满足需求。 点击时触发this.$notify.warning(&#123; dangerouslyUseHTMLString: true, duration: 0, message: `$&#123;this.createdFailedMember&#125;个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`, onClick: function () &#123; console.log(1) &#125;&#125;) 创建时触发this.$notify.warning(&#123; dangerouslyUseHTMLString: true, duration: 0, message: `$&#123;this.createdFailedMember&#125;个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`, onClick: (function () &#123; console.log(1) &#125;)()&#125;) 渲染函数比较灵活的render 函数。非常好用，但是没有模板语法那么简洁。this.$notify.warning(&#123;message: h( 'div', &#123; style: &#123;display: 'inline-block'&#125; &#125;, [ h('span', `$&#123;this.createdFailedMember&#125;个成员创建失败！`), h('a', &#123; style: &#123;color: '#409EFF', cursor: 'pointer', 'text-decoration': 'underline'&#125;, on: &#123; click: this.clickNotificationMsg &#125; &#125;, '前往查看') ])&#125;)]]></content>
       <categories>
         <category>技术</category>
@@ -244,7 +255,7 @@
   </entry>
   <entry>
     <title><![CDATA[day64-模板语法]]></title>
-    <url>%2F2019%2F03%2F16%2F2019-03-1111%2F</url>
+    <url>%2F2019%2F03%2F16%2F2019-03-16%2F</url>
     <content type="text"><![CDATA[背景vuejs项目中有个需求，在notification消息提示中某个部分需要有点击事件。UI用的element。想到用模板的方法来构造。 element-ui Notification onClick 触发方式组件中有两种触发的方式，但是都没有很好的满足需求。 点击时触发this.$notify.warning(&#123; dangerouslyUseHTMLString: true, duration: 0, message: `$&#123;this.createdFailedMember&#125;个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`, onClick: function () &#123; console.log(1) &#125;&#125;) 创建时触发this.$notify.warning(&#123; dangerouslyUseHTMLString: true, duration: 0, message: `$&#123;this.createdFailedMember&#125;个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`, onClick: (function () &#123; console.log(1) &#125;)()&#125;) 渲染函数比较灵活的render 函数。非常好用，但是没有模板语法那么简洁。this.$notify.warning(&#123;message: h( 'div', &#123; style: &#123;display: 'inline-block'&#125; &#125;, [ h('span', `$&#123;this.createdFailedMember&#125;个成员创建失败！`), h('a', &#123; style: &#123;color: '#409EFF', cursor: 'pointer', 'text-decoration': 'underline'&#125;, on: &#123; click: this.clickNotificationMsg &#125; &#125;, '前往查看') ])&#125;)]]></content>
       <categories>
         <category>技术</category>
@@ -1177,6 +1188,15 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[markdown语法小记]]></title>
+    <url>%2F2017%2F03%2F20%2Fmarkdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[插入表格：1.1. 表格的上下需要空行。空行的多少至关重要 表格中文字居中 在划线部分的划线两端加上”:“ 比如”:—–: | :—-: 代码块:2.1. 合理利用代码块有意想不到的效果。3.]]></content>
+      <tags>
+        <tag>工具</tag>
+        <tag>markdown</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[codewars-count_digits]]></title>
     <url>%2F2017%2F03%2F20%2Fcodewars%2F</url>
     <content type="text"><![CDATA[题目 Take an integer n (n &gt;= 0) and a digit d (0 &lt;= d &lt;= 9) as an integer. Square all numbers k (0 &lt;= k &lt;= n) between 0 and n. Count the numbers of digits d used in the writing of all the k* *2. Call nb_dig (or nbDig or …) the function taking n and d as parameters and returning this count. 例子 n = 10, d = 1,the k * k are 0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100 We are using the digit 1 in 1, 16, 81, 100. The total count is then 4.nb_dig(25, 1):the numbers of interest are 1, 4, 9, 10, 11, 12, 13, 14, 19, 21which squared are 1, 16, 81, 100, 121, 144, 169, 196, 361, 441 so there are 11 digits 1 for the squares of numbers between 0 and 25. 分析 给出n和d，求 0 到 n 中间的平方，再求这些平方的平方，问所得的这些数中包含多少个数字d。大概就是先算出这些数字的平方，然后挨个分解求出其中的值。 解题function nbDig(n,d) &#123; var s = &apos;&apos;; for(var i=0;i&lt;=n;i++)&#123; s += Math.pow(i,2); &#125; return s.split(d).length-1&#125; 牢骚篇今天，进了个群，挺多厉害的人，还私聊了一个有很多 offer 的同学。顿时觉得，自己就是渣渣啊，一点信心都没有。还是得加油吧，要学的东西还很多啊。]]></content>
@@ -1187,15 +1207,6 @@
         <tag>编程</tag>
         <tag>js</tag>
         <tag>codewars</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[markdown语法小记]]></title>
-    <url>%2F2017%2F03%2F20%2Fmarkdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[插入表格：1.1. 表格的上下需要空行。空行的多少至关重要 表格中文字居中 在划线部分的划线两端加上”:“ 比如”:—–: | :—-: 代码块:2.1. 合理利用代码块有意想不到的效果。3.]]></content>
-      <tags>
-        <tag>工具</tag>
-        <tag>markdown</tag>
       </tags>
   </entry>
   <entry>
