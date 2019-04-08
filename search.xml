@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[day87-生成器迭代器]]></title>
+    <url>%2F2019%2F04%2F08%2F2019-04-08%2F</url>
+    <content type="text"><![CDATA[前言生成器实现day86中的something无限数字序列生产者 Photo by Paulin Malet on Unsplash 实现生产者function *something() &#123; let nextVal while (true) &#123; if (nextVal === undefined) &#123; nextVal = 1 &#125; else &#123; nextVal = (3 * nextVal) + 6 &#125; // 生成器在每次迭代中暂停. // 通过yield返回到主程序或事件循环队列中。 // --函数*something()的作用域会被保持（即不需要闭包在调用直接保持变量作用域） yield nextVal &#125;&#125; 应用for…of循环使用*something()生成器 注意这里是something()而不是something。因为这里something是生成器不是迭代器。something()调用产生一个迭代器，但是for…of需要一个iterable（可迭代：一个包含在其值上迭代的迭代器的对象）。这是因为生成器的迭代器也有一个Symbol.iterator函数,而这个函数做的就是return this,和之前迭代器里定义的iterable something一样，即生成器的迭代器也是一个iterable（可迭代）。 for (let v of something()) &#123; console.log(v) // 不要死循环 if (v &gt; 500) &#123; break &#125;&#125;// 1 9 33 105 321 969]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[day86-生产者与迭代器]]></title>
     <url>%2F2019%2F04%2F07%2F2019-04-07%2F</url>
     <content type="text"><![CDATA[前言假定你要产生一系列值，其中每个值都与前面一个有特定的关系。要实现这一点，需要一个有状态的生产者能够记住其生成的最后一个值。 生产者与迭代器（实现一个直接使用函数闭包的版本）/** * 数字序列生成器 */let gimmeSomething = (function () &#123; let nextVal return function () &#123; if (nextVal === undefined) &#123; nextVal = 1 &#125; else &#123; nextVal = (3 * nextVal) + 6 &#125; return nextVal &#125;&#125;)()注意这里console一个和多个是不一样的console.log(gimmeSomething()) // 1console.log(gimmeSomething()) // 9console.log(gimmeSomething()) // 33 为数字迭代生成器生成标准的迭代器接口迭代器是一个定义好的借口，用于从一个生产者一步步得到一系列值。JavaScript 迭代器的接口，与多数语言类似，就是每次想要从生产者得到下一个值的时候调用next()let something = (function () &#123; let nextVal return &#123; // for...of循环需要 [Symbol.iterator]: function () &#123; return this &#125;, // 标准迭代器接口方法 next: function () &#123; if (nextVal === undefined) &#123; nextVal = 1 &#125; else &#123; nextVal = (3 * nextVal) + 6 &#125; return &#123; done: false, value: nextVal &#125; &#125; &#125;&#125;)()console.log(something.next().value) // 1console.log(something.next().value) // 9 参考引自：《你不知道的JavaScript - 中》]]></content>
@@ -244,7 +255,7 @@
   </entry>
   <entry>
     <title><![CDATA[day64-模板语法]]></title>
-    <url>%2F2019%2F03%2F16%2F2019-03-1111%2F</url>
+    <url>%2F2019%2F03%2F16%2F2019-03-16%2F</url>
     <content type="text"><![CDATA[背景vuejs项目中有个需求，在notification消息提示中某个部分需要有点击事件。UI用的element。想到用模板的方法来构造。 element-ui Notification onClick 触发方式组件中有两种触发的方式，但是都没有很好的满足需求。 点击时触发this.$notify.warning(&#123; dangerouslyUseHTMLString: true, duration: 0, message: `$&#123;this.createdFailedMember&#125;个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`, onClick: function () &#123; console.log(1) &#125;&#125;) 创建时触发this.$notify.warning(&#123; dangerouslyUseHTMLString: true, duration: 0, message: `$&#123;this.createdFailedMember&#125;个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`, onClick: (function () &#123; console.log(1) &#125;)()&#125;) 渲染函数比较灵活的render 函数。非常好用，但是没有模板语法那么简洁。this.$notify.warning(&#123;message: h( 'div', &#123; style: &#123;display: 'inline-block'&#125; &#125;, [ h('span', `$&#123;this.createdFailedMember&#125;个成员创建失败！`), h('a', &#123; style: &#123;color: '#409EFF', cursor: 'pointer', 'text-decoration': 'underline'&#125;, on: &#123; click: this.clickNotificationMsg &#125; &#125;, '前往查看') ])&#125;)]]></content>
       <categories>
         <category>技术</category>
@@ -255,7 +266,7 @@
   </entry>
   <entry>
     <title><![CDATA[day64-模板语法]]></title>
-    <url>%2F2019%2F03%2F16%2F2019-03-16%2F</url>
+    <url>%2F2019%2F03%2F16%2F2019-03-1111%2F</url>
     <content type="text"><![CDATA[背景vuejs项目中有个需求，在notification消息提示中某个部分需要有点击事件。UI用的element。想到用模板的方法来构造。 element-ui Notification onClick 触发方式组件中有两种触发的方式，但是都没有很好的满足需求。 点击时触发this.$notify.warning(&#123; dangerouslyUseHTMLString: true, duration: 0, message: `$&#123;this.createdFailedMember&#125;个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`, onClick: function () &#123; console.log(1) &#125;&#125;) 创建时触发this.$notify.warning(&#123; dangerouslyUseHTMLString: true, duration: 0, message: `$&#123;this.createdFailedMember&#125;个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`, onClick: (function () &#123; console.log(1) &#125;)()&#125;) 渲染函数比较灵活的render 函数。非常好用，但是没有模板语法那么简洁。this.$notify.warning(&#123;message: h( 'div', &#123; style: &#123;display: 'inline-block'&#125; &#125;, [ h('span', `$&#123;this.createdFailedMember&#125;个成员创建失败！`), h('a', &#123; style: &#123;color: '#409EFF', cursor: 'pointer', 'text-decoration': 'underline'&#125;, on: &#123; click: this.clickNotificationMsg &#125; &#125;, '前往查看') ])&#125;)]]></content>
       <categories>
         <category>技术</category>
