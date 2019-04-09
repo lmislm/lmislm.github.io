@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[day88-异步迭代生成器]]></title>
+    <url>%2F2019%2F04%2F09%2F2019-04-09%2F</url>
+    <content type="text"><![CDATA[前言本文展示一个任务流程控制，通过生成器来解决解决回调问题。 回调方法function foo(x, y, cb) &#123; ajax( 'http://some.url.1', cb )&#125;foo (11, 32, function(err, next) &#123; if (err) &#123; console.error(err) &#125; else &#123; console.log(text) &#125;&#125;) 生成器方法实现// 通过生成器来表达同样的任务流程控制function foo(x, y) &#123; ajax( 'http://some.url.1', function(err, next) &#123; if (err) &#123; // 向*main()抛出一个错误 it.throw(err) &#125; else &#123; // 响应数据恢复生成器 it.next(data) &#125; &#125; )&#125;function *main() &#123; try &#123; // 重要的部分。调用一个普通函数foo(..),且能从ajax调用中得到text,即使函数是异步。 let text = yield foo(11, 31) console.log(text) &#125; catch (err) &#123; console.error(err) &#125;&#125;let it = main()// 启动！it.next()]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[day87-生成器迭代器]]></title>
     <url>%2F2019%2F04%2F08%2F2019-04-08%2F</url>
     <content type="text"><![CDATA[前言生成器实现day86中的something无限数字序列生产者 Photo by Paulin Malet on Unsplash 实现生产者function *something() &#123; let nextVal while (true) &#123; if (nextVal === undefined) &#123; nextVal = 1 &#125; else &#123; nextVal = (3 * nextVal) + 6 &#125; // 生成器在每次迭代中暂停. // 通过yield返回到主程序或事件循环队列中。 // --函数*something()的作用域会被保持（即不需要闭包在调用直接保持变量作用域） yield nextVal &#125;&#125; 应用for…of循环使用*something()生成器 注意这里是something()而不是something。因为这里something是生成器不是迭代器。something()调用产生一个迭代器，但是for…of需要一个iterable（可迭代：一个包含在其值上迭代的迭代器的对象）。这是因为生成器的迭代器也有一个Symbol.iterator函数,而这个函数做的就是return this,和之前迭代器里定义的iterable something一样，即生成器的迭代器也是一个iterable（可迭代）。 for (let v of something()) &#123; console.log(v) // 不要死循环 if (v &gt; 500) &#123; break &#125;&#125;// 1 9 33 105 321 969]]></content>
