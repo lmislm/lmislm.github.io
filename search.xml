@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[day88-异步迭代生成器]]></title>
     <url>%2F2019%2F04%2F09%2F2019-04-09%2F</url>
-    <content type="text"><![CDATA[前言本文展示一个任务流程控制，通过生成器来解决解决回调问题。 回调方法function foo(x, y, cb) &#123; ajax( 'http://some.url.1', cb )&#125;foo (11, 32, function(err, next) &#123; if (err) &#123; console.error(err) &#125; else &#123; console.log(text) &#125;&#125;) 生成器方法实现// 通过生成器来表达同样的任务流程控制function foo(x, y) &#123; ajax( 'http://some.url.1', function(err, next) &#123; if (err) &#123; // 向*main()抛出一个错误 it.throw(err) &#125; else &#123; // 响应数据恢复生成器 it.next(data) &#125; &#125; )&#125;function *main() &#123; try &#123; // 重要的部分。调用一个普通函数foo(..),且能从ajax调用中得到text,即使函数是异步。 let text = yield foo(11, 31) console.log(text) &#125; catch (err) &#123; console.error(err) &#125;&#125;let it = main()// 启动！it.next()]]></content>
+    <content type="text"><![CDATA[前言本文展示一个任务流程控制，通过生成器来解决解决回调问题。 Photo by Dan Magatti on Unsplash 回调方法function foo(x, y, cb) &#123; ajax( 'http://some.url.1', cb )&#125;foo (11, 32, function(err, next) &#123; if (err) &#123; console.error(err) &#125; else &#123; console.log(text) &#125;&#125;) 生成器方法实现// 通过生成器来表达同样的任务流程控制function foo(x, y) &#123; ajax( 'http://some.url.1', function(err, next) &#123; if (err) &#123; // 向*main()抛出一个错误 it.throw(err) &#125; else &#123; // 响应数据恢复生成器 it.next(data) &#125; &#125; )&#125;function *main() &#123; try &#123; // 重要的部分。调用一个普通函数foo(..),且能从ajax调用中得到text,即使函数是异步。 let text = yield foo(11, 31) console.log(text) &#125; catch (err) &#123; console.error(err) &#125;&#125;let it = main()// 启动！it.next()]]></content>
       <categories>
         <category>技术</category>
       </categories>
