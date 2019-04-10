@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-04-09T15:29:45.065Z</updated>
+  <updated>2019-04-10T15:29:05.640Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day89-回调未调用（Promise）</title>
+    <link href="http://lmislm.com/2019/04/10/2019-04-10/"/>
+    <id>http://lmislm.com/2019/04/10/2019-04-10/</id>
+    <published>2019-04-09T16:00:00.000Z</published>
+    <updated>2019-04-10T15:29:05.640Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>回调函数本身包含JavaScript错误，Promise本身永远不被决议。怎么办？</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614ly1g1xxm4ej1tj20dw099q3d.jpg" alt=""></p><a id="more"></a><h3 id="竞态-高级抽象机制"><a href="#竞态-高级抽象机制" class="headerlink" title="竞态(高级抽象机制)"></a><em>竞态</em>(高级抽象机制)</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 用于超时一个Promise的工具</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">timeoutPromise</span> (<span class="params">delay</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      reject(<span class="string">'timeout!'</span>)</span><br><span class="line">    &#125;, delay)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 设置foo()超时</span></span><br><span class="line"><span class="built_in">Promise</span>.race([</span><br><span class="line">  foo(),</span><br><span class="line">  timeoutPromise(<span class="number">3000</span>)</span><br><span class="line">])</span><br><span class="line">.then(</span><br><span class="line">  <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// foo(..)及时完成</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 或者foo()被拒绝，只是没能按时完成</span></span><br><span class="line">    <span class="comment">// 查看err来了解是哪种情况</span></span><br><span class="line">  &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;回调函数本身包含JavaScript错误，Promise本身永远不被决议。怎么办？&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614ly1g1xxm4ej1tj20dw099q3d.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>day88-异步迭代生成器</title>
@@ -449,29 +472,6 @@
     
       &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;这几天最忙的就是项目了。这几天项目冲刺。可能要在4月份之前就要上线了。所以这个文章什么的，这个月看起来水的很。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g1bzo4tcr3j20dw09a3yl.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="生活" scheme="http://lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day69-理由-项目</title>
-    <link href="http://lmislm.com/2019/03/21/2019-03-21/"/>
-    <id>http://lmislm.com/2019/03/21/2019-03-21/</id>
-    <published>2019-03-20T16:00:00.000Z</published>
-    <updated>2019-03-21T15:10:27.214Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>啥也不说了！今天回来的真的很晚！早点睡觉吧！</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g1atit7xr3j20dw0af3z2.jpg" alt=""><br><a id="more"></a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;啥也不说了！今天回来的真的很晚！早点睡觉吧！&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g1atit7xr3j20dw0af3z2.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
     
     </summary>
     
