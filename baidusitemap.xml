@@ -4,8 +4,28 @@
 
     
   <url>
+    <loc>http://lmislm.com/2019/04/13/2019-04-13/</loc>
+    <lastmod>2019-04-13T15:59:15.517Z</lastmod>
+    <data>
+        <display>
+        <title>day92-promise单一值传递（局限性）</title>
+        <pubTime>2019-04-12T16:00:00.000Z</pubTime>
+        
+        <tag>前端</tag>
+         
+         
+           
+             
+              <breadCrumb title="技术" url="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://lmislm.com/2019/04/12/2019-04-12/</loc>
-    <lastmod>2019-04-12T16:03:49.986Z</lastmod>
+    <lastmod>2019-04-12T16:04:23.939Z</lastmod>
     <data>
         <display>
         <title>day91-Promise的并发迭代</title>
