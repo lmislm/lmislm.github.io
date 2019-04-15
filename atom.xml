@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-04-13T15:59:15.517Z</updated>
+  <updated>2019-04-15T15:16:51.757Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day93-组合继承</title>
+    <link href="http://lmislm.com/2019/04/15/2019-04-15/"/>
+    <id>http://lmislm.com/2019/04/15/2019-04-15/</id>
+    <published>2019-04-14T16:00:00.000Z</published>
+    <updated>2019-04-15T15:16:51.757Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>原型链虽然很强大，但是实现继承还是存在一些问题的。比如引用类型值问题。当然这个问题的解决也有一些，如用apply()，call()，或是借用构造函数。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g23q72mg6dj20dw0aft8y.jpg" alt=""><br><a id="more"></a></p><h3 id="apply-call"><a href="#apply-call" class="headerlink" title="apply() call()"></a>apply() call()</h3><blockquote><p>解决原型中包含引用类型值所带来问题的过程中。可以借用构造函数。<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// --即在子类型构造函数的内部调用超类型构造函数。</span></span><br><span class="line"><span class="comment">// --也可以用apply()和call()方法在新创建的对象上执行构造函数。</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SuperType</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.colors = [<span class="string">'red'</span>, <span class="string">'blue'</span>, <span class="string">'green'</span>] </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SubType</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 继承了SuperType,解决饮用类型值问题</span></span><br><span class="line">  SuperType.call(<span class="keyword">this</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 直接继承的写法，会导致引用类型值问题</span></span><br><span class="line"><span class="comment">// SubType.prototype = new SuperType()</span></span><br><span class="line"><span class="keyword">let</span> instance1 = <span class="keyword">new</span> SubType()</span><br><span class="line">instance1.colors.push(<span class="string">'black'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(instance1.colors)</span><br><span class="line"><span class="keyword">let</span> instance2 = <span class="keyword">new</span> SubType()</span><br><span class="line"><span class="built_in">console</span>.log(instance2.colors)</span><br></pre></td></tr></table></figure></p></blockquote><h3 id="借用构造函数"><a href="#借用构造函数" class="headerlink" title="借用构造函数"></a>借用构造函数</h3><blockquote><p>组合继承<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SuperType</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name</span><br><span class="line">  <span class="keyword">this</span>.colors = [<span class="string">'red'</span>, <span class="string">'blue'</span>, <span class="string">'black'</span>]</span><br><span class="line">&#125;</span><br><span class="line">SubType.prototype.sayName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SubType</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  SuperType.call(<span class="keyword">this</span>, name)</span><br><span class="line">  <span class="keyword">this</span>.age = age</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 继承方法</span></span><br><span class="line">SubType.prototype = <span class="keyword">new</span> SuperType()</span><br><span class="line">SubType.prototype.constructor = SubType()</span><br><span class="line">SubType.prototype.sayAge = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.age)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> instance11 = <span class="keyword">new</span> SubType(<span class="string">'zhangsan'</span>, <span class="number">12</span>)</span><br><span class="line"><span class="comment">// 继承了SuperType()</span></span><br><span class="line">instance11.colors.push(<span class="string">'black'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(instance11.colors) <span class="comment">// 'red, blue, black'</span></span><br><span class="line">instance11.sayName() <span class="comment">// 'zhangsan'</span></span><br><span class="line">instance11.sayAge() <span class="comment">// 12</span></span><br></pre></td></tr></table></figure></p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;原型链虽然很强大，但是实现继承还是存在一些问题的。比如引用类型值问题。当然这个问题的解决也有一些，如用apply()，call()，或是借用构造函数。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g23q72mg6dj20dw0aft8y.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>day92-promise单一值传递（局限性）</title>
@@ -449,29 +472,6 @@
     
       &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;最近项目终于开始提测了！这是比较好的事。然后就是最近阮一峰的ES6看了一遍了！现在开始准备看Vue技术揭秘，这是源码级别了吧！这是第二次想要阅读源码了！&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g1gm17j2nxj20dw09874o.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="生活" scheme="http://lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day73-理由-心累</title>
-    <link href="http://lmislm.com/2019/03/25/2019-03-25/"/>
-    <id>http://lmislm.com/2019/03/25/2019-03-25/</id>
-    <published>2019-03-24T16:00:00.000Z</published>
-    <updated>2019-03-25T15:11:46.201Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>今天又是一天，一直忙活项目的事情。暂时水到这里吧。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g1fg1fj0juj20dw099t95.jpg" alt=""></p><a id="more"></a>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;今天又是一天，一直忙活项目的事情。暂时水到这里吧。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g1fg1fj0juj20dw099t95.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
     
     </summary>
     
