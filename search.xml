@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[day94-寄生组合式继承]]></title>
+    <url>%2F2019%2F04%2F16%2F2019-04-16%2F</url>
+    <content type="text"><![CDATA[前言组合式继承存在一定的局限性，即为了得到一个副本，去指定子类型的原型而调用超类型的构造函数。可以通过借用构造函数来继承属性，通过原型链混成形式来继承方法。不用为了指定子类型的原型而调用超类型的构造函数,再将结果指定给子类型的原型。本质上就是用寄生式组合继承来继承超类型的原型，然后将结果指定给子类型的原型。 简单形式简单的寄生式组合继承组合形式。function inheritPrototype (subType, superType) &#123; // 创建对象，创建超类型副本 let prototype = object(superType.prototype) // 增强对象，添加属性constructor,弥补因重写类型失去默认的constructor属性 prototype.constructor = subType // 指定对象，将新创建的对象赋值给子类型的原型 subType.prototype = prototype&#125; 应用替换为子类型原型赋值的语句（例子详情参考组合继承）function SuperType (name) &#123; this.name = name this.colors = ['red', 'blue', 'green']&#125;SuperType.prototype.sayName = function () &#123; console.log(this.name)&#125;function SubType(name, age) &#123; SuperType.call(this, name) this.age = age&#125;// SubType.prototype = new SuperType()// SubType.prototype.constructor = SubType// SubType.prototype.sayAge = function () &#123;// console.log(this.age)// &#125;// 替换inheritPrototype(SubType, SuperType)SubType.prototype.sayAge = function () &#123; console.log(this.age)&#125;]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[day93-组合继承]]></title>
     <url>%2F2019%2F04%2F15%2F2019-04-15%2F</url>
     <content type="text"><![CDATA[前言原型链虽然很强大，但是实现继承还是存在一些问题的。比如引用类型值问题。当然这个问题的解决也有一些，如用apply()，call()，或是借用构造函数。 apply() call() 解决原型中包含引用类型值所带来问题的过程中。可以借用构造函数。// --即在子类型构造函数的内部调用超类型构造函数。// --也可以用apply()和call()方法在新创建的对象上执行构造函数。function SuperType() &#123; this.colors = ['red', 'blue', 'green'] &#125;function SubType() &#123; // 继承了SuperType,解决饮用类型值问题 SuperType.call(this)&#125;// 直接继承的写法，会导致引用类型值问题// SubType.prototype = new SuperType()let instance1 = new SubType()instance1.colors.push('black')console.log(instance1.colors)let instance2 = new SubType()console.log(instance2.colors) 借用构造函数 组合继承function SuperType(name) &#123; this.name = name this.colors = ['red', 'blue', 'black']&#125;SubType.prototype.sayName = function () &#123; console.log(this.name)&#125;function SubType(name, age) &#123; SuperType.call(this, name) this.age = age&#125;// 继承方法SubType.prototype = new SuperType()SubType.prototype.constructor = SubType()SubType.prototype.sayAge = function () &#123; console.log(this.age)&#125;let instance11 = new SubType('zhangsan', 12)// 继承了SuperType()instance11.colors.push('black')console.log(instance11.colors) // 'red, blue, black'instance11.sayName() // 'zhangsan'instance11.sayAge() // 12]]></content>
@@ -1265,6 +1276,15 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[markdown语法小记]]></title>
+    <url>%2F2017%2F03%2F20%2Fmarkdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[插入表格：1.1. 表格的上下需要空行。空行的多少至关重要 表格中文字居中 在划线部分的划线两端加上”:“ 比如”:—–: | :—-: 代码块:2.1. 合理利用代码块有意想不到的效果。3.]]></content>
+      <tags>
+        <tag>工具</tag>
+        <tag>markdown</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[codewars-count_digits]]></title>
     <url>%2F2017%2F03%2F20%2Fcodewars%2F</url>
     <content type="text"><![CDATA[题目 Take an integer n (n &gt;= 0) and a digit d (0 &lt;= d &lt;= 9) as an integer. Square all numbers k (0 &lt;= k &lt;= n) between 0 and n. Count the numbers of digits d used in the writing of all the k* *2. Call nb_dig (or nbDig or …) the function taking n and d as parameters and returning this count. 例子 n = 10, d = 1,the k * k are 0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100 We are using the digit 1 in 1, 16, 81, 100. The total count is then 4.nb_dig(25, 1):the numbers of interest are 1, 4, 9, 10, 11, 12, 13, 14, 19, 21which squared are 1, 16, 81, 100, 121, 144, 169, 196, 361, 441 so there are 11 digits 1 for the squares of numbers between 0 and 25. 分析 给出n和d，求 0 到 n 中间的平方，再求这些平方的平方，问所得的这些数中包含多少个数字d。大概就是先算出这些数字的平方，然后挨个分解求出其中的值。 解题function nbDig(n,d) &#123; var s = &apos;&apos;; for(var i=0;i&lt;=n;i++)&#123; s += Math.pow(i,2); &#125; return s.split(d).length-1&#125; 牢骚篇今天，进了个群，挺多厉害的人，还私聊了一个有很多 offer 的同学。顿时觉得，自己就是渣渣啊，一点信心都没有。还是得加油吧，要学的东西还很多啊。]]></content>
@@ -1275,15 +1295,6 @@
         <tag>编程</tag>
         <tag>js</tag>
         <tag>codewars</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[markdown语法小记]]></title>
-    <url>%2F2017%2F03%2F20%2Fmarkdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[插入表格：1.1. 表格的上下需要空行。空行的多少至关重要 表格中文字居中 在划线部分的划线两端加上”:“ 比如”:—–: | :—-: 代码块:2.1. 合理利用代码块有意想不到的效果。3.]]></content>
-      <tags>
-        <tag>工具</tag>
-        <tag>markdown</tag>
       </tags>
   </entry>
   <entry>
