@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-04-16T15:39:04.023Z</updated>
+  <updated>2019-04-17T14:05:38.703Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -17,18 +17,41 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>day95-join(..)简单实现</title>
+    <link href="http://lmislm.com/2019/04/17/2019-04-17/"/>
+    <id>http://lmislm.com/2019/04/17/2019-04-17/</id>
+    <published>2019-04-16T16:00:00.000Z</published>
+    <updated>2019-04-17T14:05:38.703Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>实现简单的join()方法。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g25zd2ejs2j20e609gabf.jpg" alt=""><br><a id="more"></a></p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// fakeJoin(arr, connector)</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fakeJoin</span>(<span class="params">arr, connector</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> str = <span class="string">''</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (i &gt; <span class="number">0</span>) &#123;</span><br><span class="line">      str += connector</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (arr[i] !== <span class="literal">undefined</span>) &#123;</span><br><span class="line">      str += arr[i]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> str</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> a = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">3</span>)</span><br><span class="line"><span class="built_in">console</span>.log(fakeJoin(a, <span class="string">'-'</span>))</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;实现简单的join()方法。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g25zd2ejs2j20e609gabf.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
+  
+  <entry>
     <title>day94-寄生组合式继承</title>
     <link href="http://lmislm.com/2019/04/16/2019-04-16/"/>
     <id>http://lmislm.com/2019/04/16/2019-04-16/</id>
     <published>2019-04-15T16:00:00.000Z</published>
-    <updated>2019-04-16T15:39:04.023Z</updated>
+    <updated>2019-04-16T15:44:22.963Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>组合式继承存在一定的局限性，即为了得到一个副本，去指定子类型的原型而调用超类型的构造函数。可以通过借用构造函数来继承属性，通过原型链混成形式来继承方法。不用为了指定子类型的原型而调用超类型的构造函数,再将结果指定给子类型的原型。<strong>本质上</strong>就是用寄生式组合继承来继承超类型的原型，然后将结果指定给子类型的原型。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g24wgmkmxdj20dw0b4wfi.jpg" alt=""><br><a id="more"></a></p><h3 id="简单形式"><a href="#简单形式" class="headerlink" title="简单形式"></a>简单形式</h3><p>简单的寄生式组合继承组合形式。<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">inheritPrototype</span> (<span class="params">subType, superType</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 创建对象，创建超类型副本</span></span><br><span class="line">  <span class="keyword">let</span> prototype = object(superType.prototype)</span><br><span class="line">  <span class="comment">// 增强对象，添加属性constructor,弥补因重写类型失去默认的constructor属性</span></span><br><span class="line">  prototype.constructor = subType</span><br><span class="line">  <span class="comment">// 指定对象，将新创建的对象赋值给子类型的原型</span></span><br><span class="line">  subType.prototype = prototype</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><p>替换为子类型原型赋值的语句（例子详情参考组合继承）<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SuperType</span> (<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name</span><br><span class="line">  <span class="keyword">this</span>.colors = [<span class="string">'red'</span>, <span class="string">'blue'</span>, <span class="string">'green'</span>]</span><br><span class="line">&#125;</span><br><span class="line">SuperType.prototype.sayName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SubType</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  SuperType.call(<span class="keyword">this</span>, name)</span><br><span class="line">  <span class="keyword">this</span>.age = age</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// SubType.prototype = new SuperType()</span></span><br><span class="line"><span class="comment">// SubType.prototype.constructor = SubType</span></span><br><span class="line"><span class="comment">// SubType.prototype.sayAge = function () &#123;</span></span><br><span class="line"><span class="comment">//   console.log(this.age)</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"><span class="comment">// 替换</span></span><br><span class="line">inheritPrototype(SubType, SuperType)</span><br><span class="line">SubType.prototype.sayAge = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.age)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
+    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>组合式继承存在一定的局限性，即为了得到一个副本，去指定子类型的原型而调用超类型的构造函数。可以通过借用构造函数来继承属性，通过原型链混成形式来继承方法。不用为了指定子类型的原型而调用超类型的构造函数,再将结果指定给子类型的原型。<strong>本质上</strong>就是用寄生式组合继承来继承超类型的原型，然后将结果指定给子类型的原型。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g24wgmkmxdj20dw0b4wfi.jpg" alt=""><br>Photo by Jenny Caywood on Unsplash<br><a id="more"></a></p><h3 id="简单形式"><a href="#简单形式" class="headerlink" title="简单形式"></a>简单形式</h3><p>简单的寄生式组合继承组合形式。<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">inheritPrototype</span> (<span class="params">subType, superType</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 创建对象，创建超类型副本</span></span><br><span class="line">  <span class="keyword">let</span> prototype = object(superType.prototype)</span><br><span class="line">  <span class="comment">// 增强对象，添加属性constructor,弥补因重写类型失去默认的constructor属性</span></span><br><span class="line">  prototype.constructor = subType</span><br><span class="line">  <span class="comment">// 指定对象，将新创建的对象赋值给子类型的原型</span></span><br><span class="line">  subType.prototype = prototype</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><p>替换为子类型原型赋值的语句（例子详情参考组合继承）<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SuperType</span> (<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name</span><br><span class="line">  <span class="keyword">this</span>.colors = [<span class="string">'red'</span>, <span class="string">'blue'</span>, <span class="string">'green'</span>]</span><br><span class="line">&#125;</span><br><span class="line">SuperType.prototype.sayName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SubType</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  SuperType.call(<span class="keyword">this</span>, name)</span><br><span class="line">  <span class="keyword">this</span>.age = age</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// SubType.prototype = new SuperType()</span></span><br><span class="line"><span class="comment">// SubType.prototype.constructor = SubType</span></span><br><span class="line"><span class="comment">// SubType.prototype.sayAge = function () &#123;</span></span><br><span class="line"><span class="comment">//   console.log(this.age)</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"><span class="comment">// 替换</span></span><br><span class="line">inheritPrototype(SubType, SuperType)</span><br><span class="line">SubType.prototype.sayAge = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.age)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
     
     <summary type="html">
     
       &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;组合式继承存在一定的局限性，即为了得到一个副本，去指定子类型的原型而调用超类型的构造函数。可以通过借用构造函数来继承属性，通过原型链混成形式来继承方法。不用为了指定子类型的原型而调用超类型的构造函数,再将结果指定给子类型的原型。&lt;strong&gt;本质上&lt;/strong&gt;就是用寄生式组合继承来继承超类型的原型，然后将结果指定给子类型的原型。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g24wgmkmxdj20dw0b4wfi.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g24wgmkmxdj20dw0b4wfi.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;Photo by Jenny Caywood on Unsplash&lt;br&gt;
     
     </summary>
     
@@ -449,29 +472,6 @@
     
       &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;最近是真的比较忙啊。虽然比较忙，但是从平时的一些聊天中还是感觉到和别人的一些差距。这个还是要靠平时多做做题目来补全啊。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614ly1g1iwd8hnarj20dw09974u.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="生活" scheme="http://lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day75-理由-犯困</title>
-    <link href="http://lmislm.com/2019/03/27/2019-03-27/"/>
-    <id>http://lmislm.com/2019/03/27/2019-03-27/</id>
-    <published>2019-03-26T16:00:00.000Z</published>
-    <updated>2019-03-27T14:07:49.404Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>这段时间果然记录下来是有点用处的！发现自己偷懒的轨迹了。自己一无所成啊。这些天都是以繁忙为借口，一直在逃避写一篇好的日志。这样是不行的啊。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614ly1g1hpfmetvrj20dw09a74q.jpg" alt=""></p><a id="more"></a>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;这段时间果然记录下来是有点用处的！发现自己偷懒的轨迹了。自己一无所成啊。这些天都是以繁忙为借口，一直在逃避写一篇好的日志。这样是不行的啊。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614ly1g1hpfmetvrj20dw09a74q.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
     
     </summary>
     
