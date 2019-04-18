@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-04-17T14:05:38.703Z</updated>
+  <updated>2019-04-18T14:48:05.496Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day96-ES6-类机制</title>
+    <link href="http://lmislm.com/2019/04/18/2019-04-18/"/>
+    <id>http://lmislm.com/2019/04/18/2019-04-18/</id>
+    <published>2019-04-17T16:00:00.000Z</published>
+    <updated>2019-04-18T14:48:05.496Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p> 类机制核心-关键字-class表示一个块-定义一个函数原型的成员。</p><blockquote><p>ES6中增加了语法糖extends和super。extends 用来在两个函数原型之间建立[[Prototype]]委托链接，即所谓的“原型继承”</p></blockquote><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g27686ym7rj20e609gdhr.jpg" alt=""><br><a id="more"></a></p><h3 id="extends和super"><a href="#extends和super" class="headerlink" title="extends和super"></a>extends和super</h3><blockquote><p>注意super不同位置起的作用。</p></blockquote><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(a, b) &#123;</span><br><span class="line">    <span class="keyword">this</span>.x = a</span><br><span class="line">    <span class="keyword">this</span>.y = b</span><br><span class="line">  &#125;</span><br><span class="line">  gXYZ () &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.x * <span class="keyword">this</span>.y</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 把Bar.prototype的[[Prototype]]连接到Foo.prototype</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bar</span> <span class="keyword">extends</span> <span class="title">Foo</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(a, b , c) &#123;</span><br><span class="line">    <span class="comment">// super具体指Foo</span></span><br><span class="line">    <span class="keyword">super</span>(a, b)</span><br><span class="line">    <span class="keyword">this</span>.z = c</span><br><span class="line">  &#125;</span><br><span class="line">  gXYZ () &#123;</span><br><span class="line">    <span class="comment">// super具体指Foo.prototype</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">super</span>.gXYZ() * <span class="keyword">this</span>.z</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> b = <span class="keyword">new</span> Bar(<span class="number">5</span>, <span class="number">1</span>, <span class="number">4</span>)</span><br><span class="line"><span class="built_in">console</span>.log(b.x) <span class="comment">// 5</span></span><br><span class="line"><span class="built_in">console</span>.log(b.y) <span class="comment">// 1</span></span><br><span class="line"><span class="built_in">console</span>.log(b.z) <span class="comment">// 4</span></span><br><span class="line"><span class="built_in">console</span>.log(b.gXYZ()) <span class="comment">// 20</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt; 类机制核心-关键字-class表示一个块-定义一个函数原型的成员。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;ES6中增加了语法糖extends和super。extends 用来在两个函数原型之间建立[[Prototype]]委托链接，即所谓的“原型继承”&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g27686ym7rj20e609gdhr.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>day95-join(..)简单实现</title>
@@ -449,29 +475,6 @@
     
       &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;明天有双休了！！yeah!&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614ly1g1k342uw0lj20dw099mx5.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="生活" scheme="http://lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day76-理由-修bug</title>
-    <link href="http://lmislm.com/2019/03/28/2019-03-28/"/>
-    <id>http://lmislm.com/2019/03/28/2019-03-28/</id>
-    <published>2019-03-27T16:00:00.000Z</published>
-    <updated>2019-03-28T14:53:17.932Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>最近是真的比较忙啊。虽然比较忙，但是从平时的一些聊天中还是感觉到和别人的一些差距。这个还是要靠平时多做做题目来补全啊。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614ly1g1iwd8hnarj20dw09974u.jpg" alt=""></p><a id="more"></a>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;最近是真的比较忙啊。虽然比较忙，但是从平时的一些聊天中还是感觉到和别人的一些差距。这个还是要靠平时多做做题目来补全啊。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614ly1g1iwd8hnarj20dw09974u.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
     
     </summary>
     
