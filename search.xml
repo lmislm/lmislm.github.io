@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[day97-Proxy-实现观察者模式]]></title>
+    <url>%2F2019%2F04%2F19%2F2019-04-19%2F</url>
+    <content type="text"><![CDATA[前言Vue3.0之后用Proxy代替Object.defineProperty。来尝个鲜，看看怎样实现一个简单的观察者模式。 代码class Dep &#123; // 添加订阅者，通知变化（依赖收集类Dep） constructor() &#123; this.subs = new Set() &#125; addSub(sub) &#123; // 添加订阅者 this.subs.add(sub) &#125; notify(key) &#123; // 通知订阅者更新 // 修改data中数据的时候会触发Watcher的notify，从而回调渲染函数 this.subs.forEach(sub =&gt; &#123; sub.update() &#125;) &#125;&#125;class Watcher &#123; // 观察者，订阅数据变化，绑定更新函数，添加订阅者，更新视图 constructor(obj, key, cb) &#123; this.obj = obj, this.key = key, this.cb = cb // 回调 this.value = this.get() &#125; get() &#123; // 将自身添加到dep中 // 观察者Watcher实例赋值给全局的Dep.target // 触发render操作只有被Dep.target标记过的才会进行依赖收集 Dep.target = this let value = this.obj[this.key] Dep.target = null console.log(this) return value &#125; update () &#123; // 观察是否有新的值 let newVal = this.obj[this.key] if (this.value !== newVal) &#123; this.cb(newVal) this.value = newVal &#125; &#125;&#125;function Observer (obj) &#123; // 劫持监听所有属性 Object.keys(obj).forEach(key =&gt; &#123; if (typeof obj[key] === 'object') &#123; obj[key] = Observer(obj[key]) &#125; &#125;) let dep = new Dep() let handler = &#123; get: function (target, key, receiver) &#123; // 依赖收集的时候回addSub到sub中 Dep.target &amp;&amp; dep.addSub(Dep.target) return Reflect.get(target, key, receiver) &#125;, set: function (target, key, value, receiver) &#123; let result = Reflect.set(target, key, value, receiver) dep.notify() // 发布 return result &#125; &#125; return new Proxy(obj, handler)&#125;// 例子let data = &#123; name: 'lmislm'&#125;function who(data) &#123; console.log('my name is', data)&#125;function what(data) &#123; console.log('just do', data)&#125;data = Observer(data)new Watcher(data, 'name', who)// 新值旧值一样需要判断data.name = 'lmislm2'new Watcher(data, 'what', what)data.what = 'IT'// my name is lmislm2// just do IT]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[day96-ES6-类机制]]></title>
     <url>%2F2019%2F04%2F18%2F2019-04-18%2F</url>
     <content type="text"><![CDATA[前言 类机制核心-关键字-class表示一个块-定义一个函数原型的成员。 ES6中增加了语法糖extends和super。extends 用来在两个函数原型之间建立[[Prototype]]委托链接，即所谓的“原型继承” extends和super 注意super不同位置起的作用。 class Foo &#123; constructor(a, b) &#123; this.x = a this.y = b &#125; gXYZ () &#123; return this.x * this.y &#125;&#125;// 把Bar.prototype的[[Prototype]]连接到Foo.prototypeclass Bar extends Foo &#123; constructor(a, b , c) &#123; // super具体指Foo super(a, b) this.z = c &#125; gXYZ () &#123; // super具体指Foo.prototype return super.gXYZ() * this.z &#125;&#125;let b = new Bar(5, 1, 4)console.log(b.x) // 5console.log(b.y) // 1console.log(b.z) // 4console.log(b.gXYZ()) // 20]]></content>
@@ -1298,15 +1309,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[markdown语法小记]]></title>
-    <url>%2F2017%2F03%2F20%2Fmarkdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[插入表格：1.1. 表格的上下需要空行。空行的多少至关重要 表格中文字居中 在划线部分的划线两端加上”:“ 比如”:—–: | :—-: 代码块:2.1. 合理利用代码块有意想不到的效果。3.]]></content>
-      <tags>
-        <tag>工具</tag>
-        <tag>markdown</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[codewars-count_digits]]></title>
     <url>%2F2017%2F03%2F20%2Fcodewars%2F</url>
     <content type="text"><![CDATA[题目 Take an integer n (n &gt;= 0) and a digit d (0 &lt;= d &lt;= 9) as an integer. Square all numbers k (0 &lt;= k &lt;= n) between 0 and n. Count the numbers of digits d used in the writing of all the k* *2. Call nb_dig (or nbDig or …) the function taking n and d as parameters and returning this count. 例子 n = 10, d = 1,the k * k are 0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100 We are using the digit 1 in 1, 16, 81, 100. The total count is then 4.nb_dig(25, 1):the numbers of interest are 1, 4, 9, 10, 11, 12, 13, 14, 19, 21which squared are 1, 16, 81, 100, 121, 144, 169, 196, 361, 441 so there are 11 digits 1 for the squares of numbers between 0 and 25. 分析 给出n和d，求 0 到 n 中间的平方，再求这些平方的平方，问所得的这些数中包含多少个数字d。大概就是先算出这些数字的平方，然后挨个分解求出其中的值。 解题function nbDig(n,d) &#123; var s = &apos;&apos;; for(var i=0;i&lt;=n;i++)&#123; s += Math.pow(i,2); &#125; return s.split(d).length-1&#125; 牢骚篇今天，进了个群，挺多厉害的人，还私聊了一个有很多 offer 的同学。顿时觉得，自己就是渣渣啊，一点信心都没有。还是得加油吧，要学的东西还很多啊。]]></content>
@@ -1317,6 +1319,15 @@
         <tag>编程</tag>
         <tag>js</tag>
         <tag>codewars</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[markdown语法小记]]></title>
+    <url>%2F2017%2F03%2F20%2Fmarkdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[插入表格：1.1. 表格的上下需要空行。空行的多少至关重要 表格中文字居中 在划线部分的划线两端加上”:“ 比如”:—–: | :—-: 代码块:2.1. 合理利用代码块有意想不到的效果。3.]]></content>
+      <tags>
+        <tag>工具</tag>
+        <tag>markdown</tag>
       </tags>
   </entry>
   <entry>
