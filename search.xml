@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[day98-双像绑定中的依赖收集-浅浅浅析]]></title>
+    <url>%2F2019%2F04%2F20%2F2019-04-20%2F</url>
+    <content type="text"><![CDATA[前言vuejs-双向绑定中的Dep.target（即依赖收集）要从双向绑定思路说起（这里的双像绑定当然指的是vuejs的数据劫持+发布者-订阅者模式）。 model-view-viewmodel实现思路首先要实现Observer，监听属性变动（数据劫持）。实现时将observe的对象进行递归遍历，包括子属性对象的属性，都加上setter和getter,使其都能监听数据变化（用递归）。监听变化之后？通知订阅者用一个数组来收集订阅者，数据变动就通知（notify()），之后再进行更新（update()）。谁是订阅者？如何往订阅器中添加订阅者？通过dep（即dependency）来添加订阅者（Watcher），但是dep要在监听变化时通知订阅者。那么就可能需要闭包操作（Dep.target，即可以在Dep定义一个全局target属性）,在监听时检测到数据就在闭包内暂存watcher WatcherWatcher订阅者作为Oberver和Compile之间通信的桥梁自身实例化时往属性订阅器(dep)里面添加自己自己有一个update() 方法，等属性变动时属性订阅器通知再调用update()方法，触发COmplie中绑定的回调。Dep.target在watcher中的get方法时。会用到依赖收集。Dep.target = this; // 将当前订阅者指向自己let value = this.obj[key]; // 触发getter，添加自己到属性订阅器中Dep.target = null; // 添加完毕，重置 实例化Watcher时，调用get()方法，通知Dep.target = watcherInstance标记订阅者时当前watcher实例可以触发属性定义的getter方法，然后在属性的订阅器dep添加当前watcher实例（即将当前订阅者指向自己）使得属性值变化的时候，watcherInstance收到更新通知。一个基本的思路大概就是这些，一步步建立起来的逻辑。可能有些地方还没有理清楚，需要再加深理解。]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[day97-Proxy-实现观察者模式]]></title>
     <url>%2F2019%2F04%2F19%2F2019-04-19%2F</url>
-    <content type="text"><![CDATA[前言Vue3.0之后用Proxy代替Object.defineProperty。来尝个鲜，看看怎样实现一个简单的观察者模式。 代码class Dep &#123; // 添加订阅者，通知变化（依赖收集类Dep） constructor() &#123; this.subs = new Set() &#125; addSub(sub) &#123; // 添加订阅者 this.subs.add(sub) &#125; notify(key) &#123; // 通知订阅者更新 // 修改data中数据的时候会触发Watcher的notify，从而回调渲染函数 this.subs.forEach(sub =&gt; &#123; sub.update() &#125;) &#125;&#125;class Watcher &#123; // 观察者，订阅数据变化，绑定更新函数，添加订阅者，更新视图 constructor(obj, key, cb) &#123; this.obj = obj, this.key = key, this.cb = cb // 回调 this.value = this.get() &#125; get() &#123; // 将自身添加到dep中 // 观察者Watcher实例赋值给全局的Dep.target // 触发render操作只有被Dep.target标记过的才会进行依赖收集 Dep.target = this let value = this.obj[this.key] Dep.target = null console.log(this) return value &#125; update () &#123; // 观察是否有新的值 let newVal = this.obj[this.key] if (this.value !== newVal) &#123; this.cb(newVal) this.value = newVal &#125; &#125;&#125;function Observer (obj) &#123; // 劫持监听所有属性 Object.keys(obj).forEach(key =&gt; &#123; if (typeof obj[key] === 'object') &#123; obj[key] = Observer(obj[key]) &#125; &#125;) let dep = new Dep() let handler = &#123; get: function (target, key, receiver) &#123; // 依赖收集的时候回addSub到sub中 Dep.target &amp;&amp; dep.addSub(Dep.target) return Reflect.get(target, key, receiver) &#125;, set: function (target, key, value, receiver) &#123; let result = Reflect.set(target, key, value, receiver) dep.notify() // 发布 return result &#125; &#125; return new Proxy(obj, handler)&#125;// 例子let data = &#123; name: 'lmislm'&#125;function who(data) &#123; console.log('my name is', data)&#125;function what(data) &#123; console.log('just do', data)&#125;data = Observer(data)new Watcher(data, 'name', who)// 新值旧值一样需要判断data.name = 'lmislm2'new Watcher(data, 'what', what)data.what = 'IT'// my name is lmislm2// just do IT]]></content>
+    <content type="text"><![CDATA[前言Vue3.0之后用Proxy代替Object.defineProperty。来尝个鲜，看看怎样实现一个简单的观察者模式。 代码class Dep &#123; // 添加订阅者，通知变化（依赖收集类Dep） constructor() &#123; this.subs = new Set() &#125; addSub(sub) &#123; // 添加订阅者 this.subs.add(sub) &#125; notify(key) &#123; // 通知订阅者更新 // 修改data中数据的时候会触发Watcher的notify，从而回调渲染函数 this.subs.forEach(sub =&gt; &#123; sub.update() &#125;) &#125;&#125;class Watcher &#123; // 观察者，订阅数据变化，绑定更新函数，添加订阅者，更新视图 constructor(obj, key, cb) &#123; this.obj = obj, this.key = key, this.cb = cb // 回调 this.value = this.get() &#125; get() &#123; // 将自身添加到dep中 // 观察者Watcher实例赋值给全局的Dep.target // 触发render操作只有被Dep.target标记过的才会进行依赖收集 Dep.target = this // 将当前订阅者指向自己 let value = this.obj[this.key] // 触发getter，添加自己到属性订阅器中 Dep.target = null // 添加完毕，重置 return value &#125; update () &#123; // 观察是否有新的值 let newVal = this.obj[this.key] if (this.value !== newVal) &#123; this.cb(newVal) this.value = newVal &#125; &#125;&#125;function Observer (obj) &#123; // 劫持监听所有属性 Object.keys(obj).forEach(key =&gt; &#123; if (typeof obj[key] === 'object') &#123; obj[key] = Observer(obj[key]) &#125; &#125;) let dep = new Dep() let handler = &#123; get: function (target, key, receiver) &#123; // 依赖收集的时候回addSub到sub中 Dep.target &amp;&amp; dep.addSub(Dep.target) return Reflect.get(target, key, receiver) &#125;, set: function (target, key, value, receiver) &#123; let result = Reflect.set(target, key, value, receiver) dep.notify() // 发布 return result &#125; &#125; return new Proxy(obj, handler)&#125;// 例子let data = &#123; name: 'lmislm'&#125;function who(data) &#123; console.log('my name is', data)&#125;function what(data) &#123; console.log('just do', data)&#125;data = Observer(data)new Watcher(data, 'name', who)// 新值旧值一样需要判断data.name = 'lmislm2'new Watcher(data, 'what', what)data.what = 'IT'// my name is lmislm2// just do IT]]></content>
       <categories>
         <category>技术</category>
       </categories>
@@ -365,7 +376,7 @@
   </entry>
   <entry>
     <title><![CDATA[day64-模板语法]]></title>
-    <url>%2F2019%2F03%2F16%2F2019-03-1111%2F</url>
+    <url>%2F2019%2F03%2F16%2F2019-03-16%2F</url>
     <content type="text"><![CDATA[背景vuejs项目中有个需求，在notification消息提示中某个部分需要有点击事件。UI用的element。想到用模板的方法来构造。 element-ui Notification onClick 触发方式组件中有两种触发的方式，但是都没有很好的满足需求。 点击时触发this.$notify.warning(&#123; dangerouslyUseHTMLString: true, duration: 0, message: `$&#123;this.createdFailedMember&#125;个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`, onClick: function () &#123; console.log(1) &#125;&#125;) 创建时触发this.$notify.warning(&#123; dangerouslyUseHTMLString: true, duration: 0, message: `$&#123;this.createdFailedMember&#125;个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`, onClick: (function () &#123; console.log(1) &#125;)()&#125;) 渲染函数比较灵活的render 函数。非常好用，但是没有模板语法那么简洁。this.$notify.warning(&#123;message: h( 'div', &#123; style: &#123;display: 'inline-block'&#125; &#125;, [ h('span', `$&#123;this.createdFailedMember&#125;个成员创建失败！`), h('a', &#123; style: &#123;color: '#409EFF', cursor: 'pointer', 'text-decoration': 'underline'&#125;, on: &#123; click: this.clickNotificationMsg &#125; &#125;, '前往查看') ])&#125;)]]></content>
       <categories>
         <category>技术</category>
@@ -376,7 +387,7 @@
   </entry>
   <entry>
     <title><![CDATA[day64-模板语法]]></title>
-    <url>%2F2019%2F03%2F16%2F2019-03-16%2F</url>
+    <url>%2F2019%2F03%2F16%2F2019-03-1111%2F</url>
     <content type="text"><![CDATA[背景vuejs项目中有个需求，在notification消息提示中某个部分需要有点击事件。UI用的element。想到用模板的方法来构造。 element-ui Notification onClick 触发方式组件中有两种触发的方式，但是都没有很好的满足需求。 点击时触发this.$notify.warning(&#123; dangerouslyUseHTMLString: true, duration: 0, message: `$&#123;this.createdFailedMember&#125;个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`, onClick: function () &#123; console.log(1) &#125;&#125;) 创建时触发this.$notify.warning(&#123; dangerouslyUseHTMLString: true, duration: 0, message: `$&#123;this.createdFailedMember&#125;个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`, onClick: (function () &#123; console.log(1) &#125;)()&#125;) 渲染函数比较灵活的render 函数。非常好用，但是没有模板语法那么简洁。this.$notify.warning(&#123;message: h( 'div', &#123; style: &#123;display: 'inline-block'&#125; &#125;, [ h('span', `$&#123;this.createdFailedMember&#125;个成员创建失败！`), h('a', &#123; style: &#123;color: '#409EFF', cursor: 'pointer', 'text-decoration': 'underline'&#125;, on: &#123; click: this.clickNotificationMsg &#125; &#125;, '前往查看') ])&#125;)]]></content>
       <categories>
         <category>技术</category>
@@ -1169,8 +1180,8 @@
         <category>学习</category>
       </categories>
       <tags>
-        <tag>git</tag>
         <tag>工具</tag>
+        <tag>git</tag>
       </tags>
   </entry>
   <entry>
@@ -1309,6 +1320,15 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[markdown语法小记]]></title>
+    <url>%2F2017%2F03%2F20%2Fmarkdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[插入表格：1.1. 表格的上下需要空行。空行的多少至关重要 表格中文字居中 在划线部分的划线两端加上”:“ 比如”:—–: | :—-: 代码块:2.1. 合理利用代码块有意想不到的效果。3.]]></content>
+      <tags>
+        <tag>markdown</tag>
+        <tag>工具</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[codewars-count_digits]]></title>
     <url>%2F2017%2F03%2F20%2Fcodewars%2F</url>
     <content type="text"><![CDATA[题目 Take an integer n (n &gt;= 0) and a digit d (0 &lt;= d &lt;= 9) as an integer. Square all numbers k (0 &lt;= k &lt;= n) between 0 and n. Count the numbers of digits d used in the writing of all the k* *2. Call nb_dig (or nbDig or …) the function taking n and d as parameters and returning this count. 例子 n = 10, d = 1,the k * k are 0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100 We are using the digit 1 in 1, 16, 81, 100. The total count is then 4.nb_dig(25, 1):the numbers of interest are 1, 4, 9, 10, 11, 12, 13, 14, 19, 21which squared are 1, 16, 81, 100, 121, 144, 169, 196, 361, 441 so there are 11 digits 1 for the squares of numbers between 0 and 25. 分析 给出n和d，求 0 到 n 中间的平方，再求这些平方的平方，问所得的这些数中包含多少个数字d。大概就是先算出这些数字的平方，然后挨个分解求出其中的值。 解题function nbDig(n,d) &#123; var s = &apos;&apos;; for(var i=0;i&lt;=n;i++)&#123; s += Math.pow(i,2); &#125; return s.split(d).length-1&#125; 牢骚篇今天，进了个群，挺多厉害的人，还私聊了一个有很多 offer 的同学。顿时觉得，自己就是渣渣啊，一点信心都没有。还是得加油吧，要学的东西还很多啊。]]></content>
@@ -1319,15 +1339,6 @@
         <tag>编程</tag>
         <tag>js</tag>
         <tag>codewars</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[markdown语法小记]]></title>
-    <url>%2F2017%2F03%2F20%2Fmarkdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[插入表格：1.1. 表格的上下需要空行。空行的多少至关重要 表格中文字居中 在划线部分的划线两端加上”:“ 比如”:—–: | :—-: 代码块:2.1. 合理利用代码块有意想不到的效果。3.]]></content>
-      <tags>
-        <tag>工具</tag>
-        <tag>markdown</tag>
       </tags>
   </entry>
   <entry>
