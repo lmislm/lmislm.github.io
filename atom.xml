@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-04-21T15:44:33.376Z</updated>
+  <updated>2019-04-22T15:19:56.639Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>day98-双向绑定-Compile</title>
+    <title>day100-vuejs源码-VNode笔记</title>
+    <link href="http://lmislm.com/2019/04/22/2019-04-22/"/>
+    <id>http://lmislm.com/2019/04/22/2019-04-22/</id>
+    <published>2019-04-21T16:00:00.000Z</published>
+    <updated>2019-04-22T15:19:56.639Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p> vuejs中的VirtualDOM（VNode）在重新渲染ViewModel时非常重要。<br>什么时候调用？</p><blockquote><p>数据变化 -&gt; set监测到 -&gt;<br>dep.notify()通知Watcher -&gt;<br>Watcher调用其get()监测新值之后update()<br>??还是直接通过get方法执行vm._update(vm._render(), hydrating)</p></blockquote><a id="more"></a><h3 id="update方法"><a href="#update方法" class="headerlink" title="_update方法"></a>_update方法</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">Vue.prototype._update = <span class="function"><span class="keyword">function</span> (<span class="params">vnode: VNode, hydrating?: Boolean</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> vm: Component = <span class="keyword">this</span></span><br><span class="line">  <span class="keyword">if</span> (vm._isMounted) &#123;</span><br><span class="line">    callHook(vm, <span class="string">'beforeUpdate'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> prevEl = vm.$el</span><br><span class="line">  <span class="keyword">const</span> prevVnode = vm._vnode</span><br><span class="line">  <span class="keyword">const</span> prevActiveInstance = activeInstance</span><br><span class="line">  activeInstance = vm</span><br><span class="line">  vm._vnode = vnode</span><br><span class="line">  <span class="comment">// Vue.prototype.__patch__ is injected in entry points</span></span><br><span class="line">  <span class="comment">// based on the rendering backend used.</span></span><br><span class="line">  <span class="comment">// _patch_被用作一个入口</span></span><br><span class="line">  <span class="keyword">if</span> (!prevVnode) &#123;</span><br><span class="line">    <span class="comment">// initial render,新老vnode节点相比较</span></span><br><span class="line">    vm.$el = vm.__patch__(</span><br><span class="line">      vm.$el, vnode, hydrating, <span class="literal">false</span>,</span><br><span class="line">      vm.$options._parentElm,</span><br><span class="line">      vm.$options._refElm</span><br><span class="line">    )</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// updates</span></span><br><span class="line">    vm.$el = vm.__patch__(prevVnode, vnode)</span><br><span class="line">  &#125;</span><br><span class="line">  activeInstance = prevActiveInstance</span><br><span class="line">  <span class="comment">// update __vue__ reference</span></span><br><span class="line">  <span class="keyword">if</span> (vm.$el) &#123;</span><br><span class="line">    vm.$el.__vue__ = vm</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// if parent is an HOC, update its $el as well</span></span><br><span class="line">  <span class="keyword">if</span> (vm.$vnode &amp;&amp; vm.$parent &amp;&amp; vm.$vnode === vm.$parent._vnode) &#123;</span><br><span class="line">    vm.$parent.$el = vm.$el</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// updated hook is called by the scheduler to ensure that children are</span></span><br><span class="line">  <span class="comment">// updated in a parent's updated hook.</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ol><li><a href="https://github.com/answershuto/learnVue/blob/master/docs/VirtualDOM%E4%B8%8Ediff%28Vue%E5%AE%9E%E7%8E%B0%29.MarkDown" target="_blank" rel="noopener">VirtualDOM与diff(Vue实现).MarkDown</a></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt; vuejs中的VirtualDOM（VNode）在重新渲染ViewModel时非常重要。&lt;br&gt;什么时候调用？&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;数据变化 -&amp;gt; set监测到 -&amp;gt;&lt;br&gt;dep.notify()通知Watcher -&amp;gt;&lt;br&gt;Watcher调用其get()监测新值之后update()&lt;br&gt;??还是直接通过get方法执行vm._update(vm._render(), hydrating)&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>day99-双向绑定-Compile</title>
     <link href="http://lmislm.com/2019/04/21/2019-04-21/"/>
     <id>http://lmislm.com/2019/04/21/2019-04-21/</id>
     <published>2019-04-20T16:00:00.000Z</published>
-    <updated>2019-04-21T15:44:33.376Z</updated>
+    <updated>2019-04-22T14:33:30.798Z</updated>
     
     <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>在之前的讨论中，漏掉了解析模板指令模块Compile。这里摘抄一个作者实现的案例。另外，上一篇也有大量参考该作者该案例，说明下。<a href="https://github.com/DMQ/mvvm" target="_blank" rel="noopener">该作者文章详情</a></p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g2aopcu7pyj20e509gmxi.jpg" alt=""><br><a id="more"></a></p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>单独看的话有点难理解啊。<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">Compile.prototype = &#123;</span><br><span class="line"><span class="comment">// ... 省略</span></span><br><span class="line">compileElement: <span class="function"><span class="keyword">function</span>(<span class="params">el</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> childNodes = el.childNodes, me = <span class="keyword">this</span>;</span><br><span class="line">    <span class="comment">// 遍历所有节点及其子节点</span></span><br><span class="line">    [].slice.call(childNodes).forEach(<span class="function"><span class="keyword">function</span>(<span class="params">node</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">let</span> text = node.textContent <span class="comment">// 表达式文本</span></span><br><span class="line">      <span class="keyword">let</span> reg = <span class="regexp">/\&#123;\&#123;(.*)\&#125;\&#125;/</span><span class="comment">// 文本正则</span></span><br><span class="line">      <span class="comment">// 按元素节点方式编译,这里要区分Text?</span></span><br><span class="line">      <span class="keyword">if</span> (me.isElementNode(node)) &#123;</span><br><span class="line">        me.compile(node)</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (me.isTextNode(node) &amp;&amp; reg.test(text)) &#123;</span><br><span class="line">        me.compileText(node, <span class="built_in">RegExp</span>.$<span class="number">1</span>)</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// 遍历编译子节点(递归)</span></span><br><span class="line">      <span class="keyword">if</span> (node.childNodes &amp;&amp; node.childNodes.length) &#123;</span><br><span class="line">        me.compileElement(node)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 这里有点不好理解</span></span><br><span class="line">  compile: <span class="function"><span class="keyword">function</span>(<span class="params">node</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> nodeAttrs = node.attributes, me = <span class="keyword">this</span>;</span><br><span class="line">    [].slice.call(nodeAttrs).forEach(<span class="function"><span class="keyword">function</span>(<span class="params">attr</span>) </span>&#123;</span><br><span class="line">      <span class="comment">// 规定：指令以 v-xxx 命名</span></span><br><span class="line">      <span class="comment">// 如 &lt;span v-text="content"&gt;&lt;/span&gt; 中指令为 v-text</span></span><br><span class="line">      <span class="keyword">let</span> attrName = attr.name<span class="comment">// v-text</span></span><br><span class="line">      <span class="keyword">if</span> (me.isDirective(attrName)) &#123;</span><br><span class="line">        <span class="keyword">let</span> exp = attr.value <span class="comment">// content</span></span><br><span class="line">        <span class="keyword">let</span> dir = attrName.substring(<span class="number">2</span>)<span class="comment">// text</span></span><br><span class="line">        <span class="keyword">if</span> (me.isEventDirective(dir)) &#123;</span><br><span class="line">          <span class="comment">// 事件指令, 如 v-on:click</span></span><br><span class="line">          compileUtil.eventHandler(node, me.$vm, exp, dir)</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="comment">// 普通指令</span></span><br><span class="line">          compileUtil[dir] &amp;&amp; compileUtil[dir](node, me.$vm, exp)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 指令处理集合</span></span><br><span class="line"><span class="keyword">let</span> compileUtil = &#123;</span><br><span class="line">  text: <span class="function"><span class="keyword">function</span>(<span class="params">node, vm, exp</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.bind(node, vm, exp, <span class="string">'text'</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// ...省略</span></span><br><span class="line">  bind: <span class="function"><span class="keyword">function</span>(<span class="params">node, vm, exp, dir</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> updaterFn = updater[dir + <span class="string">'Updater'</span>]</span><br><span class="line">    <span class="comment">// 第一次初始化视图</span></span><br><span class="line">    updaterFn &amp;&amp; updaterFn(node, vm[exp])</span><br><span class="line">    <span class="comment">// 实例化订阅者，此操作会在对应的属性消息订阅器中添加了该订阅者watcher</span></span><br><span class="line">    <span class="keyword">new</span> Watcher(vm, exp, <span class="function"><span class="keyword">function</span>(<span class="params">value, oldValue</span>) </span>&#123;</span><br><span class="line">      <span class="comment">// 一旦属性值有变化，会收到通知执行此更新函数，更新视图</span></span><br><span class="line">      updaterFn &amp;&amp; updaterFn(node, value, oldValue)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 更新函数,调用对应的指令更新函数进行绑定</span></span><br><span class="line"><span class="keyword">let</span> updater = &#123;</span><br><span class="line">  textUpdater: <span class="function"><span class="keyword">function</span>(<span class="params">node, value</span>) </span>&#123;</span><br><span class="line">    node.textContent = <span class="keyword">typeof</span> value == <span class="string">'undefined'</span> ? <span class="string">''</span> : value</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// ...省略</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
     
@@ -457,29 +482,6 @@
     
     
       <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day80-vuejs源码解析</title>
-    <link href="http://lmislm.com/2019/04/01/2019-04-01/"/>
-    <id>http://lmislm.com/2019/04/01/2019-04-01/</id>
-    <published>2019-03-31T16:00:00.000Z</published>
-    <updated>2019-04-01T15:03:50.723Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>今天就是想简单的讲讲Vuejs源码中一些比较重要的部分。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g1nj4pg3s8j20dw099q3v.jpg" alt=""></p><a id="more"></a><p>愚人节快乐！！：）<br>Vuejs源码解析正在研读中哈</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;今天就是想简单的讲讲Vuejs源码中一些比较重要的部分。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g1nj4pg3s8j20dw099q3v.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="生活" scheme="http://lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
     
   </entry>
   
