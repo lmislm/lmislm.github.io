@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[day106-promise-then方法]]></title>
+    <url>%2F2019%2F04%2F28%2F2019-04-28%2F</url>
+    <content type="text"><![CDATA[前言本文主要是then方法的实现，以及thenable的实现，then链式调用。 实现// promise then方法实现-笔记// Promise/A标准要求返回一个新对象，Promise/A+没有要求。// 注意：then方法里需要onResolved或者onRejected,必须符合标准thenableMyPromise.prototype.then= function (resolve, reject) &#123; const _self = this const myPromise // then方法需要是function onResolved = typeof onResolved === 'function' ? onResolved : function () &#123;&#125; onReject = typeof onReject === 'function' ? onReject : function () &#123;&#125; if (_self.status === 'resolved') &#123; return myPromise = new Promise(function (resolve, reject) &#123; try &#123; // 取onResolved结果 let x = onResolved(_self.data) // myPromise的onResolved的返回值是一个promise对象？ if (x instanceof Promise) &#123; x.then(resolve, reject) &#125; resolve(x) &#125; catch (error) &#123; reject(error) &#125; &#125;) &#125; if (_self.status === 'rejected') &#123; return myPromise = new Promise(function (resolve, reject) &#123; try &#123; let x = onReject(_self.data) if (x instanceof Promise) &#123; x.then(resolve, reject) &#125; // 当然是没有reject &#125; catch (error) &#123; reject(error) &#125; &#125;) &#125; if (_self.status === 'pending') &#123; // 放入数组中 return myPromise = new Promise(function (resolve, reject) &#123; _self.onResolvedCallback.push(function (value) &#123; try &#123; let x = onResolved(_self.data) if (x instanceof Promise) &#123; x.then(resolve, reject) &#125; &#125; catch (error) &#123; reject(error) &#125; &#125;) _self.onRejectedCallback.push(function (reason) &#123; // try...catch, 同上 &#125;) &#125;) &#125;&#125;// 根据值来决定myPromise的状态/** * Promise/A+标准规范 https://promisesaplus.com/#point-47 * @param &#123;*&#125; myPromise * @param &#123;*&#125; value onFulfilled or onRejected的结果 * @param &#123;*&#125; resolve * @param &#123;*&#125; reject */function resolvePromise(myPromise, value, resolve, reject) &#123; let then // 接到结果之后往后抛，then链式调用？ let thenCalledOrThrow = false if (myPromise === value) &#123;// 如果myPromise和value引用同一个对象，抛TypeError错,规范：2.3.1 return reject(new TypeError('value和myPromise引用的同一个对象')) &#125; if(value instanceof Promise) &#123;// 如果value是一个promise就用其声明， 2.3.2 if (value.status === 'pending') &#123; // value的最终状态并没有确定，就必须要等确定fulfilled或rejected， 2.3.2.1 value.then(function (value) &#123; resolvePromise(myPromise, value, resolve, reject) &#125;, reject) &#125; else &#123; // 确定了直接取值fulfilled或rejected 2.3.2.2 \ 2.3.2.3 value.then(resolve, reject) &#125; return &#125; // 实现的不是很详细，和标准规范可能有点出入。 if ((value !== null) &amp;&amp; ((typeof value === 'object') || (typeof value === 'function'))) &#123; try &#123; then = value.then // 如果检查到value.then的结果有错，则抛错 if (typeof then === 'function') &#123; then.call(value, function reject(err) &#123; if (thenCalledOrThrow) return // ??? thenCalledOrThrow = true return reject(err) &#125;) &#125; else &#123; resolve(value) &#125; &#125; catch (error) &#123; // if (thenCalledOrThrow) return thenCalledOrThrow = true return reject(e) &#125; &#125; else &#123; resolve(x) &#125;&#125; 参考剖析Promise内部结构]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[day105-依据对象属性去重]]></title>
     <url>%2F2019%2F04%2F27%2F2019-04-27%2F</url>
     <content type="text"><![CDATA[前言直接上代码吧，这个稍微简单点。 let arr = [ [ '测', '测试2' ], [ '测', '测试2' ] ]// 根据属性去重function unique(arr) &#123; const res = new Map(); return arr.filter((a) =&gt; &#123; console.log(a[0]) return !res.has(a[0]) &amp;&amp; res.set(a[0], 1) &#125;)&#125;console.log(unique(arr))]]></content>
@@ -442,7 +453,7 @@
   </entry>
   <entry>
     <title><![CDATA[day64-模板语法]]></title>
-    <url>%2F2019%2F03%2F16%2F2019-03-16%2F</url>
+    <url>%2F2019%2F03%2F16%2F2019-03-1111%2F</url>
     <content type="text"><![CDATA[背景vuejs项目中有个需求，在notification消息提示中某个部分需要有点击事件。UI用的element。想到用模板的方法来构造。 element-ui Notification onClick 触发方式组件中有两种触发的方式，但是都没有很好的满足需求。 点击时触发this.$notify.warning(&#123; dangerouslyUseHTMLString: true, duration: 0, message: `$&#123;this.createdFailedMember&#125;个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`, onClick: function () &#123; console.log(1) &#125;&#125;) 创建时触发this.$notify.warning(&#123; dangerouslyUseHTMLString: true, duration: 0, message: `$&#123;this.createdFailedMember&#125;个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`, onClick: (function () &#123; console.log(1) &#125;)()&#125;) 渲染函数比较灵活的render 函数。非常好用，但是没有模板语法那么简洁。this.$notify.warning(&#123;message: h( 'div', &#123; style: &#123;display: 'inline-block'&#125; &#125;, [ h('span', `$&#123;this.createdFailedMember&#125;个成员创建失败！`), h('a', &#123; style: &#123;color: '#409EFF', cursor: 'pointer', 'text-decoration': 'underline'&#125;, on: &#123; click: this.clickNotificationMsg &#125; &#125;, '前往查看') ])&#125;)]]></content>
       <categories>
         <category>技术</category>
@@ -453,7 +464,7 @@
   </entry>
   <entry>
     <title><![CDATA[day64-模板语法]]></title>
-    <url>%2F2019%2F03%2F16%2F2019-03-1111%2F</url>
+    <url>%2F2019%2F03%2F16%2F2019-03-16%2F</url>
     <content type="text"><![CDATA[背景vuejs项目中有个需求，在notification消息提示中某个部分需要有点击事件。UI用的element。想到用模板的方法来构造。 element-ui Notification onClick 触发方式组件中有两种触发的方式，但是都没有很好的满足需求。 点击时触发this.$notify.warning(&#123; dangerouslyUseHTMLString: true, duration: 0, message: `$&#123;this.createdFailedMember&#125;个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`, onClick: function () &#123; console.log(1) &#125;&#125;) 创建时触发this.$notify.warning(&#123; dangerouslyUseHTMLString: true, duration: 0, message: `$&#123;this.createdFailedMember&#125;个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`, onClick: (function () &#123; console.log(1) &#125;)()&#125;) 渲染函数比较灵活的render 函数。非常好用，但是没有模板语法那么简洁。this.$notify.warning(&#123;message: h( 'div', &#123; style: &#123;display: 'inline-block'&#125; &#125;, [ h('span', `$&#123;this.createdFailedMember&#125;个成员创建失败！`), h('a', &#123; style: &#123;color: '#409EFF', cursor: 'pointer', 'text-decoration': 'underline'&#125;, on: &#123; click: this.clickNotificationMsg &#125; &#125;, '前往查看') ])&#125;)]]></content>
       <categories>
         <category>技术</category>
