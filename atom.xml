@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-04-28T15:54:20.566Z</updated>
+  <updated>2019-04-29T15:36:56.205Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day107-typescript实现promise</title>
+    <link href="http://lmislm.com/2019/04/29/2019-04-29/"/>
+    <id>http://lmislm.com/2019/04/29/2019-04-29/</id>
+    <published>2019-04-28T16:00:00.000Z</published>
+    <updated>2019-04-29T15:36:56.205Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>最近某个babel的项目的时候接触到了typescript，感觉这个世界还是静态语言的天下啊。赶紧学起来。当然学静态语言，单元测试也是很重要的一部分。但是这个过程看来有点漫长，慢慢来吧。本文主要是笔记，看别人怎么实现promisejs。先看看实现<a href="https://promisesaplus.com/" target="_blank" rel="noopener">promise标准</a>和比较完美的<a href="http://bluebirdjs.com/docs/api-reference.html" target="_blank" rel="noopener">Bluebird方案</a>。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g2jxggrh5hj20e709g74k.jpg" alt=""><br><a id="more"></a></p><h3 id="实现（部分）"><a href="#实现（部分）" class="headerlink" title="实现（部分）"></a>实现（部分）</h3><h4 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h4><figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> HandlerOnSuccess&lt;T, U = <span class="built_in">any</span>&gt; = <span class="function">(<span class="params">value: T</span>) =&gt;</span> U | Thenable&lt;U&gt;;</span><br><span class="line"><span class="keyword">type</span> HandlerOnFail&lt;U = <span class="built_in">any</span>&gt; = <span class="function">(<span class="params">reason: <span class="built_in">any</span></span>) =&gt;</span> U | Thenable&lt;U&gt;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> Handler&lt;T, U&gt; &#123;</span><br><span class="line">  onSuccess: HandlerOnSuccess&lt;T, U&gt;;</span><br><span class="line">  onFail: HandlerOnFail&lt;U&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h4 id="构造器等"><a href="#构造器等" class="headerlink" title="构造器等"></a>构造器等</h4><figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> PQ&lt;T&gt; &#123;</span><br><span class="line">  <span class="keyword">private</span> state: States = States.PENDING</span><br><span class="line">  <span class="keyword">private</span> handlers: Handler&lt;T, <span class="built_in">any</span>&gt;[] = []</span><br><span class="line">  <span class="keyword">private</span> value: T | <span class="built_in">any</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> errors = errors</span><br><span class="line"><span class="comment">// 构造器constructor</span></span><br><span class="line">  public constructor(callback: (resolve: Resolve&lt;T&gt;, reject: Reject) =&gt; void) &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="comment">// 回调参数this.resolve,this.reject</span></span><br><span class="line">      callback(<span class="keyword">this</span>.resolve, <span class="keyword">this</span>.reject)</span><br><span class="line">    &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">      <span class="keyword">this</span>.reject(error)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> setResult = <span class="function">(<span class="params">value: T | <span class="built_in">any</span>, state: States</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">set</span> = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">this</span>.state !== States.PENDING) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (isThenable(value)) &#123;</span><br><span class="line">        <span class="keyword">return</span> (value <span class="keyword">as</span> Thenable&lt;T&gt;).then(<span class="keyword">this</span>.resolve, <span class="keyword">this</span>.reject)</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">this</span>.value = value</span><br><span class="line">      <span class="keyword">this</span>.state = state</span><br><span class="line"></span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>.executeHandlers()</span><br><span class="line">    &#125;</span><br><span class="line">    setTimeout(<span class="keyword">set</span>, <span class="number">0</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://medium.freecodecamp.org/how-to-implement-promises-in-javascript-1ce2680a7f51" target="_blank" rel="noopener">Implementing Promises In JavaScript</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;最近某个babel的项目的时候接触到了typescript，感觉这个世界还是静态语言的天下啊。赶紧学起来。当然学静态语言，单元测试也是很重要的一部分。但是这个过程看来有点漫长，慢慢来吧。本文主要是笔记，看别人怎么实现promisejs。先看看实现&lt;a href=&quot;https://promisesaplus.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;promise标准&lt;/a&gt;和比较完美的&lt;a href=&quot;http://bluebirdjs.com/docs/api-reference.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Bluebird方案&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g2jxggrh5hj20e709g74k.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>day106-promise-then方法</title>
@@ -463,29 +486,6 @@
     
       &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;生成器实现day86中的something无限数字序列生产者&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g1vn1giw3bj20dw099glw.jpg&quot; alt=&quot;Photo by Paulin Malet on Unsplash&quot;&gt;&lt;br&gt;Photo by Paulin Malet on Unsplash&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day86-生产者与迭代器</title>
-    <link href="http://lmislm.com/2019/04/07/2019-04-07/"/>
-    <id>http://lmislm.com/2019/04/07/2019-04-07/</id>
-    <published>2019-04-06T16:00:00.000Z</published>
-    <updated>2019-04-07T14:20:38.101Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>假定你要产生一<strong>系列值</strong>，其中每个值都与前面一个有特定的关系。要实现这一点，需要一个有状态的生产者能够记住其生成的最后一个值。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g1ufm6fjw4j20dw099t8x.jpg" alt=""><br><a id="more"></a></p><h4 id="生产者与迭代器（实现一个直接使用函数闭包的版本）"><a href="#生产者与迭代器（实现一个直接使用函数闭包的版本）" class="headerlink" title="生产者与迭代器（实现一个直接使用函数闭包的版本）"></a>生产者与迭代器（实现一个直接使用函数闭包的版本）</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 数字序列生成器</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">let</span> gimmeSomething = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> nextVal</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (nextVal === <span class="literal">undefined</span>) &#123;</span><br><span class="line">      nextVal = <span class="number">1</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      nextVal = (<span class="number">3</span> * nextVal) + <span class="number">6</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> nextVal</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)()</span><br><span class="line">注意这里<span class="built_in">console</span>一个和多个是不一样的</span><br><span class="line"><span class="built_in">console</span>.log(gimmeSomething()) <span class="comment">// 1</span></span><br><span class="line"><span class="built_in">console</span>.log(gimmeSomething()) <span class="comment">// 9</span></span><br><span class="line"><span class="built_in">console</span>.log(gimmeSomething()) <span class="comment">// 33</span></span><br></pre></td></tr></table></figure><h4 id="为数字迭代生成器生成标准的迭代器接口"><a href="#为数字迭代生成器生成标准的迭代器接口" class="headerlink" title="为数字迭代生成器生成标准的迭代器接口"></a>为数字迭代生成器生成标准的迭代器接口</h4><p>迭代器是一个定义好的借口，用于从一个生产者一步步得到一系列值。<br>JavaScript 迭代器的接口，与多数语言类似，就是每次想要从生产者得到下一个值的时候调用next()<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> something = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> nextVal</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    <span class="comment">// for...of循环需要</span></span><br><span class="line">    [<span class="built_in">Symbol</span>.iterator]: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="keyword">this</span> &#125;,</span><br><span class="line">    <span class="comment">// 标准迭代器接口方法</span></span><br><span class="line">    next: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (nextVal === <span class="literal">undefined</span>) &#123;</span><br><span class="line">        nextVal = <span class="number">1</span></span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        nextVal = (<span class="number">3</span> * nextVal) + <span class="number">6</span></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> &#123; <span class="attr">done</span>: <span class="literal">false</span>, <span class="attr">value</span>: nextVal &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)()</span><br><span class="line"><span class="built_in">console</span>.log(something.next().value) <span class="comment">// 1</span></span><br><span class="line"><span class="built_in">console</span>.log(something.next().value) <span class="comment">// 9</span></span><br></pre></td></tr></table></figure></p><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>引自：《你不知道的JavaScript - 中》</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;假定你要产生一&lt;strong&gt;系列值&lt;/strong&gt;，其中每个值都与前面一个有特定的关系。要实现这一点，需要一个有状态的生产者能够记住其生成的最后一个值。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g1ufm6fjw4j20dw099t8x.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
     
     </summary>
     
