@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[day110-手写原生call()]]></title>
+    <url>%2F2019%2F05%2F02%2F2019-05-02%2F</url>
+    <content type="text"><![CDATA[前言call()反正我是用的比较少吧，但是从大家的使用量来说，这个函数是非常的重要。因为他有一些方法，起了很重要的作用。比如简单的继承，指定上下文等。 用法 - MDNfunction Product(name, price) &#123; this.name = name this.price = price + '++'&#125;function Food(name, price) &#123; // 下面的this表示Product在执行时真正的this值(严格模式。非严格模式则是指向全局对象) Product.call(this, name, price) this.category = 'food'&#125;console.log(new Food('cheese', 5).name) 代码 实现fun.protytype.myCall思路ES3 ： 步骤一确定参数数量 先实现确定参数数量的myCall，因为function.prototype.call(thisArg, arg1, arg2, …),实际上是不确定参数的 fun的参数全部存到fun的临时处fun.temp fun.temp() 输出在fun中存有的参数 删除fun中新增的temp，用delete 其他实现的思路好像都差不多。 Function.prototype.myCall = function (args) &#123; args.temp = this args.temp() delete args.temp&#125; 步骤二不确定参数数量 实现fun.protytype.myCall思路ES3 ： 对call的参数进行处理，用slice来分开参数 对分开之后的参数做不同处理 注意：非严格模式下thisArgs的null\undefined指向全局变量（浏览器是window） 用eval来连接argsFunction.prototype.myCall = function (args) &#123; // null错误处理 args = args || window args.temp = this var result if (!args) &#123; result = args.temp() &#125; else &#123; var argsList = [] // 第二个参数及其以后的都存入数组 for (var i = 1, l = argsList.length; i &lt; l; i++) &#123; argsList.push('arguments[' + i + ']') &#125; // todo: eval不是很推荐的方法，需要一个好的方式连接 eval() https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/eval result = eval('args.temp(' + argsList + ')') &#125; delete fn.temp return result&#125; // 待测试 参考JavaScript深入之call和apply的模拟实现 能否模拟实现JS的call和apply方法不能使用call,apply,bind，如何用js实现call或者apply的功能？]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[day109-ts实现mvvm-笔记（2）]]></title>
     <url>%2F2019%2F05%2F01%2F2019-05-01%2F</url>
     <content type="text"><![CDATA[前言数组的依赖收集？？？ 代码import Dep from "../../2019-04/30/vuejs/dep";// 上文2019-04-30-vuejs// 数组的依赖收集function defineReactive(obj: any, key: string, val?: any) &#123; // ... if (Dep.target) &#123; dep.depend() if (childOb) &#123; childOb.dep.depend() if (Array.isArray(value)) &#123; dependArray(value) &#125; &#125; &#125; // ...&#125;function dependArray (value: any[]) &#123; for (let e, i = 0, l = value.length; i &lt; l; i++) &#123; e = value[i] // 多维数组？？ e &amp;&amp; e.__ob__ &amp;&amp; e.__ob__.dep.depend() if (Array.isArray(e)) &#123; dependArray(e) &#125; &#125;&#125;]]></content>
@@ -1430,15 +1441,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[markdown语法小记]]></title>
-    <url>%2F2017%2F03%2F20%2Fmarkdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[插入表格：1.1. 表格的上下需要空行。空行的多少至关重要 表格中文字居中 在划线部分的划线两端加上”:“ 比如”:—–: | :—-: 代码块:2.1. 合理利用代码块有意想不到的效果。3.]]></content>
-      <tags>
-        <tag>工具</tag>
-        <tag>markdown</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[codewars-count_digits]]></title>
     <url>%2F2017%2F03%2F20%2Fcodewars%2F</url>
     <content type="text"><![CDATA[题目 Take an integer n (n &gt;= 0) and a digit d (0 &lt;= d &lt;= 9) as an integer. Square all numbers k (0 &lt;= k &lt;= n) between 0 and n. Count the numbers of digits d used in the writing of all the k* *2. Call nb_dig (or nbDig or …) the function taking n and d as parameters and returning this count. 例子 n = 10, d = 1,the k * k are 0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100 We are using the digit 1 in 1, 16, 81, 100. The total count is then 4.nb_dig(25, 1):the numbers of interest are 1, 4, 9, 10, 11, 12, 13, 14, 19, 21which squared are 1, 16, 81, 100, 121, 144, 169, 196, 361, 441 so there are 11 digits 1 for the squares of numbers between 0 and 25. 分析 给出n和d，求 0 到 n 中间的平方，再求这些平方的平方，问所得的这些数中包含多少个数字d。大概就是先算出这些数字的平方，然后挨个分解求出其中的值。 解题function nbDig(n,d) &#123; var s = &apos;&apos;; for(var i=0;i&lt;=n;i++)&#123; s += Math.pow(i,2); &#125; return s.split(d).length-1&#125; 牢骚篇今天，进了个群，挺多厉害的人，还私聊了一个有很多 offer 的同学。顿时觉得，自己就是渣渣啊，一点信心都没有。还是得加油吧，要学的东西还很多啊。]]></content>
@@ -1449,6 +1451,15 @@
         <tag>编程</tag>
         <tag>js</tag>
         <tag>codewars</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[markdown语法小记]]></title>
+    <url>%2F2017%2F03%2F20%2Fmarkdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[插入表格：1.1. 表格的上下需要空行。空行的多少至关重要 表格中文字居中 在划线部分的划线两端加上”:“ 比如”:—–: | :—-: 代码块:2.1. 合理利用代码块有意想不到的效果。3.]]></content>
+      <tags>
+        <tag>工具</tag>
+        <tag>markdown</tag>
       </tags>
   </entry>
   <entry>

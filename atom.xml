@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-05-01T14:35:32.463Z</updated>
+  <updated>2019-05-02T15:51:15.631Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day110-手写原生call()</title>
+    <link href="http://lmislm.com/2019/05/02/2019-05-02/"/>
+    <id>http://lmislm.com/2019/05/02/2019-05-02/</id>
+    <published>2019-05-01T16:00:00.000Z</published>
+    <updated>2019-05-02T15:51:15.631Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>call()反正我是用的比较少吧，但是从大家的使用量来说，这个函数是非常的重要。因为他有一些方法，起了很重要的作用。比如简单的继承，指定上下文等。 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/call" target="_blank" rel="noopener">用法 - MDN</a><br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Product</span>(<span class="params">name, price</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name</span><br><span class="line">  <span class="keyword">this</span>.price = price + <span class="string">'++'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Food</span>(<span class="params">name, price</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 下面的this表示Product在执行时真正的this值(严格模式。非严格模式则是指向全局对象)</span></span><br><span class="line">  Product.call(<span class="keyword">this</span>, name, price)</span><br><span class="line">  <span class="keyword">this</span>.category = <span class="string">'food'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">new</span> Food(<span class="string">'cheese'</span>, <span class="number">5</span>).name)</span><br></pre></td></tr></table></figure></p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g2neqaijfjj20e609gglv.jpg" alt=""><br><a id="more"></a></p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><blockquote><p>实现fun.protytype.myCall思路ES3 ： </p></blockquote><p><strong>步骤一</strong>确定参数数量</p><ul><li>先实现确定参数数量的myCall，因为function.prototype.call(thisArg, arg1, arg2, …),实际上是不确定参数的</li><li>fun的参数全部存到fun的临时处fun.temp</li><li>fun.temp() 输出在fun中存有的参数</li><li>删除fun中新增的temp，用delete</li></ul><blockquote><p>其他实现的思路好像都差不多。</p></blockquote><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.myCall = <span class="function"><span class="keyword">function</span> (<span class="params">args</span>) </span>&#123;</span><br><span class="line">     args.temp = <span class="keyword">this</span></span><br><span class="line">     args.temp()</span><br><span class="line">     <span class="keyword">delete</span> args.temp</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><strong>步骤二</strong>不确定参数数量</p><blockquote><p>实现fun.protytype.myCall思路ES3 ：</p></blockquote><ul><li>对call的参数进行处理，用slice来分开参数</li><li>对分开之后的参数做不同处理</li><li>注意：非严格模式下thisArgs的null\undefined指向全局变量（浏览器是window）</li><li>用eval来连接args<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.myCall = <span class="function"><span class="keyword">function</span> (<span class="params">args</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// null错误处理</span></span><br><span class="line">  args = args || <span class="built_in">window</span></span><br><span class="line">  args.temp = <span class="keyword">this</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> result</span><br><span class="line">  <span class="keyword">if</span> (!args) &#123;</span><br><span class="line">    result = args.temp()</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> argsList = []</span><br><span class="line">    <span class="comment">// 第二个参数及其以后的都存入数组</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>, l = argsList.length; i &lt; l; i++) &#123;</span><br><span class="line">      argsList.push(<span class="string">'arguments['</span> + i + <span class="string">']'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// todo: eval不是很推荐的方法，需要一个好的方式连接 eval() https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/eval</span></span><br><span class="line">    result = <span class="built_in">eval</span>(<span class="string">'args.temp('</span> + argsList + <span class="string">')'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">delete</span> fn.temp</span><br><span class="line">  <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ul><p>// 待测试</p><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://github.com/mqyqingfeng/Blog/issues/11" target="_blank" rel="noopener">JavaScript深入之call和apply的模拟实现 </a><br><a href="https://segmentfault.com/a/1190000017206223" target="_blank" rel="noopener">能否模拟实现JS的call和apply方法</a><br><a href="https://www.zhihu.com/question/35787390" target="_blank" rel="noopener">不能使用call,apply,bind，如何用js实现call或者apply的功能？</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;call()反正我是用的比较少吧，但是从大家的使用量来说，这个函数是非常的重要。因为他有一些方法，起了很重要的作用。比如简单的继承，指定上下文等。 &lt;a href=&quot;https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/call&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;用法 - MDN&lt;/a&gt;&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Product&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;name, price&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.name = name&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.price = price + &lt;span class=&quot;string&quot;&gt;&#39;++&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Food&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;name, price&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;comment&quot;&gt;// 下面的this表示Product在执行时真正的this值(严格模式。非严格模式则是指向全局对象)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  Product.call(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;, name, price)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.category = &lt;span class=&quot;string&quot;&gt;&#39;food&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Food(&lt;span class=&quot;string&quot;&gt;&#39;cheese&#39;&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;).name)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g2neqaijfjj20e609gglv.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>day109-ts实现mvvm-笔记（2）</title>
@@ -462,29 +485,6 @@
     
       &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;专门处理。生成器yield出Promise，然后其控制生成器的迭代器来执行它，直到结束。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g1z4l15uxpj20dw099t96.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;Photo by Johannes Krupinski on Unsplash&lt;br&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day89-回调未调用（Promise）</title>
-    <link href="http://lmislm.com/2019/04/10/2019-04-10/"/>
-    <id>http://lmislm.com/2019/04/10/2019-04-10/</id>
-    <published>2019-04-09T16:00:00.000Z</published>
-    <updated>2019-04-10T15:29:05.640Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>回调函数本身包含JavaScript错误，Promise本身永远不被决议。怎么办？</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614ly1g1xxm4ej1tj20dw099q3d.jpg" alt=""></p><a id="more"></a><h3 id="竞态-高级抽象机制"><a href="#竞态-高级抽象机制" class="headerlink" title="竞态(高级抽象机制)"></a><em>竞态</em>(高级抽象机制)</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 用于超时一个Promise的工具</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">timeoutPromise</span> (<span class="params">delay</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      reject(<span class="string">'timeout!'</span>)</span><br><span class="line">    &#125;, delay)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 设置foo()超时</span></span><br><span class="line"><span class="built_in">Promise</span>.race([</span><br><span class="line">  foo(),</span><br><span class="line">  timeoutPromise(<span class="number">3000</span>)</span><br><span class="line">])</span><br><span class="line">.then(</span><br><span class="line">  <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// foo(..)及时完成</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 或者foo()被拒绝，只是没能按时完成</span></span><br><span class="line">    <span class="comment">// 查看err来了解是哪种情况</span></span><br><span class="line">  &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;回调函数本身包含JavaScript错误，Promise本身永远不被决议。怎么办？&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614ly1g1xxm4ej1tj20dw099q3d.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
     
     </summary>
     
