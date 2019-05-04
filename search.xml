@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[day111-手写原生bind()]]></title>
+    <title><![CDATA[day112-手写原生bind()-2]]></title>
+    <url>%2F2019%2F05%2F04%2F2019-05-04%2F</url>
+    <content type="text"><![CDATA[前言之前实现的bind()，能返回新函数，也能参数传递，实际原生的bind()还能实现构造函数的效果。这个用法也是很常用的。其中还涉及到绑定函数时，需要了解new 的模拟实现。 MDN上作为构造函数的绑定函数，如下。 // bind() 作为构造函数的绑定函数function Point(x, y) &#123; this.x = x this.y = y&#125;Point.prototype.toString = function() &#123; return this.x + ',' + this.y&#125;var YAxisPoint = Point.bind(null, 0/*x*/)var axisPoint = new YAxisPoint(5)var result = axisPoint.toString()console.log(result) // 0,5 做一些改动。// 改动var contextObj = &#123; x: '1', y: '2'&#125;var YAxisPoint2 = Point.bind(contextObj)var result2 = new YAxisPoint('1', '9')// 绑定的 this 失效console.log(YAxisPoint2.x) // undefined 实现代码代码里有些要注意的点。Function.prototype.myBind = function (ct) &#123; var _self = this var args = Array.prototype.slice.call(arguments, 1) // 原型变量 var fNOP = function () &#123;&#125; var fBound = function () &#123; // 注意：arguments是当前函数的参数 var bindArgs = Array.prototype.slice.call(arguments) // fBound做构造函数时，将绑定函数的this指向该实例，让实例获得来自绑定函数的值 return _self.apply(fNOP.prototype.isPrototype(this) ? this : ct, args.concat(bindArgs)) &#125; // 实例继承绑定函数原型 // fBound.prototype = this.prototype // 这里args长度会变化？？？ if (this.prototype) &#123; // 维护原型关系，空函数中转 fNOP.protytype = this.prototype &#125; fBound.prototype = new fNOP() return fBound&#125; 一些细节： 这部分实现创建的绑定函数所有的 length 属性并不是同ECMA-262标准一致的：它创建的函数的 length 是0，而在实际的实现中根据目标函数的 length 和预先指定的参数个数可能会返回非零的 length。 参考JavaScript深入之bind的模拟实现MDN(中文版)Function​.prototype​.bind()MDN(英文版)Function​.prototype​.bind()]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[day111-手写原生bind()-1]]></title>
     <url>%2F2019%2F05%2F03%2F2019-05-03%2F</url>
     <content type="text"><![CDATA[前言一般bind()用的比较多的就是创建绑定函数，还有就是偏函数。所以这里可能就是从bind函数的一般用法来考虑实现。MDN上的Polyfill借用slice()，concat()，call()方法。这里也是差不多的实现方法。 MDN上的例子 this.x = 9; // 在浏览器中，this指向全局的 "window" 对象var module = &#123; x: 81, getX: function() &#123; return this.x &#125;&#125;module.getX() // 81//注意：新手容易错的地方-将一个方法从对象中拿出来，会丢失原来的对象var retrieveX = module.getXretrieveX()// 返回9 - 因为函数是在全局作用域中调用的 利用bind处理 // 创建一个新函数，把 'this' 绑定到 module 对象// 新手可能会将全局变量 x 与 module 的属性 x 混淆原始的对象创建一个绑定函数var boundGetX = retrieveX.bind(module)boundGetX() // 81 代码 实现参数的传递Function.prototype.myBind = function (ct) &#123; var self = this // 获取从第二个参数到最后一个参数 var args = Array.prototype.slice.call(arguments, 1) return function () &#123; // 注意：arguments指bind返回的函数传入的参数 var bindArgs = Array.prototype.slice.call(arguments) self.apply(ct, args.concat(bindArgs)) &#125;&#125; 未完。。。 参考MDN]]></content>
       <categories>
@@ -508,7 +519,7 @@
   </entry>
   <entry>
     <title><![CDATA[day64-模板语法]]></title>
-    <url>%2F2019%2F03%2F16%2F2019-03-16%2F</url>
+    <url>%2F2019%2F03%2F16%2F2019-03-1111%2F</url>
     <content type="text"><![CDATA[背景vuejs项目中有个需求，在notification消息提示中某个部分需要有点击事件。UI用的element。想到用模板的方法来构造。 element-ui Notification onClick 触发方式组件中有两种触发的方式，但是都没有很好的满足需求。 点击时触发this.$notify.warning(&#123; dangerouslyUseHTMLString: true, duration: 0, message: `$&#123;this.createdFailedMember&#125;个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`, onClick: function () &#123; console.log(1) &#125;&#125;) 创建时触发this.$notify.warning(&#123; dangerouslyUseHTMLString: true, duration: 0, message: `$&#123;this.createdFailedMember&#125;个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`, onClick: (function () &#123; console.log(1) &#125;)()&#125;) 渲染函数比较灵活的render 函数。非常好用，但是没有模板语法那么简洁。this.$notify.warning(&#123;message: h( 'div', &#123; style: &#123;display: 'inline-block'&#125; &#125;, [ h('span', `$&#123;this.createdFailedMember&#125;个成员创建失败！`), h('a', &#123; style: &#123;color: '#409EFF', cursor: 'pointer', 'text-decoration': 'underline'&#125;, on: &#123; click: this.clickNotificationMsg &#125; &#125;, '前往查看') ])&#125;)]]></content>
       <categories>
         <category>技术</category>
@@ -519,7 +530,7 @@
   </entry>
   <entry>
     <title><![CDATA[day64-模板语法]]></title>
-    <url>%2F2019%2F03%2F16%2F2019-03-1111%2F</url>
+    <url>%2F2019%2F03%2F16%2F2019-03-16%2F</url>
     <content type="text"><![CDATA[背景vuejs项目中有个需求，在notification消息提示中某个部分需要有点击事件。UI用的element。想到用模板的方法来构造。 element-ui Notification onClick 触发方式组件中有两种触发的方式，但是都没有很好的满足需求。 点击时触发this.$notify.warning(&#123; dangerouslyUseHTMLString: true, duration: 0, message: `$&#123;this.createdFailedMember&#125;个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`, onClick: function () &#123; console.log(1) &#125;&#125;) 创建时触发this.$notify.warning(&#123; dangerouslyUseHTMLString: true, duration: 0, message: `$&#123;this.createdFailedMember&#125;个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`, onClick: (function () &#123; console.log(1) &#125;)()&#125;) 渲染函数比较灵活的render 函数。非常好用，但是没有模板语法那么简洁。this.$notify.warning(&#123;message: h( 'div', &#123; style: &#123;display: 'inline-block'&#125; &#125;, [ h('span', `$&#123;this.createdFailedMember&#125;个成员创建失败！`), h('a', &#123; style: &#123;color: '#409EFF', cursor: 'pointer', 'text-decoration': 'underline'&#125;, on: &#123; click: this.clickNotificationMsg &#125; &#125;, '前往查看') ])&#125;)]]></content>
       <categories>
         <category>技术</category>
@@ -1452,6 +1463,15 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[markdown语法小记]]></title>
+    <url>%2F2017%2F03%2F20%2Fmarkdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[插入表格：1.1. 表格的上下需要空行。空行的多少至关重要 表格中文字居中 在划线部分的划线两端加上”:“ 比如”:—–: | :—-: 代码块:2.1. 合理利用代码块有意想不到的效果。3.]]></content>
+      <tags>
+        <tag>工具</tag>
+        <tag>markdown</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[codewars-count_digits]]></title>
     <url>%2F2017%2F03%2F20%2Fcodewars%2F</url>
     <content type="text"><![CDATA[题目 Take an integer n (n &gt;= 0) and a digit d (0 &lt;= d &lt;= 9) as an integer. Square all numbers k (0 &lt;= k &lt;= n) between 0 and n. Count the numbers of digits d used in the writing of all the k* *2. Call nb_dig (or nbDig or …) the function taking n and d as parameters and returning this count. 例子 n = 10, d = 1,the k * k are 0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100 We are using the digit 1 in 1, 16, 81, 100. The total count is then 4.nb_dig(25, 1):the numbers of interest are 1, 4, 9, 10, 11, 12, 13, 14, 19, 21which squared are 1, 16, 81, 100, 121, 144, 169, 196, 361, 441 so there are 11 digits 1 for the squares of numbers between 0 and 25. 分析 给出n和d，求 0 到 n 中间的平方，再求这些平方的平方，问所得的这些数中包含多少个数字d。大概就是先算出这些数字的平方，然后挨个分解求出其中的值。 解题function nbDig(n,d) &#123; var s = &apos;&apos;; for(var i=0;i&lt;=n;i++)&#123; s += Math.pow(i,2); &#125; return s.split(d).length-1&#125; 牢骚篇今天，进了个群，挺多厉害的人，还私聊了一个有很多 offer 的同学。顿时觉得，自己就是渣渣啊，一点信心都没有。还是得加油吧，要学的东西还很多啊。]]></content>
@@ -1462,15 +1482,6 @@
         <tag>编程</tag>
         <tag>js</tag>
         <tag>codewars</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[markdown语法小记]]></title>
-    <url>%2F2017%2F03%2F20%2Fmarkdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[插入表格：1.1. 表格的上下需要空行。空行的多少至关重要 表格中文字居中 在划线部分的划线两端加上”:“ 比如”:—–: | :—-: 代码块:2.1. 合理利用代码块有意想不到的效果。3.]]></content>
-      <tags>
-        <tag>工具</tag>
-        <tag>markdown</tag>
       </tags>
   </entry>
   <entry>
