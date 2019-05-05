@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[day113-实现new运算符]]></title>
+    <url>%2F2019%2F05%2F05%2F2019-05-05%2F</url>
+    <content type="text"><![CDATA[前言new 运算符，new关键字的操作（MDN）： Creates a blank, plain JavaScript object; 创建一个空的简单JavaScript对象（即{}）； Links (sets the constructor of) this object to another object; 链接该对象（即设置该对象的构造函数）到另一个对象 ； Passes the newly created object from Step 1 as the this context; 将步骤1新创建的对象作为this的上下文 ； Returns this if the function doesn’t return its own object. 如果该函数没有返回对象，则返回this。 new Foo() 发生了什么？当代码 new Foo(…) 执行时，会发生以下事情： 一个继承自 Foo.prototype 的新对象被创建。 使用指定的参数调用构造函数 Foo，并将 this 绑定到新创建的对象。new Foo 等同于 Foo()，也就是没有指定参数列表，Foo 不带任何参数调用的情况。 由构造函数返回的对象就是 new 表达式的结果。如果构造函数没有显式返回一个对象，则使用步骤1创建的对象。（一般情况下，构造函数不返回值，但是用户可以选择主动返回对象，来覆盖正常的对象创建步骤）]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[day112-手写原生bind()-2]]></title>
     <url>%2F2019%2F05%2F04%2F2019-05-04%2F</url>
     <content type="text"><![CDATA[前言之前实现的bind()，能返回新函数，也能参数传递，实际原生的bind()还能实现构造函数的效果。这个用法也是很常用的。其中还涉及到绑定函数时，需要了解new 的模拟实现。 MDN上作为构造函数的绑定函数，如下。 // bind() 作为构造函数的绑定函数function Point(x, y) &#123; this.x = x this.y = y&#125;Point.prototype.toString = function() &#123; return this.x + ',' + this.y&#125;var YAxisPoint = Point.bind(null, 0/*x*/)var axisPoint = new YAxisPoint(5)var result = axisPoint.toString()console.log(result) // 0,5 做一些改动。// 改动var contextObj = &#123; x: '1', y: '2'&#125;var YAxisPoint2 = Point.bind(contextObj)var result2 = new YAxisPoint('1', '9')// 绑定的 this 失效console.log(YAxisPoint2.x) // undefined 实现代码代码里有些要注意的点。Function.prototype.myBind = function (ct) &#123; var _self = this var args = Array.prototype.slice.call(arguments, 1) // 原型变量 var fNOP = function () &#123;&#125; var fBound = function () &#123; // 注意：arguments是当前函数的参数 var bindArgs = Array.prototype.slice.call(arguments) // fBound做构造函数时，将绑定函数的this指向该实例，让实例获得来自绑定函数的值 return _self.apply(fNOP.prototype.isPrototype(this) ? this : ct, args.concat(bindArgs)) &#125; // 实例继承绑定函数原型 // fBound.prototype = this.prototype // 这里args长度会变化？？？ if (this.prototype) &#123; // 维护原型关系，空函数中转 fNOP.protytype = this.prototype &#125; fBound.prototype = new fNOP() return fBound&#125; 一些细节： 这部分实现创建的绑定函数所有的 length 属性并不是同ECMA-262标准一致的：它创建的函数的 length 是0，而在实际的实现中根据目标函数的 length 和预先指定的参数个数可能会返回非零的 length。 参考JavaScript深入之bind的模拟实现MDN(中文版)Function​.prototype​.bind()MDN(英文版)Function​.prototype​.bind()]]></content>
@@ -519,7 +530,7 @@
   </entry>
   <entry>
     <title><![CDATA[day64-模板语法]]></title>
-    <url>%2F2019%2F03%2F16%2F2019-03-1111%2F</url>
+    <url>%2F2019%2F03%2F16%2F2019-03-16%2F</url>
     <content type="text"><![CDATA[背景vuejs项目中有个需求，在notification消息提示中某个部分需要有点击事件。UI用的element。想到用模板的方法来构造。 element-ui Notification onClick 触发方式组件中有两种触发的方式，但是都没有很好的满足需求。 点击时触发this.$notify.warning(&#123; dangerouslyUseHTMLString: true, duration: 0, message: `$&#123;this.createdFailedMember&#125;个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`, onClick: function () &#123; console.log(1) &#125;&#125;) 创建时触发this.$notify.warning(&#123; dangerouslyUseHTMLString: true, duration: 0, message: `$&#123;this.createdFailedMember&#125;个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`, onClick: (function () &#123; console.log(1) &#125;)()&#125;) 渲染函数比较灵活的render 函数。非常好用，但是没有模板语法那么简洁。this.$notify.warning(&#123;message: h( 'div', &#123; style: &#123;display: 'inline-block'&#125; &#125;, [ h('span', `$&#123;this.createdFailedMember&#125;个成员创建失败！`), h('a', &#123; style: &#123;color: '#409EFF', cursor: 'pointer', 'text-decoration': 'underline'&#125;, on: &#123; click: this.clickNotificationMsg &#125; &#125;, '前往查看') ])&#125;)]]></content>
       <categories>
         <category>技术</category>
@@ -530,7 +541,7 @@
   </entry>
   <entry>
     <title><![CDATA[day64-模板语法]]></title>
-    <url>%2F2019%2F03%2F16%2F2019-03-16%2F</url>
+    <url>%2F2019%2F03%2F16%2F2019-03-1111%2F</url>
     <content type="text"><![CDATA[背景vuejs项目中有个需求，在notification消息提示中某个部分需要有点击事件。UI用的element。想到用模板的方法来构造。 element-ui Notification onClick 触发方式组件中有两种触发的方式，但是都没有很好的满足需求。 点击时触发this.$notify.warning(&#123; dangerouslyUseHTMLString: true, duration: 0, message: `$&#123;this.createdFailedMember&#125;个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`, onClick: function () &#123; console.log(1) &#125;&#125;) 创建时触发this.$notify.warning(&#123; dangerouslyUseHTMLString: true, duration: 0, message: `$&#123;this.createdFailedMember&#125;个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`, onClick: (function () &#123; console.log(1) &#125;)()&#125;) 渲染函数比较灵活的render 函数。非常好用，但是没有模板语法那么简洁。this.$notify.warning(&#123;message: h( 'div', &#123; style: &#123;display: 'inline-block'&#125; &#125;, [ h('span', `$&#123;this.createdFailedMember&#125;个成员创建失败！`), h('a', &#123; style: &#123;color: '#409EFF', cursor: 'pointer', 'text-decoration': 'underline'&#125;, on: &#123; click: this.clickNotificationMsg &#125; &#125;, '前往查看') ])&#125;)]]></content>
       <categories>
         <category>技术</category>
