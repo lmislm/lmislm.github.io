@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-05-08T15:47:23.616Z</updated>
+  <updated>2019-05-09T15:44:43.901Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -17,13 +17,35 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>day117-手写简单防抖</title>
+    <link href="http://lmislm.com/2019/05/09/2019-05-09/"/>
+    <id>http://lmislm.com/2019/05/09/2019-05-09/</id>
+    <published>2019-05-08T16:00:00.000Z</published>
+    <updated>2019-05-09T15:44:43.901Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>其实就是一个apply调用。非常简单。重点是理解防抖和节流这两个概念吧。<br>首次事件发生之后，需要<strong>延迟(wait)时间</strong>处理。<br>延迟时间段内有第二次事件，则以第二次事件为准<strong>延迟处理</strong>。<br>知道最后一次时间段内没有事件，则执行最后一次。</p><a id="more"></a><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><ul><li><p>debounce</p><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">debounce</span> (<span class="params">fn, wait, immediate</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> timer</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 注意arguments是当前函数内的参数</span></span><br><span class="line">    <span class="keyword">if</span> (immediate) &#123; fn.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>) &#125;</span><br><span class="line">    <span class="keyword">if</span> (timer) &#123; clearTimeout(timer) &#125;</span><br><span class="line">    timer = setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      fn.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>)</span><br><span class="line">    &#125;, wait)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li><li><p>throttle</p><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">throttle</span> (<span class="params">fn, wait</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> prev = <span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line">    <span class="comment">// 在wait时间内只执行一次</span></span><br><span class="line">    <span class="keyword">if</span> (now - prev &gt; wait) &#123;</span><br><span class="line">      <span class="comment">// 注意arguments是当前函数内的参数</span></span><br><span class="line">      fn.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>)</span><br><span class="line">      prev = <span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ul><p>总结就是：<strong>throttle限制函数调用频率，debounce则限制函数调用速率</strong></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;其实就是一个apply调用。非常简单。重点是理解防抖和节流这两个概念吧。&lt;br&gt;首次事件发生之后，需要&lt;strong&gt;延迟(wait)时间&lt;/strong&gt;处理。&lt;br&gt;延迟时间段内有第二次事件，则以第二次事件为准&lt;strong&gt;延迟处理&lt;/strong&gt;。&lt;br&gt;知道最后一次时间段内没有事件，则执行最后一次。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
+  
+  <entry>
     <title>day116-手写JSON.stringify</title>
     <link href="http://lmislm.com/2019/05/08/2019-05-08/"/>
     <id>http://lmislm.com/2019/05/08/2019-05-08/</id>
     <published>2019-05-07T16:00:00.000Z</published>
-    <updated>2019-05-08T15:47:23.616Z</updated>
+    <updated>2019-05-09T15:25:34.205Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>没啥可说的，这篇比较水。<br><code>JSON.stringify(value[, replacer [, space]])</code></p><a id="more"></a><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">jsonStringify</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> type = <span class="keyword">typeof</span> obj</span><br><span class="line">  <span class="keyword">if</span> (type !== <span class="string">"object"</span>) &#123;</span><br><span class="line">    <span class="comment">// undefined 什么的会被忽略，循环引用也会被忽略</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="regexp">/string|undefined|function/</span>.test(type)) &#123;</span><br><span class="line">      obj = <span class="string">'"'</span> + obj + <span class="string">'"'</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">String</span>(obj)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> json = []</span><br><span class="line">    <span class="keyword">let</span> arr = <span class="built_in">Array</span>.isArray(obj)</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> k <span class="keyword">in</span> obj) &#123;</span><br><span class="line">      <span class="keyword">let</span> v = obj[k]</span><br><span class="line">      <span class="keyword">let</span> type = <span class="keyword">typeof</span> v</span><br><span class="line">      <span class="keyword">if</span> (<span class="regexp">/string|undefined|function/</span>.test(type)) &#123;</span><br><span class="line">        v = <span class="string">'"'</span> + v + <span class="string">'"'</span></span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (type === <span class="string">"object"</span>) &#123;</span><br><span class="line">        v = jsonStringify(v)</span><br><span class="line">      &#125;</span><br><span class="line">      json.push((arr ? <span class="string">""</span> : <span class="string">'"'</span> + k + <span class="string">'":'</span>) + <span class="built_in">String</span>(v))</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> (arr ? <span class="string">"["</span> : <span class="string">"&#123;"</span>) + <span class="built_in">String</span>(json) + (arr ? <span class="string">"]"</span> : <span class="string">"&#125;"</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://juejin.im/post/5c9c3989e51d454e3a3902b6#heading-1" target="_blank" rel="noopener">「中高级前端面试」JavaScript手写代码无敌秘籍</a></p>]]></content>
+    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>没啥可说的，这篇比较水。<br><code>JSON.stringify(value[, replacer [, space]])</code></p><a id="more"></a><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">jsonStringify</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> type = <span class="keyword">typeof</span> obj</span><br><span class="line">  <span class="keyword">if</span> (type !== <span class="string">"object"</span>) &#123;</span><br><span class="line">    <span class="comment">// undefined 什么的会被忽略，循环引用也会被忽略</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="regexp">/string|undefined|function/</span>.test(type)) &#123;</span><br><span class="line">      obj = <span class="string">'"'</span> + obj + <span class="string">'"'</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">String</span>(obj)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> json = []</span><br><span class="line">    <span class="keyword">let</span> arr = <span class="built_in">Array</span>.isArray(obj)</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> k <span class="keyword">in</span> obj) &#123;</span><br><span class="line">      <span class="keyword">let</span> v = obj[k]</span><br><span class="line">      <span class="keyword">let</span> type = <span class="keyword">typeof</span> v</span><br><span class="line">      <span class="keyword">if</span> (<span class="regexp">/string|undefined|function/</span>.test(type)) &#123;</span><br><span class="line">        v = <span class="string">'"'</span> + v + <span class="string">'"'</span></span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (type === <span class="string">"object"</span>) &#123;</span><br><span class="line">        v = jsonStringify(v)</span><br><span class="line">      &#125;</span><br><span class="line">      json.push((arr ? <span class="string">""</span> : <span class="string">'"'</span> + k + <span class="string">'":'</span>) + <span class="built_in">String</span>(v))</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> (arr ? <span class="string">"["</span> : <span class="string">"&#123;"</span>) + <span class="built_in">String</span>(json) + (arr ? <span class="string">"]"</span> : <span class="string">"&#125;"</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://juejin.im/post/5c9c3989e51d454e3a3902b6#heading-1" target="_blank" rel="noopener">JavaScript手写代码无敌秘籍</a></p>]]></content>
     
     <summary type="html">
     
@@ -462,32 +484,6 @@
     
       &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;Vue3.0之后用Proxy代替Object.defineProperty。来尝个鲜，看看怎样实现一个简单的观察者模式。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g28cr4j3oqj20gs09g3yx.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day96-ES6-类机制</title>
-    <link href="http://lmislm.com/2019/04/18/2019-04-18/"/>
-    <id>http://lmislm.com/2019/04/18/2019-04-18/</id>
-    <published>2019-04-17T16:00:00.000Z</published>
-    <updated>2019-04-18T14:48:05.496Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p> 类机制核心-关键字-class表示一个块-定义一个函数原型的成员。</p><blockquote><p>ES6中增加了语法糖extends和super。extends 用来在两个函数原型之间建立[[Prototype]]委托链接，即所谓的“原型继承”</p></blockquote><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g27686ym7rj20e609gdhr.jpg" alt=""><br><a id="more"></a></p><h3 id="extends和super"><a href="#extends和super" class="headerlink" title="extends和super"></a>extends和super</h3><blockquote><p>注意super不同位置起的作用。</p></blockquote><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(a, b) &#123;</span><br><span class="line">    <span class="keyword">this</span>.x = a</span><br><span class="line">    <span class="keyword">this</span>.y = b</span><br><span class="line">  &#125;</span><br><span class="line">  gXYZ () &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.x * <span class="keyword">this</span>.y</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 把Bar.prototype的[[Prototype]]连接到Foo.prototype</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bar</span> <span class="keyword">extends</span> <span class="title">Foo</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(a, b , c) &#123;</span><br><span class="line">    <span class="comment">// super具体指Foo</span></span><br><span class="line">    <span class="keyword">super</span>(a, b)</span><br><span class="line">    <span class="keyword">this</span>.z = c</span><br><span class="line">  &#125;</span><br><span class="line">  gXYZ () &#123;</span><br><span class="line">    <span class="comment">// super具体指Foo.prototype</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">super</span>.gXYZ() * <span class="keyword">this</span>.z</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> b = <span class="keyword">new</span> Bar(<span class="number">5</span>, <span class="number">1</span>, <span class="number">4</span>)</span><br><span class="line"><span class="built_in">console</span>.log(b.x) <span class="comment">// 5</span></span><br><span class="line"><span class="built_in">console</span>.log(b.y) <span class="comment">// 1</span></span><br><span class="line"><span class="built_in">console</span>.log(b.z) <span class="comment">// 4</span></span><br><span class="line"><span class="built_in">console</span>.log(b.gXYZ()) <span class="comment">// 20</span></span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt; 类机制核心-关键字-class表示一个块-定义一个函数原型的成员。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;ES6中增加了语法糖extends和super。extends 用来在两个函数原型之间建立[[Prototype]]委托链接，即所谓的“原型继承”&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g27686ym7rj20e609gdhr.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
     
     </summary>
     
