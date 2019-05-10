@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-05-09T15:44:43.901Z</updated>
+  <updated>2019-05-10T15:30:12.313Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day118-手写简单的函数柯里化-笔记</title>
+    <link href="http://lmislm.com/2019/05/10/2019-05-10/"/>
+    <id>http://lmislm.com/2019/05/10/2019-05-10/</id>
+    <published>2019-05-09T16:00:00.000Z</published>
+    <updated>2019-05-10T15:30:12.313Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>函数柯里化是属于高阶函数中一种常见的技术。特点就是<code>参数复用</code>、<code>提前返回</code>和<code>延迟执行</code>。</p><a id="more"></a><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>function curry (fn, args) {<br>  var length = fn.length<br>  var args = args || []<br>  return function () {<br>    newArgs = args.concat(Array.prototype.slice.call(arguments))<br>    if (newArgs.length &lt; length) {<br>      return curry.call(this, fn, newArgs)<br>    } else {<br>      return fn.apply(this, newArgs)<br>    }<br>  }<br>}</p><p>function multiFn(a, b, c) {<br>  return a <em> b </em> c<br>}</p><p>var multi = curry(multiFn)</p><p>multi(1)(2)(3)<br>multi(1,2,3)<br>multi(1)(2,3)<br>multi(1,2)(3)</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;函数柯里化是属于高阶函数中一种常见的技术。特点就是&lt;code&gt;参数复用&lt;/code&gt;、&lt;code&gt;提前返回&lt;/code&gt;和&lt;code&gt;延迟执行&lt;/code&gt;。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>day117-手写简单防抖</title>
@@ -461,29 +483,6 @@
     
       &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;vuejs-双向绑定中的&lt;strong&gt;Dep.target&lt;/strong&gt;（即依赖收集）要从双向绑定思路说起（这里的双像绑定当然指的是vuejs的数据劫持+发布者-订阅者模式）。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g29i3a8nxlj20e609ggmh.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day97-Proxy-实现观察者模式</title>
-    <link href="http://lmislm.com/2019/04/19/2019-04-19/"/>
-    <id>http://lmislm.com/2019/04/19/2019-04-19/</id>
-    <published>2019-04-18T16:00:00.000Z</published>
-    <updated>2019-04-20T15:08:15.806Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Vue3.0之后用Proxy代替Object.defineProperty。来尝个鲜，看看怎样实现一个简单的观察者模式。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g28cr4j3oqj20gs09g3yx.jpg" alt=""><br><a id="more"></a></p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dep</span> </span>&#123; <span class="comment">// 添加订阅者，通知变化（依赖收集类Dep）</span></span><br><span class="line">  <span class="keyword">constructor</span>() &#123;</span><br><span class="line">    <span class="keyword">this</span>.subs = <span class="keyword">new</span> <span class="built_in">Set</span>()</span><br><span class="line">  &#125;</span><br><span class="line">  addSub(sub) &#123; <span class="comment">// 添加订阅者</span></span><br><span class="line">    <span class="keyword">this</span>.subs.add(sub)</span><br><span class="line">  &#125;</span><br><span class="line">  notify(key) &#123; <span class="comment">// 通知订阅者更新</span></span><br><span class="line">    <span class="comment">// 修改data中数据的时候会触发Watcher的notify，从而回调渲染函数</span></span><br><span class="line">    <span class="keyword">this</span>.subs.forEach(<span class="function"><span class="params">sub</span> =&gt;</span> &#123;</span><br><span class="line">      sub.update()</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Watcher</span> </span>&#123; <span class="comment">// 观察者，订阅数据变化，绑定更新函数，添加订阅者，更新视图</span></span><br><span class="line">  <span class="keyword">constructor</span>(obj, key, cb) &#123;</span><br><span class="line">    <span class="keyword">this</span>.obj = obj,</span><br><span class="line">    <span class="keyword">this</span>.key = key,</span><br><span class="line">    <span class="keyword">this</span>.cb = cb <span class="comment">// 回调</span></span><br><span class="line">    <span class="keyword">this</span>.value = <span class="keyword">this</span>.get()</span><br><span class="line">  &#125;</span><br><span class="line">  get() &#123; <span class="comment">// 将自身添加到dep中</span></span><br><span class="line">    <span class="comment">// 观察者Watcher实例赋值给全局的Dep.target</span></span><br><span class="line">    <span class="comment">// 触发render操作只有被Dep.target标记过的才会进行依赖收集</span></span><br><span class="line">    Dep.target = <span class="keyword">this</span> <span class="comment">// 将当前订阅者指向自己</span></span><br><span class="line">    <span class="keyword">let</span> value = <span class="keyword">this</span>.obj[<span class="keyword">this</span>.key] <span class="comment">// 触发getter，添加自己到属性订阅器中</span></span><br><span class="line">    Dep.target = <span class="literal">null</span> <span class="comment">// 添加完毕，重置</span></span><br><span class="line">    <span class="keyword">return</span> value</span><br><span class="line">  &#125;</span><br><span class="line">  update () &#123; <span class="comment">// 观察是否有新的值</span></span><br><span class="line">    <span class="keyword">let</span> newVal = <span class="keyword">this</span>.obj[<span class="keyword">this</span>.key]</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.value !== newVal) &#123;</span><br><span class="line">      <span class="keyword">this</span>.cb(newVal)</span><br><span class="line">      <span class="keyword">this</span>.value = newVal</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Observer</span> (<span class="params">obj</span>) </span>&#123; <span class="comment">// 劫持监听所有属性</span></span><br><span class="line">  <span class="built_in">Object</span>.keys(obj).forEach(<span class="function"><span class="params">key</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> obj[key] === <span class="string">'object'</span>) &#123;</span><br><span class="line">      obj[key] = Observer(obj[key])</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">let</span> dep = <span class="keyword">new</span> Dep()</span><br><span class="line">  <span class="keyword">let</span> handler = &#123;</span><br><span class="line">    get: <span class="function"><span class="keyword">function</span> (<span class="params">target, key, receiver</span>) </span>&#123;</span><br><span class="line">      <span class="comment">// 依赖收集的时候回addSub到sub中</span></span><br><span class="line">      Dep.target &amp;&amp; dep.addSub(Dep.target)</span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">Reflect</span>.get(target, key, receiver)</span><br><span class="line">    &#125;,</span><br><span class="line">    set: <span class="function"><span class="keyword">function</span> (<span class="params">target, key, value, receiver</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">let</span> result = <span class="built_in">Reflect</span>.set(target, key, value, receiver)</span><br><span class="line">      dep.notify() <span class="comment">// 发布</span></span><br><span class="line">      <span class="keyword">return</span> result</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Proxy</span>(obj, handler)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 例子</span></span><br><span class="line"><span class="keyword">let</span> data = &#123;</span><br><span class="line">  name: <span class="string">'lmislm'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">who</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'my name is'</span>, data)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">what</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'just do'</span>, data)</span><br><span class="line">&#125;</span><br><span class="line">data = Observer(data)</span><br><span class="line"><span class="keyword">new</span> Watcher(data, <span class="string">'name'</span>, who)</span><br><span class="line"><span class="comment">// 新值旧值一样需要判断</span></span><br><span class="line">data.name = <span class="string">'lmislm2'</span></span><br><span class="line"><span class="keyword">new</span> Watcher(data, <span class="string">'what'</span>, what)</span><br><span class="line">data.what = <span class="string">'IT'</span></span><br><span class="line"><span class="comment">// my name is lmislm2</span></span><br><span class="line"><span class="comment">// just do IT</span></span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;Vue3.0之后用Proxy代替Object.defineProperty。来尝个鲜，看看怎样实现一个简单的观察者模式。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g28cr4j3oqj20gs09g3yx.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
     
     </summary>
     

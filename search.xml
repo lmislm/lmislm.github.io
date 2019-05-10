@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[day118-手写简单的函数柯里化-笔记]]></title>
+    <url>%2F2019%2F05%2F10%2F2019-05-10%2F</url>
+    <content type="text"><![CDATA[前言函数柯里化是属于高阶函数中一种常见的技术。特点就是参数复用、提前返回和延迟执行。 代码function curry (fn, args) { var length = fn.length var args = args || [] return function () { newArgs = args.concat(Array.prototype.slice.call(arguments)) if (newArgs.length &lt; length) { return curry.call(this, fn, newArgs) } else { return fn.apply(this, newArgs) } }} function multiFn(a, b, c) { return a b c} var multi = curry(multiFn) multi(1)(2)(3)multi(1,2,3)multi(1)(2,3)multi(1,2)(3)]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[day117-手写简单防抖]]></title>
     <url>%2F2019%2F05%2F09%2F2019-05-09%2F</url>
     <content type="text"><![CDATA[前言其实就是一个apply调用。非常简单。重点是理解防抖和节流这两个概念吧。首次事件发生之后，需要延迟(wait)时间处理。延迟时间段内有第二次事件，则以第二次事件为准延迟处理。知道最后一次时间段内没有事件，则执行最后一次。 代码 debounce function debounce (fn, wait, immediate) &#123; let timer return function () &#123; // 注意arguments是当前函数内的参数 if (immediate) &#123; fn.apply(this, arguments) &#125; if (timer) &#123; clearTimeout(timer) &#125; timer = setTimeout(() =&gt; &#123; fn.apply(this, arguments) &#125;, wait) &#125;&#125; throttle function throttle (fn, wait) &#123; let prev = new Date() return function () &#123; const now = new Date() // 在wait时间内只执行一次 if (now - prev &gt; wait) &#123; // 注意arguments是当前函数内的参数 fn.apply(this, arguments) prev = new Date() &#125; &#125;&#125; 总结就是：throttle限制函数调用频率，debounce则限制函数调用速率]]></content>
