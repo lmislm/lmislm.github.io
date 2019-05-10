@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-05-10T15:30:12.313Z</updated>
+  <updated>2019-05-10T16:14:39.163Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -17,13 +17,36 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>day119-实现一个instanceOf笔记</title>
+    <link href="http://lmislm.com/2019/05/10/2019-05-11/"/>
+    <id>http://lmislm.com/2019/05/10/2019-05-11/</id>
+    <published>2019-05-09T16:00:00.000Z</published>
+    <updated>2019-05-10T16:14:39.163Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>话不多说，这篇是水篇。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 实现一个instanceOf</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myInstanceOf</span>(<span class="params">left, right</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> proto = left.__proto__</span><br><span class="line">  <span class="keyword">let</span> prototype = right.prototype</span><br><span class="line">  <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!proto) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (proto === prototype) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">    proto === proto.__proto__</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><a id="more"></a>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;话不多说，这篇是水篇。&lt;/p&gt;
+&lt;h3 id=&quot;代码&quot;&gt;&lt;a href=&quot;#代码&quot; class=&quot;headerlink&quot; title=&quot;代码&quot;&gt;&lt;/a&gt;代码&lt;/h3&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 实现一个instanceOf&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;myInstanceOf&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;left, right&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; proto = left.__proto__&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; prototype = right.prototype&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;while&lt;/span&gt; (&lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (!proto) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (proto === prototype) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    proto === proto.__proto__&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
+  
+  <entry>
     <title>day118-手写简单的函数柯里化-笔记</title>
     <link href="http://lmislm.com/2019/05/10/2019-05-10/"/>
     <id>http://lmislm.com/2019/05/10/2019-05-10/</id>
     <published>2019-05-09T16:00:00.000Z</published>
-    <updated>2019-05-10T15:30:12.313Z</updated>
+    <updated>2019-05-10T15:37:09.628Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>函数柯里化是属于高阶函数中一种常见的技术。特点就是<code>参数复用</code>、<code>提前返回</code>和<code>延迟执行</code>。</p><a id="more"></a><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>function curry (fn, args) {<br>  var length = fn.length<br>  var args = args || []<br>  return function () {<br>    newArgs = args.concat(Array.prototype.slice.call(arguments))<br>    if (newArgs.length &lt; length) {<br>      return curry.call(this, fn, newArgs)<br>    } else {<br>      return fn.apply(this, newArgs)<br>    }<br>  }<br>}</p><p>function multiFn(a, b, c) {<br>  return a <em> b </em> c<br>}</p><p>var multi = curry(multiFn)</p><p>multi(1)(2)(3)<br>multi(1,2,3)<br>multi(1)(2,3)<br>multi(1,2)(3)</p>]]></content>
+    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>函数柯里化是属于高阶函数中一种常见的技术。特点就是<code>参数复用</code>、<code>提前返回</code>和<code>延迟执行</code>。</p><a id="more"></a><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">curry</span> (<span class="params">fn, args</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> length = fn.length</span><br><span class="line">  <span class="keyword">var</span> args = args || []</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    newArgs = args.concat(<span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>))</span><br><span class="line">    <span class="keyword">if</span> (newArgs.length &lt; length) &#123;</span><br><span class="line">      <span class="keyword">return</span> curry.call(<span class="keyword">this</span>, fn, newArgs)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> fn.apply(<span class="keyword">this</span>, newArgs)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">multiFn</span>(<span class="params">a, b, c</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a * b * c</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> multi = curry(multiFn)</span><br><span class="line"></span><br><span class="line">multi(<span class="number">1</span>)(<span class="number">2</span>)(<span class="number">3</span>)</span><br><span class="line">multi(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line">multi(<span class="number">1</span>)(<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line">multi(<span class="number">1</span>,<span class="number">2</span>)(<span class="number">3</span>)</span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
@@ -460,29 +483,6 @@
     
       &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;在之前的讨论中，漏掉了解析模板指令模块Compile。这里摘抄一个作者实现的案例。另外，上一篇也有大量参考该作者该案例，说明下。&lt;a href=&quot;https://github.com/DMQ/mvvm&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;该作者文章详情&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g2aopcu7pyj20e509gmxi.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day98-双向绑定中的依赖收集-浅浅浅析</title>
-    <link href="http://lmislm.com/2019/04/20/2019-04-20/"/>
-    <id>http://lmislm.com/2019/04/20/2019-04-20/</id>
-    <published>2019-04-19T16:00:00.000Z</published>
-    <updated>2019-04-21T15:25:10.499Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>vuejs-双向绑定中的<strong>Dep.target</strong>（即依赖收集）要从双向绑定思路说起（这里的双像绑定当然指的是vuejs的数据劫持+发布者-订阅者模式）。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g29i3a8nxlj20e609ggmh.jpg" alt=""><br><a id="more"></a></p><h3 id="model-view-viewmodel实现思路"><a href="#model-view-viewmodel实现思路" class="headerlink" title="model-view-viewmodel实现思路"></a>model-view-viewmodel实现思路</h3><p>首先要实现Observer，监听属性变动（数据劫持）。实现时将observe的对象进行递归遍历，包括子属性对象的属性，都加上setter和getter,使其都能监听数据变化（用递归）。<br><strong>监听变化之后？通知订阅者</strong><br>用一个数组来收集订阅者，数据变动就通知（notify()），之后再进行更新（update()）。<br><strong>谁是订阅者？如何往订阅器中添加订阅者？</strong><br>通过<strong>dep</strong>（即dependency）来添加订阅者（Watcher），但是dep要在监听变化时通知订阅者。那么就可能需要闭包操作（Dep.target，即可以在Dep定义一个全局target属性）,在监听时检测到数据就在<strong>闭包内</strong>暂存watcher<br> <strong>Watcher</strong><br>Watcher订阅者作为Oberver和Compile之间通信的桥梁<br>自身实例化时往<strong>属性订阅器</strong>(dep)里面添加自己<br>自己有一个update() 方法，等属性变动时属性订阅器通知再调用update()方法，触发COmplie中绑定的回调。<br><strong>Dep.target</strong><br>在watcher中的get方法时。会用到依赖收集。<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">Dep.target = <span class="keyword">this</span>;<span class="comment">// 将当前订阅者指向自己</span></span><br><span class="line"><span class="keyword">let</span> value = <span class="keyword">this</span>.obj[key];<span class="comment">// 触发getter，添加自己到属性订阅器中</span></span><br><span class="line">Dep.target = <span class="literal">null</span>;<span class="comment">// 添加完毕，重置</span></span><br></pre></td></tr></table></figure></p><p>实例化Watcher时，调用get()方法，通知<strong>Dep.target = watcherInstance</strong>标记订阅者时当前watcher实例<br>可以触发属性定义的getter方法，然后在属性的订阅器<strong>dep</strong>添加当前watcher实例（即将当前订阅者指向自己）<br>使得属性值变化的时候，watcherInstance收到更新通知。<br>一个基本的思路大概就是这些，一步步建立起来的逻辑。可能有些地方还没有理清楚，需要再加深理解。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;vuejs-双向绑定中的&lt;strong&gt;Dep.target&lt;/strong&gt;（即依赖收集）要从双向绑定思路说起（这里的双像绑定当然指的是vuejs的数据劫持+发布者-订阅者模式）。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g29i3a8nxlj20e609ggmh.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
     
     </summary>
     
