@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-05-12T15:29:12.172Z</updated>
+  <updated>2019-05-13T15:27:18.495Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day121-数组扁平化-去重-升序</title>
+    <link href="http://lmislm.com/2019/05/13/2019-05-13/"/>
+    <id>http://lmislm.com/2019/05/13/2019-05-13/</id>
+    <published>2019-05-12T16:00:00.000Z</published>
+    <updated>2019-05-13T15:27:18.495Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Array</span>.from(<span class="keyword">new</span> <span class="built_in">Set</span>(arr.flat(<span class="literal">Infinity</span>))).sort(<span class="function">(<span class="params">a,b</span>)=&gt;</span>&#123; <span class="keyword">return</span> a-b&#125;)</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;代码&quot;&gt;&lt;a href=&quot;#代码&quot; class=&quot;headerlink&quot; title=&quot;代码&quot;&gt;&lt;/a&gt;代码&lt;/h3&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;sp
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>day120-js深拷贝</title>
@@ -39,6 +64,28 @@
   </entry>
   
   <entry>
+    <title>day118-手写简单的函数柯里化-笔记</title>
+    <link href="http://lmislm.com/2019/05/10/2019-05-10/"/>
+    <id>http://lmislm.com/2019/05/10/2019-05-10/</id>
+    <published>2019-05-09T16:00:00.000Z</published>
+    <updated>2019-05-10T15:37:09.628Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>函数柯里化是属于高阶函数中一种常见的技术。特点就是<code>参数复用</code>、<code>提前返回</code>和<code>延迟执行</code>。</p><a id="more"></a><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">curry</span> (<span class="params">fn, args</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> length = fn.length</span><br><span class="line">  <span class="keyword">var</span> args = args || []</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    newArgs = args.concat(<span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>))</span><br><span class="line">    <span class="keyword">if</span> (newArgs.length &lt; length) &#123;</span><br><span class="line">      <span class="keyword">return</span> curry.call(<span class="keyword">this</span>, fn, newArgs)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> fn.apply(<span class="keyword">this</span>, newArgs)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">multiFn</span>(<span class="params">a, b, c</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a * b * c</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> multi = curry(multiFn)</span><br><span class="line"></span><br><span class="line">multi(<span class="number">1</span>)(<span class="number">2</span>)(<span class="number">3</span>)</span><br><span class="line">multi(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line">multi(<span class="number">1</span>)(<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line">multi(<span class="number">1</span>,<span class="number">2</span>)(<span class="number">3</span>)</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;函数柯里化是属于高阶函数中一种常见的技术。特点就是&lt;code&gt;参数复用&lt;/code&gt;、&lt;code&gt;提前返回&lt;/code&gt;和&lt;code&gt;延迟执行&lt;/code&gt;。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
+  
+  <entry>
     <title>day119-实现一个instanceOf笔记</title>
     <link href="http://lmislm.com/2019/05/10/2019-05-11/"/>
     <id>http://lmislm.com/2019/05/10/2019-05-11/</id>
@@ -51,28 +98,6 @@
     
       &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;话不多说，这篇是水篇。&lt;/p&gt;
 &lt;h3 id=&quot;代码&quot;&gt;&lt;a href=&quot;#代码&quot; class=&quot;headerlink&quot; title=&quot;代码&quot;&gt;&lt;/a&gt;代码&lt;/h3&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 实现一个instanceOf&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;myInstanceOf&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;left, right&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; proto = left.__proto__&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; prototype = right.prototype&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;while&lt;/span&gt; (&lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (!proto) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (proto === prototype) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    proto === proto.__proto__&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day118-手写简单的函数柯里化-笔记</title>
-    <link href="http://lmislm.com/2019/05/10/2019-05-10/"/>
-    <id>http://lmislm.com/2019/05/10/2019-05-10/</id>
-    <published>2019-05-09T16:00:00.000Z</published>
-    <updated>2019-05-10T15:37:09.628Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>函数柯里化是属于高阶函数中一种常见的技术。特点就是<code>参数复用</code>、<code>提前返回</code>和<code>延迟执行</code>。</p><a id="more"></a><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">curry</span> (<span class="params">fn, args</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> length = fn.length</span><br><span class="line">  <span class="keyword">var</span> args = args || []</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    newArgs = args.concat(<span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>))</span><br><span class="line">    <span class="keyword">if</span> (newArgs.length &lt; length) &#123;</span><br><span class="line">      <span class="keyword">return</span> curry.call(<span class="keyword">this</span>, fn, newArgs)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> fn.apply(<span class="keyword">this</span>, newArgs)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">multiFn</span>(<span class="params">a, b, c</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a * b * c</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> multi = curry(multiFn)</span><br><span class="line"></span><br><span class="line">multi(<span class="number">1</span>)(<span class="number">2</span>)(<span class="number">3</span>)</span><br><span class="line">multi(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line">multi(<span class="number">1</span>)(<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line">multi(<span class="number">1</span>,<span class="number">2</span>)(<span class="number">3</span>)</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;函数柯里化是属于高阶函数中一种常见的技术。特点就是&lt;code&gt;参数复用&lt;/code&gt;、&lt;code&gt;提前返回&lt;/code&gt;和&lt;code&gt;延迟执行&lt;/code&gt;。&lt;/p&gt;
     
     </summary>
     
@@ -456,32 +481,6 @@
 &lt;p&gt;oldValue 与 vnode在sameVnode的时候才会进行patchVnode。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g2cz3lqk0yj20dq09gabz.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day100-vuejs源码-VNode笔记</title>
-    <link href="http://lmislm.com/2019/04/22/2019-04-22/"/>
-    <id>http://lmislm.com/2019/04/22/2019-04-22/</id>
-    <published>2019-04-21T16:00:00.000Z</published>
-    <updated>2019-04-22T15:22:07.570Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p> vuejs中的VirtualDOM（VNode）在重新渲染ViewModel时非常重要。<br>什么时候调用？</p><blockquote><p>数据变化 -&gt; set监测到 -&gt;<br>dep.notify()通知Watcher -&gt;<br>Watcher调用其get()监测新值之后update()<br>??还是直接通过get方法执行vm._update(vm._render(), hydrating)</p></blockquote><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g2btp41rvxj209g09gjrm.jpg" alt=""><br><a id="more"></a></p><h3 id="update方法"><a href="#update方法" class="headerlink" title="_update方法"></a>_update方法</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">Vue.prototype._update = <span class="function"><span class="keyword">function</span> (<span class="params">vnode: VNode, hydrating?: Boolean</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> vm: Component = <span class="keyword">this</span></span><br><span class="line">  <span class="keyword">if</span> (vm._isMounted) &#123;</span><br><span class="line">    callHook(vm, <span class="string">'beforeUpdate'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> prevEl = vm.$el</span><br><span class="line">  <span class="keyword">const</span> prevVnode = vm._vnode</span><br><span class="line">  <span class="keyword">const</span> prevActiveInstance = activeInstance</span><br><span class="line">  activeInstance = vm</span><br><span class="line">  vm._vnode = vnode</span><br><span class="line">  <span class="comment">// Vue.prototype.__patch__ is injected in entry points</span></span><br><span class="line">  <span class="comment">// based on the rendering backend used.</span></span><br><span class="line">  <span class="comment">// _patch_被用作一个入口</span></span><br><span class="line">  <span class="keyword">if</span> (!prevVnode) &#123;</span><br><span class="line">    <span class="comment">// initial render,新老vnode节点相比较</span></span><br><span class="line">    vm.$el = vm.__patch__(</span><br><span class="line">      vm.$el, vnode, hydrating, <span class="literal">false</span>,</span><br><span class="line">      vm.$options._parentElm,</span><br><span class="line">      vm.$options._refElm</span><br><span class="line">    )</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// updates</span></span><br><span class="line">    vm.$el = vm.__patch__(prevVnode, vnode)</span><br><span class="line">  &#125;</span><br><span class="line">  activeInstance = prevActiveInstance</span><br><span class="line">  <span class="comment">// update __vue__ reference</span></span><br><span class="line">  <span class="keyword">if</span> (vm.$el) &#123;</span><br><span class="line">    vm.$el.__vue__ = vm</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// if parent is an HOC, update its $el as well</span></span><br><span class="line">  <span class="keyword">if</span> (vm.$vnode &amp;&amp; vm.$parent &amp;&amp; vm.$vnode === vm.$parent._vnode) &#123;</span><br><span class="line">    vm.$parent.$el = vm.$el</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// updated hook is called by the scheduler to ensure that children are</span></span><br><span class="line">  <span class="comment">// updated in a parent's updated hook.</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ol><li><a href="https://github.com/answershuto/learnVue/blob/master/docs/VirtualDOM%E4%B8%8Ediff%28Vue%E5%AE%9E%E7%8E%B0%29.MarkDown" target="_blank" rel="noopener">VirtualDOM与diff(Vue实现).MarkDown</a></li></ol>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt; vuejs中的VirtualDOM（VNode）在重新渲染ViewModel时非常重要。&lt;br&gt;什么时候调用？&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;数据变化 -&amp;gt; set监测到 -&amp;gt;&lt;br&gt;dep.notify()通知Watcher -&amp;gt;&lt;br&gt;Watcher调用其get()监测新值之后update()&lt;br&gt;??还是直接通过get方法执行vm._update(vm._render(), hydrating)&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g2btp41rvxj209g09gjrm.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
     
     </summary>
     

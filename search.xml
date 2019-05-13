@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[day121-数组扁平化-去重-升序]]></title>
+    <url>%2F2019%2F05%2F13%2F2019-05-13%2F</url>
+    <content type="text"><![CDATA[代码Array.from(new Set(arr.flat(Infinity))).sort((a,b)=&gt;&#123; return a-b&#125;)]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[day120-js深拷贝]]></title>
     <url>%2F2019%2F05%2F12%2F2019-05-12%2F</url>
     <content type="text"><![CDATA[前言来一个js的深拷贝，和JSON.stringify实现的还是有点区别的。 代码function deepCopy(obj)&#123; //判断是否是简单数据类型， if(typeof obj == "object")&#123; //复杂数据类型 var result = obj.constructor == Array ? [] : &#123;&#125;; for(let i in obj)&#123; result[i] = typeof obj[i] == "object" ? deepCopy(obj[i]) : obj[i]; &#125; &#125;else &#123; //简单数据类型 直接 == 赋值 var result = obj; &#125; return result;&#125;]]></content>
@@ -1411,8 +1422,8 @@
         <category>学习</category>
       </categories>
       <tags>
-        <tag>工具</tag>
         <tag>git</tag>
+        <tag>工具</tag>
       </tags>
   </entry>
   <entry>
@@ -1568,8 +1579,8 @@
     <url>%2F2017%2F03%2F20%2Fmarkdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0%2F</url>
     <content type="text"><![CDATA[插入表格：1.1. 表格的上下需要空行。空行的多少至关重要 表格中文字居中 在划线部分的划线两端加上”:“ 比如”:—–: | :—-: 代码块:2.1. 合理利用代码块有意想不到的效果。3.]]></content>
       <tags>
-        <tag>markdown</tag>
         <tag>工具</tag>
+        <tag>markdown</tag>
       </tags>
   </entry>
   <entry>
