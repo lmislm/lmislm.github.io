@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://lmislm.com/2019/05/16/2019-05-16/</loc>
+    <lastmod>2019-05-16T15:43:29.779Z</lastmod>
+    <data>
+        <display>
+        <title>day124-设计 LazyMan 类 -笔记</title>
+        <pubTime>2019-05-15T16:00:00.000Z</pubTime>
+        
+        <tag>前端</tag>
+         
+         
+           
+             
+              <breadCrumb title="技术" url="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://lmislm.com/2019/05/15/2019-05-15/</loc>
     <lastmod>2019-05-15T15:30:40.160Z</lastmod>
     <data>
@@ -2723,9 +2743,9 @@
         <title>markdown语法小记</title>
         <pubTime>2017-03-20T13:41:18.000Z</pubTime>
         
-        <tag>工具</tag>
-         
         <tag>markdown</tag>
+         
+        <tag>工具</tag>
          
          
            
@@ -2801,9 +2821,9 @@
         <title>Git 仓库合并（实例）</title>
         <pubTime>2018-03-04T16:00:00.000Z</pubTime>
         
-        <tag>git</tag>
-         
         <tag>工具</tag>
+         
+        <tag>git</tag>
          
          
            
