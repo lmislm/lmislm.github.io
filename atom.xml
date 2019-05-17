@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-05-16T15:43:29.779Z</updated>
+  <updated>2019-05-17T15:05:10.990Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day125-vuejs源码-nextTick()</title>
+    <link href="http://lmislm.com/2019/05/17/2019-05-17/"/>
+    <id>http://lmislm.com/2019/05/17/2019-05-17/</id>
+    <published>2019-05-16T16:00:00.000Z</published>
+    <updated>2019-05-17T15:05:10.990Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>了解vuejs中的<strong>异步更新DOM策略</strong>，了解vuejs操作DOM过程中一些原理。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// vuejs 中的 nextTick</span></span><br><span class="line"><span class="comment">// 响应式数据发生变化的时候，它的setter函数会通知闭包中的Dep，Dep则会调用它管理的所有Watch对象。触发Watch对象的update实现。</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Subscriber interface.</span></span><br><span class="line"><span class="comment"> * Will be called when a dependency changes.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">// 在watcher.js文件中</span></span><br><span class="line">update () &#123;</span><br><span class="line">  <span class="comment">/* istanbul ignore else */</span></span><br><span class="line">  <span class="comment">// this.lazy = !!options.lazy 和 deep什么的同级</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">this</span>.lazy) &#123;</span><br><span class="line">      <span class="keyword">this</span>.dirty = <span class="literal">true</span></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>.sync) &#123;</span><br><span class="line">      <span class="comment">/*同步则执行run直接渲染视图*/</span></span><br><span class="line">      <span class="keyword">this</span>.run()</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">/*异步推送到观察者队列中*/</span></span><br><span class="line">      queueWatcher(<span class="keyword">this</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// &lt;scheduler.js&gt;</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Push a watcher into the watcher queue.</span></span><br><span class="line"><span class="comment"> * Jobs with duplicate IDs will be skipped unless it's</span></span><br><span class="line"><span class="comment"> * pushed when the queue is being flushed.</span></span><br><span class="line"><span class="comment"> * // 队列刷新完毕之后watcher才会被推入watcher队列</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">queueWatcher</span> (<span class="params">watcher: Watcher</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> id = watcher.id</span><br><span class="line">  <span class="comment">// 哈希表has，标记是否存在id，这个id指的是？</span></span><br><span class="line">  <span class="comment">// 如果不是刷新状态也不是等待状态则进入刷新事件队列。</span></span><br><span class="line">  <span class="keyword">if</span> (has[id] == <span class="literal">null</span>) &#123;</span><br><span class="line">    has[id] = <span class="literal">true</span></span><br><span class="line">    <span class="keyword">if</span> (!flushing) &#123;</span><br><span class="line">      <span class="comment">// 不在刷新状态中，直接推到队列中</span></span><br><span class="line">      queue.push(watcher)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// if already flushing, splice the watcher based on its id</span></span><br><span class="line">      <span class="comment">// if already past its id, it will be run next immediately.</span></span><br><span class="line">      <span class="keyword">let</span> i = queue.length - <span class="number">1</span></span><br><span class="line">      <span class="keyword">while</span> (i &gt; index &amp;&amp; queue[i].id &gt; watcher.id) &#123;</span><br><span class="line">        i--</span><br><span class="line">      &#125;</span><br><span class="line">      queue.splice(i + <span class="number">1</span>, <span class="number">0</span>, watcher)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// queue the flush</span></span><br><span class="line">    <span class="keyword">if</span> (!waiting) &#123;</span><br><span class="line">      waiting = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (process.env.NODE_ENV !== <span class="string">'production'</span> &amp;&amp; !config.async) &#123;</span><br><span class="line">        flushSchedulerQueue()</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">      &#125;</span><br><span class="line">      nextTick(flushSchedulerQueue)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;了解vuejs中的&lt;strong&gt;异步更新DOM策略&lt;/strong&gt;，了解vuejs操作DOM过程中一些原理。&lt;/p&gt;
+&lt;h3 id=&quot;代
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>day124-设计 LazyMan 类 -笔记</title>
@@ -136,28 +162,6 @@
   </entry>
   
   <entry>
-    <title>day118-手写简单的函数柯里化-笔记</title>
-    <link href="http://lmislm.com/2019/05/10/2019-05-10/"/>
-    <id>http://lmislm.com/2019/05/10/2019-05-10/</id>
-    <published>2019-05-09T16:00:00.000Z</published>
-    <updated>2019-05-10T15:37:09.628Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>函数柯里化是属于高阶函数中一种常见的技术。特点就是<code>参数复用</code>、<code>提前返回</code>和<code>延迟执行</code>。</p><a id="more"></a><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">curry</span> (<span class="params">fn, args</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> length = fn.length</span><br><span class="line">  <span class="keyword">var</span> args = args || []</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    newArgs = args.concat(<span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>))</span><br><span class="line">    <span class="keyword">if</span> (newArgs.length &lt; length) &#123;</span><br><span class="line">      <span class="keyword">return</span> curry.call(<span class="keyword">this</span>, fn, newArgs)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> fn.apply(<span class="keyword">this</span>, newArgs)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">multiFn</span>(<span class="params">a, b, c</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a * b * c</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> multi = curry(multiFn)</span><br><span class="line"></span><br><span class="line">multi(<span class="number">1</span>)(<span class="number">2</span>)(<span class="number">3</span>)</span><br><span class="line">multi(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line">multi(<span class="number">1</span>)(<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line">multi(<span class="number">1</span>,<span class="number">2</span>)(<span class="number">3</span>)</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;函数柯里化是属于高阶函数中一种常见的技术。特点就是&lt;code&gt;参数复用&lt;/code&gt;、&lt;code&gt;提前返回&lt;/code&gt;和&lt;code&gt;延迟执行&lt;/code&gt;。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
     <title>day119-实现一个instanceOf笔记</title>
     <link href="http://lmislm.com/2019/05/10/2019-05-11/"/>
     <id>http://lmislm.com/2019/05/10/2019-05-11/</id>
@@ -170,6 +174,28 @@
     
       &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;话不多说，这篇是水篇。&lt;/p&gt;
 &lt;h3 id=&quot;代码&quot;&gt;&lt;a href=&quot;#代码&quot; class=&quot;headerlink&quot; title=&quot;代码&quot;&gt;&lt;/a&gt;代码&lt;/h3&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 实现一个instanceOf&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;myInstanceOf&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;left, right&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; proto = left.__proto__&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; prototype = right.prototype&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;while&lt;/span&gt; (&lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (!proto) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (proto === prototype) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    proto === proto.__proto__&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>day118-手写简单的函数柯里化-笔记</title>
+    <link href="http://lmislm.com/2019/05/10/2019-05-10/"/>
+    <id>http://lmislm.com/2019/05/10/2019-05-10/</id>
+    <published>2019-05-09T16:00:00.000Z</published>
+    <updated>2019-05-10T15:37:09.628Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>函数柯里化是属于高阶函数中一种常见的技术。特点就是<code>参数复用</code>、<code>提前返回</code>和<code>延迟执行</code>。</p><a id="more"></a><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">curry</span> (<span class="params">fn, args</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> length = fn.length</span><br><span class="line">  <span class="keyword">var</span> args = args || []</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    newArgs = args.concat(<span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>))</span><br><span class="line">    <span class="keyword">if</span> (newArgs.length &lt; length) &#123;</span><br><span class="line">      <span class="keyword">return</span> curry.call(<span class="keyword">this</span>, fn, newArgs)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> fn.apply(<span class="keyword">this</span>, newArgs)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">multiFn</span>(<span class="params">a, b, c</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a * b * c</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> multi = curry(multiFn)</span><br><span class="line"></span><br><span class="line">multi(<span class="number">1</span>)(<span class="number">2</span>)(<span class="number">3</span>)</span><br><span class="line">multi(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line">multi(<span class="number">1</span>)(<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line">multi(<span class="number">1</span>,<span class="number">2</span>)(<span class="number">3</span>)</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;函数柯里化是属于高阶函数中一种常见的技术。特点就是&lt;code&gt;参数复用&lt;/code&gt;、&lt;code&gt;提前返回&lt;/code&gt;和&lt;code&gt;延迟执行&lt;/code&gt;。&lt;/p&gt;
     
     </summary>
     
@@ -449,30 +475,6 @@
     
       &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;本文主要是then方法的实现，以及thenable的实现，then链式调用。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g2is8ppmm5j20gs09gq3z.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day105-依据对象属性去重</title>
-    <link href="http://lmislm.com/2019/04/27/2019-04-27/"/>
-    <id>http://lmislm.com/2019/04/27/2019-04-27/</id>
-    <published>2019-04-26T16:00:00.000Z</published>
-    <updated>2019-04-27T14:15:28.967Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>直接上代码吧，这个稍微简单点。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g2hjud32j8j20e609gwex.jpg" alt=""></p><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [ [ <span class="string">'测'</span>, <span class="string">'测试2'</span> ], [ <span class="string">'测'</span>, <span class="string">'测试2'</span> ] ]</span><br><span class="line"><span class="comment">// 根据属性去重</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">unique</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> res = <span class="keyword">new</span> <span class="built_in">Map</span>();</span><br><span class="line">  <span class="keyword">return</span> arr.filter(<span class="function">(<span class="params">a</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a[<span class="number">0</span>])</span><br><span class="line">    <span class="keyword">return</span> !res.has(a[<span class="number">0</span>]) &amp;&amp; res.set(a[<span class="number">0</span>], <span class="number">1</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(unique(arr))</span><br></pre></td></tr></table></figure><a id="more"></a>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;直接上代码吧，这个稍微简单点。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g2hjud32j8j20e609gwex.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; arr = [ [ &lt;span class=&quot;string&quot;&gt;&#39;测&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;测试2&#39;&lt;/span&gt; ], [ &lt;span class=&quot;string&quot;&gt;&#39;测&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;测试2&#39;&lt;/span&gt; ] ]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 根据属性去重&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;unique&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;arr&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; res = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;Map&lt;/span&gt;();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; arr.filter(&lt;span class=&quot;function&quot;&gt;(&lt;span class=&quot;params&quot;&gt;a&lt;/span&gt;) =&amp;gt;&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(a[&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;])&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; !res.has(a[&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;]) &amp;amp;&amp;amp; res.set(a[&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;], &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(unique(arr))&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
     
     </summary>
     
