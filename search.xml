@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[day125-vuejs源码-nextTick()]]></title>
+    <title><![CDATA[day126-vuejs源码-nextTick()-2]]></title>
+    <url>%2F2019%2F05%2F18%2F2019-05-18%2F</url>
+    <content type="text"><![CDATA[前言继续nextTick()的探讨。这里引用的比较多，同时也更新了引用文章中对于vuejs源码的解释。 代码// https://github.com/vuejs/vue/blob/dev/src/core/util/next-tick.js -- 版本24 Jan 2019/** * Defer a task to execute it asynchronously. */ /* 延迟一个任务使其异步执行，在下一个tick时执行，一个立即执行函数，返回一个function 这个函数的作用是在task或者microtask中推入一个timerFunc，在当前调用栈执行完以后以此执行直到执行到timerFunc 目的是延迟到当前调用栈执行完以后执行*/export const nextTick = (function () &#123; let isUsingMicroTask = false /*异步回调*/ const callbacks = [] /*标记位，有timerFunc被推送到任务队列中去则不需要重复推送*/ let pending = false /*下一个tick时的回调*/ function nextTickHandler () &#123; /*一个标记位，标记等待状态（即函数已经被推入任务队列或者主线程，已经在等待当前栈执行完毕去执行），这样就不需要在push多个回调到callbacks时将timerFunc多次推入任务队列或者主线程*/ pending = false /*执行所有callback*/ const copies = callbacks.slice(0) callbacks.length = 0 for (let i = 0; i &lt; copies.length; i++) &#123; copies[i]() &#125; &#125; // 这里是源码的一些解释 // Here we have async deferring wrappers using microtasks. // In 2.5 we used (macro) tasks (in combination with microtasks). // However, it has subtle problems when state is changed right before repaint // (e.g. #6813, out-in transitions). // Also, using (macro) tasks in event handler would cause some weird（注：奇怪的） behaviors // that cannot be circumvented(注：绕开) (e.g. #7109, #7153, #7546, #7834, #8109). // So we now use microtasks everywhere, again. // A major drawback of this tradeoff is that there are some scenarios （注：这种权衡的一个主要缺点是存在一些情况） // where microtasks have too high a priority and fire in between supposedly // sequential events (e.g. #4521, #6690, which have workarounds) // or even between bubbling of the same event (#6566). let timerFunc // The nextTick behavior leverages the microtask queue, which can be accessed // via either native Promise.then or MutationObserver. // MutationObserver has wider support, however it is seriously bugged in // UIWebView in iOS &gt;= 9.3.3 when triggered in touch event handlers. It // completely stops working after triggering a few times... so, if native // Promise is available, we will use it: /* istanbul ignore next, $flow-disable-line */ /* 这里解释一下，一共有Promise、MutationObserver以及setTimeout三种尝试得到timerFunc的方法 按照Promise，MutationObserver，setTimeout优先级，使用timerFunc 优先使用Promise，在Promise不存在的情况下使用MutationObserver，这两个方法都会在microtask中执行，会比setTimeout更早执行，所以优先使用。 如果上述两种方法都不支持的环境则会使用setTimeout，在task尾部推入这个函数，等待调用执行。 参考：https://www.zhihu.com/question/55364497 */ if (typeof Promise !== 'undefined' &amp;&amp; isNative(Promise)) &#123; /*使用Promise*/ var p = Promise.resolve() var logError = err =&gt; &#123; console.error(err) &#125; timerFunc = () =&gt; &#123; p.then(nextTickHandler).catch(logError) // In problematic UIWebViews, Promise.then doesn't completely break, but // it can get stuck in a weird state where callbacks are pushed into the // microtask queue but the queue isn't being flushed, until the browser // needs to do some other work, e.g. handle a timer. Therefore we can // "force" the microtask queue to be flushed by adding an empty timer. if (isIOS) setTimeout(noop) isUsingMicroTask = true &#125; &#125; else if (typeof MutationObserver !== 'undefined' &amp;&amp; ( isNative(MutationObserver) || // PhantomJS and iOS 7.x MutationObserver.toString() === '[object MutationObserverConstructor]' )) &#123; // use MutationObserver where native Promise is not available, // e.g. PhantomJS IE11, iOS7, Android 4.4 /*新建一个textNode的DOM对象，用MutationObserver绑定该DOM并指定回调函数，在DOM变化的时候则会触发回调,该回调会进入主线程（比任务队列优先执行），即textNode.data = String(counter)时便会触发回调*/ var counter = 1 var observer = new MutationObserver(nextTickHandler) var textNode = document.createTextNode(String(counter)) observer.observe(textNode, &#123; characterData: true &#125;) timerFunc = () =&gt; &#123; counter = (counter + 1) % 2 textNode.data = String(counter) &#125; // 新增一个标记位 isUsingMicroTask = true &#125; else &#123; // Fallback to setImmediate. // Techinically it leverages the (macro) task queue, // but it is still a better choice than setTimeout. /*使用setTimeout将回调推入任务队列尾部*/ timerFunc = () =&gt; &#123; setTimeout(nextTickHandler, 0) &#125; &#125; /* 推送到队列中下一个tick时执行 cb 回调函数 ctx 上下文 */ return function queueNextTick (cb?: Function, ctx?: Object) &#123; let _resolve /*cb存到callbacks中*/ callbacks.push(() =&gt; &#123; if (cb) &#123; try &#123; cb.call(ctx) &#125; catch (e) &#123; handleError(e, ctx, 'nextTick') &#125; &#125; else if (_resolve) &#123; _resolve(ctx) &#125; &#125;) if (!pending) &#123; pending = true timerFunc() &#125; if (!cb &amp;&amp; typeof Promise !== 'undefined') &#123; return new Promise((resolve, reject) =&gt; &#123; _resolve = resolve &#125;) &#125; &#125;&#125;)() 引自参考：JS 的 event loop 执行时会区分 task 和 microtask，引擎在每个 task 执行完毕，从队列中取下一个 task 来执行之前，会先执行完所有 microtask 队列中的 microtask。setTimeout 回调会被分配到一个新的 task 中执行，而 Promise 的 resolver、MutationObserver 的回调都会被安排到一个新的 microtask 中执行，会比 setTimeout 产生的 task 先执行。要创建一个新的 microtask，优先使用 Promise，如果浏览器不支持，再尝试 MutationObserver。实在不行，只能用 setTimeout 创建 task 了。为啥要用 microtask？根据 HTML Standard，在每个 task 运行完以后，UI 都会重渲染，那么在 microtask 中就完成数据更新，当前 task 结束就可以得到最新的 UI 了。反之如果新建一个 task 来做数据更新，那么渲染就会进行两次。 参考顾轶灵知乎的回答：https://www.zhihu.com/question/55364497/answer/144215284 MutationObserver新建一个textNode的DOM对象，用MutationObserver绑定该DOM并指定回调函数，在DOM变化的时候则会触发回调,该回调会进入microtask，即textNode.data = String(counter)时便会加入该回调。 setTimeout是最后的一种备选方案，它会将回调函数加入task中，等到执行。 综上，nextTick的目的就是产生一个回调函数加入task或者microtask中，当前栈执行完以后（可能中间还有别的排在前面的函数）调用该回调函数，起到了异步触发（即下一个tick时触发）的目的。 参考Vue.js异步更新DOM策略及nextTick]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[day125-vuejs源码-nextTick()-1]]></title>
     <url>%2F2019%2F05%2F17%2F2019-05-17%2F</url>
     <content type="text"><![CDATA[前言了解vuejs中的异步更新DOM策略，了解vuejs操作DOM过程中一些原理。 代码// vuejs 中的 nextTick// 响应式数据发生变化的时候，它的setter函数会通知闭包中的Dep，Dep则会调用它管理的所有Watch对象。触发Watch对象的update实现。/** * Subscriber interface. * Will be called when a dependency changes. */// 在watcher.js文件中update () &#123; /* istanbul ignore else */ // this.lazy = !!options.lazy 和 deep什么的同级 if (this.lazy) &#123; this.dirty = true &#125; else if (this.sync) &#123; /*同步则执行run直接渲染视图*/ this.run() &#125; else &#123; /*异步推送到观察者队列中*/ queueWatcher(this) &#125;&#125;// &lt;scheduler.js&gt;/** * Push a watcher into the watcher queue. * Jobs with duplicate IDs will be skipped unless it's * pushed when the queue is being flushed. * // 队列刷新完毕之后watcher才会被推入watcher队列 */export function queueWatcher (watcher: Watcher) &#123; const id = watcher.id // 哈希表has，标记是否存在id，这个id指的是？ // 如果不是刷新状态也不是等待状态则进入刷新事件队列。 if (has[id] == null) &#123; has[id] = true if (!flushing) &#123; // 不在刷新状态中，直接推到队列中 queue.push(watcher) &#125; else &#123; // if already flushing, splice the watcher based on its id // if already past its id, it will be run next immediately. let i = queue.length - 1 while (i &gt; index &amp;&amp; queue[i].id &gt; watcher.id) &#123; i-- &#125; queue.splice(i + 1, 0, watcher) &#125; // queue the flush if (!waiting) &#123; waiting = true if (process.env.NODE_ENV !== 'production' &amp;&amp; !config.async) &#123; flushSchedulerQueue() return &#125; nextTick(flushSchedulerQueue) &#125; &#125;&#125;]]></content>
       <categories>
@@ -67,9 +78,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[day118-手写简单的函数柯里化-笔记]]></title>
-    <url>%2F2019%2F05%2F10%2F2019-05-10%2F</url>
-    <content type="text"><![CDATA[前言函数柯里化是属于高阶函数中一种常见的技术。特点就是参数复用、提前返回和延迟执行。 代码function curry (fn, args) &#123; var length = fn.length var args = args || [] return function () &#123; newArgs = args.concat(Array.prototype.slice.call(arguments)) if (newArgs.length &lt; length) &#123; return curry.call(this, fn, newArgs) &#125; else &#123; return fn.apply(this, newArgs) &#125; &#125;&#125;function multiFn(a, b, c) &#123; return a * b * c&#125;var multi = curry(multiFn)multi(1)(2)(3)multi(1,2,3)multi(1)(2,3)multi(1,2)(3)]]></content>
+    <title><![CDATA[day119-实现一个instanceOf笔记]]></title>
+    <url>%2F2019%2F05%2F10%2F2019-05-11%2F</url>
+    <content type="text"><![CDATA[前言话不多说，这篇是水篇。 代码// 实现一个instanceOffunction myInstanceOf(left, right) &#123; let proto = left.__proto__ let prototype = right.prototype while (true) &#123; if (!proto) &#123; return false &#125; if (proto === prototype) &#123; return false &#125; proto === proto.__proto__ &#125;&#125;]]></content>
       <categories>
         <category>技术</category>
       </categories>
@@ -78,9 +89,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[day119-实现一个instanceOf笔记]]></title>
-    <url>%2F2019%2F05%2F10%2F2019-05-11%2F</url>
-    <content type="text"><![CDATA[前言话不多说，这篇是水篇。 代码// 实现一个instanceOffunction myInstanceOf(left, right) &#123; let proto = left.__proto__ let prototype = right.prototype while (true) &#123; if (!proto) &#123; return false &#125; if (proto === prototype) &#123; return false &#125; proto === proto.__proto__ &#125;&#125;]]></content>
+    <title><![CDATA[day118-手写简单的函数柯里化-笔记]]></title>
+    <url>%2F2019%2F05%2F10%2F2019-05-10%2F</url>
+    <content type="text"><![CDATA[前言函数柯里化是属于高阶函数中一种常见的技术。特点就是参数复用、提前返回和延迟执行。 代码function curry (fn, args) &#123; var length = fn.length var args = args || [] return function () &#123; newArgs = args.concat(Array.prototype.slice.call(arguments)) if (newArgs.length &lt; length) &#123; return curry.call(this, fn, newArgs) &#125; else &#123; return fn.apply(this, newArgs) &#125; &#125;&#125;function multiFn(a, b, c) &#123; return a * b * c&#125;var multi = curry(multiFn)multi(1)(2)(3)multi(1,2,3)multi(1)(2,3)multi(1,2)(3)]]></content>
       <categories>
         <category>技术</category>
       </categories>
@@ -662,7 +673,7 @@
   </entry>
   <entry>
     <title><![CDATA[day64-模板语法]]></title>
-    <url>%2F2019%2F03%2F16%2F2019-03-1111%2F</url>
+    <url>%2F2019%2F03%2F16%2F2019-03-16%2F</url>
     <content type="text"><![CDATA[背景vuejs项目中有个需求，在notification消息提示中某个部分需要有点击事件。UI用的element。想到用模板的方法来构造。 element-ui Notification onClick 触发方式组件中有两种触发的方式，但是都没有很好的满足需求。 点击时触发this.$notify.warning(&#123; dangerouslyUseHTMLString: true, duration: 0, message: `$&#123;this.createdFailedMember&#125;个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`, onClick: function () &#123; console.log(1) &#125;&#125;) 创建时触发this.$notify.warning(&#123; dangerouslyUseHTMLString: true, duration: 0, message: `$&#123;this.createdFailedMember&#125;个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`, onClick: (function () &#123; console.log(1) &#125;)()&#125;) 渲染函数比较灵活的render 函数。非常好用，但是没有模板语法那么简洁。this.$notify.warning(&#123;message: h( 'div', &#123; style: &#123;display: 'inline-block'&#125; &#125;, [ h('span', `$&#123;this.createdFailedMember&#125;个成员创建失败！`), h('a', &#123; style: &#123;color: '#409EFF', cursor: 'pointer', 'text-decoration': 'underline'&#125;, on: &#123; click: this.clickNotificationMsg &#125; &#125;, '前往查看') ])&#125;)]]></content>
       <categories>
         <category>技术</category>
@@ -673,7 +684,7 @@
   </entry>
   <entry>
     <title><![CDATA[day64-模板语法]]></title>
-    <url>%2F2019%2F03%2F16%2F2019-03-16%2F</url>
+    <url>%2F2019%2F03%2F16%2F2019-03-1111%2F</url>
     <content type="text"><![CDATA[背景vuejs项目中有个需求，在notification消息提示中某个部分需要有点击事件。UI用的element。想到用模板的方法来构造。 element-ui Notification onClick 触发方式组件中有两种触发的方式，但是都没有很好的满足需求。 点击时触发this.$notify.warning(&#123; dangerouslyUseHTMLString: true, duration: 0, message: `$&#123;this.createdFailedMember&#125;个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`, onClick: function () &#123; console.log(1) &#125;&#125;) 创建时触发this.$notify.warning(&#123; dangerouslyUseHTMLString: true, duration: 0, message: `$&#123;this.createdFailedMember&#125;个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`, onClick: (function () &#123; console.log(1) &#125;)()&#125;) 渲染函数比较灵活的render 函数。非常好用，但是没有模板语法那么简洁。this.$notify.warning(&#123;message: h( 'div', &#123; style: &#123;display: 'inline-block'&#125; &#125;, [ h('span', `$&#123;this.createdFailedMember&#125;个成员创建失败！`), h('a', &#123; style: &#123;color: '#409EFF', cursor: 'pointer', 'text-decoration': 'underline'&#125;, on: &#123; click: this.clickNotificationMsg &#125; &#125;, '前往查看') ])&#125;)]]></content>
       <categories>
         <category>技术</category>
@@ -1466,8 +1477,8 @@
         <category>学习</category>
       </categories>
       <tags>
-        <tag>git</tag>
         <tag>工具</tag>
+        <tag>git</tag>
       </tags>
   </entry>
   <entry>
@@ -1623,8 +1634,8 @@
     <url>%2F2017%2F03%2F20%2Fmarkdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0%2F</url>
     <content type="text"><![CDATA[插入表格：1.1. 表格的上下需要空行。空行的多少至关重要 表格中文字居中 在划线部分的划线两端加上”:“ 比如”:—–: | :—-: 代码块:2.1. 合理利用代码块有意想不到的效果。3.]]></content>
       <tags>
-        <tag>工具</tag>
         <tag>markdown</tag>
+        <tag>工具</tag>
       </tags>
   </entry>
   <entry>
