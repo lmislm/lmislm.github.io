@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[day132-小试牛刀的题目-1]]></title>
+    <url>%2F2019%2F05%2F24%2F2019-05-24%2F</url>
+    <content type="text"><![CDATA[前言一道构造数据结构的题目。src: [{id:1}, {id:1}, {id:2}]tgt: {1: [0,1], 2:[2]} 代码个人解法。希望以后想出更好的解法。function groupByProp (objArray, prop) &#123; return objArray.reduce((acc, cur, index) =&gt; &#123; let key = cur[prop] if (!acc[key]) &#123; acc[key] = [] &#125; acc[key].push(index) return acc &#125;, &#123;&#125;)&#125;// let data = [&#123;id:1&#125;, &#123;id:1&#125;, &#123;id:2&#125;]// console.log(groupByProp(data, 'id'))// &#123; '1': [ 0, 1 ], '2': [ 2 ] &#125;]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[day131-vuejs源码-数据绑定-3]]></title>
     <url>%2F2019%2F05%2F23%2F2019-05-23%2F</url>
     <content type="text"><![CDATA[前言在Observer中，有一个walk方法：在其构造器中，如果observer实例是对象则walk进行绑定walk方法会遍历对象的每一个属性进行defineReactive绑定defineReactive的作用则是通过Object.defineProperty为数据定义上getter\setter方法，进行依赖收集后闭包中的Deps会存放Watcher对象。触发setter改变数据时会通知Deps订阅者通知所有的Watcher观察者对象进行视图的更新。 代码/** * Define a reactive property on an Object. */export function defineReactive ( obj: Object, key: string, val: any, customSetter?: ?Function, shallow?: boolean) &#123; // 闭包Dep const dep = new Dep() const property = Object.getOwnPropertyDescriptor(obj, key) if (property &amp;&amp; property.configurable === false) &#123; return &#125; // 如果之前定义过了就取出来 // cater（注：迎合） for pre-defined getter/setters const getter = property &amp;&amp; property.get const setter = property &amp;&amp; property.set if ((!getter || setter) &amp;&amp; arguments.length === 2) &#123; val = obj[key] &#125; let childOb = !shallow &amp;&amp; observe(val) Object.defineProperty(obj, key, &#123; enumerable: true, configurable: true, get: function reactiveGetter () &#123; const value = getter ? getter.call(obj) : val if (Dep.target) &#123; /* 依赖收集 */ dep.depend() if (childOb) &#123; /* 子对象进行依赖收集，其实就是将同一个watcher观察者实例放进了两个depend中，一个是正在本身闭包中的depend，另一个是子元素的depend -- 引 */ childOb.dep.depend() /* 判断是数组则需要对每一个成员都进行依赖收集，如果数组的成员还是数组，则递归。 */ if (Array.isArray(value)) &#123; dependArray(value) &#125; &#125; &#125; return value &#125;, set: function reactiveSetter (newVal) &#123; /* 如果原本对象拥有getter方法则执行 */ const value = getter ? getter.call(obj) : val /* eslint-disable no-self-compare */ if (newVal === value || (newVal !== newVal &amp;&amp; value !== value)) &#123; return &#125; /* eslint-enable no-self-compare */ if (process.env.NODE_ENV !== 'production' &amp;&amp; customSetter) &#123; customSetter() &#125; // #7981: for accessor properties without setter if (getter &amp;&amp; !setter) return /* 判断原本对象拥有setter方法，有的话直接执行setter */ if (setter) &#123; setter.call(obj, newVal) &#125; else &#123; val = newVal &#125; /* 新值需要重新进行observe，保证数据响应式 */ childOb = !shallow &amp;&amp; observe(newVal) /* 通知观察者 */ dep.notify() &#125; &#125;)&#125;]]></content>
@@ -133,9 +144,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[day118-手写简单的函数柯里化-笔记]]></title>
-    <url>%2F2019%2F05%2F10%2F2019-05-10%2F</url>
-    <content type="text"><![CDATA[前言函数柯里化是属于高阶函数中一种常见的技术。特点就是参数复用、提前返回和延迟执行。 代码function curry (fn, args) &#123; var length = fn.length var args = args || [] return function () &#123; newArgs = args.concat(Array.prototype.slice.call(arguments)) if (newArgs.length &lt; length) &#123; return curry.call(this, fn, newArgs) &#125; else &#123; return fn.apply(this, newArgs) &#125; &#125;&#125;function multiFn(a, b, c) &#123; return a * b * c&#125;var multi = curry(multiFn)multi(1)(2)(3)multi(1,2,3)multi(1)(2,3)multi(1,2)(3)]]></content>
+    <title><![CDATA[day119-实现一个instanceOf笔记]]></title>
+    <url>%2F2019%2F05%2F10%2F2019-05-11%2F</url>
+    <content type="text"><![CDATA[前言话不多说，这篇是水篇。 代码// 实现一个instanceOffunction myInstanceOf(left, right) &#123; let proto = left.__proto__ let prototype = right.prototype while (true) &#123; if (!proto) &#123; return false &#125; if (proto === prototype) &#123; return false &#125; proto === proto.__proto__ &#125;&#125;]]></content>
       <categories>
         <category>技术</category>
       </categories>
@@ -144,9 +155,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[day119-实现一个instanceOf笔记]]></title>
-    <url>%2F2019%2F05%2F10%2F2019-05-11%2F</url>
-    <content type="text"><![CDATA[前言话不多说，这篇是水篇。 代码// 实现一个instanceOffunction myInstanceOf(left, right) &#123; let proto = left.__proto__ let prototype = right.prototype while (true) &#123; if (!proto) &#123; return false &#125; if (proto === prototype) &#123; return false &#125; proto === proto.__proto__ &#125;&#125;]]></content>
+    <title><![CDATA[day118-手写简单的函数柯里化-笔记]]></title>
+    <url>%2F2019%2F05%2F10%2F2019-05-10%2F</url>
+    <content type="text"><![CDATA[前言函数柯里化是属于高阶函数中一种常见的技术。特点就是参数复用、提前返回和延迟执行。 代码function curry (fn, args) &#123; var length = fn.length var args = args || [] return function () &#123; newArgs = args.concat(Array.prototype.slice.call(arguments)) if (newArgs.length &lt; length) &#123; return curry.call(this, fn, newArgs) &#125; else &#123; return fn.apply(this, newArgs) &#125; &#125;&#125;function multiFn(a, b, c) &#123; return a * b * c&#125;var multi = curry(multiFn)multi(1)(2)(3)multi(1,2,3)multi(1)(2,3)multi(1,2)(3)]]></content>
       <categories>
         <category>技术</category>
       </categories>
@@ -1672,15 +1683,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[markdown语法小记]]></title>
-    <url>%2F2017%2F03%2F20%2Fmarkdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[插入表格：1.1. 表格的上下需要空行。空行的多少至关重要 表格中文字居中 在划线部分的划线两端加上”:“ 比如”:—–: | :—-: 代码块:2.1. 合理利用代码块有意想不到的效果。3.]]></content>
-      <tags>
-        <tag>工具</tag>
-        <tag>markdown</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[codewars-count_digits]]></title>
     <url>%2F2017%2F03%2F20%2Fcodewars%2F</url>
     <content type="text"><![CDATA[题目 Take an integer n (n &gt;= 0) and a digit d (0 &lt;= d &lt;= 9) as an integer. Square all numbers k (0 &lt;= k &lt;= n) between 0 and n. Count the numbers of digits d used in the writing of all the k* *2. Call nb_dig (or nbDig or …) the function taking n and d as parameters and returning this count. 例子 n = 10, d = 1,the k * k are 0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100 We are using the digit 1 in 1, 16, 81, 100. The total count is then 4.nb_dig(25, 1):the numbers of interest are 1, 4, 9, 10, 11, 12, 13, 14, 19, 21which squared are 1, 16, 81, 100, 121, 144, 169, 196, 361, 441 so there are 11 digits 1 for the squares of numbers between 0 and 25. 分析 给出n和d，求 0 到 n 中间的平方，再求这些平方的平方，问所得的这些数中包含多少个数字d。大概就是先算出这些数字的平方，然后挨个分解求出其中的值。 解题function nbDig(n,d) &#123; var s = &apos;&apos;; for(var i=0;i&lt;=n;i++)&#123; s += Math.pow(i,2); &#125; return s.split(d).length-1&#125; 牢骚篇今天，进了个群，挺多厉害的人，还私聊了一个有很多 offer 的同学。顿时觉得，自己就是渣渣啊，一点信心都没有。还是得加油吧，要学的东西还很多啊。]]></content>
@@ -1691,6 +1693,15 @@
         <tag>编程</tag>
         <tag>js</tag>
         <tag>codewars</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[markdown语法小记]]></title>
+    <url>%2F2017%2F03%2F20%2Fmarkdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[插入表格：1.1. 表格的上下需要空行。空行的多少至关重要 表格中文字居中 在划线部分的划线两端加上”:“ 比如”:—–: | :—-: 代码块:2.1. 合理利用代码块有意想不到的效果。3.]]></content>
+      <tags>
+        <tag>工具</tag>
+        <tag>markdown</tag>
       </tags>
   </entry>
   <entry>

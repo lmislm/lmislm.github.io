@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-05-23T15:38:52.141Z</updated>
+  <updated>2019-05-24T15:25:35.390Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day132-小试牛刀的题目-1</title>
+    <link href="http://lmislm.com/2019/05/24/2019-05-24/"/>
+    <id>http://lmislm.com/2019/05/24/2019-05-24/</id>
+    <published>2019-05-23T16:00:00.000Z</published>
+    <updated>2019-05-24T15:25:35.390Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>一道构造数据结构的题目。<br>src: [{id:1}, {id:1}, {id:2}]<br>tgt: {1: [0,1], 2:[2]}</p><a id="more"></a><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>个人解法。希望以后想出更好的解法。<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">groupByProp</span> (<span class="params">objArray, prop</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> objArray.reduce(<span class="function">(<span class="params">acc, cur, index</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> key = cur[prop]</span><br><span class="line">    <span class="keyword">if</span> (!acc[key]) &#123;</span><br><span class="line">      acc[key] = []</span><br><span class="line">    &#125;</span><br><span class="line">    acc[key].push(index)</span><br><span class="line">    <span class="keyword">return</span> acc</span><br><span class="line">  &#125;, &#123;&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// let data = [&#123;id:1&#125;, &#123;id:1&#125;, &#123;id:2&#125;]</span></span><br><span class="line"><span class="comment">// console.log(groupByProp(data, 'id'))</span></span><br><span class="line"><span class="comment">// &#123; '1': [ 0, 1 ], '2': [ 2 ] &#125;</span></span><br></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;一道构造数据结构的题目。&lt;br&gt;src: [{id:1}, {id:1}, {id:2}]&lt;br&gt;tgt: {1: [0,1], 2:[2]}&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>day131-vuejs源码-数据绑定-3</title>
@@ -301,28 +323,6 @@
   </entry>
   
   <entry>
-    <title>day118-手写简单的函数柯里化-笔记</title>
-    <link href="http://lmislm.com/2019/05/10/2019-05-10/"/>
-    <id>http://lmislm.com/2019/05/10/2019-05-10/</id>
-    <published>2019-05-09T16:00:00.000Z</published>
-    <updated>2019-05-10T15:37:09.628Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>函数柯里化是属于高阶函数中一种常见的技术。特点就是<code>参数复用</code>、<code>提前返回</code>和<code>延迟执行</code>。</p><a id="more"></a><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">curry</span> (<span class="params">fn, args</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> length = fn.length</span><br><span class="line">  <span class="keyword">var</span> args = args || []</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    newArgs = args.concat(<span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>))</span><br><span class="line">    <span class="keyword">if</span> (newArgs.length &lt; length) &#123;</span><br><span class="line">      <span class="keyword">return</span> curry.call(<span class="keyword">this</span>, fn, newArgs)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> fn.apply(<span class="keyword">this</span>, newArgs)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">multiFn</span>(<span class="params">a, b, c</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a * b * c</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> multi = curry(multiFn)</span><br><span class="line"></span><br><span class="line">multi(<span class="number">1</span>)(<span class="number">2</span>)(<span class="number">3</span>)</span><br><span class="line">multi(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line">multi(<span class="number">1</span>)(<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line">multi(<span class="number">1</span>,<span class="number">2</span>)(<span class="number">3</span>)</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;函数柯里化是属于高阶函数中一种常见的技术。特点就是&lt;code&gt;参数复用&lt;/code&gt;、&lt;code&gt;提前返回&lt;/code&gt;和&lt;code&gt;延迟执行&lt;/code&gt;。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
     <title>day119-实现一个instanceOf笔记</title>
     <link href="http://lmislm.com/2019/05/10/2019-05-11/"/>
     <id>http://lmislm.com/2019/05/10/2019-05-11/</id>
@@ -335,6 +335,28 @@
     
       &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;话不多说，这篇是水篇。&lt;/p&gt;
 &lt;h3 id=&quot;代码&quot;&gt;&lt;a href=&quot;#代码&quot; class=&quot;headerlink&quot; title=&quot;代码&quot;&gt;&lt;/a&gt;代码&lt;/h3&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 实现一个instanceOf&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;myInstanceOf&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;left, right&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; proto = left.__proto__&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; prototype = right.prototype&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;while&lt;/span&gt; (&lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (!proto) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (proto === prototype) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    proto === proto.__proto__&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>day118-手写简单的函数柯里化-笔记</title>
+    <link href="http://lmislm.com/2019/05/10/2019-05-10/"/>
+    <id>http://lmislm.com/2019/05/10/2019-05-10/</id>
+    <published>2019-05-09T16:00:00.000Z</published>
+    <updated>2019-05-10T15:37:09.628Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>函数柯里化是属于高阶函数中一种常见的技术。特点就是<code>参数复用</code>、<code>提前返回</code>和<code>延迟执行</code>。</p><a id="more"></a><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">curry</span> (<span class="params">fn, args</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> length = fn.length</span><br><span class="line">  <span class="keyword">var</span> args = args || []</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    newArgs = args.concat(<span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>))</span><br><span class="line">    <span class="keyword">if</span> (newArgs.length &lt; length) &#123;</span><br><span class="line">      <span class="keyword">return</span> curry.call(<span class="keyword">this</span>, fn, newArgs)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> fn.apply(<span class="keyword">this</span>, newArgs)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">multiFn</span>(<span class="params">a, b, c</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a * b * c</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> multi = curry(multiFn)</span><br><span class="line"></span><br><span class="line">multi(<span class="number">1</span>)(<span class="number">2</span>)(<span class="number">3</span>)</span><br><span class="line">multi(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line">multi(<span class="number">1</span>)(<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line">multi(<span class="number">1</span>,<span class="number">2</span>)(<span class="number">3</span>)</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;函数柯里化是属于高阶函数中一种常见的技术。特点就是&lt;code&gt;参数复用&lt;/code&gt;、&lt;code&gt;提前返回&lt;/code&gt;和&lt;code&gt;延迟执行&lt;/code&gt;。&lt;/p&gt;
     
     </summary>
     
@@ -453,29 +475,6 @@
     
       &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;一些实现new运算符的思路整理。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g2qtkmlyotj20e709g75f.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day112-手写原生bind()-2</title>
-    <link href="http://lmislm.com/2019/05/04/2019-05-04/"/>
-    <id>http://lmislm.com/2019/05/04/2019-05-04/</id>
-    <published>2019-05-03T16:00:00.000Z</published>
-    <updated>2019-05-06T14:23:25.560Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>之前实现的bind()，能返回新函数，也能参数传递，实际原生的bind()还能实现<strong>构造函数</strong>的效果。这个用法也是很常用的。其中还涉及到绑定函数时，需要了解<strong>new 的模拟实现</strong>。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g2qtkma14uj20cl09gjrq.jpg" alt=""><br><a id="more"></a></p><blockquote><p>MDN上作为构造函数的绑定函数，如下。</p></blockquote><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// bind() 作为构造函数的绑定函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Point</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.x = x</span><br><span class="line">  <span class="keyword">this</span>.y = y</span><br><span class="line">&#125;</span><br><span class="line">Point.prototype.toString = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; </span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.x + <span class="string">','</span> + <span class="keyword">this</span>.y</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> YAxisPoint = Point.bind(<span class="literal">null</span>, <span class="number">0</span><span class="comment">/*x*/</span>)</span><br><span class="line"><span class="keyword">var</span> axisPoint = <span class="keyword">new</span> YAxisPoint(<span class="number">5</span>)</span><br><span class="line"><span class="keyword">var</span> result = axisPoint.toString()</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(result) <span class="comment">// 0,5</span></span><br></pre></td></tr></table></figure><p>做一些改动。<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 改动</span></span><br><span class="line"><span class="keyword">var</span> contextObj = &#123;</span><br><span class="line">  x: <span class="string">'1'</span>,</span><br><span class="line">  y: <span class="string">'2'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> YAxisPoint2 = Point.bind(contextObj)</span><br><span class="line"><span class="keyword">var</span> result2 = <span class="keyword">new</span> YAxisPoint(<span class="string">'1'</span>, <span class="string">'9'</span>)</span><br><span class="line"><span class="comment">// 绑定的 this 失效</span></span><br><span class="line"><span class="built_in">console</span>.log(YAxisPoint2.x) <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure></p><h3 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h3><p>代码里有些要注意的点。<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="built_in">Function</span>.prototype.myBind = <span class="function"><span class="keyword">function</span> (<span class="params">ct</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> _self = <span class="keyword">this</span></span><br><span class="line">  <span class="keyword">var</span> args = <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>, <span class="number">1</span>)</span><br><span class="line">  <span class="comment">// 原型变量</span></span><br><span class="line">  <span class="keyword">var</span> fNOP = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">var</span> fBound = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 注意：arguments是当前函数的参数</span></span><br><span class="line">    <span class="keyword">var</span> bindArgs = <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>)</span><br><span class="line">    <span class="comment">// fBound做构造函数时，将绑定函数的this指向该实例，让实例获得来自绑定函数的值</span></span><br><span class="line">    <span class="keyword">return</span> _self.apply(fNOP.prototype.isPrototype(<span class="keyword">this</span>) ? <span class="keyword">this</span> : ct, args.concat(bindArgs))</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 实例继承绑定函数原型</span></span><br><span class="line">  <span class="comment">// fBound.prototype = this.prototype</span></span><br><span class="line">  <span class="comment">// 这里args长度会变化？？？</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">this</span>.prototype) &#123;</span><br><span class="line">    <span class="comment">// 维护原型关系，空函数中转</span></span><br><span class="line">    fNOP.protytype = <span class="keyword">this</span>.prototype</span><br><span class="line">  &#125;</span><br><span class="line">  fBound.prototype = <span class="keyword">new</span> fNOP()</span><br><span class="line">  <span class="keyword">return</span> fBound</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>一些细节：<br>    这部分实现创建的绑定函数所有的 length 属性并不是同ECMA-262标准一致的：它创建的函数的 length 是0，而在实际的实现中根据目标函数的 length 和预先指定的参数个数可能会返回非零的 length。</p><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://github.com/mqyqingfeng/Blog/issues/12" target="_blank" rel="noopener">JavaScript深入之bind的模拟实现</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/bind" target="_blank" rel="noopener">MDN(中文版)Function​.prototype​.bind()</a><br><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind" target="_blank" rel="noopener">MDN(英文版)Function​.prototype​.bind()</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;之前实现的bind()，能返回新函数，也能参数传递，实际原生的bind()还能实现&lt;strong&gt;构造函数&lt;/strong&gt;的效果。这个用法也是很常用的。其中还涉及到绑定函数时，需要了解&lt;strong&gt;new 的模拟实现&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g2qtkma14uj20cl09gjrq.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
     
     </summary>
     
