@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[day133-vuejs源码-template编译-笔记]]></title>
+    <url>%2F2019%2F05%2F25%2F2019-05-25%2F</url>
+    <content type="text"><![CDATA[前言包括mount和render方法。 代码const mount = Vue.prototype.$mount/*挂载组件*/Vue.prototype.$mount = function ( el?: string | Element, hydrating?: boolean): Component &#123; el = el &amp;&amp; query(el) /* istanbul ignore if */ if (el === document.body || el === document.documentElement) &#123; process.env.NODE_ENV !== 'production' &amp;&amp; warn( `Do not mount Vue to &lt;html&gt; or &lt;body&gt; - mount to normal elements instead.` ) return this &#125; const options = this.$options // resolve template/el and convert to render function /*处理模板templete，编译成render函数，render不存在的时候才会编译template，否则优先使用render*/ if (!options.render) &#123; let template = options.template /*template存在的时候取template，不存在的时候取el的outerHTML*/ if (template) &#123; /*当template是字符串的时候*/ if (typeof template === 'string') &#123; if (template.charAt(0) === '#') &#123; template = idToTemplate(template) /* istanbul ignore if */ if (process.env.NODE_ENV !== 'production' &amp;&amp; !template) &#123; warn( `Template element not found or is empty: $&#123;options.template&#125;`, this ) &#125; &#125; &#125; else if (template.nodeType) &#123; /*当template为DOM节点的时候*/ template = template.innerHTML &#125; else &#123; /*报错*/ if (process.env.NODE_ENV !== 'production') &#123; warn('invalid template option:' + template, this) &#125; return this &#125; &#125; else if (el) &#123; /*获取element的outerHTML*/ template = getOuterHTML(el) &#125; if (template) &#123; /* istanbul ignore if */ if (process.env.NODE_ENV !== 'production' &amp;&amp; config.performance &amp;&amp; mark) &#123; mark('compile') &#125; /*将template编译成render函数，这里会有render以及staticRenderFns两个返回，这是vue的编译时优化，static静态不需要在VNode更新时进行patch，优化性能*/ const &#123; render, staticRenderFns &#125; = compileToFunctions(template, &#123; shouldDecodeNewlines, delimiters: options.delimiters &#125;, this) options.render = render options.staticRenderFns = staticRenderFns /* istanbul ignore if */ if (process.env.NODE_ENV !== 'production' &amp;&amp; config.performance &amp;&amp; mark) &#123; mark('compile end') measure(`$&#123;this._name&#125; compile`, 'compile', 'compile end') &#125; &#125; &#125; /*Github:https://github.com/answershuto*/ /*调用const mount = Vue.prototype.$mount保存下来的不带编译的mount*/ return mount.call(this, el, hydrating)&#125; 参考聊聊Vue的template编译.MarkDown]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[day132-小试牛刀的题目-1]]></title>
     <url>%2F2019%2F05%2F24%2F2019-05-24%2F</url>
     <content type="text"><![CDATA[前言一道构造数据结构的题目。src: [{id:1}, {id:1}, {id:2}]tgt: {1: [0,1], 2:[2]} 代码个人解法。希望以后想出更好的解法。function groupByProp (objArray, prop) &#123; return objArray.reduce((acc, cur, index) =&gt; &#123; let key = cur[prop] if (!acc[key]) &#123; acc[key] = [] &#125; acc[key].push(index) return acc &#125;, &#123;&#125;)&#125;// let data = [&#123;id:1&#125;, &#123;id:1&#125;, &#123;id:2&#125;]// console.log(groupByProp(data, 'id'))// &#123; '1': [ 0, 1 ], '2': [ 2 ] &#125;]]></content>
@@ -739,7 +750,7 @@
   </entry>
   <entry>
     <title><![CDATA[day64-模板语法]]></title>
-    <url>%2F2019%2F03%2F16%2F2019-03-1111%2F</url>
+    <url>%2F2019%2F03%2F16%2F2019-03-16%2F</url>
     <content type="text"><![CDATA[背景vuejs项目中有个需求，在notification消息提示中某个部分需要有点击事件。UI用的element。想到用模板的方法来构造。 element-ui Notification onClick 触发方式组件中有两种触发的方式，但是都没有很好的满足需求。 点击时触发this.$notify.warning(&#123; dangerouslyUseHTMLString: true, duration: 0, message: `$&#123;this.createdFailedMember&#125;个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`, onClick: function () &#123; console.log(1) &#125;&#125;) 创建时触发this.$notify.warning(&#123; dangerouslyUseHTMLString: true, duration: 0, message: `$&#123;this.createdFailedMember&#125;个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`, onClick: (function () &#123; console.log(1) &#125;)()&#125;) 渲染函数比较灵活的render 函数。非常好用，但是没有模板语法那么简洁。this.$notify.warning(&#123;message: h( 'div', &#123; style: &#123;display: 'inline-block'&#125; &#125;, [ h('span', `$&#123;this.createdFailedMember&#125;个成员创建失败！`), h('a', &#123; style: &#123;color: '#409EFF', cursor: 'pointer', 'text-decoration': 'underline'&#125;, on: &#123; click: this.clickNotificationMsg &#125; &#125;, '前往查看') ])&#125;)]]></content>
       <categories>
         <category>技术</category>
@@ -750,7 +761,7 @@
   </entry>
   <entry>
     <title><![CDATA[day64-模板语法]]></title>
-    <url>%2F2019%2F03%2F16%2F2019-03-16%2F</url>
+    <url>%2F2019%2F03%2F16%2F2019-03-1111%2F</url>
     <content type="text"><![CDATA[背景vuejs项目中有个需求，在notification消息提示中某个部分需要有点击事件。UI用的element。想到用模板的方法来构造。 element-ui Notification onClick 触发方式组件中有两种触发的方式，但是都没有很好的满足需求。 点击时触发this.$notify.warning(&#123; dangerouslyUseHTMLString: true, duration: 0, message: `$&#123;this.createdFailedMember&#125;个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`, onClick: function () &#123; console.log(1) &#125;&#125;) 创建时触发this.$notify.warning(&#123; dangerouslyUseHTMLString: true, duration: 0, message: `$&#123;this.createdFailedMember&#125;个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`, onClick: (function () &#123; console.log(1) &#125;)()&#125;) 渲染函数比较灵活的render 函数。非常好用，但是没有模板语法那么简洁。this.$notify.warning(&#123;message: h( 'div', &#123; style: &#123;display: 'inline-block'&#125; &#125;, [ h('span', `$&#123;this.createdFailedMember&#125;个成员创建失败！`), h('a', &#123; style: &#123;color: '#409EFF', cursor: 'pointer', 'text-decoration': 'underline'&#125;, on: &#123; click: this.clickNotificationMsg &#125; &#125;, '前往查看') ])&#125;)]]></content>
       <categories>
         <category>技术</category>
@@ -1683,6 +1694,15 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[markdown语法小记]]></title>
+    <url>%2F2017%2F03%2F20%2Fmarkdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[插入表格：1.1. 表格的上下需要空行。空行的多少至关重要 表格中文字居中 在划线部分的划线两端加上”:“ 比如”:—–: | :—-: 代码块:2.1. 合理利用代码块有意想不到的效果。3.]]></content>
+      <tags>
+        <tag>工具</tag>
+        <tag>markdown</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[codewars-count_digits]]></title>
     <url>%2F2017%2F03%2F20%2Fcodewars%2F</url>
     <content type="text"><![CDATA[题目 Take an integer n (n &gt;= 0) and a digit d (0 &lt;= d &lt;= 9) as an integer. Square all numbers k (0 &lt;= k &lt;= n) between 0 and n. Count the numbers of digits d used in the writing of all the k* *2. Call nb_dig (or nbDig or …) the function taking n and d as parameters and returning this count. 例子 n = 10, d = 1,the k * k are 0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100 We are using the digit 1 in 1, 16, 81, 100. The total count is then 4.nb_dig(25, 1):the numbers of interest are 1, 4, 9, 10, 11, 12, 13, 14, 19, 21which squared are 1, 16, 81, 100, 121, 144, 169, 196, 361, 441 so there are 11 digits 1 for the squares of numbers between 0 and 25. 分析 给出n和d，求 0 到 n 中间的平方，再求这些平方的平方，问所得的这些数中包含多少个数字d。大概就是先算出这些数字的平方，然后挨个分解求出其中的值。 解题function nbDig(n,d) &#123; var s = &apos;&apos;; for(var i=0;i&lt;=n;i++)&#123; s += Math.pow(i,2); &#125; return s.split(d).length-1&#125; 牢骚篇今天，进了个群，挺多厉害的人，还私聊了一个有很多 offer 的同学。顿时觉得，自己就是渣渣啊，一点信心都没有。还是得加油吧，要学的东西还很多啊。]]></content>
@@ -1693,15 +1713,6 @@
         <tag>编程</tag>
         <tag>js</tag>
         <tag>codewars</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[markdown语法小记]]></title>
-    <url>%2F2017%2F03%2F20%2Fmarkdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[插入表格：1.1. 表格的上下需要空行。空行的多少至关重要 表格中文字居中 在划线部分的划线两端加上”:“ 比如”:—–: | :—-: 代码块:2.1. 合理利用代码块有意想不到的效果。3.]]></content>
-      <tags>
-        <tag>工具</tag>
-        <tag>markdown</tag>
       </tags>
   </entry>
   <entry>
