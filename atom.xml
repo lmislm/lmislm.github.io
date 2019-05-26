@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-05-25T15:29:40.736Z</updated>
+  <updated>2019-05-26T15:37:14.881Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day134-LeetCode 292. Nim Game</title>
+    <link href="http://lmislm.com/2019/05/26/2019-05-26%E3%80%81/"/>
+    <id>http://lmislm.com/2019/05/26/2019-05-26、/</id>
+    <published>2019-05-25T16:00:00.000Z</published>
+    <updated>2019-05-26T15:37:14.881Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>（动态规划）<br>You are playing the following Nim Game with your friend: There is a heap of stones on the table, each time one of you take turns to remove 1 to 3 stones. The one who removes the last stone will be the winner. You will take the first turn to remove the stones.<br>Both of you are very clever and have optimal strategies for the game. Write a function to determine whether you can win the game given the number of stones in the heap.<br>For example, if there are 4 stones in the heap, then you will never win the game: no matter 1, 2, or 3 stones you remove, the last stone will always be removed by your friend.</p><a id="more"></a><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>动态规划的话。先逐步分析。先分析可能的情况。</p><blockquote><p><code>剩下1-3个石头，我赢。</code><br><code>剩下4个石头，我先拿1-3个，输。</code><br><code>剩下5个石头，我先拿1个，然后剩下4个轮到他先，我赢。先拿2-3个的话，我输。</code><br><code>剩下6个石头，我先拿1个，回到上一步5个石头他先。我先拿两个，就是4个石头他先，他输。</code><br><code>剩下7个石头，我先拿1个，回到上一步6个石头他先拿，他拿两个的话就回到5个石头情况，他赢。我拿3个才能到状态4个石头他先拿，他输。</code><br>所以，我得想办法让他面前的石头数量到4个石头，这样有5-7个石头时我先拿的话都可以赢。<br>如果是8个石头,我先拿至少一个，剩下5-6个石头他先拿，只要他让我面前剩下4个，他就有优势，我都会输。</p></blockquote><p>4和8为倍数关系。归纳总结出初步结论，有可能是4的倍数的时候，我先拿就输。</p><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">canFirstWinNimGame</span> (<span class="params">sum</span>) </span>&#123;</span><br><span class="line"><span class="keyword">if</span> (sum &lt; <span class="number">4</span>) &#123; <span class="comment">// 1-3的整数，先拿肯定赢</span></span><br><span class="line"><span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> n%<span class="number">4</span> !== <span class="number">0</span> <span class="comment">// 剩下的总数是4的倍数时，先拿肯定输</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h3&gt;&lt;p&gt;（动态规划）&lt;br&gt;You are playing the following Nim Game with your friend: There is a heap of stones on the table, each time one of you take turns to remove 1 to 3 stones. The one who removes the last stone will be the winner. You will take the first turn to remove the stones.&lt;br&gt;Both of you are very clever and have optimal strategies for the game. Write a function to determine whether you can win the game given the number of stones in the heap.&lt;br&gt;For example, if there are 4 stones in the heap, then you will never win the game: no matter 1, 2, or 3 stones you remove, the last stone will always be removed by your friend.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="acm" scheme="http://lmislm.com/tags/acm/"/>
+    
+  </entry>
   
   <entry>
     <title>day133-vuejs源码-template编译-笔记</title>
@@ -446,34 +468,6 @@
     
       &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;源起：&lt;/strong&gt;&lt;br&gt;同页面组件间通信使用事件监听和派发的方式，而不是直接相互调用组件方法。用[订阅发布模式]，保证组件的独立性和降低组件间耦合度。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://i.loli.net/2019/05/07/5cd1a8d874919.jpg&quot; alt=&quot;&quot;&gt;·&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day114-实现new运算符（2）</title>
-    <link href="http://lmislm.com/2019/05/06/2019-05-06/"/>
-    <id>http://lmislm.com/2019/05/06/2019-05-06/</id>
-    <published>2019-05-05T16:00:00.000Z</published>
-    <updated>2019-05-08T14:40:14.398Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>new 模拟实现大致思路：</p><ol><li>建立一个新对象</li><li>通过<code>new</code>创建的每个对象将最终被<code>[[Prototype]]</code>链接到这个函数的<code>prototype</code>对象上</li><li>实例可以访问原型上的属性</li></ol><h4 id="原型的知识复习"><a href="#原型的知识复习" class="headerlink" title="原型的知识复习"></a>原型的知识复习</h4><p><strong>[[prototype]] 是什么？</strong><br>JavaScript中的对象，都有一个特殊的[[prototype]]内置属性，其实就是对于其他对象的引用。（你不知道的JavaScript-上卷-第五章）<br><a id="more"></a><br><strong>__proto__ 是什么？</strong><br>__proto__ ，绝大部分浏览器都支持这个非标准的方法访问原型，然而它并不存在于 Person.prototype 中，实际上，它是来自于 Object.prototype ，与其说是一个属性，不如说是一个 getter/setter，当使用 obj.__proto__ 时，可以理解成返回了 Object.getPrototypeOf(obj)。<br><strong>new.target 是什么？</strong><br>new.target属性允许你检测函数或构造方法是否是通过new运算符被调用的。在通过new运算符被初始化的函数或构造方法中，new.target返回一个指向构造方法或函数的引用。在普通的函数调用中，new.target 的值是undefined。</p><p>原型关系图：</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fytrxmsbzsj20eg0gbq6u.jpg" alt=""></p><h3 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myObjectFactory</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> Constructor = [].shift.call(<span class="built_in">arguments</span>) <span class="comment">// 取外部传入的构造器</span></span><br><span class="line">  <span class="keyword">var</span> newObj = <span class="built_in">Object</span>.create(Constructor.prototype)</span><br><span class="line">  <span class="comment">// newObj也可以这么写</span></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * var obj = new Object()</span></span><br><span class="line"><span class="comment">   * obj.__proto__ = Constructor.prototype</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="keyword">var</span> ctorResult = Constructor.apply(newObj, <span class="built_in">arguments</span>)</span><br><span class="line">  <span class="comment">// 判断返回的值是不是一个对象，如果是一个对象，则返回对象</span></span><br><span class="line">  <span class="comment">// 注意：判ctorResult是否空</span></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">typeof</span> ctorResult === <span class="string">'object'</span> ? ctorResult||newObj : newObj</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>另外一种实现<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">unction New(func) &#123;</span><br><span class="line">    <span class="keyword">var</span> res = &#123;&#125;;</span><br><span class="line">    <span class="keyword">if</span> (func.prototype !== <span class="literal">null</span>) &#123;</span><br><span class="line">        res.__proto__ = func.prototype;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> ret = func.apply(res, <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>, <span class="number">1</span>));</span><br><span class="line">    <span class="keyword">if</span> ((<span class="keyword">typeof</span> ret === <span class="string">"object"</span> || <span class="keyword">typeof</span> ret === <span class="string">"function"</span>) &amp;&amp; ret !== <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj = New(A, <span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line"><span class="comment">// equals to</span></span><br><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> A(<span class="number">1</span>, <span class="number">2</span>);</span><br></pre></td></tr></table></figure></p><p>引自：<a href="https://juejin.im/post/5c9c3989e51d454e3a3902b6#heading-1" target="_blank" rel="noopener">实现一个new操作符</a></p><h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 测试用例-1</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Test</span> (<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name</span><br><span class="line">  <span class="keyword">this</span>.habit = <span class="string">'Games'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Test.prototype.age = <span class="number">22</span></span><br><span class="line"></span><br><span class="line">Test.prototype.sayYourName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'I am '</span> + <span class="keyword">this</span>.name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> person = myObjectFactory(Test, <span class="string">'zhangsan'</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(person.name) <span class="comment">// zhangsan</span></span><br><span class="line"><span class="built_in">console</span>.log(person.habit) <span class="comment">// Games</span></span><br><span class="line"><span class="built_in">console</span>.log(person.age) <span class="comment">// 22</span></span><br><span class="line"></span><br><span class="line">person.sayYourName() <span class="comment">// I am zhangsan</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 测试用例-2 虚实__proto__(Object.create(null))</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Otaku</span> (<span class="params">age</span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">Otaku.prototype.sayHello = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'hello'</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> person = myObjectFactory(Otaku, <span class="string">'Kevin'</span>, <span class="string">'18'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(person) <span class="comment">// Otaku &#123;&#125;</span></span><br><span class="line">person.sayHello() <span class="comment">// hello</span></span><br></pre></td></tr></table></figure><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://github.com/mqyqingfeng/Blog/issues/13" target="_blank" rel="noopener">JavaScript深入之new的模拟实现</a><br><a href="https://www.zhihu.com/question/34183746" target="_blank" rel="noopener">js中_proto_和prototype的区别和关系？</a><br><a href="https://lmislm.com//2019/01/10/2019-01-10/#%E8%A1%A5%E5%85%85">怎么实现new</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/new.target" target="_blank" rel="noopener">new​.target</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;new 模拟实现大致思路：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;建立一个新对象&lt;/li&gt;
-&lt;li&gt;通过&lt;code&gt;new&lt;/code&gt;创建的每个对象将最终被&lt;code&gt;[[Prototype]]&lt;/code&gt;链接到这个函数的&lt;code&gt;prototype&lt;/code&gt;对象上&lt;/li&gt;
-&lt;li&gt;实例可以访问原型上的属性&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h4 id=&quot;原型的知识复习&quot;&gt;&lt;a href=&quot;#原型的知识复习&quot; class=&quot;headerlink&quot; title=&quot;原型的知识复习&quot;&gt;&lt;/a&gt;原型的知识复习&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;[[prototype]] 是什么？&lt;/strong&gt;&lt;br&gt;JavaScript中的对象，都有一个特殊的[[prototype]]内置属性，其实就是对于其他对象的引用。（你不知道的JavaScript-上卷-第五章）&lt;br&gt;
     
     </summary>
     
