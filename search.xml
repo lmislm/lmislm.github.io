@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[day136-LeetCode 226. Invert Binary Tree]]></title>
+    <url>%2F2019%2F05%2F28%2F2019-05-28%2F</url>
+    <content type="text"><![CDATA[题目Invert a binary tree.反转二叉树输入 4 / \ 2 7 / \ / \1 3 6 9反转 4 / \ 7 2 / \ / \9 6 3 1 分析对树进行广度遍历，过程中左右节点进行交换，单节点则跳过。 题解function invert (treeNode) &#123; // 单节点跳过 if(treeNode === null || (treeNode.right === null &amp;&amp; treeNode.left === null))&#123; return treeNode &#125; // 相互交换，并递归 let temp = treeNode.left treeNode.left = invertTree(treeNode.right) treeNode.right = invertTree(temp) return treeNode&#125;]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>acm</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[day135-Maximum Depth of Binary Tree]]></title>
     <url>%2F2019%2F05%2F27%2F2019-05-27%2F</url>
     <content type="text"><![CDATA[题目Given a binary tree, find its maximum depth.The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node. 分析就是判断二叉树的左右子树有没有值，有值的话就继续往下走。 题解function binaryTreeMaxDepth (root) &#123; return find (root) function find (node)&#123; // 判断节点为空或者到底部，即没有左右子树 if(node === null)&#123; return 0 &#125; let treeLeftDepth = 1 let treeRightDepth = 1 if(node.left !== null)&#123; // 递归 treeLeftDepth += find(node.left) &#125; if(node.right !== null)&#123; treeRightDepth += find(node.right) &#125; // 比较左右子树层数大小 return treeLeftDepth &gt; treeRightDepth ? treeLeftDepth : treeRightDepth &#125;&#125;]]></content>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-05-27T14:11:33.754Z</updated>
+  <updated>2019-05-28T15:58:12.921Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day136-LeetCode 226. Invert Binary Tree</title>
+    <link href="http://lmislm.com/2019/05/28/2019-05-28/"/>
+    <id>http://lmislm.com/2019/05/28/2019-05-28/</id>
+    <published>2019-05-27T16:00:00.000Z</published>
+    <updated>2019-05-28T15:58:12.921Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>Invert a binary tree.<br>反转二叉树<br>输入<br>     4<br>   /   \<br>  2     7<br> / \   / \<br>1   3 6   9<br>反转<br>     4<br>   /   \<br>  7     2<br> / \   / \<br>9  6 3   1</p><a id="more"></a><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>对树进行广度遍历，过程中左右节点进行交换，单节点则跳过。</p><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">invert</span> (<span class="params">treeNode</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 单节点跳过</span></span><br><span class="line">  <span class="keyword">if</span>(treeNode === <span class="literal">null</span> || (treeNode.right === <span class="literal">null</span> &amp;&amp; treeNode.left === <span class="literal">null</span>))&#123;</span><br><span class="line">    <span class="keyword">return</span> treeNode</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 相互交换，并递归</span></span><br><span class="line">  <span class="keyword">let</span> temp = treeNode.left</span><br><span class="line">  treeNode.left = invertTree(treeNode.right)</span><br><span class="line">  treeNode.right = invertTree(temp)</span><br><span class="line">  <span class="keyword">return</span> treeNode</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h3&gt;&lt;p&gt;Invert a binary tree.&lt;br&gt;反转二叉树&lt;br&gt;输入&lt;br&gt;     4&lt;br&gt;   /   \&lt;br&gt;  2     7&lt;br&gt; / \   / \&lt;br&gt;1   3 6   9&lt;br&gt;反转&lt;br&gt;     4&lt;br&gt;   /   \&lt;br&gt;  7     2&lt;br&gt; / \   / \&lt;br&gt;9  6 3   1&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="acm" scheme="http://lmislm.com/tags/acm/"/>
+    
+  </entry>
   
   <entry>
     <title>day135-Maximum Depth of Binary Tree</title>
@@ -445,28 +467,6 @@
     <summary type="html">
     
       &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;其实就是一个apply调用。非常简单。重点是理解防抖和节流这两个概念吧。&lt;br&gt;首次事件发生之后，需要&lt;strong&gt;延迟(wait)时间&lt;/strong&gt;处理。&lt;br&gt;延迟时间段内有第二次事件，则以第二次事件为准&lt;strong&gt;延迟处理&lt;/strong&gt;。&lt;br&gt;知道最后一次时间段内没有事件，则执行最后一次。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day116-手写JSON.stringify</title>
-    <link href="http://lmislm.com/2019/05/08/2019-05-08/"/>
-    <id>http://lmislm.com/2019/05/08/2019-05-08/</id>
-    <published>2019-05-07T16:00:00.000Z</published>
-    <updated>2019-05-09T15:25:34.205Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>没啥可说的，这篇比较水。<br><code>JSON.stringify(value[, replacer [, space]])</code></p><a id="more"></a><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">jsonStringify</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> type = <span class="keyword">typeof</span> obj</span><br><span class="line">  <span class="keyword">if</span> (type !== <span class="string">"object"</span>) &#123;</span><br><span class="line">    <span class="comment">// undefined 什么的会被忽略，循环引用也会被忽略</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="regexp">/string|undefined|function/</span>.test(type)) &#123;</span><br><span class="line">      obj = <span class="string">'"'</span> + obj + <span class="string">'"'</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">String</span>(obj)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> json = []</span><br><span class="line">    <span class="keyword">let</span> arr = <span class="built_in">Array</span>.isArray(obj)</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> k <span class="keyword">in</span> obj) &#123;</span><br><span class="line">      <span class="keyword">let</span> v = obj[k]</span><br><span class="line">      <span class="keyword">let</span> type = <span class="keyword">typeof</span> v</span><br><span class="line">      <span class="keyword">if</span> (<span class="regexp">/string|undefined|function/</span>.test(type)) &#123;</span><br><span class="line">        v = <span class="string">'"'</span> + v + <span class="string">'"'</span></span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (type === <span class="string">"object"</span>) &#123;</span><br><span class="line">        v = jsonStringify(v)</span><br><span class="line">      &#125;</span><br><span class="line">      json.push((arr ? <span class="string">""</span> : <span class="string">'"'</span> + k + <span class="string">'":'</span>) + <span class="built_in">String</span>(v))</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> (arr ? <span class="string">"["</span> : <span class="string">"&#123;"</span>) + <span class="built_in">String</span>(json) + (arr ? <span class="string">"]"</span> : <span class="string">"&#125;"</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://juejin.im/post/5c9c3989e51d454e3a3902b6#heading-1" target="_blank" rel="noopener">JavaScript手写代码无敌秘籍</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;没啥可说的，这篇比较水。&lt;br&gt;&lt;code&gt;JSON.stringify(value[, replacer [, space]])&lt;/code&gt;&lt;/p&gt;
     
     </summary>
     
