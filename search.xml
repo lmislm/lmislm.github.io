@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[day139-LeetCode 101. Symmetric Tree]]></title>
+    <url>%2F2019%2F05%2F31%2F2019-05-31%2F</url>
+    <content type="text"><![CDATA[题目Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center). For example, this binary tree [1,2,2,3,4,4,3] is symmetric: But the following [1,2,2,null,3,null,3] is not 1 / \ 2 2 / \ / \3 4 4 3把左子树反转就是右子树 分析这题是反转二叉树和比较二叉树相同的结合 先反转二叉树 比较反转后的二叉树是否相等 题解function isSymmetricTree (root) &#123; if (root === null || root.right === null || root.left === null) &#123; return true &#125; // 反转 root.left = revertTree(root.right) return isSameTree(root.left, root.right)&#125;function revertTree(node) &#123; if(node == null || node.left == null &amp;&amp; node.right == null) &#123; return node &#125; let temp = revertTree(node.left) node.left = revertTree(node.right) node.right = temp return node&#125;function isSameTree (leftNode, rightNode) &#123; // 空节点，递归结束 if (leftNode === null || rightNode === null) &#123; return true &#125; // 左右子树有一个为空 if (leftNode === null &amp;&amp; rightNode !== null || leftNode !== null &amp;&amp; rightNode === null) &#123; return false &#125; // 判断非空节点是否相等 if (leftNode !== rightNode) &#123; return false &#125; // 递归 return isSameTree(leftNode.right, rightNode.right) &amp;&amp; isSameTree(leftNode.left, rightNode.left)&#125;]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>acm</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[day138-LeetCode 235. Lowest Common Ancestor of a Binary Search]]></title>
     <url>%2F2019%2F05%2F30%2F2019-05-30%2F</url>
     <content type="text"><![CDATA[题目LeetCode 235. Lowest Common Ancestor of a Binary SearchGiven a binary search tree (BST), find the lowest common ancestor (LCA) of two given nodes in the BST.According to the definition of LCA on Wikipedia: “The lowest common ancestor is defined between two nodes v and w as the lowest node in T that has both v and w as descendants (where we allow a node to be a descendant of itself).” _6_ / \ 2 8 / \ / \ 0 4 7 9 / \3 5 For example, the lowest common ancestor (LCA) of nodes 2 and 8 is 6. Another example is LCA of nodes 2 and 4 is 2, since a node can be a descendant of itself according to the LCA definition. 分析注意这颗是中序遍历的二叉树，左子树节点值小于根节点值小于右子树节点值。 题解function lowestCommonAncestor (root, p, q) &#123; while(true)&#123; let value = root.val if(p.val &gt;= value &amp;&amp; value &gt;= q.val || p.val &lt;= value &amp;&amp; value &lt;= q.val)&#123; return root &#125; else if(p.val &gt; value &amp;&amp; q.val &gt; value)&#123; root = root.right &#125; else &#123; root = root.left &#125; &#125;&#125;]]></content>
