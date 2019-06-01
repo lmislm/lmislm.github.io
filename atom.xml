@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-05-31T14:44:38.015Z</updated>
+  <updated>2019-06-01T15:48:00.693Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day140-LeetCode 206. Reverse Linked List</title>
+    <link href="http://lmislm.com/2019/06/01/2019-06-01/"/>
+    <id>http://lmislm.com/2019/06/01/2019-06-01/</id>
+    <published>2019-05-31T16:00:00.000Z</published>
+    <updated>2019-06-01T15:48:00.693Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>Reverse a singly linked list.<br>{ val:1, next: {val:2, next:null} } }<br>{ val:2, next: {val:1, next:null} } }</p><a id="more"></a><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>链表反转</p><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverseList</span> (<span class="params">head</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!head) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (!head.next) &#123;</span><br><span class="line">    <span class="keyword">return</span> head</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> prev = head</span><br><span class="line">  <span class="keyword">let</span> cur  = head.next</span><br><span class="line">  prev.next = <span class="literal">null</span></span><br><span class="line">  <span class="keyword">while</span> (cur !== <span class="literal">null</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> temp = cur</span><br><span class="line">    <span class="comment">// 当前node指向下一个，不然会被后面操作影响</span></span><br><span class="line">    cur = cur.next</span><br><span class="line">    <span class="comment">// 只需要当前node的值，不需要他的next，temp.next = null</span></span><br><span class="line">    <span class="comment">// 之前的linked list加到当前node后面， temp.next = prev</span></span><br><span class="line">    temp.next = prev </span><br><span class="line">    prev = temp</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> prev</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h3&gt;&lt;p&gt;Reverse a singly linked list.&lt;br&gt;{ val:1, next: {val:2, next:null} } }&lt;br&gt;{ val:2, next: {val:1, next:null} } }&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="acm" scheme="http://lmislm.com/tags/acm/"/>
+    
+  </entry>
   
   <entry>
     <title>day139-LeetCode 101. Symmetric Tree</title>
@@ -448,28 +470,6 @@
       
         &lt;h3 id=&quot;代码&quot;&gt;&lt;a href=&quot;#代码&quot; class=&quot;headerlink&quot; title=&quot;代码&quot;&gt;&lt;/a&gt;代码&lt;/h3&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;sp
       
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day120-js深拷贝</title>
-    <link href="http://lmislm.com/2019/05/12/2019-05-12/"/>
-    <id>http://lmislm.com/2019/05/12/2019-05-12/</id>
-    <published>2019-05-11T16:00:00.000Z</published>
-    <updated>2019-05-12T15:29:12.172Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>来一个js的深拷贝，和JSON.stringify实现的还是有点区别的。</p><a id="more"></a><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepCopy</span>(<span class="params">obj</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//判断是否是简单数据类型，</span></span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span> obj == <span class="string">"object"</span>)&#123;</span><br><span class="line">        <span class="comment">//复杂数据类型</span></span><br><span class="line">        <span class="keyword">var</span> result = obj.constructor == <span class="built_in">Array</span> ? [] : &#123;&#125;;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">in</span> obj)&#123;</span><br><span class="line">            result[i] = <span class="keyword">typeof</span> obj[i] == <span class="string">"object"</span> ? deepCopy(obj[i]) : obj[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">//简单数据类型 直接 == 赋值</span></span><br><span class="line">        <span class="keyword">var</span> result = obj;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;来一个js的深拷贝，和JSON.stringify实现的还是有点区别的。&lt;/p&gt;
     
     </summary>
     
