@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-06-01T15:48:00.693Z</updated>
+  <updated>2019-06-02T06:56:33.472Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day141-LeetCode 110. Balanced Binary Tree</title>
+    <link href="http://lmislm.com/2019/06/02/2019-06-02/"/>
+    <id>http://lmislm.com/2019/06/02/2019-06-02/</id>
+    <published>2019-06-01T16:00:00.000Z</published>
+    <updated>2019-06-02T06:56:33.472Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>Given a binary tree, determine if it is height-balanced.<br>For this problem, a height-balanced binary tree is defined as a binary tree in which the depth of the two subtrees of every node never differ by more than 1.</p><a id="more"></a><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>求左右子树的最大深度<br>即：左右子树的高度差为0</p><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isBalanceTree</span> (<span class="params">root</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (root === <span class="literal">null</span> || (root.left === <span class="literal">null</span> &amp;&amp; root.right === <span class="literal">null</span>)) <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment">// 分别找出左右子树深度</span></span><br><span class="line">  <span class="keyword">let</span> deepLeft = findDeepth (root.left)</span><br><span class="line">  <span class="keyword">let</span> deepRight = findDeepth (root.right)</span><br><span class="line">  <span class="comment">// 是否是平衡树</span></span><br><span class="line">  <span class="keyword">let</span> isBalance = <span class="built_in">Math</span>.abs(deepLeft - deepRight) &lt; <span class="number">1</span></span><br><span class="line">  <span class="keyword">return</span> isBalance &amp;&amp; isBalanceTree(root.left) &amp;&amp; isBalanceTree(root.right)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">findDeepth</span> (<span class="params">root</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (root === <span class="literal">null</span>) <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">  <span class="keyword">let</span> deepLeftDeepth = findDeepth(root.left) + <span class="number">1</span></span><br><span class="line">  <span class="keyword">let</span> deepRightDeepth = findDeepth(root.right) + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> deepLeftDeepth &gt; deepRightDeepth ? deepLeftDeepth : deepRightDeepth</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h3&gt;&lt;p&gt;Given a binary tree, determine if it is height-balanced.&lt;br&gt;For this problem, a height-balanced binary tree is defined as a binary tree in which the depth of the two subtrees of every node never differ by more than 1.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="acm" scheme="http://lmislm.com/tags/acm/"/>
+    
+  </entry>
   
   <entry>
     <title>day140-LeetCode 206. Reverse Linked List</title>
@@ -445,31 +467,6 @@
     <summary type="html">
     
       &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;题目：&lt;code&gt;随机生成一个长度为 10 的整数类型的数组，例如 [2, 10, 3, 4, 5, 11, 10, 11, 20]，将其排列成一个新数组，要求新数组形式如下，例如 [[2, 3, 4, 5], [10, 11], [20]]。&lt;/code&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day121-数组扁平化-去重-升序</title>
-    <link href="http://lmislm.com/2019/05/13/2019-05-13/"/>
-    <id>http://lmislm.com/2019/05/13/2019-05-13/</id>
-    <published>2019-05-12T16:00:00.000Z</published>
-    <updated>2019-05-13T15:27:18.495Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Array</span>.from(<span class="keyword">new</span> <span class="built_in">Set</span>(arr.flat(<span class="literal">Infinity</span>))).sort(<span class="function">(<span class="params">a,b</span>)=&gt;</span>&#123; <span class="keyword">return</span> a-b&#125;)</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;代码&quot;&gt;&lt;a href=&quot;#代码&quot; class=&quot;headerlink&quot; title=&quot;代码&quot;&gt;&lt;/a&gt;代码&lt;/h3&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;sp
-      
     
     </summary>
     
