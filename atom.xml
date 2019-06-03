@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-06-02T06:56:33.472Z</updated>
+  <updated>2019-06-03T15:32:01.381Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day142-LeetCode 171. Excel Sheet Column Number</title>
+    <link href="http://lmislm.com/2019/06/03/2019-06-03/"/>
+    <id>http://lmislm.com/2019/06/03/2019-06-03/</id>
+    <published>2019-06-02T16:00:00.000Z</published>
+    <updated>2019-06-03T15:32:01.381Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>Related to question Excel Sheet Column Title<br>Given a column title as appear in an Excel sheet, return its corresponding column number.</p><a id="more"></a><p>For example:<br>A -&gt; 1<br>B -&gt; 2<br>C -&gt; 3<br>…<br>Z -&gt; 26<br>AA -&gt; 27<br>AB -&gt; 28 </p><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>总共26个字母，所以这个也可以算是26进制。</p><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">titleToNumber</span> (<span class="params">s</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> sum = <span class="number">0</span></span><br><span class="line">  <span class="keyword">let</span> exp = <span class="number">0</span></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i = s.length <span class="number">-1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">      <span class="comment">// 转成数字</span></span><br><span class="line">      <span class="keyword">let</span> v = s.charCodeAt(i) - <span class="number">64</span></span><br><span class="line">      <span class="comment">// 毎多一个代表26的n次方</span></span><br><span class="line">      v = v * <span class="built_in">Math</span>.pow(<span class="number">26</span>,exp++)</span><br><span class="line">      sum += v</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> sum    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h3&gt;&lt;p&gt;Related to question Excel Sheet Column Title&lt;br&gt;Given a column title as appear in an Excel sheet, return its corresponding column number.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="acm" scheme="http://lmislm.com/tags/acm/"/>
+    
+  </entry>
   
   <entry>
     <title>day141-LeetCode 110. Balanced Binary Tree</title>
@@ -445,28 +467,6 @@
       
         &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;某公司 1 到 12 月份的销售额存在一个对象里面，如下：&lt;code&gt;{1:222, 2:123, 5:888}&lt;/code&gt;，请把数据处理
       
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day122-随机生成数组</title>
-    <link href="http://lmislm.com/2019/05/14/2019-05-14/"/>
-    <id>http://lmislm.com/2019/05/14/2019-05-14/</id>
-    <published>2019-05-13T16:00:00.000Z</published>
-    <updated>2019-05-14T15:58:42.349Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>题目：<code>随机生成一个长度为 10 的整数类型的数组，例如 [2, 10, 3, 4, 5, 11, 10, 11, 20]，将其排列成一个新数组，要求新数组形式如下，例如 [[2, 3, 4, 5], [10, 11], [20]]。</code></p><a id="more"></a><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * ---</span></span><br><span class="line"><span class="comment"> * 随机生成一个长度为 10 的整数类型的数组，</span></span><br><span class="line"><span class="comment"> * 例如 [2, 10, 3, 4, 5, 11, 10, 11, 20]，</span></span><br><span class="line"><span class="comment"> * 将其排列成一个新数组，要求新数组形式如下，</span></span><br><span class="line"><span class="comment"> * 例如 [[2, 3, 4, 5], [10, 11], [20]]</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">// 1. 生成两位整数,各个数生成的概率接近相等。（有问题，81-100之间的数有问题？）</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getRandomIntDouble</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> randomIntSingle = (<span class="built_in">Math</span>.random() * <span class="number">10</span>).toFixed(<span class="number">0</span>)</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Math</span>.pow(randomIntSingle, <span class="number">2</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 2. 生成一个长度为10的随机数数组</span></span><br><span class="line"><span class="comment">// let randomIntArr = Array.from(&#123;length: 10&#125;, _ =&gt; getRandomIntDouble())</span></span><br><span class="line"><span class="keyword">let</span> randomIntArr = [...Array(<span class="number">10</span>)].map(<span class="function"><span class="params">_</span> =&gt;</span> getRandomIntDouble())</span><br><span class="line"><span class="comment">// 3. 去重</span></span><br><span class="line"><span class="keyword">let</span> uniqueArr = <span class="built_in">Array</span>.from(<span class="keyword">new</span> <span class="built_in">Set</span>(randomIntArr))</span><br><span class="line"><span class="comment">// 4. 排序</span></span><br><span class="line"><span class="keyword">let</span> sortedUniqueArr = uniqueArr.sort(<span class="function">(<span class="params">a, b</span>) =&gt;</span> a - b)</span><br><span class="line"><span class="comment">// 5. 新数组，0~10,10~20...80~99各占一个数组</span></span><br><span class="line"><span class="comment">// ----</span></span><br><span class="line"><span class="keyword">let</span> obj = &#123;&#125;;</span><br><span class="line">sortedUniqueArr.map(<span class="function">(<span class="params">i</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> intNum = <span class="built_in">Math</span>.floor(i/<span class="number">10</span>);</span><br><span class="line">    <span class="keyword">if</span> (!obj[intNum]) obj[intNum] = [];</span><br><span class="line">    obj[intNum].push(i);</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 输出结果</span></span><br><span class="line"><span class="keyword">const</span> resArr = [];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">in</span> obj) &#123;</span><br><span class="line">    resArr.push(obj[i]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(resArr)</span><br></pre></td></tr></table></figure><p><a href="https://stackoverflow.com/questions/5836833/create-a-array-with-random-values" target="_blank" rel="noopener">Create a array with random values</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;题目：&lt;code&gt;随机生成一个长度为 10 的整数类型的数组，例如 [2, 10, 3, 4, 5, 11, 10, 11, 20]，将其排列成一个新数组，要求新数组形式如下，例如 [[2, 3, 4, 5], [10, 11], [20]]。&lt;/code&gt;&lt;/p&gt;
     
     </summary>
     
