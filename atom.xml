@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-06-03T15:32:01.381Z</updated>
+  <updated>2019-06-04T15:30:00.702Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day143-LeetCode 70. Climbing Stairs</title>
+    <link href="http://lmislm.com/2019/06/04/2019-06-04/"/>
+    <id>http://lmislm.com/2019/06/04/2019-06-04/</id>
+    <published>2019-06-03T16:00:00.000Z</published>
+    <updated>2019-06-04T15:30:00.702Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>You are climbing a stair case. It takes n steps to reach to the top.<br>Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?</p><a id="more"></a><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>这种从无穷之中找规律的题目，难免会想到动态规划，所以可以先分情况来~</p><p>n为阶梯数，p表示方法种类<br>n = 1; p = 1<br>n = 2; p = 1+1<br>n = 3; p = 1+2<br>n = 4; p = 3+2<br>规律，斐波那契数列f(n) = f(n-1) + f(n-2)</p><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">climbStairs</span> (<span class="params">n</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (n &lt;= <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">  <span class="keyword">let</span> prev = <span class="number">1</span></span><br><span class="line">  <span class="keyword">let</span> cur = <span class="number">1</span></span><br><span class="line">  <span class="comment">// f(n) = f(n -1) + f(n -2)</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">2</span>; i &lt;= n; i++) &#123;</span><br><span class="line">    <span class="keyword">let</span> temp = cur</span><br><span class="line">    cur = cur + prev</span><br><span class="line">    prev = temp</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> cur</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h3&gt;&lt;p&gt;You are climbing a stair case. It takes n steps to reach to the top.&lt;br&gt;Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="acm" scheme="http://lmislm.com/tags/acm/"/>
+    
+  </entry>
   
   <entry>
     <title>day142-LeetCode 171. Excel Sheet Column Number</title>
@@ -441,31 +463,6 @@
       
       
         &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;设计 LazyMan 类，实现以下功能：&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;t
-      
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day123-数据结构处理-数组</title>
-    <link href="http://lmislm.com/2019/05/15/2019-05-15/"/>
-    <id>http://lmislm.com/2019/05/15/2019-05-15/</id>
-    <published>2019-05-14T16:00:00.000Z</published>
-    <updated>2019-05-15T15:30:40.160Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>某公司 1 到 12 月份的销售额存在一个对象里面，如下：<code>{1:222, 2:123, 5:888}</code>，请把数据处理为如下结构：<code>[222, 123, null, null, 888, null, null, null, null, null, null, null]</code>。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 简短： 这个和上次生成随机数那个很像啊，用到了数组的生成</span></span><br><span class="line"><span class="keyword">let</span> obj = &#123;<span class="number">1</span>:<span class="number">222</span>, <span class="number">2</span>:<span class="number">123</span>, <span class="number">5</span>:<span class="number">888</span>&#125;;</span><br><span class="line"><span class="keyword">const</span> result = [...Array(<span class="number">12</span>)].map(<span class="function">(<span class="params">_, index</span>) =&gt;</span> obj[index + <span class="number">1</span>] || <span class="literal">null</span>);</span><br><span class="line"><span class="comment">// 或者 - 引</span></span><br><span class="line"><span class="comment">// const result = Array.from(&#123; length: 12 &#125;).map((_, index) =&gt; obj[index + 1] || null);</span></span><br><span class="line"><span class="comment">// 或者直接一行 - 引</span></span><br><span class="line"><span class="comment">// Array.from(&#123;length:12&#125;,(v,i)=&gt;(&#123;1:222,2:123,5:888&#125;[i+1])||null)</span></span><br><span class="line"><span class="built_in">console</span>.log(result)</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;某公司 1 到 12 月份的销售额存在一个对象里面，如下：&lt;code&gt;{1:222, 2:123, 5:888}&lt;/code&gt;，请把数据处理
       
     
     </summary>
