@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-06-07T14:22:21.520Z</updated>
+  <updated>2019-06-07T14:26:01.930Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day145-LeetCode 121. Best Time to Buy and Sell Stock</title>
+    <link href="http://lmislm.com/2019/06/06/2019-06-07/"/>
+    <id>http://lmislm.com/2019/06/06/2019-06-07/</id>
+    <published>2019-06-05T16:00:00.000Z</published>
+    <updated>2019-06-07T14:26:01.930Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>Say you have an array for which the ith element is the price of a given stock on day i.</p><p>If you were only permitted to complete at most one transaction (ie, buy one and sell one share of the stock), design an algorithm to find the maximum profit.</p><p>Example 1: Input: [7, 1, 5, 3, 6, 4]</p><p>Output: 5</p><p>max. difference = 6-1 = 5 (not 7-1 = 6, as selling price needs to be larger than buying price)</p><p>Example 2: Input: [7, 6, 4, 3, 1]</p><p>Output: 0</p><p>In this case, no transaction is done, i.e. max profit = 0.</p><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>数组中的元素，从index 0 到最后一位，都表示每天的股价变化。求给出的数组中，利益最大的一天。即，从后往前相减，整数最大的值</p><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">maxProfit</span> (<span class="params">prices</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 表示最低的股价，MAX_表示无限大</span></span><br><span class="line">    <span class="keyword">let</span> min = <span class="built_in">Number</span>.MAX_SAFE_INTEGER</span><br><span class="line">    <span class="keyword">let</span> maxProfit = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; prices.length; i++) &#123;</span><br><span class="line">        <span class="comment">// 冒泡找出最小值</span></span><br><span class="line">        <span class="keyword">if</span> (prices[i] &lt; min) &#123;</span><br><span class="line">            min = prices[i]</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 当前可获利的值</span></span><br><span class="line">        <span class="keyword">let</span> calProfit = prices[i] - min</span><br><span class="line">        <span class="keyword">if</span>(calProfit &gt; maxProfit) &#123;</span><br><span class="line">            maxProfit = calProfit</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> maxProfit</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h3&gt;&lt;p&gt;Say you have an array for which the ith element is the price of a give
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="acm" scheme="http://lmislm.com/tags/acm/"/>
+    
+  </entry>
   
   <entry>
     <title>day144-LeetCode 112. Path Sum</title>
@@ -434,32 +459,6 @@
       
         &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;继续nextTick()的探讨。这里引用的比较多，同时也更新了引用文章中对于vuejs源码的解释。&lt;/p&gt;
 &lt;h3 id=&quot;代码&quot;&gt;&lt;a h
-      
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day125-vuejs源码-nextTick()-1</title>
-    <link href="http://lmislm.com/2019/05/17/2019-05-17/"/>
-    <id>http://lmislm.com/2019/05/17/2019-05-17/</id>
-    <published>2019-05-16T16:00:00.000Z</published>
-    <updated>2019-05-18T14:49:22.446Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>了解vuejs中的<strong>异步更新DOM策略</strong>，了解vuejs操作DOM过程中一些原理。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// vuejs 中的 nextTick</span></span><br><span class="line"><span class="comment">// 响应式数据发生变化的时候，它的setter函数会通知闭包中的Dep，Dep则会调用它管理的所有Watch对象。触发Watch对象的update实现。</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Subscriber interface.</span></span><br><span class="line"><span class="comment"> * Will be called when a dependency changes.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">// 在watcher.js文件中</span></span><br><span class="line">update () &#123;</span><br><span class="line">  <span class="comment">/* istanbul ignore else */</span></span><br><span class="line">  <span class="comment">// this.lazy = !!options.lazy 和 deep什么的同级</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">this</span>.lazy) &#123;</span><br><span class="line">      <span class="keyword">this</span>.dirty = <span class="literal">true</span></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>.sync) &#123;</span><br><span class="line">      <span class="comment">/*同步则执行run直接渲染视图*/</span></span><br><span class="line">      <span class="keyword">this</span>.run()</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">/*异步推送到观察者队列中*/</span></span><br><span class="line">      queueWatcher(<span class="keyword">this</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// &lt;scheduler.js&gt;</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Push a watcher into the watcher queue.</span></span><br><span class="line"><span class="comment"> * Jobs with duplicate IDs will be skipped unless it's</span></span><br><span class="line"><span class="comment"> * pushed when the queue is being flushed.</span></span><br><span class="line"><span class="comment"> * // 队列刷新完毕之后watcher才会被推入watcher队列</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">queueWatcher</span> (<span class="params">watcher: Watcher</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> id = watcher.id</span><br><span class="line">  <span class="comment">// 哈希表has，标记是否存在id，这个id指的是？</span></span><br><span class="line">  <span class="comment">// 如果不是刷新状态也不是等待状态则进入刷新事件队列。</span></span><br><span class="line">  <span class="keyword">if</span> (has[id] == <span class="literal">null</span>) &#123;</span><br><span class="line">    has[id] = <span class="literal">true</span></span><br><span class="line">    <span class="keyword">if</span> (!flushing) &#123;</span><br><span class="line">      <span class="comment">// 不在刷新状态中，直接推到队列中</span></span><br><span class="line">      queue.push(watcher)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// if already flushing, splice the watcher based on its id</span></span><br><span class="line">      <span class="comment">// if already past its id, it will be run next immediately.</span></span><br><span class="line">      <span class="keyword">let</span> i = queue.length - <span class="number">1</span></span><br><span class="line">      <span class="keyword">while</span> (i &gt; index &amp;&amp; queue[i].id &gt; watcher.id) &#123;</span><br><span class="line">        i--</span><br><span class="line">      &#125;</span><br><span class="line">      queue.splice(i + <span class="number">1</span>, <span class="number">0</span>, watcher)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// queue the flush</span></span><br><span class="line">    <span class="keyword">if</span> (!waiting) &#123;</span><br><span class="line">      waiting = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (process.env.NODE_ENV !== <span class="string">'production'</span> &amp;&amp; !config.async) &#123;</span><br><span class="line">        flushSchedulerQueue()</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">      &#125;</span><br><span class="line">      nextTick(flushSchedulerQueue)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;了解vuejs中的&lt;strong&gt;异步更新DOM策略&lt;/strong&gt;，了解vuejs操作DOM过程中一些原理。&lt;/p&gt;
-&lt;h3 id=&quot;代
       
     
     </summary>
