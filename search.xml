@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[day144-LeetCode 112. Path Sum]]></title>
+    <url>%2F2019%2F06%2F06%2F2019-06-06%2F</url>
+    <content type="text"><![CDATA[题目Given a binary tree and a sum, determine if the tree has a root-to-leaf path such that adding up all the values along the path equals the given sum.For example: Given the below binary tree and sum = 22,5/ \4 8/ / \11 13 4/ \ \7 2 1 return true, as there exist a root-to-leaf path 5-&gt;4-&gt;11-&gt;2 which sum is 22. 分析leetcode 104的变形。用递归来计算每条路径的总和。求根节点到子树的每条可能路径的和，并检测是否和给出的随机数相等。 从父节点出发，如果父节点加左节点不等于给出的随机数，则回退父节点加右节点，如果不相等且子节点有左右子树则递归上述过程。直到找到和随机数相等的值返回true,否则返回false 题解function hasPathEqualSum (root, sum) &#123; if (root === null) return let list = [] // 计算总和 sumR2L(root, 0) return sumR2L(root, 0) function sumR2L(root, s) &#123; if (root.left === null &amp;&amp; root.right === null) &#123; // 到底的时候，判断总和是否是与sum相同 list.push(s) s += root.val return s === sum &#125; // 右边到底 if (root.left !== null &amp;&amp; root.right === null) &#123; return sumR2L(root.left, s + root.val) &#125; // 左边到底 if (root.left === null &amp;&amp; root.right !== null) &#123; return sumR2L(root.right, s + root.val) &#125; // 两边的树没有到底 return sumR2L(root.left, s + root.val) || sumR2L(root.right, s + root.val) &#125;&#125;]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>acm</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[day143-LeetCode 70. Climbing Stairs]]></title>
     <url>%2F2019%2F06%2F04%2F2019-06-04%2F</url>
     <content type="text"><![CDATA[题目You are climbing a stair case. It takes n steps to reach to the top.Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top? 分析这种从无穷之中找规律的题目，难免会想到动态规划，所以可以先分情况来~ n为阶梯数，p表示方法种类n = 1; p = 1n = 2; p = 1+1n = 3; p = 1+2n = 4; p = 3+2规律，斐波那契数列f(n) = f(n-1) + f(n-2) 题解function climbStairs (n) &#123; if (n &lt;= 1) return 1 let prev = 1 let cur = 1 // f(n) = f(n -1) + f(n -2) for (let i = 2; i &lt;= n; i++) &#123; let temp = cur cur = cur + prev prev = temp &#125; return cur&#125;]]></content>
@@ -1585,6 +1596,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[2019--启程]]></title>
+    <url>%2F2019%2F01%2F01%2F2019-%E5%90%AF%E7%A8%8B%2F</url>
+    <content type="text"><![CDATA[即将告别2018年，这个对于我来说，多灾多难的一年。这一年发生了太多的事，每一年也都会发生很多事，但从来没有哪一年能够像2018年这样让人印象深刻。考研结束。毕业。工作。最悲痛的莫过于最亲的人去世。事业也刚刚起步，爱情失去了方向。真是让人印象深刻的一年。]]></content>
+      <categories>
+        <category>生活</category>
+      </categories>
+      <tags>
+        <tag>感悟</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[2018年最后一天]]></title>
     <url>%2F2018%2F12%2F31%2F2018-%E6%9C%80%E5%90%8E%E4%B8%80%E5%A4%A9%2F</url>
     <content type="text"><![CDATA[2018年就要拜拜了。早上9点起来的也不算太晚。折腾了一会儿博客样式之（发现是又拍云开启浏览器缓存的锅）。今天打算看一些书度过。额，还是先玩会儿游戏放空下？不然感觉不太想看书。放张图片吧，可能就是需要这样来自嘲。– end]]></content>
@@ -1596,19 +1618,8 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[markdown-trick]]></title>
-    <url>%2F2018%2F12%2F30%2Fmarkdown-trick%2F</url>
-    <content type="text"><![CDATA[vscode snippets 以设置 markdown 代码片段为例 开启设置 文件 &gt; 首选项 &gt; 设置 "[markdown]": &#123; "editor.quickSuggestions": true &#125; 设置模板 文件 &gt; 首选项 &gt; 用户代码片段 &gt; markdown.json &#123; "markdown write template": &#123; "prefix": "mdrt", "body": [ "--- $1", "title: $TM_FILENAME_BASE", "tags:", "* xx", "categories:", "* xx", "date: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE-$CURRENT_HOUR", "--- ", " \n ", "&lt;!--more--&gt; $2" ], "description": "Create template for markdown write" &#125;&#125; 输出---title: md-killtags:* xxcategories:* xxdate: 2018-03-31-20---&lt;!--more--&gt; 参考Markdown Snippet Prefix Does Not Trigger Snippet #28048Creating your own snippets]]></content>
-      <categories>
-        <category>日常操作</category>
-      </categories>
-      <tags>
-        <tag>小技巧</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[fib]]></title>
-    <url>%2F2018%2F12%2F30%2Ffib%2F</url>
+    <url>%2F2018%2F04%2F17%2Ffib%2F</url>
     <content type="text"><![CDATA[斐波那契数列 打印斐波那契数列，递归法，迭代法，提升递归效率 [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]后一位数是前两位数之和(例如 fib(2) === 0 + 1) === 1; 提升递归效率，创建一个数据存储，或者一个小的缓存对象，缓存对象是数组 function memoize(fn) &#123; const cache = &#123;&#125;; return function(...args) &#123; // ...args ： 数组集 if (cache[args]) &#123; return cache[args]; &#125; const result = fn.apply(this, args); cache[args] = result; return result; &#125;;&#125;function slowFib(n) &#123; if (n &lt; 2) &#123; return n; &#125; return slowFib(n - 1) + slowFib(n - 2);&#125;const fib = memoize(slowFib); 递归法function fib(n) &#123; if (n &lt; 2) &#123; return n; &#125; return fib(n - 1) + fib(n - 2);&#125; 迭代法function fib(n) &#123; const result = [0, 1]; for (i = 2; i &lt;= n; i++) &#123; const a = result[i - 1]; const b = result[i - 2]; result.push(a + b); &#125; return result[n];&#125;]]></content>
       <categories>
         <category>学习</category>
@@ -1620,14 +1631,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[2019--启程]]></title>
-    <url>%2F2018%2F12%2F30%2F2019-%E5%90%AF%E7%A8%8B%2F</url>
-    <content type="text"><![CDATA[即将告别2018年，这个对于我来说，多灾多难的一年。这一年发生了太多的事，每一年也都会发生很多事，但从来没有哪一年能够像2018年这样让人印象深刻。考研结束。毕业。工作。最悲痛的莫过于最亲的人去世。事业也刚刚起步，爱情失去了方向。真是让人印象深刻的一年。]]></content>
+    <title><![CDATA[markdown-trick]]></title>
+    <url>%2F2018%2F03%2F31%2Fmarkdown-trick%2F</url>
+    <content type="text"><![CDATA[vscode snippets 以设置 markdown 代码片段为例 开启设置 文件 &gt; 首选项 &gt; 设置 "[markdown]": &#123; "editor.quickSuggestions": true &#125; 设置模板 文件 &gt; 首选项 &gt; 用户代码片段 &gt; markdown.json &#123; "markdown write template": &#123; "prefix": "mdrt", "body": [ "--- $1", "title: $TM_FILENAME_BASE", "tags:", "* xx", "categories:", "* xx", "date: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE-$CURRENT_HOUR", "--- ", " \n ", "&lt;!--more--&gt; $2" ], "description": "Create template for markdown write" &#125;&#125; 输出---title: md-killtags:* xxcategories:* xxdate: 2018-03-31-20---&lt;!--more--&gt; 参考Markdown Snippet Prefix Does Not Trigger Snippet #28048Creating your own snippets]]></content>
       <categories>
-        <category>生活</category>
+        <category>日常操作</category>
       </categories>
       <tags>
-        <tag>感悟</tag>
+        <tag>小技巧</tag>
       </tags>
   </entry>
   <entry>
@@ -1804,15 +1815,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[markdown语法小记]]></title>
-    <url>%2F2017%2F03%2F20%2Fmarkdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[插入表格：1.1. 表格的上下需要空行。空行的多少至关重要 表格中文字居中 在划线部分的划线两端加上”:“ 比如”:—–: | :—-: 代码块:2.1. 合理利用代码块有意想不到的效果。3.]]></content>
-      <tags>
-        <tag>工具</tag>
-        <tag>markdown</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[codewars-count_digits]]></title>
     <url>%2F2017%2F03%2F20%2Fcodewars%2F</url>
     <content type="text"><![CDATA[题目 Take an integer n (n &gt;= 0) and a digit d (0 &lt;= d &lt;= 9) as an integer. Square all numbers k (0 &lt;= k &lt;= n) between 0 and n. Count the numbers of digits d used in the writing of all the k* *2. Call nb_dig (or nbDig or …) the function taking n and d as parameters and returning this count. 例子 n = 10, d = 1,the k * k are 0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100 We are using the digit 1 in 1, 16, 81, 100. The total count is then 4.nb_dig(25, 1):the numbers of interest are 1, 4, 9, 10, 11, 12, 13, 14, 19, 21which squared are 1, 16, 81, 100, 121, 144, 169, 196, 361, 441 so there are 11 digits 1 for the squares of numbers between 0 and 25. 分析 给出n和d，求 0 到 n 中间的平方，再求这些平方的平方，问所得的这些数中包含多少个数字d。大概就是先算出这些数字的平方，然后挨个分解求出其中的值。 解题function nbDig(n,d) &#123; var s = &apos;&apos;; for(var i=0;i&lt;=n;i++)&#123; s += Math.pow(i,2); &#125; return s.split(d).length-1&#125; 牢骚篇今天，进了个群，挺多厉害的人，还私聊了一个有很多 offer 的同学。顿时觉得，自己就是渣渣啊，一点信心都没有。还是得加油吧，要学的东西还很多啊。]]></content>
@@ -1823,6 +1825,15 @@
         <tag>编程</tag>
         <tag>js</tag>
         <tag>codewars</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[markdown语法小记]]></title>
+    <url>%2F2017%2F03%2F20%2Fmarkdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[插入表格：1.1. 表格的上下需要空行。空行的多少至关重要 表格中文字居中 在划线部分的划线两端加上”:“ 比如”:—–: | :—-: 代码块:2.1. 合理利用代码块有意想不到的效果。3.]]></content>
+      <tags>
+        <tag>工具</tag>
+        <tag>markdown</tag>
       </tags>
   </entry>
   <entry>
