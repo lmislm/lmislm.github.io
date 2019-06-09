@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-06-08T15:03:34.109Z</updated>
+  <updated>2019-06-09T15:55:34.461Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day146-LeetCode 349. Intersection of Two Arrays</title>
+    <link href="http://lmislm.com/2019/06/09/2019-06-09/"/>
+    <id>http://lmislm.com/2019/06/09/2019-06-09/</id>
+    <published>2019-06-08T16:00:00.000Z</published>
+    <updated>2019-06-09T15:55:34.461Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>Given two arrays, write a function to compute their intersection.</p><p>Example:</p><p>Given nums1 = [1, 2, 2, 1], nums2 = [2, 2], return [2].</p><p>Note:</p><p>Each element in the result must be unique.</p><p>The result can be in any order.</p><a id="more"></a><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>选较短的数组去和长数组比较；<br>短数组值依次遍历长数组；<br>找短数组中有相应的值；</p><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">intersection</span> (<span class="params">arr1, arr2</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> result = []</span><br><span class="line">    <span class="keyword">let</span> longArr</span><br><span class="line">    <span class="keyword">let</span> shortArr</span><br><span class="line">    <span class="keyword">if</span> (arr1.length &gt; arr2.length) &#123;</span><br><span class="line">        longArr = arr1</span><br><span class="line">        shortArr = arr2</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        shortArr = arr1</span><br><span class="line">        longArr = arr2</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; shortArr.length; i++) &#123;</span><br><span class="line">        <span class="keyword">let</span> value = shortArr[i]</span><br><span class="line">        <span class="comment">// 如果longArr中有shortArr的值，而且在交集数组中没有，则为新交集</span></span><br><span class="line">        <span class="keyword">if</span>(longArr.indexOf(value) &gt;= <span class="number">0</span> &amp;&amp; result.indexOf(value) === <span class="number">-1</span>) &#123;</span><br><span class="line">            result.push(value)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 其实es6可以用很快的方法解决</span></span><br><span class="line"><span class="keyword">let</span> intersection = arr1.filter(<span class="function"><span class="params">x</span> =&gt;</span> <span class="keyword">new</span> <span class="built_in">Set</span>(arr2).has(x))</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h3&gt;&lt;p&gt;Given two arrays, write a function to compute their intersection.&lt;/p&gt;
+&lt;p&gt;Example:&lt;/p&gt;
+&lt;p&gt;Given nums1 = [1, 2, 2, 1], nums2 = [2, 2], return [2].&lt;/p&gt;
+&lt;p&gt;Note:&lt;/p&gt;
+&lt;p&gt;Each element in the result must be unique.&lt;/p&gt;
+&lt;p&gt;The result can be in any order.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="acm" scheme="http://lmislm.com/tags/acm/"/>
+    
+  </entry>
   
   <entry>
     <title>day146-LeetCode 283. Move Zeroes</title>
@@ -438,31 +465,6 @@
     <summary type="html">
     
       &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;vuejs源码 v2.x.x 的实例方法 / 事件，$on，$once，$off，$emit&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day127-vuejs源码-nextTick()-3</title>
-    <link href="http://lmislm.com/2019/05/19/2019-05-19/"/>
-    <id>http://lmislm.com/2019/05/19/2019-05-19/</id>
-    <published>2019-05-18T16:00:00.000Z</published>
-    <updated>2019-05-19T15:46:33.066Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>上一次，还记得在了解队列刷新的时候<br>做了方法队列刷新完毕之后watcher会被推入watcher队列，<br>最后做了调用了一个方法：nextTick(flushSchedulerQueue)<br>但是没有对方法做一些了解，这里了解下flushSchedulerQueue()。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// &lt;src/core/observer/scheduler.js&gt;</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Flush both queues and run the watchers.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">flushSchedulerQueue</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  currentFlushTimestamp = getNow()</span><br><span class="line">  flushing = <span class="literal">true</span></span><br><span class="line">  <span class="keyword">let</span> watcher, id</span><br><span class="line">  <span class="comment">// 注意排序的原因</span></span><br><span class="line">  <span class="comment">// Sort queue before flush.</span></span><br><span class="line">  <span class="comment">// This ensures that:</span></span><br><span class="line">  <span class="comment">// 1. Components are updated from parent to child. (because parent is always</span></span><br><span class="line">  <span class="comment">//    created before the child)</span></span><br><span class="line">  <span class="comment">// 2. A component's user watchers are run before its render watcher (because</span></span><br><span class="line">  <span class="comment">//    user watchers are created before the render watcher)</span></span><br><span class="line">  <span class="comment">// 3. If a component is destroyed during a parent component's watcher run,</span></span><br><span class="line">  <span class="comment">//    its watchers can be skipped.</span></span><br><span class="line">  queue.sort(<span class="function">(<span class="params">a, b</span>) =&gt;</span> a.id - b.id)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// do not cache length because more watchers might be pushed</span></span><br><span class="line">  <span class="comment">// as we run existing watchers</span></span><br><span class="line">  <span class="comment">// 这里？？？</span></span><br><span class="line">  <span class="comment">/*这里不用index = queue.length;index &gt; 0; index--的方式写是因为不要将length进行缓存，因为在执行处理现有watcher对象期间，更多的watcher对象可能会被push进queue*/</span></span><br><span class="line">  <span class="keyword">for</span> (index = <span class="number">0</span>; index &lt; queue.length; index++) &#123;</span><br><span class="line">    watcher = queue[index]</span><br><span class="line">    <span class="keyword">if</span> (watcher.before) &#123;</span><br><span class="line">      watcher.before()</span><br><span class="line">    &#125;</span><br><span class="line">    id = watcher.id</span><br><span class="line">    <span class="comment">//之前推入队列时候的标记：function queueWatcher()</span></span><br><span class="line">    has[id] = <span class="literal">null</span></span><br><span class="line">    watcher.run()</span><br><span class="line">    <span class="comment">// in dev build, check and stop circular updates.(注：检测函数中的死循环)</span></span><br><span class="line">    <span class="keyword">if</span> (process.env.NODE_ENV !== <span class="string">'production'</span> &amp;&amp; has[id] != <span class="literal">null</span>) &#123;</span><br><span class="line">      circular[id] = (circular[id] || <span class="number">0</span>) + <span class="number">1</span></span><br><span class="line">      <span class="keyword">if</span> (circular[id] &gt; MAX_UPDATE_COUNT) &#123;</span><br><span class="line">        warn(</span><br><span class="line">          <span class="string">'You may have an infinite update loop '</span> + (</span><br><span class="line">            watcher.user</span><br><span class="line">              ? <span class="string">`in watcher with expression "<span class="subst">$&#123;watcher.expression&#125;</span>"`</span></span><br><span class="line">              : <span class="string">`in a component render function.`</span></span><br><span class="line">          ),</span><br><span class="line">          watcher.vm</span><br><span class="line">        )</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// keep copies of post queues before resetting state</span></span><br><span class="line">  <span class="comment">// 注： 这里的activatedChildren方法应该是属于queueActivatedComponent()函数中保存kept-alive组件</span></span><br><span class="line">  <span class="comment">// slice() 拷贝</span></span><br><span class="line">  <span class="keyword">const</span> activatedQueue = activatedChildren.slice()</span><br><span class="line">  <span class="keyword">const</span> updatedQueue = queue.slice()</span><br><span class="line"></span><br><span class="line">  resetSchedulerState()</span><br><span class="line"></span><br><span class="line">  <span class="comment">// call component updated and activated hooks（注：调用钩子）</span></span><br><span class="line">  callActivatedHooks(activatedQueue)</span><br><span class="line">  callUpdatedHooks(updatedQueue)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// devtool hook</span></span><br><span class="line">  <span class="comment">/* istanbul ignore if */</span></span><br><span class="line">  <span class="keyword">if</span> (devtools &amp;&amp; config.devtools) &#123;</span><br><span class="line">    devtools.emit(<span class="string">'flush'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;上一次，还记得在了解队列刷新的时候&lt;br&gt;做了方法队列刷新完毕之后watcher会被推入watcher队列，&lt;br&gt;最后做了调用了一个方法：
-      
     
     </summary>
     
