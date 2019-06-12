@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[day150-LeetCode 83. Remove Duplicates from Sorted List]]></title>
+    <url>%2F2019%2F06%2F12%2F2019-06-12%2F</url>
+    <content type="text"><![CDATA[题目Given a sorted linked list, delete all duplicates such that each element appear only once.For example,Given 1-&gt;1-&gt;2, return 1-&gt;2.Given 1-&gt;1-&gt;2-&gt;3-&gt;3, return 1-&gt;2-&gt;3. 分析题目意思是移除一个有序单链表中重复的节点，根据单链表的特点next指针，可以判断相邻连续的节点是否相等。 题解/** * Definition for singly-linked list. * function ListNode(val) &#123; * this.val = val; * this.next = null; * &#125; *//** * @param &#123;ListNode&#125; head * @return &#123;ListNode&#125; */function deleteDuplicates(head) &#123; if (head === null || head.next === null) return let cur = head while(cur.next !== null) &#123; // 相邻连续节点是否相等 if (cur.val === cur.next.val) &#123; cur.next = cur.next.next &#125; else &#123; cur = cur.next &#125; &#125; return head&#125;]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>acm</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[day149-LeetCode 237. Delete Node in a Linked List]]></title>
     <url>%2F2019%2F06%2F11%2F2019-06-11%2F</url>
     <content type="text"><![CDATA[题目Write a function to delete a node (except the tail) in a singly linked list, given only access to that node. Supposed the linked list is 1 -&gt; 2 -&gt; 3 -&gt; 4 and you are given the third node with value 3, the linked list should become 1 -&gt; 2 -&gt; 4 after calling your function. 分析将指定单链表中的next指针指向下一个节点value就行 题解/** * Definition for singly-linked list. * function ListNode(val) &#123; * this.val = val; * this.next = null; * &#125; *//** * @param &#123;ListNode&#125; node * @return &#123;void&#125; Do not return anything, modify node in-place instead. */var deleteNode = function(node) &#123; node.val = node.next.val node.next = node.next.next&#125;]]></content>
@@ -45,9 +56,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[day144-LeetCode 112. Path Sum]]></title>
-    <url>%2F2019%2F06%2F06%2F2019-06-06%2F</url>
-    <content type="text"><![CDATA[题目Given a binary tree and a sum, determine if the tree has a root-to-leaf path such that adding up all the values along the path equals the given sum.For example: Given the below binary tree and sum = 22, 5 / \ 4 8 / / \ 11 13 4 / \ \7 2 1 return true, as there exist a root-to-leaf path 5-&gt;4-&gt;11-&gt;2 which sum is 22. 分析leetcode 104的变形。用递归来计算每条路径的总和。求根节点到子树的每条可能路径的和，并检测是否和给出的随机数相等。 从父节点出发，如果父节点加左节点不等于给出的随机数，则回退父节点加右节点，如果不相等且子节点有左右子树则递归上述过程。直到找到和随机数相等的值返回true,否则返回false 题解function hasPathEqualSum (root, sum) &#123; if (root === null) return let list = [] // 计算总和 sumR2L(root, 0) return sumR2L(root, 0) function sumR2L(root, s) &#123; if (root.left === null &amp;&amp; root.right === null) &#123; // 到底的时候，判断总和是否是与sum相同 list.push(s) s += root.val return s === sum &#125; // 右边到底 if (root.left !== null &amp;&amp; root.right === null) &#123; return sumR2L(root.left, s + root.val) &#125; // 左边到底 if (root.left === null &amp;&amp; root.right !== null) &#123; return sumR2L(root.right, s + root.val) &#125; // 两边的树没有到底 return sumR2L(root.left, s + root.val) || sumR2L(root.right, s + root.val) &#125;&#125;]]></content>
+    <title><![CDATA[day145-LeetCode 121. Best Time to Buy and Sell Stock]]></title>
+    <url>%2F2019%2F06%2F06%2F2019-06-07%2F</url>
+    <content type="text"><![CDATA[题目Say you have an array for which the ith element is the price of a given stock on day i. If you were only permitted to complete at most one transaction (ie, buy one and sell one share of the stock), design an algorithm to find the maximum profit. Example 1: Input: [7, 1, 5, 3, 6, 4] Output: 5 max. difference = 6-1 = 5 (not 7-1 = 6, as selling price needs to be larger than buying price) Example 2: Input: [7, 6, 4, 3, 1] Output: 0 In this case, no transaction is done, i.e. max profit = 0. 分析数组中的元素，从index 0 到最后一位，都表示每天的股价变化。求给出的数组中，利益最大的一天。即，从后往前相减，整数最大的值 题解function maxProfit (prices) &#123; // 表示最低的股价，MAX_表示无限大 let min = Number.MAX_SAFE_INTEGER let maxProfit = 0 for (let i = 0; i &lt; prices.length; i++) &#123; // 冒泡找出最小值 if (prices[i] &lt; min) &#123; min = prices[i] &#125; // 当前可获利的值 let calProfit = prices[i] - min if(calProfit &gt; maxProfit) &#123; maxProfit = calProfit &#125; &#125; return maxProfit&#125;]]></content>
       <categories>
         <category>技术</category>
       </categories>
@@ -56,9 +67,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[day145-LeetCode 121. Best Time to Buy and Sell Stock]]></title>
-    <url>%2F2019%2F06%2F06%2F2019-06-07%2F</url>
-    <content type="text"><![CDATA[题目Say you have an array for which the ith element is the price of a given stock on day i. If you were only permitted to complete at most one transaction (ie, buy one and sell one share of the stock), design an algorithm to find the maximum profit. Example 1: Input: [7, 1, 5, 3, 6, 4] Output: 5 max. difference = 6-1 = 5 (not 7-1 = 6, as selling price needs to be larger than buying price) Example 2: Input: [7, 6, 4, 3, 1] Output: 0 In this case, no transaction is done, i.e. max profit = 0. 分析数组中的元素，从index 0 到最后一位，都表示每天的股价变化。求给出的数组中，利益最大的一天。即，从后往前相减，整数最大的值 题解function maxProfit (prices) &#123; // 表示最低的股价，MAX_表示无限大 let min = Number.MAX_SAFE_INTEGER let maxProfit = 0 for (let i = 0; i &lt; prices.length; i++) &#123; // 冒泡找出最小值 if (prices[i] &lt; min) &#123; min = prices[i] &#125; // 当前可获利的值 let calProfit = prices[i] - min if(calProfit &gt; maxProfit) &#123; maxProfit = calProfit &#125; &#125; return maxProfit&#125;]]></content>
+    <title><![CDATA[day144-LeetCode 112. Path Sum]]></title>
+    <url>%2F2019%2F06%2F06%2F2019-06-06%2F</url>
+    <content type="text"><![CDATA[题目Given a binary tree and a sum, determine if the tree has a root-to-leaf path such that adding up all the values along the path equals the given sum.For example: Given the below binary tree and sum = 22, 5 / \ 4 8 / / \ 11 13 4 / \ \7 2 1 return true, as there exist a root-to-leaf path 5-&gt;4-&gt;11-&gt;2 which sum is 22. 分析leetcode 104的变形。用递归来计算每条路径的总和。求根节点到子树的每条可能路径的和，并检测是否和给出的随机数相等。 从父节点出发，如果父节点加左节点不等于给出的随机数，则回退父节点加右节点，如果不相等且子节点有左右子树则递归上述过程。直到找到和随机数相等的值返回true,否则返回false 题解function hasPathEqualSum (root, sum) &#123; if (root === null) return let list = [] // 计算总和 sumR2L(root, 0) return sumR2L(root, 0) function sumR2L(root, s) &#123; if (root.left === null &amp;&amp; root.right === null) &#123; // 到底的时候，判断总和是否是与sum相同 list.push(s) s += root.val return s === sum &#125; // 右边到底 if (root.left !== null &amp;&amp; root.right === null) &#123; return sumR2L(root.left, s + root.val) &#125; // 左边到底 if (root.left === null &amp;&amp; root.right !== null) &#123; return sumR2L(root.right, s + root.val) &#125; // 两边的树没有到底 return sumR2L(root.left, s + root.val) || sumR2L(root.right, s + root.val) &#125;&#125;]]></content>
       <categories>
         <category>技术</category>
       </categories>
@@ -331,9 +342,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[day118-手写简单的函数柯里化-笔记]]></title>
-    <url>%2F2019%2F05%2F10%2F2019-05-10%2F</url>
-    <content type="text"><![CDATA[前言函数柯里化是属于高阶函数中一种常见的技术。特点就是参数复用、提前返回和延迟执行。 代码function curry (fn, args) &#123; var length = fn.length var args = args || [] return function () &#123; newArgs = args.concat(Array.prototype.slice.call(arguments)) if (newArgs.length &lt; length) &#123; return curry.call(this, fn, newArgs) &#125; else &#123; return fn.apply(this, newArgs) &#125; &#125;&#125;function multiFn(a, b, c) &#123; return a * b * c&#125;var multi = curry(multiFn)multi(1)(2)(3)multi(1,2,3)multi(1)(2,3)multi(1,2)(3)]]></content>
+    <title><![CDATA[day119-实现一个instanceOf笔记]]></title>
+    <url>%2F2019%2F05%2F10%2F2019-05-11%2F</url>
+    <content type="text"><![CDATA[前言话不多说，这篇是水篇。 代码// 实现一个instanceOffunction myInstanceOf(left, right) &#123; let proto = left.__proto__ let prototype = right.prototype while (true) &#123; if (!proto) &#123; return false &#125; if (proto === prototype) &#123; return false &#125; proto === proto.__proto__ &#125;&#125;]]></content>
       <categories>
         <category>技术</category>
       </categories>
@@ -342,9 +353,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[day119-实现一个instanceOf笔记]]></title>
-    <url>%2F2019%2F05%2F10%2F2019-05-11%2F</url>
-    <content type="text"><![CDATA[前言话不多说，这篇是水篇。 代码// 实现一个instanceOffunction myInstanceOf(left, right) &#123; let proto = left.__proto__ let prototype = right.prototype while (true) &#123; if (!proto) &#123; return false &#125; if (proto === prototype) &#123; return false &#125; proto === proto.__proto__ &#125;&#125;]]></content>
+    <title><![CDATA[day118-手写简单的函数柯里化-笔记]]></title>
+    <url>%2F2019%2F05%2F10%2F2019-05-10%2F</url>
+    <content type="text"><![CDATA[前言函数柯里化是属于高阶函数中一种常见的技术。特点就是参数复用、提前返回和延迟执行。 代码function curry (fn, args) &#123; var length = fn.length var args = args || [] return function () &#123; newArgs = args.concat(Array.prototype.slice.call(arguments)) if (newArgs.length &lt; length) &#123; return curry.call(this, fn, newArgs) &#125; else &#123; return fn.apply(this, newArgs) &#125; &#125;&#125;function multiFn(a, b, c) &#123; return a * b * c&#125;var multi = curry(multiFn)multi(1)(2)(3)multi(1,2,3)multi(1)(2,3)multi(1,2)(3)]]></content>
       <categories>
         <category>技术</category>
       </categories>
@@ -926,7 +937,7 @@
   </entry>
   <entry>
     <title><![CDATA[day64-模板语法]]></title>
-    <url>%2F2019%2F03%2F16%2F2019-03-1111%2F</url>
+    <url>%2F2019%2F03%2F16%2F2019-03-16%2F</url>
     <content type="text"><![CDATA[背景vuejs项目中有个需求，在notification消息提示中某个部分需要有点击事件。UI用的element。想到用模板的方法来构造。 element-ui Notification onClick 触发方式组件中有两种触发的方式，但是都没有很好的满足需求。 点击时触发this.$notify.warning(&#123; dangerouslyUseHTMLString: true, duration: 0, message: `$&#123;this.createdFailedMember&#125;个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`, onClick: function () &#123; console.log(1) &#125;&#125;) 创建时触发this.$notify.warning(&#123; dangerouslyUseHTMLString: true, duration: 0, message: `$&#123;this.createdFailedMember&#125;个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`, onClick: (function () &#123; console.log(1) &#125;)()&#125;) 渲染函数比较灵活的render 函数。非常好用，但是没有模板语法那么简洁。this.$notify.warning(&#123;message: h( 'div', &#123; style: &#123;display: 'inline-block'&#125; &#125;, [ h('span', `$&#123;this.createdFailedMember&#125;个成员创建失败！`), h('a', &#123; style: &#123;color: '#409EFF', cursor: 'pointer', 'text-decoration': 'underline'&#125;, on: &#123; click: this.clickNotificationMsg &#125; &#125;, '前往查看') ])&#125;)]]></content>
       <categories>
         <category>技术</category>
@@ -937,7 +948,7 @@
   </entry>
   <entry>
     <title><![CDATA[day64-模板语法]]></title>
-    <url>%2F2019%2F03%2F16%2F2019-03-16%2F</url>
+    <url>%2F2019%2F03%2F16%2F2019-03-1111%2F</url>
     <content type="text"><![CDATA[背景vuejs项目中有个需求，在notification消息提示中某个部分需要有点击事件。UI用的element。想到用模板的方法来构造。 element-ui Notification onClick 触发方式组件中有两种触发的方式，但是都没有很好的满足需求。 点击时触发this.$notify.warning(&#123; dangerouslyUseHTMLString: true, duration: 0, message: `$&#123;this.createdFailedMember&#125;个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`, onClick: function () &#123; console.log(1) &#125;&#125;) 创建时触发this.$notify.warning(&#123; dangerouslyUseHTMLString: true, duration: 0, message: `$&#123;this.createdFailedMember&#125;个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`, onClick: (function () &#123; console.log(1) &#125;)()&#125;) 渲染函数比较灵活的render 函数。非常好用，但是没有模板语法那么简洁。this.$notify.warning(&#123;message: h( 'div', &#123; style: &#123;display: 'inline-block'&#125; &#125;, [ h('span', `$&#123;this.createdFailedMember&#125;个成员创建失败！`), h('a', &#123; style: &#123;color: '#409EFF', cursor: 'pointer', 'text-decoration': 'underline'&#125;, on: &#123; click: this.clickNotificationMsg &#125; &#125;, '前往查看') ])&#125;)]]></content>
       <categories>
         <category>技术</category>
