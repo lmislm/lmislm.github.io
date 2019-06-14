@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-06-13T15:01:52.366Z</updated>
+  <updated>2019-06-14T14:00:10.000Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day152-找出有序数组中连续的数</title>
+    <link href="http://lmislm.com/2019/06/14/2019-06-14/"/>
+    <id>http://lmislm.com/2019/06/14/2019-06-14/</id>
+    <published>2019-06-13T16:00:00.000Z</published>
+    <updated>2019-06-14T14:00:10.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>找出有序数组中连续的数，并按一定规则排列。<br>（这个题来自今天的需求，要求选中一些指定的图片。且可以利用范围来选择。）<br>input：[1, 3, 4, 10, 25, 26, 30, 31, 32, 33]<br>output：1,3-4,10,25-26,30-33<br><a id="more"></a></p><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>每一个数，找出每个数和该数的下一个数加一是不是相等。<br>利用“游标”的方法，挨个查找。</p><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">compressArr</span> (<span class="params">sortedArr</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 必须是有序数组</span></span><br><span class="line">  <span class="keyword">let</span> start = sortedArr[<span class="number">0</span>]</span><br><span class="line">  <span class="keyword">let</span> stop = start</span><br><span class="line">  <span class="keyword">let</span> arrLength = sortedArr.length <span class="comment">// 注意这里sortedArr，如果是定义变量arr，则会变量提升</span></span><br><span class="line">  <span class="keyword">let</span> resultStr = <span class="string">''</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; arrLength; i++) &#123;</span><br><span class="line">    <span class="comment">// 等于前一个连续的值+1，即：连续值</span></span><br><span class="line">    <span class="keyword">if</span> (sortedArr[i] === stop + <span class="number">1</span>) &#123;</span><br><span class="line">      <span class="comment">// 指向下一个元素</span></span><br><span class="line">      stop = sortedArr[i]</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (start === stop) &#123;</span><br><span class="line">        resultStr += start + <span class="string">','</span></span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        resultStr += start + <span class="string">'-'</span> + stop + <span class="string">','</span></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// 重新初始化start和stop指向</span></span><br><span class="line">      start = sortedArr[i]</span><br><span class="line">      stop = start</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 处理最后的数</span></span><br><span class="line">  <span class="keyword">if</span> (start === stop) &#123;</span><br><span class="line">    resultStr += start</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    resultStr += start + <span class="string">'-'</span> + stop</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> resultStr</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h3&gt;&lt;p&gt;找出有序数组中连续的数，并按一定规则排列。&lt;br&gt;（这个题来自今天的需求，要求选中一些指定的图片。且可以利用范围来选择。）&lt;br&gt;input：[1, 3, 4, 10, 25, 26, 30, 31, 32, 33]&lt;br&gt;output：1,3-4,10,25-26,30-33&lt;br&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="acm" scheme="http://lmislm.com/tags/acm/"/>
+    
+  </entry>
   
   <entry>
     <title>day151-LeetCode 141. Linked List Cycle</title>
@@ -446,28 +468,6 @@
     <summary type="html">
     
       &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;包括$mount和render方法。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day132-小试牛刀的题目-1</title>
-    <link href="http://lmislm.com/2019/05/24/2019-05-24/"/>
-    <id>http://lmislm.com/2019/05/24/2019-05-24/</id>
-    <published>2019-05-23T16:00:00.000Z</published>
-    <updated>2019-05-24T15:25:35.390Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>一道构造数据结构的题目。<br>src: [{id:1}, {id:1}, {id:2}]<br>tgt: {1: [0,1], 2:[2]}</p><a id="more"></a><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>个人解法。希望以后想出更好的解法。<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">groupByProp</span> (<span class="params">objArray, prop</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> objArray.reduce(<span class="function">(<span class="params">acc, cur, index</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> key = cur[prop]</span><br><span class="line">    <span class="keyword">if</span> (!acc[key]) &#123;</span><br><span class="line">      acc[key] = []</span><br><span class="line">    &#125;</span><br><span class="line">    acc[key].push(index)</span><br><span class="line">    <span class="keyword">return</span> acc</span><br><span class="line">  &#125;, &#123;&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// let data = [&#123;id:1&#125;, &#123;id:1&#125;, &#123;id:2&#125;]</span></span><br><span class="line"><span class="comment">// console.log(groupByProp(data, 'id'))</span></span><br><span class="line"><span class="comment">// &#123; '1': [ 0, 1 ], '2': [ 2 ] &#125;</span></span><br></pre></td></tr></table></figure></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;一道构造数据结构的题目。&lt;br&gt;src: [{id:1}, {id:1}, {id:2}]&lt;br&gt;tgt: {1: [0,1], 2:[2]}&lt;/p&gt;
     
     </summary>
     
