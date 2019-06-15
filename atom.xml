@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>LMISLMのBlog</title>
   
-  <subtitle>不积小流，无以成江海。</subtitle>
+  <subtitle>“   故不积跬步，无以至千里；不积小流，无以成江海。  -  荀子《劝学篇》”</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-06-14T14:00:10.000Z</updated>
+  <updated>2019-06-15T14:40:18.367Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day153-LeetCode 198. House Robber</title>
+    <link href="http://lmislm.com/2019/06/15/2019-06-15/"/>
+    <id>http://lmislm.com/2019/06/15/2019-06-15/</id>
+    <published>2019-06-14T16:00:00.000Z</published>
+    <updated>2019-06-15T14:40:18.367Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed, the only constraint stopping you from robbing each of them is that adjacent houses have security system connected and it will automatically contact the police if two adjacent houses were broken into on the same night.<br>Given a list of non-negative integers representing the amount of money of each house, determine the maximum amount of money you can rob tonight without alerting the police.<br>（大意是：求最大不连续的值）<br><a id="more"></a></p><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><blockquote><p>假设为[m0,m1,m2,m3,….]，求最大的数</p></blockquote><p>如果房子只有[m0], max = mo</p><p>[m0,m1], max = Max(m0,m1)</p><p>[m0,m1,m2], max = Max(m0+m2,m1)</p><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">robber</span> (<span class="params">nums</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> maxSum = <span class="keyword">new</span> <span class="built_in">Array</span>()</span><br><span class="line">  <span class="keyword">if</span>(nums.length === <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">  <span class="keyword">if</span>(nums.length === <span class="number">1</span>) <span class="keyword">return</span> nums[<span class="number">0</span>]</span><br><span class="line">  <span class="keyword">if</span>(nums.length === <span class="number">2</span>) <span class="keyword">return</span> <span class="built_in">Math</span>.max(nums[<span class="number">1</span>],nums[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line">  maxSum.push(nums[<span class="number">0</span>])</span><br><span class="line">  maxSum.push(<span class="built_in">Math</span>.max(nums[<span class="number">0</span>],nums[<span class="number">1</span>]))</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">2</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">    <span class="comment">// Max(m0+m2,m1),计算公式</span></span><br><span class="line">    maxSum[i] =  <span class="built_in">Math</span>.max(nums[i] + maxSum[i<span class="number">-2</span>], maxSum[i<span class="number">-1</span>])</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> maxSum.pop()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h3&gt;&lt;p&gt;You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed, the only constraint stopping you from robbing each of them is that adjacent houses have security system connected and it will automatically contact the police if two adjacent houses were broken into on the same night.&lt;br&gt;Given a list of non-negative integers representing the amount of money of each house, determine the maximum amount of money you can rob tonight without alerting the police.&lt;br&gt;（大意是：求最大不连续的值）&lt;br&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="acm" scheme="http://lmislm.com/tags/acm/"/>
+    
+  </entry>
   
   <entry>
     <title>day152-找出有序数组中连续的数</title>
@@ -61,413 +83,392 @@
   </entry>
   
   <entry>
-    <title>day150-LeetCode 83. Remove Duplicates from Sorted List</title>
-    <link href="http://lmislm.com/2019/06/12/2019-06-12/"/>
-    <id>http://lmislm.com/2019/06/12/2019-06-12/</id>
-    <published>2019-06-11T16:00:00.000Z</published>
-    <updated>2019-06-12T15:28:34.210Z</updated>
+    <title>markdown-trick</title>
+    <link href="http://lmislm.com/2019/06/07/markdown-trick/"/>
+    <id>http://lmislm.com/2019/06/07/markdown-trick/</id>
+    <published>2019-06-07T13:34:19.031Z</published>
+    <updated>2019-06-15T14:40:12.473Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>Given a sorted linked list, delete all duplicates such that each element appear only once.<br>For example,<br>Given 1-&gt;1-&gt;2, return 1-&gt;2.<br>Given 1-&gt;1-&gt;2-&gt;3-&gt;3, return 1-&gt;2-&gt;3.<br><a id="more"></a></p><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>题目意思是移除一个有序单链表中重复的节点，根据单链表的特点next指针，可以判断相邻连续的节点是否相等。</p><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * function ListNode(val) &#123;</span></span><br><span class="line"><span class="comment"> *     this.val = val;</span></span><br><span class="line"><span class="comment"> *     this.next = null;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;ListNode&#125; head</span></span><br><span class="line"><span class="comment"> * @return &#123;ListNode&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deleteDuplicates</span>(<span class="params">head</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (head === <span class="literal">null</span> || head.next === <span class="literal">null</span>) <span class="keyword">return</span></span><br><span class="line">  <span class="keyword">let</span> cur = head</span><br><span class="line">  <span class="keyword">while</span>(cur.next !== <span class="literal">null</span>) &#123;</span><br><span class="line">    <span class="comment">// 相邻连续节点是否相等</span></span><br><span class="line">    <span class="keyword">if</span> (cur.val === cur.next.val) &#123;</span><br><span class="line">      cur.next = cur.next.next</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      cur = cur.next</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> head</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h2 id="vscode-snippets"><a href="#vscode-snippets" class="headerlink" title="vscode snippets"></a>vscode snippets</h2><blockquote><p>以设置 markdown 代码片段为例</p></blockquote><a id="more"></a><h4 id="开启设置"><a href="#开启设置" class="headerlink" title="开启设置"></a><a href="https://github.com/Microsoft/vscode/issues/28048" target="_blank" rel="noopener">开启设置</a></h4><blockquote><p>文件 &gt; 首选项 &gt; 设置</p></blockquote><figure class="highlight"><table><tr><td class="code"><pre><span class="line">"[markdown]":  &#123;</span><br><span class="line">    "editor.quickSuggestions": true</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure><h4 id="设置模板"><a href="#设置模板" class="headerlink" title="设置模板"></a><a href="https://code.visualstudio.com/docs/editor/userdefinedsnippets" target="_blank" rel="noopener">设置模板</a></h4><blockquote><p>文件 &gt; 首选项 &gt; 用户代码片段 &gt; markdown.json</p></blockquote><figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"markdown write template"</span>: &#123;</span><br><span class="line">    <span class="attr">"prefix"</span>: <span class="string">"mdrt"</span>,</span><br><span class="line">    <span class="attr">"body"</span>: [</span><br><span class="line">      <span class="string">"--- $1"</span>,</span><br><span class="line">      <span class="string">"title: $TM_FILENAME_BASE"</span>,</span><br><span class="line">      <span class="string">"tags:"</span>,</span><br><span class="line">      <span class="string">"* xx"</span>,</span><br><span class="line">      <span class="string">"categories:"</span>,</span><br><span class="line">      <span class="string">"* xx"</span>,</span><br><span class="line">      <span class="string">"date: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE-$CURRENT_HOUR"</span>,</span><br><span class="line">      <span class="string">"--- "</span>,</span><br><span class="line">      <span class="string">" \n "</span>,</span><br><span class="line"></span><br><span class="line">      <span class="string">"&lt;!--more--&gt; $2"</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">"description"</span>: <span class="string">"Create template for markdown write"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h4 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h4><figure class="highlight"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: md-kill</span><br><span class="line">tags:</span><br><span class="line">* xx</span><br><span class="line">categories:</span><br><span class="line">* xx</span><br><span class="line">date: 2018-03-31-20</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">&lt;!--more--&gt;</span><br></pre></td></tr></table></figure><h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="https://github.com/Microsoft/vscode/issues/28048" target="_blank" rel="noopener">Markdown Snippet Prefix Does Not Trigger Snippet #28048</a><br><a href="https://code.visualstudio.com/docs/editor/userdefinedsnippets" target="_blank" rel="noopener">Creating your own snippets</a></p>]]></content>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h3&gt;&lt;p&gt;Given a sorted linked list, delete all duplicates such that each element appear only once.&lt;br&gt;For example,&lt;br&gt;Given 1-&amp;gt;1-&amp;gt;2, return 1-&amp;gt;2.&lt;br&gt;Given 1-&amp;gt;1-&amp;gt;2-&amp;gt;3-&amp;gt;3, return 1-&amp;gt;2-&amp;gt;3.&lt;br&gt;
+      &lt;h2 id=&quot;vscode-snippets&quot;&gt;&lt;a href=&quot;#vscode-snippets&quot; class=&quot;headerlink&quot; title=&quot;vscode snippets&quot;&gt;&lt;/a&gt;vscode snippets&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;以设置 markdown 代码片段为例&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="日常操作" scheme="http://lmislm.com/categories/%E6%97%A5%E5%B8%B8%E6%93%8D%E4%BD%9C/"/>
+    
+    
+      <category term="小技巧" scheme="http://lmislm.com/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>fib</title>
+    <link href="http://lmislm.com/2019/06/07/fib/"/>
+    <id>http://lmislm.com/2019/06/07/fib/</id>
+    <published>2019-06-07T13:34:19.025Z</published>
+    <updated>2019-06-15T14:40:12.471Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="斐波那契数列"><a href="#斐波那契数列" class="headerlink" title="斐波那契数列"></a>斐波那契数列</h2><blockquote><p>打印斐波那契数列，递归法，迭代法，提升递归效率</p></blockquote><a id="more"></a><p>[0, 1, 1, 2, 3, 5, 8, 13, 21, 34]<br>后一位数是前两位数之和<br>(例如 fib(2) === 0 + 1) === 1;</p><p>提升递归效率，创建一个数据存储，或者一个小的缓存对象，缓存对象是数组</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function memoize(fn) &#123;</span><br><span class="line">  const cache = &#123;&#125;;</span><br><span class="line">  return function(...args) &#123;</span><br><span class="line">    // ...args ： 数组集</span><br><span class="line">    if (cache[args]) &#123;</span><br><span class="line">      return cache[args];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    const result = fn.apply(this, args);</span><br><span class="line">    cache[args] = result;</span><br><span class="line"></span><br><span class="line">    return result;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function slowFib(n) &#123;</span><br><span class="line">  if (n &lt; 2) &#123;</span><br><span class="line">    return n;</span><br><span class="line">  &#125;</span><br><span class="line">  return slowFib(n - 1) + slowFib(n - 2);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const fib = memoize(slowFib);</span><br></pre></td></tr></table></figure><h3 id="递归法"><a href="#递归法" class="headerlink" title="递归法"></a>递归法</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function fib(n) &#123;</span><br><span class="line">  if (n &lt; 2) &#123;</span><br><span class="line">    return n;</span><br><span class="line">  &#125;</span><br><span class="line">  return fib(n - 1) + fib(n - 2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="迭代法"><a href="#迭代法" class="headerlink" title="迭代法"></a>迭代法</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fib</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> result = [<span class="number">0</span>, <span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (i = <span class="number">2</span>; i &lt;= n; i++) &#123;</span><br><span class="line">    <span class="keyword">const</span> a = result[i - <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">const</span> b = result[i - <span class="number">2</span>];</span><br><span class="line"></span><br><span class="line">    result.push(a + b);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> result[n];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;斐波那契数列&quot;&gt;&lt;a href=&quot;#斐波那契数列&quot; class=&quot;headerlink&quot; title=&quot;斐波那契数列&quot;&gt;&lt;/a&gt;斐波那契数列&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;打印斐波那契数列，递归法，迭代法，提升递归效率&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="学习" scheme="http://lmislm.com/categories/%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="JS" scheme="http://lmislm.com/tags/JS/"/>
+    
+      <category term="编程" scheme="http://lmislm.com/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="Interview" scheme="http://lmislm.com/tags/Interview/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2019--启程</title>
+    <link href="http://lmislm.com/2019/06/07/2019-%E5%90%AF%E7%A8%8B/"/>
+    <id>http://lmislm.com/2019/06/07/2019-启程/</id>
+    <published>2019-06-07T13:34:19.014Z</published>
+    <updated>2019-06-15T14:40:12.469Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fyonjtz2hlj20c80qdwen.jpg" alt><br>即将告别2018年，这个对于我来说，<strong>多灾多难</strong>的一年。<br>这一年发生了太多的事，每一年也都会发生很多事，但从来没有哪一年能够像2018年这样让人印象深刻。<br><strong>考研结束。</strong><br><strong>毕业。</strong><br><strong>工作。</strong><br><strong>最悲痛的莫过于最亲的人去世。</strong><br>事业也刚刚起步，爱情失去了方向。<br>真是让人印象深刻的一年。<br><a id="more"></a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fyonjtz2hlj20c80qdwen.jpg&quot; alt&gt;&lt;br&gt;即将告别2018年，这个对于我来说，&lt;strong&gt;多灾多难&lt;/strong&gt;的一年。&lt;br&gt;这一年发生了太多的事，每一年也都会发生很多事，但从来没有哪一年能够像2018年这样让人印象深刻。&lt;br&gt;&lt;strong&gt;考研结束。&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;毕业。&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;工作。&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;最悲痛的莫过于最亲的人去世。&lt;/strong&gt;&lt;br&gt;事业也刚刚起步，爱情失去了方向。&lt;br&gt;真是让人印象深刻的一年。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="生活" scheme="http://lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>day36-杂谈</title>
+    <link href="http://lmislm.com/2019/02/15/2019-02-15/"/>
+    <id>http://lmislm.com/2019/02/15/2019-02-15/</id>
+    <published>2019-02-14T16:00:00.000Z</published>
+    <updated>2019-06-07T14:39:38.315Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>今天是考研成绩出来的一天。恍恍惚惚，一年前的这个时候我还在过年，恍惚间一年已经过了。早上七点就醒了，不知道这有没有什么关系，但重要的是一年前的这个时候，我一晚上没睡着，结果第二天这个时候，消息并没有那么好。这都是一年前的事情了。谈一谈吧。这两天在做移动端的支付宝支付。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g06aijcid1j20u01hcwhm.jpg" alt><br><a id="more"></a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;今天是考研成绩出来的一天。恍恍惚惚，一年前的这个时候我还在过年，恍惚间一年已经过了。早上七点就醒了，不知道这有没有什么关系，但重要的是一年前的这个时候，我一晚上没睡着，结果第二天这个时候，消息并没有那么好。这都是一年前的事情了。谈一谈吧。这两天在做移动端的支付宝支付。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g06aijcid1j20u01hcwhm.jpg&quot; alt&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="生活" scheme="http://lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>day35-杂谈</title>
+    <link href="http://lmislm.com/2019/02/14/2019-02-14/"/>
+    <id>http://lmislm.com/2019/02/14/2019-02-14/</id>
+    <published>2019-02-13T16:00:00.000Z</published>
+    <updated>2019-06-07T14:39:38.313Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>发现要是女生和代码一样容易理解就好了，出错的几率也太大了。因为你费劲输入一大堆代码，最后错都不会报，根本不知道会不会运行。<br>衰(′д｀ )…彡…彡<br>有时候有些人你付出，更本就不会有任何反应。世事难料啊。情人节快乐！<br>祝你们原地爆炸！</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g06aij5xjkj20u01hc0yq.jpg" alt><br>-end<br><a id="more"></a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;发现要是女生和代码一样容易理解就好了，出错的几率也太大了。因为你费劲输入一大堆代码，最后错都不会报，根本不知道会不会运行。&lt;br&gt;衰(′д｀ )…彡…彡&lt;br&gt;有时候有些人你付出，更本就不会有任何反应。世事难料啊。情人节快乐！&lt;br&gt;祝你们原地爆炸！&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g06aij5xjkj20u01hc0yq.jpg&quot; alt&gt;&lt;br&gt;-end&lt;br&gt;
+    
+    </summary>
+    
+      <category term="生活" scheme="http://lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>day34-deepClone</title>
+    <link href="http://lmislm.com/2019/02/13/2019-02-13/"/>
+    <id>http://lmislm.com/2019/02/13/2019-02-13/</id>
+    <published>2019-02-12T16:00:00.000Z</published>
+    <updated>2019-06-07T14:39:38.313Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="拷贝"><a href="#拷贝" class="headerlink" title="拷贝"></a>拷贝</h2><p>探究一下深拷贝，本文主要是浅拷贝、深拷贝的简单实现，并对循环引用就行一些了解。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g0555oglhej20u01hcdkz.jpg" alt><br><a id="more"></a></p><h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> data = &#123;</span><br><span class="line">  id: <span class="string">'1'</span>,</span><br><span class="line">  segment: &#123;</span><br><span class="line">    hitinfos: &#123;</span><br><span class="line">      <span class="comment">// 浅拷贝时rule为rule: [Object]</span></span><br><span class="line">      rule: &#123;</span><br><span class="line">        a: <span class="string">'no-placeholder'</span>,</span><br><span class="line">        b: <span class="string">'no-tag'</span></span><br><span class="line">      &#125;,</span><br><span class="line">      level: <span class="number">4</span></span><br><span class="line">    &#125;,</span><br><span class="line">    atoms: [</span><br><span class="line">      &#123; <span class="attr">tgt</span>: <span class="string">'you dont know'</span>, <span class="attr">src</span>: <span class="string">'你不知道'</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">id</span>: <span class="number">1</span>, <span class="attr">tgt</span>: <span class="string">'what'</span>, <span class="attr">src</span>: <span class="string">'什么'</span> &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  arr: [&#123;</span><br><span class="line">    id: <span class="number">1</span>,</span><br><span class="line">    arr: <span class="string">'arr1'</span></span><br><span class="line">  &#125;],</span><br><span class="line">  value_1: <span class="literal">undefined</span>,</span><br><span class="line">  value_2: <span class="literal">null</span>,</span><br><span class="line">  value_3: <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="浅拷贝"><a href="#浅拷贝" class="headerlink" title="浅拷贝"></a>浅拷贝</h3><ul><li>简单的对象浅拷贝（只遍历一层）-拷贝引用</li></ul><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">cloneShadow</span>(<span class="params">src</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> tgt = &#123;&#125;</span><br><span class="line">  <span class="comment">//  为什么不直接用“=”赋值</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> prop <span class="keyword">in</span> src) &#123;</span><br><span class="line">    <span class="comment">// 或者用if (Object.hasOwnProperty(prop)) &#123;</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">Object</span>.prototype.hasOwnProperty.call(src, prop)) &#123;</span><br><span class="line">      tgt[prop] = src[prop]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> tgt</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> test = cloneShadow(data)</span><br><span class="line">data.id = <span class="number">2</span></span><br><span class="line"><span class="built_in">console</span>.log(test)</span><br><span class="line"><span class="built_in">console</span>.log(data)</span><br><span class="line"><span class="built_in">console</span>.log(test)</span><br></pre></td></tr></table></figure><h3 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h3><ul><li>递归对象深拷贝（遍历多层）<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepClone</span>(<span class="params">src</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 非对象</span></span><br><span class="line">  <span class="keyword">if</span> (src &amp;&amp; <span class="keyword">typeof</span> src !== <span class="string">'object'</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> src</span><br><span class="line">    <span class="comment">// throw new TypeError('Except Object, got' + (typeof src))</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 初始化</span></span><br><span class="line">  <span class="keyword">let</span> tgt = <span class="built_in">Array</span>.isArray(src) ? [] : &#123;&#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> prop <span class="keyword">in</span> src) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">Object</span>.prototype.hasOwnProperty.call(src, prop)) &#123;</span><br><span class="line">      <span class="comment">// value为null或者undefined则返回原值(typeof null === 'object')</span></span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">typeof</span> src[prop] === <span class="string">'object'</span>) &#123;</span><br><span class="line">          tgt[prop] = deepClone(src[prop])</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          tgt[prop] = src[prop]</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> tgt</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> test_1 = deepClone(data)</span><br><span class="line"><span class="built_in">console</span>.log(test_1)</span><br><span class="line"><span class="built_in">console</span>.log(data)</span><br><span class="line"><span class="built_in">console</span>.log(test_1)</span><br></pre></td></tr></table></figure></li></ul><h3 id="拷贝循环引用"><a href="#拷贝循环引用" class="headerlink" title="拷贝循环引用"></a>拷贝循环引用</h3><ul><li>拷贝循环引用（JSON方法抛异常）<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepCloneCircle</span>(<span class="params">src</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (src &amp;&amp; src !== <span class="string">'object'</span>) <span class="keyword">return</span> src</span><br><span class="line">  <span class="keyword">let</span> tgt = <span class="built_in">Array</span>.isArray(src) ? [] : &#123;&#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> prop <span class="keyword">in</span> src) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">Object</span>.prototype.hasOwnProperty.call(src, tgt)) &#123;</span><br><span class="line">      <span class="keyword">if</span> (src[prop] &amp;&amp; src[prop] === <span class="string">'object'</span>) &#123;</span><br><span class="line">        tgt[prop] = deepCloneCircle(src[prop])</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        tgt[prop] = src[prop]</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> tgt</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> test = deepCloneCircle(data)</span><br><span class="line"><span class="built_in">console</span>.log(test)</span><br></pre></td></tr></table></figure></li></ul><h3 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h3><p>[1]. <a href="https://segmentfault.com/a/1190000008637489" target="_blank" rel="noopener">JavaScript中的浅拷贝和深拷贝</a><br>[2]. <a href="https://juejin.im/post/5c45112e6fb9a04a027aa8fe" target="_blank" rel="noopener">【进阶4-3期】面试题之如何实现一个深拷贝</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;拷贝&quot;&gt;&lt;a href=&quot;#拷贝&quot; class=&quot;headerlink&quot; title=&quot;拷贝&quot;&gt;&lt;/a&gt;拷贝&lt;/h2&gt;&lt;p&gt;探究一下深拷贝，本文主要是浅拷贝、深拷贝的简单实现，并对循环引用就行一些了解。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g0555oglhej20u01hcdkz.jpg&quot; alt&gt;&lt;br&gt;
     
     </summary>
     
       <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="acm" scheme="http://lmislm.com/tags/acm/"/>
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   
   <entry>
-    <title>day149-LeetCode 237. Delete Node in a Linked List</title>
-    <link href="http://lmislm.com/2019/06/11/2019-06-11/"/>
-    <id>http://lmislm.com/2019/06/11/2019-06-11/</id>
-    <published>2019-06-10T16:00:00.000Z</published>
-    <updated>2019-06-11T15:26:43.105Z</updated>
+    <title>day33-css居中</title>
+    <link href="http://lmislm.com/2019/02/12/2019-02-12/"/>
+    <id>http://lmislm.com/2019/02/12/2019-02-12/</id>
+    <published>2019-02-11T16:00:00.000Z</published>
+    <updated>2019-06-07T14:39:38.312Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>Write a function to delete a node (except the tail) in a singly linked list, given only access to that node.</p><p>Supposed the linked list is 1 -&gt; 2 -&gt; 3 -&gt; 4 and you are given the third node with value 3, the linked list should become 1 -&gt; 2 -&gt; 4 after calling your function.<br><a id="more"></a></p><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>将指定单链表中的next指针指向下一个节点value就行</p><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * function ListNode(val) &#123;</span></span><br><span class="line"><span class="comment"> *     this.val = val;</span></span><br><span class="line"><span class="comment"> *     this.next = null;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;ListNode&#125; node</span></span><br><span class="line"><span class="comment"> * @return &#123;void&#125; Do not return anything, modify node in-place instead.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> deleteNode = <span class="function"><span class="keyword">function</span>(<span class="params">node</span>) </span>&#123;</span><br><span class="line">    node.val = node.next.val</span><br><span class="line">    node.next = node.next.next</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h2 id="居中总结"><a href="#居中总结" class="headerlink" title="居中总结"></a>居中总结</h2><p>经常会碰到一些居中的问题，这里尝试进行一些总结。分为垂直居中和水平居中。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g03y5yrw5ej20u01hcwi5.jpg" alt><br><a id="more"></a></p><h3 id="水平居中"><a href="#水平居中" class="headerlink" title="水平居中"></a>水平居中</h3><ol><li>行内或类行内元素(inline/inline-block/inline-table/flex)：text-align: center;</li><li>块级元素： margin: 0 auto;</li><li><p>多个块级元素：display: inline-block;</p><h3 id="垂直居中"><a href="#垂直居中" class="headerlink" title="垂直居中"></a>垂直居中</h3></li><li>行内或类行内元素:<ul><li>单行：padding-top与padding-bottom 等值、或line-height与height 等值</li><li>多行：单行padding等值，或display: table-cell 用vertical-align：middle;</li></ul></li><li>块级元素：</li></ol><p>– 待续</p>]]></content>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h3&gt;&lt;p&gt;Write a function to delete a node (except the tail) in a singly linked list, given only access to that node.&lt;/p&gt;
-&lt;p&gt;Supposed the linked list is 1 -&amp;gt; 2 -&amp;gt; 3 -&amp;gt; 4 and you are given the third node with value 3, the linked list should become 1 -&amp;gt; 2 -&amp;gt; 4 after calling your function.&lt;br&gt;
+      &lt;h2 id=&quot;居中总结&quot;&gt;&lt;a href=&quot;#居中总结&quot; class=&quot;headerlink&quot; title=&quot;居中总结&quot;&gt;&lt;/a&gt;居中总结&lt;/h2&gt;&lt;p&gt;经常会碰到一些居中的问题，这里尝试进行一些总结。分为垂直居中和水平居中。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g03y5yrw5ej20u01hcwi5.jpg&quot; alt&gt;&lt;br&gt;
     
     </summary>
     
       <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="acm" scheme="http://lmislm.com/tags/acm/"/>
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   
   <entry>
-    <title>day148-LeetCode 257. Binary Tree Paths</title>
-    <link href="http://lmislm.com/2019/06/10/2019-06-10/"/>
-    <id>http://lmislm.com/2019/06/10/2019-06-10/</id>
-    <published>2019-06-09T16:00:00.000Z</published>
-    <updated>2019-06-11T15:25:08.444Z</updated>
+    <title>第三十二天2019-02-01</title>
+    <link href="http://lmislm.com/2019/02/01/2019-02-01/"/>
+    <id>http://lmislm.com/2019/02/01/2019-02-01/</id>
+    <published>2019-01-31T16:00:00.000Z</published>
+    <updated>2019-06-07T14:39:38.311Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>Given a binary tree, return all root-to-leaf paths.<br>For example, given the following binary tree:</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  1</span><br><span class="line"> / \</span><br><span class="line">2   3</span><br><span class="line"> \</span><br><span class="line">  5</span><br></pre></td></tr></table></figure><p>All root-to-leaf paths are: [“1-&gt;2-&gt;5”, “1-&gt;3”]<br><a id="more"></a></p><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>和找深度的二叉树那个类似，这里是把找到的路径记录下来<br>从root节点开始走，一直到最后的节点没有左右节点，就是一条路径</p><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">findTreePath</span> (<span class="params">nodes</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!nodes) <span class="keyword">return</span></span><br><span class="line">    <span class="comment">// 存储记录的路径</span></span><br><span class="line">    <span class="keyword">let</span> treePathList = []</span><br><span class="line">    findPath(root, <span class="string">''</span>)</span><br><span class="line">    <span class="keyword">return</span> treePathList</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">findPath</span> (<span class="params">node, str</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (node.left === <span class="literal">null</span> &amp;&amp; node.right === <span class="literal">null</span>) &#123;</span><br><span class="line">            treePathList.push(str, node.val)</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (node.left !== <span class="literal">null</span>) &#123;</span><br><span class="line">                <span class="comment">// 累加路径</span></span><br><span class="line">                findPath(node.left, str + node.val + <span class="string">'-&gt;'</span>)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (node.right !== <span class="literal">null</span>) &#123;</span><br><span class="line">                findPath(node.right, str + node.val + <span class="string">'-&gt;'</span>)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>最近又开始关注到Nodejs了，因为在探究js的一些原理的时候，不可避免的会注意到js的一些应用场景的不同，这两天看到了一篇很好的介绍Nodejs入门的文章，<a href="https://cnodejs.org/topic/5ab3166be7b166bb7b9eccf7" target="_blank" rel="noopener">【全文】狼叔：如何正确的学习Node.js</a>。看这篇文章还是比较有感触的，文章本身结合自身的体验从Nodejs诞生以来讲到近些年的趋势，当然我觉得最准的还是属于对于React.js和Vue.js的趋势的描述。这篇文章偏向于说教，也是说给初学Nodejs的人所听的，详细的地方在于介绍了一些该看的书本，和一些练习代码的方法，比如学会Nodejs要多看一些NPM包的源码，按作者来说就是一天5个NPM包阅读。这个对我来说感触是非常深的，本人觉得是，只有真正的上手，你才能说是真的开始去掌握这门东西。我觉得文章是真的比较详细，还提供一些资料，也提出了一些问题，比如，“在变化多端的大前端背景之下，该如何精进？”。文章本身可能探讨的比较多，也探讨了，Nodejs在各类编程语言中的比较，比如和java比较的优劣。总得来说，是一篇不可多得的好文。有幸看到这种文章。看来以后还是要多看专门的社区，去浏览一些文章，增长一些见识，拓宽一些视野。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fzr55r2l7vj20u0140q8k.jpg" alt></p><a id="more"></a>]]></content>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h3&gt;&lt;p&gt;Given a binary tree, return all root-to-leaf paths.&lt;br&gt;For example, given the following binary tree:&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;  1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; / \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2   3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;All root-to-leaf paths are: [“1-&amp;gt;2-&amp;gt;5”, “1-&amp;gt;3”]&lt;br&gt;
+      &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;最近又开始关注到Nodejs了，因为在探究js的一些原理的时候，不可避免的会注意到js的一些应用场景的不同，这两天看到了一篇很好的介绍Nodejs入门的文章，&lt;a href=&quot;https://cnodejs.org/topic/5ab3166be7b166bb7b9eccf7&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;【全文】狼叔：如何正确的学习Node.js&lt;/a&gt;。看这篇文章还是比较有感触的，文章本身结合自身的体验从Nodejs诞生以来讲到近些年的趋势，当然我觉得最准的还是属于对于React.js和Vue.js的趋势的描述。这篇文章偏向于说教，也是说给初学Nodejs的人所听的，详细的地方在于介绍了一些该看的书本，和一些练习代码的方法，比如学会Nodejs要多看一些NPM包的源码，按作者来说就是一天5个NPM包阅读。这个对我来说感触是非常深的，本人觉得是，只有真正的上手，你才能说是真的开始去掌握这门东西。我觉得文章是真的比较详细，还提供一些资料，也提出了一些问题，比如，“在变化多端的大前端背景之下，该如何精进？”。文章本身可能探讨的比较多，也探讨了，Nodejs在各类编程语言中的比较，比如和java比较的优劣。总得来说，是一篇不可多得的好文。有幸看到这种文章。看来以后还是要多看专门的社区，去浏览一些文章，增长一些见识，拓宽一些视野。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fzr55r2l7vj20u0140q8k.jpg&quot; alt&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="生活" scheme="http://lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>第三十一天2019-01-31</title>
+    <link href="http://lmislm.com/2019/01/31/2019-01-31/"/>
+    <id>http://lmislm.com/2019/01/31/2019-01-31/</id>
+    <published>2019-01-30T16:00:00.000Z</published>
+    <updated>2019-01-31T14:09:36.241Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="leetCode"><a href="#leetCode" class="headerlink" title="leetCode"></a>leetCode</h3><p>今天想到了Leetcode的题目，又捡起来做了一道题目。可能比较简单，就当是回忆的题目吧，以后捡起来题目都比较方便。慢慢来吧。坚持下去也好。也不是宁缺毋滥这种借口，是不存在的，还是得每天坚持写点日记，这样以后就能够进行阶段性总结，也可以看以前的东西，希望养成习惯。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fzp0b98bxyj20jg0jggml.jpg" alt><br><a id="more"></a></p><h3 id="Add-Two-Numbers"><a href="#Add-Two-Numbers" class="headerlink" title="Add Two Numbers"></a>Add Two Numbers</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">*</span><br><span class="line">* [<span class="number">2</span>] Add Two Numbers</span><br><span class="line">*</span><br><span class="line">* https:<span class="comment">//leetcode.com/problems/add-two-numbers/description/</span></span><br><span class="line">*</span><br><span class="line">* algorithms</span><br><span class="line">* Medium (<span class="number">30.32</span>%)</span><br><span class="line">* Total Accepted:    <span class="number">733.3</span>K</span><br><span class="line">* Total Submissions: <span class="number">2.4</span>M</span><br><span class="line">* Testcase Example:  <span class="string">'[2,4,3]\n[5,6,4]'</span></span><br><span class="line">*</span><br><span class="line">* You are given two non-empty linked lists representing two non-negative</span><br><span class="line">* integers. The digits are stored <span class="keyword">in</span> reverse order and each <span class="keyword">of</span> their nodes</span><br><span class="line">* contain a single digit. Add the two numbers and <span class="keyword">return</span> it <span class="keyword">as</span> a linked list.</span><br><span class="line">* </span><br><span class="line">* You may assume the two numbers <span class="keyword">do</span> not contain any leading zero, except the</span><br><span class="line">* number <span class="number">0</span> itself.</span><br><span class="line">* </span><br><span class="line">* Example:</span><br><span class="line">* </span><br><span class="line">* </span><br><span class="line">* Input: (<span class="number">2</span> -&gt; <span class="number">4</span> -&gt; <span class="number">3</span>) + (<span class="number">5</span> -&gt; <span class="number">6</span> -&gt; <span class="number">4</span>)</span><br><span class="line">* Output: <span class="number">7</span> -&gt; <span class="number">0</span> -&gt; <span class="number">8</span></span><br><span class="line">* Explanation: <span class="number">342</span> + <span class="number">465</span> = <span class="number">807.</span></span><br><span class="line">* </span><br><span class="line">* </span><br><span class="line">*<span class="regexp">/</span></span><br></pre></td></tr></table></figure><h3 id="题目框架"><a href="#题目框架" class="headerlink" title="题目框架"></a>题目框架</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">**</span><br><span class="line"> * Definition <span class="keyword">for</span> singly-linked list.</span><br><span class="line"> * <span class="function"><span class="keyword">function</span> <span class="title">ListNode</span>(<span class="params">val</span>) </span>&#123;</span><br><span class="line"> *     <span class="keyword">this</span>.val = val;</span><br><span class="line"> *     <span class="keyword">this</span>.next = <span class="literal">null</span>;</span><br><span class="line"> * &#125;</span><br><span class="line"> *<span class="regexp">/</span></span><br><span class="line"><span class="regexp">/</span>**</span><br><span class="line"> * @param &#123;ListNode&#125; l1</span><br><span class="line"> * @param &#123;ListNode&#125; l2</span><br><span class="line"> * @<span class="keyword">return</span> &#123;ListNode&#125;</span><br><span class="line"> *<span class="regexp">/</span></span><br><span class="line"><span class="regexp">var addTwoNumbers = function(l1, l2) &#123;</span></span><br></pre></td></tr></table></figure><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> addTwoNumbers = <span class="function"><span class="keyword">function</span>(<span class="params">l1, l2</span>) </span>&#123;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 方法一</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="keyword">let</span> List = <span class="keyword">new</span> ListNode(<span class="number">0</span>)</span><br><span class="line">  <span class="keyword">let</span> head = List</span><br><span class="line">  <span class="keyword">let</span> sum = <span class="number">0</span></span><br><span class="line">  <span class="keyword">let</span> carray = <span class="number">0</span></span><br><span class="line">  <span class="keyword">while</span> (l1 !== <span class="literal">null</span> || l2 !== <span class="literal">null</span> || sum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (l1 !== <span class="literal">null</span>) &#123;</span><br><span class="line">      sum = sum + l1.val</span><br><span class="line">      l1 = l1.next</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (l2 !== <span class="literal">null</span>) &#123;</span><br><span class="line">      sum = sum + l2.val</span><br><span class="line">      l2 = l2.next</span><br><span class="line">     &#125;</span><br><span class="line">    <span class="keyword">if</span> (sum &gt;= <span class="number">10</span>) &#123;</span><br><span class="line">      carray = <span class="number">1</span></span><br><span class="line">      sum = sum - <span class="number">10</span></span><br><span class="line">    &#125;</span><br><span class="line">    head.next = <span class="keyword">new</span> ListNode(sum)</span><br><span class="line">    head = head.next</span><br><span class="line">    sum = carray</span><br><span class="line">    carray = <span class="number">0</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> List.next</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 方法二</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="comment">// let node = null</span></span><br><span class="line">  <span class="comment">// const carray = arguments[2]</span></span><br><span class="line">  <span class="comment">// if (l1 || l2) &#123;</span></span><br><span class="line">  <span class="comment">//   // 加上进位</span></span><br><span class="line">  <span class="comment">//   const val1 = l1 ? l1.val1 : 0</span></span><br><span class="line">  <span class="comment">//   const val2 = l2 ? l2.val2 : 0</span></span><br><span class="line">  <span class="comment">//   const next1 = l1 ? l1.next : null</span></span><br><span class="line">  <span class="comment">//   const next2 = l2 ? l2.next : null</span></span><br><span class="line">  <span class="comment">//   const val = carry ? val1 + val2 + 1 : val1 + val2</span></span><br><span class="line">  <span class="comment">//   node = new ListNode(val % 10)</span></span><br><span class="line">  <span class="comment">//   node.next = addTwoNumbers(next1, next2, val &gt;= 10)</span></span><br><span class="line">  <span class="comment">// &#125; else if (carray) &#123;</span></span><br><span class="line">  <span class="comment">//   node = new ListNode(1)</span></span><br><span class="line">  <span class="comment">//   node.next = null</span></span><br><span class="line">  <span class="comment">// &#125;</span></span><br><span class="line">  <span class="comment">// return node</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>–end–</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;leetCode&quot;&gt;&lt;a href=&quot;#leetCode&quot; class=&quot;headerlink&quot; title=&quot;leetCode&quot;&gt;&lt;/a&gt;leetCode&lt;/h3&gt;&lt;p&gt;今天想到了Leetcode的题目，又捡起来做了一道题目。可能比较简单，就当是回忆的题目吧，以后捡起来题目都比较方便。慢慢来吧。坚持下去也好。也不是宁缺毋滥这种借口，是不存在的，还是得每天坚持写点日记，这样以后就能够进行阶段性总结，也可以看以前的东西，希望养成习惯。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fzp0b98bxyj20jg0jggml.jpg&quot; alt&gt;&lt;br&gt;
     
     </summary>
     
       <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="acm" scheme="http://lmislm.com/tags/acm/"/>
+      <category term="练习" scheme="http://lmislm.com/tags/%E7%BB%83%E4%B9%A0/"/>
     
   </entry>
   
   <entry>
-    <title>day147-LeetCode 349. Intersection of Two Arrays</title>
-    <link href="http://lmislm.com/2019/06/09/2019-06-09/"/>
-    <id>http://lmislm.com/2019/06/09/2019-06-09/</id>
-    <published>2019-06-08T16:00:00.000Z</published>
-    <updated>2019-06-11T15:25:02.964Z</updated>
+    <title>第三十天2019-01-30</title>
+    <link href="http://lmislm.com/2019/01/30/2019-01-30/"/>
+    <id>http://lmislm.com/2019/01/30/2019-01-30/</id>
+    <published>2019-01-29T16:00:00.000Z</published>
+    <updated>2019-06-15T14:40:12.467Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>Given two arrays, write a function to compute their intersection.</p><p>Example:</p><p>Given nums1 = [1, 2, 2, 1], nums2 = [2, 2], return [2].</p><p>Note:</p><p>Each element in the result must be unique.</p><p>The result can be in any order.</p><a id="more"></a><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>选较短的数组去和长数组比较；<br>短数组值依次遍历长数组；<br>找短数组中有相应的值；</p><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">intersection</span> (<span class="params">arr1, arr2</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> result = []</span><br><span class="line">    <span class="keyword">let</span> longArr</span><br><span class="line">    <span class="keyword">let</span> shortArr</span><br><span class="line">    <span class="keyword">if</span> (arr1.length &gt; arr2.length) &#123;</span><br><span class="line">        longArr = arr1</span><br><span class="line">        shortArr = arr2</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        shortArr = arr1</span><br><span class="line">        longArr = arr2</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; shortArr.length; i++) &#123;</span><br><span class="line">        <span class="keyword">let</span> value = shortArr[i]</span><br><span class="line">        <span class="comment">// 如果longArr中有shortArr的值，而且在交集数组中没有，则为新交集</span></span><br><span class="line">        <span class="keyword">if</span>(longArr.indexOf(value) &gt;= <span class="number">0</span> &amp;&amp; result.indexOf(value) === <span class="number">-1</span>) &#123;</span><br><span class="line">            result.push(value)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 其实es6可以用很快的方法解决</span></span><br><span class="line"><span class="keyword">let</span> intersection = arr1.filter(<span class="function"><span class="params">x</span> =&gt;</span> <span class="keyword">new</span> <span class="built_in">Set</span>(arr2).has(x))</span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<p>上线很晚啊，今天，有点困。还是早点睡吧，这些天。今天碰到个问题。vm.$attrs传入的不识别横线方式，爷组件传入的不会自动将驼峰转为横线模式。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fzp0b945ntj20zk0k0gnj.jpg" alt><br>–end–<br><a id="more"></a></p>]]></content>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h3&gt;&lt;p&gt;Given two arrays, write a function to compute their intersection.&lt;/p&gt;
-&lt;p&gt;Example:&lt;/p&gt;
-&lt;p&gt;Given nums1 = [1, 2, 2, 1], nums2 = [2, 2], return [2].&lt;/p&gt;
-&lt;p&gt;Note:&lt;/p&gt;
-&lt;p&gt;Each element in the result must be unique.&lt;/p&gt;
-&lt;p&gt;The result can be in any order.&lt;/p&gt;
+      &lt;p&gt;上线很晚啊，今天，有点困。还是早点睡吧，这些天。今天碰到个问题。vm.$attrs传入的不识别横线方式，爷组件传入的不会自动将驼峰转为横线模式。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fzp0b945ntj20zk0k0gnj.jpg&quot; alt&gt;&lt;br&gt;–end–&lt;br&gt;
+    
+    </summary>
+    
+      <category term="生活" scheme="http://lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>第二十九天2019-01-29</title>
+    <link href="http://lmislm.com/2019/01/29/2019-01-29/"/>
+    <id>http://lmislm.com/2019/01/29/2019-01-29/</id>
+    <published>2019-01-28T16:00:00.000Z</published>
+    <updated>2019-01-31T14:09:36.233Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>刚看了下，搁置了四天没写技术文章了，好几篇只有上文，没有下文。这个毛病从写日志体现出来了，说明得改，这还说明了，写日志的好处啊，能够从记录中发现问题。可能这就是今天鸽的理由吧。这几天快接近年末了，又期待，又不期待，真是很纠结。我发现，什么时候都有很多事，看你怎么去对待，永远不会说等到没事的时候。要调整好情绪再说。此处，鸽。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fznt8ja8lbj20u01407wh.jpg" alt><br>–end–</p><a id="more"></a>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;刚看了下，搁置了四天没写技术文章了，好几篇只有上文，没有下文。这个毛病从写日志体现出来了，说明得改，这还说明了，写日志的好处啊，能够从记录中发现问题。可能这就是今天鸽的理由吧。这几天快接近年末了，又期待，又不期待，真是很纠结。我发现，什么时候都有很多事，看你怎么去对待，永远不会说等到没事的时候。要调整好情绪再说。此处，鸽。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fznt8ja8lbj20u01407wh.jpg&quot; alt&gt;&lt;br&gt;–end–&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="生活" scheme="http://lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>第二十八天2019-01-28</title>
+    <link href="http://lmislm.com/2019/01/28/2019-01-28/"/>
+    <id>http://lmislm.com/2019/01/28/2019-01-28/</id>
+    <published>2019-01-27T16:00:00.000Z</published>
+    <updated>2019-01-31T14:09:36.230Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>今天回来的比较晚，可能事情比较多吧。又想起了以前的事。唉，洗洗早点睡吧。几天就这几句唠唠叨叨的话了。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fzmpp0a9fgj20b40b4wi4.jpg" alt><br>–end–</p><a id="more"></a>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;今天回来的比较晚，可能事情比较多吧。又想起了以前的事。唉，洗洗早点睡吧。几天就这几句唠唠叨叨的话了。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fzmpp0a9fgj20b40b4wi4.jpg&quot; alt&gt;&lt;br&gt;–end–&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="生活" scheme="http://lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>第二十七天2019-01-27</title>
+    <link href="http://lmislm.com/2019/01/27/2019-01-27/"/>
+    <id>http://lmislm.com/2019/01/27/2019-01-27/</id>
+    <published>2019-01-26T16:00:00.000Z</published>
+    <updated>2019-06-15T14:40:12.466Z</updated>
+    
+    <content type="html"><![CDATA[<p>今天上午看了一部动漫，B站Lex推荐的。看完之后感叹这两天动漫质量的提高，动漫三观简直不能再正，满满的正能量。这种动漫真是难怪不火。动漫名字叫《超能力少女》但是整个片并不是一部打斗片，而是一部以一位来自异世界超能力少女生活为主线另一位异世界超能力少女为辅，讲述了来到这个世界之后，两个少女面对不同的家庭之间各自的努力和奋斗故事，在女二号身上，看到了满满的正能量，与女一号富有的生活对比，个人感觉女二号的勤奋和人品更像是这部故事讲述的主题。同时，这个故事也对于日本的黑帮进行了一些美化。虽然故事剧情并没有像标题和开头一幕一样热血，但是剧情本身还是非常精彩！这里好像说了绕口令。但就是夸这部动漫吧。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fzlc8bxnrgj20yi22ojyq.jpg" alt><br>–end–</p><a id="more"></a>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天上午看了一部动漫，B站Lex推荐的。看完之后感叹这两天动漫质量的提高，动漫三观简直不能再正，满满的正能量。这种动漫真是难怪不火。动漫名字叫《超能力少女》但是整个片并不是一部打斗片，而是一部以一位来自异世界超能力少女生活为主线另一位异世界超能力少女为辅，讲述了来到这个世界之后，两个少女面对不同的家庭之间各自的努力和奋斗故事，在女二号身上，看到了满满的正能量，与女一号富有的生活对比，个人感觉女二号的勤奋和人品更像是这部故事讲述的主题。同时，这个故事也对于日本的黑帮进行了一些美化。虽然故事剧情并没有像标题和开头一幕一样热血，但是剧情本身还是非常精彩！这里好像说了绕口令。但就是夸这部动漫吧。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fzlc8bxnrgj20yi22ojyq.jpg&quot; alt&gt;&lt;br&gt;–end–&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="生活" scheme="http://lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>第二十六天2019-01-26</title>
+    <link href="http://lmislm.com/2019/01/26/2019-01-26/"/>
+    <id>http://lmislm.com/2019/01/26/2019-01-26/</id>
+    <published>2019-01-25T16:00:00.000Z</published>
+    <updated>2019-01-31T14:09:36.223Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>今天公司年会，这是个不写log的好理由，对吧？我也是这么觉得。回到家已经很晚了，晚上11点才到家，就真的不想再写日志了。就这样结束今天的日志环节吧。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fzkehskm6qj205k05kdfw.jpg" alt><br>–end–</p><a id="more"></a>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;今天公司年会，这是个不写log的好理由，对吧？我也是这么觉得。回到家已经很晚了，晚上11点才到家，就真的不想再写日志了。就这样结束今天的日志环节吧。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fzkehskm6qj205k05kdfw.jpg&quot; alt&gt;&lt;br&gt;–end–&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="生活" scheme="http://lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>第二十五天2019-01-25</title>
+    <link href="http://lmislm.com/2019/01/25/2019-01-25/"/>
+    <id>http://lmislm.com/2019/01/25/2019-01-25/</id>
+    <published>2019-01-24T16:00:00.000Z</published>
+    <updated>2019-01-31T14:09:36.219Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="js-常用数组方法小结-（2）"><a href="#js-常用数组方法小结-（2）" class="headerlink" title="js 常用数组方法小结 （2）"></a>js 常用数组方法小结 （2）</h3><h4 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h4><p>有些数组方法会经常用，这里今天就介绍一下reduce()方法和find()方法。</p><h3 id="Array-protytype-reduce"><a href="#Array-protytype-reduce" class="headerlink" title="Array.protytype.reduce()"></a>Array.protytype.reduce()</h3><h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><p>看完一些方法，目前来说，reduce()方法，能实现的比较多，且我之前看到的文章中对其的推崇是比较多的。据说它能做很多事情。昨天看了下MDN上的介绍和几个例子，确实感觉其功能的强大。本文基于MDN上的代码以笔记的形式注释，先对功能做栗子，然后对方法进行一些描述。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fzj9hyus3ij20sg0sgh3k.jpg" alt></p><a id="more"></a><h3 id="举个栗子"><a href="#举个栗子" class="headerlink" title="举个栗子"></a>举个栗子</h3><h4 id="一些简单的例子"><a href="#一些简单的例子" class="headerlink" title="一些简单的例子"></a>一些简单的例子</h4><ol><li><p>累加数组中的值？</p><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> sum = [<span class="number">3</span>, <span class="number">9</span>, <span class="number">12</span>, <span class="number">34</span>].reduce(<span class="function">(<span class="params">accumulator, currentValue, currentIndex, array</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> accumulator + currentValue</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(sum) <span class="comment">// 58</span></span><br></pre></td></tr></table></figure></li><li><p>累加对象数组中的值？</p><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> sum = [&#123;<span class="attr">x</span>: <span class="number">1</span>&#125;, &#123;<span class="attr">x</span>:<span class="number">2</span>&#125;, &#123;<span class="attr">x</span>:<span class="number">3</span>&#125;].reduce(<span class="function">(<span class="params">accumulator, currentValue</span>) =&gt;</span> &#123;</span><br><span class="line"><span class="comment">// 将键名为x的逐个累加到累加器中</span></span><br><span class="line">    <span class="keyword">return</span> accumulator + currentValue.x</span><br><span class="line">&#125;, <span class="number">0</span>)</span><br><span class="line"><span class="built_in">console</span>.log(sum) <span class="comment">// 6</span></span><br></pre></td></tr></table></figure></li></ol><p>initialValue 为初始值，且初始值是必须提供的</p><ol start="3"><li>二维数组转为一维数组？<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> flattened =  [[<span class="number">0</span>, <span class="number">1</span>], [<span class="number">2</span>, <span class="number">3</span>], [<span class="number">4</span>, <span class="number">5</span>]].reduce(<span class="function">(<span class="params">acc, cval, cidx, arr</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 初始值为空数组，取出当前下标数组中的值，放入累加器中的空数组，逐个累加</span></span><br><span class="line">  <span class="keyword">return</span> acc.concat(cval)</span><br><span class="line">&#125;, [])</span><br><span class="line"><span class="built_in">console</span>.log(flattened)</span><br></pre></td></tr></table></figure></li></ol><h4 id="一些稍微复杂点的"><a href="#一些稍微复杂点的" class="headerlink" title="一些稍微复杂点的"></a>一些稍微复杂点的</h4><ol><li><p>计算数组中每个元素出现的次数？</p><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">3</span>, <span class="number">54</span>, <span class="number">21</span>, <span class="number">1</span>]</span><br><span class="line"><span class="keyword">let</span> count = arr.reduce(<span class="function">(<span class="params">acc, cval</span>) =&gt;</span> &#123;</span><br><span class="line"><span class="comment">// 这里要注意是在累加器中去寻找是否存在值</span></span><br><span class="line">  <span class="keyword">if</span> (cval <span class="keyword">in</span> acc) &#123;</span><br><span class="line">   <span class="comment">// 以对象形式赋值，真个reduce过程一次次去遍历</span></span><br><span class="line">    acc[cval]++</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    acc[cval] = <span class="number">1</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> acc</span><br><span class="line">&#125;, &#123;&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(count) <span class="comment">// &#123; '1': 2, '3': 1, '21': 1, '54': 1 &#125;</span></span><br></pre></td></tr></table></figure></li><li><p>属性对object分类？</p><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> people = [</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">'Alice'</span>, <span class="attr">age</span>: <span class="number">21</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">'Max'</span>, <span class="attr">age</span>: <span class="number">20</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">'Jane'</span>, <span class="attr">age</span>: <span class="number">20</span> &#125;</span><br><span class="line">]</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">groupBy</span> (<span class="params">objArr, property</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> objArr.reduce(<span class="function">(<span class="params">acc, obj</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 键名</span></span><br><span class="line">    <span class="keyword">let</span> key = obj[property]</span><br><span class="line">    <span class="comment">// 判断累加器中是否有重复的元素</span></span><br><span class="line">    <span class="keyword">if</span>(!acc[key]) &#123;</span><br><span class="line">      acc[key] = []</span><br><span class="line">    &#125;</span><br><span class="line">    acc[key].push(obj)</span><br><span class="line">    <span class="keyword">return</span> acc</span><br><span class="line">  &#125;, &#123;&#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> groupedByPeople = groupBy(people, <span class="string">'age'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(groupedByPeople)</span><br></pre></td></tr></table></figure></li><li><p>使用扩展运算符和initialValue绑定包含在对象数组中的数组<br>简单点说就是取出数组集合中对象中的数组</p><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> friends = [&#123;</span><br><span class="line">  name: <span class="string">'Anna'</span>,</span><br><span class="line">  books: [<span class="string">'Bible'</span>, <span class="string">'Harry Potter'</span>],</span><br><span class="line">  age: <span class="number">21</span></span><br><span class="line">&#125;, &#123;</span><br><span class="line">  name: <span class="string">'Bob'</span>,</span><br><span class="line">  books: [<span class="string">'War and peace'</span>, <span class="string">'Romeo and Juliet'</span>],</span><br><span class="line">  age: <span class="number">26</span></span><br><span class="line">&#125;, &#123;</span><br><span class="line">  name: <span class="string">'Alice'</span>,</span><br><span class="line">  books: [<span class="string">'The Lord of the Rings'</span>, <span class="string">'The Shining'</span>],</span><br><span class="line">  age: <span class="number">18</span></span><br><span class="line">&#125;]</span><br><span class="line"><span class="comment">// 列出所有包含的书籍</span></span><br><span class="line"><span class="comment">// 题目不容易理解，好好一想，就容易的多，还得对扩展符了解的比较多点就更容易上手</span></span><br><span class="line"><span class="keyword">let</span> containerBook = friends.reduce(<span class="function">(<span class="params">prev, curr</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> [...prev, ...curr.books]</span><br><span class="line">&#125;, [])</span><br><span class="line"><span class="built_in">console</span>.log(containerBook)</span><br></pre></td></tr></table></figure></li></ol><p>然后，鸽了鸽了。先写到这里吧。时间又不够了。</p><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>[1]. <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce" target="_blank" rel="noopener">Array.prototype.reduce()</a><br>–end–</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;js-常用数组方法小结-（2）&quot;&gt;&lt;a href=&quot;#js-常用数组方法小结-（2）&quot; class=&quot;headerlink&quot; title=&quot;js 常用数组方法小结 （2）&quot;&gt;&lt;/a&gt;js 常用数组方法小结 （2）&lt;/h3&gt;&lt;h4 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h4&gt;&lt;p&gt;有些数组方法会经常用，这里今天就介绍一下reduce()方法和find()方法。&lt;/p&gt;
+&lt;h3 id=&quot;Array-protytype-reduce&quot;&gt;&lt;a href=&quot;#Array-protytype-reduce&quot; class=&quot;headerlink&quot; title=&quot;Array.protytype.reduce()&quot;&gt;&lt;/a&gt;Array.protytype.reduce()&lt;/h3&gt;&lt;h4 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h4&gt;&lt;p&gt;看完一些方法，目前来说，reduce()方法，能实现的比较多，且我之前看到的文章中对其的推崇是比较多的。据说它能做很多事情。昨天看了下MDN上的介绍和几个例子，确实感觉其功能的强大。本文基于MDN上的代码以笔记的形式注释，先对功能做栗子，然后对方法进行一些描述。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fzj9hyus3ij20sg0sgh3k.jpg&quot; alt&gt;&lt;/p&gt;
     
     </summary>
     
       <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="acm" scheme="http://lmislm.com/tags/acm/"/>
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   
   <entry>
-    <title>day146-LeetCode 283. Move Zeroes</title>
-    <link href="http://lmislm.com/2019/06/08/2019-06-08/"/>
-    <id>http://lmislm.com/2019/06/08/2019-06-08/</id>
-    <published>2019-06-07T16:00:00.000Z</published>
-    <updated>2019-06-08T15:03:34.109Z</updated>
+    <title>第二十四天2019-01-24</title>
+    <link href="http://lmislm.com/2019/01/24/2019-01-24/"/>
+    <id>http://lmislm.com/2019/01/24/2019-01-24/</id>
+    <published>2019-01-23T16:00:00.000Z</published>
+    <updated>2019-01-31T14:07:54.505Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>Given an array nums, write a function to move all 0’s to the end of it while maintaining the relative order of the non-zero elements.</p><p>For example, given nums = [0, 1, 0, 3, 12], after calling your function, nums should be [1, 3, 12, 0, 0].</p><p>Note:</p><p>You must do this in-place without making a copy of the array.<br>Minimize the total number of operations.</p><a id="more"></a><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>注意：只能是针对当前数组操作，不能是新增数组<br>将数组中遍历的非零元素依次递增标记，以0为初始值，最后将标记的值作为数组元素下标。<br>递增次数为非零元素个数，遍历完成之后，非零元素补零。</p><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">moveZeros</span> (<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> index = <span class="number">0</span></span><br><span class="line">    <span class="comment">// 标记所有非零元素</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">        <span class="comment">// n为非零元素</span></span><br><span class="line">        <span class="keyword">let</span> n = arr[i]</span><br><span class="line">        <span class="keyword">if</span> (n !== <span class="number">0</span>) &#123;</span><br><span class="line">            arr[index++] = n</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 非零元素之外的元素补零</span></span><br><span class="line">    <span class="keyword">for</span> (index; index &lt; arr.length; index++) &#123;</span><br><span class="line">        arr[index] = <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>今天一天写代码有点不在状态，可能是最近有点不太对，不是疲累也可能是心事又多了起来。原本计划今天继续上文或者上上文的。现在看来真的只能是搁了。<br>最近图片可能会风格比较和以前不一样。这是问人要的哈。嘿嘿。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fzi1pivvmhj20i40i53zr.jpg" alt><br>–end–<br><a id="more"></a></p>]]></content>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h3&gt;&lt;p&gt;Given an array nums, write a function to move all 0’s to the end of it while maintaining the relative order of the non-zero elements.&lt;/p&gt;
-&lt;p&gt;For example, given nums = [0, 1, 0, 3, 12], after calling your function, nums should be [1, 3, 12, 0, 0].&lt;/p&gt;
-&lt;p&gt;Note:&lt;/p&gt;
-&lt;p&gt;You must do this in-place without making a copy of the array.&lt;br&gt;Minimize the total number of operations.&lt;/p&gt;
+      &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;今天一天写代码有点不在状态，可能是最近有点不太对，不是疲累也可能是心事又多了起来。原本计划今天继续上文或者上上文的。现在看来真的只能是搁了。&lt;br&gt;最近图片可能会风格比较和以前不一样。这是问人要的哈。嘿嘿。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fzi1pivvmhj20i40i53zr.jpg&quot; alt&gt;&lt;br&gt;–end–&lt;br&gt;
     
     </summary>
     
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="生活" scheme="http://lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
     
     
-      <category term="acm" scheme="http://lmislm.com/tags/acm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day144-LeetCode 112. Path Sum</title>
-    <link href="http://lmislm.com/2019/06/06/2019-06-06/"/>
-    <id>http://lmislm.com/2019/06/06/2019-06-06/</id>
-    <published>2019-06-05T16:00:00.000Z</published>
-    <updated>2019-06-10T14:36:41.388Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>Given a binary tree and a sum, determine if the tree has a root-to-leaf path such that adding up all the values along the path equals the given sum.<br>For example: Given the below binary tree and sum = 22,<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">      5</span><br><span class="line">    /  \</span><br><span class="line">   4    8</span><br><span class="line">  /    / \</span><br><span class="line"> 11   13  4</span><br><span class="line"> /     \   \</span><br><span class="line">7       2   1</span><br></pre></td></tr></table></figure></p><p>return true, as there exist a root-to-leaf path 5-&gt;4-&gt;11-&gt;2 which sum is 22.</p><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p><strong>leetcode 104</strong>的变形。用递归来计算每条路径的总和。<br>求根节点到子树的每条可能路径的和，并检测是否和给出的随机数相等。</p><p>从父节点出发，如果父节点加左节点不等于给出的随机数，则回退父节点加右节点，<br>如果不相等且子节点有左右子树则递归上述过程。<br>直到找到和随机数相等的值返回true,否则返回false</p><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hasPathEqualSum</span> (<span class="params">root, sum</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (root === <span class="literal">null</span>) <span class="keyword">return</span></span><br><span class="line">  <span class="keyword">let</span> list = []</span><br><span class="line">  <span class="comment">// 计算总和</span></span><br><span class="line">  sumR2L(root, <span class="number">0</span>)</span><br><span class="line">  <span class="keyword">return</span> sumR2L(root, <span class="number">0</span>)</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">sumR2L</span>(<span class="params">root, s</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root.left === <span class="literal">null</span> &amp;&amp; root.right === <span class="literal">null</span>) &#123;</span><br><span class="line">      <span class="comment">// 到底的时候，判断总和是否是与sum相同</span></span><br><span class="line">      list.push(s)</span><br><span class="line">      s += root.val</span><br><span class="line">      <span class="keyword">return</span> s === sum</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 右边到底</span></span><br><span class="line">    <span class="keyword">if</span> (root.left !== <span class="literal">null</span> &amp;&amp; root.right === <span class="literal">null</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> sumR2L(root.left, s + root.val)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 左边到底</span></span><br><span class="line">    <span class="keyword">if</span> (root.left === <span class="literal">null</span> &amp;&amp; root.right !== <span class="literal">null</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> sumR2L(root.right, s + root.val)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 两边的树没有到底</span></span><br><span class="line">    <span class="keyword">return</span> sumR2L(root.left, s + root.val) || sumR2L(root.right, s + root.val)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h3&gt;&lt;p&gt;Given a binary tree and a sum, determine if the tree has a root-to-leaf path such that adding up all the values along the path equals the given sum.&lt;br&gt;For example: Given the below binary tree and sum = 22,&lt;br&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="acm" scheme="http://lmislm.com/tags/acm/"/>
+      <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
     
   </entry>
   
   <entry>
-    <title>day145-LeetCode 121. Best Time to Buy and Sell Stock</title>
-    <link href="http://lmislm.com/2019/06/06/2019-06-07/"/>
-    <id>http://lmislm.com/2019/06/06/2019-06-07/</id>
-    <published>2019-06-05T16:00:00.000Z</published>
-    <updated>2019-06-08T15:03:20.915Z</updated>
+    <title>第二十三天2019-01-23</title>
+    <link href="http://lmislm.com/2019/01/23/2019-01-23/"/>
+    <id>http://lmislm.com/2019/01/23/2019-01-23/</id>
+    <published>2019-01-22T16:00:00.000Z</published>
+    <updated>2019-01-31T14:07:54.501Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>Say you have an array for which the ith element is the price of a given stock on day i.</p><p>If you were only permitted to complete at most one transaction (ie, buy one and sell one share of the stock), design an algorithm to find the maximum profit.</p><p>Example 1: Input: [7, 1, 5, 3, 6, 4]</p><p>Output: 5</p><p>max. difference = 6-1 = 5 (not 7-1 = 6, as selling price needs to be larger than buying price)</p><p>Example 2: Input: [7, 6, 4, 3, 1]</p><p>Output: 0</p><p>In this case, no transaction is done, i.e. max profit = 0.</p><a id="more"></a><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>数组中的元素，从index 0 到最后一位，都表示每天的股价变化。求给出的数组中，利益最大的一天。即，从后往前相减，整数最大的值</p><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">maxProfit</span> (<span class="params">prices</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 表示最低的股价，MAX_表示无限大</span></span><br><span class="line">    <span class="keyword">let</span> min = <span class="built_in">Number</span>.MAX_SAFE_INTEGER</span><br><span class="line">    <span class="keyword">let</span> maxProfit = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; prices.length; i++) &#123;</span><br><span class="line">        <span class="comment">// 冒泡找出最小值</span></span><br><span class="line">        <span class="keyword">if</span> (prices[i] &lt; min) &#123;</span><br><span class="line">            min = prices[i]</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 当前可获利的值</span></span><br><span class="line">        <span class="keyword">let</span> calProfit = prices[i] - min</span><br><span class="line">        <span class="keyword">if</span>(calProfit &gt; maxProfit) &#123;</span><br><span class="line">            maxProfit = calProfit</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> maxProfit</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h3&gt;&lt;p&gt;Say you have an array for which the ith element is the price of a given stock on day i.&lt;/p&gt;
-&lt;p&gt;If you were only permitted to complete at most one transaction (ie, buy one and sell one share of the stock), design an algorithm to find the maximum profit.&lt;/p&gt;
-&lt;p&gt;Example 1: Input: [7, 1, 5, 3, 6, 4]&lt;/p&gt;
-&lt;p&gt;Output: 5&lt;/p&gt;
-&lt;p&gt;max. difference = 6-1 = 5 (not 7-1 = 6, as selling price needs to be larger than buying price)&lt;/p&gt;
-&lt;p&gt;Example 2: Input: [7, 6, 4, 3, 1]&lt;/p&gt;
-&lt;p&gt;Output: 0&lt;/p&gt;
-&lt;p&gt;In this case, no transaction is done, i.e. max profit = 0.&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="acm" scheme="http://lmislm.com/tags/acm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day143-LeetCode 70. Climbing Stairs</title>
-    <link href="http://lmislm.com/2019/06/04/2019-06-04/"/>
-    <id>http://lmislm.com/2019/06/04/2019-06-04/</id>
-    <published>2019-06-03T16:00:00.000Z</published>
-    <updated>2019-06-07T14:17:01.874Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>You are climbing a stair case. It takes n steps to reach to the top.<br>Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?</p><a id="more"></a><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>这种从无穷之中找规律的题目，难免会想到动态规划，所以可以先分情况来~</p><p>n为阶梯数，p表示方法种类<br>n = 1; p = 1<br>n = 2; p = 1+1<br>n = 3; p = 1+2<br>n = 4; p = 3+2<br>规律，斐波那契数列f(n) = f(n-1) + f(n-2)</p><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">climbStairs</span> (<span class="params">n</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (n &lt;= <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">  <span class="keyword">let</span> prev = <span class="number">1</span></span><br><span class="line">  <span class="keyword">let</span> cur = <span class="number">1</span></span><br><span class="line">  <span class="comment">// f(n) = f(n -1) + f(n -2)</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">2</span>; i &lt;= n; i++) &#123;</span><br><span class="line">    <span class="keyword">let</span> temp = cur</span><br><span class="line">    cur = cur + prev</span><br><span class="line">    prev = temp</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> cur</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h3 id="js-常用数组方法小结"><a href="#js-常用数组方法小结" class="headerlink" title="js 常用数组方法小结"></a>js 常用数组方法小结</h3><h4 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h4><p>今天这个数组对象操作写的有点多啊，特此来小结一下，一些常用的方法的基本操作。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fzgxeniqluj20k00arjrt.jpg" alt><br><a id="more"></a></p><h3 id="Array-prototype-filter"><a href="#Array-prototype-filter" class="headerlink" title="Array.prototype.filter()"></a>Array.prototype.filter()</h3><h4 id="表格过滤用的比较多"><a href="#表格过滤用的比较多" class="headerlink" title="表格过滤用的比较多"></a>表格过滤用的比较多</h4><p>大概用法就是过滤数组或者数组集合中一些不符合条件的数组元素和集合。也可以用来过滤数组中一些undefined和null。<br>例子：<sup>[1]</sup><br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const fruits = [&apos;apple&apos;, &apos;banana&apos;, &apos;grapes&apos;, &apos;mango&apos;, &apos;orange&apos;];</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Array filters items based on search criteria (query)</span><br><span class="line"> */</span><br><span class="line">const filterItems = (query) =&gt; &#123;</span><br><span class="line">  return fruits.filter((el) =&gt;</span><br><span class="line">  // 过滤的条件</span><br><span class="line">    el.toLowerCase().indexOf(query.toLowerCase()) &gt; -1</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line">// 根据条件过滤之后的数组</span><br><span class="line">console.log(filterItems(&apos;ap&apos;)); // [&apos;apple&apos;, &apos;grapes&apos;]</span><br><span class="line">console.log(filterItems(&apos;an&apos;)); // [&apos;banana&apos;, &apos;mango&apos;, &apos;orange&apos;]</span><br></pre></td></tr></table></figure></p><h4 id="过滤数组中空值"><a href="#过滤数组中空值" class="headerlink" title="过滤数组中空值"></a>过滤数组中空值</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">let newArray = oldArray.filter(s =&gt; s.value != null)</span><br></pre></td></tr></table></figure><h4 id="filter-的实现"><a href="#filter-的实现" class="headerlink" title="filter() 的实现"></a>filter() 的实现</h4><ul><li>利用for循环以及push构造数组<sup>[1]</sup><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// Polyfill Array.prototype.filter()</span><br><span class="line">function newFilter() &#123;</span><br><span class="line">  if (!Array.prototype.newFilter) &#123;</span><br><span class="line">    // 可以带thisArg</span><br><span class="line">    Array.prototype.newFilter = (fun /* , thisArg*/) =&gt; &#123;</span><br><span class="line">      // void(0)（等同于void 0） 差不多等于 undefined</span><br><span class="line">      if (this === void 0 || this === null) &#123;</span><br><span class="line">        throw new TypeError()</span><br><span class="line">      &#125;</span><br><span class="line">      // Object构造函数为给定值创建一个对象包装器</span><br><span class="line">      let t = Object(this)</span><br><span class="line">      // 所有非数值转换成0, 所有大于等于 0 等数取整数部分</span><br><span class="line">      // Shifts a in binary representation b (&lt; 32) bits to the right, discarding bits shifted off, and shifting in 0s from the left.</span><br><span class="line">      let len = t.length &gt;&gt;&gt; 0</span><br><span class="line">      if (typeof fun !== &apos;function&apos;) &#123;</span><br><span class="line">        throw new TypeError()</span><br><span class="line">      &#125;</span><br><span class="line">      let res = []</span><br><span class="line">      // arguments对象不是一个 Array 。它类似于Array，但除了length属性和索引元素之外没有任何Array属性</span><br><span class="line">      // 没有 pop 方法。但是它可以被转换为一个真正的Array：args = Array.from(arguments)</span><br><span class="line">      // 所以这个地方用arguments可能有错？</span><br><span class="line">      let thisArg = arguments.length &gt;= 2 ? arguments[1] : void 0</span><br><span class="line">      // t = Object(this)</span><br><span class="line">      for (let i = 0; i&lt; len; i++) &#123;</span><br><span class="line">        // prop in object, 检查object（或其原型链）是否包含具有指定名称的属性的对象</span><br><span class="line">        if (i in t) &#123;</span><br><span class="line">          let val = t[i]</span><br><span class="line">          // NOTE: Technically this should Object.defineProperty at</span><br><span class="line">          //       the next index, as push can be affected by</span><br><span class="line">          //       properties on Object.prototype and Array.prototype.</span><br><span class="line">          //       But that method&apos;s new, and collisions should be</span><br><span class="line">          //       rare, so use the more-compatible alternative.</span><br><span class="line">          // 满足filter中的条件的话就push进数组res,filter回调函数的三个参数：元素值，元素索引，原数组</span><br><span class="line">          // thisArg: 当前在数组中处理的元素</span><br><span class="line">          // val: 正在处理元素在数组中的索引</span><br><span class="line">          if (fun.call(thisArg, val, i, t))</span><br><span class="line">            res.push(val)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ul><h3 id="Array-prototype-reduce"><a href="#Array-prototype-reduce" class="headerlink" title="Array.prototype.reduce()"></a>Array.prototype.reduce()</h3><p>鸽到下期再讲吧，好像我已经鸽了很多东西了。额。<br>–end–</p>]]></content>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h3&gt;&lt;p&gt;You are climbing a stair case. It takes n steps to reach to the top.&lt;br&gt;Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="acm" scheme="http://lmislm.com/tags/acm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day142-LeetCode 171. Excel Sheet Column Number</title>
-    <link href="http://lmislm.com/2019/06/03/2019-06-03/"/>
-    <id>http://lmislm.com/2019/06/03/2019-06-03/</id>
-    <published>2019-06-02T16:00:00.000Z</published>
-    <updated>2019-06-03T15:32:01.381Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>Related to question Excel Sheet Column Title<br>Given a column title as appear in an Excel sheet, return its corresponding column number.</p><a id="more"></a><p>For example:<br>A -&gt; 1<br>B -&gt; 2<br>C -&gt; 3<br>…<br>Z -&gt; 26<br>AA -&gt; 27<br>AB -&gt; 28 </p><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>总共26个字母，所以这个也可以算是26进制。</p><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">titleToNumber</span> (<span class="params">s</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> sum = <span class="number">0</span></span><br><span class="line">  <span class="keyword">let</span> exp = <span class="number">0</span></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i = s.length <span class="number">-1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">      <span class="comment">// 转成数字</span></span><br><span class="line">      <span class="keyword">let</span> v = s.charCodeAt(i) - <span class="number">64</span></span><br><span class="line">      <span class="comment">// 毎多一个代表26的n次方</span></span><br><span class="line">      v = v * <span class="built_in">Math</span>.pow(<span class="number">26</span>,exp++)</span><br><span class="line">      sum += v</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> sum    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h3&gt;&lt;p&gt;Related to question Excel Sheet Column Title&lt;br&gt;Given a column title as appear in an Excel sheet, return its corresponding column number.&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="acm" scheme="http://lmislm.com/tags/acm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day141-LeetCode 110. Balanced Binary Tree</title>
-    <link href="http://lmislm.com/2019/06/02/2019-06-02/"/>
-    <id>http://lmislm.com/2019/06/02/2019-06-02/</id>
-    <published>2019-06-01T16:00:00.000Z</published>
-    <updated>2019-06-02T06:56:33.472Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>Given a binary tree, determine if it is height-balanced.<br>For this problem, a height-balanced binary tree is defined as a binary tree in which the depth of the two subtrees of every node never differ by more than 1.</p><a id="more"></a><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>求左右子树的最大深度<br>即：左右子树的高度差为0</p><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isBalanceTree</span> (<span class="params">root</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (root === <span class="literal">null</span> || (root.left === <span class="literal">null</span> &amp;&amp; root.right === <span class="literal">null</span>)) <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment">// 分别找出左右子树深度</span></span><br><span class="line">  <span class="keyword">let</span> deepLeft = findDeepth (root.left)</span><br><span class="line">  <span class="keyword">let</span> deepRight = findDeepth (root.right)</span><br><span class="line">  <span class="comment">// 是否是平衡树</span></span><br><span class="line">  <span class="keyword">let</span> isBalance = <span class="built_in">Math</span>.abs(deepLeft - deepRight) &lt; <span class="number">1</span></span><br><span class="line">  <span class="keyword">return</span> isBalance &amp;&amp; isBalanceTree(root.left) &amp;&amp; isBalanceTree(root.right)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">findDeepth</span> (<span class="params">root</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (root === <span class="literal">null</span>) <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">  <span class="keyword">let</span> deepLeftDeepth = findDeepth(root.left) + <span class="number">1</span></span><br><span class="line">  <span class="keyword">let</span> deepRightDeepth = findDeepth(root.right) + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> deepLeftDeepth &gt; deepRightDeepth ? deepLeftDeepth : deepRightDeepth</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h3&gt;&lt;p&gt;Given a binary tree, determine if it is height-balanced.&lt;br&gt;For this problem, a height-balanced binary tree is defined as a binary tree in which the depth of the two subtrees of every node never differ by more than 1.&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="acm" scheme="http://lmislm.com/tags/acm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day140-LeetCode 206. Reverse Linked List</title>
-    <link href="http://lmislm.com/2019/06/01/2019-06-01/"/>
-    <id>http://lmislm.com/2019/06/01/2019-06-01/</id>
-    <published>2019-05-31T16:00:00.000Z</published>
-    <updated>2019-06-01T15:48:00.693Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>Reverse a singly linked list.<br>{ val:1, next: {val:2, next:null} } }<br>{ val:2, next: {val:1, next:null} } }</p><a id="more"></a><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>链表反转</p><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverseList</span> (<span class="params">head</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!head) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (!head.next) &#123;</span><br><span class="line">    <span class="keyword">return</span> head</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> prev = head</span><br><span class="line">  <span class="keyword">let</span> cur  = head.next</span><br><span class="line">  prev.next = <span class="literal">null</span></span><br><span class="line">  <span class="keyword">while</span> (cur !== <span class="literal">null</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> temp = cur</span><br><span class="line">    <span class="comment">// 当前node指向下一个，不然会被后面操作影响</span></span><br><span class="line">    cur = cur.next</span><br><span class="line">    <span class="comment">// 只需要当前node的值，不需要他的next，temp.next = null</span></span><br><span class="line">    <span class="comment">// 之前的linked list加到当前node后面， temp.next = prev</span></span><br><span class="line">    temp.next = prev </span><br><span class="line">    prev = temp</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> prev</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h3&gt;&lt;p&gt;Reverse a singly linked list.&lt;br&gt;{ val:1, next: {val:2, next:null} } }&lt;br&gt;{ val:2, next: {val:1, next:null} } }&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="acm" scheme="http://lmislm.com/tags/acm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day139-LeetCode 101. Symmetric Tree</title>
-    <link href="http://lmislm.com/2019/05/31/2019-05-31/"/>
-    <id>http://lmislm.com/2019/05/31/2019-05-31/</id>
-    <published>2019-05-30T16:00:00.000Z</published>
-    <updated>2019-05-31T14:44:38.015Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).</p><p>For example, this binary tree [1,2,2,3,4,4,3] is symmetric: But the following [1,2,2,null,3,null,3] is not<br>      1<br>    /   \<br>   2     2<br>  / \   / \<br>3   4 4   3<br>把左子树反转就是右子树</p><a id="more"></a><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>这题是反转二叉树和比较二叉树相同的结合</p><ol><li>先反转二叉树</li><li>比较反转后的二叉树是否相等</li></ol><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isSymmetricTree</span> (<span class="params">root</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (root === <span class="literal">null</span> || root.right ===  <span class="literal">null</span> || root.left === <span class="literal">null</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 反转</span></span><br><span class="line">  root.left = revertTree(root.right)</span><br><span class="line">  <span class="keyword">return</span> isSameTree(root.left, root.right)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">revertTree</span>(<span class="params">node</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(node == <span class="literal">null</span> || node.left == <span class="literal">null</span> &amp;&amp; node.right == <span class="literal">null</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> node</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> temp = revertTree(node.left)</span><br><span class="line">  node.left = revertTree(node.right)</span><br><span class="line">  node.right = temp</span><br><span class="line">  <span class="keyword">return</span> node</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isSameTree</span> (<span class="params">leftNode, rightNode</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 空节点，递归结束</span></span><br><span class="line">  <span class="keyword">if</span> (leftNode === <span class="literal">null</span> || rightNode === <span class="literal">null</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 左右子树有一个为空</span></span><br><span class="line">  <span class="keyword">if</span> (leftNode === <span class="literal">null</span> &amp;&amp; rightNode !== <span class="literal">null</span> || leftNode !== <span class="literal">null</span> &amp;&amp; rightNode === <span class="literal">null</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 判断非空节点是否相等</span></span><br><span class="line">  <span class="keyword">if</span> (leftNode !== rightNode) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 递归</span></span><br><span class="line">  <span class="keyword">return</span> isSameTree(leftNode.right, rightNode.right) &amp;&amp; isSameTree(leftNode.left, rightNode.left)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h3&gt;&lt;p&gt;Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).&lt;/p&gt;
-&lt;p&gt;For example, this binary tree [1,2,2,3,4,4,3] is symmetric: But the following [1,2,2,null,3,null,3] is not&lt;br&gt;      1&lt;br&gt;    /   \&lt;br&gt;   2     2&lt;br&gt;  / \   / \&lt;br&gt;3   4 4   3&lt;br&gt;把左子树反转就是右子树&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="acm" scheme="http://lmislm.com/tags/acm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day138-LeetCode 235. Lowest Common Ancestor of a Binary Search</title>
-    <link href="http://lmislm.com/2019/05/30/2019-05-30/"/>
-    <id>http://lmislm.com/2019/05/30/2019-05-30/</id>
-    <published>2019-05-29T16:00:00.000Z</published>
-    <updated>2019-05-30T15:56:35.240Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>LeetCode 235. Lowest Common Ancestor of a Binary Search<br>Given a binary search tree (BST), find the lowest common ancestor (LCA) of two given nodes in the BST.<br>According to the definition of LCA on Wikipedia: “The lowest common ancestor is defined between two nodes v and w as the lowest node in T that has both v and w as descendants (where we allow a node to be a descendant of itself).”<br>      _6_<br>    /    \<br>    2      8<br>   /  \    / \<br>  0   4  7   9<br> / \<br>3   5</p><p>For example, the lowest common ancestor (LCA) of nodes 2 and 8 is 6. Another example is LCA of nodes 2 and 4 is 2, since a node can be a descendant of itself according to the LCA definition. </p><a id="more"></a><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>注意这颗是中序遍历的二叉树，左子树节点值小于根节点值小于右子树节点值。</p><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">lowestCommonAncestor</span> (<span class="params">root, p, q</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">    <span class="keyword">let</span> value =  root.val</span><br><span class="line">    <span class="keyword">if</span>(p.val &gt;= value &amp;&amp; value &gt;= q.val || p.val &lt;= value &amp;&amp; value &lt;= q.val)&#123;</span><br><span class="line">      <span class="keyword">return</span> root</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span>(p.val &gt; value &amp;&amp; q.val &gt; value)&#123;</span><br><span class="line">      root =  root.right</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      root =  root.left</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h3&gt;&lt;p&gt;LeetCode 235. Lowest Common Ancestor of a Binary Search&lt;br&gt;Given a binary search tree (BST), find the lowest common ancestor (LCA) of two given nodes in the BST.&lt;br&gt;According to the definition of LCA on Wikipedia: “The lowest common ancestor is defined between two nodes v and w as the lowest node in T that has both v and w as descendants (where we allow a node to be a descendant of itself).”&lt;br&gt;      _6_&lt;br&gt;    /    \&lt;br&gt;    2      8&lt;br&gt;   /  \    / \&lt;br&gt;  0   4  7   9&lt;br&gt; / \&lt;br&gt;3   5&lt;/p&gt;
-&lt;p&gt;For example, the lowest common ancestor (LCA) of nodes 2 and 8 is 6. Another example is LCA of nodes 2 and 4 is 2, since a node can be a descendant of itself according to the LCA definition. &lt;/p&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="acm" scheme="http://lmislm.com/tags/acm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day137-LeetCode 100. Same Tree</title>
-    <link href="http://lmislm.com/2019/05/29/2019-05-29/"/>
-    <id>http://lmislm.com/2019/05/29/2019-05-29/</id>
-    <published>2019-05-28T16:00:00.000Z</published>
-    <updated>2019-05-29T15:18:48.438Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>Given two binary trees, write a function to check if they are equal or not.<br>Two binary trees are considered equal if they are structurally identical and the nodes have the same value.<br>判断两棵二叉树是否完全相等</p><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>用递归比较简单点。</p><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * function TreeNode(val) &#123;</span></span><br><span class="line"><span class="comment"> *     this.val = val;</span></span><br><span class="line"><span class="comment"> *     this.left = this.right = null;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">// 递归</span></span><br><span class="line">isSameTree (p, q) &#123;</span><br><span class="line">  <span class="comment">// 左右子树终止条件</span></span><br><span class="line">  <span class="keyword">if</span>(p === <span class="literal">null</span> &amp;&amp; q === <span class="literal">null</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// one null, other is not null, false</span></span><br><span class="line">  <span class="keyword">if</span>(p !== <span class="literal">null</span> &amp;&amp; q === <span class="literal">null</span> || p === <span class="literal">null</span> &amp;&amp; q !== <span class="literal">null</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// val diff, false</span></span><br><span class="line">  <span class="keyword">if</span>(p.val !== q.val)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// find next level of tree</span></span><br><span class="line">  <span class="keyword">return</span> isSameTree(p.right, q.right) &amp;&amp; isSameTree(p.left, q.left)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><a id="more"></a>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h3&gt;&lt;p&gt;Given two binary trees, write a function to check if they are equal or not.&lt;br&gt;Two binary trees are considered equal if they are structurally identical and the nodes have the same value.&lt;br&gt;判断两棵二叉树是否完全相等&lt;/p&gt;
-&lt;h3 id=&quot;分析&quot;&gt;&lt;a href=&quot;#分析&quot; class=&quot;headerlink&quot; title=&quot;分析&quot;&gt;&lt;/a&gt;分析&lt;/h3&gt;&lt;p&gt;用递归比较简单点。&lt;/p&gt;
-&lt;h3 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h3&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;/**&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt; * Definition for a binary tree node.&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt; * function TreeNode(val) &amp;#123;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt; *     this.val = val;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt; *     this.left = this.right = null;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt; * &amp;#125;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt; */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 递归&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;isSameTree (p, q) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;comment&quot;&gt;// 左右子树终止条件&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(p === &lt;span class=&quot;literal&quot;&gt;null&lt;/span&gt; &amp;amp;&amp;amp; q === &lt;span class=&quot;literal&quot;&gt;null&lt;/span&gt;)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;comment&quot;&gt;// one null, other is not null, false&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(p !== &lt;span class=&quot;literal&quot;&gt;null&lt;/span&gt; &amp;amp;&amp;amp; q === &lt;span class=&quot;literal&quot;&gt;null&lt;/span&gt; || p === &lt;span class=&quot;literal&quot;&gt;null&lt;/span&gt; &amp;amp;&amp;amp; q !== &lt;span class=&quot;literal&quot;&gt;null&lt;/span&gt;)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;comment&quot;&gt;// val diff, false&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(p.val !== q.val)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;comment&quot;&gt;// find next level of tree&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; isSameTree(p.right, q.right) &amp;amp;&amp;amp; isSameTree(p.left, q.left)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="acm" scheme="http://lmislm.com/tags/acm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day136-LeetCode 226. Invert Binary Tree</title>
-    <link href="http://lmislm.com/2019/05/28/2019-05-28/"/>
-    <id>http://lmislm.com/2019/05/28/2019-05-28/</id>
-    <published>2019-05-27T16:00:00.000Z</published>
-    <updated>2019-05-28T15:58:12.921Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>Invert a binary tree.<br>反转二叉树<br>输入<br>     4<br>   /   \<br>  2     7<br> / \   / \<br>1   3 6   9<br>反转<br>     4<br>   /   \<br>  7     2<br> / \   / \<br>9  6 3   1</p><a id="more"></a><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>对树进行广度遍历，过程中左右节点进行交换，单节点则跳过。</p><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">invert</span> (<span class="params">treeNode</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 单节点跳过</span></span><br><span class="line">  <span class="keyword">if</span>(treeNode === <span class="literal">null</span> || (treeNode.right === <span class="literal">null</span> &amp;&amp; treeNode.left === <span class="literal">null</span>))&#123;</span><br><span class="line">    <span class="keyword">return</span> treeNode</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 相互交换，并递归</span></span><br><span class="line">  <span class="keyword">let</span> temp = treeNode.left</span><br><span class="line">  treeNode.left = invertTree(treeNode.right)</span><br><span class="line">  treeNode.right = invertTree(temp)</span><br><span class="line">  <span class="keyword">return</span> treeNode</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h3&gt;&lt;p&gt;Invert a binary tree.&lt;br&gt;反转二叉树&lt;br&gt;输入&lt;br&gt;     4&lt;br&gt;   /   \&lt;br&gt;  2     7&lt;br&gt; / \   / \&lt;br&gt;1   3 6   9&lt;br&gt;反转&lt;br&gt;     4&lt;br&gt;   /   \&lt;br&gt;  7     2&lt;br&gt; / \   / \&lt;br&gt;9  6 3   1&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="acm" scheme="http://lmislm.com/tags/acm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day135-Maximum Depth of Binary Tree</title>
-    <link href="http://lmislm.com/2019/05/27/2019-05-27/"/>
-    <id>http://lmislm.com/2019/05/27/2019-05-27/</id>
-    <published>2019-05-26T16:00:00.000Z</published>
-    <updated>2019-05-27T14:11:33.754Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>Given a binary tree, find its maximum depth.<br>The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.</p><a id="more"></a><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>就是判断二叉树的左右子树有没有值，有值的话就继续往下走。</p><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">binaryTreeMaxDepth</span> (<span class="params">root</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> find (root)</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">find</span> (<span class="params">node</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 判断节点为空或者到底部，即没有左右子树</span></span><br><span class="line">    <span class="keyword">if</span>(node === <span class="literal">null</span>)&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> treeLeftDepth = <span class="number">1</span></span><br><span class="line">    <span class="keyword">let</span> treeRightDepth = <span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span>(node.left !== <span class="literal">null</span>)&#123;</span><br><span class="line">      <span class="comment">// 递归</span></span><br><span class="line">      treeLeftDepth += find(node.left)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(node.right !== <span class="literal">null</span>)&#123;</span><br><span class="line">      treeRightDepth += find(node.right)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 比较左右子树层数大小</span></span><br><span class="line">    <span class="keyword">return</span> treeLeftDepth &gt; treeRightDepth ?　treeLeftDepth : treeRightDepth</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h3&gt;&lt;p&gt;Given a binary tree, find its maximum depth.&lt;br&gt;The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="acm" scheme="http://lmislm.com/tags/acm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day134-LeetCode 292. Nim Game</title>
-    <link href="http://lmislm.com/2019/05/26/2019-05-26%E3%80%81/"/>
-    <id>http://lmislm.com/2019/05/26/2019-05-26、/</id>
-    <published>2019-05-25T16:00:00.000Z</published>
-    <updated>2019-05-26T15:37:14.881Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>（动态规划）<br>You are playing the following Nim Game with your friend: There is a heap of stones on the table, each time one of you take turns to remove 1 to 3 stones. The one who removes the last stone will be the winner. You will take the first turn to remove the stones.<br>Both of you are very clever and have optimal strategies for the game. Write a function to determine whether you can win the game given the number of stones in the heap.<br>For example, if there are 4 stones in the heap, then you will never win the game: no matter 1, 2, or 3 stones you remove, the last stone will always be removed by your friend.</p><a id="more"></a><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>动态规划的话。先逐步分析。先分析可能的情况。</p><blockquote><p><code>剩下1-3个石头，我赢。</code><br><code>剩下4个石头，我先拿1-3个，输。</code><br><code>剩下5个石头，我先拿1个，然后剩下4个轮到他先，我赢。先拿2-3个的话，我输。</code><br><code>剩下6个石头，我先拿1个，回到上一步5个石头他先。我先拿两个，就是4个石头他先，他输。</code><br><code>剩下7个石头，我先拿1个，回到上一步6个石头他先拿，他拿两个的话就回到5个石头情况，他赢。我拿3个才能到状态4个石头他先拿，他输。</code><br>所以，我得想办法让他面前的石头数量到4个石头，这样有5-7个石头时我先拿的话都可以赢。<br>如果是8个石头,我先拿至少一个，剩下5-6个石头他先拿，只要他让我面前剩下4个，他就有优势，我都会输。</p></blockquote><p>4和8为倍数关系。归纳总结出初步结论，有可能是4的倍数的时候，我先拿就输。</p><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">canFirstWinNimGame</span> (<span class="params">sum</span>) </span>&#123;</span><br><span class="line"><span class="keyword">if</span> (sum &lt; <span class="number">4</span>) &#123; <span class="comment">// 1-3的整数，先拿肯定赢</span></span><br><span class="line"><span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> n%<span class="number">4</span> !== <span class="number">0</span> <span class="comment">// 剩下的总数是4的倍数时，先拿肯定输</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h3&gt;&lt;p&gt;（动态规划）&lt;br&gt;You are playing the following Nim Game with your friend: There is a heap of stones on the table, each time one of you take turns to remove 1 to 3 stones. The one who removes the last stone will be the winner. You will take the first turn to remove the stones.&lt;br&gt;Both of you are very clever and have optimal strategies for the game. Write a function to determine whether you can win the game given the number of stones in the heap.&lt;br&gt;For example, if there are 4 stones in the heap, then you will never win the game: no matter 1, 2, or 3 stones you remove, the last stone will always be removed by your friend.&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="acm" scheme="http://lmislm.com/tags/acm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day133-vuejs源码-template编译-笔记</title>
-    <link href="http://lmislm.com/2019/05/25/2019-05-25/"/>
-    <id>http://lmislm.com/2019/05/25/2019-05-25/</id>
-    <published>2019-05-24T16:00:00.000Z</published>
-    <updated>2019-05-25T15:29:40.736Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>包括$mount和render方法。</p><a id="more"></a><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> mount = Vue.prototype.$mount</span><br><span class="line"><span class="comment">/*挂载组件*/</span></span><br><span class="line">Vue.prototype.$mount = <span class="function"><span class="keyword">function</span> (<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">  el?: string | Element,</span></span></span><br><span class="line"><span class="function"><span class="params">  hydrating?: boolean</span></span></span><br><span class="line"><span class="function"><span class="params"></span>): <span class="title">Component</span> </span>&#123;</span><br><span class="line">  el = el &amp;&amp; query(el)</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* istanbul ignore if */</span></span><br><span class="line">  <span class="keyword">if</span> (el === <span class="built_in">document</span>.body || el === <span class="built_in">document</span>.documentElement) &#123;</span><br><span class="line">    process.env.NODE_ENV !== <span class="string">'production'</span> &amp;&amp; warn(</span><br><span class="line">      <span class="string">`Do not mount Vue to &lt;html&gt; or &lt;body&gt; - mount to normal elements instead.`</span></span><br><span class="line">    )</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> options = <span class="keyword">this</span>.$options</span><br><span class="line">  <span class="comment">// resolve template/el and convert to render function</span></span><br><span class="line">  <span class="comment">/*优先使用render，不存在的时候编译template*/</span></span><br><span class="line">  <span class="keyword">if</span> (!options.render) &#123;</span><br><span class="line">    <span class="keyword">let</span> template = options.template</span><br><span class="line">    <span class="comment">/*template存在的时候取template，不存在的时候取el的outerHTML*/</span></span><br><span class="line">    <span class="keyword">if</span> (template) &#123;</span><br><span class="line">      <span class="comment">/*当template是字符串的时候*/</span></span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">typeof</span> template === <span class="string">'string'</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (template.charAt(<span class="number">0</span>) === <span class="string">'#'</span>) &#123;</span><br><span class="line">          template = idToTemplate(template)</span><br><span class="line">          <span class="comment">/* istanbul ignore if */</span></span><br><span class="line">          <span class="keyword">if</span> (process.env.NODE_ENV !== <span class="string">'production'</span> &amp;&amp; !template) &#123;</span><br><span class="line">            warn(</span><br><span class="line">              <span class="string">`Template element not found or is empty: <span class="subst">$&#123;options.template&#125;</span>`</span>,</span><br><span class="line">              <span class="keyword">this</span></span><br><span class="line">            )</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (template.nodeType) &#123;</span><br><span class="line">        <span class="comment">/*当template为DOM节点的时候*/</span></span><br><span class="line">        template = template.innerHTML</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">/*报错*/</span></span><br><span class="line">        <span class="keyword">if</span> (process.env.NODE_ENV !== <span class="string">'production'</span>) &#123;</span><br><span class="line">          warn(<span class="string">'invalid template option:'</span> + template, <span class="keyword">this</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (el) &#123;</span><br><span class="line">      <span class="comment">/*获取element的outerHTML*/</span></span><br><span class="line">      template = getOuterHTML(el)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (template) &#123;</span><br><span class="line">      <span class="comment">/* istanbul ignore if */</span></span><br><span class="line">      <span class="keyword">if</span> (process.env.NODE_ENV !== <span class="string">'production'</span> &amp;&amp; config.performance &amp;&amp; mark) &#123;</span><br><span class="line">        mark(<span class="string">'compile'</span>)</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="comment">/*将template编译成render函数，这里会有render以及staticRenderFns两个返回，这是vue的编译时优化，static静态不需要在VNode更新时进行patch，优化性能*/</span></span><br><span class="line">  <span class="comment">// ?</span></span><br><span class="line">      <span class="keyword">const</span> &#123; render, staticRenderFns &#125; = compileToFunctions(template, &#123;</span><br><span class="line">        shouldDecodeNewlines,</span><br><span class="line">        delimiters: options.delimiters</span><br><span class="line">      &#125;, <span class="keyword">this</span>)</span><br><span class="line">      options.render = render</span><br><span class="line">      options.staticRenderFns = staticRenderFns</span><br><span class="line"></span><br><span class="line">      <span class="comment">/* istanbul ignore if */</span></span><br><span class="line">      <span class="keyword">if</span> (process.env.NODE_ENV !== <span class="string">'production'</span> &amp;&amp; config.performance &amp;&amp; mark) &#123;</span><br><span class="line">        mark(<span class="string">'compile end'</span>)</span><br><span class="line">        measure(<span class="string">`<span class="subst">$&#123;<span class="keyword">this</span>._name&#125;</span> compile`</span>, <span class="string">'compile'</span>, <span class="string">'compile end'</span>)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">/*Github:https://github.com/answershuto*/</span></span><br><span class="line">  <span class="comment">/*调用const mount = Vue.prototype.$mount保存下来的不带编译的mount*/</span></span><br><span class="line">  <span class="keyword">return</span> mount.call(<span class="keyword">this</span>, el, hydrating)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://github.com/answershuto/learnVue/blob/master/docs/%E8%81%8A%E8%81%8AVue%E7%9A%84template%E7%BC%96%E8%AF%91.MarkDown" target="_blank" rel="noopener">聊聊Vue的template编译.MarkDown</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;包括$mount和render方法。&lt;/p&gt;
+      &lt;h3 id=&quot;js-常用数组方法小结&quot;&gt;&lt;a href=&quot;#js-常用数组方法小结&quot; class=&quot;headerlink&quot; title=&quot;js 常用数组方法小结&quot;&gt;&lt;/a&gt;js 常用数组方法小结&lt;/h3&gt;&lt;h4 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h4&gt;&lt;p&gt;今天这个数组对象操作写的有点多啊，特此来小结一下，一些常用的方法的基本操作。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fzgxeniqluj20k00arjrt.jpg&quot; alt&gt;&lt;br&gt;
     
     </summary>
     
