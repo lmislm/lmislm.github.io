@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-06-15T14:40:18.367Z</updated>
+  <updated>2019-06-16T14:31:53.006Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day154-LeetCode 191. Number of 1 Bits</title>
+    <link href="http://lmislm.com/2019/06/16/2019-06-16/"/>
+    <id>http://lmislm.com/2019/06/16/2019-06-16/</id>
+    <published>2019-06-15T16:00:00.000Z</published>
+    <updated>2019-06-16T14:31:53.006Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>Write a function that takes an unsigned integer and returns the number of ’1’ bits it has (also known as the Hamming weight).</p><p>For example, the 32-bit integer ’11’ has binary representation 00000000000000000000000000001011, so the function should return 3.<br><a id="more"></a></p><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><blockquote><p>先把数字转二进制，然后再遍历1的个数</p></blockquote><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hammingWeight</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> secondS = n.toString(<span class="number">2</span>).split(<span class="string">''</span>);</span><br><span class="line">  <span class="keyword">let</span> count = <span class="number">0</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; secondS.length; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (secondS % <span class="number">2</span> === <span class="number">1</span>) &#123;</span><br><span class="line">      count++</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> count</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h3&gt;&lt;p&gt;Write a function that takes an unsigned integer and returns the number of ’1’ bits it has (also known as the Hamming weight).&lt;/p&gt;
+&lt;p&gt;For example, the 32-bit integer ’11’ has binary representation 00000000000000000000000000001011, so the function should return 3.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="acm" scheme="http://lmislm.com/tags/acm/"/>
+    
+  </entry>
   
   <entry>
     <title>day153-LeetCode 198. House Robber</title>
@@ -453,29 +476,6 @@
     
     
       <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>第二十三天2019-01-23</title>
-    <link href="http://lmislm.com/2019/01/23/2019-01-23/"/>
-    <id>http://lmislm.com/2019/01/23/2019-01-23/</id>
-    <published>2019-01-22T16:00:00.000Z</published>
-    <updated>2019-01-31T14:07:54.501Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="js-常用数组方法小结"><a href="#js-常用数组方法小结" class="headerlink" title="js 常用数组方法小结"></a>js 常用数组方法小结</h3><h4 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h4><p>今天这个数组对象操作写的有点多啊，特此来小结一下，一些常用的方法的基本操作。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fzgxeniqluj20k00arjrt.jpg" alt><br><a id="more"></a></p><h3 id="Array-prototype-filter"><a href="#Array-prototype-filter" class="headerlink" title="Array.prototype.filter()"></a>Array.prototype.filter()</h3><h4 id="表格过滤用的比较多"><a href="#表格过滤用的比较多" class="headerlink" title="表格过滤用的比较多"></a>表格过滤用的比较多</h4><p>大概用法就是过滤数组或者数组集合中一些不符合条件的数组元素和集合。也可以用来过滤数组中一些undefined和null。<br>例子：<sup>[1]</sup><br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const fruits = [&apos;apple&apos;, &apos;banana&apos;, &apos;grapes&apos;, &apos;mango&apos;, &apos;orange&apos;];</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Array filters items based on search criteria (query)</span><br><span class="line"> */</span><br><span class="line">const filterItems = (query) =&gt; &#123;</span><br><span class="line">  return fruits.filter((el) =&gt;</span><br><span class="line">  // 过滤的条件</span><br><span class="line">    el.toLowerCase().indexOf(query.toLowerCase()) &gt; -1</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line">// 根据条件过滤之后的数组</span><br><span class="line">console.log(filterItems(&apos;ap&apos;)); // [&apos;apple&apos;, &apos;grapes&apos;]</span><br><span class="line">console.log(filterItems(&apos;an&apos;)); // [&apos;banana&apos;, &apos;mango&apos;, &apos;orange&apos;]</span><br></pre></td></tr></table></figure></p><h4 id="过滤数组中空值"><a href="#过滤数组中空值" class="headerlink" title="过滤数组中空值"></a>过滤数组中空值</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">let newArray = oldArray.filter(s =&gt; s.value != null)</span><br></pre></td></tr></table></figure><h4 id="filter-的实现"><a href="#filter-的实现" class="headerlink" title="filter() 的实现"></a>filter() 的实现</h4><ul><li>利用for循环以及push构造数组<sup>[1]</sup><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// Polyfill Array.prototype.filter()</span><br><span class="line">function newFilter() &#123;</span><br><span class="line">  if (!Array.prototype.newFilter) &#123;</span><br><span class="line">    // 可以带thisArg</span><br><span class="line">    Array.prototype.newFilter = (fun /* , thisArg*/) =&gt; &#123;</span><br><span class="line">      // void(0)（等同于void 0） 差不多等于 undefined</span><br><span class="line">      if (this === void 0 || this === null) &#123;</span><br><span class="line">        throw new TypeError()</span><br><span class="line">      &#125;</span><br><span class="line">      // Object构造函数为给定值创建一个对象包装器</span><br><span class="line">      let t = Object(this)</span><br><span class="line">      // 所有非数值转换成0, 所有大于等于 0 等数取整数部分</span><br><span class="line">      // Shifts a in binary representation b (&lt; 32) bits to the right, discarding bits shifted off, and shifting in 0s from the left.</span><br><span class="line">      let len = t.length &gt;&gt;&gt; 0</span><br><span class="line">      if (typeof fun !== &apos;function&apos;) &#123;</span><br><span class="line">        throw new TypeError()</span><br><span class="line">      &#125;</span><br><span class="line">      let res = []</span><br><span class="line">      // arguments对象不是一个 Array 。它类似于Array，但除了length属性和索引元素之外没有任何Array属性</span><br><span class="line">      // 没有 pop 方法。但是它可以被转换为一个真正的Array：args = Array.from(arguments)</span><br><span class="line">      // 所以这个地方用arguments可能有错？</span><br><span class="line">      let thisArg = arguments.length &gt;= 2 ? arguments[1] : void 0</span><br><span class="line">      // t = Object(this)</span><br><span class="line">      for (let i = 0; i&lt; len; i++) &#123;</span><br><span class="line">        // prop in object, 检查object（或其原型链）是否包含具有指定名称的属性的对象</span><br><span class="line">        if (i in t) &#123;</span><br><span class="line">          let val = t[i]</span><br><span class="line">          // NOTE: Technically this should Object.defineProperty at</span><br><span class="line">          //       the next index, as push can be affected by</span><br><span class="line">          //       properties on Object.prototype and Array.prototype.</span><br><span class="line">          //       But that method&apos;s new, and collisions should be</span><br><span class="line">          //       rare, so use the more-compatible alternative.</span><br><span class="line">          // 满足filter中的条件的话就push进数组res,filter回调函数的三个参数：元素值，元素索引，原数组</span><br><span class="line">          // thisArg: 当前在数组中处理的元素</span><br><span class="line">          // val: 正在处理元素在数组中的索引</span><br><span class="line">          if (fun.call(thisArg, val, i, t))</span><br><span class="line">            res.push(val)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ul><h3 id="Array-prototype-reduce"><a href="#Array-prototype-reduce" class="headerlink" title="Array.prototype.reduce()"></a>Array.prototype.reduce()</h3><p>鸽到下期再讲吧，好像我已经鸽了很多东西了。额。<br>–end–</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;js-常用数组方法小结&quot;&gt;&lt;a href=&quot;#js-常用数组方法小结&quot; class=&quot;headerlink&quot; title=&quot;js 常用数组方法小结&quot;&gt;&lt;/a&gt;js 常用数组方法小结&lt;/h3&gt;&lt;h4 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h4&gt;&lt;p&gt;今天这个数组对象操作写的有点多啊，特此来小结一下，一些常用的方法的基本操作。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fzgxeniqluj20k00arjrt.jpg&quot; alt&gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   
