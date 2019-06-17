@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-06-16T14:31:53.006Z</updated>
+  <updated>2019-06-17T15:56:27.344Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -17,11 +17,39 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>day155-LeetCode 191. Number of 1 Bits</title>
+    <link href="http://lmislm.com/2019/06/17/2019-06-17/"/>
+    <id>http://lmislm.com/2019/06/17/2019-06-17/</id>
+    <published>2019-06-16T16:00:00.000Z</published>
+    <updated>2019-06-17T15:56:27.344Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>假设按照升序排序的数组在预先未知的某个点上进行了旋转。</p><p>( 例如，数组 [0,1,2,4,5,6,7] 可能变为 [4,5,6,7,0,1,2] )。</p><p>搜索一个给定的目标值，如果数组中存在这个目标值，则返回它的索引，否则返回 -1 。</p><p>你可以假设数组中不存在重复的元素。</p><p>你的算法时间复杂度必须是 O(log n) 级别。</p><p>示例 1:<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: nums = [4,5,6,7,0,1,2], target = 0</span><br><span class="line">输出: 4</span><br></pre></td></tr></table></figure></p><p>示例 2:<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: nums = [4,5,6,7,0,1,2], target = 3</span><br><span class="line">输出: -1</span><br></pre></td></tr></table></figure></p><a id="more"></a><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><blockquote><p>二分法，但要注意给出的<code>nums</code> 不是完全的升序或降序。</p></blockquote><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">search</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> search(nums, <span class="number">0</span>, nums.length - <span class="number">1</span>, target);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">search</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> low, <span class="keyword">int</span> high, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (low &gt; high)</span><br><span class="line">      <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> mid = (low + high) / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span> (nums[mid] == target)</span><br><span class="line">      <span class="keyword">return</span> mid;</span><br><span class="line">    <span class="keyword">if</span> (nums[mid] &lt; nums[high]) &#123;</span><br><span class="line">      <span class="keyword">if</span> (nums[mid] &lt; target &amp;&amp; target &lt;= nums[high])</span><br><span class="line">        <span class="keyword">return</span> search(nums, mid + <span class="number">1</span>, high, target);</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> search(nums, low, mid - <span class="number">1</span>, target);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (nums[low] &lt;= target &amp;&amp; target &lt; nums[mid])</span><br><span class="line">          <span class="keyword">return</span> search(nums, low, mid - <span class="number">1</span>, target);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">          <span class="keyword">return</span> search(nums, mid + <span class="number">1</span>, high, target);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h3&gt;&lt;p&gt;假设按照升序排序的数组在预先未知的某个点上进行了旋转。&lt;/p&gt;
+&lt;p&gt;( 例如，数组 [0,1,2,4,5,6,7] 可能变为 [4,5,6,7,0,1,2] )。&lt;/p&gt;
+&lt;p&gt;搜索一个给定的目标值，如果数组中存在这个目标值，则返回它的索引，否则返回 -1 。&lt;/p&gt;
+&lt;p&gt;你可以假设数组中不存在重复的元素。&lt;/p&gt;
+&lt;p&gt;你的算法时间复杂度必须是 O(log n) 级别。&lt;/p&gt;
+&lt;p&gt;示例 1:&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;输入: nums = [4,5,6,7,0,1,2], target = 0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;输出: 4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;示例 2:&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;输入: nums = [4,5,6,7,0,1,2], target = 3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;输出: -1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="acm" scheme="http://lmislm.com/tags/acm/"/>
+    
+  </entry>
+  
+  <entry>
     <title>day154-LeetCode 191. Number of 1 Bits</title>
     <link href="http://lmislm.com/2019/06/16/2019-06-16/"/>
     <id>http://lmislm.com/2019/06/16/2019-06-16/</id>
     <published>2019-06-15T16:00:00.000Z</published>
-    <updated>2019-06-16T14:31:53.006Z</updated>
+    <updated>2019-06-16T14:32:41.472Z</updated>
     
     <content type="html"><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>Write a function that takes an unsigned integer and returns the number of ’1’ bits it has (also known as the Hamming weight).</p><p>For example, the 32-bit integer ’11’ has binary representation 00000000000000000000000000001011, so the function should return 3.<br><a id="more"></a></p><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><blockquote><p>先把数字转二进制，然后再遍历1的个数</p></blockquote><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hammingWeight</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> secondS = n.toString(<span class="number">2</span>).split(<span class="string">''</span>);</span><br><span class="line">  <span class="keyword">let</span> count = <span class="number">0</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; secondS.length; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (secondS % <span class="number">2</span> === <span class="number">1</span>) &#123;</span><br><span class="line">      count++</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> count</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
     
@@ -453,29 +481,6 @@
     
     
       <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>第二十四天2019-01-24</title>
-    <link href="http://lmislm.com/2019/01/24/2019-01-24/"/>
-    <id>http://lmislm.com/2019/01/24/2019-01-24/</id>
-    <published>2019-01-23T16:00:00.000Z</published>
-    <updated>2019-01-31T14:07:54.505Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>今天一天写代码有点不在状态，可能是最近有点不太对，不是疲累也可能是心事又多了起来。原本计划今天继续上文或者上上文的。现在看来真的只能是搁了。<br>最近图片可能会风格比较和以前不一样。这是问人要的哈。嘿嘿。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fzi1pivvmhj20i40i53zr.jpg" alt><br>–end–<br><a id="more"></a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;今天一天写代码有点不在状态，可能是最近有点不太对，不是疲累也可能是心事又多了起来。原本计划今天继续上文或者上上文的。现在看来真的只能是搁了。&lt;br&gt;最近图片可能会风格比较和以前不一样。这是问人要的哈。嘿嘿。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fzi1pivvmhj20i40i53zr.jpg&quot; alt&gt;&lt;br&gt;–end–&lt;br&gt;
-    
-    </summary>
-    
-      <category term="生活" scheme="http://lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
     
   </entry>
   
