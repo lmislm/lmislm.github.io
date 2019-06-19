@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-06-18T15:37:58.080Z</updated>
+  <updated>2019-06-19T13:26:53.301Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day157-Virtual DOM 小结</title>
+    <link href="http://lmislm.com/2019/06/19/2019-06-19/"/>
+    <id>http://lmislm.com/2019/06/19/2019-06-19/</id>
+    <published>2019-06-18T16:00:00.000Z</published>
+    <updated>2019-06-19T13:26:53.301Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="数据结构的定义"><a href="#数据结构的定义" class="headerlink" title="数据结构的定义"></a>数据结构的定义</h3><p><code>Virtual DOM</code> 就是用原生的 JS 对象去描述 DOM 节点。<br><a id="more"></a></p><p>vuejs借助了<a href="https://github.com/snabbdom/snabbdom" target="_blank" rel="noopener">snabbdom</a>这个库。</p><p><code>Virtual DOM</code>用 <code>VNode</code> 这么一个 Class 去描述。</p><p><code>VNode</code> 也是对真实 DOM 的一种抽象描述，</p><p><code>VNode</code>的核心定义是几个关键属性，<strong>标签名</strong>、<strong>数据</strong>、<strong>子节点</strong>、<strong>键值</strong>等。</p><p>其它属性都是都是用来扩展 VNode 的灵活性以及实现一些特殊 feature。</p><p>VNode是映射到真实 DOM 的<strong>渲染</strong>，不需要操作DOM的方法。</p><blockquote><p>Vue.js 利用 createElement 方法创建 VNode，它定义在 src/core/vdom/create-elemenet.js</p></blockquote><h3 id="映射DOM"><a href="#映射DOM" class="headerlink" title="映射DOM"></a>映射DOM</h3><p>映射到真实的 DOM 实际上要经历 VNode 的 <strong>create</strong>、<strong>diff</strong>、<strong>patch</strong>等过程</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;数据结构的定义&quot;&gt;&lt;a href=&quot;#数据结构的定义&quot; class=&quot;headerlink&quot; title=&quot;数据结构的定义&quot;&gt;&lt;/a&gt;数据结构的定义&lt;/h3&gt;&lt;p&gt;&lt;code&gt;Virtual DOM&lt;/code&gt; 就是用原生的 JS 对象去描述 DOM 节点。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>day156-LeetCode 278. First Bad Version</title>
@@ -449,29 +471,6 @@
     
       &lt;p&gt;今天上午看了一部动漫，B站Lex推荐的。看完之后感叹这两天动漫质量的提高，动漫三观简直不能再正，满满的正能量。这种动漫真是难怪不火。动漫名字叫《超能力少女》但是整个片并不是一部打斗片，而是一部以一位来自异世界超能力少女生活为主线另一位异世界超能力少女为辅，讲述了来到这个世界之后，两个少女面对不同的家庭之间各自的努力和奋斗故事，在女二号身上，看到了满满的正能量，与女一号富有的生活对比，个人感觉女二号的勤奋和人品更像是这部故事讲述的主题。同时，这个故事也对于日本的黑帮进行了一些美化。虽然故事剧情并没有像标题和开头一幕一样热血，但是剧情本身还是非常精彩！这里好像说了绕口令。但就是夸这部动漫吧。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fzlc8bxnrgj20yi22ojyq.jpg&quot; alt&gt;&lt;br&gt;–end–&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="生活" scheme="http://lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>第二十六天2019-01-26</title>
-    <link href="http://lmislm.com/2019/01/26/2019-01-26/"/>
-    <id>http://lmislm.com/2019/01/26/2019-01-26/</id>
-    <published>2019-01-25T16:00:00.000Z</published>
-    <updated>2019-01-31T14:09:36.223Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>今天公司年会，这是个不写log的好理由，对吧？我也是这么觉得。回到家已经很晚了，晚上11点才到家，就真的不想再写日志了。就这样结束今天的日志环节吧。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fzkehskm6qj205k05kdfw.jpg" alt><br>–end–</p><a id="more"></a>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;今天公司年会，这是个不写log的好理由，对吧？我也是这么觉得。回到家已经很晚了，晚上11点才到家，就真的不想再写日志了。就这样结束今天的日志环节吧。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fzkehskm6qj205k05kdfw.jpg&quot; alt&gt;&lt;br&gt;–end–&lt;/p&gt;
     
     </summary>
     
