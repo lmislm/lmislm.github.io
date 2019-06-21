@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-06-20T15:34:12.904Z</updated>
+  <updated>2019-06-21T14:37:53.774Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day159-__.range</title>
+    <link href="http://lmislm.com/2019/06/21/2019-06-21/"/>
+    <id>http://lmislm.com/2019/06/21/2019-06-21/</id>
+    <published>2019-06-20T16:00:00.000Z</published>
+    <updated>2019-06-21T14:37:53.774Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="求区间内所有连续数"><a href="#求区间内所有连续数" class="headerlink" title="求区间内所有连续数"></a>求区间内所有连续数</h3><p>给出整数区间和步长，求区间内连续的数字，要求正序或倒序。</p><p>例如：</p><p>输入：[1, 5]，步长为1</p><p>输出：1，2，3，4，5<br><a id="more"></a></p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * https://github.com/lodash/lodash/blob/master/.internal/baseRange.js</span></span><br><span class="line"><span class="comment"> * @param &#123;number&#125; start 开始值</span></span><br><span class="line"><span class="comment"> * @param &#123;number&#125; end 结束值</span></span><br><span class="line"><span class="comment"> * @param &#123;number&#125; step 步长</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">baseRange</span>(<span class="params">start, end, step, fromRight</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> index = <span class="number">-1</span></span><br><span class="line">  <span class="keyword">let</span> length = <span class="built_in">Math</span>.max(<span class="built_in">Math</span>.ceil((end - start) / (step || <span class="number">1</span>)), <span class="number">0</span>)</span><br><span class="line">  <span class="keyword">const</span> result = <span class="keyword">new</span> <span class="built_in">Array</span>(length)</span><br><span class="line">  <span class="keyword">while</span> (length--) &#123;</span><br><span class="line">    <span class="comment">// 从大到小，或者是从小到大</span></span><br><span class="line">    result[fromRight ? length : ++index] = start</span><br><span class="line">    start += step</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;求区间内所有连续数&quot;&gt;&lt;a href=&quot;#求区间内所有连续数&quot; class=&quot;headerlink&quot; title=&quot;求区间内所有连续数&quot;&gt;&lt;/a&gt;求区间内所有连续数&lt;/h3&gt;&lt;p&gt;给出整数区间和步长，求区间内连续的数字，要求正序或倒序。&lt;/p&gt;
+&lt;p&gt;例如：&lt;/p&gt;
+&lt;p&gt;输入：[1, 5]，步长为1&lt;/p&gt;
+&lt;p&gt;输出：1，2，3，4，5&lt;br&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="acm" scheme="http://lmislm.com/tags/acm/"/>
+    
+  </entry>
   
   <entry>
     <title>day158-Virtual DOM 小结</title>
@@ -447,29 +472,6 @@
     
       &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;刚看了下，搁置了四天没写技术文章了，好几篇只有上文，没有下文。这个毛病从写日志体现出来了，说明得改，这还说明了，写日志的好处啊，能够从记录中发现问题。可能这就是今天鸽的理由吧。这几天快接近年末了，又期待，又不期待，真是很纠结。我发现，什么时候都有很多事，看你怎么去对待，永远不会说等到没事的时候。要调整好情绪再说。此处，鸽。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fznt8ja8lbj20u01407wh.jpg&quot; alt&gt;&lt;br&gt;–end–&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="生活" scheme="http://lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>第二十八天2019-01-28</title>
-    <link href="http://lmislm.com/2019/01/28/2019-01-28/"/>
-    <id>http://lmislm.com/2019/01/28/2019-01-28/</id>
-    <published>2019-01-27T16:00:00.000Z</published>
-    <updated>2019-01-31T14:09:36.230Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>今天回来的比较晚，可能事情比较多吧。又想起了以前的事。唉，洗洗早点睡吧。几天就这几句唠唠叨叨的话了。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fzmpp0a9fgj20b40b4wi4.jpg" alt><br>–end–</p><a id="more"></a>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;今天回来的比较晚，可能事情比较多吧。又想起了以前的事。唉，洗洗早点睡吧。几天就这几句唠唠叨叨的话了。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fzmpp0a9fgj20b40b4wi4.jpg&quot; alt&gt;&lt;br&gt;–end–&lt;/p&gt;
     
     </summary>
     
