@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[day160-vuejs-CreateElement-children 的规范化]]></title>
+    <url>%2F2019%2F06%2F22%2F2019-06-22%2F</url>
+    <content type="text"><![CDATA[children 的规范化_createElement 接收的第 4 个参数 children 是任意类型的,所以要规范化。代码目录：&lt;src/core/vdom/helpers/normalzie-children.js&gt; 代码// The template compiler attempts to minimize the need for normalization by// statically analyzing the template at compile time.//// For plain HTML markup, normalization can be completely skipped because the// generated render function is guaranteed to return Array&lt;VNode&gt;. There are// two cases where extra normalization is needed:/* 注：functional component 函数式组件返回的是一个数组而不是一个根节点 *//* 场景1 */// 1. When the children contains components - because a functional component// may return an Array instead of a single root. In this case, just a simple// normalization is needed - if any child is an Array, we flatten the whole// thing with Array.prototype.concat. It is guaranteed to be only 1-level deep// because functional components already normalize their own children./*该方法调用场景是 render 函数是编译生成的*/export function simpleNormalizeChildren (children: any) &#123; for (let i = 0; i &lt; children.length; i++) &#123; if (Array.isArray(children[i])) &#123; /* 注：flatten 整个 Array&lt;VNode&gt; */ return Array.prototype.concat.apply([], children) &#125; &#125; return children&#125;/* 场景2 */// 2. When the children contains constructs that always generated nested Arrays（注：嵌套数组）,// e.g. &lt;template&gt;, &lt;slot&gt;, v-for, or when the children is provided by user// with hand-written render functions / JSX. In such cases a full normalization// is needed to cater to all possible types of children values.export function normalizeChildren (children: any): ?Array&lt;VNode&gt; &#123; return isPrimitive(children) ? [createTextVNode(children)] : Array.isArray(children) ? normalizeArrayChildren(children) : undefined&#125;]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[day159-__.range]]></title>
     <url>%2F2019%2F06%2F21%2F2019-06-21%2F</url>
     <content type="text"><![CDATA[求区间内所有连续数给出整数区间和步长，求区间内连续的数字，要求正序或倒序。 例如： 输入：[1, 5]，步长为1 输出：1，2，3，4，5 代码/** * https://github.com/lodash/lodash/blob/master/.internal/baseRange.js * @param &#123;number&#125; start 开始值 * @param &#123;number&#125; end 结束值 * @param &#123;number&#125; step 步长 */function baseRange(start, end, step, fromRight) &#123; let index = -1 let length = Math.max(Math.ceil((end - start) / (step || 1)), 0) const result = new Array(length) while (length--) &#123; // 从大到小，或者是从小到大 result[fromRight ? length : ++index] = start start += step &#125; return result&#125;]]></content>
@@ -715,6 +726,15 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[markdown语法小记]]></title>
+    <url>%2F2017%2F03%2F20%2Fmarkdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[插入表格：1.1. 表格的上下需要空行。空行的多少至关重要 表格中文字居中 在划线部分的划线两端加上”:“ 比如”:—–: | :—-: 代码块:2.1. 合理利用代码块有意想不到的效果。3.]]></content>
+      <tags>
+        <tag>工具</tag>
+        <tag>markdown</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[codewars-count_digits]]></title>
     <url>%2F2017%2F03%2F20%2Fcodewars%2F</url>
     <content type="text"><![CDATA[题目 Take an integer n (n &gt;= 0) and a digit d (0 &lt;= d &lt;= 9) as an integer. Square all numbers k (0 &lt;= k &lt;= n) between 0 and n. Count the numbers of digits d used in the writing of all the k* *2. Call nb_dig (or nbDig or …) the function taking n and d as parameters and returning this count. 例子 n = 10, d = 1,the k * k are 0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100 We are using the digit 1 in 1, 16, 81, 100. The total count is then 4.nb_dig(25, 1):the numbers of interest are 1, 4, 9, 10, 11, 12, 13, 14, 19, 21which squared are 1, 16, 81, 100, 121, 144, 169, 196, 361, 441 so there are 11 digits 1 for the squares of numbers between 0 and 25. 分析 给出n和d，求 0 到 n 中间的平方，再求这些平方的平方，问所得的这些数中包含多少个数字d。大概就是先算出这些数字的平方，然后挨个分解求出其中的值。 解题function nbDig(n,d) &#123; var s = &apos;&apos;; for(var i=0;i&lt;=n;i++)&#123; s += Math.pow(i,2); &#125; return s.split(d).length-1&#125; 牢骚篇今天，进了个群，挺多厉害的人，还私聊了一个有很多 offer 的同学。顿时觉得，自己就是渣渣啊，一点信心都没有。还是得加油吧，要学的东西还很多啊。]]></content>
@@ -725,15 +745,6 @@
         <tag>编程</tag>
         <tag>js</tag>
         <tag>codewars</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[markdown语法小记]]></title>
-    <url>%2F2017%2F03%2F20%2Fmarkdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[插入表格：1.1. 表格的上下需要空行。空行的多少至关重要 表格中文字居中 在划线部分的划线两端加上”:“ 比如”:—–: | :—-: 代码块:2.1. 合理利用代码块有意想不到的效果。3.]]></content>
-      <tags>
-        <tag>工具</tag>
-        <tag>markdown</tag>
       </tags>
   </entry>
   <entry>
