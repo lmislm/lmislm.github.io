@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-06-24T13:47:57.941Z</updated>
+  <updated>2019-06-25T14:17:35.028Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day163-正则点滴</title>
+    <link href="http://lmislm.com/2019/06/25/2019-06-25/"/>
+    <id>http://lmislm.com/2019/06/25/2019-06-25/</id>
+    <published>2019-06-24T16:00:00.000Z</published>
+    <updated>2019-06-25T14:17:35.028Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="正则"><a href="#正则" class="headerlink" title="正则"></a>正则</h3><ol><li>判断是否仅有数字或者”.”、”,”。</li><li>找出并“格式化”字符串中的所有数字。<a id="more"></a></li></ol><h3 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h3><ol><li><p>判断是否仅有数字或者”.”、”,”。</p><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">/^[<span class="number">0</span><span class="number">-9.</span>,]+$/</span><br><span class="line"><span class="comment">// 配合test用比较好。如：reg.test(str)</span></span><br></pre></td></tr></table></figure></li><li><p>找出并“格式化”字符串中的所有数字。</p></li></ol><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">(str.match(<span class="regexp">/\d+/g</span>) || []).map(<span class="built_in">Number</span>)</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;正则&quot;&gt;&lt;a href=&quot;#正则&quot; class=&quot;headerlink&quot; title=&quot;正则&quot;&gt;&lt;/a&gt;正则&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;判断是否仅有数字或者”.”、”,”。&lt;/li&gt;
+&lt;li&gt;找出并“格式化”字符串中的所有数字。
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>day162-键值对，以value为键的结果对象</title>
@@ -455,29 +479,6 @@
     
     
       <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>第三十二天2019-02-01</title>
-    <link href="http://lmislm.com/2019/02/01/2019-02-01/"/>
-    <id>http://lmislm.com/2019/02/01/2019-02-01/</id>
-    <published>2019-01-31T16:00:00.000Z</published>
-    <updated>2019-06-07T14:39:38.311Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>最近又开始关注到Nodejs了，因为在探究js的一些原理的时候，不可避免的会注意到js的一些应用场景的不同，这两天看到了一篇很好的介绍Nodejs入门的文章，<a href="https://cnodejs.org/topic/5ab3166be7b166bb7b9eccf7" target="_blank" rel="noopener">【全文】狼叔：如何正确的学习Node.js</a>。看这篇文章还是比较有感触的，文章本身结合自身的体验从Nodejs诞生以来讲到近些年的趋势，当然我觉得最准的还是属于对于React.js和Vue.js的趋势的描述。这篇文章偏向于说教，也是说给初学Nodejs的人所听的，详细的地方在于介绍了一些该看的书本，和一些练习代码的方法，比如学会Nodejs要多看一些NPM包的源码，按作者来说就是一天5个NPM包阅读。这个对我来说感触是非常深的，本人觉得是，只有真正的上手，你才能说是真的开始去掌握这门东西。我觉得文章是真的比较详细，还提供一些资料，也提出了一些问题，比如，“在变化多端的大前端背景之下，该如何精进？”。文章本身可能探讨的比较多，也探讨了，Nodejs在各类编程语言中的比较，比如和java比较的优劣。总得来说，是一篇不可多得的好文。有幸看到这种文章。看来以后还是要多看专门的社区，去浏览一些文章，增长一些见识，拓宽一些视野。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fzr55r2l7vj20u0140q8k.jpg" alt></p><a id="more"></a>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;最近又开始关注到Nodejs了，因为在探究js的一些原理的时候，不可避免的会注意到js的一些应用场景的不同，这两天看到了一篇很好的介绍Nodejs入门的文章，&lt;a href=&quot;https://cnodejs.org/topic/5ab3166be7b166bb7b9eccf7&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;【全文】狼叔：如何正确的学习Node.js&lt;/a&gt;。看这篇文章还是比较有感触的，文章本身结合自身的体验从Nodejs诞生以来讲到近些年的趋势，当然我觉得最准的还是属于对于React.js和Vue.js的趋势的描述。这篇文章偏向于说教，也是说给初学Nodejs的人所听的，详细的地方在于介绍了一些该看的书本，和一些练习代码的方法，比如学会Nodejs要多看一些NPM包的源码，按作者来说就是一天5个NPM包阅读。这个对我来说感触是非常深的，本人觉得是，只有真正的上手，你才能说是真的开始去掌握这门东西。我觉得文章是真的比较详细，还提供一些资料，也提出了一些问题，比如，“在变化多端的大前端背景之下，该如何精进？”。文章本身可能探讨的比较多，也探讨了，Nodejs在各类编程语言中的比较，比如和java比较的优劣。总得来说，是一篇不可多得的好文。有幸看到这种文章。看来以后还是要多看专门的社区，去浏览一些文章，增长一些见识，拓宽一些视野。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fzr55r2l7vj20u0140q8k.jpg&quot; alt&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="生活" scheme="http://lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
     
   </entry>
   

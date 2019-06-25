@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[day163-正则点滴]]></title>
+    <url>%2F2019%2F06%2F25%2F2019-06-25%2F</url>
+    <content type="text"><![CDATA[正则 判断是否仅有数字或者”.”、”,”。 找出并“格式化”字符串中的所有数字。 解答 判断是否仅有数字或者”.”、”,”。 /^[0-9.,]+$/// 配合test用比较好。如：reg.test(str) 找出并“格式化”字符串中的所有数字。 (str.match(/\d+/g) || []).map(Number)]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[day162-键值对，以value为键的结果对象]]></title>
     <url>%2F2019%2F06%2F24%2F2019-06-24%2F</url>
     <content type="text"><![CDATA[题目const data = [ &#123; 'id': 1, name: 'a', 'code': 11 &#125;, &#123; 'id': 2, name: 'b', 'code': 22 &#125;, &#123; 'id': 3, name: 'c', 'code': 33 &#125;,] 以code值为key的结果对象 分析主要是[]的用法，灵活的很呐！ 代码let getKey = (data, key) =&gt; &#123; return data.map(item =&gt; &#123; return &#123; [item[key]]: item &#125; &#125;)&#125;]]></content>
@@ -608,8 +619,8 @@
         <category>学习</category>
       </categories>
       <tags>
-        <tag>工具</tag>
         <tag>git</tag>
+        <tag>工具</tag>
       </tags>
   </entry>
   <entry>
@@ -752,8 +763,8 @@
     <url>%2F2017%2F03%2F20%2Fmarkdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0%2F</url>
     <content type="text"><![CDATA[插入表格：1.1. 表格的上下需要空行。空行的多少至关重要 表格中文字居中 在划线部分的划线两端加上”:“ 比如”:—–: | :—-: 代码块:2.1. 合理利用代码块有意想不到的效果。3.]]></content>
       <tags>
-        <tag>markdown</tag>
         <tag>工具</tag>
+        <tag>markdown</tag>
       </tags>
   </entry>
   <entry>
