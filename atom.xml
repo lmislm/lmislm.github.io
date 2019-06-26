@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-06-25T14:17:35.028Z</updated>
+  <updated>2019-06-26T14:09:07.904Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day164-TypeScript基础小记-interface</title>
+    <link href="http://lmislm.com/2019/06/26/2019-06-26/"/>
+    <id>http://lmislm.com/2019/06/26/2019-06-26/</id>
+    <published>2019-06-25T16:00:00.000Z</published>
+    <updated>2019-06-26T14:09:07.904Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h3><p>接口的作用：</p><ol><li>多个属性处理类型判断</li><li>接口描述函数类型<a id="more"></a><h4 id="多个属性如何处理类型判断？"><a href="#多个属性如何处理类型判断？" class="headerlink" title="多个属性如何处理类型判断？"></a>多个属性如何处理类型判断？</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">printLabel</span> (<span class="params">labeledObj: &#123; label: string &#125;</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(labeledObj.label)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> myObj = &#123; <span class="attr">size</span>: <span class="number">10</span>, <span class="attr">label</span>: <span class="string">'Size 10 Object'</span> &#125;</span><br><span class="line">printLabel(myObj)</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 以上是对象只有一个label属性，多个属性如何处理？</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">interface LabeledValue &#123;</span><br><span class="line">  label: string</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">printLabel</span>(<span class="params">labeledObj: LabeledValue</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(labeledObj.label)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> myObj = &#123; <span class="attr">size</span>: <span class="number">10</span>, <span class="attr">label</span>: <span class="string">'Size 10 Object'</span> &#125;</span><br><span class="line">printLabel(myObj)</span><br></pre></td></tr></table></figure></li></ol><h4 id="可选属性"><a href="#可选属性" class="headerlink" title="可选属性"></a>可选属性</h4><blockquote><p>interface里的值<strong>不是</strong>所有的都是<strong>必需</strong>的<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">interface SquareConfig &#123;</span><br><span class="line">  color?: string</span><br><span class="line">  width?: number</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createSquare</span> (<span class="params">config: SquareConfig</span>): </span>&#123; color: string, <span class="attr">area</span>: number &#125; &#123;</span><br><span class="line">  <span class="keyword">let</span> newSquare = &#123; <span class="attr">color</span>: <span class="string">'white'</span>, <span class="attr">area</span>: <span class="number">100</span> &#125;</span><br><span class="line">  <span class="keyword">if</span> (config.color) &#123;</span><br><span class="line">    newSquare.color = config.color</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (config.width) &#123;</span><br><span class="line">    newSquare.area = config.width * config.width</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> newSquare</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> mySquare = createSquare(&#123;<span class="attr">color</span>: <span class="string">'black'</span>&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(mySquare)</span><br></pre></td></tr></table></figure></p></blockquote><h4 id="接口描述函数类型"><a href="#接口描述函数类型" class="headerlink" title="接口描述函数类型"></a>接口描述函数类型</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">interface SearchFunc &#123;</span><br><span class="line">  (source: string, <span class="attr">subString</span>: string): boolean</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> mySearch: SearchFunc</span><br><span class="line">mySearch = <span class="function"><span class="keyword">function</span> (<span class="params">source: string, subString: string</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> result = source.search(subString)</span><br><span class="line">  <span class="keyword">return</span> result &gt; <span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h4 id="可索引的类型"><a href="#可索引的类型" class="headerlink" title="可索引的类型"></a>可索引的类型</h4><blockquote><p>ts支持两种索引签名：字符串和数字<br><code>数字索引</code>的返回值必须是<code>字符串索引</code>返回值类型的<strong>子类型</strong><br>因为用number来索引时，JS会将它转换成string然后再去索引对象。即：用100去索引等同于用“100”去索引。<br>问题：<code>dictionary模式</code></p></blockquote><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">interface StringArray &#123;</span><br><span class="line">  [index: number]: string</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> myArray: StringArray</span><br><span class="line">myArray = [<span class="string">'liu'</span>, <span class="string">'mon'</span>]</span><br><span class="line"><span class="comment">// 当用number去索引StringArray时会得到string类型的返回值</span></span><br><span class="line"><span class="keyword">let</span> myStr: string = myArray[<span class="number">0</span>]</span><br><span class="line"><span class="built_in">console</span>.log(myArray)</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">  name: string</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">  <span class="comment">// 养殖</span></span><br><span class="line">  breed: string</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 错误：使用数值型的字符串</span></span><br><span class="line">interface NotOkay &#123;</span><br><span class="line">  <span class="comment">// 数字索引类型“Animal”不能赋给字符串索引类型“Dog”。ts(2413)</span></span><br><span class="line">  <span class="comment">// [x: number]: Animal</span></span><br><span class="line">  [x: string]: Dog</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h3&gt;&lt;p&gt;接口的作用：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;多个属性处理类型判断&lt;/li&gt;
+&lt;li&gt;接口描述函数类型
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>day163-正则点滴</title>
@@ -449,29 +474,6 @@
     
       &lt;h2 id=&quot;拷贝&quot;&gt;&lt;a href=&quot;#拷贝&quot; class=&quot;headerlink&quot; title=&quot;拷贝&quot;&gt;&lt;/a&gt;拷贝&lt;/h2&gt;&lt;p&gt;探究一下深拷贝，本文主要是浅拷贝、深拷贝的简单实现，并对循环引用就行一些了解。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g0555oglhej20u01hcdkz.jpg&quot; alt&gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day33-css居中</title>
-    <link href="http://lmislm.com/2019/02/12/2019-02-12/"/>
-    <id>http://lmislm.com/2019/02/12/2019-02-12/</id>
-    <published>2019-02-11T16:00:00.000Z</published>
-    <updated>2019-06-07T14:39:38.312Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="居中总结"><a href="#居中总结" class="headerlink" title="居中总结"></a>居中总结</h2><p>经常会碰到一些居中的问题，这里尝试进行一些总结。分为垂直居中和水平居中。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g03y5yrw5ej20u01hcwi5.jpg" alt><br><a id="more"></a></p><h3 id="水平居中"><a href="#水平居中" class="headerlink" title="水平居中"></a>水平居中</h3><ol><li>行内或类行内元素(inline/inline-block/inline-table/flex)：text-align: center;</li><li>块级元素： margin: 0 auto;</li><li><p>多个块级元素：display: inline-block;</p><h3 id="垂直居中"><a href="#垂直居中" class="headerlink" title="垂直居中"></a>垂直居中</h3></li><li>行内或类行内元素:<ul><li>单行：padding-top与padding-bottom 等值、或line-height与height 等值</li><li>多行：单行padding等值，或display: table-cell 用vertical-align：middle;</li></ul></li><li>块级元素：</li></ol><p>– 待续</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;居中总结&quot;&gt;&lt;a href=&quot;#居中总结&quot; class=&quot;headerlink&quot; title=&quot;居中总结&quot;&gt;&lt;/a&gt;居中总结&lt;/h2&gt;&lt;p&gt;经常会碰到一些居中的问题，这里尝试进行一些总结。分为垂直居中和水平居中。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g03y5yrw5ej20u01hcwi5.jpg&quot; alt&gt;&lt;br&gt;
     
     </summary>
     
