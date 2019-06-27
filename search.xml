@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[day165-TypeScript基础小记-类]]></title>
+    <url>%2F2019%2F06%2F27%2F2019-06-27%2F</url>
+    <content type="text"><![CDATA[要点 类类型 类静态部分和实例部分的区别 直接操作类的静态部分 使用类表达式直接操作类的静态部分 类类型 强制一个类去符合实现接口interface ClockInterface &#123; currentTime: Date&#125;class Clock implements ClockInterface &#123; currentTime: Date = new Date() constructor(h: number, m: number) &#123;&#125;&#125;interface ClockInterface &#123; currentTime: Date setTime(d: Date): void&#125; 接口描述类的公共部分interface ClockInterface &#123; currentTime: Date // 在接口中描述一个方法，在类里实现 setTime(d: Date): void&#125;class Clock implements ClockInterface &#123; currentTime: Date = new Date() setTime(d: Date) &#123; this.currentTime = d &#125; constructor(h: number, m: number) &#123;&#125;&#125; 类静态部分和实例部分的区别interface ClockConstructor &#123; // h: hour, m: minute /** 构造器 */ new (h: number, m: number)&#125;// 类实现接口时，只对实例部分进行类型检查。而constructor存在于类的静态部分class Clock implements ClockConstructor &#123; currentTime: Date // 缺少构造函数实现。ts(2390) // constructor(h: number, m: number)&#125; 直接操作类的静态部分 定义两个接口，分别为构造函数和实例方法所用 interface ClockConstructor &#123; new (h: number, m: number): ClockInterface&#125;interface ClockInterface &#123; tick(): void&#125;/** ClockConstructor为构造函数所用 */function createClock (ctor: ClockConstructor, h: number, m: number): ClockInterface &#123; return new ctor(h, m)&#125;/** ClockInterface为实例方法所用 */class DigitalClock implements ClockInterface &#123; constructor(h: number, m: number) &#123;&#125; tick () &#123; console.log('beep') &#125;&#125;class AnalogClock implements ClockInterface &#123; constructor(h: number, m: number) &#123;&#125; tick () &#123; console.log('tick tock') &#125;&#125;let digital = createClock(DigitalClock, 12, 17)// 检查AnalogClock是否符合构造函数签名let analog = createClock(AnalogClock, 7, 32) 使用类表达式直接操作类的静态部分interface ClockConstructor &#123; new (h: number, m: number)&#125;interface ClockInterface &#123; tick()&#125;const Clock: ClockConstructor = class Clock implements ClockInterface &#123; constructor(h: number, m: number) &#123;&#125; tick () &#123; console.log('beep') &#125;&#125;]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[day164-TypeScript基础小记-interface]]></title>
     <url>%2F2019%2F06%2F26%2F2019-06-26%2F</url>
     <content type="text"><![CDATA[要点接口的作用： 多个属性处理类型判断 接口描述函数类型 多个属性如何处理类型判断？function printLabel (labeledObj: &#123; label: string &#125;) &#123; console.log(labeledObj.label)&#125;let myObj = &#123; size: 10, label: 'Size 10 Object' &#125;printLabel(myObj)/** * 以上是对象只有一个label属性，多个属性如何处理？ */interface LabeledValue &#123; label: string&#125;function printLabel(labeledObj: LabeledValue) &#123; console.log(labeledObj.label)&#125;let myObj = &#123; size: 10, label: 'Size 10 Object' &#125;printLabel(myObj) 可选属性 interface里的值不是所有的都是必需的interface SquareConfig &#123; color?: string width?: number&#125;function createSquare (config: SquareConfig): &#123; color: string, area: number &#125; &#123; let newSquare = &#123; color: 'white', area: 100 &#125; if (config.color) &#123; newSquare.color = config.color &#125; if (config.width) &#123; newSquare.area = config.width * config.width &#125; return newSquare&#125;let mySquare = createSquare(&#123;color: 'black'&#125;)console.log(mySquare) 接口描述函数类型interface SearchFunc &#123; (source: string, subString: string): boolean&#125;let mySearch: SearchFuncmySearch = function (source: string, subString: string) &#123; let result = source.search(subString) return result &gt; 1&#125; 可索引的类型 ts支持两种索引签名：字符串和数字数字索引的返回值必须是字符串索引返回值类型的子类型因为用number来索引时，JS会将它转换成string然后再去索引对象。即：用100去索引等同于用“100”去索引。问题：dictionary模式 interface StringArray &#123; [index: number]: string&#125;let myArray: StringArraymyArray = ['liu', 'mon']// 当用number去索引StringArray时会得到string类型的返回值let myStr: string = myArray[0]console.log(myArray)class Animal &#123; name: string&#125;class Dog extends Animal &#123; // 养殖 breed: string&#125;// 错误：使用数值型的字符串interface NotOkay &#123; // 数字索引类型“Animal”不能赋给字符串索引类型“Dog”。ts(2413) // [x: number]: Animal [x: string]: Dog&#125;]]></content>
@@ -630,8 +641,8 @@
         <category>学习</category>
       </categories>
       <tags>
-        <tag>工具</tag>
         <tag>git</tag>
+        <tag>工具</tag>
       </tags>
   </entry>
   <entry>
@@ -774,8 +785,8 @@
     <url>%2F2017%2F03%2F20%2Fmarkdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0%2F</url>
     <content type="text"><![CDATA[插入表格：1.1. 表格的上下需要空行。空行的多少至关重要 表格中文字居中 在划线部分的划线两端加上”:“ 比如”:—–: | :—-: 代码块:2.1. 合理利用代码块有意想不到的效果。3.]]></content>
       <tags>
-        <tag>markdown</tag>
         <tag>工具</tag>
+        <tag>markdown</tag>
       </tags>
   </entry>
   <entry>
