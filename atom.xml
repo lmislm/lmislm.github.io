@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-06-27T14:42:12.314Z</updated>
+  <updated>2019-06-28T13:51:26.512Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day166-TypeScript基础小记-继承(接口)</title>
+    <link href="http://lmislm.com/2019/06/28/2019-06-28/"/>
+    <id>http://lmislm.com/2019/06/28/2019-06-28/</id>
+    <published>2019-06-27T16:00:00.000Z</published>
+    <updated>2019-06-28T13:51:26.512Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h3><ol><li>继承接口。</li><li>一个接口继承多个接口，创建出多个接口的合成接口。</li><li>接口继承类。<a id="more"></a></li></ol><h3 id="继承接口"><a href="#继承接口" class="headerlink" title="继承接口"></a>继承接口</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">interface Shape &#123;</span><br><span class="line">  color: string</span><br><span class="line">&#125;</span><br><span class="line">interface Square extends Shape &#123;</span><br><span class="line">  sideLength: number</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> square = &lt;Square&gt;&#123;&#125;</span><br><span class="line">square.color = 'red'</span><br><span class="line">square.sideLength = 6</span><br></pre></td></tr></table></figure><h3 id="继承多接口-合成接口"><a href="#继承多接口-合成接口" class="headerlink" title="继承多接口|合成接口"></a>继承多接口|合成接口</h3><blockquote><p>一个接口继承多个接口，创建出多个接口的合成接口。<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">interface Shape &#123;</span><br><span class="line">  color: string</span><br><span class="line">&#125;</span><br><span class="line">interface PenStroke &#123;</span><br><span class="line">  penWidth: number</span><br><span class="line">&#125;</span><br><span class="line">interface Square extends Shape, PenStroke &#123;</span><br><span class="line">  sideLength: number</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> square = &lt;Square&gt;&#123;&#125;</span><br><span class="line">square.color = 'red'</span><br><span class="line">square.sideLength = 9</span><br><span class="line">square.penWidth = 5.0</span><br></pre></td></tr></table></figure></p></blockquote><h3 id="对象“多类型”"><a href="#对象“多类型”" class="headerlink" title="对象“多类型”"></a>对象“多类型”</h3><blockquote><p>一个对象同时具有多种类型</p></blockquote><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">interface Counter &#123;</span><br><span class="line">  (start: number): string</span><br><span class="line">  interval: number</span><br><span class="line">  reset(): <span class="keyword">void</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getCounter</span>(<span class="params"></span>): <span class="title">Counter</span> </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> counter = &lt;Counter&gt;function (start: number): string &#123; return '' &#125;</span><br><span class="line">  counter.interval = 123</span><br><span class="line">  counter.reset = function () &#123;&#125;</span><br><span class="line">  return counter</span><br><span class="line">&#125;</span><br><span class="line">let c = getCounter()</span><br><span class="line">c(10)</span><br><span class="line">c.reset()</span><br><span class="line">c.interval = 5.0</span><br></pre></td></tr></table></figure><h3 id="接口继承类"><a href="#接口继承类" class="headerlink" title="接口继承类"></a>接口继承类</h3><blockquote><p>接口继承一个<code>类类型</code>时，它会继承类的成员但不包括其<code>实现</code>。（大概就是：<code>接口</code>能声明所有类中存在的成员，但是不提供<strong>具体实现</strong>）<br><code>SelectableControl</code>包含了<code>Control</code>的所有<code>成员</code>,包括<strong>私有成员</strong><code>state</code>。<br>即：当接口继承了一个拥有<code>私有成员</code>或<code>受保护成员</code>的类时，这个<code>接口类型</code>只能是被这个类或其子类所实现。</p></blockquote><blockquote><p><code>SelectableControl</code>包含了Control的所有成员,包括私有成员state<br>因为state是私有成员，只能Control的子类才能实现<code>SelectablControl</code>接口。</p></blockquote><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Control</span> </span>&#123;</span><br><span class="line">  private state: any</span><br><span class="line">&#125;</span><br><span class="line">interface SelectableControl extends Control &#123;</span><br><span class="line">  select(): <span class="keyword">void</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Button</span> <span class="keyword">extends</span> <span class="title">Control</span> <span class="title">implements</span> <span class="title">SelectableControl</span> </span>&#123;</span><br><span class="line">  select() &#123; &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TextBox</span> <span class="keyword">extends</span> <span class="title">Control</span> </span>&#123;</span><br><span class="line">  select() &#123; &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Image</span> <span class="title">implements</span> <span class="title">SelectableControl</span> </span>&#123;</span><br><span class="line">  select() &#123; &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Location</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul><li><a href="https://zhongsp.gitbooks.io/typescript-handbook/content/doc/handbook/Interfaces.html" target="_blank" rel="noopener">https://zhongsp.gitbooks.io/typescript-handbook/content/doc/handbook/Interfaces.html</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;继承接口。&lt;/li&gt;
+&lt;li&gt;一个接口继承多个接口，创建出多个接口的合成接口。&lt;/li&gt;
+&lt;li&gt;接口继承类。
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>day165-TypeScript基础小记-类</title>
@@ -454,29 +479,6 @@
     
       &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;今天是考研成绩出来的一天。恍恍惚惚，一年前的这个时候我还在过年，恍惚间一年已经过了。早上七点就醒了，不知道这有没有什么关系，但重要的是一年前的这个时候，我一晚上没睡着，结果第二天这个时候，消息并没有那么好。这都是一年前的事情了。谈一谈吧。这两天在做移动端的支付宝支付。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g06aijcid1j20u01hcwhm.jpg&quot; alt&gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="生活" scheme="http://lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day35-杂谈</title>
-    <link href="http://lmislm.com/2019/02/14/2019-02-14/"/>
-    <id>http://lmislm.com/2019/02/14/2019-02-14/</id>
-    <published>2019-02-13T16:00:00.000Z</published>
-    <updated>2019-06-07T14:39:38.313Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>发现要是女生和代码一样容易理解就好了，出错的几率也太大了。因为你费劲输入一大堆代码，最后错都不会报，根本不知道会不会运行。<br>衰(′д｀ )…彡…彡<br>有时候有些人你付出，更本就不会有任何反应。世事难料啊。情人节快乐！<br>祝你们原地爆炸！</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g06aij5xjkj20u01hc0yq.jpg" alt><br>-end<br><a id="more"></a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;发现要是女生和代码一样容易理解就好了，出错的几率也太大了。因为你费劲输入一大堆代码，最后错都不会报，根本不知道会不会运行。&lt;br&gt;衰(′д｀ )…彡…彡&lt;br&gt;有时候有些人你付出，更本就不会有任何反应。世事难料啊。情人节快乐！&lt;br&gt;祝你们原地爆炸！&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g06aij5xjkj20u01hc0yq.jpg&quot; alt&gt;&lt;br&gt;-end&lt;br&gt;
     
     </summary>
     
