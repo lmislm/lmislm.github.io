@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-06-28T13:51:26.512Z</updated>
+  <updated>2019-06-29T13:04:53.834Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day167-TypeScript基础小记-类（2）</title>
+    <link href="http://lmislm.com/2019/06/29/2019-06-29/"/>
+    <id>http://lmislm.com/2019/06/29/2019-06-29/</id>
+    <published>2019-06-28T16:00:00.000Z</published>
+    <updated>2019-06-29T13:04:53.834Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h3><ol><li>类的例子</li><li>继承</li><li>公共、私有与受保护的修饰符<a id="more"></a></li></ol><h3 id="类的例子"><a href="#类的例子" class="headerlink" title="类的例子"></a>类的例子</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Greeter</span> </span>&#123;</span><br><span class="line">  greeting: string</span><br><span class="line">  <span class="keyword">constructor</span>(message: string) &#123;</span><br><span class="line">    <span class="keyword">this</span>.greeting = message</span><br><span class="line">  &#125;</span><br><span class="line">  greet () &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'hello'</span> + <span class="keyword">this</span>.greeting</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> greeter = <span class="keyword">new</span> Greeter(<span class="string">'world'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(greeter)</span><br></pre></td></tr></table></figure><h3 id="继承-例子1"><a href="#继承-例子1" class="headerlink" title="继承-例子1"></a>继承-例子1</h3><ul><li>例子1：</li></ul><p>类（Dog）从基类（Animal)中继承了属性和方法。<code>Dog</code>是一个<code>派生类</code>,它派生自<code>Animal`</code>基类`。</p><p>通过<code>extends</code>关键字，<code>派生类</code>通常被称作<strong>子类</strong>，<code>基类</code>通常被称作<strong>超类</strong>。</p><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">  move(distanceInMeters: number = <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`目标被动物吓退了 <span class="subst">$&#123;distanceInMeters&#125;</span>m`</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">  bark () &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'汪汪汪'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> dog = <span class="keyword">new</span> Dog() <span class="comment">// 创建一个Dog能够`bark()`和`move()`的实例</span></span><br><span class="line">dog.bark()</span><br><span class="line">dog.move(<span class="number">10</span>)</span><br><span class="line">dog.bark()</span><br></pre></td></tr></table></figure><h3 id="继承-例子2"><a href="#继承-例子2" class="headerlink" title="继承-例子2"></a>继承-例子2</h3><p> 和例子1有点不同，这个<code>派生类（子类）</code>必须调用<code>super()</code>，它会执行<code>基类（超类）</code>的<strong>构造函数</strong>。</p><p> 且，在<strong>构造函数</strong>里访问<code>this</code>的属性之前，一定要调用<code>super()</code>（这个是TypeScript强制执行的一条规则）。</p><p> 例子2，演示了如何在子类里可以重写父类方法。Snake类和Horse类都创建了move方法，它们重写了从Animal继承来的move方法，使得move方法根据不同的类而具有不同的功能。</p><p> 例子2中<code>tom: Animal</code>，tom被声明为<code>Animal类型</code>，但因为它的值是<code>Horse</code>类型（等于号右边部分），调用<code>tom.move(90)</code>时，它会调用Horse里<strong>重写</strong>的方法。</p><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">  name: string</span><br><span class="line">  <span class="keyword">constructor</span>(theName: string) &#123; <span class="keyword">this</span>.name = theName &#125;</span><br><span class="line">  move (distanceInMeters: number = <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span> 跑了 <span class="subst">$&#123;distanceInMeters&#125;</span>米`</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Snake</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(name: string) &#123; <span class="keyword">super</span>(name) &#125;</span><br><span class="line">  move(distanceInMeters = <span class="number">5</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'蛇出溜滑，遛了遛了..'</span>)</span><br><span class="line">    <span class="keyword">super</span>.move(distanceInMeters)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Horse</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(name: string) &#123; <span class="keyword">super</span>(name) &#125;</span><br><span class="line">  move(distanceInMeters = <span class="number">45</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'我老马先跑一步...'</span>)</span><br><span class="line">    <span class="keyword">super</span>.move(distanceInMeters)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> sam = <span class="keyword">new</span> Snake(<span class="string">'哟，这不是子类蛇嘛'</span>)</span><br><span class="line"><span class="keyword">let</span> tom: Animal = <span class="keyword">new</span> Horse(<span class="string">'马哥，马哥，子类马，雷吼'</span>)</span><br><span class="line">sam.move()</span><br><span class="line">tom.move(<span class="number">90</span>)</span><br></pre></td></tr></table></figure><h3 id="公共、私有与受保护的修饰符"><a href="#公共、私有与受保护的修饰符" class="headerlink" title="公共、私有与受保护的修饰符"></a>公共、私有与受保护的修饰符</h3><p>public、private</p><h4 id="public"><a href="#public" class="headerlink" title="public"></a>public</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">  public name: string</span><br><span class="line">  public <span class="keyword">constructor</span>(theName: string) &#123; <span class="keyword">this</span>.name = theName &#125;</span><br><span class="line">  public move (distanceInMeters: number) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span> 移动 <span class="subst">$&#123;distanceInMeters&#125;</span>米。`</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h4 id="private"><a href="#private" class="headerlink" title="private"></a>private</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">  private name: string</span><br><span class="line">  <span class="keyword">constructor</span>(theName: string) &#123; <span class="keyword">this</span>.name = theName &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 属性“name”为私有属性，只能在类“Animal”中访问。ts(2341)</span></span><br><span class="line"><span class="keyword">new</span> Animal(<span class="string">'Cat'</span>).name</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;类的例子&lt;/li&gt;
+&lt;li&gt;继承&lt;/li&gt;
+&lt;li&gt;公共、私有与受保护的修饰符
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>day166-TypeScript基础小记-继承(接口)</title>
@@ -456,29 +481,6 @@
     <summary type="html">
     
       &lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fyonjtz2hlj20c80qdwen.jpg&quot; alt&gt;&lt;br&gt;即将告别2018年，这个对于我来说，&lt;strong&gt;多灾多难&lt;/strong&gt;的一年。&lt;br&gt;这一年发生了太多的事，每一年也都会发生很多事，但从来没有哪一年能够像2018年这样让人印象深刻。&lt;br&gt;&lt;strong&gt;考研结束。&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;毕业。&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;工作。&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;最悲痛的莫过于最亲的人去世。&lt;/strong&gt;&lt;br&gt;事业也刚刚起步，爱情失去了方向。&lt;br&gt;真是让人印象深刻的一年。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="生活" scheme="http://lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day36-杂谈</title>
-    <link href="http://lmislm.com/2019/02/15/2019-02-15/"/>
-    <id>http://lmislm.com/2019/02/15/2019-02-15/</id>
-    <published>2019-02-14T16:00:00.000Z</published>
-    <updated>2019-06-07T14:39:38.315Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>今天是考研成绩出来的一天。恍恍惚惚，一年前的这个时候我还在过年，恍惚间一年已经过了。早上七点就醒了，不知道这有没有什么关系，但重要的是一年前的这个时候，我一晚上没睡着，结果第二天这个时候，消息并没有那么好。这都是一年前的事情了。谈一谈吧。这两天在做移动端的支付宝支付。</p><p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1g06aijcid1j20u01hcwhm.jpg" alt><br><a id="more"></a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot; title=&quot;碎碎念&quot;&gt;&lt;/a&gt;碎碎念&lt;/h3&gt;&lt;p&gt;今天是考研成绩出来的一天。恍恍惚惚，一年前的这个时候我还在过年，恍惚间一年已经过了。早上七点就醒了，不知道这有没有什么关系，但重要的是一年前的这个时候，我一晚上没睡着，结果第二天这个时候，消息并没有那么好。这都是一年前的事情了。谈一谈吧。这两天在做移动端的支付宝支付。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1g06aijcid1j20u01hcwhm.jpg&quot; alt&gt;&lt;br&gt;
     
     </summary>
     
