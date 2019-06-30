@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-06-29T13:04:53.834Z</updated>
+  <updated>2019-06-30T13:10:12.084Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day168-TypeScript基础小记-</title>
+    <link href="http://lmislm.com/2019/06/30/2019-06-30/"/>
+    <id>http://lmislm.com/2019/06/30/2019-06-30/</id>
+    <published>2019-06-29T16:00:00.000Z</published>
+    <updated>2019-06-30T13:10:12.084Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h3><ol><li><code>private</code>、<code>protected</code>类型的比较。</li><li><code>private</code>、<code>protected</code>修饰符。</li><li><code>protected</code>与类。</li></ol><h3 id="类型比较"><a href="#类型比较" class="headerlink" title="类型比较"></a>类型比较</h3><ol><li>比较不同的类型时，如果所有成员类型都是兼容的，就认为类型是兼容的。</li><li>比较<code>private</code>或<code>protected</code>成员的类型时，只有来自<strong>同一处声明</strong>时，才认为两个类型是<strong>兼容</strong>的。</li></ol><p>例子1<br><code>Employee</code>赋值给<code>Animal</code>时，类型不兼容，因为<code>Employee</code>里也有一个<code>私有成员name</code>，但并不是<code>Animal</code>里面定义的那个。<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">  private name: string</span><br><span class="line">  <span class="keyword">constructor</span>(theName: string) &#123; <span class="keyword">this</span>.name = theName &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Rhino</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>() &#123; <span class="keyword">super</span>(<span class="string">'犀牛哥已提前就位'</span>) &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Employee</span> </span>&#123;</span><br><span class="line">  private name: string</span><br><span class="line">  <span class="keyword">constructor</span>(theName: string) &#123; <span class="keyword">this</span>.name = theName &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> animal = <span class="keyword">new</span> Animal(<span class="string">'羊总'</span>)</span><br><span class="line"><span class="keyword">let</span> rhino = <span class="keyword">new</span> Rhino()</span><br><span class="line"><span class="keyword">let</span> employee = <span class="keyword">new</span> Employee(<span class="string">'护林员'</span>)</span><br><span class="line">animal = rhino</span><br><span class="line"><span class="comment">// 不能将类型“Employee”分配给类型“Animal”。类型具有私有属性“name”的单独声明。ts(2322)</span></span><br><span class="line"><span class="comment">// 注意定义的private name相同</span></span><br><span class="line">animal = employee</span><br></pre></td></tr></table></figure></p><h3 id="private、protected修饰符"><a href="#private、protected修饰符" class="headerlink" title="private、protected修饰符"></a><code>private</code>、<code>protected</code>修饰符</h3><ol><li><p><code>protected</code> 修饰符与 <code>private</code> 修饰符的行为相似，但有不同，<code>protected</code> 成员在<code>派生类</code>中仍然可以访问。</p></li><li><p>例子1</p><blockquote><p>不能在<code>Person</code>类外使用<code>name</code>，但是可以通过子类<code>Employee</code>类实例方法访问，因为<code>Employee</code>是由<code>Person</code>派生而来。</p></blockquote></li></ol><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  protected name: string</span><br><span class="line">  <span class="keyword">constructor</span>(name: string) &#123; <span class="keyword">this</span>.name = name &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Employee</span> <span class="keyword">extends</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  private department: string</span><br><span class="line">  <span class="keyword">constructor</span>(name: string, department: string) &#123;</span><br><span class="line">    <span class="keyword">super</span>(name)</span><br><span class="line">    <span class="keyword">this</span>.department = department</span><br><span class="line">  &#125;</span><br><span class="line">  public getElevatorPitch () &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`你好，老弟。我叫 <span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span> 在附近 <span class="subst">$&#123;<span class="keyword">this</span>.department&#125;</span> 工作`</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> howard = <span class="keyword">new</span> Employee(<span class="string">'小刘'</span>, <span class="string">'小卖部'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(howard.getElevatorPitch())</span><br><span class="line"><span class="comment">// 属性“name”受保护，只能在类“Person”及其子类中访问。ts(2445)</span></span><br><span class="line"><span class="built_in">console</span>.log(howard.name)</span><br></pre></td></tr></table></figure><h3 id="protected与类"><a href="#protected与类" class="headerlink" title="protected与类"></a><code>protected</code>与类</h3><p><code>构造函数</code>也可以被标记成<code>protected</code>。意味着，这个类不能在包含它的类外被<code>实例化</code>，但是能被继承<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  protected name: string</span><br><span class="line">  protected <span class="keyword">constructor</span>(theName: string) &#123; <span class="keyword">this</span>.name = theName &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Employee</span> <span class="keyword">extends</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  private department: string</span><br><span class="line">  <span class="keyword">constructor</span>(name: string, department: string) &#123;</span><br><span class="line">    <span class="keyword">super</span>(name)</span><br><span class="line">    <span class="keyword">this</span>.department = department</span><br><span class="line">  &#125;</span><br><span class="line">  public getElevatorPitch () &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`你好，老哥。我叫<span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span>，我家搁附近<span class="subst">$&#123;<span class="keyword">this</span>.department&#125;</span>。`</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> howard = <span class="keyword">new</span> Employee(<span class="string">'二柱子'</span>, <span class="string">'洞拐八拐银行附近'</span>)</span><br><span class="line"><span class="comment">// 类“Person”的构造函数是受保护的，仅可在类声明中访问。ts(2674)</span></span><br><span class="line"><span class="keyword">let</span> john = <span class="keyword">new</span> Person(<span class="string">'铁蛋'</span>)</span><br></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;private&lt;/code&gt;、&lt;code&gt;protected&lt;/code&gt;类型的比较。&lt;/li&gt;
+&lt;li&gt;&lt;code
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>day167-TypeScript基础小记-类（2）</title>
@@ -466,28 +493,6 @@
       <category term="编程" scheme="http://lmislm.com/tags/%E7%BC%96%E7%A8%8B/"/>
     
       <category term="Interview" scheme="http://lmislm.com/tags/Interview/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>2019--启程</title>
-    <link href="http://lmislm.com/2019/06/07/2019-%E5%90%AF%E7%A8%8B/"/>
-    <id>http://lmislm.com/2019/06/07/2019-启程/</id>
-    <published>2019-06-07T13:34:19.014Z</published>
-    <updated>2019-06-15T14:40:12.469Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="https://ws1.sinaimg.cn/large/b15ca614gy1fyonjtz2hlj20c80qdwen.jpg" alt><br>即将告别2018年，这个对于我来说，<strong>多灾多难</strong>的一年。<br>这一年发生了太多的事，每一年也都会发生很多事，但从来没有哪一年能够像2018年这样让人印象深刻。<br><strong>考研结束。</strong><br><strong>毕业。</strong><br><strong>工作。</strong><br><strong>最悲痛的莫过于最亲的人去世。</strong><br>事业也刚刚起步，爱情失去了方向。<br>真是让人印象深刻的一年。<br><a id="more"></a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/b15ca614gy1fyonjtz2hlj20c80qdwen.jpg&quot; alt&gt;&lt;br&gt;即将告别2018年，这个对于我来说，&lt;strong&gt;多灾多难&lt;/strong&gt;的一年。&lt;br&gt;这一年发生了太多的事，每一年也都会发生很多事，但从来没有哪一年能够像2018年这样让人印象深刻。&lt;br&gt;&lt;strong&gt;考研结束。&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;毕业。&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;工作。&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;最悲痛的莫过于最亲的人去世。&lt;/strong&gt;&lt;br&gt;事业也刚刚起步，爱情失去了方向。&lt;br&gt;真是让人印象深刻的一年。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="生活" scheme="http://lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="感悟" scheme="http://lmislm.com/tags/%E6%84%9F%E6%82%9F/"/>
     
   </entry>
   
