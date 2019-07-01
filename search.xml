@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[day168-TypeScript基础小记-]]></title>
+    <title><![CDATA[day168-手写debounce]]></title>
+    <url>%2F2019%2F07%2F01%2F2019-07-01%2F</url>
+    <content type="text"><![CDATA[题目手写防抖函数debounce。防抖和节流的区别：防抖：一定时间内只执行最后一次（非立即执行），如：window触发resize，search搜索联想。节流：一定时间内只执行一次，如：多次连续点击按钮，防抖只执行一次；rAF。 debouncefunction debounce(func, wait, immediate) &#123; let timeout, args, ctx, timestamp, result const later = function () &#123; // 距离上一次触发时间间隔 const last = +new Date() - timestamp // wait: 当前时间间隔；lat：上次被包装函数调用的时间间隔 if (wait &gt; last &amp;&amp; last &gt; 0) &#123; // 继续等待一定时间执行 timeout = setTimeout(later, wait - last) &#125; else &#123; // 超过约定的时间 timeout = null // 前提是没有设置立即执行 if (!immediate) &#123; // 可以立即执行 result = func.apply(ctx, args) // 第一次执行完毕，重置各种条件 if (!timeout) ctx = args = null &#125; &#125; &#125; return function (...args) &#123; ctx = this timestamp = +new Date() const callImmediate = immediate &amp;&amp; !timeout // 非立即执行 if (!timeout) &#123; timeout = setTimeout(later, wait) &#125; // 立即执行 if (callImmediate) &#123; result = func.apply(ctx, args) ctx = args = null &#125; return result &#125;&#125;]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[day168-TypeScript基础小记-private与protected]]></title>
     <url>%2F2019%2F06%2F30%2F2019-06-30%2F</url>
     <content type="text"><![CDATA[要点 private、protected类型的比较。 private、protected修饰符。 protected与类。 类型比较 比较不同的类型时，如果所有成员类型都是兼容的，就认为类型是兼容的。 比较private或protected成员的类型时，只有来自同一处声明时，才认为两个类型是兼容的。 例子1Employee赋值给Animal时，类型不兼容，因为Employee里也有一个私有成员name，但并不是Animal里面定义的那个。class Animal &#123; private name: string constructor(theName: string) &#123; this.name = theName &#125;&#125;class Rhino extends Animal &#123; constructor() &#123; super('犀牛哥已提前就位') &#125;&#125;class Employee &#123; private name: string constructor(theName: string) &#123; this.name = theName &#125;&#125;let animal = new Animal('羊总')let rhino = new Rhino()let employee = new Employee('护林员')animal = rhino// 不能将类型“Employee”分配给类型“Animal”。类型具有私有属性“name”的单独声明。ts(2322)// 注意定义的private name相同animal = employee private、protected修饰符 protected 修饰符与 private 修饰符的行为相似，但有不同，protected 成员在派生类中仍然可以访问。 例子1 不能在Person类外使用name，但是可以通过子类Employee类实例方法访问，因为Employee是由Person派生而来。 class Person &#123; protected name: string constructor(name: string) &#123; this.name = name &#125;&#125;class Employee extends Person &#123; private department: string constructor(name: string, department: string) &#123; super(name) this.department = department &#125; public getElevatorPitch () &#123; return `你好，老弟。我叫 $&#123;this.name&#125; 在附近 $&#123;this.department&#125; 工作` &#125;&#125;let howard = new Employee('小刘', '小卖部')console.log(howard.getElevatorPitch())// 属性“name”受保护，只能在类“Person”及其子类中访问。ts(2445)console.log(howard.name) protected与类构造函数也可以被标记成protected。意味着，这个类不能在包含它的类外被实例化，但是能被继承class Person &#123; protected name: string protected constructor(theName: string) &#123; this.name = theName &#125;&#125;class Employee extends Person &#123; private department: string constructor(name: string, department: string) &#123; super(name) this.department = department &#125; public getElevatorPitch () &#123; return `你好，老哥。我叫$&#123;this.name&#125;，我家搁附近$&#123;this.department&#125;。` &#125;&#125;let howard = new Employee('二柱子', '洞拐八拐银行附近')// 类“Person”的构造函数是受保护的，仅可在类声明中访问。ts(2674)let john = new Person('铁蛋')]]></content>
       <categories>
@@ -814,6 +825,15 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[markdown语法小记]]></title>
+    <url>%2F2017%2F03%2F20%2Fmarkdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[插入表格：1.1. 表格的上下需要空行。空行的多少至关重要 表格中文字居中 在划线部分的划线两端加上”:“ 比如”:—–: | :—-: 代码块:2.1. 合理利用代码块有意想不到的效果。3.]]></content>
+      <tags>
+        <tag>工具</tag>
+        <tag>markdown</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[codewars-count_digits]]></title>
     <url>%2F2017%2F03%2F20%2Fcodewars%2F</url>
     <content type="text"><![CDATA[题目 Take an integer n (n &gt;= 0) and a digit d (0 &lt;= d &lt;= 9) as an integer. Square all numbers k (0 &lt;= k &lt;= n) between 0 and n. Count the numbers of digits d used in the writing of all the k* *2. Call nb_dig (or nbDig or …) the function taking n and d as parameters and returning this count. 例子 n = 10, d = 1,the k * k are 0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100 We are using the digit 1 in 1, 16, 81, 100. The total count is then 4.nb_dig(25, 1):the numbers of interest are 1, 4, 9, 10, 11, 12, 13, 14, 19, 21which squared are 1, 16, 81, 100, 121, 144, 169, 196, 361, 441 so there are 11 digits 1 for the squares of numbers between 0 and 25. 分析 给出n和d，求 0 到 n 中间的平方，再求这些平方的平方，问所得的这些数中包含多少个数字d。大概就是先算出这些数字的平方，然后挨个分解求出其中的值。 解题function nbDig(n,d) &#123; var s = &apos;&apos;; for(var i=0;i&lt;=n;i++)&#123; s += Math.pow(i,2); &#125; return s.split(d).length-1&#125; 牢骚篇今天，进了个群，挺多厉害的人，还私聊了一个有很多 offer 的同学。顿时觉得，自己就是渣渣啊，一点信心都没有。还是得加油吧，要学的东西还很多啊。]]></content>
@@ -824,15 +844,6 @@
         <tag>编程</tag>
         <tag>js</tag>
         <tag>codewars</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[markdown语法小记]]></title>
-    <url>%2F2017%2F03%2F20%2Fmarkdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[插入表格：1.1. 表格的上下需要空行。空行的多少至关重要 表格中文字居中 在划线部分的划线两端加上”:“ 比如”:—–: | :—-: 代码块:2.1. 合理利用代码块有意想不到的效果。3.]]></content>
-      <tags>
-        <tag>工具</tag>
-        <tag>markdown</tag>
       </tags>
   </entry>
   <entry>
