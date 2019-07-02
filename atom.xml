@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-07-01T15:42:04.248Z</updated>
+  <updated>2019-07-02T14:03:38.386Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -17,11 +17,35 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>day168-手写debounce</title>
+    <title>day170-TypeScript基础小记-参数属性</title>
+    <link href="http://lmislm.com/2019/07/02/2019-07-02/"/>
+    <id>http://lmislm.com/2019/07/02/2019-07-02/</id>
+    <published>2019-07-01T16:00:00.000Z</published>
+    <updated>2019-07-02T14:03:38.386Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h3><ol><li>存取器。</li><li>静态属性。<a id="more"></a></li></ol><h3 id="存取器"><a href="#存取器" class="headerlink" title="存取器"></a>存取器</h3><p>例子1</p><blockquote><p>把简单的类改写成使用<code>get</code>和<code>set</code>。<br>注意：只带<code>get</code>不带有<code>set</code>的存取器自动被推断为readonly</p></blockquote><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 随意修改全名</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Employee</span> </span>&#123;</span><br><span class="line">  fullName: string</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> employee = <span class="keyword">new</span> Employee()</span><br><span class="line">employee.fullName = <span class="string">'二柱子'</span></span><br><span class="line"><span class="keyword">if</span> (employee.fullName) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(employee.fullName)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 加密，不让随意修改全名</span></span><br><span class="line"><span class="keyword">let</span> passcode = <span class="string">'secret passcode'</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Employee</span> </span>&#123;</span><br><span class="line">  private _fullName: string</span><br><span class="line">  <span class="keyword">get</span> fullName (): string &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>._fullName</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">set</span> fullName (newName: string) &#123;</span><br><span class="line">    <span class="keyword">if</span> (passcode &amp;&amp; passcode == <span class="string">'secret passcode'</span>) &#123;</span><br><span class="line">      <span class="keyword">this</span>._fullName = newName</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'Error: 认证错误！又想把人名字改成二柱子！'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> employee = <span class="keyword">new</span> Employee()</span><br><span class="line">employee.fullName = <span class="string">"铁蛋"</span></span><br><span class="line"><span class="keyword">if</span> (employee.fullName) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(employee.fullName)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="静态属性"><a href="#静态属性" class="headerlink" title="静态属性"></a>静态属性</h3><ol><li>这些属性存在类<code>本身</code>上而不是类的<code>实例</code>上。</li><li>例子1<blockquote><p>使用<code>static</code>定义<code>origin</code>，因为<code>origin</code>是所有网格都会用到的属性。每个实例访问该属性时，都要在<code>origin</code>前面加上类名。<br>如同在<code>实例属性</code>上使用<code>this.</code>前缀来访问<code>属性</code>，本例子用<code>Grid.</code>来访问<code>静态属性</code>。</p></blockquote></li></ol><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Grid</span> </span>&#123;</span><br><span class="line">  <span class="keyword">static</span> origin = &#123; <span class="attr">x</span>: <span class="number">0</span>, <span class="attr">y</span>: <span class="number">0</span> &#125;</span><br><span class="line">  <span class="keyword">constructor</span> (public scale: number) &#123;&#125;</span><br><span class="line">  calculateDistanceFromOrigin (point: &#123; <span class="attr">x</span>: number, <span class="attr">y</span>: number &#125;) &#123;</span><br><span class="line">    <span class="keyword">let</span> xDis = (point.x - Grid.origin.x)</span><br><span class="line">    <span class="keyword">let</span> yDis = (point.y - Grid.origin.y)</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Math</span>.sqrt(xDis * xDis + yDis * yDis) / <span class="keyword">this</span>.scale</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> grid1 = <span class="keyword">new</span> Grid(<span class="number">1.0</span>)</span><br><span class="line"><span class="keyword">let</span> grid2 = <span class="keyword">new</span> Grid(<span class="number">2.0</span>)</span><br><span class="line"><span class="built_in">console</span>.log(grid1.calculateDistanceFromOrigin(&#123;<span class="attr">x</span>: <span class="number">1</span>, <span class="attr">y</span>: <span class="number">1</span>&#125;))</span><br><span class="line"><span class="built_in">console</span>.log(grid2.calculateDistanceFromOrigin(&#123;<span class="attr">x</span>: <span class="number">2</span>, <span class="attr">y</span>: <span class="number">2</span>&#125;))</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;存取器。&lt;/li&gt;
+&lt;li&gt;静态属性。
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>day169-手写debounce</title>
     <link href="http://lmislm.com/2019/07/01/2019-07-01/"/>
     <id>http://lmislm.com/2019/07/01/2019-07-01/</id>
     <published>2019-06-30T16:00:00.000Z</published>
-    <updated>2019-07-01T15:42:04.248Z</updated>
+    <updated>2019-07-02T13:57:24.721Z</updated>
     
     <content type="html"><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>手写防抖函数<code>debounce</code>。<br>防抖和节流的区别：<br>防抖：一定时间内只执行最后一次（非立即执行），如：<code>window</code>触发<code>resize</code>，<code>search搜索</code>联想。<br>节流：一定时间内只执行一次，如：多次连续点击按钮，防抖只执行一次；<code>rAF</code>。<br><a id="more"></a></p><h3 id="debounce"><a href="#debounce" class="headerlink" title="debounce"></a>debounce</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">debounce</span>(<span class="params">func, wait, immediate</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> timeout, args, ctx, timestamp, result</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> later = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 距离上一次触发时间间隔</span></span><br><span class="line">    <span class="keyword">const</span> last = +<span class="keyword">new</span> <span class="built_in">Date</span>() - timestamp</span><br><span class="line">    <span class="comment">// wait: 当前时间间隔；lat：上次被包装函数调用的时间间隔</span></span><br><span class="line">    <span class="keyword">if</span> (wait &gt; last &amp;&amp; last &gt; <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="comment">// 继续等待一定时间执行</span></span><br><span class="line">      timeout = setTimeout(later, wait - last)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// 超过约定的时间</span></span><br><span class="line">      timeout = <span class="literal">null</span></span><br><span class="line">      <span class="comment">// 前提是没有设置立即执行</span></span><br><span class="line">      <span class="keyword">if</span> (!immediate) &#123;</span><br><span class="line">        <span class="comment">// 可以立即执行</span></span><br><span class="line">        result = func.apply(ctx, args)</span><br><span class="line">        <span class="comment">// 第一次执行完毕，重置各种条件</span></span><br><span class="line">        <span class="keyword">if</span> (!timeout) ctx = args = <span class="literal">null</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">...args</span>) </span>&#123;</span><br><span class="line">    ctx = <span class="keyword">this</span></span><br><span class="line">    timestamp = +<span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line">    <span class="keyword">const</span> callImmediate = immediate &amp;&amp; !timeout</span><br><span class="line">    <span class="comment">// 非立即执行</span></span><br><span class="line">    <span class="keyword">if</span> (!timeout) &#123;</span><br><span class="line">      timeout = setTimeout(later, wait)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 立即执行</span></span><br><span class="line">    <span class="keyword">if</span> (callImmediate) &#123;</span><br><span class="line">      result = func.apply(ctx, args)</span><br><span class="line">      ctx = args = <span class="literal">null</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
     
@@ -461,30 +485,6 @@
     
     
       <category term="acm" scheme="http://lmislm.com/tags/acm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>markdown-trick</title>
-    <link href="http://lmislm.com/2019/06/07/markdown-trick/"/>
-    <id>http://lmislm.com/2019/06/07/markdown-trick/</id>
-    <published>2019-06-07T13:34:19.031Z</published>
-    <updated>2019-06-15T14:40:12.473Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="vscode-snippets"><a href="#vscode-snippets" class="headerlink" title="vscode snippets"></a>vscode snippets</h2><blockquote><p>以设置 markdown 代码片段为例</p></blockquote><a id="more"></a><h4 id="开启设置"><a href="#开启设置" class="headerlink" title="开启设置"></a><a href="https://github.com/Microsoft/vscode/issues/28048" target="_blank" rel="noopener">开启设置</a></h4><blockquote><p>文件 &gt; 首选项 &gt; 设置</p></blockquote><figure class="highlight"><table><tr><td class="code"><pre><span class="line">"[markdown]":  &#123;</span><br><span class="line">    "editor.quickSuggestions": true</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure><h4 id="设置模板"><a href="#设置模板" class="headerlink" title="设置模板"></a><a href="https://code.visualstudio.com/docs/editor/userdefinedsnippets" target="_blank" rel="noopener">设置模板</a></h4><blockquote><p>文件 &gt; 首选项 &gt; 用户代码片段 &gt; markdown.json</p></blockquote><figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"markdown write template"</span>: &#123;</span><br><span class="line">    <span class="attr">"prefix"</span>: <span class="string">"mdrt"</span>,</span><br><span class="line">    <span class="attr">"body"</span>: [</span><br><span class="line">      <span class="string">"--- $1"</span>,</span><br><span class="line">      <span class="string">"title: $TM_FILENAME_BASE"</span>,</span><br><span class="line">      <span class="string">"tags:"</span>,</span><br><span class="line">      <span class="string">"* xx"</span>,</span><br><span class="line">      <span class="string">"categories:"</span>,</span><br><span class="line">      <span class="string">"* xx"</span>,</span><br><span class="line">      <span class="string">"date: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE-$CURRENT_HOUR"</span>,</span><br><span class="line">      <span class="string">"--- "</span>,</span><br><span class="line">      <span class="string">" \n "</span>,</span><br><span class="line"></span><br><span class="line">      <span class="string">"&lt;!--more--&gt; $2"</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">"description"</span>: <span class="string">"Create template for markdown write"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h4 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h4><figure class="highlight"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: md-kill</span><br><span class="line">tags:</span><br><span class="line">* xx</span><br><span class="line">categories:</span><br><span class="line">* xx</span><br><span class="line">date: 2018-03-31-20</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">&lt;!--more--&gt;</span><br></pre></td></tr></table></figure><h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="https://github.com/Microsoft/vscode/issues/28048" target="_blank" rel="noopener">Markdown Snippet Prefix Does Not Trigger Snippet #28048</a><br><a href="https://code.visualstudio.com/docs/editor/userdefinedsnippets" target="_blank" rel="noopener">Creating your own snippets</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;vscode-snippets&quot;&gt;&lt;a href=&quot;#vscode-snippets&quot; class=&quot;headerlink&quot; title=&quot;vscode snippets&quot;&gt;&lt;/a&gt;vscode snippets&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;以设置 markdown 代码片段为例&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="日常操作" scheme="http://lmislm.com/categories/%E6%97%A5%E5%B8%B8%E6%93%8D%E4%BD%9C/"/>
-    
-    
-      <category term="小技巧" scheme="http://lmislm.com/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/"/>
     
   </entry>
   

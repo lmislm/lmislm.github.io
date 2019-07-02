@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[day168-手写debounce]]></title>
+    <title><![CDATA[day170-TypeScript基础小记-参数属性]]></title>
+    <url>%2F2019%2F07%2F02%2F2019-07-02%2F</url>
+    <content type="text"><![CDATA[要点 存取器。 静态属性。 存取器例子1 把简单的类改写成使用get和set。注意：只带get不带有set的存取器自动被推断为readonly // 随意修改全名class Employee &#123; fullName: string&#125;let employee = new Employee()employee.fullName = '二柱子'if (employee.fullName) &#123; console.log(employee.fullName)&#125;// 加密，不让随意修改全名let passcode = 'secret passcode'class Employee &#123; private _fullName: string get fullName (): string &#123; return this._fullName &#125; set fullName (newName: string) &#123; if (passcode &amp;&amp; passcode == 'secret passcode') &#123; this._fullName = newName &#125; else &#123; console.log('Error: 认证错误！又想把人名字改成二柱子！') &#125; &#125;&#125;let employee = new Employee()employee.fullName = "铁蛋"if (employee.fullName) &#123; console.log(employee.fullName)&#125; 静态属性 这些属性存在类本身上而不是类的实例上。 例子1 使用static定义origin，因为origin是所有网格都会用到的属性。每个实例访问该属性时，都要在origin前面加上类名。如同在实例属性上使用this.前缀来访问属性，本例子用Grid.来访问静态属性。 class Grid &#123; static origin = &#123; x: 0, y: 0 &#125; constructor (public scale: number) &#123;&#125; calculateDistanceFromOrigin (point: &#123; x: number, y: number &#125;) &#123; let xDis = (point.x - Grid.origin.x) let yDis = (point.y - Grid.origin.y) return Math.sqrt(xDis * xDis + yDis * yDis) / this.scale &#125;&#125;let grid1 = new Grid(1.0)let grid2 = new Grid(2.0)console.log(grid1.calculateDistanceFromOrigin(&#123;x: 1, y: 1&#125;))console.log(grid2.calculateDistanceFromOrigin(&#123;x: 2, y: 2&#125;))]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[day169-手写debounce]]></title>
     <url>%2F2019%2F07%2F01%2F2019-07-01%2F</url>
     <content type="text"><![CDATA[题目手写防抖函数debounce。防抖和节流的区别：防抖：一定时间内只执行最后一次（非立即执行），如：window触发resize，search搜索联想。节流：一定时间内只执行一次，如：多次连续点击按钮，防抖只执行一次；rAF。 debouncefunction debounce(func, wait, immediate) &#123; let timeout, args, ctx, timestamp, result const later = function () &#123; // 距离上一次触发时间间隔 const last = +new Date() - timestamp // wait: 当前时间间隔；lat：上次被包装函数调用的时间间隔 if (wait &gt; last &amp;&amp; last &gt; 0) &#123; // 继续等待一定时间执行 timeout = setTimeout(later, wait - last) &#125; else &#123; // 超过约定的时间 timeout = null // 前提是没有设置立即执行 if (!immediate) &#123; // 可以立即执行 result = func.apply(ctx, args) // 第一次执行完毕，重置各种条件 if (!timeout) ctx = args = null &#125; &#125; &#125; return function (...args) &#123; ctx = this timestamp = +new Date() const callImmediate = immediate &amp;&amp; !timeout // 非立即执行 if (!timeout) &#123; timeout = setTimeout(later, wait) &#125; // 立即执行 if (callImmediate) &#123; result = func.apply(ctx, args) ctx = args = null &#125; return result &#125;&#125;]]></content>
       <categories>
