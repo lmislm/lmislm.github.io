@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[day171-获取图片原始长宽]]></title>
+    <url>%2F2019%2F07%2F03%2F2019-07-03%2F</url>
+    <content type="text"><![CDATA[要点 base64图片的长宽。 图片长宽。 “src图片”的长宽。 base64图片function getPngDimensions (base64) &#123; const header = atob(base64.slice(0, 50)).slice(16, 24) const uint8 = Uint8Array.from(header, c =&gt; c.charCodeAt(0)) const dataView = new DataView(uint8.buffer) return &#123; width: dataView.getInt32(0), height: dataView.getInt32(4) &#125;&#125; 图片长宽imageElement.naturalHeightimageElement.naturalWidth “src图片”let img = new Image()img.src = 'http://www.google.com/intl/en_ALL/images/logo.gif'img.onload = function() &#123; console.log(this.width + 'x' + this.height)&#125; 参考https://stackoverflow.com/questions/623172/how-to-get-image-size-height-width-using-javascript]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[day170-TypeScript基础小记-参数属性]]></title>
     <url>%2F2019%2F07%2F02%2F2019-07-02%2F</url>
     <content type="text"><![CDATA[要点 存取器。 静态属性。 存取器例子1 把简单的类改写成使用get和set。注意：只带get不带有set的存取器自动被推断为readonly // 随意修改全名class Employee &#123; fullName: string&#125;let employee = new Employee()employee.fullName = '二柱子'if (employee.fullName) &#123; console.log(employee.fullName)&#125;// 加密，不让随意修改全名let passcode = 'secret passcode'class Employee &#123; private _fullName: string get fullName (): string &#123; return this._fullName &#125; set fullName (newName: string) &#123; if (passcode &amp;&amp; passcode == 'secret passcode') &#123; this._fullName = newName &#125; else &#123; console.log('Error: 认证错误！又想把人名字改成二柱子！') &#125; &#125;&#125;let employee = new Employee()employee.fullName = "铁蛋"if (employee.fullName) &#123; console.log(employee.fullName)&#125; 静态属性 这些属性存在类本身上而不是类的实例上。 例子1 使用static定义origin，因为origin是所有网格都会用到的属性。每个实例访问该属性时，都要在origin前面加上类名。如同在实例属性上使用this.前缀来访问属性，本例子用Grid.来访问静态属性。 class Grid &#123; static origin = &#123; x: 0, y: 0 &#125; constructor (public scale: number) &#123;&#125; calculateDistanceFromOrigin (point: &#123; x: number, y: number &#125;) &#123; let xDis = (point.x - Grid.origin.x) let yDis = (point.y - Grid.origin.y) return Math.sqrt(xDis * xDis + yDis * yDis) / this.scale &#125;&#125;let grid1 = new Grid(1.0)let grid2 = new Grid(2.0)console.log(grid1.calculateDistanceFromOrigin(&#123;x: 1, y: 1&#125;))console.log(grid2.calculateDistanceFromOrigin(&#123;x: 2, y: 2&#125;))]]></content>
