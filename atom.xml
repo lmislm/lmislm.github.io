@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-07-04T14:32:53.791Z</updated>
+  <updated>2019-07-05T13:45:02.366Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day173-数组-结构转换</title>
+    <link href="http://lmislm.com/2019/07/04/2019-07-05/"/>
+    <id>http://lmislm.com/2019/07/04/2019-07-05/</id>
+    <published>2019-07-03T16:00:00.000Z</published>
+    <updated>2019-07-05T13:45:02.366Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h3><p>给出特定结构的数据，转换成特定的数据结构。</p><ol><li>循环</li><li>递归<a id="more"></a></li></ol><h3 id="源数组-gt-目标数组"><a href="#源数组-gt-目标数组" class="headerlink" title="源数组-&gt;目标数组"></a>源数组-&gt;目标数组</h3><blockquote><p>源数组<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> data = [</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="string">'文风'</span>: &#123;</span><br><span class="line">      <span class="string">'过译'</span>: [</span><br><span class="line">        &#123; <span class="string">'errorLevel'</span>: <span class="string">'一般般'</span>, <span class="string">'count'</span>: <span class="number">5</span> &#125;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">      ],</span><br><span class="line">      <span class="string">'漏译'</span>: [</span><br><span class="line">        &#123; <span class="string">'errorLevel'</span>: <span class="string">'非常严重'</span>, <span class="string">'count'</span>: <span class="number">2</span> &#125;,</span><br><span class="line">        &#123; <span class="string">'errorLevel'</span>: <span class="string">'一般般'</span>, <span class="string">'count'</span>: <span class="number">10</span> &#125;</span><br><span class="line">      ]</span><br><span class="line">      <span class="comment">// ...</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p></blockquote><blockquote><p>目标数组<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> res = [</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">'文风'</span>, <span class="string">'过译'</span>: <span class="number">5</span>, <span class="string">'漏译'</span>: <span class="number">12</span>, <span class="string">'增译'</span>: <span class="number">3</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">'准确性'</span>, <span class="string">'过译'</span>: <span class="number">21</span>, <span class="string">'漏译'</span>: <span class="number">20</span>, <span class="string">'增译'</span>: <span class="number">10</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">'流畅性'</span>, <span class="string">'过译'</span>: <span class="number">9</span>, <span class="string">'漏译'</span>: <span class="number">12</span>, <span class="string">'增译'</span>: <span class="number">2</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">'术语'</span>,  <span class="string">'过译'</span>: <span class="number">34</span>, <span class="string">'漏译'</span>: <span class="number">24</span>, <span class="string">'增译'</span>: <span class="number">34</span> &#125;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure></p></blockquote><h3 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = <span class="built_in">Object</span>.entries(...data).map(<span class="function">(<span class="params">[key, value]</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> newVal = <span class="built_in">Object</span>.entries(value).map(<span class="function">(<span class="params">[objkey, objVal]</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> objVals = [...objVal].reduce(<span class="function">(<span class="params">acc, obj</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">let</span> k <span class="keyword">in</span> obj) &#123;</span><br><span class="line">        <span class="keyword">if</span> (obj.hasOwnProperty(k)) &#123;</span><br><span class="line">          acc[k] = (acc[k] || <span class="number">0</span>) + obj[k]</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> acc</span><br><span class="line">    &#125;, &#123;&#125;)[<span class="string">'count'</span>]</span><br><span class="line">    <span class="keyword">return</span> &#123;[objkey]: objVals&#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">return</span> &#123; <span class="attr">name</span>: key, ...Object.assign(...newVal), <span class="attr">total</span>: sum &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// return [].concat(obj)</span></span><br><span class="line"><span class="built_in">console</span>.log(obj)</span><br></pre></td></tr></table></figure><h3 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">flatData</span>(<span class="params">object</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">in</span> object) &#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span> object[i] == <span class="keyword">typeof</span> &#123;&#125;)&#123;</span><br><span class="line">      flatData(object[i])</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(object[i])</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">Array</span>.isArray(object[i])) &#123;</span><br><span class="line">      <span class="keyword">let</span> tmp = object[i]</span><br><span class="line">      object[i] = tmp.reduce(<span class="function">(<span class="params">acc, obj</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> k <span class="keyword">in</span> obj) &#123;</span><br><span class="line">          <span class="keyword">if</span> (obj.hasOwnProperty(k)) &#123;</span><br><span class="line">            acc[k] = (acc[k] || <span class="number">0</span>) + obj[k]</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> acc</span><br><span class="line">      &#125;, &#123;&#125;)[<span class="string">'count'</span>]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// return object</span></span><br><span class="line">&#125;</span><br><span class="line">flatData(data)</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h3&gt;&lt;p&gt;给出特定结构的数据，转换成特定的数据结构。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;循环&lt;/li&gt;
+&lt;li&gt;递归
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>day172-TypeScript基础小记-抽象类</title>
@@ -461,28 +486,6 @@
     
       &lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h3&gt;&lt;p&gt;Write a function that takes an unsigned integer and returns the number of ’1’ bits it has (also known as the Hamming weight).&lt;/p&gt;
 &lt;p&gt;For example, the 32-bit integer ’11’ has binary representation 00000000000000000000000000001011, so the function should return 3.&lt;br&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="acm" scheme="http://lmislm.com/tags/acm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day153-LeetCode 198. House Robber</title>
-    <link href="http://lmislm.com/2019/06/15/2019-06-15/"/>
-    <id>http://lmislm.com/2019/06/15/2019-06-15/</id>
-    <published>2019-06-14T16:00:00.000Z</published>
-    <updated>2019-06-15T14:40:18.367Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed, the only constraint stopping you from robbing each of them is that adjacent houses have security system connected and it will automatically contact the police if two adjacent houses were broken into on the same night.<br>Given a list of non-negative integers representing the amount of money of each house, determine the maximum amount of money you can rob tonight without alerting the police.<br>（大意是：求最大不连续的值）<br><a id="more"></a></p><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><blockquote><p>假设为[m0,m1,m2,m3,….]，求最大的数</p></blockquote><p>如果房子只有[m0], max = mo</p><p>[m0,m1], max = Max(m0,m1)</p><p>[m0,m1,m2], max = Max(m0+m2,m1)</p><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">robber</span> (<span class="params">nums</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> maxSum = <span class="keyword">new</span> <span class="built_in">Array</span>()</span><br><span class="line">  <span class="keyword">if</span>(nums.length === <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">  <span class="keyword">if</span>(nums.length === <span class="number">1</span>) <span class="keyword">return</span> nums[<span class="number">0</span>]</span><br><span class="line">  <span class="keyword">if</span>(nums.length === <span class="number">2</span>) <span class="keyword">return</span> <span class="built_in">Math</span>.max(nums[<span class="number">1</span>],nums[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line">  maxSum.push(nums[<span class="number">0</span>])</span><br><span class="line">  maxSum.push(<span class="built_in">Math</span>.max(nums[<span class="number">0</span>],nums[<span class="number">1</span>]))</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">2</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">    <span class="comment">// Max(m0+m2,m1),计算公式</span></span><br><span class="line">    maxSum[i] =  <span class="built_in">Math</span>.max(nums[i] + maxSum[i<span class="number">-2</span>], maxSum[i<span class="number">-1</span>])</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> maxSum.pop()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h3&gt;&lt;p&gt;You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed, the only constraint stopping you from robbing each of them is that adjacent houses have security system connected and it will automatically contact the police if two adjacent houses were broken into on the same night.&lt;br&gt;Given a list of non-negative integers representing the amount of money of each house, determine the maximum amount of money you can rob tonight without alerting the police.&lt;br&gt;（大意是：求最大不连续的值）&lt;br&gt;
     
     </summary>
     
