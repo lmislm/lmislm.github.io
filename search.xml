@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[day176-TypeScript基础小记-构造函数]]></title>
+    <url>%2F2019%2F07%2F09%2F2019-07-09%2F</url>
+    <content type="text"><![CDATA[要点 构造函数。 编译成JavaScript后。 把类当做接口使用。 构造函数 简单的构造函数 class Greeter &#123; greeting: string constructor(message: string) &#123; this.greeting = message &#125; greet() &#123; return 'Hello,' + this.greeting &#125;&#125;let greeter: Greeter // Greeter类的实例的类型是Greetergreeter = new Greeter('TypeScript')console.log(greeter.greet()) 编译成JavaScript let Greeter被赋值为构造函数。 let Greeter = (function () &#123; function Greeter(message) &#123; this.greeting = message &#125; Greeter.prototype.greet = function () &#123; return 'Hello,' + this.greeting &#125; return Greeter&#125;)()let greetergreeter = new Greeter('world')console.log(greeter.greet()) 例子改写 class Greeter &#123; static standardGreeting = 'hello, there' greeting: string greet () &#123; if (this.greeting) &#123; return 'hello,' + this.greeting &#125; else &#123; return Greeter.standardGreeting &#125; &#125;&#125;let greeter1: Greetergreeter1 = new Greeter()console.log(greeter1)// typeof Greeter意思取Greeter类的类型，而不是实例类型。let greeterMaker: typeof Greeter = GreetergreeterMaker.standardGreeting = 'Hey there!'let greeter2: Greeter = new greeterMaker()console.log(greeter2.greet()) 类当做接口使用 类定义会创建两个东西：类的实例累心和一个构造函数（因为类可以创建出类型，所以你能够在允许使用接口的地方使用类）class Point &#123; x: number y: number&#125;interface Point3d extends Point &#123; z: number&#125;let point3d: Point3d = &#123; x: 1, y: 2, z: 3 &#125;]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[day175-数组-嵌套数组-nested Array]]></title>
     <url>%2F2019%2F07%2F08%2F2019-07-08%2F</url>
     <content type="text"><![CDATA[要点给出特定结构的数据，转换成特定的数据结构。 deepMerge, groupBy flattenDeep, nested Array(嵌套数组) 源数组-&gt;目标数组 源数据let data = [ &#123; '文风': &#123; '过译': [ &#123; 'errorLevel': '一般般', 'count': 5 &#125; // ... ], '漏译': [ &#123; 'errorLevel': '非常严重', 'count': 2 &#125;, &#123; 'errorLevel': '一般般', 'count': 10 &#125; ], '增译': [ &#123; 'errorLevel': '非常严重', 'count': 22 &#125;, &#123; 'errorLevel': '一般般', 'count': 10 &#125; ] // ... &#125; // ... &#125; // ...] 目标数组let res = [ &#123; name: '一般般', count: 27, '过译': 10, '漏译': 20, '增译': 22 &#125;, &#123; name: '非常严重', count: 24, '漏译': 4, '增译': 44 &#125;, &#123; name: '重大错误', count: 10, '过译': 10 &#125; // ...] 两步 先降维处理成一维数组 根据一维数组相关属性groupBy 降维处理 注意不需要第一层的keys。 _.是loadshjs的方法。 function flatData (data) &#123; // 去掉了术语、文风等 let res = (data || []).map(item =&gt; &#123; let mergedData = _.mergeWith(&#123;&#125;, ...Object.values(item), (obj, src) =&gt; &#123; return (obj || []).concat(src) &#125;) return Object.entries(mergedData).map(([key, value]) =&gt; &#123; // 转为多层嵌套数组 return [...value.map(item =&gt; (&#123;...item, type: key&#125;))] &#125;) &#125;) return _.flattenDeep(res)&#125; 数组分类由嵌套数组得出的结果进行数组归类。function nest (seq, keys) &#123; if (!keys.length) return seq let first = keys[0] let rest = keys.slice(1) return mapValues(groupBy(seq, first), (value) =&gt; &#123; // return &#123; ...nest(value, rest) &#125; if (Array.isArray(nest(value, rest))) &#123; // reduce by prop count return (nest(value, rest) || []).reduce((acc, obj) =&gt; (acc + obj['count']), 0) // return &#123; ...item, item: '122'&#125; &#125; else &#123; return nest(value, rest) &#125; &#125;)&#125;]]></content>
@@ -762,8 +773,8 @@
         <category>学习</category>
       </categories>
       <tags>
-        <tag>工具</tag>
         <tag>git</tag>
+        <tag>工具</tag>
       </tags>
   </entry>
   <entry>
@@ -906,8 +917,8 @@
     <url>%2F2017%2F03%2F20%2Fmarkdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0%2F</url>
     <content type="text"><![CDATA[插入表格：1.1. 表格的上下需要空行。空行的多少至关重要 表格中文字居中 在划线部分的划线两端加上”:“ 比如”:—–: | :—-: 代码块:2.1. 合理利用代码块有意想不到的效果。3.]]></content>
       <tags>
-        <tag>markdown</tag>
         <tag>工具</tag>
+        <tag>markdown</tag>
       </tags>
   </entry>
   <entry>
