@@ -44,6 +44,30 @@
   </entry>
   
   <entry>
+    <title>day180-Virtual DOM-再探</title>
+    <link href="http://lmislm.com/2019/07/11/2019-07-12/"/>
+    <id>http://lmislm.com/2019/07/11/2019-07-12/</id>
+    <published>2019-07-10T16:00:00.000Z</published>
+    <updated>2019-07-12T14:04:22.268Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><ol><li>Virtual DOM的是三个重要步骤；</li><li>Virtual DOM的具体步骤；<a id="more"></a></li></ol><h2 id="Virtual-DOM的是三个重要步骤"><a href="#Virtual-DOM的是三个重要步骤" class="headerlink" title="Virtual DOM的是三个重要步骤"></a>Virtual DOM的是三个重要步骤</h2><ul><li>生成Virtual DOM树</li><li>对比两棵树的差异（diff）</li><li>更新试图（patch）</li></ul><h2 id="Virtual-DOM的具体步骤"><a href="#Virtual-DOM的具体步骤" class="headerlink" title="Virtual DOM的具体步骤"></a>Virtual DOM的具体步骤</h2><h3 id="生成Virtual-DOM树"><a href="#生成Virtual-DOM树" class="headerlink" title="生成Virtual DOM树"></a><strong>生成Virtual DOM树</strong></h3><p>例子：</p><h4 id="真实DOM"><a href="#真实DOM" class="headerlink" title="真实DOM"></a>真实DOM</h4><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"list"</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span>Item 1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span>Item 2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure><h4 id="DOM树"><a href="#DOM树" class="headerlink" title="DOM树"></a>DOM树</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> element = &#123;</span><br><span class="line"> tagName: <span class="string">'ul'</span>,</span><br><span class="line"> props: &#123; <span class="attr">id</span>: <span class="string">'list'</span> &#125;,</span><br><span class="line"> children: [</span><br><span class="line">   &#123; <span class="attr">tagName</span>: <span class="string">'li'</span>, <span class="attr">props</span>: &#123; <span class="attr">class</span>: <span class="string">'item'</span> &#125;, <span class="attr">children</span>: [<span class="string">'Item 1'</span>] &#125;,</span><br><span class="line">   &#123; <span class="attr">tagName</span>: <span class="string">'li'</span>, <span class="attr">props</span>: &#123; <span class="attr">class</span>: <span class="string">'item'</span> &#125;, <span class="attr">children</span>: [<span class="string">'Item 2'</span>] &#125;</span><br><span class="line"> ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="对比两棵树的差异"><a href="#对比两棵树的差异" class="headerlink" title="对比两棵树的差异"></a><strong>对比两棵树的差异</strong></h3><p>对树进行遍历：深度优先遍历、广度优先遍历</p><p>diff算法中采用深度优先遍历。对新旧两棵树进行一次深度优先的遍历，这样每个节点都会有一个唯一的标记。</p><p>遍历时，每遍历到一个节点就把该节点和新的树的同一个位置的节点进行对比，如果有差异的话就记录到一个对象（差异对象）里面。</p><h4 id="差异对象（常见的差异）"><a href="#差异对象（常见的差异）" class="headerlink" title="差异对象（常见的差异）"></a>差异对象（常见的差异）</h4><p>替换节点<br>增加/删除子节点<br>修改节点属性<br>改变文本内容</p><h3 id="更新视图"><a href="#更新视图" class="headerlink" title="更新视图"></a><strong>更新视图</strong></h3><p>根据差异的不同类型，对DOM进行针对性的更新。<br>更新视图（针对相应差异的更新方法）<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">replaceChild()</span><br><span class="line">appendChild() / removeChild()</span><br><span class="line">setAttribute() / removeAttribute()</span><br><span class="line">textContent</span><br></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;Virtual DOM的是三个重要步骤；&lt;/li&gt;
+&lt;li&gt;Virtual DOM的具体步骤；
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
+  
+  <entry>
     <title>day178-HTTP协议-多路复用</title>
     <link href="http://lmislm.com/2019/07/10/2019-07-10/"/>
     <id>http://lmislm.com/2019/07/10/2019-07-10/</id>
@@ -476,28 +500,6 @@
     
     
       <category term="acm" scheme="http://lmislm.com/tags/acm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day160-vuejs-CreateElement-children 的规范化</title>
-    <link href="http://lmislm.com/2019/06/22/2019-06-22/"/>
-    <id>http://lmislm.com/2019/06/22/2019-06-22/</id>
-    <published>2019-06-21T16:00:00.000Z</published>
-    <updated>2019-07-11T14:24:18.464Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="children-的规范化"><a href="#children-的规范化" class="headerlink" title="children 的规范化"></a>children 的规范化</h3><p><code>_createElement</code> 接收的第 4 个参数 children 是任意类型的,所以要规范化。<br>代码目录：&lt;src/core/vdom/helpers/normalzie-children.js&gt;<br><a id="more"></a></p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// The template compiler attempts to minimize the need for normalization by</span></span><br><span class="line"><span class="comment">// statically analyzing the template at compile time.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// For plain HTML markup, normalization can be completely skipped because the</span></span><br><span class="line"><span class="comment">// generated render function is guaranteed to return Array&lt;VNode&gt;. There are</span></span><br><span class="line"><span class="comment">// two cases where extra normalization is needed:</span></span><br><span class="line"><span class="comment">/* 注：functional component 函数式组件返回的是一个数组而不是一个根节点 */</span></span><br><span class="line"><span class="comment">/* 场景1 */</span></span><br><span class="line"><span class="comment">// 1. When the children contains components - because a functional component</span></span><br><span class="line"><span class="comment">// may return an Array instead of a single root. In this case, just a simple</span></span><br><span class="line"><span class="comment">// normalization is needed - if any child is an Array, we flatten the whole</span></span><br><span class="line"><span class="comment">// thing with Array.prototype.concat. It is guaranteed to be only 1-level deep</span></span><br><span class="line"><span class="comment">// because functional components already normalize their own children.</span></span><br><span class="line"><span class="comment">/*该方法调用场景是 render 函数是编译生成的*/</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">simpleNormalizeChildren</span> (<span class="params">children: any</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; children.length; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">Array</span>.isArray(children[i])) &#123;</span><br><span class="line">      <span class="comment">/* 注：flatten 整个 Array&lt;VNode&gt; */</span></span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">Array</span>.prototype.concat.apply([], children)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> children</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 场景2 */</span></span><br><span class="line"><span class="comment">// 2. When the children contains constructs that always generated nested Arrays（注：嵌套数组）,</span></span><br><span class="line"><span class="comment">// e.g. &lt;template&gt;, &lt;slot&gt;, v-for, or when the children is provided by user</span></span><br><span class="line"><span class="comment">// with hand-written render functions / JSX. In such cases a full normalization</span></span><br><span class="line"><span class="comment">// is needed to cater to all possible types of children values.</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">normalizeChildren</span> (<span class="params">children: any</span>): ?<span class="title">Array</span>&lt;<span class="title">VNode</span>&gt; </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> isPrimitive(children)</span><br><span class="line">    ? [createTextVNode(children)]</span><br><span class="line">    : <span class="built_in">Array</span>.isArray(children)</span><br><span class="line">      ? normalizeArrayChildren(children)</span><br><span class="line">      : <span class="literal">undefined</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;children-的规范化&quot;&gt;&lt;a href=&quot;#children-的规范化&quot; class=&quot;headerlink&quot; title=&quot;children 的规范化&quot;&gt;&lt;/a&gt;children 的规范化&lt;/h3&gt;&lt;p&gt;&lt;code&gt;_createElement&lt;/code&gt; 接收的第 4 个参数 children 是任意类型的,所以要规范化。&lt;br&gt;代码目录：&amp;lt;src/core/vdom/helpers/normalzie-children.js&amp;gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   
