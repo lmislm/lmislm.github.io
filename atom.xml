@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-07-12T13:53:56.916Z</updated>
+  <updated>2019-07-13T13:26:08.482Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,52 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day181-Reduce求对象中多个属性的和</title>
+    <link href="http://lmislm.com/2019/07/13/2019-07-13/"/>
+    <id>http://lmislm.com/2019/07/13/2019-07-13/</id>
+    <published>2019-07-12T16:00:00.000Z</published>
+    <updated>2019-07-13T13:26:08.482Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><p>求对象中多个属性的和<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> data = [</span><br><span class="line">  &#123;</span><br><span class="line">    tqaModifyCount: <span class="number">9</span>,</span><br><span class="line">    tqaMarkCount: <span class="number">19</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    tqaModifyCount: <span class="number">3</span>,</span><br><span class="line">    tqaMarkCount: <span class="number">3</span></span><br><span class="line">  &#125;</span><br><span class="line">]</span><br><span class="line"><span class="keyword">let</span> tgt = &#123;</span><br><span class="line">  tqaModifyCounts: <span class="number">12</span></span><br><span class="line">  tqaMarkCounts: <span class="number">22</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><a id="more"></a><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span> (<span class="params">dataArr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> dataArr.reduce(<span class="function">(<span class="params">acc, obj</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      tqaModifyCounts: acc.tqaModifyCount + obj.tqaModifyCount,</span><br><span class="line">      tqaMarkCounts: acc.tqaMarkCount + obj.tqaMarkCount</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h2&gt;&lt;p&gt;求对象中多个属性的和&lt;br&gt;&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; data = [&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    tqaModifyCount: &lt;span class=&quot;number&quot;&gt;9&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    tqaMarkCount: &lt;span class=&quot;number&quot;&gt;19&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    tqaModifyCount: &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    tqaMarkCount: &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; tgt = &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  tqaModifyCounts: &lt;span class=&quot;number&quot;&gt;12&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  tqaMarkCounts: &lt;span class=&quot;number&quot;&gt;22&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>day180-Virtual DOM-再探</title>
+    <link href="http://lmislm.com/2019/07/12/2019-07-12/"/>
+    <id>http://lmislm.com/2019/07/12/2019-07-12/</id>
+    <published>2019-07-11T16:00:00.000Z</published>
+    <updated>2019-07-12T14:06:34.745Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><ol><li>Virtual DOM的是三个重要步骤；</li><li>Virtual DOM的具体步骤；<a id="more"></a></li></ol><h2 id="Virtual-DOM的是三个重要步骤"><a href="#Virtual-DOM的是三个重要步骤" class="headerlink" title="Virtual DOM的是三个重要步骤"></a>Virtual DOM的是三个重要步骤</h2><ul><li>生成Virtual DOM树</li><li>对比两棵树的差异（diff）</li><li>更新试图（patch）</li></ul><h2 id="Virtual-DOM的具体步骤"><a href="#Virtual-DOM的具体步骤" class="headerlink" title="Virtual DOM的具体步骤"></a>Virtual DOM的具体步骤</h2><h3 id="生成Virtual-DOM树"><a href="#生成Virtual-DOM树" class="headerlink" title="生成Virtual DOM树"></a><strong>生成Virtual DOM树</strong></h3><p>例子：</p><h4 id="真实DOM"><a href="#真实DOM" class="headerlink" title="真实DOM"></a>真实DOM</h4><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"list"</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span>Item 1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span>Item 2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure><h4 id="DOM树"><a href="#DOM树" class="headerlink" title="DOM树"></a>DOM树</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> element = &#123;</span><br><span class="line"> tagName: <span class="string">'ul'</span>,</span><br><span class="line"> props: &#123; <span class="attr">id</span>: <span class="string">'list'</span> &#125;,</span><br><span class="line"> children: [</span><br><span class="line">   &#123; <span class="attr">tagName</span>: <span class="string">'li'</span>, <span class="attr">props</span>: &#123; <span class="attr">class</span>: <span class="string">'item'</span> &#125;, <span class="attr">children</span>: [<span class="string">'Item 1'</span>] &#125;,</span><br><span class="line">   &#123; <span class="attr">tagName</span>: <span class="string">'li'</span>, <span class="attr">props</span>: &#123; <span class="attr">class</span>: <span class="string">'item'</span> &#125;, <span class="attr">children</span>: [<span class="string">'Item 2'</span>] &#125;</span><br><span class="line"> ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="对比两棵树的差异"><a href="#对比两棵树的差异" class="headerlink" title="对比两棵树的差异"></a><strong>对比两棵树的差异</strong></h3><p>对树进行遍历：深度优先遍历、广度优先遍历</p><p>diff算法中采用深度优先遍历。对新旧两棵树进行一次深度优先的遍历，这样每个节点都会有一个唯一的标记。</p><p>遍历时，每遍历到一个节点就把该节点和新的树的同一个位置的节点进行对比，如果有差异的话就记录到一个对象（差异对象）里面。</p><h4 id="差异对象（常见的差异）"><a href="#差异对象（常见的差异）" class="headerlink" title="差异对象（常见的差异）"></a>差异对象（常见的差异）</h4><p>替换节点<br>增加/删除子节点<br>修改节点属性<br>改变文本内容</p><h3 id="更新视图"><a href="#更新视图" class="headerlink" title="更新视图"></a><strong>更新视图</strong></h3><p>根据差异的不同类型，对DOM进行针对性的更新。<br>更新视图（针对相应差异的更新方法）<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">replaceChild()</span><br><span class="line">appendChild() / removeChild()</span><br><span class="line">setAttribute() / removeAttribute()</span><br><span class="line">textContent</span><br></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;Virtual DOM的是三个重要步骤；&lt;/li&gt;
+&lt;li&gt;Virtual DOM的具体步骤；
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>day179-HTTPS协议-SSL和TLS的区别</title>
@@ -33,30 +79,6 @@
 &lt;li&gt;&lt;code&gt;HTTP/2&lt;/code&gt;的&lt;code&gt;多路复用&lt;/code&gt;解决要点2的问题；&lt;/li&gt;
 &lt;li&gt;不适用于&lt;code&gt;HTTP/2&lt;/code&gt;的优化；&lt;/li&gt;
 &lt;li&gt;SSL和TLS之间的详细关系；
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day180-Virtual DOM-再探</title>
-    <link href="http://lmislm.com/2019/07/11/2019-07-12/"/>
-    <id>http://lmislm.com/2019/07/11/2019-07-12/</id>
-    <published>2019-07-10T16:00:00.000Z</published>
-    <updated>2019-07-12T14:04:22.268Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><ol><li>Virtual DOM的是三个重要步骤；</li><li>Virtual DOM的具体步骤；<a id="more"></a></li></ol><h2 id="Virtual-DOM的是三个重要步骤"><a href="#Virtual-DOM的是三个重要步骤" class="headerlink" title="Virtual DOM的是三个重要步骤"></a>Virtual DOM的是三个重要步骤</h2><ul><li>生成Virtual DOM树</li><li>对比两棵树的差异（diff）</li><li>更新试图（patch）</li></ul><h2 id="Virtual-DOM的具体步骤"><a href="#Virtual-DOM的具体步骤" class="headerlink" title="Virtual DOM的具体步骤"></a>Virtual DOM的具体步骤</h2><h3 id="生成Virtual-DOM树"><a href="#生成Virtual-DOM树" class="headerlink" title="生成Virtual DOM树"></a><strong>生成Virtual DOM树</strong></h3><p>例子：</p><h4 id="真实DOM"><a href="#真实DOM" class="headerlink" title="真实DOM"></a>真实DOM</h4><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"list"</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span>Item 1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span>Item 2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure><h4 id="DOM树"><a href="#DOM树" class="headerlink" title="DOM树"></a>DOM树</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> element = &#123;</span><br><span class="line"> tagName: <span class="string">'ul'</span>,</span><br><span class="line"> props: &#123; <span class="attr">id</span>: <span class="string">'list'</span> &#125;,</span><br><span class="line"> children: [</span><br><span class="line">   &#123; <span class="attr">tagName</span>: <span class="string">'li'</span>, <span class="attr">props</span>: &#123; <span class="attr">class</span>: <span class="string">'item'</span> &#125;, <span class="attr">children</span>: [<span class="string">'Item 1'</span>] &#125;,</span><br><span class="line">   &#123; <span class="attr">tagName</span>: <span class="string">'li'</span>, <span class="attr">props</span>: &#123; <span class="attr">class</span>: <span class="string">'item'</span> &#125;, <span class="attr">children</span>: [<span class="string">'Item 2'</span>] &#125;</span><br><span class="line"> ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="对比两棵树的差异"><a href="#对比两棵树的差异" class="headerlink" title="对比两棵树的差异"></a><strong>对比两棵树的差异</strong></h3><p>对树进行遍历：深度优先遍历、广度优先遍历</p><p>diff算法中采用深度优先遍历。对新旧两棵树进行一次深度优先的遍历，这样每个节点都会有一个唯一的标记。</p><p>遍历时，每遍历到一个节点就把该节点和新的树的同一个位置的节点进行对比，如果有差异的话就记录到一个对象（差异对象）里面。</p><h4 id="差异对象（常见的差异）"><a href="#差异对象（常见的差异）" class="headerlink" title="差异对象（常见的差异）"></a>差异对象（常见的差异）</h4><p>替换节点<br>增加/删除子节点<br>修改节点属性<br>改变文本内容</p><h3 id="更新视图"><a href="#更新视图" class="headerlink" title="更新视图"></a><strong>更新视图</strong></h3><p>根据差异的不同类型，对DOM进行针对性的更新。<br>更新视图（针对相应差异的更新方法）<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">replaceChild()</span><br><span class="line">appendChild() / removeChild()</span><br><span class="line">setAttribute() / removeAttribute()</span><br><span class="line">textContent</span><br></pre></td></tr></table></figure></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;Virtual DOM的是三个重要步骤；&lt;/li&gt;
-&lt;li&gt;Virtual DOM的具体步骤；
     
     </summary>
     
@@ -470,29 +492,6 @@
     
       &lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h3&gt;&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; data = [&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#123; &lt;span class=&quot;string&quot;&gt;&#39;id&#39;&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, &lt;span class=&quot;attr&quot;&gt;name&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&#39;a&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;code&#39;&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;11&lt;/span&gt; &amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#123; &lt;span class=&quot;string&quot;&gt;&#39;id&#39;&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;, &lt;span class=&quot;attr&quot;&gt;name&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&#39;b&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;code&#39;&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;22&lt;/span&gt; &amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#123; &lt;span class=&quot;string&quot;&gt;&#39;id&#39;&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;, &lt;span class=&quot;attr&quot;&gt;name&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&#39;c&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;code&#39;&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;33&lt;/span&gt; &amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;以code值为key的结果对象&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="acm" scheme="http://lmislm.com/tags/acm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day161-统计数组中所有对象相同属性值的总和，（假设值为整数）</title>
-    <link href="http://lmislm.com/2019/06/23/2019-06-23/"/>
-    <id>http://lmislm.com/2019/06/23/2019-06-23/</id>
-    <published>2019-06-22T16:00:00.000Z</published>
-    <updated>2019-07-11T14:24:18.465Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>输入：<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">[&#123; <span class="attr">x</span>: <span class="number">1</span>, <span class="attr">y</span>: <span class="string">'1.pdf'</span>, <span class="attr">z</span>: <span class="number">2</span> &#125;,&#123; <span class="attr">x</span>: <span class="number">2</span>, <span class="attr">y</span>: <span class="string">'2.pdf'</span>, <span class="attr">z</span>: <span class="number">3</span> &#125;,&#123; <span class="attr">x</span>: <span class="number">3</span>, <span class="attr">y</span>: <span class="string">'3.pdf'</span>, <span class="attr">z</span>: <span class="number">4</span> &#125;]</span><br></pre></td></tr></table></figure></p><p>输出：<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123; <span class="attr">x</span>: <span class="number">6</span>, <span class="attr">y</span>: <span class="string">'01.pdf2.pdf3.pdf'</span>, <span class="attr">z</span>: <span class="number">9</span> &#125;</span><br></pre></td></tr></table></figure></p><a id="more"></a><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sumObjectsSameKey</span>(<span class="params">...objs</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> objs.reduce(<span class="function"><span class="keyword">function</span> (<span class="params">acc, obj</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> k <span class="keyword">in</span> obj) &#123;</span><br><span class="line">      <span class="keyword">if</span> (obj.hasOwnProperty(k)) &#123;</span><br><span class="line">        acc[k] = (acc[k] || <span class="number">0</span>) + obj[k]</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> acc</span><br><span class="line">  &#125;, &#123;&#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(sumObjectsSameKey(...arr))</span><br></pre></td></tr></table></figure><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://stackoverflow.com/questions/42488048/javascript-sum-of-two-object-with-same-properties" target="_blank" rel="noopener">https://stackoverflow.com/questions/42488048/javascript-sum-of-two-object-with-same-properties</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h3&gt;&lt;p&gt;输入：&lt;br&gt;&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;[&amp;#123; &lt;span class=&quot;attr&quot;&gt;x&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, &lt;span class=&quot;attr&quot;&gt;y&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&#39;1.pdf&#39;&lt;/span&gt;, &lt;span class=&quot;attr&quot;&gt;z&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt; &amp;#125;,&amp;#123; &lt;span class=&quot;attr&quot;&gt;x&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;, &lt;span class=&quot;attr&quot;&gt;y&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&#39;2.pdf&#39;&lt;/span&gt;, &lt;span class=&quot;attr&quot;&gt;z&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt; &amp;#125;,&amp;#123; &lt;span class=&quot;attr&quot;&gt;x&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;, &lt;span class=&quot;attr&quot;&gt;y&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&#39;3.pdf&#39;&lt;/span&gt;, &lt;span class=&quot;attr&quot;&gt;z&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;4&lt;/span&gt; &amp;#125;]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;输出：&lt;br&gt;&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123; &lt;span class=&quot;attr&quot;&gt;x&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;6&lt;/span&gt;, &lt;span class=&quot;attr&quot;&gt;y&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&#39;01.pdf2.pdf3.pdf&#39;&lt;/span&gt;, &lt;span class=&quot;attr&quot;&gt;z&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;9&lt;/span&gt; &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
     
     </summary>
     

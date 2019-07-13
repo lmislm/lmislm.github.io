@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[day179-HTTPS协议-SSL和TLS的区别]]></title>
-    <url>%2F2019%2F07%2F11%2F2019-07-11%2F</url>
-    <content type="text"><![CDATA[要点 关系（并列关系）； SSL(Secure Socket Layer，安全套接字层)； HTTP/2的多路复用解决要点2的问题； 不适用于HTTP/2的优化； SSL和TLS之间的详细关系； 关系SSL是专门保护Web通讯的。TLS是制定的一种新协议，建立在SSL3.0协议规范上，TLS1.0和SSL3.0两者差别极小。 SSL(Secure Socket Layer，安全套接字层)简介作用：SSL利用数据加密技术，确保web浏览器与服务器之间的身份认证和数据加密传输安全。通用的规格为40bit安全标准。 层级：SSL协议位于TCP/IP协议与各种应用层之间，为数据通讯提供安全支持。 分类：SSL协议主要分两层，SSL记录协议（SSL Record Protocol）和SSL握手协议（SSL Handshake Protocol）。 SSL记录协议：它建立在可靠的传输协议（如TCP）上，为高层协议提供数据封装、压缩、加密等基本功能的支持。SSL握手协议：它建立在SSL记录协议之上，用于数据传输开始前，通讯双方进行身份认证、协商加密算法、交换加密密钥等。 SSL协议提供的服务1) 认证用户和服务端（服务器），确保数据发送到正确的客户端和服务端。2) 维护数据的完整性，确保数据在传输过程中不被改变。3) 加密数据以防数据中途被窃取。 SSL协议的工作流程 服务端认证阶段：1) 客户端向服务端发送一个开始信息’Hello’以便开始一个新的会话连接；2) 服务端根据客户的信息确定是否需要生成新的主密钥（什么信息申请新的主密钥？），如果需要则服务端在响应客户的’Hello’信息时将包含生成主密钥所需的信息。3) 客户端根据收到的服务端响应信息，产生一个主密钥，并用服务器的公开密钥加密后传给服务端。4) 服务端恢复该主密钥，并返回给客户一个用主密钥认证的信息，以此让客户认证服务端。 用户端认证阶段：在此之前，服务端已通过客户端认证，这一阶段主要是完成对客户端的认证。经认证的服务端发送一个提问给客户端，客户端则返回（数字）签名后的提问和其公开的密钥，从而向服务端提供认证。 SSL协议的总结SSL协议的运行基础是商家（即：服务端）对消费者（即：客户端）信息保密的承诺，有利于商家而不利于消费者。 在电子商务初级阶段，由于运作电子商务的企业大多是信誉较高的大公司，因此这问题还没有充分暴露出来。 随着电子商务的发展，各中小型公司也参与进来，这样在电子支付过程中的单一认证问题就越来越突出。 虽然在SSL3.0中通过数字签名和数字证书可实现浏览器和Web服务端双方的身份验证，但SSL协议仍存在一些问题，比如，只能提供交易中客户端与服务端间的双方认证，在设计多方的电子交易中，SSL协议并不能协调各方间的安全传输和信任关系。 在这种情况下，Visa和MasterCard两大信用卡组织制定了SET协议，为网上信用卡支付提供了全球性的标准。 TLS(Transport Layer Security Protocol, 安全传输层协议)简介作用：TLS（安全传输层协议）用于在两个通信应用程序之间提供保密性和数据完整性。分类：TLS协议主要分两层，TLS记录协议（TLS Record）和TLS握手协议（TLS Handshake）。 较低的层为TLS记录协议（注：同SSL记录协议），位于某个可靠的传输协议（如TCP）上面。 TLS记录协议：它提供的连接安全性具有两个基本特性，私有、可靠。 私有——对称加密用数据加密（DES、RC4等）。对称加密产生的密钥对每个连接都是唯一的，且此密钥基于另一个协议（如握手协议）协商。 记录协议也可以不加密使用。 可靠——信息传输包括使用密钥的MAC进行信息完整性检查。安全哈希功能（SHA、MD5等）用于MAC计算。 记录协议在没有MAC的情况下也能操作，但一般只能用于这种模式，即有另一个协议正在使用记录协议传输协商安全参数。 TLS握手协议： 简介 TLS记录协议用于封装各种高层协议。 作为这种封装协议之一的握手协议允许服务器于客户端在应用程序协议传输和接收其第一个数据字节前彼此之间相互认证，协商加密算法和加密密钥。 TLS握手协议提供的连接安全具有三个基本属性： 1）可以使用非对称的，或公共密钥的密码来认证对方的身份。该认证是可选的，但至少需要一个结点方。 2）共享加密密钥的协商是安全的。对偷窃者来说协商加密是难以获得的。以此经过认证的连接不能获得加密，及时是进入连接中间的攻击者也不能。 3）协商是可靠的。没有经过通信方成员的检测，任何攻击者都不能修改通信协商。 TLS的最大优势就在于：TLS是独立于应用协议。高层协议可以透明地分布在TLS协议上面。 然而，TLS标准并没有规定应用程序如何在TLS上增加安全性， 它把如何启动TLS握手协议以及如何解释交换的认证证书的决定权留给协议的设计者和实施者来判断。 TLS协议的协议结构TLS协议包括两个协议组（即：TLS记录协议和TLS握手协议），每组具有很多不同格式的信息。 在此文件中我们只列出协议摘要并不做具体解析。具体内容可参照相关文档。 TLS记录协议是一种分层协议。每一层中的信息可能包含长度、描述和内容等字段。记录协议支持信息传输、将数据分段到可处理块、压缩数据、应用MAC、加密以及传输结果等。对接收到的数据进行解密、校验、解压缩、重组等，然后将他们传送到高层客户机。 TLS连接状态指的是TLS记录协议的操作环境。它规定了压缩算法、加密算法和MAC算法。 TLS记录层从高层接收任意大小无空块的连续数据。密钥计算：记录协议通过算法从握手协议提供的安全参数中产生密钥、IV和MAC密钥。 TLS握手协议由三个子协议组构成，允许对等双方在记录层的安全参数上达成一致、自我认证、例示协商安全参数、互相报告出错条件。 SSL和TLS之间的详细关系TLS（Transport Layer Security，传输层安全协议）是IETF制定的一种新的协议，它建立在SSL3.0协议规范之上，是SSL3.0的后续版本。在TLS与SSL3.0之间存在着显著的差别，主要是所支持的加密算法不同,所以TLS与SSL3.0不能互操作。 差异 版本号：TLS记录格式与SSL记录格式相同，但版本号的值不同，TLS的版本1.0使用的版本号为SSLv3.1。 报文鉴别码：SSLv3.0和TLS的MAC算法及MAC计算的范围不同。TLS使用了RFC-2104定义的HMAC算法（消息认证代码的密钥散列法）。 SSLv3.0使用了相似的算法，两者差别在于SSLv3.0中，填充的字节与密钥之间采用的是连接运算，而HMAC算法采用的是异或运算。但是两者的安全程度是相同的。 伪随机函数：TLS使用了称为PRF的伪随机函数将密钥扩展成数据块，是更安全的方式。 报警代码：TLS支持几乎所有的SSLv3.0报警代码，而且TLS还补充定义了很多的报警代码，如：解密失败（decryption_failed）、记录溢出（record_overflow）、未知CA（unknown_ca）、拒绝访问（access_denied）等。 密文族和客户证书：SSLv3.0和TLS存在少量差别，即TLS不支持Fortezza密钥交换、加密算法和客户证书。 certificate_verify和finished消息：SSLv3.0和TLS在用certificate_verify和finished消息计算MD5和SHA-1散列码时，计算的输入有少许差别，但安全性相当。 加密计算：TLS和SSLv3.0在计算主密值（master sercret）时采用的方式不同。 填充：用户数据加密之前需要增加的填充字节。在SSL中，填充后的数据长度要达到密文块长度的最小整数倍。 而在TLS中，填充后的数据长度可以是密文块长度的任意整数倍（但填充的最大长度为255字节），这种方式可以防止基于对报文长度进行分析的攻击。 TLS的主要增强内容（对比SSL)TLS的主要目标是使SSL更安全，并使协议的规范更精确和完善。TLS在SSLv3.0的基础上，提供了一下增强内容： 1) 更安全的MAC算法。 2) 更严密的警报。 3) ‘灰色区域’规范的更明确定义。 TLS对于安全性的改进 1) 对于消息认证使用密钥散列法：TLS使用“消息认证代码的密钥散列法”（HMAC），当记录在开放网络（如：英特网）上传送时，该代码确保记录不会被变更。SSLv3.0还提供键控消息认证，但HMAC比SSLv3.0使用的（消息认证代码）MAC功能更安全。 2) 增强的伪随机功能（PRF）：PRF生成密钥数据。在TLS中，HMAC定义PRF。PRF使用两种散列算法保证其安全性。如果任一算法暴露了，只要第二种算法未暴露，则数据仍然是安全的。 3) 改进的已完成消息验证：TLS和SSLv3.0都对两个端点提供已完成的消息，该消息认证交换的消息没有被变更。然而，TLS将此已完成消息基于PRF和HMAC值之上，这也比SSLv3.0更安全。 4) 一致证书处理：与SSLv3.0不同，TLS试图制定必须在TLS之间实现交换的证书类型。 5) 特定警报消息：TLS提供更多的特定和附加警报，以指示任一会话端点检测到的问题。TLS还对合适应该发送某些警报进行记录。]]></content>
+    <title><![CDATA[day181-Reduce求对象中多个属性的和]]></title>
+    <url>%2F2019%2F07%2F13%2F2019-07-13%2F</url>
+    <content type="text"><![CDATA[要点求对象中多个属性的和let data = [ &#123; tqaModifyCount: 9, tqaMarkCount: 19 &#125;, &#123; tqaModifyCount: 3, tqaMarkCount: 3 &#125;]let tgt = &#123; tqaModifyCounts: 12 tqaMarkCounts: 22&#125; 代码function sum (dataArr) &#123; return dataArr.reduce((acc, obj) =&gt; &#123; return &#123; tqaModifyCounts: acc.tqaModifyCount + obj.tqaModifyCount, tqaMarkCounts: acc.tqaMarkCount + obj.tqaMarkCount &#125; &#125;)&#125;]]></content>
       <categories>
         <category>技术</category>
       </categories>
@@ -13,8 +13,19 @@
   </entry>
   <entry>
     <title><![CDATA[day180-Virtual DOM-再探]]></title>
-    <url>%2F2019%2F07%2F11%2F2019-07-12%2F</url>
+    <url>%2F2019%2F07%2F12%2F2019-07-12%2F</url>
     <content type="text"><![CDATA[要点 Virtual DOM的是三个重要步骤； Virtual DOM的具体步骤； Virtual DOM的是三个重要步骤 生成Virtual DOM树 对比两棵树的差异（diff） 更新试图（patch） Virtual DOM的具体步骤生成Virtual DOM树例子： 真实DOM&lt;ul id="list"&gt; &lt;li class="item"&gt;Item 1&lt;/li&gt; &lt;li class="item"&gt;Item 2&lt;/li&gt;&lt;/ul&gt; DOM树let element = &#123; tagName: 'ul', props: &#123; id: 'list' &#125;, children: [ &#123; tagName: 'li', props: &#123; class: 'item' &#125;, children: ['Item 1'] &#125;, &#123; tagName: 'li', props: &#123; class: 'item' &#125;, children: ['Item 2'] &#125; ]&#125; 对比两棵树的差异对树进行遍历：深度优先遍历、广度优先遍历 diff算法中采用深度优先遍历。对新旧两棵树进行一次深度优先的遍历，这样每个节点都会有一个唯一的标记。 遍历时，每遍历到一个节点就把该节点和新的树的同一个位置的节点进行对比，如果有差异的话就记录到一个对象（差异对象）里面。 差异对象（常见的差异）替换节点增加/删除子节点修改节点属性改变文本内容 更新视图根据差异的不同类型，对DOM进行针对性的更新。更新视图（针对相应差异的更新方法）replaceChild()appendChild() / removeChild()setAttribute() / removeAttribute()textContent]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[day179-HTTPS协议-SSL和TLS的区别]]></title>
+    <url>%2F2019%2F07%2F11%2F2019-07-11%2F</url>
+    <content type="text"><![CDATA[要点 关系（并列关系）； SSL(Secure Socket Layer，安全套接字层)； HTTP/2的多路复用解决要点2的问题； 不适用于HTTP/2的优化； SSL和TLS之间的详细关系； 关系SSL是专门保护Web通讯的。TLS是制定的一种新协议，建立在SSL3.0协议规范上，TLS1.0和SSL3.0两者差别极小。 SSL(Secure Socket Layer，安全套接字层)简介作用：SSL利用数据加密技术，确保web浏览器与服务器之间的身份认证和数据加密传输安全。通用的规格为40bit安全标准。 层级：SSL协议位于TCP/IP协议与各种应用层之间，为数据通讯提供安全支持。 分类：SSL协议主要分两层，SSL记录协议（SSL Record Protocol）和SSL握手协议（SSL Handshake Protocol）。 SSL记录协议：它建立在可靠的传输协议（如TCP）上，为高层协议提供数据封装、压缩、加密等基本功能的支持。SSL握手协议：它建立在SSL记录协议之上，用于数据传输开始前，通讯双方进行身份认证、协商加密算法、交换加密密钥等。 SSL协议提供的服务1) 认证用户和服务端（服务器），确保数据发送到正确的客户端和服务端。2) 维护数据的完整性，确保数据在传输过程中不被改变。3) 加密数据以防数据中途被窃取。 SSL协议的工作流程 服务端认证阶段：1) 客户端向服务端发送一个开始信息’Hello’以便开始一个新的会话连接；2) 服务端根据客户的信息确定是否需要生成新的主密钥（什么信息申请新的主密钥？），如果需要则服务端在响应客户的’Hello’信息时将包含生成主密钥所需的信息。3) 客户端根据收到的服务端响应信息，产生一个主密钥，并用服务器的公开密钥加密后传给服务端。4) 服务端恢复该主密钥，并返回给客户一个用主密钥认证的信息，以此让客户认证服务端。 用户端认证阶段：在此之前，服务端已通过客户端认证，这一阶段主要是完成对客户端的认证。经认证的服务端发送一个提问给客户端，客户端则返回（数字）签名后的提问和其公开的密钥，从而向服务端提供认证。 SSL协议的总结SSL协议的运行基础是商家（即：服务端）对消费者（即：客户端）信息保密的承诺，有利于商家而不利于消费者。 在电子商务初级阶段，由于运作电子商务的企业大多是信誉较高的大公司，因此这问题还没有充分暴露出来。 随着电子商务的发展，各中小型公司也参与进来，这样在电子支付过程中的单一认证问题就越来越突出。 虽然在SSL3.0中通过数字签名和数字证书可实现浏览器和Web服务端双方的身份验证，但SSL协议仍存在一些问题，比如，只能提供交易中客户端与服务端间的双方认证，在设计多方的电子交易中，SSL协议并不能协调各方间的安全传输和信任关系。 在这种情况下，Visa和MasterCard两大信用卡组织制定了SET协议，为网上信用卡支付提供了全球性的标准。 TLS(Transport Layer Security Protocol, 安全传输层协议)简介作用：TLS（安全传输层协议）用于在两个通信应用程序之间提供保密性和数据完整性。分类：TLS协议主要分两层，TLS记录协议（TLS Record）和TLS握手协议（TLS Handshake）。 较低的层为TLS记录协议（注：同SSL记录协议），位于某个可靠的传输协议（如TCP）上面。 TLS记录协议：它提供的连接安全性具有两个基本特性，私有、可靠。 私有——对称加密用数据加密（DES、RC4等）。对称加密产生的密钥对每个连接都是唯一的，且此密钥基于另一个协议（如握手协议）协商。 记录协议也可以不加密使用。 可靠——信息传输包括使用密钥的MAC进行信息完整性检查。安全哈希功能（SHA、MD5等）用于MAC计算。 记录协议在没有MAC的情况下也能操作，但一般只能用于这种模式，即有另一个协议正在使用记录协议传输协商安全参数。 TLS握手协议： 简介 TLS记录协议用于封装各种高层协议。 作为这种封装协议之一的握手协议允许服务器于客户端在应用程序协议传输和接收其第一个数据字节前彼此之间相互认证，协商加密算法和加密密钥。 TLS握手协议提供的连接安全具有三个基本属性： 1）可以使用非对称的，或公共密钥的密码来认证对方的身份。该认证是可选的，但至少需要一个结点方。 2）共享加密密钥的协商是安全的。对偷窃者来说协商加密是难以获得的。以此经过认证的连接不能获得加密，及时是进入连接中间的攻击者也不能。 3）协商是可靠的。没有经过通信方成员的检测，任何攻击者都不能修改通信协商。 TLS的最大优势就在于：TLS是独立于应用协议。高层协议可以透明地分布在TLS协议上面。 然而，TLS标准并没有规定应用程序如何在TLS上增加安全性， 它把如何启动TLS握手协议以及如何解释交换的认证证书的决定权留给协议的设计者和实施者来判断。 TLS协议的协议结构TLS协议包括两个协议组（即：TLS记录协议和TLS握手协议），每组具有很多不同格式的信息。 在此文件中我们只列出协议摘要并不做具体解析。具体内容可参照相关文档。 TLS记录协议是一种分层协议。每一层中的信息可能包含长度、描述和内容等字段。记录协议支持信息传输、将数据分段到可处理块、压缩数据、应用MAC、加密以及传输结果等。对接收到的数据进行解密、校验、解压缩、重组等，然后将他们传送到高层客户机。 TLS连接状态指的是TLS记录协议的操作环境。它规定了压缩算法、加密算法和MAC算法。 TLS记录层从高层接收任意大小无空块的连续数据。密钥计算：记录协议通过算法从握手协议提供的安全参数中产生密钥、IV和MAC密钥。 TLS握手协议由三个子协议组构成，允许对等双方在记录层的安全参数上达成一致、自我认证、例示协商安全参数、互相报告出错条件。 SSL和TLS之间的详细关系TLS（Transport Layer Security，传输层安全协议）是IETF制定的一种新的协议，它建立在SSL3.0协议规范之上，是SSL3.0的后续版本。在TLS与SSL3.0之间存在着显著的差别，主要是所支持的加密算法不同,所以TLS与SSL3.0不能互操作。 差异 版本号：TLS记录格式与SSL记录格式相同，但版本号的值不同，TLS的版本1.0使用的版本号为SSLv3.1。 报文鉴别码：SSLv3.0和TLS的MAC算法及MAC计算的范围不同。TLS使用了RFC-2104定义的HMAC算法（消息认证代码的密钥散列法）。 SSLv3.0使用了相似的算法，两者差别在于SSLv3.0中，填充的字节与密钥之间采用的是连接运算，而HMAC算法采用的是异或运算。但是两者的安全程度是相同的。 伪随机函数：TLS使用了称为PRF的伪随机函数将密钥扩展成数据块，是更安全的方式。 报警代码：TLS支持几乎所有的SSLv3.0报警代码，而且TLS还补充定义了很多的报警代码，如：解密失败（decryption_failed）、记录溢出（record_overflow）、未知CA（unknown_ca）、拒绝访问（access_denied）等。 密文族和客户证书：SSLv3.0和TLS存在少量差别，即TLS不支持Fortezza密钥交换、加密算法和客户证书。 certificate_verify和finished消息：SSLv3.0和TLS在用certificate_verify和finished消息计算MD5和SHA-1散列码时，计算的输入有少许差别，但安全性相当。 加密计算：TLS和SSLv3.0在计算主密值（master sercret）时采用的方式不同。 填充：用户数据加密之前需要增加的填充字节。在SSL中，填充后的数据长度要达到密文块长度的最小整数倍。 而在TLS中，填充后的数据长度可以是密文块长度的任意整数倍（但填充的最大长度为255字节），这种方式可以防止基于对报文长度进行分析的攻击。 TLS的主要增强内容（对比SSL)TLS的主要目标是使SSL更安全，并使协议的规范更精确和完善。TLS在SSLv3.0的基础上，提供了一下增强内容： 1) 更安全的MAC算法。 2) 更严密的警报。 3) ‘灰色区域’规范的更明确定义。 TLS对于安全性的改进 1) 对于消息认证使用密钥散列法：TLS使用“消息认证代码的密钥散列法”（HMAC），当记录在开放网络（如：英特网）上传送时，该代码确保记录不会被变更。SSLv3.0还提供键控消息认证，但HMAC比SSLv3.0使用的（消息认证代码）MAC功能更安全。 2) 增强的伪随机功能（PRF）：PRF生成密钥数据。在TLS中，HMAC定义PRF。PRF使用两种散列算法保证其安全性。如果任一算法暴露了，只要第二种算法未暴露，则数据仍然是安全的。 3) 改进的已完成消息验证：TLS和SSLv3.0都对两个端点提供已完成的消息，该消息认证交换的消息没有被变更。然而，TLS将此已完成消息基于PRF和HMAC值之上，这也比SSLv3.0更安全。 4) 一致证书处理：与SSLv3.0不同，TLS试图制定必须在TLS之间实现交换的证书类型。 5) 特定警报消息：TLS提供更多的特定和附加警报，以指示任一会话端点检测到的问题。TLS还对合适应该发送某些警报进行记录。]]></content>
       <categories>
         <category>技术</category>
       </categories>
@@ -386,9 +397,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[day145-LeetCode 121. Best Time to Buy and Sell Stock]]></title>
-    <url>%2F2019%2F06%2F06%2F2019-06-07%2F</url>
-    <content type="text"><![CDATA[题目Say you have an array for which the ith element is the price of a given stock on day i. If you were only permitted to complete at most one transaction (ie, buy one and sell one share of the stock), design an algorithm to find the maximum profit. Example 1: Input: [7, 1, 5, 3, 6, 4] Output: 5 max. difference = 6-1 = 5 (not 7-1 = 6, as selling price needs to be larger than buying price) Example 2: Input: [7, 6, 4, 3, 1] Output: 0 In this case, no transaction is done, i.e. max profit = 0. 分析数组中的元素，从index 0 到最后一位，都表示每天的股价变化。求给出的数组中，利益最大的一天。即，从后往前相减，整数最大的值 题解function maxProfit (prices) &#123; // 表示最低的股价，MAX_表示无限大 let min = Number.MAX_SAFE_INTEGER let maxProfit = 0 for (let i = 0; i &lt; prices.length; i++) &#123; // 冒泡找出最小值 if (prices[i] &lt; min) &#123; min = prices[i] &#125; // 当前可获利的值 let calProfit = prices[i] - min if(calProfit &gt; maxProfit) &#123; maxProfit = calProfit &#125; &#125; return maxProfit&#125;]]></content>
+    <title><![CDATA[day144-LeetCode 112. Path Sum]]></title>
+    <url>%2F2019%2F06%2F06%2F2019-06-06%2F</url>
+    <content type="text"><![CDATA[题目Given a binary tree and a sum, determine if the tree has a root-to-leaf path such that adding up all the values along the path equals the given sum.For example: Given the below binary tree and sum = 22, 5 / \ 4 8 / / \ 11 13 4 / \ \7 2 1 return true, as there exist a root-to-leaf path 5-&gt;4-&gt;11-&gt;2 which sum is 22. 分析leetcode 104的变形。用递归来计算每条路径的总和。求根节点到子树的每条可能路径的和，并检测是否和给出的随机数相等。 从父节点出发，如果父节点加左节点不等于给出的随机数，则回退父节点加右节点，如果不相等且子节点有左右子树则递归上述过程。直到找到和随机数相等的值返回true,否则返回false 题解function hasPathEqualSum (root, sum) &#123; if (root === null) return let list = [] // 计算总和 sumR2L(root, 0) return sumR2L(root, 0) function sumR2L(root, s) &#123; if (root.left === null &amp;&amp; root.right === null) &#123; // 到底的时候，判断总和是否是与sum相同 list.push(s) s += root.val return s === sum &#125; // 右边到底 if (root.left !== null &amp;&amp; root.right === null) &#123; return sumR2L(root.left, s + root.val) &#125; // 左边到底 if (root.left === null &amp;&amp; root.right !== null) &#123; return sumR2L(root.right, s + root.val) &#125; // 两边的树没有到底 return sumR2L(root.left, s + root.val) || sumR2L(root.right, s + root.val) &#125;&#125;]]></content>
       <categories>
         <category>技术</category>
       </categories>
@@ -397,9 +408,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[day144-LeetCode 112. Path Sum]]></title>
-    <url>%2F2019%2F06%2F06%2F2019-06-06%2F</url>
-    <content type="text"><![CDATA[题目Given a binary tree and a sum, determine if the tree has a root-to-leaf path such that adding up all the values along the path equals the given sum.For example: Given the below binary tree and sum = 22, 5 / \ 4 8 / / \ 11 13 4 / \ \7 2 1 return true, as there exist a root-to-leaf path 5-&gt;4-&gt;11-&gt;2 which sum is 22. 分析leetcode 104的变形。用递归来计算每条路径的总和。求根节点到子树的每条可能路径的和，并检测是否和给出的随机数相等。 从父节点出发，如果父节点加左节点不等于给出的随机数，则回退父节点加右节点，如果不相等且子节点有左右子树则递归上述过程。直到找到和随机数相等的值返回true,否则返回false 题解function hasPathEqualSum (root, sum) &#123; if (root === null) return let list = [] // 计算总和 sumR2L(root, 0) return sumR2L(root, 0) function sumR2L(root, s) &#123; if (root.left === null &amp;&amp; root.right === null) &#123; // 到底的时候，判断总和是否是与sum相同 list.push(s) s += root.val return s === sum &#125; // 右边到底 if (root.left !== null &amp;&amp; root.right === null) &#123; return sumR2L(root.left, s + root.val) &#125; // 左边到底 if (root.left === null &amp;&amp; root.right !== null) &#123; return sumR2L(root.right, s + root.val) &#125; // 两边的树没有到底 return sumR2L(root.left, s + root.val) || sumR2L(root.right, s + root.val) &#125;&#125;]]></content>
+    <title><![CDATA[day145-LeetCode 121. Best Time to Buy and Sell Stock]]></title>
+    <url>%2F2019%2F06%2F06%2F2019-06-07%2F</url>
+    <content type="text"><![CDATA[题目Say you have an array for which the ith element is the price of a given stock on day i. If you were only permitted to complete at most one transaction (ie, buy one and sell one share of the stock), design an algorithm to find the maximum profit. Example 1: Input: [7, 1, 5, 3, 6, 4] Output: 5 max. difference = 6-1 = 5 (not 7-1 = 6, as selling price needs to be larger than buying price) Example 2: Input: [7, 6, 4, 3, 1] Output: 0 In this case, no transaction is done, i.e. max profit = 0. 分析数组中的元素，从index 0 到最后一位，都表示每天的股价变化。求给出的数组中，利益最大的一天。即，从后往前相减，整数最大的值 题解function maxProfit (prices) &#123; // 表示最低的股价，MAX_表示无限大 let min = Number.MAX_SAFE_INTEGER let maxProfit = 0 for (let i = 0; i &lt; prices.length; i++) &#123; // 冒泡找出最小值 if (prices[i] &lt; min) &#123; min = prices[i] &#125; // 当前可获利的值 let calProfit = prices[i] - min if(calProfit &gt; maxProfit) &#123; maxProfit = calProfit &#125; &#125; return maxProfit&#125;]]></content>
       <categories>
         <category>技术</category>
       </categories>
@@ -1267,7 +1278,7 @@
   </entry>
   <entry>
     <title><![CDATA[day64-模板语法]]></title>
-    <url>%2F2019%2F03%2F16%2F2019-03-16%2F</url>
+    <url>%2F2019%2F03%2F16%2F2019-03-1111%2F</url>
     <content type="text"><![CDATA[背景vuejs项目中有个需求，在notification消息提示中某个部分需要有点击事件。UI用的element。想到用模板的方法来构造。 element-ui Notification onClick 触发方式组件中有两种触发的方式，但是都没有很好的满足需求。 点击时触发this.$notify.warning(&#123; dangerouslyUseHTMLString: true, duration: 0, message: `$&#123;this.createdFailedMember&#125;个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`, onClick: function () &#123; console.log(1) &#125;&#125;) 创建时触发this.$notify.warning(&#123; dangerouslyUseHTMLString: true, duration: 0, message: `$&#123;this.createdFailedMember&#125;个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`, onClick: (function () &#123; console.log(1) &#125;)()&#125;) 渲染函数比较灵活的render 函数。非常好用，但是没有模板语法那么简洁。this.$notify.warning(&#123;message: h( 'div', &#123; style: &#123;display: 'inline-block'&#125; &#125;, [ h('span', `$&#123;this.createdFailedMember&#125;个成员创建失败！`), h('a', &#123; style: &#123;color: '#409EFF', cursor: 'pointer', 'text-decoration': 'underline'&#125;, on: &#123; click: this.clickNotificationMsg &#125; &#125;, '前往查看') ])&#125;)]]></content>
       <categories>
         <category>技术</category>
@@ -1278,7 +1289,7 @@
   </entry>
   <entry>
     <title><![CDATA[day64-模板语法]]></title>
-    <url>%2F2019%2F03%2F16%2F2019-03-1111%2F</url>
+    <url>%2F2019%2F03%2F16%2F2019-03-16%2F</url>
     <content type="text"><![CDATA[背景vuejs项目中有个需求，在notification消息提示中某个部分需要有点击事件。UI用的element。想到用模板的方法来构造。 element-ui Notification onClick 触发方式组件中有两种触发的方式，但是都没有很好的满足需求。 点击时触发this.$notify.warning(&#123; dangerouslyUseHTMLString: true, duration: 0, message: `$&#123;this.createdFailedMember&#125;个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`, onClick: function () &#123; console.log(1) &#125;&#125;) 创建时触发this.$notify.warning(&#123; dangerouslyUseHTMLString: true, duration: 0, message: `$&#123;this.createdFailedMember&#125;个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`, onClick: (function () &#123; console.log(1) &#125;)()&#125;) 渲染函数比较灵活的render 函数。非常好用，但是没有模板语法那么简洁。this.$notify.warning(&#123;message: h( 'div', &#123; style: &#123;display: 'inline-block'&#125; &#125;, [ h('span', `$&#123;this.createdFailedMember&#125;个成员创建失败！`), h('a', &#123; style: &#123;color: '#409EFF', cursor: 'pointer', 'text-decoration': 'underline'&#125;, on: &#123; click: this.clickNotificationMsg &#125; &#125;, '前往查看') ])&#125;)]]></content>
       <categories>
         <category>技术</category>
@@ -2071,8 +2082,8 @@
         <category>学习</category>
       </categories>
       <tags>
-        <tag>git</tag>
         <tag>工具</tag>
+        <tag>git</tag>
       </tags>
   </entry>
   <entry>
@@ -2215,8 +2226,8 @@
     <url>%2F2017%2F03%2F20%2Fmarkdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0%2F</url>
     <content type="text"><![CDATA[插入表格：1.1. 表格的上下需要空行。空行的多少至关重要 表格中文字居中 在划线部分的划线两端加上”:“ 比如”:—–: | :—-: 代码块:2.1. 合理利用代码块有意想不到的效果。3.]]></content>
       <tags>
-        <tag>工具</tag>
         <tag>markdown</tag>
+        <tag>工具</tag>
       </tags>
   </entry>
   <entry>
