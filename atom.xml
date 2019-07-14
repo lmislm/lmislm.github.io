@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-07-13T13:26:08.482Z</updated>
+  <updated>2019-07-14T11:43:58.128Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day181-对象-键值对</title>
+    <link href="http://lmislm.com/2019/07/14/2019-07-14/"/>
+    <id>http://lmislm.com/2019/07/14/2019-07-14/</id>
+    <published>2019-07-13T16:00:00.000Z</published>
+    <updated>2019-07-14T11:43:58.128Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><p>对象的指定位置插入键值对<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> data = &#123; <span class="attr">key1</span>: <span class="string">'value1'</span>, <span class="attr">key3</span>: <span class="string">'value3'</span> &#125;</span><br></pre></td></tr></table></figure></p><a id="more"></a><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">insertKey</span>(<span class="params">key, value, obj, pos</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Object</span>.keys(obj).reduce(<span class="function">(<span class="params">ac, a, i</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (i === pos) ac[key] = value</span><br><span class="line">    ac[a] = obj[a]</span><br><span class="line">    <span class="keyword">return</span> ac</span><br><span class="line">  &#125;, &#123;&#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 运行</span></span><br><span class="line"><span class="built_in">console</span>.log(insertKey(<span class="string">'key2'</span>, <span class="string">'value2'</span>, data, <span class="number">1</span>))</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h2&gt;&lt;p&gt;对象的指定位置插入键值对&lt;br&gt;&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; data = &amp;#123; &lt;span class=&quot;attr&quot;&gt;key1&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&#39;value1&#39;&lt;/span&gt;, &lt;span class=&quot;attr&quot;&gt;key3&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&#39;value3&#39;&lt;/span&gt; &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>day181-Reduce求对象中多个属性的和</title>
@@ -476,29 +498,6 @@
     
     
       <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day162-键值对，以value为键的结果对象</title>
-    <link href="http://lmislm.com/2019/06/24/2019-06-24/"/>
-    <id>http://lmislm.com/2019/06/24/2019-06-24/</id>
-    <published>2019-06-23T16:00:00.000Z</published>
-    <updated>2019-07-11T14:24:18.466Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> data = [</span><br><span class="line">  &#123; <span class="string">'id'</span>: <span class="number">1</span>, <span class="attr">name</span>: <span class="string">'a'</span>, <span class="string">'code'</span>: <span class="number">11</span> &#125;,</span><br><span class="line">  &#123; <span class="string">'id'</span>: <span class="number">2</span>, <span class="attr">name</span>: <span class="string">'b'</span>, <span class="string">'code'</span>: <span class="number">22</span> &#125;,</span><br><span class="line">  &#123; <span class="string">'id'</span>: <span class="number">3</span>, <span class="attr">name</span>: <span class="string">'c'</span>, <span class="string">'code'</span>: <span class="number">33</span> &#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure><p>以code值为key的结果对象</p><a id="more"></a><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>主要是<code>[]</code>的用法，灵活的很呐！</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> getKey = <span class="function">(<span class="params">data, key</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> data.map(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      [item[key]]: item</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h3&gt;&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; data = [&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#123; &lt;span class=&quot;string&quot;&gt;&#39;id&#39;&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, &lt;span class=&quot;attr&quot;&gt;name&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&#39;a&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;code&#39;&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;11&lt;/span&gt; &amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#123; &lt;span class=&quot;string&quot;&gt;&#39;id&#39;&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;, &lt;span class=&quot;attr&quot;&gt;name&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&#39;b&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;code&#39;&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;22&lt;/span&gt; &amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#123; &lt;span class=&quot;string&quot;&gt;&#39;id&#39;&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;, &lt;span class=&quot;attr&quot;&gt;name&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&#39;c&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;code&#39;&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;33&lt;/span&gt; &amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;以code值为key的结果对象&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="acm" scheme="http://lmislm.com/tags/acm/"/>
     
   </entry>
   
