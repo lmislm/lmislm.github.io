@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-07-14T11:43:58.128Z</updated>
+  <updated>2019-07-15T15:16:46.715Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>day181-对象-键值对</title>
+    <title>day182-Tree Shaking in Webpack-了解</title>
+    <link href="http://lmislm.com/2019/07/15/2019-07-15/"/>
+    <id>http://lmislm.com/2019/07/15/2019-07-15/</id>
+    <published>2019-07-14T16:00:00.000Z</published>
+    <updated>2019-07-15T15:16:46.715Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><ol><li>概念</li><li>机制</li><li>使用方法<a id="more"></a></li></ol><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><ol><li><code>DCE Dead Code Elimination</code></li></ol><ul><li>去除无用的没有执行的代码（如：不可能进入的分支）。</li><li>导致<code>dead variable</code>的代码（写入变量之后不再读取的代码）。</li></ul><p>tree shaking是<code>DCE</code>的一种方式，可以在webpack打包时，忽略没有用的代码。</p><h2 id="机制"><a href="#机制" class="headerlink" title="机制"></a>机制</h2><ul><li><strong>找出使用的代码</strong><br>基于 ES6 的静态引用，tree shaking 扫描所有<code>export</code>，找出有用的和无用的内容添加到代码中，最后压缩时分类处理。</li></ul><h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><p>源码必须遵循 ES6 的模块规范 <code>(import &amp; export)</code>，CommonJs规范（require）没法用。</p><p><code>webpack2</code>需要修改配置文件，<code>webpack3+</code>可以正常tree shaking</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;概念&lt;/li&gt;
+&lt;li&gt;机制&lt;/li&gt;
+&lt;li&gt;使用方法
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>day182-对象-键值对</title>
     <link href="http://lmislm.com/2019/07/14/2019-07-14/"/>
     <id>http://lmislm.com/2019/07/14/2019-07-14/</id>
     <published>2019-07-13T16:00:00.000Z</published>
-    <updated>2019-07-14T11:43:58.128Z</updated>
+    <updated>2019-07-15T14:57:43.259Z</updated>
     
     <content type="html"><![CDATA[<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><p>对象的指定位置插入键值对<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> data = &#123; <span class="attr">key1</span>: <span class="string">'value1'</span>, <span class="attr">key3</span>: <span class="string">'value3'</span> &#125;</span><br></pre></td></tr></table></figure></p><a id="more"></a><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">insertKey</span>(<span class="params">key, value, obj, pos</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Object</span>.keys(obj).reduce(<span class="function">(<span class="params">ac, a, i</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (i === pos) ac[key] = value</span><br><span class="line">    ac[a] = obj[a]</span><br><span class="line">    <span class="keyword">return</span> ac</span><br><span class="line">  &#125;, &#123;&#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 运行</span></span><br><span class="line"><span class="built_in">console</span>.log(insertKey(<span class="string">'key2'</span>, <span class="string">'value2'</span>, data, <span class="number">1</span>))</span><br></pre></td></tr></table></figure>]]></content>
     
@@ -467,30 +492,6 @@
 &lt;ol&gt;
 &lt;li&gt;多个属性处理类型判断&lt;/li&gt;
 &lt;li&gt;接口描述函数类型
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day163-正则点滴</title>
-    <link href="http://lmislm.com/2019/06/25/2019-06-25/"/>
-    <id>http://lmislm.com/2019/06/25/2019-06-25/</id>
-    <published>2019-06-24T16:00:00.000Z</published>
-    <updated>2019-07-11T14:24:18.466Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="正则"><a href="#正则" class="headerlink" title="正则"></a>正则</h3><ol><li>判断是否仅有数字或者”.”、”,”。</li><li>找出并“格式化”字符串中的所有数字。<a id="more"></a></li></ol><h3 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h3><ol><li><p>判断是否仅有数字或者”.”、”,”。</p><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">/^[<span class="number">0</span><span class="number">-9.</span>,]+$/</span><br><span class="line"><span class="comment">// 配合test用比较好。如：reg.test(str)</span></span><br></pre></td></tr></table></figure></li><li><p>找出并“格式化”字符串中的所有数字。</p></li></ol><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">(str.match(<span class="regexp">/\d+/g</span>) || []).map(<span class="built_in">Number</span>)</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;正则&quot;&gt;&lt;a href=&quot;#正则&quot; class=&quot;headerlink&quot; title=&quot;正则&quot;&gt;&lt;/a&gt;正则&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;判断是否仅有数字或者”.”、”,”。&lt;/li&gt;
-&lt;li&gt;找出并“格式化”字符串中的所有数字。
     
     </summary>
     
