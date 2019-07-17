@@ -727,9 +727,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[day119-实现一个instanceOf笔记]]></title>
-    <url>%2F2019%2F05%2F10%2F2019-05-11%2F</url>
-    <content type="text"><![CDATA[前言话不多说，这篇是水篇。 代码// 实现一个instanceOffunction myInstanceOf(left, right) &#123; let proto = left.__proto__ let prototype = right.prototype while (true) &#123; if (!proto) &#123; return false &#125; if (proto === prototype) &#123; return false &#125; proto === proto.__proto__ &#125;&#125;]]></content>
+    <title><![CDATA[day118-手写简单的函数柯里化-笔记]]></title>
+    <url>%2F2019%2F05%2F10%2F2019-05-10%2F</url>
+    <content type="text"><![CDATA[前言函数柯里化是属于高阶函数中一种常见的技术。特点就是参数复用、提前返回和延迟执行。 代码function curry (fn, args) &#123; var length = fn.length var args = args || [] return function () &#123; newArgs = args.concat(Array.prototype.slice.call(arguments)) if (newArgs.length &lt; length) &#123; return curry.call(this, fn, newArgs) &#125; else &#123; return fn.apply(this, newArgs) &#125; &#125;&#125;function multiFn(a, b, c) &#123; return a * b * c&#125;var multi = curry(multiFn)multi(1)(2)(3)multi(1,2,3)multi(1)(2,3)multi(1,2)(3)]]></content>
       <categories>
         <category>技术</category>
       </categories>
@@ -738,9 +738,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[day118-手写简单的函数柯里化-笔记]]></title>
-    <url>%2F2019%2F05%2F10%2F2019-05-10%2F</url>
-    <content type="text"><![CDATA[前言函数柯里化是属于高阶函数中一种常见的技术。特点就是参数复用、提前返回和延迟执行。 代码function curry (fn, args) &#123; var length = fn.length var args = args || [] return function () &#123; newArgs = args.concat(Array.prototype.slice.call(arguments)) if (newArgs.length &lt; length) &#123; return curry.call(this, fn, newArgs) &#125; else &#123; return fn.apply(this, newArgs) &#125; &#125;&#125;function multiFn(a, b, c) &#123; return a * b * c&#125;var multi = curry(multiFn)multi(1)(2)(3)multi(1,2,3)multi(1)(2,3)multi(1,2)(3)]]></content>
+    <title><![CDATA[day119-实现一个instanceOf笔记]]></title>
+    <url>%2F2019%2F05%2F10%2F2019-05-11%2F</url>
+    <content type="text"><![CDATA[前言话不多说，这篇是水篇。 代码// 实现一个instanceOffunction myInstanceOf(left, right) &#123; let proto = left.__proto__ let prototype = right.prototype while (true) &#123; if (!proto) &#123; return false &#125; if (proto === prototype) &#123; return false &#125; proto === proto.__proto__ &#125;&#125;]]></content>
       <categories>
         <category>技术</category>
       </categories>
@@ -2036,9 +2036,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[新年第一天-2019-01-01]]></title>
-    <url>%2F2019%2F01%2F01%2F2019-01-01%2F</url>
-    <content type="text"><![CDATA[友情提示以下内容都是一些碎碎念，生活、读后感、今天生活内容。ps: 附上我的“专业插画师”提供的图片。 生活新年第一天，昨晚在群里抢红包，一直热闹到很晚才睡。今早10点才慵懒的起来，起的有点晚。中午炸鸡腿，惨不忍睹。后来玩游戏，庸庸碌碌的一天就过去了。这是假期最后一天。希望晚上的时候能收收心看点书。顺带一提昨天晚上看了组件详解。 读Vue 组件基础之组件通信 -《Vue js实战》组件基础组件的复用，复用离不开值得传递。父子组件，兄弟组件相互之间的传值。基本的有props，父组件传递给子组件，子组件通过$emit()、v-on: 来将值通知父组件。不太常用的有$parent(书中提到可以通过此通信访问父实例或组件），在组件中引用父组件，$child,父组件引用子组件。《Vue js实战》书中提到了，通过利用实例化一个空的BUS组件起到总线的作用，这种方法还挺新鲜。另外，组件通信时还有slot的内容分发，slot默认名称是可以和具名slot一起用的。相互之间并不影响。好吧，之前用的时候，总是会不自觉给slot取名字。理解的不够深刻。 高级组件 组件可以递归自己。 异步组件。 小结总感觉这种组件通信方式还有待于改善，应该多读一下开源的一些组件是怎么写出来的。因为上次研究element-UI的时候并没有看它运用这些（指的是通信手段，也可能是我忽略？）但是表现出了很强的可扩展性。很值得学习。包括其中CSS中的书写。 插播元旦放假头一天，买了100的零食，一个大箱子，有优惠。现在好像吃的牙有点疼。作啊。明明要减肥的人。 发现好的视频今天看B站排行榜的时候发现一个点评动漫的UP主，LexBurner?“艺名”：蕾丝。他的视频看动漫的角度还真是蛮特别，应该是有大量的漫画番剧的基础，能有空看这么多视频和漫画，这人真是不简单。]]></content>
+    <title><![CDATA[2019--启程]]></title>
+    <url>%2F2019%2F01%2F01%2F2019-%E5%90%AF%E7%A8%8B%2F</url>
+    <content type="text"><![CDATA[即将告别2018年，这个对于我来说，多灾多难的一年。这一年发生了太多的事，每一年也都会发生很多事，但从来没有哪一年能够像2018年这样让人印象深刻。考研结束。毕业。工作。最悲痛的莫过于最亲的人去世。事业也刚刚起步，爱情失去了方向。真是让人印象深刻的一年。]]></content>
       <categories>
         <category>生活</category>
       </categories>
@@ -2047,9 +2047,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[2019--启程]]></title>
-    <url>%2F2019%2F01%2F01%2F2019-%E5%90%AF%E7%A8%8B%2F</url>
-    <content type="text"><![CDATA[即将告别2018年，这个对于我来说，多灾多难的一年。这一年发生了太多的事，每一年也都会发生很多事，但从来没有哪一年能够像2018年这样让人印象深刻。考研结束。毕业。工作。最悲痛的莫过于最亲的人去世。事业也刚刚起步，爱情失去了方向。真是让人印象深刻的一年。]]></content>
+    <title><![CDATA[新年第一天-2019-01-01]]></title>
+    <url>%2F2019%2F01%2F01%2F2019-01-01%2F</url>
+    <content type="text"><![CDATA[友情提示以下内容都是一些碎碎念，生活、读后感、今天生活内容。ps: 附上我的“专业插画师”提供的图片。 生活新年第一天，昨晚在群里抢红包，一直热闹到很晚才睡。今早10点才慵懒的起来，起的有点晚。中午炸鸡腿，惨不忍睹。后来玩游戏，庸庸碌碌的一天就过去了。这是假期最后一天。希望晚上的时候能收收心看点书。顺带一提昨天晚上看了组件详解。 读Vue 组件基础之组件通信 -《Vue js实战》组件基础组件的复用，复用离不开值得传递。父子组件，兄弟组件相互之间的传值。基本的有props，父组件传递给子组件，子组件通过$emit()、v-on: 来将值通知父组件。不太常用的有$parent(书中提到可以通过此通信访问父实例或组件），在组件中引用父组件，$child,父组件引用子组件。《Vue js实战》书中提到了，通过利用实例化一个空的BUS组件起到总线的作用，这种方法还挺新鲜。另外，组件通信时还有slot的内容分发，slot默认名称是可以和具名slot一起用的。相互之间并不影响。好吧，之前用的时候，总是会不自觉给slot取名字。理解的不够深刻。 高级组件 组件可以递归自己。 异步组件。 小结总感觉这种组件通信方式还有待于改善，应该多读一下开源的一些组件是怎么写出来的。因为上次研究element-UI的时候并没有看它运用这些（指的是通信手段，也可能是我忽略？）但是表现出了很强的可扩展性。很值得学习。包括其中CSS中的书写。 插播元旦放假头一天，买了100的零食，一个大箱子，有优惠。现在好像吃的牙有点疼。作啊。明明要减肥的人。 发现好的视频今天看B站排行榜的时候发现一个点评动漫的UP主，LexBurner?“艺名”：蕾丝。他的视频看动漫的角度还真是蛮特别，应该是有大量的漫画番剧的基础，能有空看这么多视频和漫画，这人真是不简单。]]></content>
       <categories>
         <category>生活</category>
       </categories>
@@ -2266,15 +2266,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[markdown语法小记]]></title>
-    <url>%2F2017%2F03%2F20%2Fmarkdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[插入表格：1.1. 表格的上下需要空行。空行的多少至关重要 表格中文字居中 在划线部分的划线两端加上”:“ 比如”:—–: | :—-: 代码块:2.1. 合理利用代码块有意想不到的效果。3.]]></content>
-      <tags>
-        <tag>工具</tag>
-        <tag>markdown</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[codewars-count_digits]]></title>
     <url>%2F2017%2F03%2F20%2Fcodewars%2F</url>
     <content type="text"><![CDATA[题目 Take an integer n (n &gt;= 0) and a digit d (0 &lt;= d &lt;= 9) as an integer. Square all numbers k (0 &lt;= k &lt;= n) between 0 and n. Count the numbers of digits d used in the writing of all the k* *2. Call nb_dig (or nbDig or …) the function taking n and d as parameters and returning this count. 例子 n = 10, d = 1,the k * k are 0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100 We are using the digit 1 in 1, 16, 81, 100. The total count is then 4.nb_dig(25, 1):the numbers of interest are 1, 4, 9, 10, 11, 12, 13, 14, 19, 21which squared are 1, 16, 81, 100, 121, 144, 169, 196, 361, 441 so there are 11 digits 1 for the squares of numbers between 0 and 25. 分析 给出n和d，求 0 到 n 中间的平方，再求这些平方的平方，问所得的这些数中包含多少个数字d。大概就是先算出这些数字的平方，然后挨个分解求出其中的值。 解题function nbDig(n,d) &#123; var s = &apos;&apos;; for(var i=0;i&lt;=n;i++)&#123; s += Math.pow(i,2); &#125; return s.split(d).length-1&#125; 牢骚篇今天，进了个群，挺多厉害的人，还私聊了一个有很多 offer 的同学。顿时觉得，自己就是渣渣啊，一点信心都没有。还是得加油吧，要学的东西还很多啊。]]></content>
@@ -2285,6 +2276,15 @@
         <tag>编程</tag>
         <tag>js</tag>
         <tag>codewars</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[markdown语法小记]]></title>
+    <url>%2F2017%2F03%2F20%2Fmarkdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[插入表格：1.1. 表格的上下需要空行。空行的多少至关重要 表格中文字居中 在划线部分的划线两端加上”:“ 比如”:—–: | :—-: 代码块:2.1. 合理利用代码块有意想不到的效果。3.]]></content>
+      <tags>
+        <tag>工具</tag>
+        <tag>markdown</tag>
       </tags>
   </entry>
   <entry>
