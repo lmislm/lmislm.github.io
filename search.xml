@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[day185-具体的diff分析过程（vuejs）-笔记]]></title>
+    <url>%2F2019%2F07%2F18%2F2019-07-18%2F</url>
+    <content type="text"><![CDATA[要点 updateChildren()代码 代码相对较多，较繁琐，这里了解代码和key起的作用就可。 代码 + 内部注释patch过程中父节点相同，父节点文本内容相同，子节点不同updateChildren()的比较。 基本思路就是两个树进行新旧节点的比较。 updateChildren (parentElm, oldCh, newCh) &#123; let oldStartIdx = 0, newStartIdx = 0 let oldStartVnode = oldCh[0] let oldEndIdx = oldCh.length - 1 let oldEndVnode = oldCh[oldEndIdx] let newStartVnode = newCh[0] let newEndIdx = newCh.length - 1 let newEndVnode = newCh[newEndIdx] let oldKeyToIdx let idxInOld let elmToMove let before // 判断遍历是否结束 while (oldStartIdx &lt;= oldEndIdx &amp;&amp; newStartIdx &lt;= newEndIdx) &#123; // 1，不设置key if (oldStartVnode === null) &#123; // 2,都是两头指针相互向中间靠 oldStartVnode = oldCh[++oldStartIdx] &#125; else if (oldEndVnode === null) &#123; oldEndVnode = oldCh[--oldEndIdx] &#125; else if (newStartVnode === null) &#123; newStartVnode = newCh[++newStartIdx] &#125; else if (newEndVnode === null) &#123; newEndVnode = newCh[--newEndIdx] // 3,递归调用，需要看清楚具体比较的东西是什么 &#125; else if (sameVnode(oldStartVnode, newStartVnode)) &#123; patchVnode(oldStartVnode, newEndVnode) // 如果碰到一样的节点，就深度遍历比较，走递归 oldStartVnode = oldCh[++oldStartIdx] newStartVnode = newCh[++newStartIdx] &#125; else if (sameVnode(oldEndVnode, newEndVnode)) &#123; patchVnode(oldEndVnode, newEndVnode) oldEndVnode = oldCh[--oldEndIdx] newEndVnode = newCh[--newEndIdx] &#125; else if (sameVnode(oldStartVnode, newEndVnode)) &#123; // ？？？？ patchVnode(oldEndVnode, newEndVnode) // 需要对dom进行移动 api.insertBefore(parentElm, oldStartVnode.el, api.nextSibling(oldEndVnode.el)) oldStartVnode = oldCh[++oldStartIdx] newEndVnode = newCh[--newEndIdx] &#125; else if (sameVnode(oldEndVnode, newStartVnode)) &#123; patchVnode(oldEndVnode, newStartVnode) // 需要对dom进行移动 api.insertBefore(parentElm, oldEndVnode.el, oldStartVnode.el) oldEndVnode = oldCh[--oldEndIdx] newStartVnode = newCh[++newStartIdx] &#125; else &#123; // 设置key，除头尾两端比较外，加了一个oldKeyToIdx对象表，从中查找匹配的节点 if (oldKeyToIdx === undefined) &#123; // 有key时生成index表 oldKeyToIdx = createKeyToOldIdx(oldCh, oldStartIdx, oldEndIdx) &#125; idxInOld = oldKeyToIdx[newStartVnode.key] if (!idxInOld) &#123; api.insertBefore(parentElm, createEle(newStartVnode).el, oldStartVnode.el) newStartVnode = newCh[++newStartIdx] &#125; else &#123; elmToMove = oldCh[idxInOld] if (elmToMove.sel !== newStartVnode.sel) &#123; api.insertBefore(parentElm, createEle(newStartVnode).el, oldStartVnode.el) &#125; else &#123; patchVnode(elmToMove, newStartVnode) oldCh[idxInOld] = null api.insertBefore(parentElm, elmToMove.el, oldStartVnode.el) &#125; newStartVnode = newCh[++newStartIdx] &#125; &#125; &#125; if (oldStartIdx &gt; oldEndIdx) &#123; before = newCh[newEndIdx + 1] === null ? null : newCh[newEndIdx + 1].el addVnodes(parentElm, before, newCh, newStartIdx, newEndIdx) &#125; else if (newStartIdx &gt; newEndIdx) &#123; removeVnodess(parentElm, oldCh, oldStartIdx, oldEndIdx) &#125;&#125; 参考原文点此]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[day185-Diff过程（vuejs）-笔记]]></title>
     <url>%2F2019%2F07%2F17%2F2019-07-17%2F</url>
     <content type="text"><![CDATA[要点 patch 函数概览。() patchVnode 函数概览。主要分为两个部分。每个函数中都会有代码并附上代码的行行解释。 patch() 函数概览 代码 + 解析 代码/** * vuejs diff过程 * @param &#123;String&#125; oldVnode * @param &#123;String&#125; newVnode */function patch(oldVnode, newVnode) &#123; // 1 if (sameVnode(oldVnode, newVnode)) &#123; // 2 patchVnode(oldVnode, newVnode) &#125; else &#123; // 3 const oEl = oldVnode.el // 4 let parentEle = api.parentNode(oEl) // 5 createEle(newVnode) if (parentEle !== null) &#123; // 6 api.insertBefore(parentEle, newVnode.el, api.nextSibling(oEl)) api.removeChild(parentEle, oldVnode.el) oldVnode = null &#125; &#125; // 7 return newVnode&#125; 解析 看这两个节点是否值得比较（比比是不是子节点有不一样的地方），比较两者key和sel是否完全相等。（sel：节点的选择器）vuejs中virtual dom用的是snabbdom，snabbom定义的(Virtual Node属性)[https://github.com/snabbdom/snabbdom#sel--string]有sel、data、children、text、elm、key。这点和React用的库不一样。 两个节点相互比较比较的过程要分好几种情况，后面再记笔记啊。 进入了不需要比较两个节点的处理流程oEl表示节点的父节点。（取父节点做？？） parentEle是父节点的真是dom 给newVnode创建真实的节点。 插入新的节点，移除旧节点。（为啥还要特地移除Child，直接把二叉树的顶部根节点移除不就行了？） 返回newVnode对应的真实dom patchVnode() 函数概览代码 + 解析 代码/** * 比较不同的节点patchVnode() * @param &#123;String&#125; oldVnode * @param &#123;String&#125; newVnode */function patchVnode (oldVnode, newVnode) &#123; const el = newVnode.el = oldVnode.el let i, oldCh = oldVnode.children, newCh = newVnode.children // 这里这个相等应该是深比较吧，完全相等就返回`false`？ // 2.1 if (oldVnode === newVnode) return // 比较Virtual node中text是否相等？ // 2.2 if (oldVnode.text !== null &amp;&amp; newVnode.text !== null &amp;&amp; oldVnode.text !== newVnode.text) &#123; // 如果只是文本内容相等直接替换旧文本内容就行？ api.setTextContent(el, newVnode.text) &#125; else &#123; // 2.3 updateEle(el, newVnode, oldVnode) if (oldCh &amp;&amp; newCh &amp;&amp; oldCh !== newCh) &#123; // 2.4 updateChildren(el, oldCh, newCh) &#125; else if (newCh) &#123; // 2.5 createEle(newVnode) &#125; else if (oldCh) &#123; // 2.6 api.removeChildren(el) &#125; &#125;&#125; 解析 序号2中，什么是值得比较的节点（我理解的是，子节点是不是完全一样？）比较相同节点sameVnode(oldVnode, newVnode) 2.1 比较引用是否一致，一致则认为没有变化。（引用？） 2.2 文本节点的比较，需要修改则调用Node.textContent = newVnode.text。 2.3 判断新旧节点是否存在子节点，新旧节点子节点是不是相等。 2.4 updateChildren函数，是diff核心。 2.5 只有新节点有子节点就调用createEle(newVnode)。在老dom节点上添加子节点。 2.6 只有旧节点有子节点，新节点为空。可以直接遵循新节点。直接删除老节点。 参考原文点此]]></content>
@@ -441,9 +452,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[day145-LeetCode 121. Best Time to Buy and Sell Stock]]></title>
-    <url>%2F2019%2F06%2F06%2F2019-06-07%2F</url>
-    <content type="text"><![CDATA[题目Say you have an array for which the ith element is the price of a given stock on day i. If you were only permitted to complete at most one transaction (ie, buy one and sell one share of the stock), design an algorithm to find the maximum profit. Example 1: Input: [7, 1, 5, 3, 6, 4] Output: 5 max. difference = 6-1 = 5 (not 7-1 = 6, as selling price needs to be larger than buying price) Example 2: Input: [7, 6, 4, 3, 1] Output: 0 In this case, no transaction is done, i.e. max profit = 0. 分析数组中的元素，从index 0 到最后一位，都表示每天的股价变化。求给出的数组中，利益最大的一天。即，从后往前相减，整数最大的值 题解function maxProfit (prices) &#123; // 表示最低的股价，MAX_表示无限大 let min = Number.MAX_SAFE_INTEGER let maxProfit = 0 for (let i = 0; i &lt; prices.length; i++) &#123; // 冒泡找出最小值 if (prices[i] &lt; min) &#123; min = prices[i] &#125; // 当前可获利的值 let calProfit = prices[i] - min if(calProfit &gt; maxProfit) &#123; maxProfit = calProfit &#125; &#125; return maxProfit&#125;]]></content>
+    <title><![CDATA[day144-LeetCode 112. Path Sum]]></title>
+    <url>%2F2019%2F06%2F06%2F2019-06-06%2F</url>
+    <content type="text"><![CDATA[题目Given a binary tree and a sum, determine if the tree has a root-to-leaf path such that adding up all the values along the path equals the given sum.For example: Given the below binary tree and sum = 22, 5 / \ 4 8 / / \ 11 13 4 / \ \7 2 1 return true, as there exist a root-to-leaf path 5-&gt;4-&gt;11-&gt;2 which sum is 22. 分析leetcode 104的变形。用递归来计算每条路径的总和。求根节点到子树的每条可能路径的和，并检测是否和给出的随机数相等。 从父节点出发，如果父节点加左节点不等于给出的随机数，则回退父节点加右节点，如果不相等且子节点有左右子树则递归上述过程。直到找到和随机数相等的值返回true,否则返回false 题解function hasPathEqualSum (root, sum) &#123; if (root === null) return let list = [] // 计算总和 sumR2L(root, 0) return sumR2L(root, 0) function sumR2L(root, s) &#123; if (root.left === null &amp;&amp; root.right === null) &#123; // 到底的时候，判断总和是否是与sum相同 list.push(s) s += root.val return s === sum &#125; // 右边到底 if (root.left !== null &amp;&amp; root.right === null) &#123; return sumR2L(root.left, s + root.val) &#125; // 左边到底 if (root.left === null &amp;&amp; root.right !== null) &#123; return sumR2L(root.right, s + root.val) &#125; // 两边的树没有到底 return sumR2L(root.left, s + root.val) || sumR2L(root.right, s + root.val) &#125;&#125;]]></content>
       <categories>
         <category>技术</category>
       </categories>
@@ -452,9 +463,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[day144-LeetCode 112. Path Sum]]></title>
-    <url>%2F2019%2F06%2F06%2F2019-06-06%2F</url>
-    <content type="text"><![CDATA[题目Given a binary tree and a sum, determine if the tree has a root-to-leaf path such that adding up all the values along the path equals the given sum.For example: Given the below binary tree and sum = 22, 5 / \ 4 8 / / \ 11 13 4 / \ \7 2 1 return true, as there exist a root-to-leaf path 5-&gt;4-&gt;11-&gt;2 which sum is 22. 分析leetcode 104的变形。用递归来计算每条路径的总和。求根节点到子树的每条可能路径的和，并检测是否和给出的随机数相等。 从父节点出发，如果父节点加左节点不等于给出的随机数，则回退父节点加右节点，如果不相等且子节点有左右子树则递归上述过程。直到找到和随机数相等的值返回true,否则返回false 题解function hasPathEqualSum (root, sum) &#123; if (root === null) return let list = [] // 计算总和 sumR2L(root, 0) return sumR2L(root, 0) function sumR2L(root, s) &#123; if (root.left === null &amp;&amp; root.right === null) &#123; // 到底的时候，判断总和是否是与sum相同 list.push(s) s += root.val return s === sum &#125; // 右边到底 if (root.left !== null &amp;&amp; root.right === null) &#123; return sumR2L(root.left, s + root.val) &#125; // 左边到底 if (root.left === null &amp;&amp; root.right !== null) &#123; return sumR2L(root.right, s + root.val) &#125; // 两边的树没有到底 return sumR2L(root.left, s + root.val) || sumR2L(root.right, s + root.val) &#125;&#125;]]></content>
+    <title><![CDATA[day145-LeetCode 121. Best Time to Buy and Sell Stock]]></title>
+    <url>%2F2019%2F06%2F06%2F2019-06-07%2F</url>
+    <content type="text"><![CDATA[题目Say you have an array for which the ith element is the price of a given stock on day i. If you were only permitted to complete at most one transaction (ie, buy one and sell one share of the stock), design an algorithm to find the maximum profit. Example 1: Input: [7, 1, 5, 3, 6, 4] Output: 5 max. difference = 6-1 = 5 (not 7-1 = 6, as selling price needs to be larger than buying price) Example 2: Input: [7, 6, 4, 3, 1] Output: 0 In this case, no transaction is done, i.e. max profit = 0. 分析数组中的元素，从index 0 到最后一位，都表示每天的股价变化。求给出的数组中，利益最大的一天。即，从后往前相减，整数最大的值 题解function maxProfit (prices) &#123; // 表示最低的股价，MAX_表示无限大 let min = Number.MAX_SAFE_INTEGER let maxProfit = 0 for (let i = 0; i &lt; prices.length; i++) &#123; // 冒泡找出最小值 if (prices[i] &lt; min) &#123; min = prices[i] &#125; // 当前可获利的值 let calProfit = prices[i] - min if(calProfit &gt; maxProfit) &#123; maxProfit = calProfit &#125; &#125; return maxProfit&#125;]]></content>
       <categories>
         <category>技术</category>
       </categories>
@@ -2266,6 +2277,15 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[markdown语法小记]]></title>
+    <url>%2F2017%2F03%2F20%2Fmarkdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[插入表格：1.1. 表格的上下需要空行。空行的多少至关重要 表格中文字居中 在划线部分的划线两端加上”:“ 比如”:—–: | :—-: 代码块:2.1. 合理利用代码块有意想不到的效果。3.]]></content>
+      <tags>
+        <tag>工具</tag>
+        <tag>markdown</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[codewars-count_digits]]></title>
     <url>%2F2017%2F03%2F20%2Fcodewars%2F</url>
     <content type="text"><![CDATA[题目 Take an integer n (n &gt;= 0) and a digit d (0 &lt;= d &lt;= 9) as an integer. Square all numbers k (0 &lt;= k &lt;= n) between 0 and n. Count the numbers of digits d used in the writing of all the k* *2. Call nb_dig (or nbDig or …) the function taking n and d as parameters and returning this count. 例子 n = 10, d = 1,the k * k are 0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100 We are using the digit 1 in 1, 16, 81, 100. The total count is then 4.nb_dig(25, 1):the numbers of interest are 1, 4, 9, 10, 11, 12, 13, 14, 19, 21which squared are 1, 16, 81, 100, 121, 144, 169, 196, 361, 441 so there are 11 digits 1 for the squares of numbers between 0 and 25. 分析 给出n和d，求 0 到 n 中间的平方，再求这些平方的平方，问所得的这些数中包含多少个数字d。大概就是先算出这些数字的平方，然后挨个分解求出其中的值。 解题function nbDig(n,d) &#123; var s = &apos;&apos;; for(var i=0;i&lt;=n;i++)&#123; s += Math.pow(i,2); &#125; return s.split(d).length-1&#125; 牢骚篇今天，进了个群，挺多厉害的人，还私聊了一个有很多 offer 的同学。顿时觉得，自己就是渣渣啊，一点信心都没有。还是得加油吧，要学的东西还很多啊。]]></content>
@@ -2276,15 +2296,6 @@
         <tag>编程</tag>
         <tag>js</tag>
         <tag>codewars</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[markdown语法小记]]></title>
-    <url>%2F2017%2F03%2F20%2Fmarkdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[插入表格：1.1. 表格的上下需要空行。空行的多少至关重要 表格中文字居中 在划线部分的划线两端加上”:“ 比如”:—–: | :—-: 代码块:2.1. 合理利用代码块有意想不到的效果。3.]]></content>
-      <tags>
-        <tag>工具</tag>
-        <tag>markdown</tag>
       </tags>
   </entry>
   <entry>
