@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[day185-具体的diff分析过程（vuejs）-笔记]]></title>
+    <title><![CDATA[day187-diff-updateChildren示例]]></title>
+    <url>%2F2019%2F07%2F19%2F2019-07-19%2F</url>
+    <content type="text"><![CDATA[要点 updateChildren()如何进行比较最终全部替换掉的。 例子： 原有的oldCh的顺序是 A、B、C、D、E、F、G 更新后成ch的顺序是 F、D、A、H、E、C、B、G diff流程示例开始：patchVnode (oldVnode, newVnode))round1:(找到相同的)对比顺序：A-F -&gt; G-G，匹配成功，然后：/** A-F（头头比较：不等） -&gt; G-G（尾尾比较：相等尾部指针往前移动，不满足while条件，开始第二次循环比较） */对G进行patchVnode的操作，更新oldEndVnodeG和newEndVnodeG的elm指针移动，两个尾部指针向左移动，即oldEndIdx-- newEndIdx--round2:对比顺序：A-F -&gt; F-B -&gt; A-B -&gt; F-F，匹配成功，然后：/** （头头比较：不等） -&gt; （尾尾比较：不等）-&gt;（头尾比较：不等）-&gt;（尾头比较：相等） */对F进行patchVnode的操作，更新oldEndVnodeF和newEndVnodeF的elm指针移动，移动指针，即oldEndIdx-- newStartIdx++找到oldStartVnode在dom中所在的位置A，然后在其前面插入更新过的F的elmround3:对比顺序：A-D -&gt; E-B -&gt; A-B -&gt; E-D，仍未成功，取D的key，在oldKeyToIdx中查找，找到对应的D，查找成功，然后：将D取出赋值到 vnodeToMove对D进行patchVnode的操作，更新vnodeToMoveD和newStartVnodeD的elm指针移动，移动指针，即newStartIdx++将oldCh中对应D的vnode置undefined在dom中找到oldStartVnodeA的elm对应的节点，然后在其前面插入更新过的D的elmround4:对比顺序：A-A，对比成功，然后：对A进行patchVnode的操作，更新oldStartVnodeA和newStartVnodeA的elm指针移动，两个尾部指针向左移动，即oldStartIdx++ newStartIdx++round5:对比顺序：B-H -&gt; E-B -&gt; B-B ,对比成功，然后：对B进行patchVnode的操作，更新oldStartVnodeB和newStartVnodeB的elm指针移动，即oldStartIdx++ newEndIdx--在dom中找到oldEndVnodeE的elm的nextSibling节点（即G的elm），然后在其前面插入更新过的B的elmround6:对比顺序：C-H -&gt; E-C -&gt; C-C ,对比成功，然后(同round5)：对C进行patchVnode的操作，更新oldStartVnodeC和newStartVnodeC的elm指针移动，即oldStartIdx++ newEndIdx--在dom中找到oldEndVnodeE的elm的nextSibling节点（即刚刚插入的B的elm），然后在其前面插入更新过的C的elmround7:获取oldStartVnode失败（因为round3的步骤4）,然后：指针移动，即oldStartIdx++round8:对比顺序：E-H、E-E,匹配成功，然后（同round1）：对E进行patchVnode的操作，更新oldEndVnodeE和newEndVnodeE的elm指针移动，两个尾部指针向左移动，即oldEndIdx-- newEndIdx--lastround8之后oldCh提前发生了‘交叉’，退出循环。 参考VUE源码解析DIFF过程一探究竟]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[day186-具体的diff分析过程（vuejs）-笔记]]></title>
     <url>%2F2019%2F07%2F18%2F2019-07-18%2F</url>
     <content type="text"><![CDATA[要点 updateChildren()代码 代码相对较多，较繁琐，这里了解代码和key起的作用就可。 代码 + 内部注释patch过程中父节点相同，父节点文本内容相同，子节点不同updateChildren()的比较。 基本思路就是两个树进行新旧节点的比较。 updateChildren (parentElm, oldCh, newCh) &#123; let oldStartIdx = 0, newStartIdx = 0 let oldStartVnode = oldCh[0] let oldEndIdx = oldCh.length - 1 let oldEndVnode = oldCh[oldEndIdx] let newStartVnode = newCh[0] let newEndIdx = newCh.length - 1 let newEndVnode = newCh[newEndIdx] let oldKeyToIdx let idxInOld let elmToMove let before // 判断遍历是否结束 while (oldStartIdx &lt;= oldEndIdx &amp;&amp; newStartIdx &lt;= newEndIdx) &#123; // 1，不设置key if (oldStartVnode === null) &#123; // 2,都是两头指针相互向中间靠 oldStartVnode = oldCh[++oldStartIdx] &#125; else if (oldEndVnode === null) &#123; oldEndVnode = oldCh[--oldEndIdx] &#125; else if (newStartVnode === null) &#123; newStartVnode = newCh[++newStartIdx] &#125; else if (newEndVnode === null) &#123; newEndVnode = newCh[--newEndIdx] // 3,递归调用，需要看清楚具体比较的东西是什么 &#125; else if (sameVnode(oldStartVnode, newStartVnode)) &#123; patchVnode(oldStartVnode, newEndVnode) // 如果碰到一样的节点，就深度遍历比较，走递归 oldStartVnode = oldCh[++oldStartIdx] newStartVnode = newCh[++newStartIdx] &#125; else if (sameVnode(oldEndVnode, newEndVnode)) &#123; patchVnode(oldEndVnode, newEndVnode) oldEndVnode = oldCh[--oldEndIdx] newEndVnode = newCh[--newEndIdx] &#125; else if (sameVnode(oldStartVnode, newEndVnode)) &#123; // ？？？？ patchVnode(oldEndVnode, newEndVnode) // 需要对dom进行移动 api.insertBefore(parentElm, oldStartVnode.el, api.nextSibling(oldEndVnode.el)) oldStartVnode = oldCh[++oldStartIdx] newEndVnode = newCh[--newEndIdx] &#125; else if (sameVnode(oldEndVnode, newStartVnode)) &#123; patchVnode(oldEndVnode, newStartVnode) // 需要对dom进行移动 api.insertBefore(parentElm, oldEndVnode.el, oldStartVnode.el) oldEndVnode = oldCh[--oldEndIdx] newStartVnode = newCh[++newStartIdx] &#125; else &#123; // 设置key，除头尾两端比较外，加了一个oldKeyToIdx对象表，从中查找匹配的节点 if (oldKeyToIdx === undefined) &#123; // 有key时生成index表 oldKeyToIdx = createKeyToOldIdx(oldCh, oldStartIdx, oldEndIdx) &#125; idxInOld = oldKeyToIdx[newStartVnode.key] if (!idxInOld) &#123; api.insertBefore(parentElm, createEle(newStartVnode).el, oldStartVnode.el) newStartVnode = newCh[++newStartIdx] &#125; else &#123; elmToMove = oldCh[idxInOld] if (elmToMove.sel !== newStartVnode.sel) &#123; api.insertBefore(parentElm, createEle(newStartVnode).el, oldStartVnode.el) &#125; else &#123; patchVnode(elmToMove, newStartVnode) oldCh[idxInOld] = null api.insertBefore(parentElm, elmToMove.el, oldStartVnode.el) &#125; newStartVnode = newCh[++newStartIdx] &#125; &#125; &#125; if (oldStartIdx &gt; oldEndIdx) &#123; before = newCh[newEndIdx + 1] === null ? null : newCh[newEndIdx + 1].el addVnodes(parentElm, before, newCh, newStartIdx, newEndIdx) &#125; else if (newStartIdx &gt; newEndIdx) &#123; removeVnodess(parentElm, oldCh, oldStartIdx, oldEndIdx) &#125;&#125; 参考原文点此]]></content>
       <categories>
@@ -738,9 +749,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[day118-手写简单的函数柯里化-笔记]]></title>
-    <url>%2F2019%2F05%2F10%2F2019-05-10%2F</url>
-    <content type="text"><![CDATA[前言函数柯里化是属于高阶函数中一种常见的技术。特点就是参数复用、提前返回和延迟执行。 代码function curry (fn, args) &#123; var length = fn.length var args = args || [] return function () &#123; newArgs = args.concat(Array.prototype.slice.call(arguments)) if (newArgs.length &lt; length) &#123; return curry.call(this, fn, newArgs) &#125; else &#123; return fn.apply(this, newArgs) &#125; &#125;&#125;function multiFn(a, b, c) &#123; return a * b * c&#125;var multi = curry(multiFn)multi(1)(2)(3)multi(1,2,3)multi(1)(2,3)multi(1,2)(3)]]></content>
+    <title><![CDATA[day119-实现一个instanceOf笔记]]></title>
+    <url>%2F2019%2F05%2F10%2F2019-05-11%2F</url>
+    <content type="text"><![CDATA[前言话不多说，这篇是水篇。 代码// 实现一个instanceOffunction myInstanceOf(left, right) &#123; let proto = left.__proto__ let prototype = right.prototype while (true) &#123; if (!proto) &#123; return false &#125; if (proto === prototype) &#123; return false &#125; proto === proto.__proto__ &#125;&#125;]]></content>
       <categories>
         <category>技术</category>
       </categories>
@@ -749,9 +760,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[day119-实现一个instanceOf笔记]]></title>
-    <url>%2F2019%2F05%2F10%2F2019-05-11%2F</url>
-    <content type="text"><![CDATA[前言话不多说，这篇是水篇。 代码// 实现一个instanceOffunction myInstanceOf(left, right) &#123; let proto = left.__proto__ let prototype = right.prototype while (true) &#123; if (!proto) &#123; return false &#125; if (proto === prototype) &#123; return false &#125; proto === proto.__proto__ &#125;&#125;]]></content>
+    <title><![CDATA[day118-手写简单的函数柯里化-笔记]]></title>
+    <url>%2F2019%2F05%2F10%2F2019-05-10%2F</url>
+    <content type="text"><![CDATA[前言函数柯里化是属于高阶函数中一种常见的技术。特点就是参数复用、提前返回和延迟执行。 代码function curry (fn, args) &#123; var length = fn.length var args = args || [] return function () &#123; newArgs = args.concat(Array.prototype.slice.call(arguments)) if (newArgs.length &lt; length) &#123; return curry.call(this, fn, newArgs) &#125; else &#123; return fn.apply(this, newArgs) &#125; &#125;&#125;function multiFn(a, b, c) &#123; return a * b * c&#125;var multi = curry(multiFn)multi(1)(2)(3)multi(1,2,3)multi(1)(2,3)multi(1,2)(3)]]></content>
       <categories>
         <category>技术</category>
       </categories>
@@ -2137,8 +2148,8 @@
         <category>学习</category>
       </categories>
       <tags>
-        <tag>git</tag>
         <tag>工具</tag>
+        <tag>git</tag>
       </tags>
   </entry>
   <entry>
@@ -2281,8 +2292,8 @@
     <url>%2F2017%2F03%2F20%2Fmarkdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0%2F</url>
     <content type="text"><![CDATA[插入表格：1.1. 表格的上下需要空行。空行的多少至关重要 表格中文字居中 在划线部分的划线两端加上”:“ 比如”:—–: | :—-: 代码块:2.1. 合理利用代码块有意想不到的效果。3.]]></content>
       <tags>
-        <tag>工具</tag>
         <tag>markdown</tag>
+        <tag>工具</tag>
       </tags>
   </entry>
   <entry>
