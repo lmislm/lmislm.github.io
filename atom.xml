@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-07-23T15:25:36.985Z</updated>
+  <updated>2019-07-24T14:57:24.790Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day192-event loop-处理过程</title>
+    <link href="http://lmislm.com/2019/07/24/2019-07-24/"/>
+    <id>http://lmislm.com/2019/07/24/2019-07-24/</id>
+    <published>2019-07-23T16:00:00.000Z</published>
+    <updated>2019-07-24T14:57:24.790Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><ol><li>event loop的处理过程（Processing model）<a id="more"></a><h2 id="规范"><a href="#规范" class="headerlink" title="规范"></a>规范</h2></li></ol><blockquote><p><a href="https://html.spec.whatwg.org/multipage/webappapis.html#event-loop-processing-model" target="_blank" rel="noopener">event-loop-processing-model</a></p></blockquote><p>只要<code>event loop</code>存在，就会不断执行下面的步骤：</p><ol><li>让task queue成为事件循环的任务队列之一，以用户代理定义的方式选择，约束条件是所选任务队列必须至少包含一个可运行的任务。如果没有这样的任务队列，那么跳到下一个微任务步骤。</li><li>让oldesttask成为taskqueue中的第一个可运行任务，并将其从taskqueue中删除。</li><li>通过执行以下步骤报告用户代理不执行此循环的持续时间： ….</li><li>将事件循环当前正在运行的任务设置为OldestTask。</li><li>执行旧任务的步骤。</li><li>从其任务队列中删除OldestTask。</li><li>Microtasks: 执行microtasks任务检查点（microtasks队列里的任务）。<blockquote><p>…</p></blockquote></li><li>更新渲染<blockquote><p>…</p></blockquote></li><li>如果这是一个worker event loop，但是没有任务在task队列中，并且WorkerGlobalScope对象的closing标识为true，则销毁event loop，中止这些步骤，然后进行定义在Web workers章节的run a worker。</li><li>返回到第一步。</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;event loop的处理过程（Processing model）
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>day191-MyVue-完成</title>
@@ -473,30 +496,6 @@
 &lt;ol&gt;
 &lt;li&gt;循环&lt;/li&gt;
 &lt;li&gt;递归
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day172-TypeScript基础小记-抽象类</title>
-    <link href="http://lmislm.com/2019/07/04/2019-07-04/"/>
-    <id>http://lmislm.com/2019/07/04/2019-07-04/</id>
-    <published>2019-07-03T16:00:00.000Z</published>
-    <updated>2019-07-11T14:24:18.473Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h3><ol><li><code>abstract</code>关键字。</li><li>抽象方法。<a id="more"></a></li></ol><h3 id="abstract关键字"><a href="#abstract关键字" class="headerlink" title="abstract关键字"></a><code>abstract</code>关键字</h3><blockquote><p>抽象类做其他<code>派生类</code>的<code>基类</code>使用。抽象类一般不会直接被<code>实例化</code>。</p></blockquote><blockquote><p>抽象类可以包含成员的实现细节。<br><code>abstract</code>关键字是用于定义<code>抽象类</code>和在抽象类内部定义抽象方法。<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">abstract <span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">  abstract makeSound(): <span class="keyword">void</span></span><br><span class="line">  move(): <span class="keyword">void</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'到处走'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p></blockquote><h3 id="抽象方法"><a href="#抽象方法" class="headerlink" title="抽象方法"></a>抽象方法</h3><blockquote><p><code>抽象类</code>中的<code>抽象方法</code>不包含具体实现并且必须在<code>派生类</code>中实现。<code>抽象方法</code>的语法与<code>接口方法</code>相似。</p></blockquote><blockquote><p>两者都是定义<code>方法签名</code>但不包含<code>方法体</code>。然而，<code>抽象方法</code>必须包含<code>abstract</code>关键字并且可以包含<code>访问修饰符</code>。 </p></blockquote><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">abstract <span class="class"><span class="keyword">class</span> <span class="title">Department</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(public name: string) &#123;&#125;</span><br><span class="line">  printName(): <span class="keyword">void</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Department name:'</span> + <span class="keyword">this</span>.name)</span><br><span class="line">  &#125;</span><br><span class="line">  abstract printMeeting(): <span class="keyword">void</span> <span class="comment">// 必须在派生类中实现</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AccountingDepartment</span> <span class="keyword">extends</span> <span class="title">Department</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>() &#123;</span><br><span class="line">    <span class="keyword">super</span>(<span class="string">'银行'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  printMeeting(): <span class="keyword">void</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'银行每周一早上10点开门'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  generateReports(): <span class="keyword">void</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'生成银行报告'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> department: Department <span class="comment">// 允许创建一个对抽象类型的引用</span></span><br><span class="line"><span class="comment">// department = new Department() // 无法创建抽象类的实例。ts(2511)</span></span><br><span class="line">department = <span class="keyword">new</span> AccountingDepartment() <span class="comment">// 允许对一个抽象子类进行实例化和赋值</span></span><br><span class="line">department.printMeeting()</span><br><span class="line">department.printName()</span><br><span class="line">department.generateReports() <span class="comment">// 类型“Department”上不存在属性“generateReports”。ts(2339)</span></span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;abstract&lt;/code&gt;关键字。&lt;/li&gt;
-&lt;li&gt;抽象方法。
     
     </summary>
     
