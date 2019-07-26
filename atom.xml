@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-07-25T14:09:49.308Z</updated>
+  <updated>2019-07-26T15:09:49.631Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day194-控制contenteditable的光标</title>
+    <link href="http://lmislm.com/2019/07/26/2019-07-26/"/>
+    <id>http://lmislm.com/2019/07/26/2019-07-26/</id>
+    <published>2019-07-25T16:00:00.000Z</published>
+    <updated>2019-07-26T15:09:49.631Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><p>元素为<code>contenteditable</code>时控制光标在尾部，方法适用于粘贴纯文本时，光标的定位。<br><a id="more"></a></p><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">placeCaretAtEnd</span>(<span class="params">el</span>) </span>&#123;</span><br><span class="line">  el.focus();</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">window</span>.getSelection != <span class="string">"undefined"</span></span><br><span class="line">      &amp;&amp; <span class="keyword">typeof</span> <span class="built_in">document</span>.createRange != <span class="string">"undefined"</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> range = <span class="built_in">document</span>.createRange();</span><br><span class="line">    range.selectNodeContents(el);</span><br><span class="line">    range.collapse(<span class="literal">false</span>);</span><br><span class="line">    <span class="keyword">var</span> sel = <span class="built_in">window</span>.getSelection();</span><br><span class="line">    sel.removeAllRanges();</span><br><span class="line">    sel.addRange(range);</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">document</span>.body.createTextRange != <span class="string">"undefined"</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> textRange = <span class="built_in">document</span>.body.createTextRange();</span><br><span class="line">    textRange.moveToElementText(el);</span><br><span class="line">    textRange.collapse(<span class="literal">false</span>);</span><br><span class="line">    textRange.select();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">placeCaretAtEnd( <span class="built_in">document</span>.querySelector(<span class="string">'p'</span>) );</span><br></pre></td></tr></table></figure><h2 id="来源"><a href="#来源" class="headerlink" title="来源"></a>来源</h2><p><a href="https://stackoverflow.com/questions/4233265/contenteditable-set-caret-at-the-end-of-the-text-cross-browser/4238971#4238971" target="_blank" rel="noopener">stackoverflow—contenteditable, set caret at the end of the text (cross-browser)</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h2&gt;&lt;p&gt;元素为&lt;code&gt;contenteditable&lt;/code&gt;时控制光标在尾部，方法适用于粘贴纯文本时，光标的定位。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>day193-模拟new</title>
@@ -472,28 +494,6 @@
     <summary type="html">
     
       &lt;h3 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;contenteditable&lt;/strong&gt;&lt;br&gt;这里是&lt;code&gt;contentedtable&lt;/code&gt;的第二种写法。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day174-contenteditable</title>
-    <link href="http://lmislm.com/2019/07/06/2019-07-06/"/>
-    <id>http://lmislm.com/2019/07/06/2019-07-06/</id>
-    <published>2019-07-05T16:00:00.000Z</published>
-    <updated>2019-07-11T14:24:18.474Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h3><p><strong>contenteditable</strong><br>利用<code>contenteditable</code>来做行内编辑。与利用<code>input</code>的区别是，能够保留内容的样式，而<code>input</code>内输入的是纯文本。<br>这里依靠<code>Vue2</code>做了一个小组件。<br><a id="more"></a></p><h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><p>EditDiv组件</p><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;!-- EditDiv Vue <span class="number">2</span> contentEditable <span class="keyword">with</span> v-model --&gt;</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div</span><br><span class="line">    ref=<span class="string">"diveditable"</span></span><br><span class="line">    contenteditable</span><br><span class="line">    v-on=<span class="string">"listeners"</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span></span>=<span class="string">"edit-div"</span></span><br><span class="line">  &gt;</span><br><span class="line">  &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  name: <span class="string">'EditDiv'</span>,</span><br><span class="line">  props: &#123;</span><br><span class="line">    value: &#123;</span><br><span class="line">      type: <span class="built_in">String</span>,</span><br><span class="line">      <span class="keyword">default</span>: <span class="string">''</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  data () &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;&#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  computed: &#123;</span><br><span class="line">    listeners () &#123;</span><br><span class="line">      <span class="keyword">return</span> &#123; ...this.$listeners, <span class="attr">input</span>: <span class="keyword">this</span>.onInput &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  mounted () &#123;</span><br><span class="line">    <span class="keyword">this</span>.$refs.diveditable.innerText = <span class="keyword">this</span>.value</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    onInput (e) &#123;</span><br><span class="line">      <span class="keyword">this</span>.$emit(<span class="string">'input'</span>, e.target.innerText)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  created () &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">&lt;style lang='less' scoped&gt;</span></span><br><span class="line"><span class="regexp">.edit-div &#123;</span></span><br><span class="line"><span class="regexp">    width: 100%;</span></span><br><span class="line"><span class="regexp">    height: 100%;</span></span><br><span class="line"><span class="regexp">    overflow: auto;</span></span><br><span class="line"><span class="regexp">    word-break: break-all;</span></span><br><span class="line"><span class="regexp">    outline: none;</span></span><br><span class="line"><span class="regexp">    user-select: text;</span></span><br><span class="line"><span class="regexp">    white-space: pre-wrap;</span></span><br><span class="line"><span class="regexp">    text-align: left;</span></span><br><span class="line"><span class="regexp">    &amp;[contenteditable=true]&#123;</span></span><br><span class="line"><span class="regexp">      user-modify: read-write-plaintext-only;</span></span><br><span class="line"><span class="regexp">      &amp;:empty:before &#123;</span></span><br><span class="line"><span class="regexp">        content: attr(placeholder);</span></span><br><span class="line"><span class="regexp">        display: block;</span></span><br><span class="line"><span class="regexp">        color: #ccc;</span></span><br><span class="line"><span class="regexp">      &#125;</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">&lt;/</span>style&gt;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;contenteditable&lt;/strong&gt;&lt;br&gt;利用&lt;code&gt;contenteditable&lt;/code&gt;来做行内编辑。与利用&lt;code&gt;input&lt;/code&gt;的区别是，能够保留内容的样式，而&lt;code&gt;input&lt;/code&gt;内输入的是纯文本。&lt;br&gt;这里依靠&lt;code&gt;Vue2&lt;/code&gt;做了一个小组件。&lt;br&gt;
     
     </summary>
     
