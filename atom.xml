@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-07-26T15:09:49.631Z</updated>
+  <updated>2019-07-27T14:22:25.378Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day195-Vue-style Hooks</title>
+    <link href="http://lmislm.com/2019/07/27/2019-07-27/"/>
+    <id>http://lmislm.com/2019/07/27/2019-07-27/</id>
+    <published>2019-07-26T16:00:00.000Z</published>
+    <updated>2019-07-27T14:22:25.378Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><p>在vue3中，将更多的采用hook。个人觉得，如果能保留之前的东西再加上hook，将会更加的灵活。</p><ol><li>API that maps Vue’s existing API.</li><li>Usage in Normal Vue Components<a id="more"></a><h2 id="API-that-maps-Vue’s-existing-API"><a href="#API-that-maps-Vue’s-existing-API" class="headerlink" title="API that maps Vue’s existing API."></a>API that maps Vue’s existing API.</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;</span><br><span class="line">  withHooks,</span><br><span class="line">  useData,</span><br><span class="line">  useComputed,</span><br><span class="line">  useWatch,</span><br><span class="line">  useMounted,</span><br><span class="line">  useUpdated,</span><br><span class="line">  useDestroyed</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">"vue-hooks"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Foo = withHooks(<span class="function"><span class="params">h</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> data = useData(&#123;</span><br><span class="line">    count: <span class="number">0</span></span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> double = useComputed(<span class="function"><span class="params">()</span> =&gt;</span> data.count * <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">  useWatch(<span class="function"><span class="params">()</span> =&gt;</span> data.count, (val, prevVal) =&gt; &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`count is: <span class="subst">$&#123;val&#125;</span>`</span>)</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  useMounted(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'mounted!'</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">  useUpdated(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'updated!'</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">  useDestroyed(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'destroyed!'</span>)</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> h(<span class="string">'div'</span>, [</span><br><span class="line">    h(<span class="string">'div'</span>, <span class="string">`count is <span class="subst">$&#123;data.count&#125;</span>`</span>),</span><br><span class="line">    h(<span class="string">'div'</span>, <span class="string">`double count is <span class="subst">$&#123;double&#125;</span>`</span>),</span><br><span class="line">    h(<span class="string">'button'</span>, &#123; <span class="attr">on</span>: &#123; <span class="attr">click</span>: <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// still got that direct mutation!</span></span><br><span class="line">      data.count++</span><br><span class="line">    &#125;&#125;&#125;, <span class="string">'count++'</span>)</span><br><span class="line">  ])</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li></ol><h2 id="Usage-in-Normal-Vue-Components"><a href="#Usage-in-Normal-Vue-Components" class="headerlink" title="Usage in Normal Vue Components"></a>Usage in Normal Vue Components</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; hooks, useData, useComputed &#125; <span class="keyword">from</span> <span class="string">'vue-hooks'</span></span><br><span class="line"></span><br><span class="line">Vue.use(hooks)</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  template: <span class="string">`</span></span><br><span class="line"><span class="string">    &lt;div @click="data.count++"&gt;</span></span><br><span class="line"><span class="string">      &#123;&#123; data.count &#125;&#125; &#123;&#123; double &#125;&#125;</span></span><br><span class="line"><span class="string">    &lt;/div&gt;</span></span><br><span class="line"><span class="string">  `</span>,</span><br><span class="line">  hooks() &#123;</span><br><span class="line">    <span class="keyword">const</span> data = useData(&#123;</span><br><span class="line">      count: <span class="number">0</span></span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> double = useComputed(<span class="function"><span class="params">()</span> =&gt;</span> data.count * <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      data,</span><br><span class="line">      double</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h2&gt;&lt;p&gt;在vue3中，将更多的采用hook。个人觉得，如果能保留之前的东西再加上hook，将会更加的灵活。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;API that maps Vue’s existing API.&lt;/li&gt;
+&lt;li&gt;Usage in Normal Vue Components
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>day194-控制contenteditable的光标</title>
@@ -472,28 +497,6 @@
 &lt;ol&gt;
 &lt;li&gt;&lt;code&gt;deepMerge&lt;/code&gt;, &lt;code&gt;groupBy&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;flattenDeep&lt;/code&gt;, nested Array(嵌套数组)
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day175-contenteditable（2）</title>
-    <link href="http://lmislm.com/2019/07/07/2019-07-07/"/>
-    <id>http://lmislm.com/2019/07/07/2019-07-07/</id>
-    <published>2019-07-06T16:00:00.000Z</published>
-    <updated>2019-07-11T14:36:09.442Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h3><p><strong>contenteditable</strong><br>这里是<code>contentedtable</code>的第二种写法。<br><a id="more"></a></p><h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><p>VEdit组件</p><blockquote><p>VEdit vue2 实现 div contenteditable=”true” 类似于 v-model 的效果</p><ul><li>参考<br><a href="https://segmentfault.com/a/1190000008261449#articleHeader1" target="_blank" rel="noopener">https://segmentfault.com/a/1190000008261449#articleHeader1</a><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div</span><br><span class="line">    ref=<span class="string">"diveditable"</span></span><br><span class="line">    v-html=<span class="string">"innerText"</span></span><br><span class="line">    :contenteditable=<span class="string">"canEdit"</span></span><br><span class="line">    @input=<span class="string">"changeText"</span></span><br><span class="line">    @focus=<span class="string">"isLocked = true"</span></span><br><span class="line">    @blur=<span class="string">"isLocked = false"</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span></span>=<span class="string">"v-edit"</span></span><br><span class="line">  &gt;</span><br><span class="line">  &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  name: <span class="string">'VEdit'</span>,</span><br><span class="line">  props: &#123;</span><br><span class="line">    value: &#123;</span><br><span class="line">      type: <span class="built_in">String</span>,</span><br><span class="line">      <span class="keyword">default</span>: <span class="string">''</span></span><br><span class="line">    &#125;,</span><br><span class="line">    canEdit: &#123;</span><br><span class="line">      type: <span class="built_in">Boolean</span>,</span><br><span class="line">      <span class="keyword">default</span>: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  data () &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      innerText: <span class="keyword">this</span>.value,</span><br><span class="line">      isLocked: <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  watch: &#123;</span><br><span class="line">    <span class="string">'value'</span> () &#123;</span><br><span class="line">      <span class="keyword">if</span> (!<span class="keyword">this</span>.isLocked || !<span class="keyword">this</span>.innerText) &#123;</span><br><span class="line">        <span class="keyword">this</span>.innerText = <span class="keyword">this</span>.value</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    changeText () &#123;</span><br><span class="line">      <span class="keyword">this</span>.$emit(<span class="string">'input'</span>, <span class="keyword">this</span>.$el.innerHTML)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  created () &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">&lt;style lang='less' scoped&gt;</span></span><br><span class="line"><span class="regexp">.v-edit &#123;</span></span><br><span class="line"><span class="regexp">  width: 100%;</span></span><br><span class="line"><span class="regexp">  height: 100%;</span></span><br><span class="line"><span class="regexp">  overflow: auto;</span></span><br><span class="line"><span class="regexp">  word-break: break-all;</span></span><br><span class="line"><span class="regexp">  outline: none;</span></span><br><span class="line"><span class="regexp">  user-select: text;</span></span><br><span class="line"><span class="regexp">  white-space: pre-wrap;</span></span><br><span class="line"><span class="regexp">  text-align: left;</span></span><br><span class="line"><span class="regexp">  &amp;[contenteditable=true]&#123;</span></span><br><span class="line"><span class="regexp">    user-modify: read-write-plaintext-only;</span></span><br><span class="line"><span class="regexp">    &amp;:empty:before &#123;</span></span><br><span class="line"><span class="regexp">      content: attr(placeholder);</span></span><br><span class="line"><span class="regexp">      display: block;</span></span><br><span class="line"><span class="regexp">      color: #ccc;</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">&lt;/</span>style&gt;</span><br></pre></td></tr></table></figure></li></ul></blockquote>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;contenteditable&lt;/strong&gt;&lt;br&gt;这里是&lt;code&gt;contentedtable&lt;/code&gt;的第二种写法。&lt;br&gt;
     
     </summary>
     
