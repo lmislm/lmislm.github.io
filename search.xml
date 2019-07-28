@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>day196-事件循环的常见问题和错误观点</title>
+      <link href="/2019/07/28/2019-07-28/"/>
+      <url>/2019/07/28/2019-07-28/</url>
+      
+        <content type="html"><![CDATA[<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><ol><li>Node.js 是完全单线程？</li><li>其他线程？</li><li>事件循环是种栈结构？<a id="more"></a><h2 id="Node-js-是完全单线程"><a href="#Node-js-是完全单线程" class="headerlink" title="Node.js 是完全单线程?"></a>Node.js 是完全单线程?</h2>Node 单线程运行，但是Nodejs中一些标准库函数为了保证程序速度和性能并不是运行在同一个线程上（例如：fs函数）。</li></ol><h2 id="其他线程运行在什么地方？"><a href="#其他线程运行在什么地方？" class="headerlink" title="其他线程运行在什么地方？"></a>其他线程运行在什么地方？</h2><p>既然NOdejs不是单线程，那么其他线程运行在什么地方呢？Nodejs使用名为<code>libuv</code>的特殊库模块来执行异步操作。此库还和Node的后台逻辑一起使用，用来管理被称为<code>libuv线程池</code>的特殊线程池。</p><p>该特殊线程池由四个线程组成，用于委派对于事件循环来说太重（长时间运行，过于昂贵）的操作。</p><h2 id="事件循环是种栈结构"><a href="#事件循环是种栈结构" class="headerlink" title="事件循环是种栈结构"></a>事件循环是种栈结构</h2><p>在线程中可能涉及一些类似栈的结构，但其实是事件循环由一系列的阶段所组成，每个阶段都有自己的特定任务，所有阶段都以循环重复的方式去处理。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 前端 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>day195-Vue-style Hooks</title>
       <link href="/2019/07/27/2019-07-27/"/>
       <url>/2019/07/27/2019-07-27/</url>
@@ -1254,11 +1279,11 @@
     
     
     <entry>
-      <title>day145-LeetCode 121. Best Time to Buy and Sell Stock</title>
-      <link href="/2019/06/06/2019-06-07/"/>
-      <url>/2019/06/06/2019-06-07/</url>
+      <title>day144-LeetCode 112. Path Sum</title>
+      <link href="/2019/06/06/2019-06-06/"/>
+      <url>/2019/06/06/2019-06-06/</url>
       
-        <content type="html"><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>Say you have an array for which the ith element is the price of a given stock on day i.</p><p>If you were only permitted to complete at most one transaction (ie, buy one and sell one share of the stock), design an algorithm to find the maximum profit.</p><p>Example 1: Input: [7, 1, 5, 3, 6, 4]</p><p>Output: 5</p><p>max. difference = 6-1 = 5 (not 7-1 = 6, as selling price needs to be larger than buying price)</p><p>Example 2: Input: [7, 6, 4, 3, 1]</p><p>Output: 0</p><p>In this case, no transaction is done, i.e. max profit = 0.</p><a id="more"></a><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>数组中的元素，从index 0 到最后一位，都表示每天的股价变化。求给出的数组中，利益最大的一天。即，从后往前相减，整数最大的值</p><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">maxProfit</span> (<span class="params">prices</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 表示最低的股价，MAX_表示无限大</span></span><br><span class="line">    <span class="keyword">let</span> min = <span class="built_in">Number</span>.MAX_SAFE_INTEGER</span><br><span class="line">    <span class="keyword">let</span> maxProfit = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; prices.length; i++) &#123;</span><br><span class="line">        <span class="comment">// 冒泡找出最小值</span></span><br><span class="line">        <span class="keyword">if</span> (prices[i] &lt; min) &#123;</span><br><span class="line">            min = prices[i]</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 当前可获利的值</span></span><br><span class="line">        <span class="keyword">let</span> calProfit = prices[i] - min</span><br><span class="line">        <span class="keyword">if</span>(calProfit &gt; maxProfit) &#123;</span><br><span class="line">            maxProfit = calProfit</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> maxProfit</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+        <content type="html"><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>Given a binary tree and a sum, determine if the tree has a root-to-leaf path such that adding up all the values along the path equals the given sum.<br>For example: Given the below binary tree and sum = 22,<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">      5</span><br><span class="line">    /  \</span><br><span class="line">   4    8</span><br><span class="line">  /    / \</span><br><span class="line"> 11   13  4</span><br><span class="line"> /     \   \</span><br><span class="line">7       2   1</span><br></pre></td></tr></table></figure></p><p>return true, as there exist a root-to-leaf path 5-&gt;4-&gt;11-&gt;2 which sum is 22.</p><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p><strong>leetcode 104</strong>的变形。用递归来计算每条路径的总和。<br>求根节点到子树的每条可能路径的和，并检测是否和给出的随机数相等。</p><p>从父节点出发，如果父节点加左节点不等于给出的随机数，则回退父节点加右节点，<br>如果不相等且子节点有左右子树则递归上述过程。<br>直到找到和随机数相等的值返回true,否则返回false</p><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hasPathEqualSum</span> (<span class="params">root, sum</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (root === <span class="literal">null</span>) <span class="keyword">return</span></span><br><span class="line">  <span class="keyword">let</span> list = []</span><br><span class="line">  <span class="comment">// 计算总和</span></span><br><span class="line">  sumR2L(root, <span class="number">0</span>)</span><br><span class="line">  <span class="keyword">return</span> sumR2L(root, <span class="number">0</span>)</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">sumR2L</span>(<span class="params">root, s</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root.left === <span class="literal">null</span> &amp;&amp; root.right === <span class="literal">null</span>) &#123;</span><br><span class="line">      <span class="comment">// 到底的时候，判断总和是否是与sum相同</span></span><br><span class="line">      list.push(s)</span><br><span class="line">      s += root.val</span><br><span class="line">      <span class="keyword">return</span> s === sum</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 右边到底</span></span><br><span class="line">    <span class="keyword">if</span> (root.left !== <span class="literal">null</span> &amp;&amp; root.right === <span class="literal">null</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> sumR2L(root.left, s + root.val)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 左边到底</span></span><br><span class="line">    <span class="keyword">if</span> (root.left === <span class="literal">null</span> &amp;&amp; root.right !== <span class="literal">null</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> sumR2L(root.right, s + root.val)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 两边的树没有到底</span></span><br><span class="line">    <span class="keyword">return</span> sumR2L(root.left, s + root.val) || sumR2L(root.right, s + root.val)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       
       
       <categories>
@@ -1279,11 +1304,11 @@
     
     
     <entry>
-      <title>day144-LeetCode 112. Path Sum</title>
-      <link href="/2019/06/06/2019-06-06/"/>
-      <url>/2019/06/06/2019-06-06/</url>
+      <title>day145-LeetCode 121. Best Time to Buy and Sell Stock</title>
+      <link href="/2019/06/06/2019-06-07/"/>
+      <url>/2019/06/06/2019-06-07/</url>
       
-        <content type="html"><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>Given a binary tree and a sum, determine if the tree has a root-to-leaf path such that adding up all the values along the path equals the given sum.<br>For example: Given the below binary tree and sum = 22,<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">      5</span><br><span class="line">    /  \</span><br><span class="line">   4    8</span><br><span class="line">  /    / \</span><br><span class="line"> 11   13  4</span><br><span class="line"> /     \   \</span><br><span class="line">7       2   1</span><br></pre></td></tr></table></figure></p><p>return true, as there exist a root-to-leaf path 5-&gt;4-&gt;11-&gt;2 which sum is 22.</p><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p><strong>leetcode 104</strong>的变形。用递归来计算每条路径的总和。<br>求根节点到子树的每条可能路径的和，并检测是否和给出的随机数相等。</p><p>从父节点出发，如果父节点加左节点不等于给出的随机数，则回退父节点加右节点，<br>如果不相等且子节点有左右子树则递归上述过程。<br>直到找到和随机数相等的值返回true,否则返回false</p><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hasPathEqualSum</span> (<span class="params">root, sum</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (root === <span class="literal">null</span>) <span class="keyword">return</span></span><br><span class="line">  <span class="keyword">let</span> list = []</span><br><span class="line">  <span class="comment">// 计算总和</span></span><br><span class="line">  sumR2L(root, <span class="number">0</span>)</span><br><span class="line">  <span class="keyword">return</span> sumR2L(root, <span class="number">0</span>)</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">sumR2L</span>(<span class="params">root, s</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root.left === <span class="literal">null</span> &amp;&amp; root.right === <span class="literal">null</span>) &#123;</span><br><span class="line">      <span class="comment">// 到底的时候，判断总和是否是与sum相同</span></span><br><span class="line">      list.push(s)</span><br><span class="line">      s += root.val</span><br><span class="line">      <span class="keyword">return</span> s === sum</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 右边到底</span></span><br><span class="line">    <span class="keyword">if</span> (root.left !== <span class="literal">null</span> &amp;&amp; root.right === <span class="literal">null</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> sumR2L(root.left, s + root.val)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 左边到底</span></span><br><span class="line">    <span class="keyword">if</span> (root.left === <span class="literal">null</span> &amp;&amp; root.right !== <span class="literal">null</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> sumR2L(root.right, s + root.val)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 两边的树没有到底</span></span><br><span class="line">    <span class="keyword">return</span> sumR2L(root.left, s + root.val) || sumR2L(root.right, s + root.val)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+        <content type="html"><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>Say you have an array for which the ith element is the price of a given stock on day i.</p><p>If you were only permitted to complete at most one transaction (ie, buy one and sell one share of the stock), design an algorithm to find the maximum profit.</p><p>Example 1: Input: [7, 1, 5, 3, 6, 4]</p><p>Output: 5</p><p>max. difference = 6-1 = 5 (not 7-1 = 6, as selling price needs to be larger than buying price)</p><p>Example 2: Input: [7, 6, 4, 3, 1]</p><p>Output: 0</p><p>In this case, no transaction is done, i.e. max profit = 0.</p><a id="more"></a><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>数组中的元素，从index 0 到最后一位，都表示每天的股价变化。求给出的数组中，利益最大的一天。即，从后往前相减，整数最大的值</p><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">maxProfit</span> (<span class="params">prices</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 表示最低的股价，MAX_表示无限大</span></span><br><span class="line">    <span class="keyword">let</span> min = <span class="built_in">Number</span>.MAX_SAFE_INTEGER</span><br><span class="line">    <span class="keyword">let</span> maxProfit = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; prices.length; i++) &#123;</span><br><span class="line">        <span class="comment">// 冒泡找出最小值</span></span><br><span class="line">        <span class="keyword">if</span> (prices[i] &lt; min) &#123;</span><br><span class="line">            min = prices[i]</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 当前可获利的值</span></span><br><span class="line">        <span class="keyword">let</span> calProfit = prices[i] - min</span><br><span class="line">        <span class="keyword">if</span>(calProfit &gt; maxProfit) &#123;</span><br><span class="line">            maxProfit = calProfit</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> maxProfit</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       
       
       <categories>
@@ -5396,27 +5421,6 @@
     
     
     <entry>
-      <title>markdown语法小记</title>
-      <link href="/2017/03/20/markdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0/"/>
-      <url>/2017/03/20/markdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0/</url>
-      
-        <content type="html"><![CDATA[<ol><li>插入表格：<br>1.1. 表格的上下需要空行。空行的多少至关重要<ul><li>表格中文字居中 在划线部分的划线两端加上”<strong>:</strong>“<ul><li>比如”<strong>:</strong>—–<strong>:</strong> | <strong>:</strong>—-<strong>:</strong><a id="more"></a></li></ul></li></ul></li><li><code>代码块</code>:<br>2.1. 合理利用代码块有意想不到的效果。<br>3.</li></ol>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> markdown </tag>
-            
-            <tag> 工具 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>codewars-count_digits</title>
       <link href="/2017/03/20/codewars/"/>
       <url>/2017/03/20/codewars/</url>
@@ -5438,6 +5442,27 @@
             <tag> js </tag>
             
             <tag> codewars </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>markdown语法小记</title>
+      <link href="/2017/03/20/markdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0/"/>
+      <url>/2017/03/20/markdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0/</url>
+      
+        <content type="html"><![CDATA[<ol><li>插入表格：<br>1.1. 表格的上下需要空行。空行的多少至关重要<ul><li>表格中文字居中 在划线部分的划线两端加上”<strong>:</strong>“<ul><li>比如”<strong>:</strong>—–<strong>:</strong> | <strong>:</strong>—-<strong>:</strong><a id="more"></a></li></ul></li></ul></li><li><code>代码块</code>:<br>2.1. 合理利用代码块有意想不到的效果。<br>3.</li></ol>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> markdown </tag>
+            
+            <tag> 工具 </tag>
             
         </tags>
       
