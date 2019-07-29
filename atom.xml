@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-07-28T15:00:28.268Z</updated>
+  <updated>2019-07-29T14:47:06.957Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day197-DOM Range操作</title>
+    <link href="http://lmislm.com/2019/07/29/2019-07-29/"/>
+    <id>http://lmislm.com/2019/07/29/2019-07-29/</id>
+    <published>2019-07-28T16:00:00.000Z</published>
+    <updated>2019-07-29T14:47:06.957Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><ol><li>Range是？</li><li>createRange？<a id="more"></a><h2 id="Range是？"><a href="#Range是？" class="headerlink" title="Range是？"></a>Range是？</h2>Range是一种fragment（HTML片断），包含了节点或文本节点的一部分，通过document.createRange()或selection象的getRangeAt()方法获得。<blockquote><p>IE没有。需要检查兼容性。</p></blockquote></li></ol><h2 id="createRange？"><a href="#createRange？" class="headerlink" title="createRange？"></a>createRange？</h2><blockquote><p><code>Document.createRange()</code>常用来设置光标定位。</p></blockquote><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> el = <span class="built_in">document</span>.getElementById(<span class="string">'editable'</span>)</span><br><span class="line"><span class="keyword">let</span> range = <span class="built_in">document</span>.createRange()</span><br><span class="line"><span class="keyword">let</span> sel = <span class="built_in">window</span>.getSelection()</span><br><span class="line">range.setStart(el.childNodes[<span class="number">2</span>], <span class="number">5</span>) <span class="comment">// childNodes来源于NodeList</span></span><br><span class="line">range.collapse(<span class="literal">true</span>) <span class="comment">// collapse(toStart) 折叠该范围，使它的“起点”和“结束点”重合。</span></span><br><span class="line">sel.removeAllRanges()</span><br><span class="line">sel.addRange(range)</span><br></pre></td></tr></table></figure><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.cnblogs.com/rainman/archive/2011/02/28/1967488.html" target="_blank" rel="noopener">Javascript标准DOM Range操作</a></p><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Document/createRange" target="_blank" rel="noopener">Document.createRange()</a></p><p><a href="https://stackoverflow.com/questions/6249095/how-to-set-caretcursor-position-in-contenteditable-element-div" target="_blank" rel="noopener">How to set caret(cursor) position in contenteditable element (div)?</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;Range是？&lt;/li&gt;
+&lt;li&gt;createRange？
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>day196-事件循环的常见问题和错误观点</title>
@@ -472,31 +496,6 @@
 &lt;li&gt;&lt;code&gt;HTTP1.1&lt;/code&gt;存在的问题。&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;HTTP/2&lt;/code&gt;的&lt;code&gt;多路复用&lt;/code&gt;解决要点2的问题。&lt;/li&gt;
 &lt;li&gt;不适用于&lt;code&gt;HTTP/2&lt;/code&gt;的优化。
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day177-TypeScript基础小记-构造函数</title>
-    <link href="http://lmislm.com/2019/07/09/2019-07-09/"/>
-    <id>http://lmislm.com/2019/07/09/2019-07-09/</id>
-    <published>2019-07-08T16:00:00.000Z</published>
-    <updated>2019-07-11T14:36:17.746Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h3><ol><li>构造函数。</li><li>编译成JavaScript后。</li><li>把类当做接口使用。<a id="more"></a></li></ol><h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><blockquote><p>简单的构造函数</p></blockquote><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Greeter</span> </span>&#123;</span><br><span class="line">  greeting: string</span><br><span class="line">  <span class="keyword">constructor</span>(message: string) &#123;</span><br><span class="line">    <span class="keyword">this</span>.greeting = message</span><br><span class="line">  &#125;</span><br><span class="line">  greet() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'Hello,'</span> + <span class="keyword">this</span>.greeting</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> greeter: Greeter <span class="comment">// Greeter类的实例的类型是Greeter</span></span><br><span class="line">greeter = <span class="keyword">new</span> Greeter(<span class="string">'TypeScript'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(greeter.greet())</span><br></pre></td></tr></table></figure><h3 id="编译成JavaScript"><a href="#编译成JavaScript" class="headerlink" title="编译成JavaScript"></a>编译成JavaScript</h3><blockquote><p><code>let Greeter</code>被赋值为<code>构造函数</code>。</p></blockquote><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> Greeter = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">Greeter</span>(<span class="params">message</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.greeting = message</span><br><span class="line">  &#125;</span><br><span class="line">  Greeter.prototype.greet = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'Hello,'</span> + <span class="keyword">this</span>.greeting</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> Greeter</span><br><span class="line">&#125;)()</span><br><span class="line"><span class="keyword">let</span> greeter</span><br><span class="line">greeter = <span class="keyword">new</span> Greeter(<span class="string">'world'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(greeter.greet())</span><br></pre></td></tr></table></figure><blockquote><p>例子改写</p></blockquote><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Greeter</span> </span>&#123;</span><br><span class="line">  <span class="keyword">static</span> standardGreeting = <span class="string">'hello, there'</span></span><br><span class="line">  greeting: string</span><br><span class="line">  greet () &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.greeting) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="string">'hello,'</span> + <span class="keyword">this</span>.greeting</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> Greeter.standardGreeting</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> greeter1: Greeter</span><br><span class="line">greeter1 = <span class="keyword">new</span> Greeter()</span><br><span class="line"><span class="built_in">console</span>.log(greeter1)</span><br><span class="line"><span class="comment">// typeof Greeter意思取Greeter类的类型，而不是实例类型。</span></span><br><span class="line"><span class="keyword">let</span> greeterMaker: <span class="keyword">typeof</span> Greeter = Greeter</span><br><span class="line">greeterMaker.standardGreeting = <span class="string">'Hey there!'</span></span><br><span class="line"><span class="keyword">let</span> greeter2: Greeter = <span class="keyword">new</span> greeterMaker()</span><br><span class="line"><span class="built_in">console</span>.log(greeter2.greet())</span><br></pre></td></tr></table></figure><h3 id="类当做接口使用"><a href="#类当做接口使用" class="headerlink" title="类当做接口使用"></a>类当做接口使用</h3><blockquote><p>类定义会创建两个东西：<br>类的实例累心和一个构造函数（因为类可以创建出类型，所以你能够在允许使用接口的地方使用类）<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span> </span>&#123;</span><br><span class="line">  x: number</span><br><span class="line">  y: number</span><br><span class="line">&#125;</span><br><span class="line">interface Point3d extends Point &#123;</span><br><span class="line">  z: number</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> point3d: Point3d = &#123; <span class="attr">x</span>: <span class="number">1</span>, <span class="attr">y</span>: <span class="number">2</span>, <span class="attr">z</span>: <span class="number">3</span> &#125;</span><br></pre></td></tr></table></figure></p></blockquote>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;构造函数。&lt;/li&gt;
-&lt;li&gt;编译成JavaScript后。&lt;/li&gt;
-&lt;li&gt;把类当做接口使用。
     
     </summary>
     
