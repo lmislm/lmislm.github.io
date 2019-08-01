@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-07-31T14:56:05.441Z</updated>
+  <updated>2019-08-01T15:01:17.089Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day199-简单实现Promise(2)</title>
+    <link href="http://lmislm.com/2019/08/01/2019-08-01/"/>
+    <id>http://lmislm.com/2019/08/01/2019-08-01/</id>
+    <published>2019-07-31T16:00:00.000Z</published>
+    <updated>2019-08-01T15:01:17.089Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><ol><li>修改promise状态</li></ol><a id="more"></a><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">/** 构造函数 - 雏形 */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Promise</span> (<span class="params">fn</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> self = <span class="keyword">this</span></span><br><span class="line">  self.status = <span class="string">'pending'</span></span><br><span class="line">  self.data = <span class="literal">undefined</span></span><br><span class="line"></span><br><span class="line">  self.onFulfilledCallback = [] <span class="comment">// resolve 回调函数集合</span></span><br><span class="line">  self.onRejectedCallback = [] <span class="comment">// reject 回调函数集合</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">resolve</span> (<span class="params">value</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (self.status === <span class="string">'pending'</span>) &#123;</span><br><span class="line">      self.status = <span class="string">'resolved'</span></span><br><span class="line">      self.data = value</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; self.onFulfilledCallback.length; i++) &#123;</span><br><span class="line">        self.onFulfilledCallback[i](value)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">reject</span> (<span class="params">reason</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (self.status === <span class="string">'pending'</span>) &#123;</span><br><span class="line">      self.status = <span class="string">'rejected'</span></span><br><span class="line">      self.data = reason</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; self.onRejectedCallback.length; i++) &#123;</span><br><span class="line">        self.onRejectedCallback[i](reason)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    fn (resolve, reject) <span class="comment">// 执行传入的函数，传入</span></span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    reject(error)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;修改promise状态&lt;/li&gt;
+&lt;/ol&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>day199-简单实现Promise(1)</title>
@@ -471,30 +495,6 @@
     <summary type="html">
     
       &lt;h2 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h2&gt;&lt;p&gt;求对象中多个属性的和&lt;br&gt;&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; data = [&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    tqaModifyCount: &lt;span class=&quot;number&quot;&gt;9&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    tqaMarkCount: &lt;span class=&quot;number&quot;&gt;19&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    tqaModifyCount: &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    tqaMarkCount: &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; tgt = &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  tqaModifyCounts: &lt;span class=&quot;number&quot;&gt;12&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  tqaMarkCounts: &lt;span class=&quot;number&quot;&gt;22&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day180-Virtual DOM-再探</title>
-    <link href="http://lmislm.com/2019/07/12/2019-07-12/"/>
-    <id>http://lmislm.com/2019/07/12/2019-07-12/</id>
-    <published>2019-07-11T16:00:00.000Z</published>
-    <updated>2019-07-12T14:06:34.745Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><ol><li>Virtual DOM的是三个重要步骤；</li><li>Virtual DOM的具体步骤；<a id="more"></a></li></ol><h2 id="Virtual-DOM的是三个重要步骤"><a href="#Virtual-DOM的是三个重要步骤" class="headerlink" title="Virtual DOM的是三个重要步骤"></a>Virtual DOM的是三个重要步骤</h2><ul><li>生成Virtual DOM树</li><li>对比两棵树的差异（diff）</li><li>更新试图（patch）</li></ul><h2 id="Virtual-DOM的具体步骤"><a href="#Virtual-DOM的具体步骤" class="headerlink" title="Virtual DOM的具体步骤"></a>Virtual DOM的具体步骤</h2><h3 id="生成Virtual-DOM树"><a href="#生成Virtual-DOM树" class="headerlink" title="生成Virtual DOM树"></a><strong>生成Virtual DOM树</strong></h3><p>例子：</p><h4 id="真实DOM"><a href="#真实DOM" class="headerlink" title="真实DOM"></a>真实DOM</h4><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"list"</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span>Item 1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span>Item 2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure><h4 id="DOM树"><a href="#DOM树" class="headerlink" title="DOM树"></a>DOM树</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> element = &#123;</span><br><span class="line"> tagName: <span class="string">'ul'</span>,</span><br><span class="line"> props: &#123; <span class="attr">id</span>: <span class="string">'list'</span> &#125;,</span><br><span class="line"> children: [</span><br><span class="line">   &#123; <span class="attr">tagName</span>: <span class="string">'li'</span>, <span class="attr">props</span>: &#123; <span class="attr">class</span>: <span class="string">'item'</span> &#125;, <span class="attr">children</span>: [<span class="string">'Item 1'</span>] &#125;,</span><br><span class="line">   &#123; <span class="attr">tagName</span>: <span class="string">'li'</span>, <span class="attr">props</span>: &#123; <span class="attr">class</span>: <span class="string">'item'</span> &#125;, <span class="attr">children</span>: [<span class="string">'Item 2'</span>] &#125;</span><br><span class="line"> ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="对比两棵树的差异"><a href="#对比两棵树的差异" class="headerlink" title="对比两棵树的差异"></a><strong>对比两棵树的差异</strong></h3><p>对树进行遍历：深度优先遍历、广度优先遍历</p><p>diff算法中采用深度优先遍历。对新旧两棵树进行一次深度优先的遍历，这样每个节点都会有一个唯一的标记。</p><p>遍历时，每遍历到一个节点就把该节点和新的树的同一个位置的节点进行对比，如果有差异的话就记录到一个对象（差异对象）里面。</p><h4 id="差异对象（常见的差异）"><a href="#差异对象（常见的差异）" class="headerlink" title="差异对象（常见的差异）"></a>差异对象（常见的差异）</h4><p>替换节点<br>增加/删除子节点<br>修改节点属性<br>改变文本内容</p><h3 id="更新视图"><a href="#更新视图" class="headerlink" title="更新视图"></a><strong>更新视图</strong></h3><p>根据差异的不同类型，对DOM进行针对性的更新。<br>更新视图（针对相应差异的更新方法）<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">replaceChild()</span><br><span class="line">appendChild() / removeChild()</span><br><span class="line">setAttribute() / removeAttribute()</span><br><span class="line">textContent</span><br></pre></td></tr></table></figure></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;Virtual DOM的是三个重要步骤；&lt;/li&gt;
-&lt;li&gt;Virtual DOM的具体步骤；
     
     </summary>
     
