@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-08-03T14:21:13.931Z</updated>
+  <updated>2019-08-04T14:19:44.051Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day203-reduce题目</title>
+    <link href="http://lmislm.com/2019/08/04/2019-08-04/"/>
+    <id>http://lmislm.com/2019/08/04/2019-08-04/</id>
+    <published>2019-08-03T16:00:00.000Z</published>
+    <updated>2019-08-04T14:19:44.051Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><ol><li>求<code>[ [3,2,1].reduce(Math.pow), [].reduce(Math.pow) ]</code></li></ol><a id="more"></a><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>第一个<code>[3,2,1].reduce(Math.pow)</code>结果是：<code>Math.pow(3, 2) =&gt; 9; Math.pow(9, 1) =&gt;9</code>。<br>第二个<code>[].reduce(Math.pow)</code>结果是<code>TypeError: Reduce of empty array with no initial value</code>,即：没有初始值。</p><p>输出<code>error</code></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;求&lt;code&gt;[ [3,2,1].reduce(Math.pow), [].reduce(Math.pow) ]&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>day202-简单实现Promise(4)</title>
@@ -474,31 +498,6 @@
     
       &lt;h2 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h2&gt;&lt;p&gt;本文为一篇经典的Diff算法文章的译文，原文写的是React的Diff算法。&lt;br&gt;这里只是摘取了后半部分的内容，并没有翻译开篇部分。&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://calendar.perfplanet.com/2013/diff/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;原文点此&lt;/a&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day183-Tree Shaking in Webpack-了解</title>
-    <link href="http://lmislm.com/2019/07/15/2019-07-15/"/>
-    <id>http://lmislm.com/2019/07/15/2019-07-15/</id>
-    <published>2019-07-14T16:00:00.000Z</published>
-    <updated>2019-07-17T15:11:30.546Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><ol><li>概念</li><li>机制</li><li>使用方法<a id="more"></a></li></ol><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><ol><li><code>DCE Dead Code Elimination</code></li></ol><ul><li>去除无用的没有执行的代码（如：不可能进入的分支）。</li><li>导致<code>dead variable</code>的代码（写入变量之后不再读取的代码）。</li></ul><p>tree shaking是<code>DCE</code>的一种方式，可以在webpack打包时，忽略没有用的代码。</p><h2 id="机制"><a href="#机制" class="headerlink" title="机制"></a>机制</h2><ul><li><strong>找出使用的代码</strong><br>基于 ES6 的静态引用，tree shaking 扫描所有<code>export</code>，找出有用的和无用的内容添加到代码中，最后压缩时分类处理。</li></ul><h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><p>源码必须遵循 ES6 的模块规范 <code>(import &amp; export)</code>，CommonJs规范（require）没法用。</p><p><code>webpack2</code>需要修改配置文件，<code>webpack3+</code>可以正常tree shaking</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;概念&lt;/li&gt;
-&lt;li&gt;机制&lt;/li&gt;
-&lt;li&gt;使用方法
     
     </summary>
     
