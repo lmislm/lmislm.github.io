@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-08-05T14:20:36.400Z</updated>
+  <updated>2019-08-06T14:59:38.465Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day205-instanceOf</title>
+    <link href="http://lmislm.com/2019/08/06/2019-08-06/"/>
+    <id>http://lmislm.com/2019/08/06/2019-08-06/</id>
+    <published>2019-08-05T16:00:00.000Z</published>
+    <updated>2019-08-06T14:59:38.465Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><p>instanceOf 简单实现</p><blockquote><p>原理：检查是否在left（左边的值）的原型链上<br><a id="more"></a></p></blockquote><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myInstanceOf</span> (<span class="params">left, right</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> rightProto = right.prototype</span><br><span class="line">  left = left.__proto__</span><br><span class="line">  <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!left) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (left === rightProto) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">true</span> <span class="comment">// 继续找下去</span></span><br><span class="line">    &#125;</span><br><span class="line">    left = left.__proto__ <span class="comment">// 继续遍历</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h2&gt;&lt;p&gt;instanceOf 简单实现&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;原理：检查是否在left（左边的值）的原型链上&lt;br&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>day204-es6-笔记-Class-this</title>
@@ -482,30 +506,6 @@
 &lt;li&gt;&lt;code&gt;updateChildren()&lt;/code&gt;代码&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;代码相对较多，较繁琐，这里了解代码和key起的作用就可。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day185-Diff过程（vuejs）-笔记</title>
-    <link href="http://lmislm.com/2019/07/17/2019-07-17/"/>
-    <id>http://lmislm.com/2019/07/17/2019-07-17/</id>
-    <published>2019-07-16T16:00:00.000Z</published>
-    <updated>2019-07-17T15:26:31.962Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><ol><li>patch 函数概览。()</li><li>patchVnode 函数概览。<br>主要分为两个部分。每个函数中都会有代码并附上代码的行行解释。<a id="more"></a><h2 id="patch-函数概览"><a href="#patch-函数概览" class="headerlink" title="patch() 函数概览"></a><strong>patch()</strong> 函数概览</h2></li></ol><p>代码 + 解析</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * vuejs diff过程</span></span><br><span class="line"><span class="comment"> * @param &#123;String&#125; oldVnode </span></span><br><span class="line"><span class="comment"> * @param &#123;String&#125; newVnode </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">patch</span>(<span class="params">oldVnode, newVnode</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 1</span></span><br><span class="line">  <span class="keyword">if</span> (sameVnode(oldVnode, newVnode)) &#123;</span><br><span class="line">    <span class="comment">// 2</span></span><br><span class="line">    patchVnode(oldVnode, newVnode)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 3</span></span><br><span class="line">    <span class="keyword">const</span> oEl = oldVnode.el</span><br><span class="line">    <span class="comment">// 4</span></span><br><span class="line">    <span class="keyword">let</span> parentEle = api.parentNode(oEl)</span><br><span class="line">    <span class="comment">// 5</span></span><br><span class="line">    createEle(newVnode)</span><br><span class="line">    <span class="keyword">if</span> (parentEle !== <span class="literal">null</span>) &#123;</span><br><span class="line">      <span class="comment">// 6</span></span><br><span class="line">      api.insertBefore(parentEle, newVnode.el, api.nextSibling(oEl))</span><br><span class="line">      api.removeChild(parentEle, oldVnode.el)</span><br><span class="line">      oldVnode = <span class="literal">null</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 7</span></span><br><span class="line">  <span class="keyword">return</span> newVnode</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h3><ol><li>看这两个节点是否值得比较（比比是不是子节点有不一样的地方），比较两者<code>key</code>和<code>sel</code>是否完全相等。（<code>sel</code>：节点的选择器）<br>vuejs中virtual dom用的是snabbdom，snabbom定义的(Virtual Node属性)[<a href="https://github.com/snabbdom/snabbdom#sel--string]有sel、data、children、text、elm、key。这点和React用的库不一样。" target="_blank" rel="noopener">https://github.com/snabbdom/snabbdom#sel--string]有sel、data、children、text、elm、key。这点和React用的库不一样。</a></li><li>两个节点相互比较<br>比较的过程要分好几种情况，后面再记笔记啊。</li><li>进入了不需要比较两个节点的处理流程<br><code>oEl</code>表示节点的父节点。（取父节点做？？）</li><li><code>parentEle</code>是父节点的真是dom</li><li>给newVnode创建真实的节点。</li><li>插入新的节点，移除旧节点。（为啥还要特地移除Child，直接把二叉树的顶部根节点移除不就行了？）</li><li>返回newVnode对应的真实dom</li></ol><h2 id="patchVnode-函数概览"><a href="#patchVnode-函数概览" class="headerlink" title="patchVnode() 函数概览"></a><strong>patchVnode()</strong> 函数概览</h2><p>代码 + 解析</p><h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 比较不同的节点patchVnode()</span></span><br><span class="line"><span class="comment"> * @param &#123;String&#125; oldVnode </span></span><br><span class="line"><span class="comment"> * @param &#123;String&#125; newVnode </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">patchVnode</span> (<span class="params">oldVnode, newVnode</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> el = newVnode.el = oldVnode.el</span><br><span class="line">  <span class="keyword">let</span> i, oldCh = oldVnode.children, newCh = newVnode.children</span><br><span class="line">  <span class="comment">// 这里这个相等应该是深比较吧，完全相等就返回`false`？</span></span><br><span class="line">  <span class="comment">// 2.1</span></span><br><span class="line">  <span class="keyword">if</span> (oldVnode === newVnode) <span class="keyword">return</span></span><br><span class="line">  <span class="comment">// 比较Virtual node中text是否相等？</span></span><br><span class="line">  <span class="comment">// 2.2</span></span><br><span class="line">  <span class="keyword">if</span> (oldVnode.text !== <span class="literal">null</span> &amp;&amp; newVnode.text !== <span class="literal">null</span> &amp;&amp; oldVnode.text !== newVnode.text) &#123;</span><br><span class="line">    <span class="comment">// 如果只是文本内容相等直接替换旧文本内容就行？</span></span><br><span class="line">    api.setTextContent(el, newVnode.text)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 2.3</span></span><br><span class="line">    updateEle(el, newVnode, oldVnode)</span><br><span class="line">    <span class="keyword">if</span> (oldCh &amp;&amp; newCh &amp;&amp; oldCh !== newCh) &#123;</span><br><span class="line">      <span class="comment">// 2.4</span></span><br><span class="line">      updateChildren(el, oldCh, newCh)</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (newCh) &#123;</span><br><span class="line">      <span class="comment">// 2.5</span></span><br><span class="line">      createEle(newVnode)</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (oldCh) &#123;</span><br><span class="line">      <span class="comment">// 2.6</span></span><br><span class="line">      api.removeChildren(el)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="解析-1"><a href="#解析-1" class="headerlink" title="解析"></a>解析</h3><blockquote><p>序号<strong>2</strong>中，什么是值得比较的节点（我理解的是，子节点是不是完全一样？）<br>比较相同节点<code>sameVnode(oldVnode, newVnode)</code></p></blockquote><p>2.1 比较引用是否一致，一致则认为没有变化。（引用？）</p><p>2.2 文本节点的比较，需要修改则调用<code>Node.textContent = newVnode.text</code>。</p><p>2.3 判断新旧节点是否存在子节点，新旧节点子节点是不是相等。</p><p>2.4 <code>updateChildren</code>函数，是diff核心。</p><p>2.5 只有新节点有子节点就调用<code>createEle(newVnode)</code>。在老dom节点上添加子节点。</p><p>2.6 只有旧节点有子节点，新节点为空。可以直接遵循新节点。直接删除老节点。</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://github.com/aooy/blog/issues/2" target="_blank" rel="noopener">原文点此</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;patch 函数概览。()&lt;/li&gt;
-&lt;li&gt;patchVnode 函数概览。&lt;br&gt;主要分为两个部分。每个函数中都会有代码并附上代码的行行解释。
     
     </summary>
     
