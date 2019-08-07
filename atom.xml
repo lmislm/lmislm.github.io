@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-08-06T14:59:38.465Z</updated>
+  <updated>2019-08-07T15:29:09.648Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day206-初识MutationObserver</title>
+    <link href="http://lmislm.com/2019/08/07/2019-08-07/"/>
+    <id>http://lmislm.com/2019/08/07/2019-08-07/</id>
+    <published>2019-08-06T16:00:00.000Z</published>
+    <updated>2019-08-07T15:29:09.648Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><ol><li><code>MutationObserver</code> 使用方法</li><li><code>MutationObserver</code> 的方法<code>observe()</code>(具体)和<code>takeRecords()</code>以及<code>disconnect()</code></li><li><code>MutationRecord</code><a id="more"></a></li></ol><h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> mObserver = <span class="keyword">new</span> MutationObserver(callback) <span class="comment">// 新建实例</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> word = <span class="built_in">document</span>.querySelector(<span class="string">'words'</span>);</span><br><span class="line"><span class="keyword">var</span> options = &#123;</span><br><span class="line">  <span class="string">'childList'</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="string">'arrtibutes'</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="string">'characterData'</span>: <span class="literal">true</span>, <span class="comment">// 节点内容或节点文本的变动</span></span><br><span class="line">  <span class="string">'subtree'</span>: <span class="literal">true</span>, <span class="comment">// 所有子节点，不能单独观察，必须同时指定以上三个为`true`</span></span><br><span class="line">  <span class="string">'attributeOldValue'</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="string">'characterDataOldValue'</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="string">'attributesFilter'</span>: [<span class="string">'class'</span>, <span class="string">'str'</span>] <span class="comment">// 值为数组，表示观察的特定属性</span></span><br><span class="line">&#125;</span><br><span class="line">mObserver.observer(word, options)</span><br></pre></td></tr></table></figure><h2 id="disconnect、takeRecord"><a href="#disconnect、takeRecord" class="headerlink" title="disconnect、takeRecord"></a>disconnect、takeRecord</h2><ul><li>disconnect 表示停止观察，无参数，用法：mObserver.disconnect()</li><li>takeRecord 用来清除变动记录，无参数，用法：mObserver.takeRecords()</li></ul><h2 id="MutationRecord"><a href="#MutationRecord" class="headerlink" title="MutationRecord"></a>MutationRecord</h2><blockquote><p>每个 MutationRecord 代表一个独立的 DOM 变化，其作为参数传递给 MutationObserver 的回调函数。</p></blockquote><ol><li>参数的含义</li></ol><ul><li>type: 观察的变动类型（attribute、characterData或者childList）</li><li>target: 发生变动的DOM对象</li><li>addedNodes: 新增的DOM对象</li><li>removeNodes: 删除的DOM对象</li><li>previousSibling: 前一个同级的DOM对象，无则返回null</li><li>nextSibling: 下个同级的DOM对象，无则返回null</li><li>attributeName: 发生变动的属性，如果设置了attributeFilter，则只返回预先指定的属性</li><li>oldValue：变动前的值。只对attribute和characterData变动有效</li></ul><p>详细的属性表，<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/MutationRecord" target="_blank" rel="noopener">点击这里</a></p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/MutationObserver/observe" target="_blank" rel="noopener">MDN-MutationObserver</a></p><p><a href="https://developer.mozilla.org/en-US/docs/Web/API/MutationRecord" target="_blank" rel="noopener">MDN-MutationRecord</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;MutationObserver&lt;/code&gt; 使用方法&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;MutationObserver&lt;/code&gt; 的方法&lt;code&gt;observe()&lt;/code&gt;(具体)和&lt;code&gt;takeRecords()&lt;/code&gt;以及&lt;code&gt;disconnect()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;MutationRecord&lt;/code&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>day205-instanceOf</title>
@@ -481,31 +506,6 @@
 &lt;/ul&gt;
 &lt;p&gt;原有的oldCh的顺序是  &lt;code&gt;A、B、C、D、E、F、G&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;更新后成ch的顺序是   &lt;code&gt;F、D、A、H、E、C、B、G&lt;/code&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day186-具体的diff分析过程（vuejs）-笔记</title>
-    <link href="http://lmislm.com/2019/07/18/2019-07-18/"/>
-    <id>http://lmislm.com/2019/07/18/2019-07-18/</id>
-    <published>2019-07-17T16:00:00.000Z</published>
-    <updated>2019-07-19T15:33:17.537Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><ol><li><code>updateChildren()</code>代码</li></ol><p>代码相对较多，较繁琐，这里了解代码和key起的作用就可。<br><a id="more"></a></p><h2 id="代码-内部注释"><a href="#代码-内部注释" class="headerlink" title="代码 + 内部注释"></a>代码 + 内部注释</h2><p>patch过程中父节点相同，父节点文本内容相同，子节点不同updateChildren()的比较。</p><p>基本思路就是两个树进行新旧节点的比较。</p><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">updateChildren (parentElm, oldCh, newCh) &#123;</span><br><span class="line">  <span class="keyword">let</span> oldStartIdx = <span class="number">0</span>, newStartIdx = <span class="number">0</span></span><br><span class="line">  <span class="keyword">let</span> oldStartVnode = oldCh[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> oldEndIdx = oldCh.length - <span class="number">1</span></span><br><span class="line">  <span class="keyword">let</span> oldEndVnode = oldCh[oldEndIdx]</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">let</span> newStartVnode = newCh[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> newEndIdx = newCh.length - <span class="number">1</span></span><br><span class="line">  <span class="keyword">let</span> newEndVnode = newCh[newEndIdx] </span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> oldKeyToIdx</span><br><span class="line">  <span class="keyword">let</span> idxInOld</span><br><span class="line">  <span class="keyword">let</span> elmToMove</span><br><span class="line">  <span class="keyword">let</span> before</span><br><span class="line">  <span class="comment">// 判断遍历是否结束</span></span><br><span class="line">  <span class="keyword">while</span> (oldStartIdx &lt;= oldEndIdx &amp;&amp; newStartIdx &lt;= newEndIdx) &#123;</span><br><span class="line">    <span class="comment">// 1，不设置key</span></span><br><span class="line">    <span class="keyword">if</span> (oldStartVnode === <span class="literal">null</span>) &#123;</span><br><span class="line">      <span class="comment">// 2,都是两头指针相互向中间靠</span></span><br><span class="line">      oldStartVnode = oldCh[++oldStartIdx]</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (oldEndVnode === <span class="literal">null</span>) &#123;</span><br><span class="line">      oldEndVnode = oldCh[--oldEndIdx]</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (newStartVnode === <span class="literal">null</span>) &#123;</span><br><span class="line">      newStartVnode = newCh[++newStartIdx]</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (newEndVnode === <span class="literal">null</span>) &#123;</span><br><span class="line">      newEndVnode = newCh[--newEndIdx]</span><br><span class="line">      <span class="comment">// 3,递归调用，需要看清楚具体比较的东西是什么</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (sameVnode(oldStartVnode, newStartVnode)) &#123;</span><br><span class="line">      patchVnode(oldStartVnode, newEndVnode)</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 如果碰到一样的节点，就深度遍历比较，走递归</span></span><br><span class="line">      oldStartVnode = oldCh[++oldStartIdx]</span><br><span class="line">      newStartVnode = newCh[++newStartIdx]</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (sameVnode(oldEndVnode, newEndVnode)) &#123;</span><br><span class="line">      patchVnode(oldEndVnode, newEndVnode)</span><br><span class="line"></span><br><span class="line">      oldEndVnode = oldCh[--oldEndIdx]</span><br><span class="line">      newEndVnode = newCh[--newEndIdx]</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (sameVnode(oldStartVnode, newEndVnode)) &#123;</span><br><span class="line">      <span class="comment">// ？？？？</span></span><br><span class="line">      patchVnode(oldEndVnode, newEndVnode)</span><br><span class="line">      </span><br><span class="line">      <span class="comment">// 需要对dom进行移动</span></span><br><span class="line">      api.insertBefore(parentElm, oldStartVnode.el, api.nextSibling(oldEndVnode.el))</span><br><span class="line">      </span><br><span class="line">      oldStartVnode = oldCh[++oldStartIdx]</span><br><span class="line">      newEndVnode = newCh[--newEndIdx]</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (sameVnode(oldEndVnode, newStartVnode)) &#123;</span><br><span class="line">      patchVnode(oldEndVnode, newStartVnode)</span><br><span class="line">      </span><br><span class="line">      <span class="comment">// 需要对dom进行移动</span></span><br><span class="line">      api.insertBefore(parentElm, oldEndVnode.el, oldStartVnode.el)</span><br><span class="line"></span><br><span class="line">      oldEndVnode = oldCh[--oldEndIdx]</span><br><span class="line">      newStartVnode = newCh[++newStartIdx]</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// 设置key，除头尾两端比较外，加了一个oldKeyToIdx对象表，从中查找匹配的节点</span></span><br><span class="line">      <span class="keyword">if</span> (oldKeyToIdx === <span class="literal">undefined</span>) &#123;</span><br><span class="line">        <span class="comment">// 有key时生成index表</span></span><br><span class="line">        oldKeyToIdx = createKeyToOldIdx(oldCh, oldStartIdx, oldEndIdx)</span><br><span class="line">      &#125;</span><br><span class="line">      idxInOld = oldKeyToIdx[newStartVnode.key]</span><br><span class="line">      <span class="keyword">if</span> (!idxInOld) &#123;</span><br><span class="line">        api.insertBefore(parentElm, createEle(newStartVnode).el, oldStartVnode.el)</span><br><span class="line">        newStartVnode = newCh[++newStartIdx]</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        elmToMove = oldCh[idxInOld]</span><br><span class="line">        <span class="keyword">if</span> (elmToMove.sel !== newStartVnode.sel) &#123;</span><br><span class="line">          api.insertBefore(parentElm, createEle(newStartVnode).el, oldStartVnode.el)</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          patchVnode(elmToMove, newStartVnode)</span><br><span class="line"></span><br><span class="line">          oldCh[idxInOld] = <span class="literal">null</span></span><br><span class="line">          api.insertBefore(parentElm, elmToMove.el, oldStartVnode.el)</span><br><span class="line">        &#125;</span><br><span class="line">        newStartVnode = newCh[++newStartIdx]</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (oldStartIdx &gt; oldEndIdx) &#123;</span><br><span class="line">    before = newCh[newEndIdx + <span class="number">1</span>] === <span class="literal">null</span> ? <span class="literal">null</span> : newCh[newEndIdx + <span class="number">1</span>].el</span><br><span class="line">    addVnodes(parentElm, before, newCh, newStartIdx, newEndIdx)</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (newStartIdx &gt; newEndIdx) &#123;</span><br><span class="line">    removeVnodess(parentElm, oldCh, oldStartIdx, oldEndIdx)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://github.com/aooy/blog/issues/2" target="_blank" rel="noopener">原文点此</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;updateChildren()&lt;/code&gt;代码&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;代码相对较多，较繁琐，这里了解代码和key起的作用就可。&lt;br&gt;
     
     </summary>
     
