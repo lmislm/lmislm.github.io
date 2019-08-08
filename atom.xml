@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-08-07T15:29:09.648Z</updated>
+  <updated>2019-08-08T15:06:11.401Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day207-Vue-nextTick()</title>
+    <link href="http://lmislm.com/2019/08/08/2019-08-08/"/>
+    <id>http://lmislm.com/2019/08/08/2019-08-08/</id>
+    <published>2019-08-07T16:00:00.000Z</published>
+    <updated>2019-08-08T15:06:11.401Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><ol><li><code>nextTick</code>用法</li><li><code>nextTick</code>源码相关</li><li>事件循环</li><li>源码中的降级策略<a id="more"></a></li></ol><h2 id="nextTick作用"><a href="#nextTick作用" class="headerlink" title="nextTick作用"></a><code>nextTick</code>作用</h2><blockquote><p>在下次 DOM 更新循环结束之后执行延迟回调。在修改数据之后立即使用这个方法，获取更新后的 DOM。<a href="https://cn.vuejs.org/v2/api/#Vue-nextTick" target="_blank" rel="noopener">来源</a></p></blockquote><h2 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 850555d on 20 Dec 2018</span></span><br><span class="line"><span class="keyword">if</span> (!isIE &amp;&amp; <span class="keyword">typeof</span> MutationObserver !== <span class="string">'undefined'</span> &amp;&amp; (</span><br><span class="line">  isNative(MutationObserver) ||</span><br><span class="line">  <span class="comment">// PhantomJS and iOS 7.x</span></span><br><span class="line">  MutationObserver.toString() === <span class="string">'[object MutationObserverConstructor]'</span></span><br><span class="line">)) &#123;</span><br><span class="line">  <span class="comment">// Use MutationObserver where native Promise is not available,</span></span><br><span class="line">  <span class="comment">// e.g. PhantomJS, iOS7, Android 4.4</span></span><br><span class="line">  <span class="comment">// (#6466 MutationObserver is unreliable in IE11)</span></span><br><span class="line">  <span class="keyword">let</span> counter = <span class="number">1</span></span><br><span class="line">  <span class="keyword">const</span> observer = <span class="keyword">new</span> MutationObserver(flushCallbacks)</span><br><span class="line">  <span class="keyword">const</span> textNode = <span class="built_in">document</span>.createTextNode(<span class="built_in">String</span>(counter)) <span class="comment">// 创建一个文本</span></span><br><span class="line">  observer.observe(textNode, &#123;</span><br><span class="line">    characterData: <span class="literal">true</span> <span class="comment">// 初始化监听文本节点</span></span><br><span class="line">  &#125;)</span><br><span class="line">  timerFunc = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    counter = (counter + <span class="number">1</span>) % <span class="number">2</span></span><br><span class="line">    textNode.data = <span class="built_in">String</span>(counter) <span class="comment">// 文本节点变化监听</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>以上主要作用就是：监听文本变动是否完毕。</p><h2 id="事件循环"><a href="#事件循环" class="headerlink" title="事件循环"></a>事件循环</h2><ul><li><p>常见的<strong>microtask</strong>有：<br><code>Promise</code>、<code>MutationObserve</code>r、<code>Object.observe(废弃)</code>，以及nodejs中的<code>process.nextTick</code></p></li><li><p>常见的<strong>macrotask</strong> 有<code>setTimeout</code>、<code>MessageChannel</code>、<code>postMessage</code>、<code>setImmediate</code></p></li></ul><h2 id="降级策略"><a href="#降级策略" class="headerlink" title="降级策略"></a>降级策略</h2><p>在vue2.x版本的源码文件next-tick.js中，你还可以看到有其他的一些兼容性方法。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;nextTick&lt;/code&gt;用法&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;nextTick&lt;/code&gt;源码相关&lt;/li&gt;
+&lt;li&gt;事件循环&lt;/li&gt;
+&lt;li&gt;源码中的降级策略
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>day206-初识MutationObserver</title>
@@ -477,35 +503,6 @@
 &lt;li&gt;Vue基本架构，文件目录&lt;/li&gt;
 &lt;li&gt;架构细化，Dep.js、index.html、mai
       
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day187-diff-updateChildren示例</title>
-    <link href="http://lmislm.com/2019/07/19/2019-07-19/"/>
-    <id>http://lmislm.com/2019/07/19/2019-07-19/</id>
-    <published>2019-07-18T16:00:00.000Z</published>
-    <updated>2019-07-20T14:03:01.288Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><ol><li><code>updateChildren()</code>如何进行比较最终全部替换掉的。</li></ol><ul><li>例子：</li></ul><p>原有的oldCh的顺序是  <code>A、B、C、D、E、F、G</code></p><p>更新后成ch的顺序是   <code>F、D、A、H、E、C、B、G</code></p><a id="more"></a><h2 id="diff流程示例"><a href="#diff流程示例" class="headerlink" title="diff流程示例"></a>diff流程示例</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">开始：patchVnode (oldVnode, newVnode))</span><br><span class="line"></span><br><span class="line">round1:(找到相同的)</span><br><span class="line">对比顺序：A-F -&gt; G-G，匹配成功，然后：</span><br><span class="line"><span class="comment">/** A-F（头头比较：不等） -&gt;  G-G（尾尾比较：相等尾部指针往前移动，不满足while条件，开始第二次循环比较） */</span></span><br><span class="line"></span><br><span class="line">对G进行patchVnode的操作，更新oldEndVnodeG和newEndVnodeG的elm</span><br><span class="line">指针移动，两个尾部指针向左移动，即oldEndIdx-- newEndIdx--</span><br><span class="line"></span><br><span class="line">round2:</span><br><span class="line">对比顺序：A-F -&gt; F-B -&gt; A-B -&gt; F-F，匹配成功，然后：</span><br><span class="line"><span class="comment">/** （头头比较：不等） -&gt; （尾尾比较：不等）-&gt;（头尾比较：不等）-&gt;（尾头比较：相等） */</span></span><br><span class="line"></span><br><span class="line">对F进行patchVnode的操作，更新oldEndVnodeF和newEndVnodeF的elm</span><br><span class="line">指针移动，移动指针，即oldEndIdx-- newStartIdx++</span><br><span class="line">找到oldStartVnode在dom中所在的位置A，然后在其前面插入更新过的F的elm</span><br><span class="line"></span><br><span class="line">round3:</span><br><span class="line">对比顺序：A-D -&gt; E-B -&gt; A-B -&gt; E-D，仍未成功，取D的key，在oldKeyToIdx中查找，找到对应的D，查找成功，然后：</span><br><span class="line"></span><br><span class="line">将D取出赋值到 vnodeToMove</span><br><span class="line">对D进行patchVnode的操作，更新vnodeToMoveD和newStartVnodeD的elm</span><br><span class="line">指针移动，移动指针，即newStartIdx++</span><br><span class="line">将oldCh中对应D的vnode置<span class="literal">undefined</span></span><br><span class="line">在dom中找到oldStartVnodeA的elm对应的节点，然后在其前面插入更新过的D的elm</span><br><span class="line"></span><br><span class="line">round4:</span><br><span class="line">对比顺序：A-A，对比成功，然后：</span><br><span class="line"></span><br><span class="line">对A进行patchVnode的操作，更新oldStartVnodeA和newStartVnodeA的elm</span><br><span class="line">指针移动，两个尾部指针向左移动，即oldStartIdx++ newStartIdx++</span><br><span class="line"></span><br><span class="line">round5:</span><br><span class="line">对比顺序：B-H -&gt; E-B -&gt; B-B ,对比成功，然后：</span><br><span class="line"></span><br><span class="line">对B进行patchVnode的操作，更新oldStartVnodeB和newStartVnodeB的elm</span><br><span class="line">指针移动，即oldStartIdx++ newEndIdx--</span><br><span class="line">在dom中找到oldEndVnodeE的elm的nextSibling节点（即G的elm），然后在其前面插入更新过的B的elm</span><br><span class="line"></span><br><span class="line">round6:</span><br><span class="line">对比顺序：C-H -&gt; E-C -&gt; C-C ,对比成功，然后(同round5)：</span><br><span class="line"></span><br><span class="line">对C进行patchVnode的操作，更新oldStartVnodeC和newStartVnodeC的elm</span><br><span class="line">指针移动，即oldStartIdx++ newEndIdx--</span><br><span class="line">在dom中找到oldEndVnodeE的elm的nextSibling节点（即刚刚插入的B的elm），然后在其前面插入更新过的C的elm</span><br><span class="line"></span><br><span class="line">round7:</span><br><span class="line">获取oldStartVnode失败（因为round3的步骤<span class="number">4</span>）,然后：</span><br><span class="line"></span><br><span class="line">指针移动，即oldStartIdx++</span><br><span class="line"></span><br><span class="line">round8:</span><br><span class="line">对比顺序：E-H、E-E,匹配成功，然后（同round1）：</span><br><span class="line"></span><br><span class="line">对E进行patchVnode的操作，更新oldEndVnodeE和newEndVnodeE的elm</span><br><span class="line">指针移动，两个尾部指针向左移动，即oldEndIdx-- newEndIdx--</span><br><span class="line"></span><br><span class="line">last</span><br><span class="line">round8之后oldCh提前发生了‘交叉’，退出循环。</span><br></pre></td></tr></table></figure><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://lequ7.com/2019/06/16/richang/vue-yuan-ma-jie-xi-diff-guo-cheng-yi-tan-jiu-jing/" target="_blank" rel="noopener">VUE源码解析DIFF过程一探究竟</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;updateChildren()&lt;/code&gt;如何进行比较最终全部替换掉的。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;ul&gt;
-&lt;li&gt;例子：&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;原有的oldCh的顺序是  &lt;code&gt;A、B、C、D、E、F、G&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;更新后成ch的顺序是   &lt;code&gt;F、D、A、H、E、C、B、G&lt;/code&gt;&lt;/p&gt;
     
     </summary>
     
