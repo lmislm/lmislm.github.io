@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[day208-requestAnimationFrame-小结]]></title>
+    <title><![CDATA[day210-repaint和reflow扫盲]]></title>
+    <url>%2F2019%2F08%2F10%2F2019-08-10%2F</url>
+    <content type="text"><![CDATA[要点 介绍 引起XX的常见操作 优化 介绍浏览器重新渲染，就需要重新生成布局和重新绘制。前者叫做”回流”（reflow，又叫重排，英文也叫Layout），后者叫做”重绘”（repaint）。 元素样式的改变不影响布局， UI 层面的重新像素绘制，重绘对元素进行更新 —— 重绘(repaint)重新渲染页面 —— 回流(reflow) 常见原因常见的reflow操作： 页面初次渲染，浏览器窗口大小改变 元素尺寸/位置/内容发生改变 css伪类 offsetTop/offsetLeft/offsetWidth/offsetHeight/offsetParent clientTop/clientLeft/clientWidth/clientHeight scrollTop/scrollLeft/scrollWidth/scrollHeight getComputedStyle()/getClientRects()/getBoundingClientRect() 常见的repaint操作： css属性的改变。 具体见CSS Triggers https://csstriggers.com/ 这里列出了哪些属性会引起reflow(即Layout)或repaint。 优化 rAF等使用 window.requestAnimationFrame()、window.requestIdleCallback() 这两个方法调节重新渲染 FASTDOM (Eliminates layout thrashing by batching DOM measurement and mutation tasks) 自动完成读写操作的批处理 参考如何不择手段提升scroll事件的性能—知乎 网页性能管理详解—阮一峰]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[day208-requestAnimationFrame-了解]]></title>
     <url>%2F2019%2F08%2F09%2F2019-08-09%2F</url>
     <content type="text"><![CDATA[要点 作用 应用 实例 作用 要求浏览器在下次重绘之前调用指定的回调函数更新动画[1] 应用 减少重绘或回流。 替代通过时间管理队列的高频发事件，通过requestAnimationFrame来管理队列，保证 requestAnimationFrame的队列里，同样的回调函数只有一个。因为通常显示器16.7ms（16.7 = 1000 / 60, 即每秒60帧）的刷新间隔中，如果发生了其他绘制请求(setTimeout)，可能导致帧丢失。这里帧丢失通常就包含有，滚动、触摸这类高触发频率事件的回调可能会在同一帧内触发多次所导致，requestAnimationFrame就是跟着浏览器的绘制走，绘制间隔时间内绘制完毕。 实例-进度条&lt;div id="myDiv" style="background-color: lightblue;width: 0;height: 20px;line-height: 20px;"&gt;0%&lt;/div&gt;&lt;button id="btn"&gt;run&lt;/button&gt;&lt;script&gt; var timer; btn.onclick = function()&#123; myDiv.style.width = '0'; cancelAnimationFrame(timer); timer = requestAnimationFrame(function fn()&#123; if(parseInt(myDiv.style.width) &lt; 500)&#123; myDiv.style.width = parseInt(myDiv.style.width) + 5 + 'px'; myDiv.innerHTML = parseInt(myDiv.style.width)/5 + '%'; timer = requestAnimationFrame(fn); &#125;else&#123; cancelAnimationFrame(timer); &#125; &#125;);&#125; &lt;/script&gt; 进度条例子来自：W3Plus-被誉为神器的requestAnimationFrame 参考[1]. window.requestAnimationFrame-MDN CSS3动画那么强，requestAnimationFrame还有毛线用？ requestAnimationFrame 方法你真的用对了吗？]]></content>
       <categories>
@@ -980,9 +991,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[day118-手写简单的函数柯里化-笔记]]></title>
-    <url>%2F2019%2F05%2F10%2F2019-05-10%2F</url>
-    <content type="text"><![CDATA[前言函数柯里化是属于高阶函数中一种常见的技术。特点就是参数复用、提前返回和延迟执行。 代码function curry (fn, args) &#123; var length = fn.length var args = args || [] return function () &#123; newArgs = args.concat(Array.prototype.slice.call(arguments)) if (newArgs.length &lt; length) &#123; return curry.call(this, fn, newArgs) &#125; else &#123; return fn.apply(this, newArgs) &#125; &#125;&#125;function multiFn(a, b, c) &#123; return a * b * c&#125;var multi = curry(multiFn)multi(1)(2)(3)multi(1,2,3)multi(1)(2,3)multi(1,2)(3)]]></content>
+    <title><![CDATA[day119-实现一个instanceOf笔记]]></title>
+    <url>%2F2019%2F05%2F10%2F2019-05-11%2F</url>
+    <content type="text"><![CDATA[前言话不多说，这篇是水篇。 代码// 实现一个instanceOffunction myInstanceOf(left, right) &#123; let proto = left.__proto__ let prototype = right.prototype while (true) &#123; if (!proto) &#123; return false &#125; if (proto === prototype) &#123; return false &#125; proto === proto.__proto__ &#125;&#125;]]></content>
       <categories>
         <category>技术</category>
       </categories>
@@ -991,9 +1002,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[day119-实现一个instanceOf笔记]]></title>
-    <url>%2F2019%2F05%2F10%2F2019-05-11%2F</url>
-    <content type="text"><![CDATA[前言话不多说，这篇是水篇。 代码// 实现一个instanceOffunction myInstanceOf(left, right) &#123; let proto = left.__proto__ let prototype = right.prototype while (true) &#123; if (!proto) &#123; return false &#125; if (proto === prototype) &#123; return false &#125; proto === proto.__proto__ &#125;&#125;]]></content>
+    <title><![CDATA[day118-手写简单的函数柯里化-笔记]]></title>
+    <url>%2F2019%2F05%2F10%2F2019-05-10%2F</url>
+    <content type="text"><![CDATA[前言函数柯里化是属于高阶函数中一种常见的技术。特点就是参数复用、提前返回和延迟执行。 代码function curry (fn, args) &#123; var length = fn.length var args = args || [] return function () &#123; newArgs = args.concat(Array.prototype.slice.call(arguments)) if (newArgs.length &lt; length) &#123; return curry.call(this, fn, newArgs) &#125; else &#123; return fn.apply(this, newArgs) &#125; &#125;&#125;function multiFn(a, b, c) &#123; return a * b * c&#125;var multi = curry(multiFn)multi(1)(2)(3)multi(1,2,3)multi(1)(2,3)multi(1,2)(3)]]></content>
       <categories>
         <category>技术</category>
       </categories>
@@ -2379,8 +2390,8 @@
         <category>学习</category>
       </categories>
       <tags>
-        <tag>工具</tag>
         <tag>git</tag>
+        <tag>工具</tag>
       </tags>
   </entry>
   <entry>
@@ -2519,6 +2530,15 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[markdown语法小记]]></title>
+    <url>%2F2017%2F03%2F20%2Fmarkdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[插入表格：1.1. 表格的上下需要空行。空行的多少至关重要 表格中文字居中 在划线部分的划线两端加上”:“ 比如”:—–: | :—-: 代码块:2.1. 合理利用代码块有意想不到的效果。3.]]></content>
+      <tags>
+        <tag>工具</tag>
+        <tag>markdown</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[codewars-count_digits]]></title>
     <url>%2F2017%2F03%2F20%2Fcodewars%2F</url>
     <content type="text"><![CDATA[题目 Take an integer n (n &gt;= 0) and a digit d (0 &lt;= d &lt;= 9) as an integer. Square all numbers k (0 &lt;= k &lt;= n) between 0 and n. Count the numbers of digits d used in the writing of all the k* *2. Call nb_dig (or nbDig or …) the function taking n and d as parameters and returning this count. 例子 n = 10, d = 1,the k * k are 0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100 We are using the digit 1 in 1, 16, 81, 100. The total count is then 4.nb_dig(25, 1):the numbers of interest are 1, 4, 9, 10, 11, 12, 13, 14, 19, 21which squared are 1, 16, 81, 100, 121, 144, 169, 196, 361, 441 so there are 11 digits 1 for the squares of numbers between 0 and 25. 分析 给出n和d，求 0 到 n 中间的平方，再求这些平方的平方，问所得的这些数中包含多少个数字d。大概就是先算出这些数字的平方，然后挨个分解求出其中的值。 解题function nbDig(n,d) &#123; var s = &apos;&apos;; for(var i=0;i&lt;=n;i++)&#123; s += Math.pow(i,2); &#125; return s.split(d).length-1&#125; 牢骚篇今天，进了个群，挺多厉害的人，还私聊了一个有很多 offer 的同学。顿时觉得，自己就是渣渣啊，一点信心都没有。还是得加油吧，要学的东西还很多啊。]]></content>
@@ -2529,15 +2549,6 @@
         <tag>编程</tag>
         <tag>js</tag>
         <tag>codewars</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[markdown语法小记]]></title>
-    <url>%2F2017%2F03%2F20%2Fmarkdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[插入表格：1.1. 表格的上下需要空行。空行的多少至关重要 表格中文字居中 在划线部分的划线两端加上”:“ 比如”:—–: | :—-: 代码块:2.1. 合理利用代码块有意想不到的效果。3.]]></content>
-      <tags>
-        <tag>markdown</tag>
-        <tag>工具</tag>
       </tags>
   </entry>
   <entry>
