@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-08-10T14:01:16.385Z</updated>
+  <updated>2019-08-11T14:43:56.400Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day211-Content-Type</title>
+    <link href="http://lmislm.com/2019/08/11/2019-08-11/"/>
+    <id>http://lmislm.com/2019/08/11/2019-08-11/</id>
+    <published>2019-08-10T16:00:00.000Z</published>
+    <updated>2019-08-11T14:43:56.400Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><ol><li>是什么？</li><li>句法</li><li>指令，及其注释<a id="more"></a></li></ol><h2 id="是什么"><a href="#是什么" class="headerlink" title="是什么"></a>是什么</h2><p>Content-Type 实体头部用于指示资源的MIME类型 media type 。</p><h2 id="句法"><a href="#句法" class="headerlink" title="句法"></a>句法</h2><p>就是经常在header中看到的东西，如，<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Content-Type: text/html; charset=utf<span class="number">-8</span></span><br></pre></td></tr></table></figure></p><h2 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h2><ol><li>media-type</li></ol><p>资源或数据的 MIME type（媒体类型—通常称为 Multipurpose Internet Mail Extensions 或 MIME 类型 ，是一种标准，用来表示文档、文件或字节流的性质和格式，如：text/html<br>、text/plain）。</p><ul><li>常见的：<br><code>multipart/form-data</code>，用以支持向服务器发送二进制数据</li></ul><p><code>application/x-www-urlencoded</code>，消息内容会经过 URL 格式编码，可用get方法和post方法，但不写enctype，无法实现文件上传</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.runoob.com/http/http-content-type.html" target="_blank" rel="noopener">HTTP content-type 对照表</a></p><p><a href="https://segmentfault.com/a/1190000003002851#articleHeader2" target="_blank" rel="noopener">理解HTTP之Content-Type</a></p><p><a href="https://juejin.im/post/5c9f4885f265da308868dad1" target="_blank" rel="noopener">上传文件multipart/form-data深入解析</a></p><p><a href="https://www.jianshu.com/p/29e38bcc8a1d" target="_blank" rel="noopener">深入解析 multipart/form-data</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;是什么？&lt;/li&gt;
+&lt;li&gt;句法&lt;/li&gt;
+&lt;li&gt;指令，及其注释
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>day210-repaint和reflow扫盲</title>
@@ -476,31 +501,6 @@
       &lt;h2 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h2&gt;&lt;ol&gt;
 &lt;li&gt;完善&lt;code&gt;Compilerjs&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;运行
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day190-MyVue-完善Complier、Watcher</title>
-    <link href="http://lmislm.com/2019/07/22/2019-07-22/"/>
-    <id>http://lmislm.com/2019/07/22/2019-07-22/</id>
-    <published>2019-07-21T16:00:00.000Z</published>
-    <updated>2019-07-23T14:59:39.307Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><ol><li>提取模板中的变量</li><li>完善<code>Watcher</code>和<code>Observer</code>之间的桥梁，Dep中添加target</li></ol><a id="more"></a><h2 id="Complier"><a href="#Complier" class="headerlink" title="Complier"></a>Complier</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> Watcher <span class="keyword">from</span> <span class="string">"./Watcher"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> REG = <span class="regexp">/\&#123;\&#123;(.*)\&#125;\&#125;/</span> <span class="comment">// 取胡须括号中的内容</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Complier</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(el, vm) &#123;</span><br><span class="line">    <span class="keyword">this</span>.el = <span class="built_in">document</span>.querySelector(el) <span class="comment">// 高效的原生DOM选择器，用着方便（比getElementsBy系列）</span></span><br><span class="line">    <span class="keyword">this</span>.vm = vm</span><br><span class="line">    <span class="keyword">this</span>.frag = <span class="keyword">this</span>._createFragment()</span><br><span class="line">    <span class="keyword">this</span>.el.appendChild(<span class="keyword">this</span>.frag) <span class="comment">// 整个element添加到这里，最后会清空</span></span><br><span class="line">  &#125;</span><br><span class="line">  _createFragment () &#123;</span><br><span class="line">    <span class="keyword">var</span> frag = <span class="built_in">document</span>.createDocumentFragment() <span class="comment">// 文档碎片节点，比createElement多次添加到document.body效率高</span></span><br><span class="line">    <span class="keyword">var</span> child</span><br><span class="line">    <span class="keyword">while</span>(child = <span class="keyword">this</span>.el.firstChild) &#123;</span><br><span class="line">     <span class="keyword">this</span>._compile(child) <span class="comment">// 接收每个node的子节点</span></span><br><span class="line">     frag.appendChild(child) <span class="comment">// 编译完之后，添加到碎片;appendChild做移动步骤；</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> frag</span><br><span class="line">  &#125;</span><br><span class="line">  _compile(node) &#123;</span><br><span class="line">    <span class="keyword">if</span> (node.nodeType === <span class="number">1</span>) &#123; <span class="comment">// 元素</span></span><br><span class="line">      </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (node.nodeType === <span class="number">3</span>) &#123; <span class="comment">// 文本节点</span></span><br><span class="line">      <span class="keyword">if</span> (REG.test(node.nodeValue)) &#123;</span><br><span class="line">        <span class="keyword">var</span> name = <span class="built_in">RegExp</span>.$<span class="number">1</span> <span class="comment">// 拿到第一个大括号里的</span></span><br><span class="line">        name = name.trim() <span class="comment">// 得到属性名字</span></span><br><span class="line">        <span class="keyword">new</span> Watcher(node, name, <span class="keyword">this</span>.vm) <span class="comment">// 观察得到的值</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Complier</span><br></pre></td></tr></table></figure><h2 id="Watcher"><a href="#Watcher" class="headerlink" title="Watcher"></a>Watcher</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> Dep <span class="keyword">from</span> <span class="string">"./Dep"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 订阅的人附到Dep</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Watcher</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span> (node, name, vm) &#123;</span><br><span class="line">    <span class="keyword">this</span>.node = node</span><br><span class="line">    <span class="keyword">this</span>.name = name</span><br><span class="line">    <span class="keyword">this</span>.vm = vm</span><br><span class="line">    Dep.target = <span class="keyword">this</span> <span class="comment">// 注入，给Observer提供this，否则Observer不会主动注入listen(Dep.target)</span></span><br><span class="line">    <span class="keyword">this</span>.update()</span><br><span class="line">    Dep.target = <span class="literal">null</span></span><br><span class="line">  &#125;</span><br><span class="line">  update () &#123;</span><br><span class="line">    <span class="keyword">this</span>.node.nodeValue = <span class="keyword">this</span>.vm[<span class="keyword">this</span>.name]</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Watcher</span><br></pre></td></tr></table></figure><h2 id="Dep"><a href="#Dep" class="headerlink" title="Dep"></a>Dep</h2><p>添加<code>target</code></p><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 发布订阅事件</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dep</span> </span>&#123;</span><br><span class="line">  <span class="comment">// static target = null // 可能不被识别</span></span><br><span class="line">  <span class="keyword">constructor</span> () &#123;</span><br><span class="line">    <span class="keyword">this</span>.listenerList = []</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * subs 传入Watcher,知道谁在监听</span></span><br><span class="line"><span class="comment">   * @param &#123;*&#125; subs </span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  sub (subs) &#123;</span><br><span class="line">    <span class="keyword">this</span>.listenerList.push(subs)</span><br><span class="line">  &#125;</span><br><span class="line">  notify () &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.listenerList.length; i++) &#123;</span><br><span class="line">      <span class="keyword">this</span>.listenerList[i].update()</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">Dep.prototype.target = <span class="literal">null</span> <span class="comment">// 兼容性</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Dep</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;提取模板中的变量&lt;/li&gt;
-&lt;li&gt;完善&lt;code&gt;Watcher&lt;/code&gt;和&lt;code&gt;Observer&lt;/code&gt;之间的桥梁，Dep中添加target&lt;/li&gt;
-&lt;/ol&gt;
     
     </summary>
     
