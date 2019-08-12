@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-08-12T15:35:43.446Z</updated>
+  <updated>2019-08-12T15:45:12.351Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://lmislm.com/2019/08/12/2019-08-12/"/>
     <id>http://lmislm.com/2019/08/12/2019-08-12/</id>
     <published>2019-08-11T16:00:00.000Z</published>
-    <updated>2019-08-12T15:35:43.446Z</updated>
+    <updated>2019-08-12T15:45:12.351Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><ol><li>三者异同</li><li>三者的基本概念<a id="more"></a></li></ol><h2 id="三者异同"><a href="#三者异同" class="headerlink" title="三者异同"></a>三者异同</h2><table><thead><tr><th>特性</th><th>Cookie</th><th>localStorage</th><th>sessionStorage</th></tr></thead><tbody><tr><td>生命周期</td><td>可由服务器生成，可设置过期时间。如果在浏览器端生成Cookie，默认是关闭浏览器后清除</td><td>除非被清除，否则永久保存</td><td>仅在当前会话下有效，关闭页面或浏览器后被清除</td></tr><tr><td>可存放数据大小</td><td>4K左右</td><td>5MB左右</td></tr><tr><td>与服务器端通信</td><td>携带在HTTP头中</td><td>不与服务器端通信，仅仅在浏览器中保存</td></tr><tr><td>易用性</td><td>接口不友好</td><td>相对较容易封装</td></tr></tbody></table><h2 id="三者的基本概念"><a href="#三者的基本概念" class="headerlink" title="三者的基本概念"></a>三者的基本概念</h2><p><strong>localStorage</strong></p><p>HTML5新特性，支持IE8+、 IE6+的polyfill可以用userData。localStorage在浏览器的隐私模式下面是不可读取的。</p><p><strong>sessionStorage</strong></p><p>仅在当前会话下有效，关闭页面或浏览器后被清除。<br><strong>作用域</strong> 如果一个标签页包含多个iframe标签且他们属于同源页面，那么他们之间是可以共享sessionStorage的。</p><p><strong>Cookie</strong><br>生命周期在设置的cookie过期时间之前一直有效。长度和数量的限制。每个domain最多只能有20条cookie，每个cookie长度不能超过4KB。属于旧方法。</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><ol><li>三者异同</li><li>三者的基本概念<a id="more"></a></li></ol><h2 id="三者异同"><a href="#三者异同" class="headerlink" title="三者异同"></a>三者异同</h2><table><thead><tr><th>特性</th><th>Cookie</th><th>localStorage</th><th>sessionStorage</th></tr></thead><tbody><tr><td>生命周期</td><td>可由服务器生成，可设置过期时间。如果在浏览器端生成Cookie，默认是关闭浏览器后清除</td><td>除非被清除，否则永久保存</td><td>仅在当前会话下有效，关闭页面或浏览器后被清除</td></tr><tr><td>可存放数据大小</td><td>4K左右</td><td>5MB左右</td><td>5MB左右</td></tr><tr><td>与服务器端通信</td><td>携带在HTTP头中</td><td>不与服务器端通信，仅仅在浏览器中保存</td><td>不与服务器端通信，仅仅在浏览器中保存</td></tr><tr><td>易用性</td><td>接口不友好</td><td>相对较容易封装</td><td>相对较容易封装</td></tr></tbody></table><h2 id="三者的基本概念"><a href="#三者的基本概念" class="headerlink" title="三者的基本概念"></a>三者的基本概念</h2><p><strong>localStorage</strong></p><p>HTML5新特性，支持IE8+、 IE6+的polyfill可以用userData。localStorage在浏览器的隐私模式下面是不可读取的。</p><p><strong>sessionStorage</strong></p><p>仅在当前会话下有效，关闭页面或浏览器后被清除。<br><strong>作用域</strong> 如果一个标签页包含多个iframe标签且他们属于同源页面，那么他们之间是可以共享sessionStorage的。</p><p><strong>Cookie</strong><br>生命周期在设置的cookie过期时间之前一直有效。长度和数量的限制。每个domain最多只能有20条cookie，每个cookie长度不能超过4KB。属于旧方法。</p>]]></content>
     
     <summary type="html">
     
