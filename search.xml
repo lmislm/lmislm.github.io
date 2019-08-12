@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[day212-localStorage、sessionStorage、Cookie]]></title>
+    <url>%2F2019%2F08%2F12%2F2019-08-12%2F</url>
+    <content type="text"><![CDATA[要点 三者异同 三者的基本概念 三者异同 特性 Cookie localStorage sessionStorage 生命周期 可由服务器生成，可设置过期时间。如果在浏览器端生成Cookie，默认是关闭浏览器后清除 除非被清除，否则永久保存 仅在当前会话下有效，关闭页面或浏览器后被清除 可存放数据大小 4K左右 5MB左右 与服务器端通信 携带在HTTP头中 不与服务器端通信，仅仅在浏览器中保存 易用性 接口不友好 相对较容易封装 三者的基本概念localStorage HTML5新特性，支持IE8+、 IE6+的polyfill可以用userData。localStorage在浏览器的隐私模式下面是不可读取的。 sessionStorage 仅在当前会话下有效，关闭页面或浏览器后被清除。作用域 如果一个标签页包含多个iframe标签且他们属于同源页面，那么他们之间是可以共享sessionStorage的。 Cookie生命周期在设置的cookie过期时间之前一直有效。长度和数量的限制。每个domain最多只能有20条cookie，每个cookie长度不能超过4KB。属于旧方法。]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[day211-Content-Type]]></title>
     <url>%2F2019%2F08%2F11%2F2019-08-11%2F</url>
     <content type="text"><![CDATA[要点 是什么？ 句法 指令，及其注释 是什么Content-Type 实体头部用于指示资源的MIME类型 media type 。 句法就是经常在header中看到的东西，如，Content-Type: text/html; charset=utf-8 指令 media-type 资源或数据的 MIME type（媒体类型—通常称为 Multipurpose Internet Mail Extensions 或 MIME 类型 ，是一种标准，用来表示文档、文件或字节流的性质和格式，如：text/html、text/plain）。 常见的：multipart/form-data，用以支持向服务器发送二进制数据 application/x-www-urlencoded，消息内容会经过 URL 格式编码，可用get方法和post方法，但不写enctype，无法实现文件上传 参考HTTP content-type 对照表 理解HTTP之Content-Type 上传文件multipart/form-data深入解析 深入解析 multipart/form-data]]></content>
@@ -1002,9 +1013,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[day119-实现一个instanceOf笔记]]></title>
-    <url>%2F2019%2F05%2F10%2F2019-05-11%2F</url>
-    <content type="text"><![CDATA[前言话不多说，这篇是水篇。 代码// 实现一个instanceOffunction myInstanceOf(left, right) &#123; let proto = left.__proto__ let prototype = right.prototype while (true) &#123; if (!proto) &#123; return false &#125; if (proto === prototype) &#123; return false &#125; proto === proto.__proto__ &#125;&#125;]]></content>
+    <title><![CDATA[day118-手写简单的函数柯里化-笔记]]></title>
+    <url>%2F2019%2F05%2F10%2F2019-05-10%2F</url>
+    <content type="text"><![CDATA[前言函数柯里化是属于高阶函数中一种常见的技术。特点就是参数复用、提前返回和延迟执行。 代码function curry (fn, args) &#123; var length = fn.length var args = args || [] return function () &#123; newArgs = args.concat(Array.prototype.slice.call(arguments)) if (newArgs.length &lt; length) &#123; return curry.call(this, fn, newArgs) &#125; else &#123; return fn.apply(this, newArgs) &#125; &#125;&#125;function multiFn(a, b, c) &#123; return a * b * c&#125;var multi = curry(multiFn)multi(1)(2)(3)multi(1,2,3)multi(1)(2,3)multi(1,2)(3)]]></content>
       <categories>
         <category>技术</category>
       </categories>
@@ -1013,9 +1024,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[day118-手写简单的函数柯里化-笔记]]></title>
-    <url>%2F2019%2F05%2F10%2F2019-05-10%2F</url>
-    <content type="text"><![CDATA[前言函数柯里化是属于高阶函数中一种常见的技术。特点就是参数复用、提前返回和延迟执行。 代码function curry (fn, args) &#123; var length = fn.length var args = args || [] return function () &#123; newArgs = args.concat(Array.prototype.slice.call(arguments)) if (newArgs.length &lt; length) &#123; return curry.call(this, fn, newArgs) &#125; else &#123; return fn.apply(this, newArgs) &#125; &#125;&#125;function multiFn(a, b, c) &#123; return a * b * c&#125;var multi = curry(multiFn)multi(1)(2)(3)multi(1,2,3)multi(1)(2,3)multi(1,2)(3)]]></content>
+    <title><![CDATA[day119-实现一个instanceOf笔记]]></title>
+    <url>%2F2019%2F05%2F10%2F2019-05-11%2F</url>
+    <content type="text"><![CDATA[前言话不多说，这篇是水篇。 代码// 实现一个instanceOffunction myInstanceOf(left, right) &#123; let proto = left.__proto__ let prototype = right.prototype while (true) &#123; if (!proto) &#123; return false &#125; if (proto === prototype) &#123; return false &#125; proto === proto.__proto__ &#125;&#125;]]></content>
       <categories>
         <category>技术</category>
       </categories>
@@ -1597,7 +1608,7 @@
   </entry>
   <entry>
     <title><![CDATA[day64-模板语法]]></title>
-    <url>%2F2019%2F03%2F16%2F2019-03-16%2F</url>
+    <url>%2F2019%2F03%2F16%2F2019-03-1111%2F</url>
     <content type="text"><![CDATA[背景vuejs项目中有个需求，在notification消息提示中某个部分需要有点击事件。UI用的element。想到用模板的方法来构造。 element-ui Notification onClick 触发方式组件中有两种触发的方式，但是都没有很好的满足需求。 点击时触发this.$notify.warning(&#123; dangerouslyUseHTMLString: true, duration: 0, message: `$&#123;this.createdFailedMember&#125;个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`, onClick: function () &#123; console.log(1) &#125;&#125;) 创建时触发this.$notify.warning(&#123; dangerouslyUseHTMLString: true, duration: 0, message: `$&#123;this.createdFailedMember&#125;个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`, onClick: (function () &#123; console.log(1) &#125;)()&#125;) 渲染函数比较灵活的render 函数。非常好用，但是没有模板语法那么简洁。this.$notify.warning(&#123;message: h( 'div', &#123; style: &#123;display: 'inline-block'&#125; &#125;, [ h('span', `$&#123;this.createdFailedMember&#125;个成员创建失败！`), h('a', &#123; style: &#123;color: '#409EFF', cursor: 'pointer', 'text-decoration': 'underline'&#125;, on: &#123; click: this.clickNotificationMsg &#125; &#125;, '前往查看') ])&#125;)]]></content>
       <categories>
         <category>技术</category>
@@ -1608,7 +1619,7 @@
   </entry>
   <entry>
     <title><![CDATA[day64-模板语法]]></title>
-    <url>%2F2019%2F03%2F16%2F2019-03-1111%2F</url>
+    <url>%2F2019%2F03%2F16%2F2019-03-16%2F</url>
     <content type="text"><![CDATA[背景vuejs项目中有个需求，在notification消息提示中某个部分需要有点击事件。UI用的element。想到用模板的方法来构造。 element-ui Notification onClick 触发方式组件中有两种触发的方式，但是都没有很好的满足需求。 点击时触发this.$notify.warning(&#123; dangerouslyUseHTMLString: true, duration: 0, message: `$&#123;this.createdFailedMember&#125;个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`, onClick: function () &#123; console.log(1) &#125;&#125;) 创建时触发this.$notify.warning(&#123; dangerouslyUseHTMLString: true, duration: 0, message: `$&#123;this.createdFailedMember&#125;个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`, onClick: (function () &#123; console.log(1) &#125;)()&#125;) 渲染函数比较灵活的render 函数。非常好用，但是没有模板语法那么简洁。this.$notify.warning(&#123;message: h( 'div', &#123; style: &#123;display: 'inline-block'&#125; &#125;, [ h('span', `$&#123;this.createdFailedMember&#125;个成员创建失败！`), h('a', &#123; style: &#123;color: '#409EFF', cursor: 'pointer', 'text-decoration': 'underline'&#125;, on: &#123; click: this.clickNotificationMsg &#125; &#125;, '前往查看') ])&#125;)]]></content>
       <categories>
         <category>技术</category>
@@ -2311,9 +2322,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[新年第一天-2019-01-01]]></title>
-    <url>%2F2019%2F01%2F01%2F2019-01-01%2F</url>
-    <content type="text"><![CDATA[友情提示以下内容都是一些碎碎念，生活、读后感、今天生活内容。ps: 附上我的“专业插画师”提供的图片。 生活新年第一天，昨晚在群里抢红包，一直热闹到很晚才睡。今早10点才慵懒的起来，起的有点晚。中午炸鸡腿，惨不忍睹。后来玩游戏，庸庸碌碌的一天就过去了。这是假期最后一天。希望晚上的时候能收收心看点书。顺带一提昨天晚上看了组件详解。 读Vue 组件基础之组件通信 -《Vue js实战》组件基础组件的复用，复用离不开值得传递。父子组件，兄弟组件相互之间的传值。基本的有props，父组件传递给子组件，子组件通过$emit()、v-on: 来将值通知父组件。不太常用的有$parent(书中提到可以通过此通信访问父实例或组件），在组件中引用父组件，$child,父组件引用子组件。《Vue js实战》书中提到了，通过利用实例化一个空的BUS组件起到总线的作用，这种方法还挺新鲜。另外，组件通信时还有slot的内容分发，slot默认名称是可以和具名slot一起用的。相互之间并不影响。好吧，之前用的时候，总是会不自觉给slot取名字。理解的不够深刻。 高级组件 组件可以递归自己。 异步组件。 小结总感觉这种组件通信方式还有待于改善，应该多读一下开源的一些组件是怎么写出来的。因为上次研究element-UI的时候并没有看它运用这些（指的是通信手段，也可能是我忽略？）但是表现出了很强的可扩展性。很值得学习。包括其中CSS中的书写。 插播元旦放假头一天，买了100的零食，一个大箱子，有优惠。现在好像吃的牙有点疼。作啊。明明要减肥的人。 发现好的视频今天看B站排行榜的时候发现一个点评动漫的UP主，LexBurner?“艺名”：蕾丝。他的视频看动漫的角度还真是蛮特别，应该是有大量的漫画番剧的基础，能有空看这么多视频和漫画，这人真是不简单。]]></content>
+    <title><![CDATA[2019--启程]]></title>
+    <url>%2F2019%2F01%2F01%2F2019-%E5%90%AF%E7%A8%8B%2F</url>
+    <content type="text"><![CDATA[即将告别2018年，这个对于我来说，多灾多难的一年。这一年发生了太多的事，每一年也都会发生很多事，但从来没有哪一年能够像2018年这样让人印象深刻。考研结束。毕业。工作。最悲痛的莫过于最亲的人去世。事业也刚刚起步，爱情失去了方向。真是让人印象深刻的一年。]]></content>
       <categories>
         <category>生活</category>
       </categories>
@@ -2322,9 +2333,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[2019--启程]]></title>
-    <url>%2F2019%2F01%2F01%2F2019-%E5%90%AF%E7%A8%8B%2F</url>
-    <content type="text"><![CDATA[即将告别2018年，这个对于我来说，多灾多难的一年。这一年发生了太多的事，每一年也都会发生很多事，但从来没有哪一年能够像2018年这样让人印象深刻。考研结束。毕业。工作。最悲痛的莫过于最亲的人去世。事业也刚刚起步，爱情失去了方向。真是让人印象深刻的一年。]]></content>
+    <title><![CDATA[新年第一天-2019-01-01]]></title>
+    <url>%2F2019%2F01%2F01%2F2019-01-01%2F</url>
+    <content type="text"><![CDATA[友情提示以下内容都是一些碎碎念，生活、读后感、今天生活内容。ps: 附上我的“专业插画师”提供的图片。 生活新年第一天，昨晚在群里抢红包，一直热闹到很晚才睡。今早10点才慵懒的起来，起的有点晚。中午炸鸡腿，惨不忍睹。后来玩游戏，庸庸碌碌的一天就过去了。这是假期最后一天。希望晚上的时候能收收心看点书。顺带一提昨天晚上看了组件详解。 读Vue 组件基础之组件通信 -《Vue js实战》组件基础组件的复用，复用离不开值得传递。父子组件，兄弟组件相互之间的传值。基本的有props，父组件传递给子组件，子组件通过$emit()、v-on: 来将值通知父组件。不太常用的有$parent(书中提到可以通过此通信访问父实例或组件），在组件中引用父组件，$child,父组件引用子组件。《Vue js实战》书中提到了，通过利用实例化一个空的BUS组件起到总线的作用，这种方法还挺新鲜。另外，组件通信时还有slot的内容分发，slot默认名称是可以和具名slot一起用的。相互之间并不影响。好吧，之前用的时候，总是会不自觉给slot取名字。理解的不够深刻。 高级组件 组件可以递归自己。 异步组件。 小结总感觉这种组件通信方式还有待于改善，应该多读一下开源的一些组件是怎么写出来的。因为上次研究element-UI的时候并没有看它运用这些（指的是通信手段，也可能是我忽略？）但是表现出了很强的可扩展性。很值得学习。包括其中CSS中的书写。 插播元旦放假头一天，买了100的零食，一个大箱子，有优惠。现在好像吃的牙有点疼。作啊。明明要减肥的人。 发现好的视频今天看B站排行榜的时候发现一个点评动漫的UP主，LexBurner?“艺名”：蕾丝。他的视频看动漫的角度还真是蛮特别，应该是有大量的漫画番剧的基础，能有空看这么多视频和漫画，这人真是不简单。]]></content>
       <categories>
         <category>生活</category>
       </categories>
@@ -2401,8 +2412,8 @@
         <category>学习</category>
       </categories>
       <tags>
-        <tag>工具</tag>
         <tag>git</tag>
+        <tag>工具</tag>
       </tags>
   </entry>
   <entry>
@@ -2558,8 +2569,8 @@
     <url>%2F2017%2F03%2F20%2Fmarkdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0%2F</url>
     <content type="text"><![CDATA[插入表格：1.1. 表格的上下需要空行。空行的多少至关重要 表格中文字居中 在划线部分的划线两端加上”:“ 比如”:—–: | :—-: 代码块:2.1. 合理利用代码块有意想不到的效果。3.]]></content>
       <tags>
-        <tag>markdown</tag>
         <tag>工具</tag>
+        <tag>markdown</tag>
       </tags>
   </entry>
   <entry>

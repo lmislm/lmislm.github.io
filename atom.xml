@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-08-11T14:43:56.400Z</updated>
+  <updated>2019-08-12T15:35:43.446Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day212-localStorage、sessionStorage、Cookie</title>
+    <link href="http://lmislm.com/2019/08/12/2019-08-12/"/>
+    <id>http://lmislm.com/2019/08/12/2019-08-12/</id>
+    <published>2019-08-11T16:00:00.000Z</published>
+    <updated>2019-08-12T15:35:43.446Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><ol><li>三者异同</li><li>三者的基本概念<a id="more"></a></li></ol><h2 id="三者异同"><a href="#三者异同" class="headerlink" title="三者异同"></a>三者异同</h2><table><thead><tr><th>特性</th><th>Cookie</th><th>localStorage</th><th>sessionStorage</th></tr></thead><tbody><tr><td>生命周期</td><td>可由服务器生成，可设置过期时间。如果在浏览器端生成Cookie，默认是关闭浏览器后清除</td><td>除非被清除，否则永久保存</td><td>仅在当前会话下有效，关闭页面或浏览器后被清除</td></tr><tr><td>可存放数据大小</td><td>4K左右</td><td>5MB左右</td></tr><tr><td>与服务器端通信</td><td>携带在HTTP头中</td><td>不与服务器端通信，仅仅在浏览器中保存</td></tr><tr><td>易用性</td><td>接口不友好</td><td>相对较容易封装</td></tr></tbody></table><h2 id="三者的基本概念"><a href="#三者的基本概念" class="headerlink" title="三者的基本概念"></a>三者的基本概念</h2><p><strong>localStorage</strong></p><p>HTML5新特性，支持IE8+、 IE6+的polyfill可以用userData。localStorage在浏览器的隐私模式下面是不可读取的。</p><p><strong>sessionStorage</strong></p><p>仅在当前会话下有效，关闭页面或浏览器后被清除。<br><strong>作用域</strong> 如果一个标签页包含多个iframe标签且他们属于同源页面，那么他们之间是可以共享sessionStorage的。</p><p><strong>Cookie</strong><br>生命周期在设置的cookie过期时间之前一直有效。长度和数量的限制。每个domain最多只能有20条cookie，每个cookie长度不能超过4KB。属于旧方法。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;三者异同&lt;/li&gt;
+&lt;li&gt;三者的基本概念
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>day211-Content-Type</title>
@@ -477,30 +501,6 @@
     
       &lt;h2 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h2&gt;&lt;ol&gt;
 &lt;li&gt;event loop的处理过程（Processing model）
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day191-MyVue-完成</title>
-    <link href="http://lmislm.com/2019/07/23/2019-07-23/"/>
-    <id>http://lmislm.com/2019/07/23/2019-07-23/</id>
-    <published>2019-07-22T16:00:00.000Z</published>
-    <updated>2019-07-23T15:25:36.985Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><ol><li>完善<code>Compilerjs</code></li><li>运行<a id="more"></a><h2 id="Complier"><a href="#Complier" class="headerlink" title="Complier"></a>Complier</h2></li></ol><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> Watcher <span class="keyword">from</span> <span class="string">"./Watcher"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> REG = <span class="regexp">/\&#123;\&#123;(.*)\&#125;\&#125;/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Complier</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(el, vm) &#123;</span><br><span class="line">    <span class="keyword">this</span>.el = <span class="built_in">document</span>.querySelector(el) <span class="comment">// 高效的原生DOM选择器，用着方便（比getElementsBy系列）</span></span><br><span class="line">    <span class="keyword">this</span>.vm = vm</span><br><span class="line">    <span class="keyword">this</span>.frag = <span class="keyword">this</span>._createFragment()</span><br><span class="line">    <span class="keyword">this</span>.el.appendChild(<span class="keyword">this</span>.frag) <span class="comment">// 整个element添加到这里，最后会清空</span></span><br><span class="line">  &#125;</span><br><span class="line">  _createFragment () &#123;</span><br><span class="line">    <span class="keyword">var</span> frag = <span class="built_in">document</span>.createDocumentFragment() <span class="comment">// 文档碎片节点，比createElement多次添加到document.body效率高</span></span><br><span class="line">    <span class="keyword">var</span> child</span><br><span class="line">    <span class="keyword">while</span>(child = <span class="keyword">this</span>.el.firstChild) &#123;</span><br><span class="line">     <span class="keyword">this</span>._compile(child) <span class="comment">// 接收每个node的子节点</span></span><br><span class="line">     frag.appendChild(child) <span class="comment">// 编译完之后，添加到碎片;appendChild做移动步骤；</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> frag</span><br><span class="line">  &#125;</span><br><span class="line">  _compile(node) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(node)</span><br><span class="line">    <span class="keyword">if</span> (node.nodeType === <span class="number">1</span>) &#123; <span class="comment">// 元素</span></span><br><span class="line">      <span class="comment">// 最后，完成双向绑定</span></span><br><span class="line">      <span class="keyword">var</span> attr = node.attributes</span><br><span class="line">      <span class="keyword">if</span> (attr.hasOwnProperty(<span class="string">'v-model'</span>)) &#123;</span><br><span class="line">        <span class="keyword">var</span> propValue = attr[<span class="string">'v-model'</span>].nodeValue</span><br><span class="line">        <span class="keyword">var</span> self = <span class="keyword">this</span></span><br><span class="line">        node.addEventListener(<span class="string">'input'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">          self.vm[propValue] = e.target.value <span class="comment">// 用了set，每次调用，添加了Watcher了的地方会做相应处理</span></span><br><span class="line">        &#125;)</span><br><span class="line">        node.value = <span class="keyword">this</span>.vm[propValue]</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (node.nodeType === <span class="number">3</span>) &#123; <span class="comment">// 文本节点</span></span><br><span class="line">      <span class="comment">// 通过Observer中notify()，通知get。watcher中会update()</span></span><br><span class="line">      <span class="keyword">if</span> (REG.test(node.nodeValue)) &#123;</span><br><span class="line">        <span class="keyword">var</span> name = <span class="built_in">RegExp</span>.$<span class="number">1</span> <span class="comment">// 拿到第一个大括号里的</span></span><br><span class="line">        name = name.trim() <span class="comment">// 得到属性名字</span></span><br><span class="line">        <span class="keyword">new</span> Watcher(node, name, <span class="keyword">this</span>.vm) <span class="comment">// 观察得到的值</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Complier</span><br></pre></td></tr></table></figure><h2 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h2><h3 id="安装webpack"><a href="#安装webpack" class="headerlink" title="安装webpack"></a>安装webpack</h3><blockquote><p>全局</p></blockquote><p>npm i -g webpack webpack-cli</p><blockquote><p>局部</p></blockquote><p>npm i -D webpack webpack-cli</p><h3 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h3><p>webpack main.js –output bundle.js</p><h3 id="热编译"><a href="#热编译" class="headerlink" title="热编译"></a>热编译</h3><p>webpack main.js –output bundle.js –watch</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;完善&lt;code&gt;Compilerjs&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;运行
     
     </summary>
     
