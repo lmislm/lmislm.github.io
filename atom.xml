@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-08-12T15:45:12.351Z</updated>
+  <updated>2019-08-13T15:24:04.004Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day213-DNS解析</title>
+    <link href="http://lmislm.com/2019/08/13/2019-08-13/"/>
+    <id>http://lmislm.com/2019/08/13/2019-08-13/</id>
+    <published>2019-08-12T16:00:00.000Z</published>
+    <updated>2019-08-13T15:24:04.004Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><ol><li>DNS解析过程</li><li>DNS优化<a id="more"></a></li></ol><h2 id="DNS解析过程"><a href="#DNS解析过程" class="headerlink" title="DNS解析过程"></a>DNS解析过程</h2><p>DNS解析查IP过程：（以<a href="http://www.xxx.com为例）" target="_blank" rel="noopener">www.xxx.com为例）</a><br>过程：. -&gt; .com -&gt; xxx.com. -&gt; <a href="http://www.xxx.com" target="_blank" rel="noopener">www.xxx.com</a>.</p><ol><li>读取DNS缓存（缓存分为：浏览器缓存，系统缓存，路由器缓存，IPS服务器缓存，根域名服务器缓存，顶级域名服务器缓存，主域名服务器缓存）</li><li>查找LDNS（本地区域名服务器，如果你在学校接入互联网，则 LDNS 服务器就在学校）。LDNS查询自己的DNS缓存，失败则进行DNS解析请求。</li><li>LDNS查找根域名服务器（<a href="http://www.xxx.com.，注意com后的“.”对应根域名服务器，默认都有，通常省略，但浏览器请求DNS时会自动加上" target="_blank" rel="noopener">www.xxx.com.，注意com后的“.”对应根域名服务器，默认都有，通常省略，但浏览器请求DNS时会自动加上</a>)</li><li>LDNS查找顶级域名服务器（COM域名服务器）</li><li>LDNS查找主域名服务器（xxx.com域名服务器），得到IP地址</li><li>LDNS将得到的IP地址，返回给操作系统，自己也存一份。</li></ol><h2 id="DNS优化"><a href="#DNS优化" class="headerlink" title="DNS优化"></a>DNS优化</h2><ol><li><p>缓存<br>主要有：浏览器缓存，系统缓存，路由器缓存，IPS服务器缓存，根域名服务器缓存，顶级域名服务器缓存，主域名服务器缓存<br>浏览器缓存查看（Chrome版本75.0.3770.100为例）：<code>chrome://net-internals/#dns</code>。注：可以从<code>chrome://chrome-urls/</code>进去<br>系统缓存查看：（<code>/etc/hosts</code>，Linux系统）（<code>hosts</code>，Windows系统）</p></li><li><p>负载均衡<br>根据每台被请求的机器（含有请求资源）的负载量，该机器离用户地理位置的距离等等，来决定哪个机器处理，即负载均衡，又叫DNS重定向。</p></li></ol><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://segmentfault.com/a/1190000006879700" target="_blank" rel="noopener">前端经典面试题: 从输入URL到页面加载发生了什么？</a></p><p><a href="https://github.com/kaola-fed/blog/issues" target="_blank" rel="noopener">从输入页面地址到展示页面信息都发生了些什么？</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;DNS解析过程&lt;/li&gt;
+&lt;li&gt;DNS优化
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>day212-localStorage、sessionStorage、Cookie</title>
@@ -478,29 +502,6 @@
     
       &lt;h2 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h2&gt;&lt;ol&gt;
 &lt;li&gt;模拟new&lt;br&gt;直接上代码,之前有写过两次，但是一个过于毛糙，一个过于复杂不便于理解。这里根据记忆，再手写一遍。
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day192-event loop-处理过程</title>
-    <link href="http://lmislm.com/2019/07/24/2019-07-24/"/>
-    <id>http://lmislm.com/2019/07/24/2019-07-24/</id>
-    <published>2019-07-23T16:00:00.000Z</published>
-    <updated>2019-07-24T14:57:24.790Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><ol><li>event loop的处理过程（Processing model）<a id="more"></a><h2 id="规范"><a href="#规范" class="headerlink" title="规范"></a>规范</h2></li></ol><blockquote><p><a href="https://html.spec.whatwg.org/multipage/webappapis.html#event-loop-processing-model" target="_blank" rel="noopener">event-loop-processing-model</a></p></blockquote><p>只要<code>event loop</code>存在，就会不断执行下面的步骤：</p><ol><li>让task queue成为事件循环的任务队列之一，以用户代理定义的方式选择，约束条件是所选任务队列必须至少包含一个可运行的任务。如果没有这样的任务队列，那么跳到下一个微任务步骤。</li><li>让oldesttask成为taskqueue中的第一个可运行任务，并将其从taskqueue中删除。</li><li>通过执行以下步骤报告用户代理不执行此循环的持续时间： ….</li><li>将事件循环当前正在运行的任务设置为OldestTask。</li><li>执行旧任务的步骤。</li><li>从其任务队列中删除OldestTask。</li><li>Microtasks: 执行microtasks任务检查点（microtasks队列里的任务）。<blockquote><p>…</p></blockquote></li><li>更新渲染<blockquote><p>…</p></blockquote></li><li>如果这是一个worker event loop，但是没有任务在task队列中，并且WorkerGlobalScope对象的closing标识为true，则销毁event loop，中止这些步骤，然后进行定义在Web workers章节的run a worker。</li><li>返回到第一步。</li></ol>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;event loop的处理过程（Processing model）
     
     </summary>
     
