@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-08-13T15:24:04.004Z</updated>
+  <updated>2019-08-14T15:49:48.449Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day214-HTTP三次握手</title>
+    <link href="http://lmislm.com/2019/08/14/2019-08-14/"/>
+    <id>http://lmislm.com/2019/08/14/2019-08-14/</id>
+    <published>2019-08-13T16:00:00.000Z</published>
+    <updated>2019-08-14T15:49:48.449Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><ol><li>目的</li><li>名词</li><li>过程</li><li>疑问<a id="more"></a></li></ol><h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>客户端连接服务端，建立TCP连接，交换窗口大小信息</p><h2 id="名词"><a href="#名词" class="headerlink" title="名词"></a>名词</h2><p><code>ISN(Initial Sequence Number)：</code>操作系统动态随机选取一个32位长的序列号，即初始序列号ISN。</p><p><code>SYN(SYNchronization)：</code>同步信号SYN，占用一个字节的编号。</p><p>在连接建立时用来同步序号。当SYN=1而ACK=0时，表明这是一个连接请求报文。</p><p>对方若同意建立连接，则应在响应报文中使SYN=1和ACK=1. 因此, SYN置1就表示这是一个连接请求或连接接受报文。</p><p><code>ACKnum：</code>确认序号。Inform the sending host that the transmitted data was received successfully.</p><h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><p><strong>第一次握手</strong>（SYN=1, seq=x)（注意：SYN又可以写FIN）</p><p>客户端发送，TCP的SYN标志位初始值为1的包，表明客户端向服务端发起连接。同时seq（ sequence numbers 序列号）包含ISN序列号x，保存在发送包序列号字段里。</p><p>发送完毕后，客户端进入<code>SYN_SEND</code>状态。</p><p><strong>第二次握手</strong>（SYN=1, seq=y, ACK=1, ACKnum=x+1）（注意ACKnum又写作ack）</p><p>服务器返回，SYN标志位和ACK标志位为1。服务端将ISN序列号放入Seq域，同时将ACKnum（Acknowledgement Number：确认序号）设置为客户端ISN序列号加1，即x+1。<br>发送完毕后，服务端进入<code>SYN_RCVD</code>状态。</p><p><strong>第三次握手</strong>（ACK=1，seq=x + 1，ACKnum=y+1）</p><p>客户端发送，SYN标志位为0，ACK标志位为1，将服务端的seq序号值加1，放入确认序号中，发送给服务端。<br>发送完毕后，客户端进入<code>ESTABLISHED</code>状态，服务端接收后，也进入ESTABLISHED状态。TCP三次握手结束</p><h2 id="疑问"><a href="#疑问" class="headerlink" title="疑问"></a>疑问</h2><ol><li>为什么是三次握手不是两次握手？</li></ol><p>TCP 需要 seq 序列号来做可靠重传或接收，而避免连接复用时无法分辨出 seq 是延迟或者是旧链接的 seq。</p><blockquote><p>谢希仁版《计算机网络》：“已失效的连接请求报文段” 的产生在这样一种情况下：client 发出的第一个连接请求报文段并没有丢失，而是在某个网络结点长时间的滞留了，以致延误到连接释放以后的某个时间才到达 server。本来这是一个早已失效的报文段。但 server 收到此失效的连接请求报文段后，就误认为是 client 再次发出的一个新的连接请求。于是就向 client 发出确认报文段，同意建立连接。假设不采用 “三次握手”，那么只要 server 发出确认，新的连接就建立了。由于现在 client 并没有发出建立连接的请求，因此不会理睬 server 的确认，也不会向 server 发送数据。但 server 却以为新的运输连接已经建立，并一直等待 client 发来数据。这样，server 的很多资源就白白浪费掉了。采用 “三次握手” 的办法可以防止上述现象发生。例如刚才那种情况，client 不会向 server 的确认发出确认。server 由于收不到确认，就知道 client 并没有要求建立连接。”</p><ol start="2"><li>TCP 怎么样识别之前旧链接重发的包？</li></ol></blockquote><p>ISN（初始序列号）机制。</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.zhihu.com/question/24853633" target="_blank" rel="noopener">TCP 为什么是三次握手，而不是两次或四次？</a></p><p><a href="https://hit-alibaba.github.io/interview/basic/network/TCP.html" target="_blank" rel="noopener">三次握手</a></p><p><a href="https://packetlife.net/blog/2010/jun/7/understanding-tcp-sequence-acknowledgment-numbers/" target="_blank" rel="noopener">Understanding TCP Sequence and Acknowledgment Numbers</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;目的&lt;/li&gt;
+&lt;li&gt;名词&lt;/li&gt;
+&lt;li&gt;过程&lt;/li&gt;
+&lt;li&gt;疑问
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>day213-DNS解析</title>
@@ -479,29 +505,6 @@
     <summary type="html">
     
       &lt;h2 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h2&gt;&lt;p&gt;元素为&lt;code&gt;contenteditable&lt;/code&gt;时控制光标在尾部，方法适用于粘贴纯文本时，光标的定位。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day193-模拟new</title>
-    <link href="http://lmislm.com/2019/07/25/2019-07-25/"/>
-    <id>http://lmislm.com/2019/07/25/2019-07-25/</id>
-    <published>2019-07-24T16:00:00.000Z</published>
-    <updated>2019-07-25T14:09:49.308Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><ol><li>模拟new<br>直接上代码,之前有写过两次，但是一个过于毛糙，一个过于复杂不便于理解。这里根据记忆，再手写一遍。<a id="more"></a><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 模拟new</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">newFactory</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  Constructor = [].shift.call(<span class="built_in">arguments</span>)</span><br><span class="line">  <span class="comment">// __proto__不建议使用了，建议用Object.create()代替</span></span><br><span class="line">  <span class="comment">// var newObj = Object.create(null)</span></span><br><span class="line">  <span class="comment">// newObj.__proto__ = Constructor.prototype</span></span><br><span class="line">  </span><br><span class="line">  <span class="keyword">var</span> newObj = <span class="built_in">Object</span>.create(Constructor.prototype)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> r = Constructor.apply(newObj, <span class="built_in">arguments</span>)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">typeof</span> newObj === <span class="string">'object'</span> ? r || newObj : newObj</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">newTes</span> (<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(newFactory(newTes, <span class="string">'ceshi'</span>))</span><br></pre></td></tr></table></figure></li></ol>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;模拟new&lt;br&gt;直接上代码,之前有写过两次，但是一个过于毛糙，一个过于复杂不便于理解。这里根据记忆，再手写一遍。
     
     </summary>
     
