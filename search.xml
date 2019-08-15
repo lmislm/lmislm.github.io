@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[day214-HTTP四次挥手]]></title>
+    <url>%2F2019%2F08%2F15%2F2019-08-15%2F</url>
+    <content type="text"><![CDATA[要点 目的 过程 目的由于TCP连接是全双工的，因此每个方向都必须单独进行关闭，客户端或服务器均可主动发起挥手动作。 这个原则是当一方完成它的数据发送任务后就能发送标志位FIN来终止这个方向的连接。收到FIN=1只意味着这一方向上没有数据流动，一个TCP连接在收到FIN=1后仍能发送数据。首先进行关闭的一方将执行主动关闭，而另一方执行被动关闭。 过程第一次握手 (FIN=1，seq=x) 假设客户端想要关闭连接，客户端发送标志位FIN为1的包，表示自己已经没有数据可以发送了，但是仍然可以接受数据。 发送完毕后，客户端进入FIN_WAIT_1状态。 第二次握手 (ACK=1，ACKnum=x+1) 服务器端确认客户端的 FIN 包，发送一个确认序号（ACKnum，又写做ack），表明已接收客户端关闭连接的请求，但还没有准备好关闭连接。 发送完毕后，服务器端进入CLOSE_WAIT状态。客户端接收到这个确认序号后，进入FIN_WAIT_2状态，等待服务器端关闭连接。 第三次握手 (FIN=1，seq=y) 服务器端准备好关闭连接时，向客户端发送结束连接请求，FIN 置为1。 发送完毕后，服务器端进入 LAST_ACK 状态，等待来自客户端的最后一个ACK。 第四次挥手 (ACK=1，ACKnum=y+1) 客户端接收到来自服务器端的关闭请求，发送一个确认序号，并进入 TIME_WAIT状态，等待可能出现的要求重传的 ACK 包。 服务器端接收到这个确认包之后，关闭连接，进入 CLOSED 状态。 最后 客户端等待了某个固定时间（两个最大段生命周期，2MSL，2 Maximum Segment Lifetime）之后，没有收到服务器端的 ACK ，认为服务器端已经正常关闭连接，于是自己也关闭连接，进入 CLOSED 状态。 参考三次握手]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[day214-HTTP三次握手]]></title>
     <url>%2F2019%2F08%2F14%2F2019-08-14%2F</url>
-    <content type="text"><![CDATA[要点 目的 名词 过程 疑问 目的客户端连接服务端，建立TCP连接，交换窗口大小信息 名词ISN(Initial Sequence Number)：操作系统动态随机选取一个32位长的序列号，即初始序列号ISN。 SYN(SYNchronization)：同步信号SYN，占用一个字节的编号。 在连接建立时用来同步序号。当SYN=1而ACK=0时，表明这是一个连接请求报文。 对方若同意建立连接，则应在响应报文中使SYN=1和ACK=1. 因此, SYN置1就表示这是一个连接请求或连接接受报文。 ACKnum：确认序号。Inform the sending host that the transmitted data was received successfully. 过程第一次握手（SYN=1, seq=x)（注意：SYN又可以写FIN） 客户端发送，TCP的SYN标志位初始值为1的包，表明客户端向服务端发起连接。同时seq（ sequence numbers 序列号）包含ISN序列号x，保存在发送包序列号字段里。 发送完毕后，客户端进入SYN_SEND状态。 第二次握手（SYN=1, seq=y, ACK=1, ACKnum=x+1）（注意ACKnum又写作ack） 服务器返回，SYN标志位和ACK标志位为1。服务端将ISN序列号放入Seq域，同时将ACKnum（Acknowledgement Number：确认序号）设置为客户端ISN序列号加1，即x+1。发送完毕后，服务端进入SYN_RCVD状态。 第三次握手（ACK=1，seq=x + 1，ACKnum=y+1） 客户端发送，SYN标志位为0，ACK标志位为1，将服务端的seq序号值加1，放入确认序号中，发送给服务端。发送完毕后，客户端进入ESTABLISHED状态，服务端接收后，也进入ESTABLISHED状态。TCP三次握手结束 疑问 为什么是三次握手不是两次握手？ TCP 需要 seq 序列号来做可靠重传或接收，而避免连接复用时无法分辨出 seq 是延迟或者是旧链接的 seq。 谢希仁版《计算机网络》：“已失效的连接请求报文段” 的产生在这样一种情况下：client 发出的第一个连接请求报文段并没有丢失，而是在某个网络结点长时间的滞留了，以致延误到连接释放以后的某个时间才到达 server。本来这是一个早已失效的报文段。但 server 收到此失效的连接请求报文段后，就误认为是 client 再次发出的一个新的连接请求。于是就向 client 发出确认报文段，同意建立连接。假设不采用 “三次握手”，那么只要 server 发出确认，新的连接就建立了。由于现在 client 并没有发出建立连接的请求，因此不会理睬 server 的确认，也不会向 server 发送数据。但 server 却以为新的运输连接已经建立，并一直等待 client 发来数据。这样，server 的很多资源就白白浪费掉了。采用 “三次握手” 的办法可以防止上述现象发生。例如刚才那种情况，client 不会向 server 的确认发出确认。server 由于收不到确认，就知道 client 并没有要求建立连接。” TCP 怎么样识别之前旧链接重发的包？ ISN（初始序列号）机制。 参考TCP 为什么是三次握手，而不是两次或四次？ 三次握手 Understanding TCP Sequence and Acknowledgment Numbers]]></content>
+    <content type="text"><![CDATA[要点 目的 名词 过程 疑问 目的客户端连接服务端，建立TCP连接，交换窗口大小信息 名词ISN(Initial Sequence Number)：操作系统动态随机选取一个32位长的序列号，即初始序列号ISN。 SYN(SYNchronization)：同步信号SYN，占用一个字节的编号。 在连接建立时用来同步序号。当SYN=1而ACK=0时，表明这是一个连接请求报文。 对方若同意建立连接，则应在响应报文中使SYN=1和ACK=1. 因此, SYN置1就表示这是一个连接请求或连接接受报文。 ACKnum：确认序号。Inform the sending host that the transmitted data was received successfully. 过程第一次握手（SYN=1, seq=x) 客户端发送，TCP的SYN标志位初始值为1的包，表明客户端向服务端发起连接。同时seq（ sequence numbers 序列号）包含ISN序列号x，保存在发送包序列号字段里。 发送完毕后，客户端进入SYN_SEND状态。 第二次握手（SYN=1, seq=y, ACK=1, ACKnum=x+1）（注意ACKnum又写作ack） 服务器返回，SYN标志位和ACK标志位为1。服务端将ISN序列号放入Seq域，同时将ACKnum（Acknowledgement Number：确认序号）设置为客户端ISN序列号加1，即x+1。 发送完毕后，服务端进入SYN_RCVD状态。 第三次握手（ACK=1，seq=x + 1，ACKnum=y+1） 客户端发送，SYN标志位为0，ACK标志位为1，将服务端的seq序号值加1，放入确认序号中，发送给服务端。 发送完毕后，客户端进入ESTABLISHED状态，服务端接收后，也进入ESTABLISHED状态。TCP三次握手结束 疑问 为什么是三次握手不是两次握手？ TCP 需要 seq 序列号来做可靠重传或接收，而避免连接复用时无法分辨出 seq 是延迟或者是旧链接的 seq。 谢希仁版《计算机网络》：“已失效的连接请求报文段” 的产生在这样一种情况下：client 发出的第一个连接请求报文段并没有丢失，而是在某个网络结点长时间的滞留了，以致延误到连接释放以后的某个时间才到达 server。本来这是一个早已失效的报文段。但 server 收到此失效的连接请求报文段后，就误认为是 client 再次发出的一个新的连接请求。于是就向 client 发出确认报文段，同意建立连接。假设不采用 “三次握手”，那么只要 server 发出确认，新的连接就建立了。由于现在 client 并没有发出建立连接的请求，因此不会理睬 server 的确认，也不会向 server 发送数据。但 server 却以为新的运输连接已经建立，并一直等待 client 发来数据。这样，server 的很多资源就白白浪费掉了。采用 “三次握手” 的办法可以防止上述现象发生。例如刚才那种情况，client 不会向 server 的确认发出确认。server 由于收不到确认，就知道 client 并没有要求建立连接。” TCP 怎么样识别之前旧链接重发的包？ ISN（初始序列号）机制。 参考TCP 为什么是三次握手，而不是两次或四次？ 三次握手 Understanding TCP Sequence and Acknowledgment Numbers]]></content>
       <categories>
         <category>技术</category>
       </categories>
@@ -1035,9 +1046,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[day119-实现一个instanceOf笔记]]></title>
-    <url>%2F2019%2F05%2F10%2F2019-05-11%2F</url>
-    <content type="text"><![CDATA[前言话不多说，这篇是水篇。 代码// 实现一个instanceOffunction myInstanceOf(left, right) &#123; let proto = left.__proto__ let prototype = right.prototype while (true) &#123; if (!proto) &#123; return false &#125; if (proto === prototype) &#123; return false &#125; proto === proto.__proto__ &#125;&#125;]]></content>
+    <title><![CDATA[day118-手写简单的函数柯里化-笔记]]></title>
+    <url>%2F2019%2F05%2F10%2F2019-05-10%2F</url>
+    <content type="text"><![CDATA[前言函数柯里化是属于高阶函数中一种常见的技术。特点就是参数复用、提前返回和延迟执行。 代码function curry (fn, args) &#123; var length = fn.length var args = args || [] return function () &#123; newArgs = args.concat(Array.prototype.slice.call(arguments)) if (newArgs.length &lt; length) &#123; return curry.call(this, fn, newArgs) &#125; else &#123; return fn.apply(this, newArgs) &#125; &#125;&#125;function multiFn(a, b, c) &#123; return a * b * c&#125;var multi = curry(multiFn)multi(1)(2)(3)multi(1,2,3)multi(1)(2,3)multi(1,2)(3)]]></content>
       <categories>
         <category>技术</category>
       </categories>
@@ -1046,9 +1057,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[day118-手写简单的函数柯里化-笔记]]></title>
-    <url>%2F2019%2F05%2F10%2F2019-05-10%2F</url>
-    <content type="text"><![CDATA[前言函数柯里化是属于高阶函数中一种常见的技术。特点就是参数复用、提前返回和延迟执行。 代码function curry (fn, args) &#123; var length = fn.length var args = args || [] return function () &#123; newArgs = args.concat(Array.prototype.slice.call(arguments)) if (newArgs.length &lt; length) &#123; return curry.call(this, fn, newArgs) &#125; else &#123; return fn.apply(this, newArgs) &#125; &#125;&#125;function multiFn(a, b, c) &#123; return a * b * c&#125;var multi = curry(multiFn)multi(1)(2)(3)multi(1,2,3)multi(1)(2,3)multi(1,2)(3)]]></content>
+    <title><![CDATA[day119-实现一个instanceOf笔记]]></title>
+    <url>%2F2019%2F05%2F10%2F2019-05-11%2F</url>
+    <content type="text"><![CDATA[前言话不多说，这篇是水篇。 代码// 实现一个instanceOffunction myInstanceOf(left, right) &#123; let proto = left.__proto__ let prototype = right.prototype while (true) &#123; if (!proto) &#123; return false &#125; if (proto === prototype) &#123; return false &#125; proto === proto.__proto__ &#125;&#125;]]></content>
       <categories>
         <category>技术</category>
       </categories>
@@ -1630,7 +1641,7 @@
   </entry>
   <entry>
     <title><![CDATA[day64-模板语法]]></title>
-    <url>%2F2019%2F03%2F16%2F2019-03-16%2F</url>
+    <url>%2F2019%2F03%2F16%2F2019-03-1111%2F</url>
     <content type="text"><![CDATA[背景vuejs项目中有个需求，在notification消息提示中某个部分需要有点击事件。UI用的element。想到用模板的方法来构造。 element-ui Notification onClick 触发方式组件中有两种触发的方式，但是都没有很好的满足需求。 点击时触发this.$notify.warning(&#123; dangerouslyUseHTMLString: true, duration: 0, message: `$&#123;this.createdFailedMember&#125;个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`, onClick: function () &#123; console.log(1) &#125;&#125;) 创建时触发this.$notify.warning(&#123; dangerouslyUseHTMLString: true, duration: 0, message: `$&#123;this.createdFailedMember&#125;个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`, onClick: (function () &#123; console.log(1) &#125;)()&#125;) 渲染函数比较灵活的render 函数。非常好用，但是没有模板语法那么简洁。this.$notify.warning(&#123;message: h( 'div', &#123; style: &#123;display: 'inline-block'&#125; &#125;, [ h('span', `$&#123;this.createdFailedMember&#125;个成员创建失败！`), h('a', &#123; style: &#123;color: '#409EFF', cursor: 'pointer', 'text-decoration': 'underline'&#125;, on: &#123; click: this.clickNotificationMsg &#125; &#125;, '前往查看') ])&#125;)]]></content>
       <categories>
         <category>技术</category>
@@ -1641,7 +1652,7 @@
   </entry>
   <entry>
     <title><![CDATA[day64-模板语法]]></title>
-    <url>%2F2019%2F03%2F16%2F2019-03-1111%2F</url>
+    <url>%2F2019%2F03%2F16%2F2019-03-16%2F</url>
     <content type="text"><![CDATA[背景vuejs项目中有个需求，在notification消息提示中某个部分需要有点击事件。UI用的element。想到用模板的方法来构造。 element-ui Notification onClick 触发方式组件中有两种触发的方式，但是都没有很好的满足需求。 点击时触发this.$notify.warning(&#123; dangerouslyUseHTMLString: true, duration: 0, message: `$&#123;this.createdFailedMember&#125;个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`, onClick: function () &#123; console.log(1) &#125;&#125;) 创建时触发this.$notify.warning(&#123; dangerouslyUseHTMLString: true, duration: 0, message: `$&#123;this.createdFailedMember&#125;个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`, onClick: (function () &#123; console.log(1) &#125;)()&#125;) 渲染函数比较灵活的render 函数。非常好用，但是没有模板语法那么简洁。this.$notify.warning(&#123;message: h( 'div', &#123; style: &#123;display: 'inline-block'&#125; &#125;, [ h('span', `$&#123;this.createdFailedMember&#125;个成员创建失败！`), h('a', &#123; style: &#123;color: '#409EFF', cursor: 'pointer', 'text-decoration': 'underline'&#125;, on: &#123; click: this.clickNotificationMsg &#125; &#125;, '前往查看') ])&#125;)]]></content>
       <categories>
         <category>技术</category>
