@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-08-15T14:22:25.348Z</updated>
+  <updated>2019-08-16T15:02:54.515Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day215-TCP KeepAlive-笔记</title>
+    <link href="http://lmislm.com/2019/08/16/2019-08-16/"/>
+    <id>http://lmislm.com/2019/08/16/2019-08-16/</id>
+    <published>2019-08-15T16:00:00.000Z</published>
+    <updated>2019-08-16T15:02:54.515Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><ol><li>基本原理</li><li>TCP的连接</li><li>KeepAlive的局限<a id="more"></a></li></ol><h2 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a>基本原理</h2><p>隔一段时间给连接对端发送一个探测包，如果收到对方回应的 ACK，则认为连接还是存活的，在超过一定重试次数之后还是没有收到对方的回应，则丢弃该 TCP 连接。</p><h2 id="TCP的连接"><a href="#TCP的连接" class="headerlink" title="TCP的连接"></a>TCP的连接</h2><p>物理层面并没有“连接”的概念。</p><p>TCP通信双方建立连接，但并不是一直数据交互，有些连接会在数据交互后，主动释放连接，而有些不会。在长时间无数据交互的时间段内，交互双方都有可能出现掉电、死机、异常重启等各种意外，当这些意外发生之后，这些 TCP 连接并未来得及正常释放，在软件层面上，连接的另一方并不知道对端的情况，它会一直维护这个连接，长时间的积累会导致非常多的半打开连接，造成端系统资源的消耗和浪费。</p><p>为了解决这个问题，在<code>传输层</code>可以利用<code>TCP</code>的<code>KeepAlive</code>机制实现来实现。</p><h2 id="KeepAlive的局限"><a href="#KeepAlive的局限" class="headerlink" title="KeepAlive的局限"></a>KeepAlive的局限</h2><p><code>KeepAlive</code>监测的方式是发送<code>probe</code>包，会给网络带来额外的流量。</p><p><code>TCP KeepAlive</code>只能在内核层级监测连接的存活与否，而连接的存活不一定代表服务的可用。</p><p>例如当一个服务器 CPU 进程服务器占用达到 100%，已经卡死不能响应请求了，此时 TCP KeepAlive 依然会认为连接是存活的。</p><blockquote><p>因此 TCP KeepAlive 对于应用层程序的价值是相对较小的。</p></blockquote><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://hit-alibaba.github.io/interview/basic/network/TCP.html" target="_blank" rel="noopener">TCP KeepAlive</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;基本原理&lt;/li&gt;
+&lt;li&gt;TCP的连接&lt;/li&gt;
+&lt;li&gt;KeepAlive的局限
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>day214-HTTP四次挥手</title>
@@ -41,11 +66,11 @@
   </entry>
   
   <entry>
-    <title>day214-HTTP三次握手</title>
+    <title>day213-HTTP三次握手</title>
     <link href="http://lmislm.com/2019/08/14/2019-08-14/"/>
     <id>http://lmislm.com/2019/08/14/2019-08-14/</id>
     <published>2019-08-13T16:00:00.000Z</published>
-    <updated>2019-08-15T14:18:51.452Z</updated>
+    <updated>2019-08-16T14:55:45.986Z</updated>
     
     <content type="html"><![CDATA[<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><ol><li>目的</li><li>名词</li><li>过程</li><li>疑问<a id="more"></a></li></ol><h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>客户端连接服务端，建立TCP连接，交换窗口大小信息</p><h2 id="名词"><a href="#名词" class="headerlink" title="名词"></a>名词</h2><p><code>ISN(Initial Sequence Number)：</code>操作系统动态随机选取一个32位长的序列号，即初始序列号ISN。</p><p><code>SYN(SYNchronization)：</code>同步信号SYN，占用一个字节的编号。</p><p>在连接建立时用来同步序号。当SYN=1而ACK=0时，表明这是一个连接请求报文。</p><p>对方若同意建立连接，则应在响应报文中使SYN=1和ACK=1. 因此, SYN置1就表示这是一个连接请求或连接接受报文。</p><p><code>ACKnum：</code>确认序号。Inform the sending host that the transmitted data was received successfully.</p><h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><p><strong>第一次握手</strong>（SYN=1, seq=x)</p><p>客户端发送，TCP的SYN标志位初始值为1的包，表明客户端向服务端发起连接。同时seq（ sequence numbers 序列号）包含ISN序列号x，保存在发送包序列号字段里。</p><p>发送完毕后，客户端进入<code>SYN_SEND</code>状态。</p><p><strong>第二次握手</strong>（SYN=1, seq=y, ACK=1, ACKnum=x+1）（注意ACKnum又写作ack）</p><p>服务器返回，SYN标志位和ACK标志位为1。服务端将ISN序列号放入Seq域，同时将ACKnum（Acknowledgement Number：确认序号）设置为客户端ISN序列号加1，即x+1。</p><p>发送完毕后，服务端进入<code>SYN_RCVD</code>状态。</p><p><strong>第三次握手</strong>（ACK=1，seq=x + 1，ACKnum=y+1）</p><p>客户端发送，SYN标志位为0，ACK标志位为1，将服务端的seq序号值加1，放入确认序号中，发送给服务端。</p><p>发送完毕后，客户端进入<code>ESTABLISHED</code>状态，服务端接收后，也进入ESTABLISHED状态。TCP三次握手结束</p><h2 id="疑问"><a href="#疑问" class="headerlink" title="疑问"></a>疑问</h2><ol><li>为什么是三次握手不是两次握手？</li></ol><p>TCP 需要 seq 序列号来做可靠重传或接收，而避免连接复用时无法分辨出 seq 是延迟或者是旧链接的 seq。</p><blockquote><p>谢希仁版《计算机网络》：“已失效的连接请求报文段” 的产生在这样一种情况下：client 发出的第一个连接请求报文段并没有丢失，而是在某个网络结点长时间的滞留了，以致延误到连接释放以后的某个时间才到达 server。本来这是一个早已失效的报文段。但 server 收到此失效的连接请求报文段后，就误认为是 client 再次发出的一个新的连接请求。于是就向 client 发出确认报文段，同意建立连接。假设不采用 “三次握手”，那么只要 server 发出确认，新的连接就建立了。由于现在 client 并没有发出建立连接的请求，因此不会理睬 server 的确认，也不会向 server 发送数据。但 server 却以为新的运输连接已经建立，并一直等待 client 发来数据。这样，server 的很多资源就白白浪费掉了。采用 “三次握手” 的办法可以防止上述现象发生。例如刚才那种情况，client 不会向 server 的确认发出确认。server 由于收不到确认，就知道 client 并没有要求建立连接。”</p><ol start="2"><li>TCP 怎么样识别之前旧链接重发的包？</li></ol></blockquote><p>ISN（初始序列号）机制。</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.zhihu.com/question/24853633" target="_blank" rel="noopener">TCP 为什么是三次握手，而不是两次或四次？</a></p><p><a href="https://hit-alibaba.github.io/interview/basic/network/TCP.html" target="_blank" rel="noopener">三次握手</a></p><p><a href="https://packetlife.net/blog/2010/jun/7/understanding-tcp-sequence-acknowledgment-numbers/" target="_blank" rel="noopener">Understanding TCP Sequence and Acknowledgment Numbers</a></p>]]></content>
     
@@ -67,11 +92,11 @@
   </entry>
   
   <entry>
-    <title>day213-DNS解析</title>
+    <title>day212-DNS解析</title>
     <link href="http://lmislm.com/2019/08/13/2019-08-13/"/>
     <id>http://lmislm.com/2019/08/13/2019-08-13/</id>
     <published>2019-08-12T16:00:00.000Z</published>
-    <updated>2019-08-13T15:24:04.004Z</updated>
+    <updated>2019-08-16T14:52:25.745Z</updated>
     
     <content type="html"><![CDATA[<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><ol><li>DNS解析过程</li><li>DNS优化<a id="more"></a></li></ol><h2 id="DNS解析过程"><a href="#DNS解析过程" class="headerlink" title="DNS解析过程"></a>DNS解析过程</h2><p>DNS解析查IP过程：（以<a href="http://www.xxx.com为例）" target="_blank" rel="noopener">www.xxx.com为例）</a><br>过程：. -&gt; .com -&gt; xxx.com. -&gt; <a href="http://www.xxx.com" target="_blank" rel="noopener">www.xxx.com</a>.</p><ol><li>读取DNS缓存（缓存分为：浏览器缓存，系统缓存，路由器缓存，IPS服务器缓存，根域名服务器缓存，顶级域名服务器缓存，主域名服务器缓存）</li><li>查找LDNS（本地区域名服务器，如果你在学校接入互联网，则 LDNS 服务器就在学校）。LDNS查询自己的DNS缓存，失败则进行DNS解析请求。</li><li>LDNS查找根域名服务器（<a href="http://www.xxx.com.，注意com后的“.”对应根域名服务器，默认都有，通常省略，但浏览器请求DNS时会自动加上" target="_blank" rel="noopener">www.xxx.com.，注意com后的“.”对应根域名服务器，默认都有，通常省略，但浏览器请求DNS时会自动加上</a>)</li><li>LDNS查找顶级域名服务器（COM域名服务器）</li><li>LDNS查找主域名服务器（xxx.com域名服务器），得到IP地址</li><li>LDNS将得到的IP地址，返回给操作系统，自己也存一份。</li></ol><h2 id="DNS优化"><a href="#DNS优化" class="headerlink" title="DNS优化"></a>DNS优化</h2><ol><li><p>缓存<br>主要有：浏览器缓存，系统缓存，路由器缓存，IPS服务器缓存，根域名服务器缓存，顶级域名服务器缓存，主域名服务器缓存<br>浏览器缓存查看（Chrome版本75.0.3770.100为例）：<code>chrome://net-internals/#dns</code>。注：可以从<code>chrome://chrome-urls/</code>进去<br>系统缓存查看：（<code>/etc/hosts</code>，Linux系统）（<code>hosts</code>，Windows系统）</p></li><li><p>负载均衡<br>根据每台被请求的机器（含有请求资源）的负载量，该机器离用户地理位置的距离等等，来决定哪个机器处理，即负载均衡，又叫DNS重定向。</p></li></ol><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://segmentfault.com/a/1190000006879700" target="_blank" rel="noopener">前端经典面试题: 从输入URL到页面加载发生了什么？</a></p><p><a href="https://github.com/kaola-fed/blog/issues" target="_blank" rel="noopener">从输入页面地址到展示页面信息都发生了些什么？</a></p>]]></content>
     
@@ -91,11 +116,11 @@
   </entry>
   
   <entry>
-    <title>day212-localStorage、sessionStorage、Cookie</title>
+    <title>day211-localStorage、sessionStorage、Cookie</title>
     <link href="http://lmislm.com/2019/08/12/2019-08-12/"/>
     <id>http://lmislm.com/2019/08/12/2019-08-12/</id>
     <published>2019-08-11T16:00:00.000Z</published>
-    <updated>2019-08-12T15:45:12.351Z</updated>
+    <updated>2019-08-16T14:52:21.063Z</updated>
     
     <content type="html"><![CDATA[<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><ol><li>三者异同</li><li>三者的基本概念<a id="more"></a></li></ol><h2 id="三者异同"><a href="#三者异同" class="headerlink" title="三者异同"></a>三者异同</h2><table><thead><tr><th>特性</th><th>Cookie</th><th>localStorage</th><th>sessionStorage</th></tr></thead><tbody><tr><td>生命周期</td><td>可由服务器生成，可设置过期时间。如果在浏览器端生成Cookie，默认是关闭浏览器后清除</td><td>除非被清除，否则永久保存</td><td>仅在当前会话下有效，关闭页面或浏览器后被清除</td></tr><tr><td>可存放数据大小</td><td>4K左右</td><td>5MB左右</td><td>5MB左右</td></tr><tr><td>与服务器端通信</td><td>携带在HTTP头中</td><td>不与服务器端通信，仅仅在浏览器中保存</td><td>不与服务器端通信，仅仅在浏览器中保存</td></tr><tr><td>易用性</td><td>接口不友好</td><td>相对较容易封装</td><td>相对较容易封装</td></tr></tbody></table><h2 id="三者的基本概念"><a href="#三者的基本概念" class="headerlink" title="三者的基本概念"></a>三者的基本概念</h2><p><strong>localStorage</strong></p><p>HTML5新特性，支持IE8+、 IE6+的polyfill可以用userData。localStorage在浏览器的隐私模式下面是不可读取的。</p><p><strong>sessionStorage</strong></p><p>仅在当前会话下有效，关闭页面或浏览器后被清除。<br><strong>作用域</strong> 如果一个标签页包含多个iframe标签且他们属于同源页面，那么他们之间是可以共享sessionStorage的。</p><p><strong>Cookie</strong><br>生命周期在设置的cookie过期时间之前一直有效。长度和数量的限制。每个domain最多只能有20条cookie，每个cookie长度不能超过4KB。属于旧方法。</p>]]></content>
     
@@ -115,11 +140,11 @@
   </entry>
   
   <entry>
-    <title>day211-Content-Type</title>
+    <title>day210-Content-Type</title>
     <link href="http://lmislm.com/2019/08/11/2019-08-11/"/>
     <id>http://lmislm.com/2019/08/11/2019-08-11/</id>
     <published>2019-08-10T16:00:00.000Z</published>
-    <updated>2019-08-11T14:43:56.400Z</updated>
+    <updated>2019-08-16T14:52:16.873Z</updated>
     
     <content type="html"><![CDATA[<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><ol><li>是什么？</li><li>句法</li><li>指令，及其注释<a id="more"></a></li></ol><h2 id="是什么"><a href="#是什么" class="headerlink" title="是什么"></a>是什么</h2><p>Content-Type 实体头部用于指示资源的MIME类型 media type 。</p><h2 id="句法"><a href="#句法" class="headerlink" title="句法"></a>句法</h2><p>就是经常在header中看到的东西，如，<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Content-Type: text/html; charset=utf<span class="number">-8</span></span><br></pre></td></tr></table></figure></p><h2 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h2><ol><li>media-type</li></ol><p>资源或数据的 MIME type（媒体类型—通常称为 Multipurpose Internet Mail Extensions 或 MIME 类型 ，是一种标准，用来表示文档、文件或字节流的性质和格式，如：text/html<br>、text/plain）。</p><ul><li>常见的：<br><code>multipart/form-data</code>，用以支持向服务器发送二进制数据</li></ul><p><code>application/x-www-urlencoded</code>，消息内容会经过 URL 格式编码，可用get方法和post方法，但不写enctype，无法实现文件上传</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.runoob.com/http/http-content-type.html" target="_blank" rel="noopener">HTTP content-type 对照表</a></p><p><a href="https://segmentfault.com/a/1190000003002851#articleHeader2" target="_blank" rel="noopener">理解HTTP之Content-Type</a></p><p><a href="https://juejin.im/post/5c9f4885f265da308868dad1" target="_blank" rel="noopener">上传文件multipart/form-data深入解析</a></p><p><a href="https://www.jianshu.com/p/29e38bcc8a1d" target="_blank" rel="noopener">深入解析 multipart/form-data</a></p>]]></content>
     
@@ -140,11 +165,11 @@
   </entry>
   
   <entry>
-    <title>day210-repaint和reflow扫盲</title>
+    <title>day209-repaint和reflow扫盲</title>
     <link href="http://lmislm.com/2019/08/10/2019-08-10/"/>
     <id>http://lmislm.com/2019/08/10/2019-08-10/</id>
     <published>2019-08-09T16:00:00.000Z</published>
-    <updated>2019-08-10T14:01:16.385Z</updated>
+    <updated>2019-08-16T14:52:10.568Z</updated>
     
     <content type="html"><![CDATA[<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><ol><li>介绍</li><li>引起XX的常见操作</li><li>优化<a id="more"></a></li></ol><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>浏览器重新渲染，就需要重新生成布局和重新绘制。前者叫做”回流”（reflow，又叫重排，英文也叫Layout），后者叫做”重绘”（repaint）。</p><p>元素样式的改变不影响布局， UI 层面的重新像素绘制，重绘对元素进行更新 —— 重绘(repaint)<br>重新渲染页面 —— 回流(reflow)</p><h2 id="常见原因"><a href="#常见原因" class="headerlink" title="常见原因"></a>常见原因</h2><p><strong>常见的reflow操作：</strong></p><ol><li>页面初次渲染，浏览器窗口大小改变</li><li>元素尺寸/位置/内容发生改变</li><li>css伪类<blockquote><p>offsetTop/offsetLeft/offsetWidth/offsetHeight/offsetParent</p></blockquote></li></ol><blockquote><p>clientTop/clientLeft/clientWidth/clientHeight</p></blockquote><blockquote><p>scrollTop/scrollLeft/scrollWidth/scrollHeight</p></blockquote><blockquote><p>getComputedStyle()/getClientRects()/getBoundingClientRect()</p></blockquote><p><strong>常见的repaint操作：</strong></p><p>css属性的改变。</p><p>具体见CSS Triggers <a href="https://csstriggers.com/" target="_blank" rel="noopener">https://csstriggers.com/</a> 这里列出了哪些属性会引起reflow(即Layout)或repaint。</p><h2 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h2><ul><li><p>rAF等<br>使用 window.requestAnimationFrame()、window.requestIdleCallback() 这两个方法调节重新渲染</p></li><li><p><a href="https://github.com/wilsonpage/fastdom" target="_blank" rel="noopener">FASTDOM</a> (Eliminates layout thrashing by batching DOM measurement and mutation tasks<br>)</p><blockquote><p>自动完成读写操作的批处理</p></blockquote></li></ul><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://zhuanlan.zhihu.com/p/30078937" target="_blank" rel="noopener">如何不择手段提升scroll事件的性能—知乎</a></p><p><a href="https://www.ruanyifeng.com/blog/2015/09/web-page-performance-in-depth.html" target="_blank" rel="noopener">网页性能管理详解—阮一峰</a></p>]]></content>
     
@@ -482,31 +507,6 @@
 &lt;li&gt;Node.js 是完全单线程？&lt;/li&gt;
 &lt;li&gt;其他线程？&lt;/li&gt;
 &lt;li&gt;事件循环是种栈结构？
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day195-Vue-style Hooks</title>
-    <link href="http://lmislm.com/2019/07/27/2019-07-27/"/>
-    <id>http://lmislm.com/2019/07/27/2019-07-27/</id>
-    <published>2019-07-26T16:00:00.000Z</published>
-    <updated>2019-07-27T14:22:25.378Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><p>在vue3中，将更多的采用hook。个人觉得，如果能保留之前的东西再加上hook，将会更加的灵活。</p><ol><li>API that maps Vue’s existing API.</li><li>Usage in Normal Vue Components<a id="more"></a><h2 id="API-that-maps-Vue’s-existing-API"><a href="#API-that-maps-Vue’s-existing-API" class="headerlink" title="API that maps Vue’s existing API."></a>API that maps Vue’s existing API.</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;</span><br><span class="line">  withHooks,</span><br><span class="line">  useData,</span><br><span class="line">  useComputed,</span><br><span class="line">  useWatch,</span><br><span class="line">  useMounted,</span><br><span class="line">  useUpdated,</span><br><span class="line">  useDestroyed</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">"vue-hooks"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Foo = withHooks(<span class="function"><span class="params">h</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> data = useData(&#123;</span><br><span class="line">    count: <span class="number">0</span></span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> double = useComputed(<span class="function"><span class="params">()</span> =&gt;</span> data.count * <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">  useWatch(<span class="function"><span class="params">()</span> =&gt;</span> data.count, (val, prevVal) =&gt; &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`count is: <span class="subst">$&#123;val&#125;</span>`</span>)</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  useMounted(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'mounted!'</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">  useUpdated(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'updated!'</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">  useDestroyed(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'destroyed!'</span>)</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> h(<span class="string">'div'</span>, [</span><br><span class="line">    h(<span class="string">'div'</span>, <span class="string">`count is <span class="subst">$&#123;data.count&#125;</span>`</span>),</span><br><span class="line">    h(<span class="string">'div'</span>, <span class="string">`double count is <span class="subst">$&#123;double&#125;</span>`</span>),</span><br><span class="line">    h(<span class="string">'button'</span>, &#123; <span class="attr">on</span>: &#123; <span class="attr">click</span>: <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// still got that direct mutation!</span></span><br><span class="line">      data.count++</span><br><span class="line">    &#125;&#125;&#125;, <span class="string">'count++'</span>)</span><br><span class="line">  ])</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li></ol><h2 id="Usage-in-Normal-Vue-Components"><a href="#Usage-in-Normal-Vue-Components" class="headerlink" title="Usage in Normal Vue Components"></a>Usage in Normal Vue Components</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; hooks, useData, useComputed &#125; <span class="keyword">from</span> <span class="string">'vue-hooks'</span></span><br><span class="line"></span><br><span class="line">Vue.use(hooks)</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  template: <span class="string">`</span></span><br><span class="line"><span class="string">    &lt;div @click="data.count++"&gt;</span></span><br><span class="line"><span class="string">      &#123;&#123; data.count &#125;&#125; &#123;&#123; double &#125;&#125;</span></span><br><span class="line"><span class="string">    &lt;/div&gt;</span></span><br><span class="line"><span class="string">  `</span>,</span><br><span class="line">  hooks() &#123;</span><br><span class="line">    <span class="keyword">const</span> data = useData(&#123;</span><br><span class="line">      count: <span class="number">0</span></span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> double = useComputed(<span class="function"><span class="params">()</span> =&gt;</span> data.count * <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      data,</span><br><span class="line">      double</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h2&gt;&lt;p&gt;在vue3中，将更多的采用hook。个人觉得，如果能保留之前的东西再加上hook，将会更加的灵活。&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;API that maps Vue’s existing API.&lt;/li&gt;
-&lt;li&gt;Usage in Normal Vue Components
     
     </summary>
     
