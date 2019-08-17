@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-08-16T15:02:54.515Z</updated>
+  <updated>2019-08-17T14:34:06.375Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -17,13 +17,37 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>day216-HTTPS 中间人攻击</title>
+    <link href="http://lmislm.com/2019/08/17/2019-08-17/"/>
+    <id>http://lmislm.com/2019/08/17/2019-08-17/</id>
+    <published>2019-08-16T16:00:00.000Z</published>
+    <updated>2019-08-17T14:34:06.375Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><ol><li>过程</li><li>防范<a id="more"></a></li></ol><h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><ol><li><code>服务端</code>向<code>客户端</code>发送公钥</li><li>攻击者截取公钥，并伪造公钥，发送给<code>客户端</code></li><li><code>客户端</code>收到伪造的公钥后，生成加密hash值发给<code>服务端</code></li><li>攻击者获得加密hash值，用自己的私钥解密获得真密钥</li><li>同时生成假的加密hash值，发给<code>服务端</code></li><li><code>服务端</code>用私钥解密获得假密钥</li><li><code>服务端</code>用假密钥加密传输信息。</li></ol><h2 id="防范"><a href="#防范" class="headerlink" title="防范"></a>防范</h2><p>服务端在发送给<code>客户端</code>的公钥中，加入CA证书。浏览器可以验证CA证书的有效性。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;过程&lt;/li&gt;
+&lt;li&gt;防范
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
+  
+  <entry>
     <title>day215-TCP KeepAlive-笔记</title>
     <link href="http://lmislm.com/2019/08/16/2019-08-16/"/>
     <id>http://lmislm.com/2019/08/16/2019-08-16/</id>
     <published>2019-08-15T16:00:00.000Z</published>
-    <updated>2019-08-16T15:02:54.515Z</updated>
+    <updated>2019-08-16T15:13:29.335Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><ol><li>基本原理</li><li>TCP的连接</li><li>KeepAlive的局限<a id="more"></a></li></ol><h2 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a>基本原理</h2><p>隔一段时间给连接对端发送一个探测包，如果收到对方回应的 ACK，则认为连接还是存活的，在超过一定重试次数之后还是没有收到对方的回应，则丢弃该 TCP 连接。</p><h2 id="TCP的连接"><a href="#TCP的连接" class="headerlink" title="TCP的连接"></a>TCP的连接</h2><p>物理层面并没有“连接”的概念。</p><p>TCP通信双方建立连接，但并不是一直数据交互，有些连接会在数据交互后，主动释放连接，而有些不会。在长时间无数据交互的时间段内，交互双方都有可能出现掉电、死机、异常重启等各种意外，当这些意外发生之后，这些 TCP 连接并未来得及正常释放，在软件层面上，连接的另一方并不知道对端的情况，它会一直维护这个连接，长时间的积累会导致非常多的半打开连接，造成端系统资源的消耗和浪费。</p><p>为了解决这个问题，在<code>传输层</code>可以利用<code>TCP</code>的<code>KeepAlive</code>机制实现来实现。</p><h2 id="KeepAlive的局限"><a href="#KeepAlive的局限" class="headerlink" title="KeepAlive的局限"></a>KeepAlive的局限</h2><p><code>KeepAlive</code>监测的方式是发送<code>probe</code>包，会给网络带来额外的流量。</p><p><code>TCP KeepAlive</code>只能在内核层级监测连接的存活与否，而连接的存活不一定代表服务的可用。</p><p>例如当一个服务器 CPU 进程服务器占用达到 100%，已经卡死不能响应请求了，此时 TCP KeepAlive 依然会认为连接是存活的。</p><blockquote><p>因此 TCP KeepAlive 对于应用层程序的价值是相对较小的。</p></blockquote><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://hit-alibaba.github.io/interview/basic/network/TCP.html" target="_blank" rel="noopener">TCP KeepAlive</a></p>]]></content>
+    <content type="html"><![CDATA[<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><ol><li>基本原理</li><li>TCP的连接</li><li>KeepAlive的局限<a id="more"></a></li></ol><h2 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a>基本原理</h2><p>隔一段时间给连接对端发送一个探测包，如果收到对方回应的 ACK，则认为连接还是存活的，在超过一定重试次数之后还是没有收到对方的回应，则丢弃该 TCP 连接。</p><h2 id="TCP的连接"><a href="#TCP的连接" class="headerlink" title="TCP的连接"></a>TCP的连接</h2><p>物理层面并没有“连接”的概念。</p><p>TCP通信双方建立连接，但并不是一直数据交互，有些连接会在数据交互后，主动释放连接，而有些不会。在长时间无数据交互的时间段内，交互双方都有可能出现掉电、死机、异常重启等各种意外，当这些意外发生之后，这些 TCP 连接并未来得及正常释放，在软件层面上，连接的另一方并不知道对端的情况，它会一直维护这个连接，长时间的积累会导致非常多的半打开连接，造成端系统资源的消耗和浪费。</p><p>为了解决这个问题，在<code>传输层</code>可以利用<code>TCP</code>的<code>KeepAlive</code>机制实现来实现。</p><h2 id="KeepAlive的局限"><a href="#KeepAlive的局限" class="headerlink" title="KeepAlive的局限"></a>KeepAlive的局限</h2><p><code>KeepAlive</code>监测的方式是发送<code>probe</code>包，会给网络带来额外的流量。</p><p><code>TCP KeepAlive</code>只能在内核层级监测连接的存活与否，而连接的存活不一定代表服务的可用。</p><p>例如当一个服务器 CPU 进程服务器占用达到 100%，已经卡死不能响应请求了，此时 TCP KeepAlive 依然会认为连接是存活的。</p><blockquote><p>因此 TCP KeepAlive 对于应用层程序的价值是相对较小的。</p></blockquote><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://www.tldp.org/HOWTO/html_single/TCP-Keepalive-HOWTO/" target="_blank" rel="noopener">TCP Keepalive HOWTO</a></p><p><a href="https://hit-alibaba.github.io/interview/basic/network/TCP.html" target="_blank" rel="noopener">TCP KeepAlive</a></p>]]></content>
     
     <summary type="html">
     
@@ -482,31 +506,6 @@
       &lt;h2 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h2&gt;&lt;ol&gt;
 &lt;li&gt;Range是？&lt;/li&gt;
 &lt;li&gt;createRange？
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day196-事件循环的常见问题和错误观点</title>
-    <link href="http://lmislm.com/2019/07/28/2019-07-28/"/>
-    <id>http://lmislm.com/2019/07/28/2019-07-28/</id>
-    <published>2019-07-27T16:00:00.000Z</published>
-    <updated>2019-07-28T15:00:28.268Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><ol><li>Node.js 是完全单线程？</li><li>其他线程？</li><li>事件循环是种栈结构？<a id="more"></a><h2 id="Node-js-是完全单线程"><a href="#Node-js-是完全单线程" class="headerlink" title="Node.js 是完全单线程?"></a>Node.js 是完全单线程?</h2>Node 单线程运行，但是Nodejs中一些标准库函数为了保证程序速度和性能并不是运行在同一个线程上（例如：fs函数）。</li></ol><h2 id="其他线程运行在什么地方？"><a href="#其他线程运行在什么地方？" class="headerlink" title="其他线程运行在什么地方？"></a>其他线程运行在什么地方？</h2><p>既然NOdejs不是单线程，那么其他线程运行在什么地方呢？Nodejs使用名为<code>libuv</code>的特殊库模块来执行异步操作。此库还和Node的后台逻辑一起使用，用来管理被称为<code>libuv线程池</code>的特殊线程池。</p><p>该特殊线程池由四个线程组成，用于委派对于事件循环来说太重（长时间运行，过于昂贵）的操作。</p><h2 id="事件循环是种栈结构"><a href="#事件循环是种栈结构" class="headerlink" title="事件循环是种栈结构"></a>事件循环是种栈结构</h2><p>在线程中可能涉及一些类似栈的结构，但其实是事件循环由一系列的阶段所组成，每个阶段都有自己的特定任务，所有阶段都以循环重复的方式去处理。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;Node.js 是完全单线程？&lt;/li&gt;
-&lt;li&gt;其他线程？&lt;/li&gt;
-&lt;li&gt;事件循环是种栈结构？
     
     </summary>
     
