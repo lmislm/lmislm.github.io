@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-08-17T14:34:06.375Z</updated>
+  <updated>2019-08-18T15:47:52.526Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day217-Intersection Observer</title>
+    <link href="http://lmislm.com/2019/08/18/2019-08-18/"/>
+    <id>http://lmislm.com/2019/08/18/2019-08-18/</id>
+    <published>2019-08-17T16:00:00.000Z</published>
+    <updated>2019-08-18T15:47:52.526Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><ol><li>简介</li><li>Options</li><li>Callback<a id="more"></a></li></ol><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>异步观察目标元素与其祖先元素或顶级文档视窗(viewport)交叉状态的方法。</p><p><code>Intersection Observer API</code>会注册一个回调方法，每当期望被监视的元素<code>进入或者退出</code>另外一个元素的时候(或者浏览器的视口)该回调方法将会被执行，或者两个元素的<code>交集部分大小发生变化</code>的时候回调方法也会被执行。</p><h2 id="Options"><a href="#Options" class="headerlink" title="Options"></a>Options</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> options = &#123;</span><br><span class="line">  root: <span class="built_in">document</span>.querySelector(<span class="string">'#scrollArea'</span>), <span class="comment">// 所监听对象的具体祖先元素(element) ,只读</span></span><br><span class="line">  rootMargin: <span class="string">'0px'</span>, <span class="comment">// 计算交叉时添加到根(root)边界盒bounding box的矩形偏移量，只读，主要用途之一就是用来实现提前加载，提前几百像素预先加载</span></span><br><span class="line">  threshold: <span class="number">1.0</span> <span class="comment">// 包含阈值的列表，如[0, 0.25, 0.5, 0.75, 1]， 列表中的每个阈值都是监听对象的交叉区域与边界区域的比率，只读</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> observer = <span class="keyword">new</span> IntersectionObserver(callback, options);</span><br></pre></td></tr></table></figure><h2 id="Callback"><a href="#Callback" class="headerlink" title="Callback"></a>Callback</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> callback = <span class="function"><span class="keyword">function</span>(<span class="params">entries, observer</span>) </span>&#123; </span><br><span class="line">  entries.forEach(<span class="function"><span class="params">entry</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// Each entry describes an intersection change for one observed</span></span><br><span class="line">  <span class="comment">// target element:</span></span><br><span class="line">  <span class="comment">//   entry.boundingClientRect</span></span><br><span class="line">  <span class="comment">//   entry.intersectionRatio</span></span><br><span class="line">  <span class="comment">//   entry.intersectionRect</span></span><br><span class="line">  <span class="comment">//   entry.isIntersecting // 判断target元素在root元素中的可见性是否发生变化，isIntersecting 是 true，target元素的至少已经达到thresholds属性值当中规定的其中一个阈值</span></span><br><span class="line">  <span class="comment">//   entry.rootBounds</span></span><br><span class="line">  <span class="comment">//   entry.target</span></span><br><span class="line">  <span class="comment">//   entry.time</span></span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.cnblogs.com/ziyunfei/p/5558712.html" target="_blank" rel="noopener">IntersectionObserver API-紫云飞</a></p><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Intersection_Observer_API" target="_blank" rel="noopener">Intersection Observer API-MDN</a></p><p><a href="https://juejin.im/post/5a7973575188257a5911a749" target="_blank" rel="noopener">谈谈IntersectionObserver懒加载</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;简介&lt;/li&gt;
+&lt;li&gt;Options&lt;/li&gt;
+&lt;li&gt;Callback
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>day216-HTTPS 中间人攻击</title>
@@ -482,30 +507,6 @@
 &lt;li&gt;时间复杂度尽量最小。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;string&quot;&gt;&#39;abcaakjbb&#39;&lt;/span&gt; =&amp;gt; &amp;#123;&lt;span class=&quot;string&quot;&gt;&#39;a&#39;&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&#39;b&#39;&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;string&quot;&gt;&#39;abbkejsbcccwqaa&#39;&lt;/span&gt; =&amp;gt; &amp;#123;&lt;span class=&quot;string&quot;&gt;&#39;c&#39;&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day197-DOM Range操作</title>
-    <link href="http://lmislm.com/2019/07/29/2019-07-29/"/>
-    <id>http://lmislm.com/2019/07/29/2019-07-29/</id>
-    <published>2019-07-28T16:00:00.000Z</published>
-    <updated>2019-07-29T14:47:06.957Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><ol><li>Range是？</li><li>createRange？<a id="more"></a><h2 id="Range是？"><a href="#Range是？" class="headerlink" title="Range是？"></a>Range是？</h2>Range是一种fragment（HTML片断），包含了节点或文本节点的一部分，通过document.createRange()或selection象的getRangeAt()方法获得。<blockquote><p>IE没有。需要检查兼容性。</p></blockquote></li></ol><h2 id="createRange？"><a href="#createRange？" class="headerlink" title="createRange？"></a>createRange？</h2><blockquote><p><code>Document.createRange()</code>常用来设置光标定位。</p></blockquote><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> el = <span class="built_in">document</span>.getElementById(<span class="string">'editable'</span>)</span><br><span class="line"><span class="keyword">let</span> range = <span class="built_in">document</span>.createRange()</span><br><span class="line"><span class="keyword">let</span> sel = <span class="built_in">window</span>.getSelection()</span><br><span class="line">range.setStart(el.childNodes[<span class="number">2</span>], <span class="number">5</span>) <span class="comment">// childNodes来源于NodeList</span></span><br><span class="line">range.collapse(<span class="literal">true</span>) <span class="comment">// collapse(toStart) 折叠该范围，使它的“起点”和“结束点”重合。</span></span><br><span class="line">sel.removeAllRanges()</span><br><span class="line">sel.addRange(range)</span><br></pre></td></tr></table></figure><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.cnblogs.com/rainman/archive/2011/02/28/1967488.html" target="_blank" rel="noopener">Javascript标准DOM Range操作</a></p><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Document/createRange" target="_blank" rel="noopener">Document.createRange()</a></p><p><a href="https://stackoverflow.com/questions/6249095/how-to-set-caretcursor-position-in-contenteditable-element-div" target="_blank" rel="noopener">How to set caret(cursor) position in contenteditable element (div)?</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;Range是？&lt;/li&gt;
-&lt;li&gt;createRange？
     
     </summary>
     
