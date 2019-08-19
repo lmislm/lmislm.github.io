@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-08-18T15:47:52.526Z</updated>
+  <updated>2019-08-19T15:02:39.710Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day218-[].slice.call(arguments)</title>
+    <link href="http://lmislm.com/2019/08/19/2019-08-19/"/>
+    <id>http://lmislm.com/2019/08/19/2019-08-19/</id>
+    <published>2019-08-18T16:00:00.000Z</published>
+    <updated>2019-08-19T15:02:39.710Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><ol><li>类数组的转换</li><li>call绑定其他对象的上下文</li><li>slice方法中的for…in<a id="more"></a></li></ol><h2 id="类数组的转换"><a href="#类数组的转换" class="headerlink" title="类数组的转换"></a>类数组的转换</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">[].slice.call(<span class="built_in">arguments</span>)</span><br></pre></td></tr></table></figure><h2 id="call绑定其他对象的上下文"><a href="#call绑定其他对象的上下文" class="headerlink" title="call绑定其他对象的上下文"></a>call绑定其他对象的上下文</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> sliced = <span class="built_in">Array</span>.prototype.slice.call(&#123;<span class="string">'0'</span>: <span class="string">'a'</span>, <span class="string">'1'</span>: <span class="string">'b'</span>, <span class="string">'2'</span>: <span class="string">'c'</span>, <span class="attr">length</span>: <span class="number">3</span>&#125;, <span class="number">2</span>);</span><br><span class="line"><span class="comment">// [ 'c' ]</span></span><br><span class="line"><span class="keyword">var</span> sliced = <span class="built_in">Array</span>.prototype.slice.call(&#123;<span class="string">'0'</span>: <span class="string">'a'</span>, <span class="string">'1'</span>: <span class="string">'b'</span>, <span class="string">'3'</span>: <span class="string">'c'</span>, <span class="attr">length</span>: <span class="number">3</span>&#125;, <span class="number">2</span>);</span><br><span class="line"><span class="comment">// [ &lt;1 empty item&gt; ]</span></span><br></pre></td></tr></table></figure><h2 id="slice方法中的for…in"><a href="#slice方法中的for…in" class="headerlink" title="slice方法中的for…in"></a>slice方法中的for…in</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Array</span>.prototype.mockSlice = <span class="function"><span class="keyword">function</span>(<span class="params">begin, end</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// IE &lt; 9 gets unhappy with an undefined end argument</span></span><br><span class="line">  end = (<span class="keyword">typeof</span> end !== <span class="string">'undefined'</span>) ? end : <span class="keyword">this</span>.length;</span><br><span class="line">  <span class="comment">// For array like object we handle it ourselves.</span></span><br><span class="line">  <span class="keyword">var</span> i, cloned = [],</span><br><span class="line">    size, len = <span class="keyword">this</span>.length;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Handle negative value for "begin"</span></span><br><span class="line">  <span class="keyword">var</span> start = begin || <span class="number">0</span>;</span><br><span class="line">  start = (start &gt;= <span class="number">0</span>) ? start : <span class="built_in">Math</span>.max(<span class="number">0</span>, len + start);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Handle negative value for "end"</span></span><br><span class="line">  <span class="keyword">var</span> upTo = (<span class="keyword">typeof</span> end == <span class="string">'number'</span>) ? <span class="built_in">Math</span>.min(end, len) : len;</span><br><span class="line">  <span class="keyword">if</span> (end &lt; <span class="number">0</span>) &#123;</span><br><span class="line">    upTo = len + end;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// Actual expected size of the slice</span></span><br><span class="line">  size = upTo - start;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (size &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    cloned = <span class="keyword">new</span> <span class="built_in">Array</span>(size);</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.charAt) &#123; <span class="comment">// String，如果是字符型返回指定位置的字符</span></span><br><span class="line">      <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; size; i++) &#123;</span><br><span class="line">        cloned[i] = <span class="keyword">this</span>.charAt(start + i);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; size; i++) &#123;</span><br><span class="line">        cloned[i] = <span class="keyword">this</span>[start + i]; <span class="comment">// 迭代数组</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> cloned;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span> (<span class="params">a, b, c</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log([].mockSlice.call(<span class="built_in">arguments</span>)) <span class="comment">// [ 'a', 'b', 'c' ]</span></span><br><span class="line">&#125;</span><br><span class="line">foo(<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>)</span><br></pre></td></tr></table></figure><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/slice" target="_blank" rel="noopener">Array.prototype.slice()</a></p><p><a href="https://stackoverflow.com/questions/7056925/how-does-array-prototype-slice-call-work" target="_blank" rel="noopener">how does Array.prototype.slice.call() work?</a></p><p><a href="http://es5.github.io/x15.4.html#x15.4.4.10" target="_blank" rel="noopener">Array.prototype.slice method description</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;类数组的转换&lt;/li&gt;
+&lt;li&gt;call绑定其他对象的上下文&lt;/li&gt;
+&lt;li&gt;slice方法中的for…in
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>day217-Intersection Observer</title>
@@ -480,33 +505,6 @@
 &lt;li&gt;构造函数&lt;/li&gt;
 &lt;li&gt;回调函数集合&lt;/li&gt;
 &lt;/ol&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day198-字符串连续出现最多的字符</title>
-    <link href="http://lmislm.com/2019/07/30/2019-07-30/"/>
-    <id>http://lmislm.com/2019/07/30/2019-07-30/</id>
-    <published>2019-07-29T16:00:00.000Z</published>
-    <updated>2019-07-30T16:09:48.241Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><ol><li>统计出现次数。</li><li><strong>连续</strong>出现次数。</li><li>时间复杂度尽量最小。</li></ol><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="string">'abcaakjbb'</span> =&gt; &#123;<span class="string">'a'</span>:<span class="number">2</span>,<span class="string">'b'</span>:<span class="number">2</span>&#125;</span><br><span class="line"><span class="string">'abbkejsbcccwqaa'</span> =&gt; &#123;<span class="string">'c'</span>:<span class="number">3</span>&#125;</span><br></pre></td></tr></table></figure><a id="more"></a><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">'abcaakjbb'</span></span><br><span class="line"><span class="comment">// 过程</span></span><br><span class="line"><span class="keyword">let</span> result = &#123;&#125;</span><br><span class="line"><span class="keyword">let</span> flag = <span class="number">0</span></span><br><span class="line"><span class="keyword">let</span> strArr = str.split(<span class="string">''</span>)</span><br><span class="line"><span class="keyword">let</span> letterTimes = strArr.reduce(<span class="function">(<span class="params">acc, cur, index</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (!acc[cur]) &#123;</span><br><span class="line">    acc[cur] = <span class="number">1</span> <span class="comment">// 不存在，就创建键值对，初始值1</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (strArr[index + <span class="number">1</span>] === cur) &#123;</span><br><span class="line">    acc[cur] += <span class="number">1</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 比较次数大小</span></span><br><span class="line">  <span class="keyword">if</span> (acc[cur] &gt; flag) &#123;</span><br><span class="line">    flag = acc[cur]</span><br><span class="line">  &#125;</span><br><span class="line">  acc[]</span><br><span class="line">  <span class="keyword">return</span> acc</span><br><span class="line">&#125;, &#123;&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(letterTimes)</span><br><span class="line"><span class="built_in">console</span>.log(result)</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;统计出现次数。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;连续&lt;/strong&gt;出现次数。&lt;/li&gt;
-&lt;li&gt;时间复杂度尽量最小。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;string&quot;&gt;&#39;abcaakjbb&#39;&lt;/span&gt; =&amp;gt; &amp;#123;&lt;span class=&quot;string&quot;&gt;&#39;a&#39;&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&#39;b&#39;&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;string&quot;&gt;&#39;abbkejsbcccwqaa&#39;&lt;/span&gt; =&amp;gt; &amp;#123;&lt;span class=&quot;string&quot;&gt;&#39;c&#39;&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
     
     </summary>
     
