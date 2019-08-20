@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-08-19T15:02:39.710Z</updated>
+  <updated>2019-08-20T15:04:13.757Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day219-再看闭包</title>
+    <link href="http://lmislm.com/2019/08/20/2019-08-20/"/>
+    <id>http://lmislm.com/2019/08/20/2019-08-20/</id>
+    <published>2019-08-19T16:00:00.000Z</published>
+    <updated>2019-08-20T15:04:13.757Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><ol><li>引子</li><li>闭包</li><li>闭包模拟私有方法</li><li>性能考量<a id="more"></a></li></ol><h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><blockquote><p>嵌套的函数可以访问其外部声明的变量</p></blockquote><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">init</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> name = <span class="string">'Mozilla'</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">displayName</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(name) <span class="comment">// 嵌套的函数可以访问其外部声明的变量</span></span><br><span class="line">  &#125;</span><br><span class="line">  displayName()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeFunc</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> name = <span class="string">'Mozilla'</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">displayName</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(name)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> displayName</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> myFunc = makeFunc()</span><br><span class="line">myFunc()</span><br></pre></td></tr></table></figure><h2 id="闭包模拟私有方法"><a href="#闭包模拟私有方法" class="headerlink" title="闭包模拟私有方法"></a>闭包模拟私有方法</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> makeCounter = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> privateCounter = <span class="number">0</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">changeBy</span> (<span class="params">val</span>) </span>&#123;</span><br><span class="line">    privateCounter += val</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    increment: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      changeBy(<span class="number">1</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">    decrement: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      changeBy(<span class="number">-1</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">    value: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> privateCounter</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> Counter1 = makeCounter()</span><br><span class="line"><span class="keyword">let</span> Counter2 = makeCounter()</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(Counter1.value()) <span class="comment">// 0</span></span><br><span class="line">Counter1.increment()</span><br><span class="line"><span class="built_in">console</span>.log(Counter1.value()) <span class="comment">// 1</span></span><br><span class="line"><span class="built_in">console</span>.log(Counter2.value()) <span class="comment">// 0</span></span><br></pre></td></tr></table></figure><h2 id="性能考量"><a href="#性能考量" class="headerlink" title="性能考量"></a>性能考量</h2><p>创建新的对象或者类时，方法通常关联于对象的原型，而不是定义到对象的构造器。</p><p>这将导致每次构造器被调用时，方法都会被重新赋值一次。<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">MyObject</span> (<span class="params">name, message</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name.toString()</span><br><span class="line">  <span class="keyword">this</span>.message = message.toString()</span><br><span class="line"></span><br><span class="line">  <span class="keyword">this</span>.getName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="comment">// 闭包</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.name</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">this</span>.getMessage = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="comment">// 闭包</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.message</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Closures#Practical_closures" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Closures#Practical_closures</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;引子&lt;/li&gt;
+&lt;li&gt;闭包&lt;/li&gt;
+&lt;li&gt;闭包模拟私有方法&lt;/li&gt;
+&lt;li&gt;性能考量
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>day218-[].slice.call(arguments)</title>
@@ -479,31 +505,6 @@
     
       &lt;h2 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h2&gt;&lt;ol&gt;
 &lt;li&gt;修改promise状态&lt;/li&gt;
-&lt;/ol&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day199-简单实现Promise(1)</title>
-    <link href="http://lmislm.com/2019/07/31/2019-07-31/"/>
-    <id>http://lmislm.com/2019/07/31/2019-07-31/</id>
-    <published>2019-07-30T16:00:00.000Z</published>
-    <updated>2019-07-31T14:56:05.441Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><ol><li>构造函数</li><li>回调函数集合</li></ol><a id="more"></a><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">/** 构造函数 - 雏形 */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Promise</span> (<span class="params">fn</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> self = <span class="keyword">this</span></span><br><span class="line">  self.status = <span class="string">'pending'</span></span><br><span class="line">  self.data = <span class="literal">undefined</span></span><br><span class="line"></span><br><span class="line">  self.onFulfilledCallback = [] <span class="comment">// resolve 回调函数集合</span></span><br><span class="line">  self.onRejectedCallback = [] <span class="comment">// reject 回调函数集合</span></span><br><span class="line"></span><br><span class="line">  fn(resolve, reject) <span class="comment">// 执行传入函数</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;构造函数&lt;/li&gt;
-&lt;li&gt;回调函数集合&lt;/li&gt;
 &lt;/ol&gt;
     
     </summary>
