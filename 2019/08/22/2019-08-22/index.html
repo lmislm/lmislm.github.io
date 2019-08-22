@@ -7,7 +7,7 @@
     error: '复制错误',
     noSupport: '浏览器不支持'
   }
-} </script></head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#要点"><span class="toc-number">1.</span> <span class="toc-text">要点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数字-单个-数字"><span class="toc-number">2.</span> <span class="toc-text">数字+单个(.)+数字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数字-多个不连续的-数字"><span class="toc-number">3.</span> <span class="toc-text">数字+多个不连续的(.)+数字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#异同"><span class="toc-number">4.</span> <span class="toc-text">异同</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原理"><span class="toc-number">5.</span> <span class="toc-text">原理</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="https://tvax1.sinaimg.cn/crop.0.0.959.959.180/b15ca614ly8fq7e2av9s8j20qn0qndic.jpg"></div><div class="author-info__name text-center">lmislm</div><div class="author-info__description text-center">凝视深渊过久，深渊将回以凝视;与恶龙缠斗过久，自身亦成为恶龙</div><div class="follow-button"><a href="https://github.com/lmislm" target="_blank">Follow Me</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">246</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">22</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">8</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">友链</div><a class="author-info-links__name text-center" href="https://v2mm.tech" target="_blank">v2mm.tech</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://s1.ax1x.com/2018/07/22/PGQ9iR.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">LMISLMのBlog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> 搜索</span></a><a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/gallery">Gallery</a></span></div><div id="post-info"><div id="post-title">day220-Regex-email</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-08-22</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/技术/">技术</a><div class="post-meta-wordcount"><span>字数总计: </span><span class="word-count">472</span><span class="post-meta__separator">|</span><span>阅读时长: 2 分钟</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><p>一步步写一个邮箱正则。</p>
+} </script></head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#要点"><span class="toc-number">1.</span> <span class="toc-text">要点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数字-单个-数字"><span class="toc-number">2.</span> <span class="toc-text">数字+单个(.)+数字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数字-多个不连续的-数字"><span class="toc-number">3.</span> <span class="toc-text">数字+多个不连续的(.)+数字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多个数字间隔连续"><span class="toc-number">4.</span> <span class="toc-text">多个数字间隔连续</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#完全匹配"><span class="toc-number">5.</span> <span class="toc-text">完全匹配</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#匹配-后缀"><span class="toc-number">6.</span> <span class="toc-text">匹配@后缀</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#优化建议"><span class="toc-number">7.</span> <span class="toc-text">优化建议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">8.</span> <span class="toc-text">参考</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="https://tvax1.sinaimg.cn/crop.0.0.959.959.180/b15ca614ly8fq7e2av9s8j20qn0qndic.jpg"></div><div class="author-info__name text-center">lmislm</div><div class="author-info__description text-center">凝视深渊过久，深渊将回以凝视;与恶龙缠斗过久，自身亦成为恶龙</div><div class="follow-button"><a href="https://github.com/lmislm" target="_blank">Follow Me</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">246</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">22</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">8</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">友链</div><a class="author-info-links__name text-center" href="https://v2mm.tech" target="_blank">v2mm.tech</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://s1.ax1x.com/2018/07/22/PGQ9iR.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">LMISLMのBlog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> 搜索</span></a><a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/gallery">Gallery</a></span></div><div id="post-info"><div id="post-title">day220-Regex-email</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-08-22</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/技术/">技术</a><div class="post-meta-wordcount"><span>字数总计: </span><span class="word-count">790</span><span class="post-meta__separator">|</span><span>阅读时长: 3 分钟</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><p>一步步写一个邮箱正则。</p>
 <p>条件：</p>
 <p>只允许[a-z][A-Z][.]且不允许”.”号连续和处于开头结尾</p>
 <ol>
@@ -19,27 +19,64 @@
 <li>优化建议<a id="more"></a>
 </li>
 </ol>
-<h2 id="数字-单个-数字"><a href="#数字-单个-数字" class="headerlink" title="数字+单个(.)+数字"></a>数字+单个(.)+数字</h2><p>[a-zA-Z0-9]+(.)+[a-zA-Z0-9]</p>
+<h2 id="数字-单个-数字"><a href="#数字-单个-数字" class="headerlink" title="数字+单个(.)+数字"></a>数字+单个(.)+数字</h2><p><code>[a-zA-Z0-9]+(\.)+[a-zA-Z0-9]</code></p>
+<p><strong>测试</strong></p>
 <p>匹配：hello.world 中的 hello.w</p>
 <p>匹配：hello……world 中的 hello……w</p>
 <p>匹配：hello.word.hello.to 中 hello.w</p>
 <p><strong>知识点</strong></p>
-<p>“+”：匹配前面一个表达式 1 次或者多次。等价于 {1,}。</p>
-<h2 id="数字-多个不连续的-数字"><a href="#数字-多个不连续的-数字" class="headerlink" title="数字+多个不连续的(.)+数字"></a>数字+多个不连续的(.)+数字</h2><p>一个状态对象，一个标题，一个URL</p>
-<p><strong>状态对象:</strong></p>
-<p>  用户导航到新状态时，触发popstate事件。包含该历史记录条目状态对象的副本。状态对象能被序列化，大小限制在640k以内。</p>
-<p><strong>标题：</strong></p>
-<p>  给跳转的state传递短标题。</p>
-<p><strong>URL：</strong></p>
-<p>  定义新的历史URL记录。新URL必须与当前URL同源。否则<code>pushState()</code>会抛出异常。参数可选，默认为当前URL。</p>
-<h2 id="异同"><a href="#异同" class="headerlink" title="异同"></a>异同</h2><p><code>pushState()</code>与<code>window.location = &#39;#foo&#39;</code>，两者都会在当前页面创建并激活新的历史记录。</p>
-<p><code>hash</code>相对于<code>history.pushState()</code>兼容性强。</p>
-<p>新URL可以是与当前URL同源的任意URL。设置<code>window.location</code>仅当你只修改了哈希值时才保持同一个<code>document</code>（即：hash 设置的新值不能与原来的一样，一样的值不会触发动作将记录添加到栈中）。</p>
-<p><code>pushState()</code>可以将任意数据和新的历史记录项相关联（即：通过 stateObject 参数可以将任何数据类型添加到记录中）。而hash，要把所有相关数据编码为短字符串（即：只能添加短字符串）。</p>
-<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p><strong>hash</strong></p>
-<p>onhashchange 事件，可以在 window 对象上监听这个事件。</p>
-<p><strong>pushState</strong></p>
-<p>hash只改变#后面的代码片段，pushState可以在window对象上监听popState()事件。</p>
+<p><code>&quot;+&quot;</code>：匹配前面一个表达式 1 次或者多次。等价于 {1,}。</p>
+<h2 id="数字-多个不连续的-数字"><a href="#数字-多个不连续的-数字" class="headerlink" title="数字+多个不连续的(.)+数字"></a>数字+多个不连续的(.)+数字</h2><p><code>([a-zA-Z0-9]+)([\.{1}])?([a-zA-Z0-9])</code></p>
+<p><strong>测试</strong></p>
+<p>hello.world =&gt; hello.w</p>
+<p>hello…….word =&gt; hello</p>
+<p>hello.word.hello.to =&gt; hello.w</p>
+<p><strong>知识点</strong></p>
+<p><code>&quot;{n}&quot;</code>：n 是一个正整数，匹配了前面一个字符刚好出现了 n 次。</p>
+<p><code>&quot;?&quot;</code>：匹配前面一个表达式 0 次或者 1 次。等价于 {0,1}。</p>
+<blockquote>
+<p>例子：/e?le?/ 匹配 “angel” 中的 ‘el’、”angle” 中的 ‘le’ 以及 “oslo’ 中的 ‘l’。</p>
+</blockquote>
+<h2 id="多个数字间隔连续"><a href="#多个数字间隔连续" class="headerlink" title="多个数字间隔连续"></a>多个数字间隔连续</h2><p><code>[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*</code></p>
+<p><strong>测试</strong></p>
+<p>hello.world =&gt; hello.world</p>
+<p>hello……world =&gt; hello</p>
+<p>hello.world.hello.to =&gt; hello.world.hello.to</p>
+<p>hello……world.hello.to =&gt; hello</p>
+<p>hello.world.hello……to =&gt; hello.world.hello</p>
+<p><strong>知识点</strong></p>
+<p><code>&quot;(?:x)&quot;</code>：匹配 ‘x’ 但是不记住匹配项。这种括号叫作<code>非捕获括号</code>，使得你能够定义与正则表达式运算符一起使用的子表达式。</p>
+<blockquote>
+<p>例子：/(?:\d{3}|(\d{3}))([-\/.])\d{3}\1\d{4}/。</p>
+</blockquote>
+<pre><code>(?: 这个正则表达式寻找三个数字字符\d{3} 或者 | 一个左半括号\(跟着三位数字\d{3}, 
+跟着一个封闭括号 \), (结束非捕获括号 ))， 后跟着一个短破折号或正斜杠或小数点，
+随后跟随三个数字字符，当记忆字符 ([-\/\.])捕获并记住，后面跟着三位小数 \d{3}，
+再后面跟随记住的破折号、正斜杠或小数点 \1，最后跟着四位小数 \d{4}
+</code></pre><blockquote>
+<p>例子：(?:\d+)</p>
+</blockquote>
+<pre><code>匹配一次或多次数字字符，但是不能记住匹配的字符。
+</code></pre><p><code>&quot;*&quot;</code>：匹配前一个表达式 0 次或多次。等价于 {0,}。</p>
+<h2 id="完全匹配"><a href="#完全匹配" class="headerlink" title="完全匹配"></a>完全匹配</h2><p><code>/^[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*$/</code></p>
+<p><strong>测试</strong></p>
+<p>hello.world =&gt; hello.world</p>
+<p>hello……world =&gt; （空）</p>
+<p>hello.world.hello.to =&gt; hello.world.hello.to</p>
+<p>hello……world.hello.to =&gt; （空）</p>
+<p>hello.world.hello……to =&gt; （空）</p>
+<p><strong>知识点</strong></p>
+<p><code>&quot;^&quot;</code>：匹配输入的开始。如果多行标志被设置为 true，那么也匹配换行符后紧跟的位置。<br>  例子：/^A/ 匹配”An E” 中的 ‘A’，不匹配 “an A” 中的 ‘A’</p>
+<p><code>&quot;$&quot;</code>：匹配输入的结束。如果多行标示被设置为 true，那么也匹配换行符前的位置。<br>  例子：/t$/ 匹配 “eat” 中的 ‘t’，不匹配 “eater” 中的 ‘t’</p>
+<h2 id="匹配-后缀"><a href="#匹配-后缀" class="headerlink" title="匹配@后缀"></a>匹配@后缀</h2><p>后缀：<code>/@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/</code></p>
+<p><code>/^(([^&lt;&gt;()[\]\\.,;:\s@&quot;]+(\.[^&lt;&gt;()[\]\\.,;:\s@&quot;]+)*)|(&quot;.+&quot;))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/</code></p>
+<h2 id="优化建议"><a href="#优化建议" class="headerlink" title="优化建议"></a>优化建议</h2><p>如果”_”字符允许的话，可以考虑用”\w”</p>
+<p><code>&quot;\w&quot;</code>：匹配一个<code>单字</code>字符（字母、数字或者下划线）。等价于 [A-Za-z0-9_]。</p>
+<blockquote>
+<p>例子：/\w/ 匹配 “apple,” 中的 ‘a’，”$5.28,”中的 ‘5’ 和 “3D.” 中的 ‘3’。</p>
+</blockquote>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions</a></p>
+<p><a href="https://www.regextester.com/" target="_blank" rel="noopener">https://www.regextester.com/</a></p>
 </div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">lmislm</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://lmislm.com/2019/08/22/2019-08-22/">http://lmislm.com/2019/08/22/2019-08-22/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://lmislm.com" target="_blank">LMISLMのBlog</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/前端/">前端</a></div><nav id="pagination"><div class="next-post pull-right"><a href="/2019/08/21/2019-08-21/"><span>day219-history.pushState()</span><i class="fa fa-chevron-right"></i></a></div></nav><div class="post-adv"><a href="https://www.vultr.com/?ref=7298075"><img src="https://www.vultr.com/media/banner_1.png" width="728" height="90"></a></div><div id="vcomment"></div><script src="https://cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine@1.1.9-beta9/dist/Valine.min.js"></script><script>var notify = 'true' == true ? true : false;
 var verify = 'false' == true ? true : false;
 var GUEST_INFO = ['nick','mail','link'];
