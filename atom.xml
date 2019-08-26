@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-08-25T15:33:01.671Z</updated>
+  <updated>2019-08-26T15:54:39.661Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day224-三种检测数组的方法</title>
+    <link href="http://lmislm.com/2019/08/26/2019-08-26/"/>
+    <id>http://lmislm.com/2019/08/26/2019-08-26/</id>
+    <published>2019-08-25T16:00:00.000Z</published>
+    <updated>2019-08-26T15:54:39.661Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><ol><li><code>Object.prototype.toString.call()</code></li><li><code>instanceof</code></li><li><code>Array.isArray()</code>、与<code>instanceof</code>比较<a id="more"></a></li></ol><h2 id="Object-prototype-toString-call"><a href="#Object-prototype-toString-call" class="headerlink" title="Object.prototype.toString.call()"></a>Object.prototype.toString.call()</h2><blockquote><p>所有的基本数据类型都能判断，其中就包括<code>null</code>和<code>undefined</code>。</p></blockquote><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>]</span><br><span class="line"><span class="comment">// Object.prototype.toString.call()</span></span><br><span class="line">arr.toString() <span class="comment">// 1,2</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(arr) <span class="comment">// [object Array]</span></span><br></pre></td></tr></table></figure><h2 id="instanceof"><a href="#instanceof" class="headerlink" title="instanceof"></a>instanceof</h2><blockquote><p>原理是判断<code>__proto__</code>是否能找到对应的<code>prototype</code>。<code>A.__proto__</code> ? <code>B.prototype</code></p></blockquote><p>但是<code>instanceof</code>只能用来判断对象类型，原始类型不可以。原始类型即：Undefined，Null，Boolean，Number和 String。</p><h2 id="Array-isArray"><a href="#Array-isArray" class="headerlink" title="Array.isArray()"></a>Array.isArray()</h2><p>ES5新增方法，用于确定传递的值是否是一个数组。</p><p><strong>与<code>instanceof</code>比较</strong></p><ol><li><code>instanceof</code>不支持跨iframes, 但是<code>Array.isArray</code>支持。</li></ol><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> iframeEl = <span class="built_in">document</span>.createElement(<span class="string">'iframe'</span>);</span><br><span class="line"><span class="built_in">document</span>.body.appendChild(iframeEl);</span><br><span class="line">iframeArray = <span class="built_in">window</span>.frames[<span class="built_in">window</span>.frames.length - <span class="number">1</span>].Array;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> array1 = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line"><span class="keyword">var</span> array2 = <span class="keyword">new</span> iframeArray(<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(array1 <span class="keyword">instanceof</span> <span class="built_in">Array</span>);  <span class="comment">// true    </span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Array</span>.isArray(array1));  <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(array2 <span class="keyword">instanceof</span> <span class="built_in">Array</span>);  <span class="comment">// false    </span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Array</span>.isArray(array2));  <span class="comment">// true</span></span><br></pre></td></tr></table></figure><ol start="2"><li><code>instanceof</code>要比<code>Array.isArray</code>更快，<a href="https://jsperf.com/array-isarray-vs-instanceof-array" target="_blank" rel="noopener">jsperf</a>。</li></ol><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://stackoverflow.com/questions/326069/how-to-identify-if-a-webpage-is-being-loaded-inside-an-iframe-or-directly-into-t" target="_blank" rel="noopener">How to identify if a webpage is being loaded inside an iframe or directly into the browser window?</a></p><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Data_structures" target="_blank" rel="noopener">JavaScript 数据类型和数据结构</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;Object.prototype.toString.call()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;instanceof&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Array.isArray()&lt;/code&gt;、与&lt;code&gt;instanceof&lt;/code&gt;比较
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>day223-文本溢出省略</title>
@@ -487,37 +512,6 @@
       &lt;h2 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h2&gt;&lt;p&gt;instanceOf 简单实现&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;原理：检查是否在left（左边的值）的原型链上&lt;br&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day204-es6-笔记-Class-this</title>
-    <link href="http://lmislm.com/2019/08/05/2019-08-05/"/>
-    <id>http://lmislm.com/2019/08/05/2019-08-05/</id>
-    <published>2019-08-04T16:00:00.000Z</published>
-    <updated>2019-08-05T14:20:36.400Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><blockquote><p>class 构造函数<code>constructor</code>中<code>this</code>的指向<br>类的方法内部如果含有<code>this</code>,默认指向类的实例。单独使用方法时，可能报错。</p></blockquote><ul><li>解决方法：</li></ul><ol><li>构造方法中绑定`this</li><li>使用箭头函数</li><li>使用<code>Proxy</code>，获取方法的时候，自动绑定<code>this</code><a id="more"></a><h2 id="具体解决方法-3rd"><a href="#具体解决方法-3rd" class="headerlink" title="具体解决方法-3rd"></a>具体解决方法-3rd</h2></li></ol><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">selfish</span> (<span class="params">target</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> cache = <span class="keyword">new</span> <span class="built_in">WeakMap</span>() <span class="comment">// 弱引用</span></span><br><span class="line">  <span class="keyword">const</span> handler = &#123;</span><br><span class="line">    <span class="keyword">get</span> (target, key) &#123;</span><br><span class="line">      <span class="keyword">const</span> value = <span class="built_in">Reflect</span>.get(target, key)</span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">typeof</span> value !== <span class="string">'function'</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> value</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (!cache.has(value)) &#123;</span><br><span class="line">        cache.set(value, value.bind(target)) <span class="comment">// 还是用到了bind</span></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> cache.get(value)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> proxy = <span class="keyword">new</span> <span class="built_in">Proxy</span>(target, handler)</span><br><span class="line">  <span class="keyword">return</span> proxy</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/** 示例 */</span></span><br><span class="line"><span class="keyword">const</span> logger = selfish(<span class="keyword">new</span> logger())</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;class 构造函数&lt;code&gt;constructor&lt;/code&gt;中&lt;code&gt;this&lt;/code&gt;的指向&lt;br&gt;类的方法内部如果含有&lt;code&gt;this&lt;/code&gt;,默认指向类的实例。单独使用方法时，可能报错。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;解决方法：&lt;/li&gt;
-&lt;/ul&gt;
-&lt;ol&gt;
-&lt;li&gt;构造方法中绑定`this&lt;/li&gt;
-&lt;li&gt;使用箭头函数&lt;/li&gt;
-&lt;li&gt;使用&lt;code&gt;Proxy&lt;/code&gt;，获取方法的时候，自动绑定&lt;code&gt;this&lt;/code&gt;
     
     </summary>
     
