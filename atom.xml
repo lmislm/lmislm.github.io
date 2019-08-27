@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-08-26T15:54:39.661Z</updated>
+  <updated>2019-08-27T14:27:56.339Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day225-展开运算符 vs Object.assign()</title>
+    <link href="http://lmislm.com/2019/08/27/2019-08-27/"/>
+    <id>http://lmislm.com/2019/08/27/2019-08-27/</id>
+    <published>2019-08-26T16:00:00.000Z</published>
+    <updated>2019-08-27T14:27:56.339Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><ol><li>展开运算符</li><li><code>Object.assign()</code></li><li>以上两者的异同<a id="more"></a></li></ol><h2 id="展开运算符"><a href="#展开运算符" class="headerlink" title="展开运算符"></a>展开运算符</h2><p>Object Spread 只是用已存在的对象的properties创建了一个新的普通对象 具体可见<a href="https://github.com/tc39/proposal-object-rest-spread" target="_blank" rel="noopener">tc39-proposal-object-rest-spread</a></p><ol><li>构造字面量数组</li></ol><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr1 = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>] <span class="keyword">let</span> arr2 = [<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"><span class="keyword">let</span> mergeArr = [...arr1, ...arr2]</span><br></pre></td></tr></table></figure><ol start="2"><li>构造字面量对象</li></ol><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj1 = &#123; <span class="attr">foo</span>: <span class="string">'bar'</span>, <span class="attr">x</span>: <span class="number">1</span> &#125;</span><br><span class="line"><span class="keyword">let</span> obj2 = &#123; <span class="attr">foo</span>: <span class="string">'baz'</span>, <span class="attr">y</span>: <span class="number">2</span> &#125;</span><br><span class="line"><span class="keyword">let</span> mergeObj = &#123; <span class="attr">foo</span>: <span class="string">'baz'</span>, <span class="attr">x</span>: <span class="number">1</span>, <span class="attr">y</span>: <span class="number">2</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> mergeObj = &#123; ...obj1, ...obj2 &#125;</span><br></pre></td></tr></table></figure><ol start="3"><li>函数调用时使用展开语法</li></ol><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// old:</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFn</span> (<span class="params">x, y, z</span>) </span>&#123;&#125;</span><br><span class="line"><span class="keyword">let</span> args = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>]</span><br><span class="line">myFn.apply(<span class="literal">null</span>, args)</span><br><span class="line"><span class="comment">// new: </span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFn</span> (<span class="params">x, y, z</span>) </span>&#123;&#125;</span><br><span class="line"><span class="keyword">let</span> args = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>]</span><br><span class="line">myFn(...args)</span><br></pre></td></tr></table></figure><h2 id="Object-assign"><a href="#Object-assign" class="headerlink" title="Object.assign()"></a>Object.assign()</h2><ol><li>合并对象 </li><li>复制一个对象</li><li>拷贝 symbol 类型的属性, 但是不可拷贝继承属性和不可枚举属性</li></ol><h2 id="以上两者异同"><a href="#以上两者异同" class="headerlink" title="以上两者异同"></a>以上两者异同</h2><h3 id="异"><a href="#异" class="headerlink" title="异"></a>异</h3><p>Object.assign()会触发ES6的setters。</p><p>如果喜欢用immutable技术，对象展开符操作更加合适。</p><p>用Object.assign()，第一个参数必须是{}。<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;</span><br><span class="line">  <span class="keyword">set</span> val (v) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Setter called'</span>, v)</span><br><span class="line">    <span class="keyword">return</span> v</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> obj = <span class="keyword">new</span> MyClass()</span><br><span class="line"><span class="built_in">Object</span>.assign(obj, &#123; <span class="attr">val</span>: <span class="number">3</span> &#125;) <span class="comment">// Setter called 3</span></span><br></pre></td></tr></table></figure></p><h3 id="同"><a href="#同" class="headerlink" title="同"></a>同</h3><p>两者都不会复制继承属性或class信息，但是可以拷贝<code>ES6 symbols</code>。</p><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BaseClass</span> </span>&#123;</span><br><span class="line">  foo() &#123;<span class="keyword">return</span> <span class="number">1</span>&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> <span class="keyword">extends</span> <span class="title">BaseClass</span> </span>&#123;</span><br><span class="line">  bar() &#123;<span class="keyword">return</span> <span class="number">2</span>&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> obj = <span class="keyword">new</span> MyClass()</span><br><span class="line">obj.baz = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;<span class="keyword">return</span> <span class="number">3</span>&#125;</span><br><span class="line">obj[<span class="built_in">Symbol</span>.for(<span class="string">'test'</span>)] = <span class="number">4</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> clone = &#123; ...obj &#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(clone) <span class="comment">// &#123; baz: [Function], [Symbol(test)]: 4 &#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(clone.constructor.name)</span><br><span class="line"><span class="built_in">console</span>.log(clone <span class="keyword">instanceof</span> MyClass)</span><br></pre></td></tr></table></figure><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://www.ecma-international.org/ecma-262/6.0/#sec-performpromisethen" target="_blank" rel="noopener">http://www.ecma-international.org/ecma-262/6.0/#sec-performpromisethen</a></p><p><a href="https://thecodebarbarian.com/object-assign-vs-object-spread.html" target="_blank" rel="noopener">https://thecodebarbarian.com/object-assign-vs-object-spread.html</a></p><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Spread_syntax" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Spread_syntax</a></p><p><a href="https://github.com/tc39/proposal-object-rest-spread" target="_blank" rel="noopener">https://github.com/tc39/proposal-object-rest-spread</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;展开运算符&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Object.assign()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;以上两者的异同
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>day224-三种检测数组的方法</title>
@@ -488,30 +513,6 @@
 &lt;li&gt;&lt;code&gt;MutationObserver&lt;/code&gt; 使用方法&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;MutationObserver&lt;/code&gt; 的方法&lt;code&gt;observe()&lt;/code&gt;(具体)和&lt;code&gt;takeRecords()&lt;/code&gt;以及&lt;code&gt;disconnect()&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;MutationRecord&lt;/code&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day205-instanceOf</title>
-    <link href="http://lmislm.com/2019/08/06/2019-08-06/"/>
-    <id>http://lmislm.com/2019/08/06/2019-08-06/</id>
-    <published>2019-08-05T16:00:00.000Z</published>
-    <updated>2019-08-06T14:59:38.465Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><p>instanceOf 简单实现</p><blockquote><p>原理：检查是否在left（左边的值）的原型链上<br><a id="more"></a></p></blockquote><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myInstanceOf</span> (<span class="params">left, right</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> rightProto = right.prototype</span><br><span class="line">  left = left.__proto__</span><br><span class="line">  <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!left) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (left === rightProto) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">true</span> <span class="comment">// 继续找下去</span></span><br><span class="line">    &#125;</span><br><span class="line">    left = left.__proto__ <span class="comment">// 继续遍历</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h2&gt;&lt;p&gt;instanceOf 简单实现&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;原理：检查是否在left（左边的值）的原型链上&lt;br&gt;
     
     </summary>
     
