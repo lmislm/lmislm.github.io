@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-08-27T14:27:56.339Z</updated>
+  <updated>2019-08-29T14:36:38.724Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -15,6 +15,62 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>day227-koa源码结构</title>
+    <link href="http://lmislm.com/2019/08/29/2019-08-29/"/>
+    <id>http://lmislm.com/2019/08/29/2019-08-29/</id>
+    <published>2019-08-28T16:00:00.000Z</published>
+    <updated>2019-08-29T14:36:38.724Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><ol><li>lib目录下各个js文件</li><li>各js文件的简介</li></ol><h2 id="lib目录下各个js文件"><a href="#lib目录下各个js文件" class="headerlink" title="lib目录下各个js文件"></a>lib目录下各个js文件</h2><ol><li>application.js</li><li>context.js</li><li>request.js</li><li>response.js</li></ol><h2 id="各js文件的简介"><a href="#各js文件的简介" class="headerlink" title="各js文件的简介"></a>各js文件的简介</h2><p><strong>application.js</strong></p><p>继承events(class Application extends Emitter)，能进行事件监听和事件触发</p><p>暴露api：listen(…args)、toJSON()、use(fn)、handleRequest()</p><ul><li><p>listen: http.createServer(this.callback()) 对http的封装。</p><p>其中this.callback() 包含中间件的合并，上下文的处理，以及对res的特殊处理</p></li><li><p>use: this.middleware.push(fn) 收集中间件，然后在callback()中，compose(this.middleware)，调用这些中间件。</p></li></ul><p><strong>context.js</strong></p><p>koa应用上下文ctx，重点在引入的delegate代理，其中包括Response delegation，Request delegation。</p><p>访问ctx.repsponse.status可以通过delegate，直接访问ctx.status</p><p><strong>request.js</strong></p><p> 对原生的res、req的一些操作</p><p><strong>response.js</strong></p><p>对原生的res、req的一些操作</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;lib目录下各个js文件&lt;/li&gt;
+&lt;li&gt;各js文件的简介&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;lib目录下各个js文件&quot;&gt;
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>day226-vue-router 路由重置</title>
+    <link href="http://lmislm.com/2019/08/28/2019-08-28/"/>
+    <id>http://lmislm.com/2019/08/28/2019-08-28/</id>
+    <published>2019-08-27T16:00:00.000Z</published>
+    <updated>2019-08-28T14:21:13.011Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><ol><li>实现路由重置（权限控制）</li></ol><p><code>vue-router</code>如何删除（重置）通过 addRoutes 方法添加的动态路由，实现权限控制？</p><p><code>location.refresh</code>?</p><p>替换路由实例的 matcher 对象来实现路由的 重置<br><a id="more"></a></p><p>代码如下：代码来源于vue-router中的<a href="https://github.com/vuejs/vue-router/issues/1234#issuecomment-357941465" target="_blank" rel="noopener">issue</a></p><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> Router <span class="keyword">from</span> <span class="string">'vue-router'</span></span><br><span class="line"></span><br><span class="line">Vue.use(Router)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> createRouter = <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">new</span> Router(&#123;</span><br><span class="line">  mode: <span class="string">'history'</span>,</span><br><span class="line">  routes: []</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> router = createRouter()</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">resetRouter</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> newRouter = createRouter()</span><br><span class="line">  router.matcher = newRouter.matcher <span class="comment">// the relevant part</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> router</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;实现路由重置（权限控制）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;code&gt;vue-router&lt;/code&gt;如何删除（重置）通过 addRoutes 方法添加的动态路由，实现权限控制？&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;location.refresh&lt;/code&gt;?&lt;/p&gt;
+&lt;p&gt;替换路由实例的 matcher 对象来实现路由的 重置&lt;br&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>day225-展开运算符 vs Object.assign()</title>
@@ -462,57 +518,6 @@
 &lt;li&gt;作用&lt;/li&gt;
 &lt;li&gt;应用&lt;/li&gt;
 &lt;li&gt;实例
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day207-Vue-nextTick()</title>
-    <link href="http://lmislm.com/2019/08/08/2019-08-08/"/>
-    <id>http://lmislm.com/2019/08/08/2019-08-08/</id>
-    <published>2019-08-07T16:00:00.000Z</published>
-    <updated>2019-08-08T15:12:28.727Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><ol><li><code>nextTick</code>用法</li><li><code>nextTick</code>源码相关</li><li>事件循环</li><li>源码中的降级策略<a id="more"></a></li></ol><h2 id="nextTick作用"><a href="#nextTick作用" class="headerlink" title="nextTick作用"></a><code>nextTick</code>作用</h2><blockquote><p>在下次 DOM 更新循环结束之后执行延迟回调。在修改数据之后立即使用这个方法，获取更新后的 DOM。<a href="https://cn.vuejs.org/v2/api/#Vue-nextTick" target="_blank" rel="noopener">来源</a></p></blockquote><h2 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 850555d on 20 Dec 2018</span></span><br><span class="line"><span class="keyword">if</span> (!isIE &amp;&amp; <span class="keyword">typeof</span> MutationObserver !== <span class="string">'undefined'</span> &amp;&amp; (</span><br><span class="line">  isNative(MutationObserver) ||</span><br><span class="line">  <span class="comment">// PhantomJS and iOS 7.x</span></span><br><span class="line">  MutationObserver.toString() === <span class="string">'[object MutationObserverConstructor]'</span></span><br><span class="line">)) &#123;</span><br><span class="line">  <span class="comment">// Use MutationObserver where native Promise is not available,</span></span><br><span class="line">  <span class="comment">// e.g. PhantomJS, iOS7, Android 4.4</span></span><br><span class="line">  <span class="comment">// (#6466 MutationObserver is unreliable in IE11)</span></span><br><span class="line">  <span class="keyword">let</span> counter = <span class="number">1</span></span><br><span class="line">  <span class="keyword">const</span> observer = <span class="keyword">new</span> MutationObserver(flushCallbacks)</span><br><span class="line">  <span class="keyword">const</span> textNode = <span class="built_in">document</span>.createTextNode(<span class="built_in">String</span>(counter)) <span class="comment">// 创建一个文本</span></span><br><span class="line">  observer.observe(textNode, &#123;</span><br><span class="line">    characterData: <span class="literal">true</span> <span class="comment">// 初始化监听文本节点</span></span><br><span class="line">  &#125;)</span><br><span class="line">  timerFunc = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    counter = (counter + <span class="number">1</span>) % <span class="number">2</span></span><br><span class="line">    textNode.data = <span class="built_in">String</span>(counter) <span class="comment">// 文本节点变化监听</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>以上主要作用就是：监听文本变动是否完毕。</p><h2 id="事件循环"><a href="#事件循环" class="headerlink" title="事件循环"></a>事件循环</h2><ul><li><p>常见的<strong>microtask</strong>有：<br><code>Promise</code>、<code>MutationObserve</code>r、<code>Object.observe(废弃)</code>，以及nodejs中的<code>process.nextTick</code></p></li><li><p>常见的<strong>macrotask</strong> 有<code>setTimeout</code>、<code>MessageChannel</code>、<code>postMessage</code>、<code>setImmediate</code></p></li></ul><h2 id="降级策略"><a href="#降级策略" class="headerlink" title="降级策略"></a>降级策略</h2><p>在vue2.x版本的源码文件next-tick.js中，你还可以看到有其他的一些兼容性方法。</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://github.com/Ma63d/vue-analysis/issues/6" target="_blank" rel="noopener">Vue源码详解之nextTick：MutationObserver只是浮云，microtask才是核心！</a></p><p><a href="https://juejin.im/entry/5aced80b518825482e39441e" target="_blank" rel="noopener">全面解析Vue.nextTick实现原理</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;nextTick&lt;/code&gt;用法&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;nextTick&lt;/code&gt;源码相关&lt;/li&gt;
-&lt;li&gt;事件循环&lt;/li&gt;
-&lt;li&gt;源码中的降级策略
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day206-初识MutationObserver</title>
-    <link href="http://lmislm.com/2019/08/07/2019-08-07/"/>
-    <id>http://lmislm.com/2019/08/07/2019-08-07/</id>
-    <published>2019-08-06T16:00:00.000Z</published>
-    <updated>2019-08-07T15:29:09.648Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><ol><li><code>MutationObserver</code> 使用方法</li><li><code>MutationObserver</code> 的方法<code>observe()</code>(具体)和<code>takeRecords()</code>以及<code>disconnect()</code></li><li><code>MutationRecord</code><a id="more"></a></li></ol><h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> mObserver = <span class="keyword">new</span> MutationObserver(callback) <span class="comment">// 新建实例</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> word = <span class="built_in">document</span>.querySelector(<span class="string">'words'</span>);</span><br><span class="line"><span class="keyword">var</span> options = &#123;</span><br><span class="line">  <span class="string">'childList'</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="string">'arrtibutes'</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="string">'characterData'</span>: <span class="literal">true</span>, <span class="comment">// 节点内容或节点文本的变动</span></span><br><span class="line">  <span class="string">'subtree'</span>: <span class="literal">true</span>, <span class="comment">// 所有子节点，不能单独观察，必须同时指定以上三个为`true`</span></span><br><span class="line">  <span class="string">'attributeOldValue'</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="string">'characterDataOldValue'</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="string">'attributesFilter'</span>: [<span class="string">'class'</span>, <span class="string">'str'</span>] <span class="comment">// 值为数组，表示观察的特定属性</span></span><br><span class="line">&#125;</span><br><span class="line">mObserver.observer(word, options)</span><br></pre></td></tr></table></figure><h2 id="disconnect、takeRecord"><a href="#disconnect、takeRecord" class="headerlink" title="disconnect、takeRecord"></a>disconnect、takeRecord</h2><ul><li>disconnect 表示停止观察，无参数，用法：mObserver.disconnect()</li><li>takeRecord 用来清除变动记录，无参数，用法：mObserver.takeRecords()</li></ul><h2 id="MutationRecord"><a href="#MutationRecord" class="headerlink" title="MutationRecord"></a>MutationRecord</h2><blockquote><p>每个 MutationRecord 代表一个独立的 DOM 变化，其作为参数传递给 MutationObserver 的回调函数。</p></blockquote><ol><li>参数的含义</li></ol><ul><li>type: 观察的变动类型（attribute、characterData或者childList）</li><li>target: 发生变动的DOM对象</li><li>addedNodes: 新增的DOM对象</li><li>removeNodes: 删除的DOM对象</li><li>previousSibling: 前一个同级的DOM对象，无则返回null</li><li>nextSibling: 下个同级的DOM对象，无则返回null</li><li>attributeName: 发生变动的属性，如果设置了attributeFilter，则只返回预先指定的属性</li><li>oldValue：变动前的值。只对attribute和characterData变动有效</li></ul><p>详细的属性表，<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/MutationRecord" target="_blank" rel="noopener">点击这里</a></p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/MutationObserver/observe" target="_blank" rel="noopener">MDN-MutationObserver</a></p><p><a href="https://developer.mozilla.org/en-US/docs/Web/API/MutationRecord" target="_blank" rel="noopener">MDN-MutationRecord</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;MutationObserver&lt;/code&gt; 使用方法&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;MutationObserver&lt;/code&gt; 的方法&lt;code&gt;observe()&lt;/code&gt;(具体)和&lt;code&gt;takeRecords()&lt;/code&gt;以及&lt;code&gt;disconnect()&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;MutationRecord&lt;/code&gt;
     
     </summary>
     

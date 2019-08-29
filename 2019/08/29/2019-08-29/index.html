@@ -1,0 +1,55 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta name="generator" content="Hexo 3.8.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="day227-koa源码结构"><meta name="keywords" content="前端"><meta name="author" content="lmislm,undefined"><meta name="copyright" content="lmislm"><title>day227-koa源码结构 | LMISLMのBlog</title><link rel="shortcut icon" href="/my-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.5.6"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css?version=1.5.6"><link rel="dns-prefetch" href="https://cdn.staticfile.org"><link rel="dns-prefetch" href="https://cdn.bootcss.com"><link rel="dns-prefetch" href="https://creativecommons.org"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  }
+} </script></head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#要点"><span class="toc-number">1.</span> <span class="toc-text">要点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#lib目录下各个js文件"><span class="toc-number">2.</span> <span class="toc-text">lib目录下各个js文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#各js文件的简介"><span class="toc-number">3.</span> <span class="toc-text">各js文件的简介</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="https://tvax1.sinaimg.cn/crop.0.0.959.959.180/b15ca614ly8fq7e2av9s8j20qn0qndic.jpg"></div><div class="author-info__name text-center">lmislm</div><div class="author-info__description text-center">凝视深渊过久，深渊将回以凝视;与恶龙缠斗过久，自身亦成为恶龙</div><div class="follow-button"><a href="https://github.com/lmislm" target="_blank">Follow Me</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">253</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">22</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">8</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">友链</div><a class="author-info-links__name text-center" href="https://v2mm.tech" target="_blank">v2mm.tech</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://s1.ax1x.com/2018/07/22/PGQ9iR.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">LMISLMのBlog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> 搜索</span></a><a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/gallery">Gallery</a></span></div><div id="post-info"><div id="post-title">day227-koa源码结构</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-08-29</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/技术/">技术</a><div class="post-meta-wordcount"><span>字数总计: </span><span class="word-count">204</span><span class="post-meta__separator">|</span><span>阅读时长: 1 分钟</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><ol>
+<li>lib目录下各个js文件</li>
+<li>各js文件的简介</li>
+</ol>
+<h2 id="lib目录下各个js文件"><a href="#lib目录下各个js文件" class="headerlink" title="lib目录下各个js文件"></a>lib目录下各个js文件</h2><ol>
+<li>application.js</li>
+<li>context.js</li>
+<li>request.js</li>
+<li>response.js</li>
+</ol>
+<h2 id="各js文件的简介"><a href="#各js文件的简介" class="headerlink" title="各js文件的简介"></a>各js文件的简介</h2><p><strong>application.js</strong></p>
+<p>继承events(class Application extends Emitter)，能进行事件监听和事件触发</p>
+<p>暴露api：listen(…args)、toJSON()、use(fn)、handleRequest()</p>
+<ul>
+<li><p>listen: http.createServer(this.callback()) 对http的封装。</p>
+<p>其中this.callback() 包含中间件的合并，上下文的处理，以及对res的特殊处理</p>
+</li>
+<li><p>use: this.middleware.push(fn) 收集中间件，然后在callback()中，compose(this.middleware)，调用这些中间件。</p>
+</li>
+</ul>
+<p><strong>context.js</strong></p>
+<p>koa应用上下文ctx，重点在引入的delegate代理，其中包括Response delegation，Request delegation。</p>
+<p>访问ctx.repsponse.status可以通过delegate，直接访问ctx.status</p>
+<p><strong>request.js</strong></p>
+<p> 对原生的res、req的一些操作</p>
+<p><strong>response.js</strong></p>
+<p>对原生的res、req的一些操作</p>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">lmislm</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://lmislm.com/2019/08/29/2019-08-29/">http://lmislm.com/2019/08/29/2019-08-29/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://lmislm.com" target="_blank">LMISLMのBlog</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/前端/">前端</a></div><nav id="pagination"><div class="next-post pull-right"><a href="/2019/08/28/2019-08-28/"><span>day226-vue-router 路由重置</span><i class="fa fa-chevron-right"></i></a></div></nav><div class="post-adv"><a href="https://www.vultr.com/?ref=7298075"><img src="https://www.vultr.com/media/banner_1.png" width="728" height="90"></a></div><div id="vcomment"></div><script src="https://cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine@1.1.9-beta9/dist/Valine.min.js"></script><script>var notify = 'true' == true ? true : false;
+var verify = 'false' == true ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'sHoDrBAU85MOb6nhjvws5BSc-gzGzoHsz',
+  appKey:'FClW2WY5KFeQovMnpbGjKi7t',
+  placeholder:'评论区',
+  avatar:'mm',
+  guest_info:guest_info,
+  pageSize:'10'
+})</script></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2016 - 2019 By lmislm</div><span>Melody</span><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file-o"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="/js/third-party/anime.min.js"></script><script src="/js/third-party/jquery.min.js"></script><script src="/js/third-party/jquery.fancybox.min.js"></script><script src="/js/third-party/velocity.min.js"></script><script src="/js/third-party/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.5.6"></script><script src="/js/fancybox.js?version=1.5.6"></script><script src="/js/sidebar.js?version=1.5.6"></script><script src="/js/copy.js?version=1.5.6"></script><script src="/js/fireworks.js?version=1.5.6"></script><script src="/js/transition.js?version=1.5.6"></script><script src="/js/scroll.js?version=1.5.6"></script><script src="/js/head.js?version=1.5.6"></script><script src="/js/search/local-search.js"></script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>
