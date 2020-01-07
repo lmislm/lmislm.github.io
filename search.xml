@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[day227-Koa-封装HTTP server]]></title>
+    <title><![CDATA[day229-2020-启程]]></title>
+    <url>%2F2020%2F01%2F01%2F2020-01-07%2F</url>
+    <content type="text"><![CDATA[要点滴滴，这里是逼逼叨的一天！ 去年坚持到了9月1号，然后就没写博客了！主要是写来写去感觉质量不是很高，像是完成任务一样。 今年，希望能写出好点的文章吧！一周一篇争取吧~]]></content>
+      <categories>
+        <category>生活</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[day228-Koa-封装HTTP server]]></title>
     <url>%2F2019%2F08%2F30%2F2019-08-30%2F</url>
     <content type="text"><![CDATA[要点 创建Koa类构造函数、封装http server 实现koa的服务器应用和端口监听 完成对http server简单的封装并创建了一个可以生成koa实例的类class， class类包含app.use用来注册中间件和注册回调函数， app.listen用来开启服务器实例并传入callback回调函数 封装http servernode原生代码实现的服务器监听 let http = require('http');let server = http.createServer((req, res) =&gt; &#123; res.writeHead(200); res.end('hello world');&#125;);server.listen(3000, () =&gt; &#123; console.log('listenning on 3000');&#125;) 封装实现成koa的模式 const http = require('http');const Koa = require('koa');const app = new Koa();app.listen(3000); 基于node的原生代码封装在application.js实现一个Application类的构造函数，对以上的这个过程进行封装。 let http = require('http');class Application &#123; constructor() &#123; this.callbackFunc; &#125; listen(port) &#123; let server = http.createServer(this.callback()); server.listen(port); &#125; use(fn) &#123; this.callbackFunc = fn; &#125; callback() &#123; return (req, res) =&gt; &#123; this.callbackFunc(req, res); &#125;; &#125;&#125;module.exports = Application; 测试let Koa = require('./application');let app = new Koa();app.use((req, res) =&gt; &#123; res.writeHead(200); res.end('hello world');&#125;);app.listen(3000, () =&gt; &#123; console.log('listening on 3000');&#125;);]]></content>
       <categories>
@@ -1795,7 +1806,7 @@
   </entry>
   <entry>
     <title><![CDATA[day64-模板语法]]></title>
-    <url>%2F2019%2F03%2F16%2F2019-03-1111%2F</url>
+    <url>%2F2019%2F03%2F16%2F2019-03-16%2F</url>
     <content type="text"><![CDATA[背景vuejs项目中有个需求，在notification消息提示中某个部分需要有点击事件。UI用的element。想到用模板的方法来构造。 element-ui Notification onClick 触发方式组件中有两种触发的方式，但是都没有很好的满足需求。 点击时触发this.$notify.warning(&#123; dangerouslyUseHTMLString: true, duration: 0, message: `$&#123;this.createdFailedMember&#125;个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`, onClick: function () &#123; console.log(1) &#125;&#125;) 创建时触发this.$notify.warning(&#123; dangerouslyUseHTMLString: true, duration: 0, message: `$&#123;this.createdFailedMember&#125;个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`, onClick: (function () &#123; console.log(1) &#125;)()&#125;) 渲染函数比较灵活的render 函数。非常好用，但是没有模板语法那么简洁。this.$notify.warning(&#123;message: h( 'div', &#123; style: &#123;display: 'inline-block'&#125; &#125;, [ h('span', `$&#123;this.createdFailedMember&#125;个成员创建失败！`), h('a', &#123; style: &#123;color: '#409EFF', cursor: 'pointer', 'text-decoration': 'underline'&#125;, on: &#123; click: this.clickNotificationMsg &#125; &#125;, '前往查看') ])&#125;)]]></content>
       <categories>
         <category>技术</category>
@@ -1806,7 +1817,7 @@
   </entry>
   <entry>
     <title><![CDATA[day64-模板语法]]></title>
-    <url>%2F2019%2F03%2F16%2F2019-03-16%2F</url>
+    <url>%2F2019%2F03%2F16%2F2019-03-1111%2F</url>
     <content type="text"><![CDATA[背景vuejs项目中有个需求，在notification消息提示中某个部分需要有点击事件。UI用的element。想到用模板的方法来构造。 element-ui Notification onClick 触发方式组件中有两种触发的方式，但是都没有很好的满足需求。 点击时触发this.$notify.warning(&#123; dangerouslyUseHTMLString: true, duration: 0, message: `$&#123;this.createdFailedMember&#125;个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`, onClick: function () &#123; console.log(1) &#125;&#125;) 创建时触发this.$notify.warning(&#123; dangerouslyUseHTMLString: true, duration: 0, message: `$&#123;this.createdFailedMember&#125;个成员创建失败！&lt;a id="message" style="color: #66b1ff;text-decoration: underline;cursor:pointer;" @click=aclick(event)"&gt;前往查看&lt;/a&gt;`, onClick: (function () &#123; console.log(1) &#125;)()&#125;) 渲染函数比较灵活的render 函数。非常好用，但是没有模板语法那么简洁。this.$notify.warning(&#123;message: h( 'div', &#123; style: &#123;display: 'inline-block'&#125; &#125;, [ h('span', `$&#123;this.createdFailedMember&#125;个成员创建失败！`), h('a', &#123; style: &#123;color: '#409EFF', cursor: 'pointer', 'text-decoration': 'underline'&#125;, on: &#123; click: this.clickNotificationMsg &#125; &#125;, '前往查看') ])&#125;)]]></content>
       <categories>
         <category>技术</category>
@@ -2509,9 +2520,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[新年第一天-2019-01-01]]></title>
-    <url>%2F2019%2F01%2F01%2F2019-01-01%2F</url>
-    <content type="text"><![CDATA[友情提示以下内容都是一些碎碎念，生活、读后感、今天生活内容。ps: 附上我的“专业插画师”提供的图片。 生活新年第一天，昨晚在群里抢红包，一直热闹到很晚才睡。今早10点才慵懒的起来，起的有点晚。中午炸鸡腿，惨不忍睹。后来玩游戏，庸庸碌碌的一天就过去了。这是假期最后一天。希望晚上的时候能收收心看点书。顺带一提昨天晚上看了组件详解。 读Vue 组件基础之组件通信 -《Vue js实战》组件基础组件的复用，复用离不开值得传递。父子组件，兄弟组件相互之间的传值。基本的有props，父组件传递给子组件，子组件通过$emit()、v-on: 来将值通知父组件。不太常用的有$parent(书中提到可以通过此通信访问父实例或组件），在组件中引用父组件，$child,父组件引用子组件。《Vue js实战》书中提到了，通过利用实例化一个空的BUS组件起到总线的作用，这种方法还挺新鲜。另外，组件通信时还有slot的内容分发，slot默认名称是可以和具名slot一起用的。相互之间并不影响。好吧，之前用的时候，总是会不自觉给slot取名字。理解的不够深刻。 高级组件 组件可以递归自己。 异步组件。 小结总感觉这种组件通信方式还有待于改善，应该多读一下开源的一些组件是怎么写出来的。因为上次研究element-UI的时候并没有看它运用这些（指的是通信手段，也可能是我忽略？）但是表现出了很强的可扩展性。很值得学习。包括其中CSS中的书写。 插播元旦放假头一天，买了100的零食，一个大箱子，有优惠。现在好像吃的牙有点疼。作啊。明明要减肥的人。 发现好的视频今天看B站排行榜的时候发现一个点评动漫的UP主，LexBurner?“艺名”：蕾丝。他的视频看动漫的角度还真是蛮特别，应该是有大量的漫画番剧的基础，能有空看这么多视频和漫画，这人真是不简单。]]></content>
+    <title><![CDATA[2019--启程]]></title>
+    <url>%2F2019%2F01%2F01%2F2019-%E5%90%AF%E7%A8%8B%2F</url>
+    <content type="text"><![CDATA[即将告别2018年，这个对于我来说，多灾多难的一年。这一年发生了太多的事，每一年也都会发生很多事，但从来没有哪一年能够像2018年这样让人印象深刻。考研结束。毕业。工作。最悲痛的莫过于最亲的人去世。事业也刚刚起步，爱情失去了方向。真是让人印象深刻的一年。]]></content>
       <categories>
         <category>生活</category>
       </categories>
@@ -2520,9 +2531,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[2019--启程]]></title>
-    <url>%2F2019%2F01%2F01%2F2019-%E5%90%AF%E7%A8%8B%2F</url>
-    <content type="text"><![CDATA[即将告别2018年，这个对于我来说，多灾多难的一年。这一年发生了太多的事，每一年也都会发生很多事，但从来没有哪一年能够像2018年这样让人印象深刻。考研结束。毕业。工作。最悲痛的莫过于最亲的人去世。事业也刚刚起步，爱情失去了方向。真是让人印象深刻的一年。]]></content>
+    <title><![CDATA[新年第一天-2019-01-01]]></title>
+    <url>%2F2019%2F01%2F01%2F2019-01-01%2F</url>
+    <content type="text"><![CDATA[友情提示以下内容都是一些碎碎念，生活、读后感、今天生活内容。ps: 附上我的“专业插画师”提供的图片。 生活新年第一天，昨晚在群里抢红包，一直热闹到很晚才睡。今早10点才慵懒的起来，起的有点晚。中午炸鸡腿，惨不忍睹。后来玩游戏，庸庸碌碌的一天就过去了。这是假期最后一天。希望晚上的时候能收收心看点书。顺带一提昨天晚上看了组件详解。 读Vue 组件基础之组件通信 -《Vue js实战》组件基础组件的复用，复用离不开值得传递。父子组件，兄弟组件相互之间的传值。基本的有props，父组件传递给子组件，子组件通过$emit()、v-on: 来将值通知父组件。不太常用的有$parent(书中提到可以通过此通信访问父实例或组件），在组件中引用父组件，$child,父组件引用子组件。《Vue js实战》书中提到了，通过利用实例化一个空的BUS组件起到总线的作用，这种方法还挺新鲜。另外，组件通信时还有slot的内容分发，slot默认名称是可以和具名slot一起用的。相互之间并不影响。好吧，之前用的时候，总是会不自觉给slot取名字。理解的不够深刻。 高级组件 组件可以递归自己。 异步组件。 小结总感觉这种组件通信方式还有待于改善，应该多读一下开源的一些组件是怎么写出来的。因为上次研究element-UI的时候并没有看它运用这些（指的是通信手段，也可能是我忽略？）但是表现出了很强的可扩展性。很值得学习。包括其中CSS中的书写。 插播元旦放假头一天，买了100的零食，一个大箱子，有优惠。现在好像吃的牙有点疼。作啊。明明要减肥的人。 发现好的视频今天看B站排行榜的时候发现一个点评动漫的UP主，LexBurner?“艺名”：蕾丝。他的视频看动漫的角度还真是蛮特别，应该是有大量的漫画番剧的基础，能有空看这么多视频和漫画，这人真是不简单。]]></content>
       <categories>
         <category>生活</category>
       </categories>
@@ -2599,8 +2610,8 @@
         <category>学习</category>
       </categories>
       <tags>
-        <tag>工具</tag>
         <tag>git</tag>
+        <tag>工具</tag>
       </tags>
   </entry>
   <entry>
@@ -2743,8 +2754,8 @@
     <url>%2F2017%2F03%2F20%2Fmarkdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%AE%B0%2F</url>
     <content type="text"><![CDATA[插入表格：1.1. 表格的上下需要空行。空行的多少至关重要 表格中文字居中 在划线部分的划线两端加上”:“ 比如”:—–: | :—-: 代码块:2.1. 合理利用代码块有意想不到的效果。3.]]></content>
       <tags>
-        <tag>markdown</tag>
         <tag>工具</tag>
+        <tag>markdown</tag>
       </tags>
   </entry>
   <entry>

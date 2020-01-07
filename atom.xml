@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lmislm.com/"/>
-  <updated>2019-08-30T15:32:16.879Z</updated>
+  <updated>2020-01-07T13:29:42.230Z</updated>
   <id>http://lmislm.com/</id>
   
   <author>
@@ -17,11 +17,37 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>day227-Koa-封装HTTP server</title>
+    <title>day229-2020-启程</title>
+    <link href="http://lmislm.com/2020/01/01/2020-01-07/"/>
+    <id>http://lmislm.com/2020/01/01/2020-01-07/</id>
+    <published>2019-12-31T16:00:00.000Z</published>
+    <updated>2020-01-07T13:29:42.230Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><p>滴滴，这里是逼逼叨的一天！</p><p>去年坚持到了9月1号，然后就没写博客了！主要是写来写去感觉质量不是很高，像是完成任务一样。</p><p>今年，希望能写出好点的文章吧！一周一篇争取吧~</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h2&gt;&lt;p&gt;滴滴，这里是逼逼叨的一天！&lt;/p&gt;
+&lt;p&gt;去年坚持到了9月1号，然后就没写博客了！主要是写来写去感觉质量不是很高，像是完成任务一样。&lt;/p&gt;
+      
+    
+    </summary>
+    
+      <category term="生活" scheme="http://lmislm.com/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>day228-Koa-封装HTTP server</title>
     <link href="http://lmislm.com/2019/08/30/2019-08-30/"/>
     <id>http://lmislm.com/2019/08/30/2019-08-30/</id>
     <published>2019-08-29T16:00:00.000Z</published>
-    <updated>2019-08-30T15:32:16.879Z</updated>
+    <updated>2020-01-07T13:26:36.438Z</updated>
     
     <content type="html"><![CDATA[<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><ol><li>创建Koa类构造函数、封装http server</li><li>实现koa的服务器应用和端口监听</li></ol><p>完成对http server简单的封装并创建了一个可以生成koa实例的类class，</p><p>class类包含app.use用来注册中间件和注册回调函数，</p><p>app.listen用来开启服务器实例并传入callback回调函数</p><h2 id="封装http-server"><a href="#封装http-server" class="headerlink" title="封装http server"></a>封装http server</h2><p>node原生代码实现的服务器监听</p><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</span><br><span class="line"><span class="keyword">let</span> server = http.createServer(<span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">    res.writeHead(<span class="number">200</span>);</span><br><span class="line">    res.end(<span class="string">'hello world'</span>);</span><br><span class="line">&#125;);</span><br><span class="line">server.listen(<span class="number">3000</span>, () =&gt; &#123;    </span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'listenning on 3000'</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><p>封装实现成koa的模式</p><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</span><br><span class="line"><span class="keyword">const</span> Koa = <span class="built_in">require</span>(<span class="string">'koa'</span>);</span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Koa();</span><br><span class="line">app.listen(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure><h2 id="基于node的原生代码封装"><a href="#基于node的原生代码封装" class="headerlink" title="基于node的原生代码封装"></a>基于node的原生代码封装</h2><p>在application.js实现一个Application类的构造函数，对以上的这个过程进行封装。</p><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Application</span> </span>&#123;    </span><br><span class="line">    <span class="keyword">constructor</span>() &#123;        </span><br><span class="line">        <span class="keyword">this</span>.callbackFunc;</span><br><span class="line">    &#125;</span><br><span class="line">    listen(port) &#123;        </span><br><span class="line">        <span class="keyword">let</span> server = http.createServer(<span class="keyword">this</span>.callback());</span><br><span class="line">        server.listen(port);</span><br><span class="line">    &#125;</span><br><span class="line">    use(fn) &#123;</span><br><span class="line">        <span class="keyword">this</span>.callbackFunc = fn;</span><br><span class="line">    &#125;</span><br><span class="line">    callback() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">this</span>.callbackFunc(req, res);</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">module</span>.exports = Application;</span><br></pre></td></tr></table></figure><h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> Koa = <span class="built_in">require</span>(<span class="string">'./application'</span>);</span><br><span class="line"><span class="keyword">let</span> app = <span class="keyword">new</span> Koa();</span><br><span class="line">app.use(<span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">    res.writeHead(<span class="number">200</span>);</span><br><span class="line">    res.end(<span class="string">'hello world'</span>);</span><br><span class="line">&#125;);</span><br><span class="line">app.listen(<span class="number">3000</span>, () =&gt; &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'listening on 3000'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>]]></content>
     
@@ -497,31 +523,6 @@
 &lt;li&gt;是什么？&lt;/li&gt;
 &lt;li&gt;句法&lt;/li&gt;
 &lt;li&gt;指令，及其注释
-    
-    </summary>
-    
-      <category term="技术" scheme="http://lmislm.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="前端" scheme="http://lmislm.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>day209-repaint和reflow扫盲</title>
-    <link href="http://lmislm.com/2019/08/10/2019-08-10/"/>
-    <id>http://lmislm.com/2019/08/10/2019-08-10/</id>
-    <published>2019-08-09T16:00:00.000Z</published>
-    <updated>2019-08-16T14:52:10.568Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><ol><li>介绍</li><li>引起XX的常见操作</li><li>优化<a id="more"></a></li></ol><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>浏览器重新渲染，就需要重新生成布局和重新绘制。前者叫做”回流”（reflow，又叫重排，英文也叫Layout），后者叫做”重绘”（repaint）。</p><p>元素样式的改变不影响布局， UI 层面的重新像素绘制，重绘对元素进行更新 —— 重绘(repaint)<br>重新渲染页面 —— 回流(reflow)</p><h2 id="常见原因"><a href="#常见原因" class="headerlink" title="常见原因"></a>常见原因</h2><p><strong>常见的reflow操作：</strong></p><ol><li>页面初次渲染，浏览器窗口大小改变</li><li>元素尺寸/位置/内容发生改变</li><li>css伪类<blockquote><p>offsetTop/offsetLeft/offsetWidth/offsetHeight/offsetParent</p></blockquote></li></ol><blockquote><p>clientTop/clientLeft/clientWidth/clientHeight</p></blockquote><blockquote><p>scrollTop/scrollLeft/scrollWidth/scrollHeight</p></blockquote><blockquote><p>getComputedStyle()/getClientRects()/getBoundingClientRect()</p></blockquote><p><strong>常见的repaint操作：</strong></p><p>css属性的改变。</p><p>具体见CSS Triggers <a href="https://csstriggers.com/" target="_blank" rel="noopener">https://csstriggers.com/</a> 这里列出了哪些属性会引起reflow(即Layout)或repaint。</p><h2 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h2><ul><li><p>rAF等<br>使用 window.requestAnimationFrame()、window.requestIdleCallback() 这两个方法调节重新渲染</p></li><li><p><a href="https://github.com/wilsonpage/fastdom" target="_blank" rel="noopener">FASTDOM</a> (Eliminates layout thrashing by batching DOM measurement and mutation tasks<br>)</p><blockquote><p>自动完成读写操作的批处理</p></blockquote></li></ul><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://zhuanlan.zhihu.com/p/30078937" target="_blank" rel="noopener">如何不择手段提升scroll事件的性能—知乎</a></p><p><a href="https://www.ruanyifeng.com/blog/2015/09/web-page-performance-in-depth.html" target="_blank" rel="noopener">网页性能管理详解—阮一峰</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;要点&quot;&gt;&lt;a href=&quot;#要点&quot; class=&quot;headerlink&quot; title=&quot;要点&quot;&gt;&lt;/a&gt;要点&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;介绍&lt;/li&gt;
-&lt;li&gt;引起XX的常见操作&lt;/li&gt;
-&lt;li&gt;优化
     
     </summary>
     
